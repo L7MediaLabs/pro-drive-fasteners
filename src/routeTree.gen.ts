@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as StaplesRouteImport } from './routes/staples'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as LCleatsRouteImport } from './routes/l-cleats'
+import { Route as BradsFinishNailsRouteImport } from './routes/brads-finish-nails'
 import { Route as IndexRouteImport } from './routes/index'
 
 const StaplesRoute = StaplesRouteImport.update({
@@ -29,6 +30,11 @@ const LCleatsRoute = LCleatsRouteImport.update({
   path: '/l-cleats',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BradsFinishNailsRoute = BradsFinishNailsRouteImport.update({
+  id: '/brads-finish-nails',
+  path: '/brads-finish-nails',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -37,12 +43,14 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/brads-finish-nails': typeof BradsFinishNailsRoute
   '/l-cleats': typeof LCleatsRoute
   '/products': typeof ProductsRoute
   '/staples': typeof StaplesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/brads-finish-nails': typeof BradsFinishNailsRoute
   '/l-cleats': typeof LCleatsRoute
   '/products': typeof ProductsRoute
   '/staples': typeof StaplesRoute
@@ -50,20 +58,33 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/brads-finish-nails': typeof BradsFinishNailsRoute
   '/l-cleats': typeof LCleatsRoute
   '/products': typeof ProductsRoute
   '/staples': typeof StaplesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/l-cleats' | '/products' | '/staples'
+  fullPaths:
+    | '/'
+    | '/brads-finish-nails'
+    | '/l-cleats'
+    | '/products'
+    | '/staples'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/l-cleats' | '/products' | '/staples'
-  id: '__root__' | '/' | '/l-cleats' | '/products' | '/staples'
+  to: '/' | '/brads-finish-nails' | '/l-cleats' | '/products' | '/staples'
+  id:
+    | '__root__'
+    | '/'
+    | '/brads-finish-nails'
+    | '/l-cleats'
+    | '/products'
+    | '/staples'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BradsFinishNailsRoute: typeof BradsFinishNailsRoute
   LCleatsRoute: typeof LCleatsRoute
   ProductsRoute: typeof ProductsRoute
   StaplesRoute: typeof StaplesRoute
@@ -92,6 +113,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LCleatsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/brads-finish-nails': {
+      id: '/brads-finish-nails'
+      path: '/brads-finish-nails'
+      fullPath: '/brads-finish-nails'
+      preLoaderRoute: typeof BradsFinishNailsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -104,6 +132,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BradsFinishNailsRoute: BradsFinishNailsRoute,
   LCleatsRoute: LCleatsRoute,
   ProductsRoute: ProductsRoute,
   StaplesRoute: StaplesRoute,

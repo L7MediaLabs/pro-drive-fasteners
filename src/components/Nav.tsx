@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import logoAsset from "../assets/prodrive-logo.svg.asset.json";
+import logoAsset from "../assets/prodrive-logo-prev.svg.asset.json";
 
 const products = [
   { label: "Flooring Staples", to: "/staples" },

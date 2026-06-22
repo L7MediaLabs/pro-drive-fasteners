@@ -31,11 +31,23 @@ function Mallets() {
         breadcrumb="Mallets & Caps"
         title="Mallets & Caps"
         description="Made in the USA from 100% premium hickory. Guaranteed to fit leading brands."
+        bgImage={images.mallets.hero}
       />
       <section className="px-[6%] py-12 space-y-12" style={{ background: "var(--pd-light-bg)" }}>
         <div>
           <SectionLabel>Mallets</SectionLabel>
-          <div className="mt-4"><ProductGrid products={MALLETS} /></div>
+          <div className="grid lg:grid-cols-[1fr_320px] gap-6 mt-4 items-start">
+            <ProductGrid products={MALLETS} />
+            <div className="bg-white p-4" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
+              <img
+                src={images.mallets.lineup}
+                alt="Pro-Drive mallet lineup — M1W, M5W"
+                loading="lazy"
+                style={{ width: "100%", height: "auto", objectFit: "contain" }}
+              />
+              <div className="pd-label mt-3" style={{ color: "var(--pd-gold)" }}>Mallet Family</div>
+            </div>
+          </div>
           <Callout><strong>PATENTED SURE 2 LOCK™</strong> head design virtually eliminates loosening of handle — even after years of use. Epoxy-filled handle attached with steel safety wedge.</Callout>
         </div>
         <div>

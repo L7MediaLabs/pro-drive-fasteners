@@ -11,23 +11,20 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Nav } from "../components/Nav";
+import { Footer } from "../components/Footer";
+import { LangToast } from "../components/LangToast";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-screen items-center justify-center px-4" style={{ background: "var(--pd-light-bg)" }}>
       <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+        <h1 className="pd-display" style={{ fontSize: 96, color: "var(--pd-dark)" }}>404</h1>
+        <p className="mt-2 text-sm" style={{ color: "var(--pd-muted)" }}>
+          The page you're looking for doesn't exist.
         </p>
         <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
+          <Link to="/" className="pd-btn-primary">Go home</Link>
         </div>
       </div>
     </div>
@@ -35,37 +32,16 @@ function NotFoundComponent() {
 }
 
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
-  console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
-
+  useEffect(() => { reportLovableError(error, { boundary: "tanstack_root_error_component" }); }, [error]);
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-screen items-center justify-center px-4 bg-white">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
-        </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
-        </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
-          <button
-            onClick={() => {
-              router.invalidate();
-              reset();
-            }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Try again
-          </button>
-          <a
-            href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-          >
-            Go home
-          </a>
+        <h1 className="pd-display" style={{ fontSize: 32, color: "var(--pd-dark)" }}>This page didn't load</h1>
+        <p className="mt-2 text-sm" style={{ color: "var(--pd-muted)" }}>Something went wrong. Try again or head home.</p>
+        <div className="mt-6 flex flex-wrap justify-center gap-3">
+          <button onClick={() => { router.invalidate(); reset(); }} className="pd-btn-primary">Try again</button>
+          <a href="/" className="pd-btn-outline-dark">Go home</a>
         </div>
       </div>
     </div>
@@ -77,20 +53,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Pro-Drive Fasteners® | Pro-Driven Industrial Products" },
+      { name: "description", content: "Premium fastening solutions for flooring professionals. 50+ years. Guaranteed to fit every major brand tool." },
+      { name: "author", content: "Pro-Drive Fasteners" },
+      { property: "og:title", content: "Pro-Drive Fasteners®" },
+      { property: "og:description", content: "Premium fastening solutions for flooring professionals." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
+      { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800;900&display=swap" },
     ],
   }),
   shellComponent: RootShell,
@@ -104,6 +79,11 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        {/* Pro-Drive Intelligence Layer — Installed by Seventh State Creative */}
+        {/* Apollo.io Visitor Identification — DO NOT REMOVE */}
+        {/* REPLACE THIS COMMENT WITH YOUR APOLLO SNIPPET */}
+        {/* Meta Pixel — Instagram and Facebook Traffic Tracking — DO NOT REMOVE */}
+        {/* REPLACE THIS COMMENT WITH YOUR META PIXEL CODE */}
       </head>
       <body>
         {children}
@@ -115,11 +95,14 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <Nav />
+      <LangToast />
+      <main style={{ paddingTop: 64 }}>
+        <Outlet />
+      </main>
+      <Footer />
     </QueryClientProvider>
   );
 }

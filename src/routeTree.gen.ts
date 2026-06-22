@@ -9,8 +9,98 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VideosRouteImport } from './routes/videos'
+import { Route as TipperDeTipperRouteImport } from './routes/tipper-de-tipper'
+import { Route as TappingRingsRouteImport } from './routes/tapping-rings'
+import { Route as TappingBlocksRouteImport } from './routes/tapping-blocks'
+import { Route as StaplesRouteImport } from './routes/staples'
+import { Route as SplitHeadHammerFacesRouteImport } from './routes/split-head-hammer-faces'
+import { Route as ProductsRouteImport } from './routes/products'
+import { Route as MalletsRouteImport } from './routes/mallets'
+import { Route as LCleatsRouteImport } from './routes/l-cleats'
+import { Route as DivergentStaplesRouteImport } from './routes/divergent-staples'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as BradsFinishNailsRouteImport } from './routes/brads-finish-nails'
+import { Route as AirToolsRouteImport } from './routes/air-tools'
+import { Route as AccessoriesRouteImport } from './routes/accessories'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const VideosRoute = VideosRouteImport.update({
+  id: '/videos',
+  path: '/videos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TipperDeTipperRoute = TipperDeTipperRouteImport.update({
+  id: '/tipper-de-tipper',
+  path: '/tipper-de-tipper',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TappingRingsRoute = TappingRingsRouteImport.update({
+  id: '/tapping-rings',
+  path: '/tapping-rings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TappingBlocksRoute = TappingBlocksRouteImport.update({
+  id: '/tapping-blocks',
+  path: '/tapping-blocks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaplesRoute = StaplesRouteImport.update({
+  id: '/staples',
+  path: '/staples',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SplitHeadHammerFacesRoute = SplitHeadHammerFacesRouteImport.update({
+  id: '/split-head-hammer-faces',
+  path: '/split-head-hammer-faces',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsRoute = ProductsRouteImport.update({
+  id: '/products',
+  path: '/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MalletsRoute = MalletsRouteImport.update({
+  id: '/mallets',
+  path: '/mallets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LCleatsRoute = LCleatsRouteImport.update({
+  id: '/l-cleats',
+  path: '/l-cleats',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DivergentStaplesRoute = DivergentStaplesRouteImport.update({
+  id: '/divergent-staples',
+  path: '/divergent-staples',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BradsFinishNailsRoute = BradsFinishNailsRouteImport.update({
+  id: '/brads-finish-nails',
+  path: '/brads-finish-nails',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AirToolsRoute = AirToolsRouteImport.update({
+  id: '/air-tools',
+  path: '/air-tools',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccessoriesRoute = AccessoriesRouteImport.update({
+  id: '/accessories',
+  path: '/accessories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +109,242 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/accessories': typeof AccessoriesRoute
+  '/air-tools': typeof AirToolsRoute
+  '/brads-finish-nails': typeof BradsFinishNailsRoute
+  '/contact': typeof ContactRoute
+  '/divergent-staples': typeof DivergentStaplesRoute
+  '/l-cleats': typeof LCleatsRoute
+  '/mallets': typeof MalletsRoute
+  '/products': typeof ProductsRoute
+  '/split-head-hammer-faces': typeof SplitHeadHammerFacesRoute
+  '/staples': typeof StaplesRoute
+  '/tapping-blocks': typeof TappingBlocksRoute
+  '/tapping-rings': typeof TappingRingsRoute
+  '/tipper-de-tipper': typeof TipperDeTipperRoute
+  '/videos': typeof VideosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/accessories': typeof AccessoriesRoute
+  '/air-tools': typeof AirToolsRoute
+  '/brads-finish-nails': typeof BradsFinishNailsRoute
+  '/contact': typeof ContactRoute
+  '/divergent-staples': typeof DivergentStaplesRoute
+  '/l-cleats': typeof LCleatsRoute
+  '/mallets': typeof MalletsRoute
+  '/products': typeof ProductsRoute
+  '/split-head-hammer-faces': typeof SplitHeadHammerFacesRoute
+  '/staples': typeof StaplesRoute
+  '/tapping-blocks': typeof TappingBlocksRoute
+  '/tapping-rings': typeof TappingRingsRoute
+  '/tipper-de-tipper': typeof TipperDeTipperRoute
+  '/videos': typeof VideosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/accessories': typeof AccessoriesRoute
+  '/air-tools': typeof AirToolsRoute
+  '/brads-finish-nails': typeof BradsFinishNailsRoute
+  '/contact': typeof ContactRoute
+  '/divergent-staples': typeof DivergentStaplesRoute
+  '/l-cleats': typeof LCleatsRoute
+  '/mallets': typeof MalletsRoute
+  '/products': typeof ProductsRoute
+  '/split-head-hammer-faces': typeof SplitHeadHammerFacesRoute
+  '/staples': typeof StaplesRoute
+  '/tapping-blocks': typeof TappingBlocksRoute
+  '/tapping-rings': typeof TappingRingsRoute
+  '/tipper-de-tipper': typeof TipperDeTipperRoute
+  '/videos': typeof VideosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/accessories'
+    | '/air-tools'
+    | '/brads-finish-nails'
+    | '/contact'
+    | '/divergent-staples'
+    | '/l-cleats'
+    | '/mallets'
+    | '/products'
+    | '/split-head-hammer-faces'
+    | '/staples'
+    | '/tapping-blocks'
+    | '/tapping-rings'
+    | '/tipper-de-tipper'
+    | '/videos'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/accessories'
+    | '/air-tools'
+    | '/brads-finish-nails'
+    | '/contact'
+    | '/divergent-staples'
+    | '/l-cleats'
+    | '/mallets'
+    | '/products'
+    | '/split-head-hammer-faces'
+    | '/staples'
+    | '/tapping-blocks'
+    | '/tapping-rings'
+    | '/tipper-de-tipper'
+    | '/videos'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/accessories'
+    | '/air-tools'
+    | '/brads-finish-nails'
+    | '/contact'
+    | '/divergent-staples'
+    | '/l-cleats'
+    | '/mallets'
+    | '/products'
+    | '/split-head-hammer-faces'
+    | '/staples'
+    | '/tapping-blocks'
+    | '/tapping-rings'
+    | '/tipper-de-tipper'
+    | '/videos'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AccessoriesRoute: typeof AccessoriesRoute
+  AirToolsRoute: typeof AirToolsRoute
+  BradsFinishNailsRoute: typeof BradsFinishNailsRoute
+  ContactRoute: typeof ContactRoute
+  DivergentStaplesRoute: typeof DivergentStaplesRoute
+  LCleatsRoute: typeof LCleatsRoute
+  MalletsRoute: typeof MalletsRoute
+  ProductsRoute: typeof ProductsRoute
+  SplitHeadHammerFacesRoute: typeof SplitHeadHammerFacesRoute
+  StaplesRoute: typeof StaplesRoute
+  TappingBlocksRoute: typeof TappingBlocksRoute
+  TappingRingsRoute: typeof TappingRingsRoute
+  TipperDeTipperRoute: typeof TipperDeTipperRoute
+  VideosRoute: typeof VideosRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/videos': {
+      id: '/videos'
+      path: '/videos'
+      fullPath: '/videos'
+      preLoaderRoute: typeof VideosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tipper-de-tipper': {
+      id: '/tipper-de-tipper'
+      path: '/tipper-de-tipper'
+      fullPath: '/tipper-de-tipper'
+      preLoaderRoute: typeof TipperDeTipperRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tapping-rings': {
+      id: '/tapping-rings'
+      path: '/tapping-rings'
+      fullPath: '/tapping-rings'
+      preLoaderRoute: typeof TappingRingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tapping-blocks': {
+      id: '/tapping-blocks'
+      path: '/tapping-blocks'
+      fullPath: '/tapping-blocks'
+      preLoaderRoute: typeof TappingBlocksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staples': {
+      id: '/staples'
+      path: '/staples'
+      fullPath: '/staples'
+      preLoaderRoute: typeof StaplesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/split-head-hammer-faces': {
+      id: '/split-head-hammer-faces'
+      path: '/split-head-hammer-faces'
+      fullPath: '/split-head-hammer-faces'
+      preLoaderRoute: typeof SplitHeadHammerFacesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products': {
+      id: '/products'
+      path: '/products'
+      fullPath: '/products'
+      preLoaderRoute: typeof ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mallets': {
+      id: '/mallets'
+      path: '/mallets'
+      fullPath: '/mallets'
+      preLoaderRoute: typeof MalletsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/l-cleats': {
+      id: '/l-cleats'
+      path: '/l-cleats'
+      fullPath: '/l-cleats'
+      preLoaderRoute: typeof LCleatsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/divergent-staples': {
+      id: '/divergent-staples'
+      path: '/divergent-staples'
+      fullPath: '/divergent-staples'
+      preLoaderRoute: typeof DivergentStaplesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/brads-finish-nails': {
+      id: '/brads-finish-nails'
+      path: '/brads-finish-nails'
+      fullPath: '/brads-finish-nails'
+      preLoaderRoute: typeof BradsFinishNailsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/air-tools': {
+      id: '/air-tools'
+      path: '/air-tools'
+      fullPath: '/air-tools'
+      preLoaderRoute: typeof AirToolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accessories': {
+      id: '/accessories'
+      path: '/accessories'
+      fullPath: '/accessories'
+      preLoaderRoute: typeof AccessoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +357,22 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AccessoriesRoute: AccessoriesRoute,
+  AirToolsRoute: AirToolsRoute,
+  BradsFinishNailsRoute: BradsFinishNailsRoute,
+  ContactRoute: ContactRoute,
+  DivergentStaplesRoute: DivergentStaplesRoute,
+  LCleatsRoute: LCleatsRoute,
+  MalletsRoute: MalletsRoute,
+  ProductsRoute: ProductsRoute,
+  SplitHeadHammerFacesRoute: SplitHeadHammerFacesRoute,
+  StaplesRoute: StaplesRoute,
+  TappingBlocksRoute: TappingBlocksRoute,
+  TappingRingsRoute: TappingRingsRoute,
+  TipperDeTipperRoute: TipperDeTipperRoute,
+  VideosRoute: VideosRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

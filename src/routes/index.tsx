@@ -160,8 +160,7 @@ function Home() {
                 </div>
                 <h3 className="text-white mt-3" style={{ fontWeight: 700, fontSize: 17 }}>{p.name}</h3>
                 <p style={{ color: "rgba(255,255,255,0.5)", fontWeight: 300, fontSize: 13, lineHeight: 1.65 }} className="mt-1.5">{p.description}</p>
-                <Link to={p.link} className="pd-label mt-4 inline-block" style={{ color: "var(--pd-yellow)", letterSpacing: " +
-"0.1em" }}>Learn More →</Link>
+                <Link to={p.link} className="pd-label mt-4 inline-block" style={{ color: "var(--pd-yellow)", letterSpacing: "0.1em" }}>Learn More →</Link>
               </div>
             </article>
           ))}

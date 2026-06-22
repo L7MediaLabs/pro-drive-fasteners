@@ -2,6 +2,28 @@
 @source "../src";
 @import "tw-animate-css";
 
+@font-face {
+  font-family: "Gotham";
+  src: url("/__l5e/assets-v1/633fa9ae-1ad0-4d6a-9843-3fc2d78923fd/GothamBold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gotham";
+  src: url("/__l5e/assets-v1/a200fe5b-a408-4755-ab7e-1df4daaba6fc/GothamBlack.ttf") format("truetype");
+  font-weight: 800 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gotham Ultra";
+  src: url("/__l5e/assets-v1/97bfcf99-88f1-45cf-a08a-758bfe1ff4e3/GothamUltra.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --pd-yellow: #FFCD00;
   --pd-yellow-warm: #FFB800;
@@ -47,7 +69,7 @@
   --color-foreground: var(--foreground);
   --color-border: var(--border);
   --font-sans: "Assistant", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Saira Condensed", "Barlow Condensed", "Assistant", system-ui, sans-serif;
+  --font-display: "Gotham", "Assistant", system-ui, sans-serif;
   --radius-sm: 0px;
   --radius-md: 0px;
   --radius-lg: 0px;

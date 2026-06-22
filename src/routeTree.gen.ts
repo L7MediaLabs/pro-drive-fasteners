@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TipperDeTipperRouteImport } from './routes/tipper-de-tipper'
 import { Route as TappingRingsRouteImport } from './routes/tapping-rings'
 import { Route as TappingBlocksRouteImport } from './routes/tapping-blocks'
 import { Route as StaplesRouteImport } from './routes/staples'
@@ -20,6 +21,11 @@ import { Route as DivergentStaplesRouteImport } from './routes/divergent-staples
 import { Route as BradsFinishNailsRouteImport } from './routes/brads-finish-nails'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TipperDeTipperRoute = TipperDeTipperRouteImport.update({
+  id: '/tipper-de-tipper',
+  path: '/tipper-de-tipper',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TappingRingsRoute = TappingRingsRouteImport.update({
   id: '/tapping-rings',
   path: '/tapping-rings',
@@ -82,6 +88,7 @@ export interface FileRoutesByFullPath {
   '/staples': typeof StaplesRoute
   '/tapping-blocks': typeof TappingBlocksRoute
   '/tapping-rings': typeof TappingRingsRoute
+  '/tipper-de-tipper': typeof TipperDeTipperRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -94,6 +101,7 @@ export interface FileRoutesByTo {
   '/staples': typeof StaplesRoute
   '/tapping-blocks': typeof TappingBlocksRoute
   '/tapping-rings': typeof TappingRingsRoute
+  '/tipper-de-tipper': typeof TipperDeTipperRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -107,6 +115,7 @@ export interface FileRoutesById {
   '/staples': typeof StaplesRoute
   '/tapping-blocks': typeof TappingBlocksRoute
   '/tapping-rings': typeof TappingRingsRoute
+  '/tipper-de-tipper': typeof TipperDeTipperRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -121,6 +130,7 @@ export interface FileRouteTypes {
     | '/staples'
     | '/tapping-blocks'
     | '/tapping-rings'
+    | '/tipper-de-tipper'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -133,6 +143,7 @@ export interface FileRouteTypes {
     | '/staples'
     | '/tapping-blocks'
     | '/tapping-rings'
+    | '/tipper-de-tipper'
   id:
     | '__root__'
     | '/'
@@ -145,6 +156,7 @@ export interface FileRouteTypes {
     | '/staples'
     | '/tapping-blocks'
     | '/tapping-rings'
+    | '/tipper-de-tipper'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -158,10 +170,18 @@ export interface RootRouteChildren {
   StaplesRoute: typeof StaplesRoute
   TappingBlocksRoute: typeof TappingBlocksRoute
   TappingRingsRoute: typeof TappingRingsRoute
+  TipperDeTipperRoute: typeof TipperDeTipperRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tipper-de-tipper': {
+      id: '/tipper-de-tipper'
+      path: '/tipper-de-tipper'
+      fullPath: '/tipper-de-tipper'
+      preLoaderRoute: typeof TipperDeTipperRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tapping-rings': {
       id: '/tapping-rings'
       path: '/tapping-rings'
@@ -246,6 +266,7 @@ const rootRouteChildren: RootRouteChildren = {
   StaplesRoute: StaplesRoute,
   TappingBlocksRoute: TappingBlocksRoute,
   TappingRingsRoute: TappingRingsRoute,
+  TipperDeTipperRoute: TipperDeTipperRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

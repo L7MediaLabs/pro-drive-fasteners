@@ -67,7 +67,7 @@ export function Nav() {
             <img
               src={logoAsset.url}
               alt="Pro-Drive Fasteners"
-              style={{ height: 40, width: "auto", display: "block", filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.18))" }}
+              style={{ height: 44, width: "auto", display: "block", filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.18))" }}
             />
           </Link>
 

@@ -99,7 +99,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <Nav />
       <LangToast />
-      <main style={{ paddingTop: 64 }}>
+      <main style={{ paddingTop: 68 }}>
         <Outlet />
       </main>
       <Footer />

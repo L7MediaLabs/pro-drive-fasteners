@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import logoAsset from "../assets/prodrive-logo.svg.asset.json";
 
 const cols = [
   {
@@ -33,10 +34,8 @@ export function Footer() {
       <div className="px-[6%] pt-14 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
-            <div style={{ color: "var(--pd-yellow)", fontWeight: 800, fontSize: 18, letterSpacing: "0.04em" }}>
-              PRO-DRIVE FASTENERS<span style={{ fontSize: "0.6em", verticalAlign: "top" }}>®</span>
-            </div>
-            <div className="pd-label mt-2" style={{ color: "rgba(255,205,0,0.4)" }}>
+            <img src={logoAsset.url} alt="Pro-Drive Fasteners" style={{ height: 56, width: "auto", filter: "drop-shadow(0 4px 16px rgba(255,205,0,0.18))" }} />
+            <div className="pd-label mt-4" style={{ color: "rgba(255,205,0,0.4)" }}>
               Pro-Driven Industrial Products
             </div>
             <div className="mt-5 text-sm space-y-1 text-white/60">

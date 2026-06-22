@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import logoAsset from "../assets/prodrive-logo.svg.asset.json";
 
 const products = [
   { label: "Flooring Staples", to: "/staples" },
@@ -29,6 +30,7 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   const [drop, setDrop] = useState(false);
   const [mobileProducts, setMobileProducts] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     if (open) document.body.style.overflow = "hidden";
@@ -36,20 +38,35 @@ export function Nav() {
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <>
       <header
-        className="fixed top-0 left-0 right-0 z-50"
-        style={{ background: "var(--pd-dark)", borderBottom: "1px solid rgba(255,205,0,0.08)", height: 64 }}
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+        style={{
+          background: scrolled ? "rgba(14,12,0,0.72)" : "rgba(14,12,0,0.45)",
+          backdropFilter: "blur(18px) saturate(160%)",
+          WebkitBackdropFilter: "blur(18px) saturate(160%)",
+          borderBottom: scrolled
+            ? "1px solid rgba(255,205,0,0.14)"
+            : "1px solid rgba(255,205,0,0.06)",
+          boxShadow: scrolled ? "0 10px 30px -20px rgba(0,0,0,0.6)" : "none",
+          height: 68,
+        }}
       >
         <div className="h-full px-[6%] flex items-center justify-between">
-          <Link to="/" className="flex flex-col leading-none">
-            <span style={{ color: "var(--pd-yellow)", fontWeight: 800, fontSize: 16, letterSpacing: "0.04em" }}>
-              PRO-DRIVE FASTENERS<span style={{ fontSize: "0.6em", verticalAlign: "top" }}>®</span>
-            </span>
-            <span className="hidden sm:block" style={{ color: "rgba(255,205,0,0.35)", fontWeight: 400, fontSize: 9, textTransform: "uppercase", letterSpacing: "0.15em", marginTop: 2 }}>
-              Pro-Driven Industrial Products
-            </span>
+          <Link to="/" className="flex items-center gap-3" aria-label="Pro-Drive Fasteners home">
+            <img
+              src={logoAsset.url}
+              alt="Pro-Drive Fasteners"
+              style={{ height: 40, width: "auto", display: "block", filter: "drop-shadow(0 2px 8px rgba(255,205,0,0.18))" }}
+            />
           </Link>
 
           {/* Desktop nav */}
@@ -58,18 +75,18 @@ export function Nav() {
               <button className="pd-nav-link" style={navLink}>Products ▾</button>
               {drop && (
                 <div
-                  className="absolute left-0 top-full grid grid-cols-3 gap-8 p-6"
-                  style={{ background: "var(--pd-darker)", border: "1px solid rgba(255,205,0,0.1)", minWidth: 720 }}
+                  className="absolute left-0 top-full grid grid-cols-3 gap-8 p-6 pd-glass-dark"
+                  style={{ minWidth: 720, boxShadow: "var(--shadow-lg)" }}
                 >
                   {[products, tools, equipment].map((col, i) => (
                     <div key={i}>
-                      <div className="pd-label mb-3" style={{ color: "rgba(255,205,0,0.5)" }}>
+                      <div className="pd-label mb-3" style={{ color: "rgba(255,205,0,0.6)" }}>
                         {["Fasteners", "Installation Tools", "Equipment"][i]}
                       </div>
                       <ul className="space-y-2">
                         {col.map(l => (
                           <li key={l.to}>
-                            <Link to={l.to} className="block text-white/70 hover:text-[color:var(--pd-yellow)] text-sm">
+                            <Link to={l.to} className="block text-white/75 hover:text-[color:var(--pd-yellow)] text-sm transition-colors">
                               {l.label}
                             </Link>
                           </li>
@@ -88,12 +105,12 @@ export function Nav() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-5">
-            <div className="flex items-center gap-2 text-[11px]" style={{ color: "rgba(255,255,255,0.35)" }}>
+            <div className="flex items-center gap-2 text-[11px]" style={{ color: "rgba(255,255,255,0.4)" }}>
               <span style={{ color: "var(--pd-yellow)" }}>EN</span>
-              <button onClick={() => showLangToast("Versión en español próximamente")} className="hover:text-[color:var(--pd-yellow)]">ES</button>
-              <button onClick={() => showLangToast("Versão em Português em breve")} className="hover:text-[color:var(--pd-yellow)]">PT</button>
+              <button onClick={() => showLangToast("Versión en español próximamente")} className="hover:text-[color:var(--pd-yellow)] transition-colors">ES</button>
+              <button onClick={() => showLangToast("Versão em Português em breve")} className="hover:text-[color:var(--pd-yellow)] transition-colors">PT</button>
             </div>
-            <Link to="/contact" className="pd-btn-primary" style={{ padding: "10px 20px", fontSize: 11 }}>Get Pricing</Link>
+            <Link to="/contact" className="pd-btn-primary" style={{ padding: "10px 22px", fontSize: 11 }}>Get Pricing</Link>
           </div>
 
           {/* Mobile hamburger */}
@@ -111,11 +128,9 @@ export function Nav() {
 
       {/* Mobile overlay */}
       {open && (
-        <div className="fixed inset-0 z-[60] lg:hidden flex flex-col" style={{ background: "var(--pd-darker)" }}>
-          <div className="flex items-center justify-between px-[6%]" style={{ height: 64, borderBottom: "1px solid rgba(255,205,0,0.08)" }}>
-            <span style={{ color: "var(--pd-yellow)", fontWeight: 800, fontSize: 16, letterSpacing: "0.04em" }}>
-              PRO-DRIVE FASTENERS®
-            </span>
+        <div className="fixed inset-0 z-[60] lg:hidden flex flex-col" style={{ background: "rgba(14,12,0,0.96)", backdropFilter: "blur(20px)" }}>
+          <div className="flex items-center justify-between px-[6%]" style={{ height: 68, borderBottom: "1px solid rgba(255,205,0,0.08)" }}>
+            <img src={logoAsset.url} alt="Pro-Drive Fasteners" style={{ height: 36 }} />
             <button onClick={() => setOpen(false)} aria-label="Close" style={{ color: "var(--pd-yellow)", fontSize: 28, lineHeight: 1 }}>×</button>
           </div>
           <nav className="flex-1 overflow-y-auto px-[6%] py-8 space-y-1">
@@ -159,6 +174,6 @@ const navLink: React.CSSProperties = {
   fontSize: 11,
   letterSpacing: "0.12em",
   textTransform: "uppercase",
-  color: "rgba(255,255,255,0.6)",
+  color: "rgba(255,255,255,0.7)",
   transition: "color 0.15s",
 };

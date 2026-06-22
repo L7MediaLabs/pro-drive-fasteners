@@ -194,7 +194,7 @@ function Home() {
 
       {/* 7D Tapping Ring Video */}
       <section className="px-[6%] py-20" style={{ background: "var(--pd-dark)" }}>
-        <div className="grid lg:grid-cols-[55%_45%] gap-12 items-start">
+        <div className="grid lg:grid-cols-[55%_45%] gap-8 items-start">
           <div>
             <div style={{ position: "relative", paddingTop: "56.25%" }}>
               <iframe
@@ -205,42 +205,30 @@ function Home() {
                 title="Glue-Down Tapping Ring Demo"
               />
             </div>
-            <div className="pd-label mt-3" style={{ color: "rgba(255,205,0,0.4)" }}>Glue-Down Tapping Ring Demo</div>
+            <div className="pd-label mt-2" style={{ color: "rgba(255,205,0,0.4)" }}>Glue-Down Tapping Ring Demo</div>
           </div>
-          <div className="lg:pl-6">
-            <div className="grid grid-cols-[120px_1fr] gap-5 items-start">
-              <div style={{ background: "#F5F4F0", padding: 10 }}>
-                <img
-                  src={images.tappingRings.primary}
-                  alt="Pro-Drive Tapping Rings — Red, Orange, Yellow lineup"
-                  loading="lazy"
-                  style={{ width: "100%", height: "auto", objectFit: "contain" }}
-                />
-              </div>
-              <div>
-                <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>Featured Product</div>
-                <h2 className="pd-display text-white mt-2" style={{ fontSize: "clamp(26px, 3.4vw, 38px)", lineHeight: 1.05 }}>Tapping Rings. Built Different.</h2>
-              </div>
-            </div>
-            <p style={{ color: "rgba(255,255,255,0.6)", fontWeight: 300, fontSize: 15, lineHeight: 1.8 }} className="mt-4">
+          <div>
+            <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>Featured Product</div>
+            <h2 className="pd-display text-white mt-1" style={{ fontSize: "clamp(26px, 3.4vw, 38px)", lineHeight: 1.05 }}>Tapping Rings. Built Different.</h2>
+            <p style={{ color: "rgba(255,255,255,0.6)", fontWeight: 300, fontSize: 15, lineHeight: 1.7 }} className="mt-3">
               Available in Red, Orange, and Yellow — each engineered for specific flooring applications. Non-marring. Only 2.1 lbs.
             </p>
-            <div className="mt-6">
+            <div className="mt-5">
               {[
                 { color: "#C83228", name: "Red (V-6RING-R)", desc: "Parquet, Glue-Down, Vinyl, Laminate" },
                 { color: "#E07020", name: "Orange (V-6RING-O)", desc: "Most flooring types · Softened density for grip" },
                 { color: "var(--pd-yellow)", name: "Yellow (V-6RING-Y)", desc: "Compact, lightweight · Precision and control" },
               ].map(v => (
-                <div key={v.name} className="flex items-center gap-3 py-3" style={{ borderBottom: "1px solid rgba(255,205,0,0.1)" }}>
-                  <span style={{ display: "inline-block", width: 10, height: 10, borderRadius: "50%", background: v.color }} />
-                  <div className="flex-1">
+                <div key={v.name} className="flex items-center gap-3 py-2.5" style={{ borderBottom: "1px solid rgba(255,205,0,0.1)" }}>
+                  <span style={{ display: "inline-block", width: 10, height: 10, borderRadius: "50%", background: v.color, flexShrink: 0 }} />
+                  <div className="flex-1 min-w-0">
                     <div className="text-white" style={{ fontSize: 14 }}>{v.name}</div>
                     <div style={{ color: "rgba(255,255,255,0.45)", fontWeight: 300, fontSize: 12 }}>{v.desc}</div>
                   </div>
                 </div>
               ))}
             </div>
-            <Link to="/tapping-rings" className="pd-label inline-block mt-7" style={{ color: "var(--pd-yellow)", fontSize: 12, letterSpacing: "0.1em" }}>View Tapping Rings →</Link>
+            <Link to="/tapping-rings" className="pd-label inline-block mt-5" style={{ color: "var(--pd-yellow)", fontSize: 12, letterSpacing: "0.1em" }}>View Tapping Rings →</Link>
           </div>
         </div>
       </section>

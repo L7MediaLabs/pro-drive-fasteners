@@ -67,7 +67,7 @@ export function Nav() {
             <img
               src={logoAsset.url}
               alt="Pro-Drive Fasteners"
-              style={{ height: 40, width: "auto", display: "block", filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.18))" }}
+              style={{ height: 44, width: "auto", display: "block", filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.18))" }}
             />
           </Link>
 
@@ -135,7 +135,7 @@ export function Nav() {
       {open && (
         <div className="fixed inset-0 z-[60] lg:hidden flex flex-col" style={{ background: "rgba(14,12,0,0.96)", backdropFilter: "blur(20px)" }}>
           <div className="flex items-center justify-between px-[6%]" style={{ height: 68, borderBottom: "1px solid rgba(255,205,0,0.08)" }}>
-            <img src={logoAsset.url} alt="Pro-Drive Fasteners" style={{ height: 36 }} />
+            <img src={logoAsset.url} alt="Pro-Drive Fasteners" style={{ height: 40 }} />
             <button onClick={() => setOpen(false)} aria-label="Close" style={{ color: "var(--pd-yellow)", fontSize: 28, lineHeight: 1 }}>×</button>
           </div>
           <nav className="flex-1 overflow-y-auto px-[6%] py-8 space-y-1">

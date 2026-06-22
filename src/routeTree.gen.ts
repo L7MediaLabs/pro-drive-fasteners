@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TappingRingsRouteImport } from './routes/tapping-rings'
 import { Route as StaplesRouteImport } from './routes/staples'
 import { Route as SplitHeadHammerFacesRouteImport } from './routes/split-head-hammer-faces'
 import { Route as ProductsRouteImport } from './routes/products'
@@ -18,6 +19,11 @@ import { Route as DivergentStaplesRouteImport } from './routes/divergent-staples
 import { Route as BradsFinishNailsRouteImport } from './routes/brads-finish-nails'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TappingRingsRoute = TappingRingsRouteImport.update({
+  id: '/tapping-rings',
+  path: '/tapping-rings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StaplesRoute = StaplesRouteImport.update({
   id: '/staples',
   path: '/staples',
@@ -68,6 +74,7 @@ export interface FileRoutesByFullPath {
   '/products': typeof ProductsRoute
   '/split-head-hammer-faces': typeof SplitHeadHammerFacesRoute
   '/staples': typeof StaplesRoute
+  '/tapping-rings': typeof TappingRingsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -78,6 +85,7 @@ export interface FileRoutesByTo {
   '/products': typeof ProductsRoute
   '/split-head-hammer-faces': typeof SplitHeadHammerFacesRoute
   '/staples': typeof StaplesRoute
+  '/tapping-rings': typeof TappingRingsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -89,6 +97,7 @@ export interface FileRoutesById {
   '/products': typeof ProductsRoute
   '/split-head-hammer-faces': typeof SplitHeadHammerFacesRoute
   '/staples': typeof StaplesRoute
+  '/tapping-rings': typeof TappingRingsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +110,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/split-head-hammer-faces'
     | '/staples'
+    | '/tapping-rings'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +121,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/split-head-hammer-faces'
     | '/staples'
+    | '/tapping-rings'
   id:
     | '__root__'
     | '/'
@@ -121,6 +132,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/split-head-hammer-faces'
     | '/staples'
+    | '/tapping-rings'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -132,10 +144,18 @@ export interface RootRouteChildren {
   ProductsRoute: typeof ProductsRoute
   SplitHeadHammerFacesRoute: typeof SplitHeadHammerFacesRoute
   StaplesRoute: typeof StaplesRoute
+  TappingRingsRoute: typeof TappingRingsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tapping-rings': {
+      id: '/tapping-rings'
+      path: '/tapping-rings'
+      fullPath: '/tapping-rings'
+      preLoaderRoute: typeof TappingRingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/staples': {
       id: '/staples'
       path: '/staples'
@@ -204,6 +224,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProductsRoute: ProductsRoute,
   SplitHeadHammerFacesRoute: SplitHeadHammerFacesRoute,
   StaplesRoute: StaplesRoute,
+  TappingRingsRoute: TappingRingsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

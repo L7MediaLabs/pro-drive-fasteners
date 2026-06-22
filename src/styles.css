@@ -4,6 +4,7 @@
 
 :root {
   --pd-yellow: #FFCD00;
+  --pd-yellow-warm: #FFB800;
   --pd-dark: #191400;
   --pd-darker: #0E0C00;
   --pd-text: #121212;
@@ -19,6 +20,17 @@
   --background: var(--pd-white);
   --foreground: var(--pd-text);
   --border: var(--pd-border);
+
+  /* Depth + glow tokens */
+  --shadow-sm: 0 1px 2px rgba(14, 12, 0, 0.06), 0 1px 1px rgba(14, 12, 0, 0.04);
+  --shadow-md: 0 8px 24px -8px rgba(14, 12, 0, 0.18), 0 2px 6px rgba(14, 12, 0, 0.06);
+  --shadow-lg: 0 30px 60px -20px rgba(14, 12, 0, 0.35), 0 10px 24px -12px rgba(14, 12, 0, 0.18);
+  --shadow-yellow: 0 14px 40px -12px rgba(255, 205, 0, 0.45), 0 2px 8px rgba(255, 184, 0, 0.18);
+  --shadow-inset-top: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  --gradient-yellow: linear-gradient(135deg, #FFD83A 0%, #FFCD00 45%, #FFB800 100%);
+  --gradient-dark: linear-gradient(180deg, #1F1900 0%, #0E0C00 100%);
+  --gradient-fog: linear-gradient(180deg, rgba(25,20,0,0) 0%, rgba(25,20,0,0.6) 70%, rgba(25,20,0,0.92) 100%);
 }
 
 @theme inline {
@@ -35,6 +47,7 @@
   --color-foreground: var(--foreground);
   --color-border: var(--border);
   --font-sans: "Assistant", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Saira Condensed", "Barlow Condensed", "Assistant", system-ui, sans-serif;
   --radius-sm: 0px;
   --radius-md: 0px;
   --radius-lg: 0px;
@@ -49,6 +62,7 @@
     background: var(--pd-white);
     color: var(--pd-text);
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
   body {
     font-size: 15px;
@@ -70,41 +84,57 @@
     text-transform: uppercase;
   }
   .pd-display {
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 0.92;
+    letter-spacing: 0.005em;
+  }
+  .pd-display-tight {
+    font-family: var(--font-display);
     font-weight: 900;
     text-transform: uppercase;
-    line-height: 0.93;
+    line-height: 0.88;
     letter-spacing: -0.005em;
   }
+
+  /* Primary CTA — gradient + soft glow */
   .pd-btn-primary {
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: var(--pd-yellow);
+    background: var(--gradient-yellow);
     color: var(--pd-dark);
     padding: 14px 32px;
     font-weight: 800;
     font-size: 12px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    transition: filter 0.15s ease, transform 0.15s ease;
-    border: 1px solid var(--pd-yellow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    border: 1px solid rgba(255, 184, 0, 0.6);
+    box-shadow: var(--shadow-yellow), var(--shadow-inset-top);
   }
-  .pd-btn-primary:hover { filter: brightness(0.95); }
+  .pd-btn-primary:hover { transform: translateY(-1px); filter: brightness(1.04); box-shadow: 0 18px 50px -12px rgba(255,205,0,0.55), inset 0 1px 0 rgba(255,255,255,0.18); }
+  .pd-btn-primary:active { transform: translateY(0); }
+
   .pd-btn-dark {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: var(--pd-dark);
+    background: var(--gradient-dark);
     color: var(--pd-yellow);
     padding: 14px 32px;
     font-weight: 700;
     font-size: 11px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    transition: filter 0.15s ease;
-    border: 1px solid var(--pd-dark);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid rgba(255,205,0,0.2);
+    box-shadow: var(--shadow-md), var(--shadow-inset-top);
   }
-  .pd-btn-dark:hover { filter: brightness(1.15); }
+  .pd-btn-dark:hover { transform: translateY(-1px); box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255,205,0,0.12); }
+
   .pd-btn-outline-dark {
     display: inline-flex;
     align-items: center;
@@ -117,24 +147,62 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     border: 1px solid var(--pd-dark);
-    transition: background 0.15s ease, color 0.15s ease;
+    transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
   }
-  .pd-btn-outline-dark:hover { background: var(--pd-dark); color: var(--pd-yellow); }
+  .pd-btn-outline-dark:hover { background: var(--pd-dark); color: var(--pd-yellow); box-shadow: var(--shadow-md); }
+
   .pd-btn-outline-light {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: transparent;
-    color: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(10px);
+    color: rgba(255,255,255,0.85);
     padding: 14px 32px;
     font-weight: 700;
     font-size: 11px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    border: 1px solid rgba(255,255,255,0.2);
-    transition: border-color 0.15s ease, color 0.15s ease;
+    border: 1px solid rgba(255,255,255,0.18);
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
   }
-  .pd-btn-outline-light:hover { border-color: var(--pd-yellow); color: var(--pd-yellow); }
+  .pd-btn-outline-light:hover { border-color: var(--pd-yellow); color: var(--pd-yellow); background: rgba(255,205,0,0.06); }
+
+  /* Glass surfaces */
+  .pd-glass-dark {
+    background: rgba(14, 12, 0, 0.55);
+    backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid rgba(255, 205, 0, 0.08);
+  }
+  .pd-glass-light {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Subtle grain overlay for depth on dark surfaces */
+  .pd-grain {
+    position: relative;
+  }
+  .pd-grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/></svg>");
+  }
+
+  /* Elevated card hover for product grids */
+  .pd-card-lift {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .pd-card-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+  }
 }
 
 /* hide scrollbars on horizontal scroller */

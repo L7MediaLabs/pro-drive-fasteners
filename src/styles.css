@@ -179,7 +179,7 @@
     color: var(--pd-dark);
     padding: 14px 32px;
     font-weight: 700;
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     border: 1px solid var(--pd-dark);
@@ -196,7 +196,7 @@
     color: rgba(255,255,255,0.85);
     padding: 14px 32px;
     font-weight: 700;
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     border: 1px solid rgba(255,255,255,0.18);

@@ -81,7 +81,7 @@ export function Footer() {
         </div>
 
         <div
-          className="mt-12 pt-5 flex flex-col md:flex-row md:justify-between gap-3 text-[11px]"
+          className="mt-12 pt-5 flex flex-col md:flex-row md:justify-between gap-3 text-[12px]"
           style={{ borderTop: "1px solid rgba(255,205,0,0.08)" }}
         >
           <div className="text-white/40">© 2026 Pro-Drive Fasteners®. All rights reserved.</div>

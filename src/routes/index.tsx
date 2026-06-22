@@ -1,4 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import instagramDisplay from "../assets/instagram-display.png.asset.json";
+import instagramInstall1 from "../assets/instagram-install-1.png.asset.json";
+import instagramInstall2 from "../assets/instagram-install-2.png.asset.json";
+import instagramRingCloseup from "../assets/instagram-ring-closeup.png.asset.json";
+import instagramTools from "../assets/instagram-tools.png.asset.json";
 import { images } from "../data/images";
 
 export const Route = createFileRoute("/")({
@@ -30,6 +35,39 @@ const categories = [
   { code: "CAT-05", name: "Tapping Tools", desc: "Tapping Rings (Red, Orange, Yellow), Tapping Blocks, and the Tipper-De-Tipper™.", count: "3 ring variants + 3 block styles →", to: "/tapping-rings" },
   { code: "CAT-06", name: "Air Tools & Equipment", desc: "18 GA and 16 GA brad nailers. E-Z Connect braided air hoses. Industrial fittings and couplers.", count: "Nailers + hose systems →", to: "/air-tools" },
 ];
+
+const instagramPosts = [
+  {
+    image: instagramInstall1.url,
+    alt: "Installer using a Pro-Drive mallet while laying flooring around a floor vent",
+    label: "Field install",
+    objectPosition: "center center",
+  },
+  {
+    image: instagramInstall2.url,
+    alt: "Installer using a Pro-Drive tapping ring during a flooring installation",
+    label: "Tapping ring at work",
+    objectPosition: "center center",
+  },
+  {
+    image: instagramTools.url,
+    alt: "A Pro-Drive tapping ring sitting in a tool bag with flooring tools",
+    label: "Jobsite tools",
+    objectPosition: "center center",
+  },
+  {
+    image: instagramDisplay.url,
+    alt: "Pro-Drive mallets and replacement caps displayed on a yellow product board",
+    label: "Product lineup",
+    objectPosition: "center center",
+  },
+  {
+    image: instagramRingCloseup.url,
+    alt: "Close-up of an orange Pro-Drive tapping ring showing the printed branding",
+    label: "Ring detail",
+    objectPosition: "center center",
+  },
+] as const;
 
 function Home() {
   return (
@@ -270,18 +308,51 @@ function Home() {
       </section>
 
       {/* 7G Instagram */}
-      <section className="px-[6%] py-16 text-center" style={{ background: "var(--pd-light-bg)" }}>
-        <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Follow Along</div>
-        <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 38 }}>Pro-Drive on Instagram</h2>
-        <p className="mx-auto mt-3 mb-6" style={{ color: "var(--pd-muted)", fontWeight: 300, fontSize: 16, maxWidth: 420, lineHeight: 1.8 }}>
-          New products, installation tips, and industry updates from the field.
-        </p>
-        <a href="https://instagram.com/ProDriveFasteners" target="_blank" rel="noreferrer" className="pd-btn-dark">
-          Follow @ProDriveFasteners
-        </a>
-        <div className="grid grid-cols-2 md:grid-cols-5 mt-10" style={{ gap: 3 }}>
-          {Array.from({ length: 5 }).map((_, i) => (
-            <div key={i} className="aspect-square" style={{ background: "var(--pd-border)" }} />
+      <section className="px-[6%] py-16" style={{ background: "var(--pd-light-bg)" }}>
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-2xl">
+            <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Follow Along</div>
+            <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 38 }}>Pro-Drive on Instagram</h2>
+            <p className="mt-3" style={{ color: "var(--pd-muted)", fontWeight: 300, fontSize: 16, maxWidth: 520, lineHeight: 1.8 }}>
+              Product drops, field installs, and close-up looks at the tools flooring crews actually use.
+            </p>
+          </div>
+          <a href="https://instagram.com/ProDriveFasteners" target="_blank" rel="noreferrer" className="pd-btn-dark">
+            Follow @ProDriveFasteners
+          </a>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 mt-10" style={{ gap: 12 }}>
+          {instagramPosts.map((post) => (
+            <a
+              key={post.alt}
+              href="https://instagram.com/ProDriveFasteners"
+              target="_blank"
+              rel="noreferrer"
+              className="group block overflow-hidden"
+              style={{ background: "var(--pd-dark)", border: "1px solid rgba(25,20,0,0.08)" }}
+            >
+              <div className="aspect-square overflow-hidden" style={{ background: "var(--pd-border)" }}>
+                <img
+                  src={post.image}
+                  alt={post.alt}
+                  loading="lazy"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: post.objectPosition,
+                    transition: "transform 220ms ease",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.04)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                />
+              </div>
+              <div className="flex items-center justify-between gap-3 px-4 py-3" style={{ background: "var(--pd-white)" }}>
+                <span className="pd-label" style={{ color: "var(--pd-dark)", letterSpacing: "0.1em" }}>{post.label}</span>
+                <span aria-hidden style={{ color: "var(--pd-gold)", fontSize: 14 }}>↗</span>
+              </div>
+            </a>
           ))}
         </div>
       </section>

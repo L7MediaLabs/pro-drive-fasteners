@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as StaplesRouteImport } from './routes/staples'
+import { Route as SplitHeadHammerFacesRouteImport } from './routes/split-head-hammer-faces'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as MalletsRouteImport } from './routes/mallets'
 import { Route as LCleatsRouteImport } from './routes/l-cleats'
@@ -20,6 +21,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const StaplesRoute = StaplesRouteImport.update({
   id: '/staples',
   path: '/staples',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SplitHeadHammerFacesRoute = SplitHeadHammerFacesRouteImport.update({
+  id: '/split-head-hammer-faces',
+  path: '/split-head-hammer-faces',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProductsRoute = ProductsRouteImport.update({
@@ -60,6 +66,7 @@ export interface FileRoutesByFullPath {
   '/l-cleats': typeof LCleatsRoute
   '/mallets': typeof MalletsRoute
   '/products': typeof ProductsRoute
+  '/split-head-hammer-faces': typeof SplitHeadHammerFacesRoute
   '/staples': typeof StaplesRoute
 }
 export interface FileRoutesByTo {
@@ -69,6 +76,7 @@ export interface FileRoutesByTo {
   '/l-cleats': typeof LCleatsRoute
   '/mallets': typeof MalletsRoute
   '/products': typeof ProductsRoute
+  '/split-head-hammer-faces': typeof SplitHeadHammerFacesRoute
   '/staples': typeof StaplesRoute
 }
 export interface FileRoutesById {
@@ -79,6 +87,7 @@ export interface FileRoutesById {
   '/l-cleats': typeof LCleatsRoute
   '/mallets': typeof MalletsRoute
   '/products': typeof ProductsRoute
+  '/split-head-hammer-faces': typeof SplitHeadHammerFacesRoute
   '/staples': typeof StaplesRoute
 }
 export interface FileRouteTypes {
@@ -90,6 +99,7 @@ export interface FileRouteTypes {
     | '/l-cleats'
     | '/mallets'
     | '/products'
+    | '/split-head-hammer-faces'
     | '/staples'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -99,6 +109,7 @@ export interface FileRouteTypes {
     | '/l-cleats'
     | '/mallets'
     | '/products'
+    | '/split-head-hammer-faces'
     | '/staples'
   id:
     | '__root__'
@@ -108,6 +119,7 @@ export interface FileRouteTypes {
     | '/l-cleats'
     | '/mallets'
     | '/products'
+    | '/split-head-hammer-faces'
     | '/staples'
   fileRoutesById: FileRoutesById
 }
@@ -118,6 +130,7 @@ export interface RootRouteChildren {
   LCleatsRoute: typeof LCleatsRoute
   MalletsRoute: typeof MalletsRoute
   ProductsRoute: typeof ProductsRoute
+  SplitHeadHammerFacesRoute: typeof SplitHeadHammerFacesRoute
   StaplesRoute: typeof StaplesRoute
 }
 
@@ -128,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/staples'
       fullPath: '/staples'
       preLoaderRoute: typeof StaplesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/split-head-hammer-faces': {
+      id: '/split-head-hammer-faces'
+      path: '/split-head-hammer-faces'
+      fullPath: '/split-head-hammer-faces'
+      preLoaderRoute: typeof SplitHeadHammerFacesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/products': {
@@ -182,6 +202,7 @@ const rootRouteChildren: RootRouteChildren = {
   LCleatsRoute: LCleatsRoute,
   MalletsRoute: MalletsRoute,
   ProductsRoute: ProductsRoute,
+  SplitHeadHammerFacesRoute: SplitHeadHammerFacesRoute,
   StaplesRoute: StaplesRoute,
 }
 export const routeTree = rootRouteImport

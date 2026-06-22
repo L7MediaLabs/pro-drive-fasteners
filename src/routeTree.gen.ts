@@ -22,6 +22,7 @@ import { Route as DivergentStaplesRouteImport } from './routes/divergent-staples
 import { Route as BradsFinishNailsRouteImport } from './routes/brads-finish-nails'
 import { Route as AirToolsRouteImport } from './routes/air-tools'
 import { Route as AccessoriesRouteImport } from './routes/accessories'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
 const VideosRoute = VideosRouteImport.update({
@@ -89,6 +90,11 @@ const AccessoriesRoute = AccessoriesRouteImport.update({
   path: '/accessories',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -97,6 +103,7 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/accessories': typeof AccessoriesRoute
   '/air-tools': typeof AirToolsRoute
   '/brads-finish-nails': typeof BradsFinishNailsRoute
@@ -113,6 +120,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/accessories': typeof AccessoriesRoute
   '/air-tools': typeof AirToolsRoute
   '/brads-finish-nails': typeof BradsFinishNailsRoute
@@ -130,6 +138,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/accessories': typeof AccessoriesRoute
   '/air-tools': typeof AirToolsRoute
   '/brads-finish-nails': typeof BradsFinishNailsRoute
@@ -148,6 +157,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/accessories'
     | '/air-tools'
     | '/brads-finish-nails'
@@ -164,6 +174,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/accessories'
     | '/air-tools'
     | '/brads-finish-nails'
@@ -180,6 +191,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/accessories'
     | '/air-tools'
     | '/brads-finish-nails'
@@ -197,6 +209,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   AccessoriesRoute: typeof AccessoriesRoute
   AirToolsRoute: typeof AirToolsRoute
   BradsFinishNailsRoute: typeof BradsFinishNailsRoute
@@ -305,6 +318,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AccessoriesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -317,6 +337,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   AccessoriesRoute: AccessoriesRoute,
   AirToolsRoute: AirToolsRoute,
   BradsFinishNailsRoute: BradsFinishNailsRoute,

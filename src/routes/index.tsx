@@ -194,9 +194,9 @@ function Home() {
 
       {/* 7D Tapping Ring Video */}
       <section className="px-[6%] py-20" style={{ background: "var(--pd-dark)" }}>
-        <div className="grid lg:grid-cols-[55%_45%] gap-8 items-start">
+        <div className="grid lg:grid-cols-[42%_58%] gap-8 items-start">
           <div>
-            <div style={{ position: "relative", paddingTop: "56.25%" }}>
+            <div style={{ position: "relative", paddingTop: "177.78%" }}>
               <iframe
                 src="https://player.vimeo.com/video/1201923351?color=FFCD00&title=0&byline=0&portrait=0"
                 style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}

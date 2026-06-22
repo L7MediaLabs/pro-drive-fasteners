@@ -20,6 +20,7 @@ import { Route as LCleatsRouteImport } from './routes/l-cleats'
 import { Route as DivergentStaplesRouteImport } from './routes/divergent-staples'
 import { Route as BradsFinishNailsRouteImport } from './routes/brads-finish-nails'
 import { Route as AirToolsRouteImport } from './routes/air-tools'
+import { Route as AccessoriesRouteImport } from './routes/accessories'
 import { Route as IndexRouteImport } from './routes/index'
 
 const TipperDeTipperRoute = TipperDeTipperRouteImport.update({
@@ -77,6 +78,11 @@ const AirToolsRoute = AirToolsRouteImport.update({
   path: '/air-tools',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AccessoriesRoute = AccessoriesRouteImport.update({
+  id: '/accessories',
+  path: '/accessories',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -85,6 +91,7 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/accessories': typeof AccessoriesRoute
   '/air-tools': typeof AirToolsRoute
   '/brads-finish-nails': typeof BradsFinishNailsRoute
   '/divergent-staples': typeof DivergentStaplesRoute
@@ -99,6 +106,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/accessories': typeof AccessoriesRoute
   '/air-tools': typeof AirToolsRoute
   '/brads-finish-nails': typeof BradsFinishNailsRoute
   '/divergent-staples': typeof DivergentStaplesRoute
@@ -114,6 +122,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/accessories': typeof AccessoriesRoute
   '/air-tools': typeof AirToolsRoute
   '/brads-finish-nails': typeof BradsFinishNailsRoute
   '/divergent-staples': typeof DivergentStaplesRoute
@@ -130,6 +139,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/accessories'
     | '/air-tools'
     | '/brads-finish-nails'
     | '/divergent-staples'
@@ -144,6 +154,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/accessories'
     | '/air-tools'
     | '/brads-finish-nails'
     | '/divergent-staples'
@@ -158,6 +169,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/accessories'
     | '/air-tools'
     | '/brads-finish-nails'
     | '/divergent-staples'
@@ -173,6 +185,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AccessoriesRoute: typeof AccessoriesRoute
   AirToolsRoute: typeof AirToolsRoute
   BradsFinishNailsRoute: typeof BradsFinishNailsRoute
   DivergentStaplesRoute: typeof DivergentStaplesRoute
@@ -265,6 +278,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AirToolsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/accessories': {
+      id: '/accessories'
+      path: '/accessories'
+      fullPath: '/accessories'
+      preLoaderRoute: typeof AccessoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -277,6 +297,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AccessoriesRoute: AccessoriesRoute,
   AirToolsRoute: AirToolsRoute,
   BradsFinishNailsRoute: BradsFinishNailsRoute,
   DivergentStaplesRoute: DivergentStaplesRoute,

@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as StaplesRouteImport } from './routes/staples'
 import { Route as ProductsRouteImport } from './routes/products'
+import { Route as LCleatsRouteImport } from './routes/l-cleats'
 import { Route as IndexRouteImport } from './routes/index'
 
 const StaplesRoute = StaplesRouteImport.update({
@@ -23,6 +24,11 @@ const ProductsRoute = ProductsRouteImport.update({
   path: '/products',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LCleatsRoute = LCleatsRouteImport.update({
+  id: '/l-cleats',
+  path: '/l-cleats',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -31,30 +37,34 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/l-cleats': typeof LCleatsRoute
   '/products': typeof ProductsRoute
   '/staples': typeof StaplesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/l-cleats': typeof LCleatsRoute
   '/products': typeof ProductsRoute
   '/staples': typeof StaplesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/l-cleats': typeof LCleatsRoute
   '/products': typeof ProductsRoute
   '/staples': typeof StaplesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/products' | '/staples'
+  fullPaths: '/' | '/l-cleats' | '/products' | '/staples'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/products' | '/staples'
-  id: '__root__' | '/' | '/products' | '/staples'
+  to: '/' | '/l-cleats' | '/products' | '/staples'
+  id: '__root__' | '/' | '/l-cleats' | '/products' | '/staples'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LCleatsRoute: typeof LCleatsRoute
   ProductsRoute: typeof ProductsRoute
   StaplesRoute: typeof StaplesRoute
 }
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/l-cleats': {
+      id: '/l-cleats'
+      path: '/l-cleats'
+      fullPath: '/l-cleats'
+      preLoaderRoute: typeof LCleatsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LCleatsRoute: LCleatsRoute,
   ProductsRoute: ProductsRoute,
   StaplesRoute: StaplesRoute,
 }

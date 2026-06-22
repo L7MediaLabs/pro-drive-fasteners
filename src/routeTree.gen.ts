@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VideosRouteImport } from './routes/videos'
 import { Route as TipperDeTipperRouteImport } from './routes/tipper-de-tipper'
 import { Route as TappingRingsRouteImport } from './routes/tapping-rings'
 import { Route as TappingBlocksRouteImport } from './routes/tapping-blocks'
@@ -23,6 +24,11 @@ import { Route as AirToolsRouteImport } from './routes/air-tools'
 import { Route as AccessoriesRouteImport } from './routes/accessories'
 import { Route as IndexRouteImport } from './routes/index'
 
+const VideosRoute = VideosRouteImport.update({
+  id: '/videos',
+  path: '/videos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TipperDeTipperRoute = TipperDeTipperRouteImport.update({
   id: '/tipper-de-tipper',
   path: '/tipper-de-tipper',
@@ -103,6 +109,7 @@ export interface FileRoutesByFullPath {
   '/tapping-blocks': typeof TappingBlocksRoute
   '/tapping-rings': typeof TappingRingsRoute
   '/tipper-de-tipper': typeof TipperDeTipperRoute
+  '/videos': typeof VideosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -118,6 +125,7 @@ export interface FileRoutesByTo {
   '/tapping-blocks': typeof TappingBlocksRoute
   '/tapping-rings': typeof TappingRingsRoute
   '/tipper-de-tipper': typeof TipperDeTipperRoute
+  '/videos': typeof VideosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -134,6 +142,7 @@ export interface FileRoutesById {
   '/tapping-blocks': typeof TappingBlocksRoute
   '/tapping-rings': typeof TappingRingsRoute
   '/tipper-de-tipper': typeof TipperDeTipperRoute
+  '/videos': typeof VideosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -151,6 +160,7 @@ export interface FileRouteTypes {
     | '/tapping-blocks'
     | '/tapping-rings'
     | '/tipper-de-tipper'
+    | '/videos'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -166,6 +176,7 @@ export interface FileRouteTypes {
     | '/tapping-blocks'
     | '/tapping-rings'
     | '/tipper-de-tipper'
+    | '/videos'
   id:
     | '__root__'
     | '/'
@@ -181,6 +192,7 @@ export interface FileRouteTypes {
     | '/tapping-blocks'
     | '/tapping-rings'
     | '/tipper-de-tipper'
+    | '/videos'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -197,10 +209,18 @@ export interface RootRouteChildren {
   TappingBlocksRoute: typeof TappingBlocksRoute
   TappingRingsRoute: typeof TappingRingsRoute
   TipperDeTipperRoute: typeof TipperDeTipperRoute
+  VideosRoute: typeof VideosRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/videos': {
+      id: '/videos'
+      path: '/videos'
+      fullPath: '/videos'
+      preLoaderRoute: typeof VideosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tipper-de-tipper': {
       id: '/tipper-de-tipper'
       path: '/tipper-de-tipper'
@@ -309,6 +329,7 @@ const rootRouteChildren: RootRouteChildren = {
   TappingBlocksRoute: TappingBlocksRoute,
   TappingRingsRoute: TappingRingsRoute,
   TipperDeTipperRoute: TipperDeTipperRoute,
+  VideosRoute: VideosRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

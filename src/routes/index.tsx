@@ -155,12 +155,12 @@ function Home() {
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-2">
-                  <span style={{ background: "rgba(255,205,0,0.15)", color: "var(--pd-yellow)", padding: "3px 8px", fontSize: 9, letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 700 }}>NEW</span>
-                  <span style={{ color: "rgba(255,205,0,0.4)", fontSize: 9, letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 700 }}>{p.category}</span>
+                  <span style={{ background: "rgba(255,205,0,0.15)", color: "var(--pd-yellow)", padding: "3px 8px", fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 700 }}>NEW</span>
+                  <span style={{ color: "rgba(255,205,0,0.4)", fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 700 }}>{p.category}</span>
                 </div>
                 <h3 className="text-white mt-3" style={{ fontWeight: 700, fontSize: 17 }}>{p.name}</h3>
                 <p style={{ color: "rgba(255,255,255,0.5)", fontWeight: 300, fontSize: 13, lineHeight: 1.65 }} className="mt-1.5">{p.description}</p>
-                <Link to={p.link} className="pd-label mt-4 inline-block" style={{ color: "var(--pd-yellow)", fontSize: 11, letterSpacing: "0.1em" }}>Learn More →</Link>
+                <Link to={p.link} className="pd-label mt-4 inline-block" style={{ color: "var(--pd-yellow)", letterSpacing: "0.1em" }}>Learn More →</Link>
               </div>
             </article>
           ))}
@@ -186,7 +186,7 @@ function Home() {
               <div className="pd-label" style={{ color: "rgba(0,0,0,0.3)", letterSpacing: "0.15em" }}>{c.code}</div>
               <div className="mt-1" style={{ fontWeight: 800, fontSize: 20, color: "var(--pd-dark)" }}>{c.name}</div>
               <p className="mt-1.5" style={{ fontSize: 13, color: "var(--pd-muted)", lineHeight: 1.65 }}>{c.desc}</p>
-              <div className="pd-label mt-4" style={{ color: "var(--pd-gold)", fontSize: 10, letterSpacing: "0.1em" }}>{c.count}</div>
+              <div className="pd-label mt-4" style={{ color: "var(--pd-gold)", letterSpacing: "0.1em" }}>{c.count}</div>
             </Link>
           ))}
         </div>

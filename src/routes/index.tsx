@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { images } from "../data/images";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -7,17 +8,18 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Premium fastening solutions for flooring professionals. 50+ years. Guaranteed to fit every major brand tool. Made in the USA." },
       { property: "og:title", content: "Pro-Drive Fasteners®" },
       { property: "og:description", content: "Premium fastening solutions for flooring professionals." },
+      { property: "og:image", content: images.mallets.hero },
     ],
   }),
   component: Home,
 });
 
 const newProducts = [
-  { name: "Tipper-De-Tipper™ Series 5", category: "Installation Tools", description: "The safest, fastest method to replace mallet caps. 5-station design. Fits all major brands. Available now.", link: "/tipper-de-tipper" },
-  { name: "One Tap™ Tapping Block", category: "Tapping Blocks", description: "Heavy-duty 48oz tapping block with ergonomic wooden handle. Beveled edges prevent cracking.", link: "/tapping-blocks" },
-  { name: "Split Head Hammer Faces", category: "Mallets & Caps", description: 'Non-marring replacement rubber faces for Garland split-head mallets. 1-1/2" and 2" sizes.', link: "/split-head-hammer-faces" },
-  { name: "L-Cleats — 16 GA & 18 GA", category: "L-Cleats", description: "Complete L-Cleat line with depth guide. Guaranteed not to jam in any major brand of tool.", link: "/l-cleats" },
-  { name: "Wide Plank Wood Driving Tool", category: "Tapping Blocks", description: '11.5" x 4.5" x 4" designed for wide plank and glue-down flooring. Works with dead-blow mallets.', link: "/tapping-blocks" },
+  { name: "Tipper-De-Tipper™ Series 5", category: "Installation Tools", description: "The safest, fastest method to replace mallet caps. 5-station design. Fits all major brands. Available now.", link: "/tipper-de-tipper", image: images.tipper.product, alt: "Pro-Drive Tipper-De-Tipper Series 5" },
+  { name: "One Tap™ Tapping Block", category: "Tapping Blocks", description: "Heavy-duty 48oz tapping block with ergonomic wooden handle. Beveled edges prevent cracking.", link: "/tapping-blocks", image: images.tappingBlocks.tbPro, alt: "Pro-Drive One Tap Tapping Block TB-PRO-312" },
+  { name: "Split Head Hammer Faces", category: "Mallets & Caps", description: 'Non-marring replacement rubber faces for Garland split-head mallets. 1-1/2" and 2" sizes.', link: "/split-head-hammer-faces", image: images.mallets.misc1, alt: "Pro-Drive Split Head Hammer Faces" },
+  { name: "L-Cleats — 16 GA & 18 GA", category: "L-Cleats", description: "Complete L-Cleat line with depth guide. Guaranteed not to jam in any major brand of tool.", link: "/l-cleats", image: images.staples.gauge155a, alt: "Pro-Drive L-Cleats 16 and 18 gauge" },
+  { name: "Wide Plank Wood Driving Tool", category: "Tapping Blocks", description: '11.5" x 4.5" x 4" designed for wide plank and glue-down flooring. Works with dead-blow mallets.', link: "/tapping-blocks", image: images.tappingBlocks.lifestyle, alt: "Pro-Drive Wide Plank Wood Driving Tool" },
 ] as const;
 
 const categories = [
@@ -37,14 +39,43 @@ function Home() {
         style={{
           background: "var(--pd-dark)",
           minHeight: "90vh",
-          backgroundImage:
-            "linear-gradient(rgba(255,205,0,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,205,0,0.06) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
           position: "relative",
           overflow: "hidden",
         }}
         className="flex flex-col justify-end"
       >
+        <img
+          src={images.mallets.hero}
+          alt=""
+          aria-hidden
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center",
+            opacity: 0.35,
+          }}
+        />
+        <div
+          aria-hidden
+          style={{
+            position: "absolute", inset: 0, pointerEvents: "none",
+            background:
+              "linear-gradient(180deg, rgba(25,20,0,0.55) 0%, rgba(25,20,0,0.85) 70%, rgba(25,20,0,0.95) 100%)",
+          }}
+        />
+        <div
+          aria-hidden
+          style={{
+            position: "absolute", inset: 0, pointerEvents: "none",
+            backgroundImage:
+              "linear-gradient(rgba(255,205,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,205,0,0.05) 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+            mixBlendMode: "overlay",
+          }}
+        />
         <div
           aria-hidden
           style={{
@@ -102,16 +133,35 @@ function Home() {
           {newProducts.map(p => (
             <article
               key={p.name}
-              className="flex-shrink-0 p-6"
+              className="flex-shrink-0 flex flex-col"
               style={{ background: "var(--pd-dark)", width: 280, borderTop: "3px solid var(--pd-yellow)", scrollSnapAlign: "start" }}
             >
-              <div className="flex items-center gap-2">
-                <span style={{ background: "rgba(255,205,0,0.15)", color: "var(--pd-yellow)", padding: "3px 8px", fontSize: 9, letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 700 }}>NEW</span>
-                <span style={{ color: "rgba(255,205,0,0.4)", fontSize: 9, letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 700 }}>{p.category}</span>
+              <div
+                style={{
+                  background: "#F5F4F0",
+                  height: 160,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: 16,
+                }}
+              >
+                <img
+                  src={p.image}
+                  alt={p.alt}
+                  loading="lazy"
+                  style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain" }}
+                />
               </div>
-              <h3 className="text-white mt-3" style={{ fontWeight: 700, fontSize: 17 }}>{p.name}</h3>
-              <p style={{ color: "rgba(255,255,255,0.5)", fontWeight: 300, fontSize: 13, lineHeight: 1.65 }} className="mt-1.5">{p.description}</p>
-              <Link to={p.link} className="pd-label mt-4 inline-block" style={{ color: "var(--pd-yellow)", fontSize: 11, letterSpacing: "0.1em" }}>Learn More →</Link>
+              <div className="p-6">
+                <div className="flex items-center gap-2">
+                  <span style={{ background: "rgba(255,205,0,0.15)", color: "var(--pd-yellow)", padding: "3px 8px", fontSize: 9, letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 700 }}>NEW</span>
+                  <span style={{ color: "rgba(255,205,0,0.4)", fontSize: 9, letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 700 }}>{p.category}</span>
+                </div>
+                <h3 className="text-white mt-3" style={{ fontWeight: 700, fontSize: 17 }}>{p.name}</h3>
+                <p style={{ color: "rgba(255,255,255,0.5)", fontWeight: 300, fontSize: 13, lineHeight: 1.65 }} className="mt-1.5">{p.description}</p>
+                <Link to={p.link} className="pd-label mt-4 inline-block" style={{ color: "var(--pd-yellow)", fontSize: 11, letterSpacing: "0.1em" }}>Learn More →</Link>
+              </div>
             </article>
           ))}
         </div>
@@ -144,7 +194,7 @@ function Home() {
 
       {/* 7D Tapping Ring Video */}
       <section className="px-[6%] py-20" style={{ background: "var(--pd-dark)" }}>
-        <div className="grid lg:grid-cols-[60%_40%] gap-12 items-start">
+        <div className="grid lg:grid-cols-[55%_45%] gap-12 items-start">
           <div>
             <div style={{ position: "relative", paddingTop: "56.25%" }}>
               <iframe
@@ -158,8 +208,20 @@ function Home() {
             <div className="pd-label mt-3" style={{ color: "rgba(255,205,0,0.4)" }}>Glue-Down Tapping Ring Demo</div>
           </div>
           <div className="lg:pl-6">
-            <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>Featured Product</div>
-            <h2 className="pd-display text-white mt-2" style={{ fontSize: "clamp(30px, 4vw, 42px)" }}>Tapping Rings. Built Different.</h2>
+            <div className="grid grid-cols-[120px_1fr] gap-5 items-start">
+              <div style={{ background: "#F5F4F0", padding: 10 }}>
+                <img
+                  src={images.tappingRings.primary}
+                  alt="Pro-Drive Tapping Rings — Red, Orange, Yellow lineup"
+                  loading="lazy"
+                  style={{ width: "100%", height: "auto", objectFit: "contain" }}
+                />
+              </div>
+              <div>
+                <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>Featured Product</div>
+                <h2 className="pd-display text-white mt-2" style={{ fontSize: "clamp(26px, 3.4vw, 38px)", lineHeight: 1.05 }}>Tapping Rings. Built Different.</h2>
+              </div>
+            </div>
             <p style={{ color: "rgba(255,255,255,0.6)", fontWeight: 300, fontSize: 15, lineHeight: 1.8 }} className="mt-4">
               Available in Red, Orange, and Yellow — each engineered for specific flooring applications. Non-marring. Only 2.1 lbs.
             </p>

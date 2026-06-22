@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TappingRingsRouteImport } from './routes/tapping-rings'
+import { Route as TappingBlocksRouteImport } from './routes/tapping-blocks'
 import { Route as StaplesRouteImport } from './routes/staples'
 import { Route as SplitHeadHammerFacesRouteImport } from './routes/split-head-hammer-faces'
 import { Route as ProductsRouteImport } from './routes/products'
@@ -22,6 +23,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const TappingRingsRoute = TappingRingsRouteImport.update({
   id: '/tapping-rings',
   path: '/tapping-rings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TappingBlocksRoute = TappingBlocksRouteImport.update({
+  id: '/tapping-blocks',
+  path: '/tapping-blocks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StaplesRoute = StaplesRouteImport.update({
@@ -74,6 +80,7 @@ export interface FileRoutesByFullPath {
   '/products': typeof ProductsRoute
   '/split-head-hammer-faces': typeof SplitHeadHammerFacesRoute
   '/staples': typeof StaplesRoute
+  '/tapping-blocks': typeof TappingBlocksRoute
   '/tapping-rings': typeof TappingRingsRoute
 }
 export interface FileRoutesByTo {
@@ -85,6 +92,7 @@ export interface FileRoutesByTo {
   '/products': typeof ProductsRoute
   '/split-head-hammer-faces': typeof SplitHeadHammerFacesRoute
   '/staples': typeof StaplesRoute
+  '/tapping-blocks': typeof TappingBlocksRoute
   '/tapping-rings': typeof TappingRingsRoute
 }
 export interface FileRoutesById {
@@ -97,6 +105,7 @@ export interface FileRoutesById {
   '/products': typeof ProductsRoute
   '/split-head-hammer-faces': typeof SplitHeadHammerFacesRoute
   '/staples': typeof StaplesRoute
+  '/tapping-blocks': typeof TappingBlocksRoute
   '/tapping-rings': typeof TappingRingsRoute
 }
 export interface FileRouteTypes {
@@ -110,6 +119,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/split-head-hammer-faces'
     | '/staples'
+    | '/tapping-blocks'
     | '/tapping-rings'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -121,6 +131,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/split-head-hammer-faces'
     | '/staples'
+    | '/tapping-blocks'
     | '/tapping-rings'
   id:
     | '__root__'
@@ -132,6 +143,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/split-head-hammer-faces'
     | '/staples'
+    | '/tapping-blocks'
     | '/tapping-rings'
   fileRoutesById: FileRoutesById
 }
@@ -144,6 +156,7 @@ export interface RootRouteChildren {
   ProductsRoute: typeof ProductsRoute
   SplitHeadHammerFacesRoute: typeof SplitHeadHammerFacesRoute
   StaplesRoute: typeof StaplesRoute
+  TappingBlocksRoute: typeof TappingBlocksRoute
   TappingRingsRoute: typeof TappingRingsRoute
 }
 
@@ -154,6 +167,13 @@ declare module '@tanstack/react-router' {
       path: '/tapping-rings'
       fullPath: '/tapping-rings'
       preLoaderRoute: typeof TappingRingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tapping-blocks': {
+      id: '/tapping-blocks'
+      path: '/tapping-blocks'
+      fullPath: '/tapping-blocks'
+      preLoaderRoute: typeof TappingBlocksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/staples': {
@@ -224,6 +244,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProductsRoute: ProductsRoute,
   SplitHeadHammerFacesRoute: SplitHeadHammerFacesRoute,
   StaplesRoute: StaplesRoute,
+  TappingBlocksRoute: TappingBlocksRoute,
   TappingRingsRoute: TappingRingsRoute,
 }
 export const routeTree = rootRouteImport

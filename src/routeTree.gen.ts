@@ -19,6 +19,7 @@ import { Route as ProductsRouteImport } from './routes/products'
 import { Route as MalletsRouteImport } from './routes/mallets'
 import { Route as LCleatsRouteImport } from './routes/l-cleats'
 import { Route as DivergentStaplesRouteImport } from './routes/divergent-staples'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BradsFinishNailsRouteImport } from './routes/brads-finish-nails'
 import { Route as AirToolsRouteImport } from './routes/air-tools'
 import { Route as AccessoriesRouteImport } from './routes/accessories'
@@ -75,6 +76,11 @@ const DivergentStaplesRoute = DivergentStaplesRouteImport.update({
   path: '/divergent-staples',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BradsFinishNailsRoute = BradsFinishNailsRouteImport.update({
   id: '/brads-finish-nails',
   path: '/brads-finish-nails',
@@ -107,6 +113,7 @@ export interface FileRoutesByFullPath {
   '/accessories': typeof AccessoriesRoute
   '/air-tools': typeof AirToolsRoute
   '/brads-finish-nails': typeof BradsFinishNailsRoute
+  '/contact': typeof ContactRoute
   '/divergent-staples': typeof DivergentStaplesRoute
   '/l-cleats': typeof LCleatsRoute
   '/mallets': typeof MalletsRoute
@@ -124,6 +131,7 @@ export interface FileRoutesByTo {
   '/accessories': typeof AccessoriesRoute
   '/air-tools': typeof AirToolsRoute
   '/brads-finish-nails': typeof BradsFinishNailsRoute
+  '/contact': typeof ContactRoute
   '/divergent-staples': typeof DivergentStaplesRoute
   '/l-cleats': typeof LCleatsRoute
   '/mallets': typeof MalletsRoute
@@ -142,6 +150,7 @@ export interface FileRoutesById {
   '/accessories': typeof AccessoriesRoute
   '/air-tools': typeof AirToolsRoute
   '/brads-finish-nails': typeof BradsFinishNailsRoute
+  '/contact': typeof ContactRoute
   '/divergent-staples': typeof DivergentStaplesRoute
   '/l-cleats': typeof LCleatsRoute
   '/mallets': typeof MalletsRoute
@@ -161,6 +170,7 @@ export interface FileRouteTypes {
     | '/accessories'
     | '/air-tools'
     | '/brads-finish-nails'
+    | '/contact'
     | '/divergent-staples'
     | '/l-cleats'
     | '/mallets'
@@ -178,6 +188,7 @@ export interface FileRouteTypes {
     | '/accessories'
     | '/air-tools'
     | '/brads-finish-nails'
+    | '/contact'
     | '/divergent-staples'
     | '/l-cleats'
     | '/mallets'
@@ -195,6 +206,7 @@ export interface FileRouteTypes {
     | '/accessories'
     | '/air-tools'
     | '/brads-finish-nails'
+    | '/contact'
     | '/divergent-staples'
     | '/l-cleats'
     | '/mallets'
@@ -213,6 +225,7 @@ export interface RootRouteChildren {
   AccessoriesRoute: typeof AccessoriesRoute
   AirToolsRoute: typeof AirToolsRoute
   BradsFinishNailsRoute: typeof BradsFinishNailsRoute
+  ContactRoute: typeof ContactRoute
   DivergentStaplesRoute: typeof DivergentStaplesRoute
   LCleatsRoute: typeof LCleatsRoute
   MalletsRoute: typeof MalletsRoute
@@ -297,6 +310,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DivergentStaplesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/brads-finish-nails': {
       id: '/brads-finish-nails'
       path: '/brads-finish-nails'
@@ -341,6 +361,7 @@ const rootRouteChildren: RootRouteChildren = {
   AccessoriesRoute: AccessoriesRoute,
   AirToolsRoute: AirToolsRoute,
   BradsFinishNailsRoute: BradsFinishNailsRoute,
+  ContactRoute: ContactRoute,
   DivergentStaplesRoute: DivergentStaplesRoute,
   LCleatsRoute: LCleatsRoute,
   MalletsRoute: MalletsRoute,
@@ -355,3 +376,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

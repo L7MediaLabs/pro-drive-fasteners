@@ -2,12 +2,15 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, SectionLabel, Callout } from "../components/PageHeader";
 import { ProductGrid } from "../components/ProductCard";
 import { MALLETS, MALLET_CAPS, POLY_FACES, DEAD_BLOW } from "../data/products";
+import { images } from "../data/images";
 
 export const Route = createFileRoute("/mallets")({
   head: () => ({
     meta: [
       { title: "Mallets & Caps | Pro-Drive Fasteners®" },
       { name: "description", content: "Mallets made in the USA from 100% premium hickory. Urethane striking faces, poly caps, and dead-blow options." },
+      { property: "og:image", content: images.mallets.hero },
+      { property: "twitter:image", content: images.mallets.hero },
     ],
   }),
   component: Mallets,

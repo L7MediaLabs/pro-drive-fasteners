@@ -50,13 +50,15 @@ export function Nav() {
       <header
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         style={{
-          background: scrolled ? "rgba(14,12,0,0.72)" : "rgba(14,12,0,0.45)",
+          background: scrolled
+            ? "linear-gradient(180deg, rgba(255,205,0,0.98), rgba(245,193,0,0.95))"
+            : "linear-gradient(180deg, rgba(255,205,0,0.92), rgba(245,193,0,0.88))",
           backdropFilter: "blur(18px) saturate(160%)",
           WebkitBackdropFilter: "blur(18px) saturate(160%)",
           borderBottom: scrolled
-            ? "1px solid rgba(255,205,0,0.14)"
-            : "1px solid rgba(255,205,0,0.06)",
-          boxShadow: scrolled ? "0 10px 30px -20px rgba(0,0,0,0.6)" : "none",
+            ? "1px solid rgba(14,12,0,0.18)"
+            : "1px solid rgba(14,12,0,0.08)",
+          boxShadow: scrolled ? "0 10px 30px -20px rgba(0,0,0,0.35)" : "none",
           height: 68,
         }}
       >
@@ -65,9 +67,10 @@ export function Nav() {
             <img
               src={logoAsset.url}
               alt="Pro-Drive Fasteners"
-              style={{ height: 40, width: "auto", display: "block", filter: "drop-shadow(0 2px 8px rgba(255,205,0,0.18))" }}
+              style={{ height: 40, width: "auto", display: "block", filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.18))" }}
             />
           </Link>
+
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-8">
@@ -105,13 +108,14 @@ export function Nav() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-5">
-            <div className="flex items-center gap-2 text-[11px]" style={{ color: "rgba(255,255,255,0.4)" }}>
-              <span style={{ color: "var(--pd-yellow)" }}>EN</span>
-              <button onClick={() => showLangToast("Versión en español próximamente")} className="hover:text-[color:var(--pd-yellow)] transition-colors">ES</button>
-              <button onClick={() => showLangToast("Versão em Português em breve")} className="hover:text-[color:var(--pd-yellow)] transition-colors">PT</button>
+            <div className="flex items-center gap-2 text-[11px]" style={{ color: "rgba(14,12,0,0.55)" }}>
+              <span style={{ color: "rgba(14,12,0,0.95)", fontWeight: 700 }}>EN</span>
+              <button onClick={() => showLangToast("Versión en español próximamente")} className="hover:text-[color:var(--pd-black)] transition-colors">ES</button>
+              <button onClick={() => showLangToast("Versão em Português em breve")} className="hover:text-[color:var(--pd-black)] transition-colors">PT</button>
             </div>
-            <Link to="/contact" className="pd-btn-primary" style={{ padding: "10px 22px", fontSize: 11 }}>Get Pricing</Link>
+            <Link to="/contact" className="pd-btn-primary" style={{ padding: "10px 22px", fontSize: 11, background: "rgba(14,12,0,0.95)", color: "var(--pd-yellow)" }}>Get Pricing</Link>
           </div>
+
 
           {/* Mobile hamburger */}
           <button
@@ -119,10 +123,11 @@ export function Nav() {
             aria-label="Open menu"
             onClick={() => setOpen(true)}
           >
-            <span style={{ width: 22, height: 2, background: "var(--pd-yellow)" }} />
-            <span style={{ width: 22, height: 2, background: "var(--pd-yellow)" }} />
-            <span style={{ width: 22, height: 2, background: "var(--pd-yellow)" }} />
+            <span style={{ width: 22, height: 2, background: "rgba(14,12,0,0.9)" }} />
+            <span style={{ width: 22, height: 2, background: "rgba(14,12,0,0.9)" }} />
+            <span style={{ width: 22, height: 2, background: "rgba(14,12,0,0.9)" }} />
           </button>
+
         </div>
       </header>
 
@@ -170,10 +175,11 @@ export function Nav() {
 }
 
 const navLink: React.CSSProperties = {
-  fontWeight: 600,
+  fontWeight: 700,
   fontSize: 11,
   letterSpacing: "0.12em",
   textTransform: "uppercase",
-  color: "rgba(255,255,255,0.7)",
+  color: "rgba(14,12,0,0.85)",
   transition: "color 0.15s",
 };
+

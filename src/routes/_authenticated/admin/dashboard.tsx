@@ -46,39 +46,71 @@ function DashboardPage() {
       {/* Weekly Insight */}
       <div
         style={{
-          background: "rgba(255,205,0,0.04)",
-          borderLeft: `3px solid ${YELLOW}`,
-          padding: "20px 24px",
+          position: "relative",
+          background:
+            "linear-gradient(135deg, rgba(255,205,0,0.08) 0%, rgba(255,205,0,0.02) 60%, rgba(255,255,255,0.01) 100%)",
+          borderLeft: `2px solid ${YELLOW}`,
+          border: "1px solid rgba(255,205,0,0.12)",
+          borderLeftWidth: 2,
+          padding: "22px 26px",
+          borderRadius: 2,
+          boxShadow:
+            "0 0 0 1px rgba(255,205,0,0.04), 0 20px 60px -30px rgba(255,205,0,0.25)",
+          overflow: "hidden",
         }}
       >
+        <div
+          aria-hidden
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "radial-gradient(600px 200px at 100% 0%, rgba(255,205,0,0.08), transparent 70%)",
+            pointerEvents: "none",
+          }}
+        />
         <div
           style={{
             ...mono,
             fontSize: 10,
             color: YELLOW,
-            letterSpacing: "0.2em",
-            marginBottom: 8,
+            letterSpacing: "0.25em",
+            marginBottom: 10,
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
           }}
         >
+          <span
+            style={{
+              width: 6,
+              height: 6,
+              background: YELLOW,
+              borderRadius: "50%",
+              boxShadow: `0 0 8px ${YELLOW}`,
+            }}
+          />
           WEEKLY INSIGHT
         </div>
         <div
           style={{
             fontFamily: "Assistant, sans-serif",
             fontWeight: 400,
-            fontSize: 15,
-            color: "rgba(255,255,255,0.9)",
-            lineHeight: 1.55,
+            fontSize: 16,
+            color: "rgba(255,255,255,0.95)",
+            lineHeight: 1.6,
+            position: "relative",
           }}
         >
           {data.summary.weeklyInsight}
         </div>
         <div
           style={{
-            marginTop: 10,
+            marginTop: 12,
             fontSize: 13,
-            color: "rgba(255,255,255,0.5)",
+            color: "rgba(255,255,255,0.55)",
             fontFamily: "Assistant, sans-serif",
+            position: "relative",
           }}
         >
           → {data.summary.topOpportunity}

@@ -9,7 +9,6 @@ import {
   UrgencyTag,
   YELLOW,
   mono,
-  mono,
   cardStyle,
   cardAccentTop,
 } from "@/components/admin/ui";

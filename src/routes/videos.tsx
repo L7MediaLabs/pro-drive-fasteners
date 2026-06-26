@@ -48,7 +48,7 @@ function Videos() {
           <p style={{ color: "var(--pd-dark)", fontSize: 15 }}>
             More product videos coming soon. Subscribe to our YouTube channel or follow us on Instagram for the latest demonstrations.
           </p>
-          <a href="https://instagram.com/ProDriveFasteners" target="_blank" rel="noreferrer" className="pd-btn-dark mt-5">
+          <a href="https://instagram.com/prodrivestore" target="_blank" rel="noreferrer" className="pd-btn-dark mt-5">
             Follow on Instagram
           </a>
         </div>

@@ -317,8 +317,8 @@ function Home() {
               Product drops, field installs, and close-up looks at the tools flooring crews actually use.
             </p>
           </div>
-          <a href="https://instagram.com/ProDriveFasteners" target="_blank" rel="noreferrer" className="pd-btn-dark">
-            Follow @ProDriveFasteners
+          <a href="https://instagram.com/prodrivestore" target="_blank" rel="noreferrer" className="pd-btn-dark">
+            Follow @prodrivestore
           </a>
         </div>
 
@@ -326,7 +326,7 @@ function Home() {
           {instagramPosts.map((post) => (
             <a
               key={post.alt}
-              href="https://instagram.com/ProDriveFasteners"
+              href="https://instagram.com/prodrivestore"
               target="_blank"
               rel="noreferrer"
               className="group block overflow-hidden"

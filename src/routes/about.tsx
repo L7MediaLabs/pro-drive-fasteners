@@ -38,19 +38,11 @@ function About() {
           {[
             { v: "50+ Years", l: "In the Industry" },
             { v: "12+", l: "Product Lines" },
-            { v: "Made in USA", l: "Mallets & Tools", flag: true },
+            { v: "Made in USA", l: "Mallets & Tools" },
             { v: "Guaranteed", l: "To Fit Major Brands" },
           ].map(s => (
             <div key={s.l}>
-              <div className="pd-display flex items-center gap-2" style={{ fontSize: 32, color: "var(--pd-dark)" }}>
-                {s.flag && (
-                  <img
-                    src={images.flag}
-                    alt=""
-                    loading="lazy"
-                    style={{ height: 22, width: "auto", display: "inline-block" }}
-                  />
-                )}
+              <div className="pd-display" style={{ fontSize: 32, color: "var(--pd-dark)" }}>
                 {s.v}
               </div>
               <div className="pd-label mt-1" style={{ color: "var(--pd-gold)" }}>{s.l}</div>

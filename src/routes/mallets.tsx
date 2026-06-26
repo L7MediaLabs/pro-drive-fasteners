@@ -55,12 +55,6 @@ function Mallets() {
                 color: "#4D410E",
               }}
             >
-              <img
-                src={images.flag}
-                alt=""
-                loading="lazy"
-                style={{ height: 14, width: "auto", display: "inline-block" }}
-              />
               Made in the USA
             </div>
             <p

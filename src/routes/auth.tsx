@@ -119,15 +119,7 @@ function AuthPage() {
           <span style={{ width: 4, height: 4, background: "rgba(255,205,0,0.5)", borderRadius: "50%" }} />
           <span>50+ Years Expertise</span>
           <span style={{ width: 4, height: 4, background: "rgba(255,205,0,0.5)", borderRadius: "50%" }} />
-          <span className="flex items-center gap-1.5">
-            <img
-              src={images.flag}
-              alt=""
-              loading="lazy"
-              style={{ height: 12, width: "auto", display: "inline-block", opacity: 0.7 }}
-            />
-            Made in USA
-          </span>
+          <span>Made in USA</span>
         </div>
       </div>
 

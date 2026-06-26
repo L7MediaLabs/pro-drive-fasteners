@@ -15,6 +15,7 @@ import {
   isCurrentUserAdmin,
 } from "@/lib/admin.functions";
 import { getLatestIntelligence } from "@/lib/intelligence.functions";
+import { ThemeToggle, usePdTheme } from "@/components/admin/ui";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({

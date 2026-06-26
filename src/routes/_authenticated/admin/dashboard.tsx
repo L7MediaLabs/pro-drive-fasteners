@@ -8,7 +8,7 @@ import {
   SignalBadges,
   UrgencyTag,
   YELLOW,
-  cardAccentTop,
+  mono,
   mono,
   cardStyle,
   cardAccentTop,

@@ -36,7 +36,7 @@ export function Footer() {
           <div>
             <img src={logoAsset.url} alt="Pro-Drive Fasteners" style={{ height: 56, width: "auto", filter: "drop-shadow(0 4px 16px rgba(255,205,0,0.18))" }} />
             <div className="pd-label mt-4" style={{ color: "rgba(255,205,0,0.4)" }}>
-              Pro-Driven Industrial Products and Solutions
+              Pro-Driven Industrial Products and Solutions™
             </div>
             <div className="mt-5 text-sm space-y-1 text-white/60">
               <div>Sales: sales@pro-drivefasteners.com</div>

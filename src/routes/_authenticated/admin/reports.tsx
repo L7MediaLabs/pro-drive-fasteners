@@ -12,7 +12,7 @@ function ReportsPage() {
   const { mode, setMode } = useIntelMode();
   const [copied, setCopied] = useState(false);
 
-  if (loading) return <div style={{ ...mono, color: "rgba(255,255,255,0.4)", fontSize: 12 }}>Loading…</div>;
+  if (loading) return <div style={{ ...mono, color: "var(--pdx-text-mute)", fontSize: 12 }}>Loading…</div>;
   if (!data) return <EmptyState />;
 
   const topLeads = [...data.leads]
@@ -56,7 +56,7 @@ function ReportsPage() {
         <div
           style={{
             fontFamily: "Assistant, sans-serif",
-            color: "rgba(255,255,255,0.9)",
+            color: "var(--pdx-text)",
             fontSize: 15,
             lineHeight: 1.7,
             whiteSpace: "pre-wrap",
@@ -85,9 +85,9 @@ function ReportsPage() {
           style={{
             ...mono,
             fontSize: 12,
-            color: "rgba(255,255,255,0.85)",
-            background: "#0A0A08",
-            border: "1px solid rgba(255,255,255,0.06)",
+            color: "var(--pdx-text)",
+            background: "var(--pdx-panel)",
+            border: "1px solid var(--pdx-border)",
             padding: 18,
             whiteSpace: "pre-wrap",
             margin: 0,

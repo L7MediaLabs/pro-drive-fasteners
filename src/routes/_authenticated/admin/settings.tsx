@@ -70,7 +70,7 @@ function UploadPanel() {
       <div style={{ ...mono, fontSize: 11, color: YELLOW, letterSpacing: "0.2em", marginBottom: 14 }}>
         UPLOAD WEEKLY INTELLIGENCE JSON
       </div>
-      <p style={{ ...mono, fontSize: 11, color: "rgba(255,255,255,0.5)", marginTop: 0, marginBottom: 12, lineHeight: 1.6 }}>
+      <p style={{ ...mono, fontSize: 11, color: "var(--pdx-text-mute)", marginTop: 0, marginBottom: 12, lineHeight: 1.6 }}>
         Paste the processed JSON output below. Validation runs locally before upload.
       </p>
       <textarea
@@ -82,9 +82,9 @@ function UploadPanel() {
           ...mono,
           width: "100%",
           minHeight: 240,
-          background: "#0A0A08",
-          border: "1px solid rgba(255,255,255,0.08)",
-          color: "rgba(255,255,255,0.85)",
+          background: "var(--pdx-panel)",
+          border: "1px solid var(--pdx-border)",
+          color: "var(--pdx-text)",
           padding: 14,
           fontSize: 12,
           lineHeight: 1.5,
@@ -143,15 +143,15 @@ function HistoryPanel() {
         UPLOAD HISTORY — LAST 10
       </div>
       {isLoading ? (
-        <div style={{ ...mono, fontSize: 11, color: "rgba(255,255,255,0.4)" }}>Loading…</div>
+        <div style={{ ...mono, fontSize: 11, color: "var(--pdx-text-mute)" }}>Loading…</div>
       ) : !data || data.length === 0 ? (
-        <div style={{ ...mono, fontSize: 11, color: "rgba(255,255,255,0.4)" }}>
+        <div style={{ ...mono, fontSize: 11, color: "var(--pdx-text-mute)" }}>
           No uploads yet.
         </div>
       ) : (
         <table style={{ width: "100%", borderCollapse: "collapse" }}>
           <thead>
-            <tr style={{ ...mono, fontSize: 9, color: "rgba(255,255,255,0.4)", letterSpacing: "0.15em", textAlign: "left" }}>
+            <tr style={{ ...mono, fontSize: 9, color: "var(--pdx-text-mute)", letterSpacing: "0.15em", textAlign: "left" }}>
               <th style={{ padding: "8px 10px" }}>Week Of</th>
               <th style={{ padding: "8px 10px" }}>Uploaded At</th>
               <th style={{ padding: "8px 10px" }}>By</th>
@@ -159,12 +159,12 @@ function HistoryPanel() {
           </thead>
           <tbody>
             {data.map((r) => (
-              <tr key={r.id} style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-                <td style={{ padding: "10px", ...mono, fontSize: 12, color: "white" }}>{r.week_of}</td>
-                <td style={{ padding: "10px", ...mono, fontSize: 11, color: "rgba(255,255,255,0.6)" }}>
+              <tr key={r.id} style={{ borderTop: "1px solid var(--pdx-border)" }}>
+                <td style={{ padding: "10px", ...mono, fontSize: 12, color: "var(--pdx-text)" }}>{r.week_of}</td>
+                <td style={{ padding: "10px", ...mono, fontSize: 11, color: "var(--pdx-text-dim)" }}>
                   {new Date(r.uploaded_at).toLocaleString()}
                 </td>
-                <td style={{ padding: "10px", ...mono, fontSize: 11, color: "rgba(255,255,255,0.6)" }}>
+                <td style={{ padding: "10px", ...mono, fontSize: 11, color: "var(--pdx-text-dim)" }}>
                   {r.uploaded_by_name ?? r.uploaded_by ?? "—"}
                 </td>
               </tr>
@@ -222,7 +222,7 @@ function RecipientsPanel() {
                 ...mono,
                 background: "transparent",
                 border: "1px solid rgba(255,255,255,0.1)",
-                color: "rgba(255,255,255,0.5)",
+                color: "var(--pdx-text-mute)",
                 padding: "0 14px",
                 fontSize: 12,
                 cursor: "pointer",
@@ -240,7 +240,7 @@ function RecipientsPanel() {
             ...mono,
             background: "transparent",
             border: "1px solid rgba(255,255,255,0.15)",
-            color: "rgba(255,255,255,0.7)",
+            color: "var(--pdx-text-dim)",
             padding: "8px 14px",
             fontSize: 10,
             letterSpacing: "0.2em",
@@ -279,9 +279,9 @@ function RecipientsPanel() {
 const input = {
   ...mono,
   flex: 1,
-  background: "#0A0A08",
-  border: "1px solid rgba(255,255,255,0.08)",
-  color: "white",
+  background: "var(--pdx-panel)",
+  border: "1px solid var(--pdx-border)",
+  color: "var(--pdx-text)",
   padding: "8px 12px",
   fontSize: 12,
   outline: "none",

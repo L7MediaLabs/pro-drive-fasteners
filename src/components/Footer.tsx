@@ -84,7 +84,11 @@ export function Footer() {
           className="mt-12 pt-5 flex flex-col md:flex-row md:justify-between gap-3 text-[12px]"
           style={{ borderTop: "1px solid rgba(255,205,0,0.08)" }}
         >
-          <div className="text-white/40">© 2026 Pro-Drive Fasteners®. All rights reserved.</div>
+          <div className="text-white/40 flex items-center gap-4">
+            <span>© 2026 Pro-Drive Fasteners®. All rights reserved.</span>
+            <span style={{ color: "rgba(255,255,255,0.2)" }}>·</span>
+            <Link to="/auth" style={{ color: "rgba(255,205,0,0.5)" }} className="hover:!text-[color:var(--pd-yellow)]">Client Login</Link>
+          </div>
           <a
             href="https://www.seventhstatecreative.com"
             target="_blank"

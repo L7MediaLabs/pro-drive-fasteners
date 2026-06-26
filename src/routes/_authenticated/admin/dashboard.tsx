@@ -249,22 +249,26 @@ function Ticker({ leads }: { leads: Lead[] }) {
   return (
     <div
       style={{
-        height: 40,
-        background: PANEL,
+        height: 44,
+        background:
+          "linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0)) , #0E0E0C",
         overflow: "hidden",
         position: "relative",
-        border: "1px solid rgba(255,205,0,0.06)",
+        border: "1px solid rgba(255,255,255,0.06)",
+        borderRadius: 2,
+        boxShadow: "0 10px 30px -20px rgba(0,0,0,0.6)",
       }}
       onMouseEnter={(e) => {
-        const el = e.currentTarget.firstChild as HTMLElement | null;
+        const el = e.currentTarget.querySelector("[data-track]") as HTMLElement | null;
         if (el) el.style.animationPlayState = "paused";
       }}
       onMouseLeave={(e) => {
-        const el = e.currentTarget.firstChild as HTMLElement | null;
+        const el = e.currentTarget.querySelector("[data-track]") as HTMLElement | null;
         if (el) el.style.animationPlayState = "running";
       }}
     >
       <div
+        data-track
         style={{
           display: "flex",
           whiteSpace: "nowrap",
@@ -279,16 +283,27 @@ function Ticker({ leads }: { leads: Lead[] }) {
             style={{
               ...mono,
               fontSize: 11,
-              color: "rgba(255,255,255,0.6)",
-              padding: "0 24px",
+              color: "rgba(255,255,255,0.65)",
+              padding: "0 26px",
               letterSpacing: "0.05em",
             }}
           >
-            <span style={{ color: YELLOW, marginRight: 6 }}>●</span>
+            <span style={{ color: YELLOW, marginRight: 8, textShadow: `0 0 6px ${YELLOW}` }}>●</span>
             {l.company} — viewed {l.topPage} — {l.status}
           </span>
         ))}
       </div>
+      {/* Edge fades */}
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: 0,
+          pointerEvents: "none",
+          background:
+            "linear-gradient(90deg, #0E0E0C 0%, transparent 6%, transparent 94%, #0E0E0C 100%)",
+        }}
+      />
       <style>{`@keyframes pd-ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
     </div>
   );

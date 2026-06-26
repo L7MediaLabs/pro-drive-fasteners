@@ -134,7 +134,7 @@ function Home() {
             PRO-DRIVE<br />FASTENERS<span style={{ fontSize: "0.5em", verticalAlign: "top" }}>®</span>
           </h1>
           <p style={{ color: "rgba(255,255,255,0.5)", maxWidth: 520, lineHeight: 1.8, fontWeight: 300, fontSize: 18 }} className="mt-7 mb-12">
-            Premium fastening solutions for flooring professionals. Guaranteed to fit every major brand tool. Built to outperform.
+            We don't follow the standards — we set them. Premium fastening solutions for flooring professionals, guaranteed to fit every major brand tool.
           </p>
           <div className="flex flex-wrap gap-3.5">
             <Link to="/products" className="pd-btn-primary">Browse Full Line</Link>

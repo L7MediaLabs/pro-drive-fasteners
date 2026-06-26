@@ -45,6 +45,7 @@ function Mallets() {
             }}
           >
             <div
+              className="flex items-center gap-2"
               style={{
                 fontFamily: "Assistant, sans-serif",
                 fontWeight: 700,
@@ -54,6 +55,12 @@ function Mallets() {
                 color: "#4D410E",
               }}
             >
+              <img
+                src={images.flag}
+                alt=""
+                loading="lazy"
+                style={{ height: 14, width: "auto", display: "inline-block" }}
+              />
               Made in the USA
             </div>
             <p

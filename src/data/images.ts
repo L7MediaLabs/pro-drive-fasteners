@@ -72,6 +72,7 @@ export const images = {
     deTipping: [u.tipperP27_06, u.tipperP14_01, u.tipperP14_02],
     extra: u.tipperP14_07,
   },
+  flag: "/__l5e/assets-v1/21fec0ab-e7e9-4f98-91cb-e05584679dc5/usa-flag-clean.png",
 } as const;
 
 export type ImageManifest = typeof images;

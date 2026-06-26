@@ -158,53 +158,6 @@ function Home() {
         </div>
       </section>
 
-      {/* 7A2 Authority Strip */}
-      <section
-        style={{
-          background: "#191400",
-          borderTop: "1px solid rgba(255,205,0,0.08)",
-          borderBottom: "1px solid rgba(255,205,0,0.08)",
-          padding: "18px 6%",
-        }}
-      >
-        <div className="flex flex-wrap items-center justify-center" style={{ gap: 48 }}>
-          {[
-            "NWFA University Sponsor",
-            "AWFS Member",
-            "50+ Years Industry Expertise",
-            "Made in the USA",
-            "Guaranteed to Fit Major Brands",
-          ].map((label, i, arr) => (
-            <div key={label} className="flex items-center" style={{ gap: 48 }}>
-              <span
-                style={{
-                  fontFamily: "Assistant, sans-serif",
-                  fontWeight: 600,
-                  fontSize: 12,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.15em",
-                  color: "rgba(255,255,255,0.5)",
-                }}
-              >
-                {label}
-              </span>
-              {i < arr.length - 1 && (
-                <span
-                  aria-hidden
-                  style={{
-                    display: "inline-block",
-                    width: 4,
-                    height: 4,
-                    borderRadius: "50%",
-                    background: "rgba(255,205,0,0.2)",
-                  }}
-                />
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* 7B New Products */}
       <section className="px-[6%] py-14" style={{ background: "var(--pd-yellow)" }}>
         <div className="flex justify-between items-end mb-8 flex-wrap gap-4">

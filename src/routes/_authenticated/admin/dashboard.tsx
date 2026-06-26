@@ -24,7 +24,7 @@ function DashboardPage() {
 
   if (loading)
     return (
-      <div style={{ ...mono, color: "rgba(255,255,255,0.4)", fontSize: 12 }}>
+      <div style={{ ...mono, color: "var(--pdx-text-mute)", fontSize: 12 }}>
         Loading…
       </div>
     );
@@ -96,7 +96,7 @@ function DashboardPage() {
             fontFamily: "Assistant, sans-serif",
             fontWeight: 400,
             fontSize: 16,
-            color: "rgba(255,255,255,0.95)",
+            color: "var(--pdx-text)",
             lineHeight: 1.6,
             position: "relative",
           }}
@@ -107,7 +107,7 @@ function DashboardPage() {
           style={{
             marginTop: 12,
             fontSize: 13,
-            color: "rgba(255,255,255,0.55)",
+            color: "var(--pdx-text-dim)",
             fontFamily: "Assistant, sans-serif",
             position: "relative",
           }}
@@ -180,7 +180,7 @@ function Kpi({
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = "translateY(0)";
-        e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)";
+        e.currentTarget.style.borderColor = "var(--pdx-border)";
       }}
     >
       <div style={cardAccentTop} />
@@ -201,7 +201,7 @@ function Kpi({
             fontSize: valueSize,
             lineHeight: 1,
             fontWeight: 500,
-            background: "linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.7) 100%)",
+            background: "linear-gradient(180deg, #ffffff 0%, var(--pdx-text-dim) 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
@@ -231,7 +231,7 @@ function Kpi({
           style={{
             ...mono,
             fontSize: 10,
-            color: "rgba(255,255,255,0.42)",
+            color: "var(--pdx-text-mute)",
             marginTop: 10,
             letterSpacing: "0.1em",
           }}
@@ -250,10 +250,10 @@ function Ticker({ leads }: { leads: Lead[] }) {
       style={{
         height: 44,
         background:
-          "linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0)) , #0E0E0C",
+          "var(--pdx-panel-grad), var(--pdx-panel)",
         overflow: "hidden",
         position: "relative",
-        border: "1px solid rgba(255,255,255,0.06)",
+        border: "1px solid var(--pdx-border)",
         borderRadius: 2,
         boxShadow: "0 10px 30px -20px rgba(0,0,0,0.6)",
       }}
@@ -282,7 +282,7 @@ function Ticker({ leads }: { leads: Lead[] }) {
             style={{
               ...mono,
               fontSize: 11,
-              color: "rgba(255,255,255,0.65)",
+              color: "var(--pdx-text-dim)",
               padding: "0 26px",
               letterSpacing: "0.05em",
             }}
@@ -300,7 +300,7 @@ function Ticker({ leads }: { leads: Lead[] }) {
           inset: 0,
           pointerEvents: "none",
           background:
-            "linear-gradient(90deg, #0E0E0C 0%, transparent 6%, transparent 94%, #0E0E0C 100%)",
+            "linear-gradient(90deg, var(--pdx-fade) 0%, transparent 6%, transparent 94%, var(--pdx-fade) 100%)",
         }}
       />
       <style>{`@keyframes pd-ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
@@ -331,7 +331,7 @@ function HotLeadsTable({ leads }: { leads: Lead[] }) {
       <div style={{ overflowX: "auto" }}>
         <table style={{ width: "100%", borderCollapse: "collapse" }}>
           <thead>
-            <tr style={{ ...mono, fontSize: 9, color: "rgba(255,255,255,0.4)", letterSpacing: "0.15em", textAlign: "left" }}>
+            <tr style={{ ...mono, fontSize: 9, color: "var(--pdx-text-mute)", letterSpacing: "0.15em", textAlign: "left" }}>
               <Th>Company</Th>
               <Th>Signal Stack</Th>
               <Th>Visits</Th>
@@ -348,7 +348,7 @@ function HotLeadsTable({ leads }: { leads: Lead[] }) {
                   key={l.company}
                   onClick={() => setExpanded(expanded === l.company ? null : l.company)}
                   style={{
-                    borderTop: "1px solid rgba(255,255,255,0.06)",
+                    borderTop: "1px solid var(--pdx-border)",
                     cursor: "pointer",
                     transition: "background .2s ease",
                   }}
@@ -356,17 +356,17 @@ function HotLeadsTable({ leads }: { leads: Lead[] }) {
                   onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
                 >
                   <Td>
-                    <div style={{ color: "white", fontFamily: "Assistant, sans-serif", fontWeight: 600, fontSize: 13 }}>
+                    <div style={{ color: "var(--pdx-text)", fontFamily: "Assistant, sans-serif", fontWeight: 600, fontSize: 13 }}>
                       {l.company}
                     </div>
-                    <div style={{ ...mono, fontSize: 9, color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em" }}>
+                    <div style={{ ...mono, fontSize: 9, color: "var(--pdx-text-faint)", letterSpacing: "0.1em" }}>
                       {l.location}
                     </div>
                   </Td>
                   <Td><SignalBadges signals={l.signals} /></Td>
-                  <Td><span style={{ ...mono, color: "white", fontSize: 12 }}>{l.websiteVisits}</span></Td>
-                  <Td><span style={{ ...mono, fontSize: 11, color: "rgba(255,255,255,0.6)" }}>{l.topPage}</span></Td>
-                  <Td><span style={{ ...mono, fontSize: 10, color: "rgba(255,255,255,0.4)" }}>{l.lastSeen}</span></Td>
+                  <Td><span style={{ ...mono, color: "var(--pdx-text)", fontSize: 12 }}>{l.websiteVisits}</span></Td>
+                  <Td><span style={{ ...mono, fontSize: 11, color: "var(--pdx-text-dim)" }}>{l.topPage}</span></Td>
+                  <Td><span style={{ ...mono, fontSize: 10, color: "var(--pdx-text-mute)" }}>{l.lastSeen}</span></Td>
                   <Td><UrgencyTag urgency={l.urgency} /></Td>
                   <Td>
                     <a
@@ -401,13 +401,13 @@ function HotLeadsTable({ leads }: { leads: Lead[] }) {
                         <div style={{ ...mono, fontSize: 9, color: YELLOW, letterSpacing: "0.2em", marginBottom: 6 }}>
                           AI CONTEXT
                         </div>
-                        <div style={{ color: "rgba(255,255,255,0.8)", fontSize: 13, lineHeight: 1.55, marginBottom: 10 }}>
+                        <div style={{ color: "var(--pdx-text-dim)", fontSize: 13, lineHeight: 1.55, marginBottom: 10 }}>
                           {l.aiContext}
                         </div>
                         <div style={{ ...mono, fontSize: 9, color: YELLOW, letterSpacing: "0.2em", marginBottom: 6 }}>
                           RECOMMENDATION
                         </div>
-                        <div style={{ color: "rgba(255,255,255,0.8)", fontSize: 13, lineHeight: 1.55 }}>
+                        <div style={{ color: "var(--pdx-text-dim)", fontSize: 13, lineHeight: 1.55 }}>
                           {l.aiRecommendation}
                         </div>
                       </div>

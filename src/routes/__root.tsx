@@ -10,12 +10,12 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
-
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 import { LangToast } from "../components/LangToast";
+import { PreviewBar } from "../components/PreviewBar";
 
 function NotFoundComponent() {
   return (
@@ -114,6 +114,7 @@ function RootComponent() {
           <Footer />
         </>
       )}
+      <PreviewBar />
     </QueryClientProvider>
   );
 }

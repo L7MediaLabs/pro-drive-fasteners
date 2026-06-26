@@ -27,11 +27,11 @@ export const Route = createFileRoute("/_authenticated/admin")({
 });
 
 const NAV = [
-  { to: "/admin/dashboard", label: "Dashboard" },
-  { to: "/admin/leads", label: "Leads" },
-  { to: "/admin/products", label: "Products" },
-  { to: "/admin/reports", label: "Reports" },
-  { to: "/admin/settings", label: "Settings" },
+  { to: "/admin/dashboard", label: "Dashboard", icon: "▢" },
+  { to: "/admin/leads", label: "Leads", icon: "▢" },
+  { to: "/admin/products", label: "Products", icon: "▢" },
+  { to: "/admin/reports", label: "Reports", icon: "▢" },
+  { to: "/admin/settings", label: "Settings", icon: "▢" },
 ] as const;
 
 function AdminLayout() {
@@ -186,30 +186,30 @@ function AdminLayout() {
           alignSelf: "flex-start",
         }}
       >
-        <div style={{ padding: "0 20px", marginBottom: 32 }}>
-          <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
-            <span
-              style={{
-                fontFamily: "Gotham, 'Saira Condensed', sans-serif",
-                fontWeight: 900,
-                fontSize: 20,
-                color: "#FFCD00",
-                letterSpacing: "0.02em",
-              }}
-            >
-              PD
-            </span>
-            <span
-              style={{
-                fontFamily: "'IBM Plex Mono', monospace",
-                fontSize: 9,
-                color: "rgba(255,205,0,0.35)",
-                textTransform: "uppercase",
-                letterSpacing: "0.2em",
-              }}
-            >
-              Intelligence
-            </span>
+        <div style={{ padding: "0 22px", marginBottom: 36 }}>
+          <div
+            style={{
+              fontFamily: "Gotham, 'Saira Condensed', sans-serif",
+              fontWeight: 900,
+              fontSize: 22,
+              color: "#FFCD00",
+              letterSpacing: "0.04em",
+              lineHeight: 1,
+            }}
+          >
+            PD
+          </div>
+          <div
+            style={{
+              marginTop: 6,
+              fontFamily: "'IBM Plex Mono', monospace",
+              fontSize: 9,
+              color: "rgba(255,205,0,0.45)",
+              textTransform: "uppercase",
+              letterSpacing: "0.28em",
+            }}
+          >
+            Intelligence
           </div>
         </div>
 
@@ -221,26 +221,37 @@ function AdminLayout() {
                 key={n.to}
                 to={n.to}
                 style={{
-                  padding: "10px 18px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 12,
+                  padding: "11px 20px",
                   borderLeft: active
                     ? "2px solid #FFCD00"
                     : "2px solid transparent",
-                  background: active ? "rgba(255,205,0,0.04)" : "transparent",
-                  color: active ? "#FFCD00" : "rgba(255,255,255,0.35)",
+                  background: active ? "rgba(255,205,0,0.05)" : "transparent",
+                  color: active ? "#FFCD00" : "rgba(255,255,255,0.4)",
                   fontFamily: "'IBM Plex Mono', monospace",
                   fontSize: 12,
                   textTransform: "uppercase",
-                  letterSpacing: "0.12em",
+                  letterSpacing: "0.14em",
                   textDecoration: "none",
                   transition: "all 0.15s",
                 }}
                 onMouseEnter={(e) => {
-                  if (!active) e.currentTarget.style.color = "rgba(255,255,255,0.6)";
+                  if (!active) e.currentTarget.style.color = "rgba(255,255,255,0.7)";
                 }}
                 onMouseLeave={(e) => {
-                  if (!active) e.currentTarget.style.color = "rgba(255,255,255,0.35)";
+                  if (!active) e.currentTarget.style.color = "rgba(255,255,255,0.4)";
                 }}
               >
+                <span
+                  style={{
+                    fontSize: 10,
+                    color: active ? "#FFCD00" : "rgba(255,255,255,0.25)",
+                  }}
+                >
+                  {active ? "▣" : n.icon}
+                </span>
                 {n.label}
               </Link>
             );
@@ -250,31 +261,54 @@ function AdminLayout() {
             to="/"
             style={{
               marginTop: "auto",
-              padding: "10px 18px",
+              display: "flex",
+              alignItems: "center",
+              gap: 12,
+              padding: "11px 20px",
               color: "rgba(255,255,255,0.3)",
               fontFamily: "'IBM Plex Mono', monospace",
               fontSize: 11,
               textTransform: "uppercase",
-              letterSpacing: "0.12em",
+              letterSpacing: "0.14em",
               textDecoration: "none",
             }}
           >
-            ← Back to Site
+            <span style={{ fontSize: 10 }}>←</span>
+            Back to Site
           </Link>
         </nav>
 
         <div
           style={{
-            padding: "12px 20px",
-            borderTop: "1px solid rgba(255,205,0,0.06)",
+            margin: "0 20px",
+            padding: "14px 0 4px",
+            borderTop: "1px solid rgba(255,205,0,0.08)",
             fontFamily: "'IBM Plex Mono', monospace",
             fontSize: 10,
-            color: "rgba(255,255,255,0.25)",
-            lineHeight: 1.6,
+            color: "rgba(255,255,255,0.35)",
+            lineHeight: 1.7,
+            letterSpacing: "0.08em",
           }}
         >
+          <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 6 }}>
+            <span
+              style={{
+                width: 6,
+                height: 6,
+                borderRadius: "50%",
+                background: "#22C55E",
+                boxShadow: "0 0 6px #22C55E",
+                display: "inline-block",
+                animation: "pd-pulse 2s ease-in-out infinite",
+              }}
+            />
+            <span style={{ color: "#22C55E", textTransform: "uppercase", letterSpacing: "0.18em", fontSize: 9 }}>
+              Tracking Active
+            </span>
+          </div>
           <div>week of {week}</div>
           <div>uploaded {uploadedAt}</div>
+          <style>{`@keyframes pd-pulse{0%,100%{opacity:1}50%{opacity:.4}}`}</style>
         </div>
       </aside>
 
@@ -304,7 +338,24 @@ function AdminLayout() {
           >
             {currentPage}
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <button
+              onClick={() => window.print()}
+              style={{
+                border: "1px solid rgba(255,205,0,0.4)",
+                color: "#FFCD00",
+                padding: "6px 14px",
+                fontFamily: "'IBM Plex Mono', monospace",
+                fontSize: 10,
+                textTransform: "uppercase",
+                letterSpacing: "0.2em",
+                background: "transparent",
+                cursor: "pointer",
+                borderRadius: 0,
+              }}
+            >
+              ↗ Export
+            </button>
             <span
               style={{
                 fontFamily: "'IBM Plex Mono', monospace",
@@ -319,8 +370,8 @@ function AdminLayout() {
             <button
               onClick={signOut}
               style={{
-                border: "1px solid rgba(255,205,0,0.25)",
-                color: "#FFCD00",
+                border: "1px solid rgba(255,255,255,0.12)",
+                color: "rgba(255,255,255,0.6)",
                 padding: "5px 12px",
                 fontFamily: "'IBM Plex Mono', monospace",
                 fontSize: 10,

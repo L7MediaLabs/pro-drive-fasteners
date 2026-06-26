@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHeader } from "../components/PageHeader";
+
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -14,9 +14,14 @@ export const Route = createFileRoute("/about")({
 function About() {
   return (
     <div>
-      <PageHeader title="About Pro-Drive" description="A premier provider of top-quality products for the flooring industry." tone="dark" />
-      <section className="px-[6%] py-16 max-w-4xl">
-        <p className="text-lg" style={{ color: "var(--pd-text)", lineHeight: 1.8 }}>
+      <section className="px-[6%] pt-12 pb-16 max-w-4xl">
+        <h1 className="pd-display" style={{ fontSize: "clamp(38px, 7vw, 64px)", color: "var(--pd-dark)", lineHeight: 1.1 }}>
+          About Pro-Drive
+        </h1>
+        <p className="mt-3 max-w-[560px]" style={{ color: "rgba(25,20,0,0.65)", fontSize: 15 }}>
+          A premier provider of top-quality products for the flooring industry.
+        </p>
+        <p className="mt-10 text-lg" style={{ color: "var(--pd-text)", lineHeight: 1.8 }}>
           Pro-Drive Fasteners® is a family business. Founded by Hollis Henderson with his son Carlton, the company is built on more than 50 combined years of flooring industry expertise — selecting every material, setting every specification, and staying involved in every step of manufacturing. That's not a marketing line. It's how Pro-Drive has operated since day one.
         </p>
         <p className="mt-6 text-lg" style={{ color: "var(--pd-text)", lineHeight: 1.8 }}>

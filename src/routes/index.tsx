@@ -9,7 +9,7 @@ import { images } from "../data/images";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Pro-Drive Fasteners® | Pro-Driven Industrial Products and Solutions" },
+      { title: "Pro-Drive Fasteners® | Pro-Driven Industrial Products and Solutions™" },
       { name: "description", content: "Premium fastening solutions for flooring professionals. 50+ years. Guaranteed to fit every major brand tool. Made in the USA." },
       { property: "og:title", content: "Pro-Drive Fasteners®" },
       { property: "og:description", content: "Premium fastening solutions for flooring professionals." },
@@ -125,7 +125,7 @@ function Home() {
         <div className="px-[6%] pt-20 pb-18 relative z-10" style={{ paddingBottom: 72 }}>
           <div className="flex items-center gap-4 mb-7">
             <span style={{ display: "inline-block", width: 40, height: 2, background: "var(--pd-yellow)" }} />
-            <span className="pd-eyebrow" style={{ color: "rgba(255,205,0,0.65)" }}>Pro-Driven Industrial Products and Solutions</span>
+            <span className="pd-eyebrow" style={{ color: "rgba(255,205,0,0.65)" }}>Pro-Driven Industrial Products and Solutions™</span>
           </div>
           <h1
             className="pd-display text-white"

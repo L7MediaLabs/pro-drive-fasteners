@@ -10,10 +10,27 @@ export const mono: CSSProperties = {
 };
 
 export const cardStyle: CSSProperties = {
-  background: PANEL,
-  border: "1px solid rgba(255,205,0,0.08)",
-  padding: 20,
-  borderRadius: 0,
+  position: "relative",
+  background:
+    "linear-gradient(180deg, rgba(255,255,255,0.025) 0%, rgba(255,255,255,0.005) 100%), #0E0E0C",
+  border: "1px solid rgba(255,255,255,0.06)",
+  padding: 22,
+  borderRadius: 2,
+  boxShadow:
+    "0 1px 0 rgba(255,255,255,0.04) inset, 0 20px 40px -24px rgba(0,0,0,0.6), 0 1px 2px rgba(0,0,0,0.4)",
+  backdropFilter: "blur(8px)",
+  WebkitBackdropFilter: "blur(8px)",
+};
+
+export const cardAccentTop: CSSProperties = {
+  position: "absolute",
+  top: 0,
+  left: 0,
+  right: 0,
+  height: 1,
+  background:
+    "linear-gradient(90deg, transparent 0%, rgba(255,205,0,0.5) 50%, transparent 100%)",
+  pointerEvents: "none",
 };
 
 export function EmptyState() {

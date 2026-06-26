@@ -29,6 +29,7 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedAdminRouteRouteImport } from './routes/_authenticated/admin/route'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin/index'
+import { Route as AuthenticatedAdminReportsRouteImport } from './routes/_authenticated/admin/reports'
 import { Route as AuthenticatedAdminProductsRouteImport } from './routes/_authenticated/admin/products'
 import { Route as AuthenticatedAdminLeadsRouteImport } from './routes/_authenticated/admin/leads'
 import { Route as AuthenticatedAdminDashboardRouteImport } from './routes/_authenticated/admin/dashboard'
@@ -132,6 +133,12 @@ const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AuthenticatedAdminRouteRoute,
 } as any)
+const AuthenticatedAdminReportsRoute =
+  AuthenticatedAdminReportsRouteImport.update({
+    id: '/reports',
+    path: '/reports',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
 const AuthenticatedAdminProductsRoute =
   AuthenticatedAdminProductsRouteImport.update({
     id: '/products',
@@ -172,6 +179,7 @@ export interface FileRoutesByFullPath {
   '/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
   '/admin/leads': typeof AuthenticatedAdminLeadsRoute
   '/admin/products': typeof AuthenticatedAdminProductsRoute
+  '/admin/reports': typeof AuthenticatedAdminReportsRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesByTo {
@@ -195,6 +203,7 @@ export interface FileRoutesByTo {
   '/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
   '/admin/leads': typeof AuthenticatedAdminLeadsRoute
   '/admin/products': typeof AuthenticatedAdminProductsRoute
+  '/admin/reports': typeof AuthenticatedAdminReportsRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesById {
@@ -221,6 +230,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
   '/_authenticated/admin/leads': typeof AuthenticatedAdminLeadsRoute
   '/_authenticated/admin/products': typeof AuthenticatedAdminProductsRoute
+  '/_authenticated/admin/reports': typeof AuthenticatedAdminReportsRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRouteTypes {
@@ -247,6 +257,7 @@ export interface FileRouteTypes {
     | '/admin/dashboard'
     | '/admin/leads'
     | '/admin/products'
+    | '/admin/reports'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -270,6 +281,7 @@ export interface FileRouteTypes {
     | '/admin/dashboard'
     | '/admin/leads'
     | '/admin/products'
+    | '/admin/reports'
     | '/admin'
   id:
     | '__root__'
@@ -295,6 +307,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/dashboard'
     | '/_authenticated/admin/leads'
     | '/_authenticated/admin/products'
+    | '/_authenticated/admin/reports'
     | '/_authenticated/admin/'
   fileRoutesById: FileRoutesById
 }
@@ -461,6 +474,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
       parentRoute: typeof AuthenticatedAdminRouteRoute
     }
+    '/_authenticated/admin/reports': {
+      id: '/_authenticated/admin/reports'
+      path: '/reports'
+      fullPath: '/admin/reports'
+      preLoaderRoute: typeof AuthenticatedAdminReportsRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
     '/_authenticated/admin/products': {
       id: '/_authenticated/admin/products'
       path: '/products'
@@ -489,6 +509,7 @@ interface AuthenticatedAdminRouteRouteChildren {
   AuthenticatedAdminDashboardRoute: typeof AuthenticatedAdminDashboardRoute
   AuthenticatedAdminLeadsRoute: typeof AuthenticatedAdminLeadsRoute
   AuthenticatedAdminProductsRoute: typeof AuthenticatedAdminProductsRoute
+  AuthenticatedAdminReportsRoute: typeof AuthenticatedAdminReportsRoute
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
 }
 
@@ -497,6 +518,7 @@ const AuthenticatedAdminRouteRouteChildren: AuthenticatedAdminRouteRouteChildren
     AuthenticatedAdminDashboardRoute: AuthenticatedAdminDashboardRoute,
     AuthenticatedAdminLeadsRoute: AuthenticatedAdminLeadsRoute,
     AuthenticatedAdminProductsRoute: AuthenticatedAdminProductsRoute,
+    AuthenticatedAdminReportsRoute: AuthenticatedAdminReportsRoute,
     AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
   }
 

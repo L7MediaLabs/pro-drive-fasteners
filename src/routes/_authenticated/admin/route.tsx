@@ -338,7 +338,24 @@ function AdminLayout() {
           >
             {currentPage}
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <button
+              onClick={() => window.print()}
+              style={{
+                border: "1px solid rgba(255,205,0,0.4)",
+                color: "#FFCD00",
+                padding: "6px 14px",
+                fontFamily: "'IBM Plex Mono', monospace",
+                fontSize: 10,
+                textTransform: "uppercase",
+                letterSpacing: "0.2em",
+                background: "transparent",
+                cursor: "pointer",
+                borderRadius: 0,
+              }}
+            >
+              ↗ Export
+            </button>
             <span
               style={{
                 fontFamily: "'IBM Plex Mono', monospace",
@@ -353,8 +370,8 @@ function AdminLayout() {
             <button
               onClick={signOut}
               style={{
-                border: "1px solid rgba(255,205,0,0.25)",
-                color: "#FFCD00",
+                border: "1px solid rgba(255,255,255,0.12)",
+                color: "rgba(255,255,255,0.6)",
                 padding: "5px 12px",
                 fontFamily: "'IBM Plex Mono', monospace",
                 fontSize: 10,

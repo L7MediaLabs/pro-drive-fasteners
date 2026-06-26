@@ -36,7 +36,40 @@ function Mallets() {
       <section className="px-[6%] py-12 space-y-12" style={{ background: "var(--pd-light-bg)" }}>
         <div>
           <SectionLabel>Mallets</SectionLabel>
-          <div className="grid lg:grid-cols-[1fr_320px] gap-6 mt-4 items-start">
+          <div
+            className="mt-4 mb-6"
+            style={{
+              background: "rgba(255,205,0,0.08)",
+              borderLeft: "3px solid #FFCD00",
+              padding: "16px 20px",
+            }}
+          >
+            <div
+              style={{
+                fontFamily: "Assistant, sans-serif",
+                fontWeight: 700,
+                fontSize: 10,
+                textTransform: "uppercase",
+                letterSpacing: "0.2em",
+                color: "#4D410E",
+              }}
+            >
+              Made in the USA
+            </div>
+            <p
+              className="mt-2"
+              style={{
+                fontFamily: "Assistant, sans-serif",
+                fontWeight: 400,
+                fontSize: 13,
+                color: "#121212",
+                lineHeight: 1.65,
+              }}
+            >
+              Our mallets are crafted from 100% premium American hickory. The SURE 2 LOCK™ patented head design virtually eliminates handle loosening — even after years of heavy use. Built for professionals who can't afford to stop.
+            </p>
+          </div>
+          <div className="grid lg:grid-cols-[1fr_320px] gap-6 items-start">
             <ProductGrid products={MALLETS} />
             <div className="bg-white p-4" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
               <img

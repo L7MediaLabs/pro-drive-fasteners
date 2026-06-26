@@ -134,7 +134,7 @@ function Home() {
             PRO-DRIVE<br />FASTENERS<span style={{ fontSize: "0.5em", verticalAlign: "top" }}>®</span>
           </h1>
           <p style={{ color: "rgba(255,255,255,0.5)", maxWidth: 520, lineHeight: 1.8, fontWeight: 300, fontSize: 18 }} className="mt-7 mb-12">
-            Premium fastening solutions for flooring professionals. Guaranteed to fit every major brand tool. Built to outperform.
+            We don't follow the standards — we set them. Premium fastening solutions for flooring professionals, guaranteed to fit every major brand tool.
           </p>
           <div className="flex flex-wrap gap-3.5">
             <Link to="/products" className="pd-btn-primary">Browse Full Line</Link>
@@ -155,6 +155,53 @@ function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* 7A2 Authority Strip */}
+      <section
+        style={{
+          background: "#191400",
+          borderTop: "1px solid rgba(255,205,0,0.08)",
+          borderBottom: "1px solid rgba(255,205,0,0.08)",
+          padding: "18px 6%",
+        }}
+      >
+        <div className="flex flex-wrap items-center justify-center" style={{ gap: 48 }}>
+          {[
+            "NWFA University Sponsor",
+            "AWFS Member",
+            "50+ Years Industry Expertise",
+            "Made in the USA",
+            "Guaranteed to Fit Major Brands",
+          ].map((label, i, arr) => (
+            <div key={label} className="flex items-center" style={{ gap: 48 }}>
+              <span
+                style={{
+                  fontFamily: "Assistant, sans-serif",
+                  fontWeight: 600,
+                  fontSize: 12,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.15em",
+                  color: "rgba(255,255,255,0.5)",
+                }}
+              >
+                {label}
+              </span>
+              {i < arr.length - 1 && (
+                <span
+                  aria-hidden
+                  style={{
+                    display: "inline-block",
+                    width: 4,
+                    height: 4,
+                    borderRadius: "50%",
+                    background: "rgba(255,205,0,0.2)",
+                  }}
+                />
+              )}
+            </div>
+          ))}
         </div>
       </section>
 
@@ -275,9 +322,9 @@ function Home() {
       <section className="px-[6%] py-20 bg-white">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {[
-            { n: "50+", h: "Years of Industry Expertise", b: "We select every material, set all specifications, and are involved in every step of manufacturing." },
+            { n: "50+", h: "Years of Industry Expertise", b: "Hollis and Carlton Henderson have spent 50+ combined years selecting every material, setting every spec, and staying involved in every step. That's the Pro-Drive difference." },
             { n: "100%", h: "Guaranteed to Fit", b: "Every product is guaranteed to work in all major brand tools — or your money back." },
-            { n: "Made", h: "in the USA", b: "Our mallets are crafted from 100% premium hickory. Built for professionals, by professionals." },
+            { n: "Made", h: "in the USA®", b: "Our mallets are crafted from 100% premium American hickory. Our products are built to professional standards — not adapted from general-purpose fasteners." },
             { n: "One", h: "Source. Everything.", b: "From staples and L-Cleats to tapping tools and air hoses — complete installation solutions." },
           ].map(x => (
             <div key={x.h}>
@@ -296,6 +343,25 @@ function Home() {
             <h2 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: "clamp(28px, 4vw, 44px)" }}>
               Stock Pro-Drive. Full Line Offering.
             </h2>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {["NWFA University Sponsor", "AWFS Member", "Made in the USA"].map(b => (
+                <span
+                  key={b}
+                  style={{
+                    background: "rgba(25,20,0,0.1)",
+                    padding: "4px 10px",
+                    fontFamily: "Assistant, sans-serif",
+                    fontWeight: 600,
+                    fontSize: 10,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.12em",
+                    color: "rgba(25,20,0,0.6)",
+                  }}
+                >
+                  {b}
+                </span>
+              ))}
+            </div>
             <p className="mt-3" style={{ color: "rgba(25,20,0,0.6)", fontSize: 15 }}>
               Wholesale distributor pricing available. Contact us to become an authorized distributor.
             </p>
@@ -317,8 +383,8 @@ function Home() {
               Product drops, field installs, and close-up looks at the tools flooring crews actually use.
             </p>
           </div>
-          <a href="https://instagram.com/ProDriveFasteners" target="_blank" rel="noreferrer" className="pd-btn-dark">
-            Follow @ProDriveFasteners
+          <a href="https://instagram.com/prodrivestore" target="_blank" rel="noreferrer" className="pd-btn-dark">
+            Follow @prodrivestore
           </a>
         </div>
 
@@ -326,7 +392,7 @@ function Home() {
           {instagramPosts.map((post) => (
             <a
               key={post.alt}
-              href="https://instagram.com/ProDriveFasteners"
+              href="https://instagram.com/prodrivestore"
               target="_blank"
               rel="noreferrer"
               className="group block overflow-hidden"

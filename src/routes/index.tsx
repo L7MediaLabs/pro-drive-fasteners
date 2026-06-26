@@ -155,53 +155,43 @@ function Home() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* 7A2 Authority Strip */}
-      <section
-        style={{
-          background: "#191400",
-          borderTop: "1px solid rgba(255,205,0,0.08)",
-          borderBottom: "1px solid rgba(255,205,0,0.08)",
-          padding: "18px 6%",
-        }}
-      >
-        <div className="flex flex-wrap items-center justify-center" style={{ gap: 48 }}>
-          {[
-            "NWFA University Sponsor",
-            "AWFS Member",
-            "50+ Years Industry Expertise",
-            "Made in the USA",
-            "Guaranteed to Fit Major Brands",
-          ].map((label, i, arr) => (
-            <div key={label} className="flex items-center" style={{ gap: 48 }}>
+          <div
+            className="mt-6 pt-5 flex flex-wrap items-center gap-x-10 gap-y-2"
+            style={{ borderTop: "1px solid rgba(255,205,0,0.06)" }}
+          >
+            {[
+              "NWFA University Sponsor",
+              "AWFS Member",
+              "50+ Years Industry Expertise",
+              "Made in the USA",
+              "Guaranteed to Fit Major Brands",
+            ].map((label) => (
               <span
+                key={label}
+                className="flex items-center gap-2"
                 style={{
                   fontFamily: "Assistant, sans-serif",
                   fontWeight: 600,
-                  fontSize: 12,
+                  fontSize: 11,
                   textTransform: "uppercase",
-                  letterSpacing: "0.15em",
-                  color: "rgba(255,255,255,0.5)",
+                  letterSpacing: "0.12em",
+                  color: "rgba(255,255,255,0.35)",
                 }}
               >
-                {label}
-              </span>
-              {i < arr.length - 1 && (
                 <span
                   aria-hidden
                   style={{
                     display: "inline-block",
-                    width: 4,
-                    height: 4,
+                    width: 5,
+                    height: 5,
                     borderRadius: "50%",
-                    background: "rgba(255,205,0,0.2)",
+                    background: "rgba(255,205,0,0.35)",
                   }}
                 />
-              )}
-            </div>
-          ))}
+                {label}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 

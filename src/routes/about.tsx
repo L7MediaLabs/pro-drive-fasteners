@@ -14,7 +14,7 @@ export const Route = createFileRoute("/about")({
 function About() {
   return (
     <div>
-      <PageHeader title="About Pro-Drive" description="A premier provider of top-quality products for the flooring industry." />
+      <PageHeader title="About Pro-Drive" description="A premier provider of top-quality products for the flooring industry." tone="dark" />
       <section className="px-[6%] py-16 max-w-4xl">
         <p className="text-lg" style={{ color: "var(--pd-text)", lineHeight: 1.8 }}>
           Pro-Drive Fasteners® is a family business. Founded by Hollis Henderson with his son Carlton, the company is built on more than 50 combined years of flooring industry expertise — selecting every material, setting every specification, and staying involved in every step of manufacturing. That's not a marketing line. It's how Pro-Drive has operated since day one.

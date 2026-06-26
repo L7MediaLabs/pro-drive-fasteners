@@ -95,17 +95,20 @@ function DashboardPage() {
         <Kpi
           label="COMPANIES IDENTIFIED"
           value={String(data.stats.website.uniqueCompanies)}
+          delta="+8"
           sub={`avg ${data.stats.website.avgSessionsPerCompany} sessions/co`}
         />
         <Kpi
           label="HOT LEADS"
           value={String(hotWarm.length)}
+          delta={visited3 > 0 ? `${visited3}↑` : undefined}
           sub={`${visited3} visited 3+ times`}
         />
         <Kpi
           label="TOP PRODUCT"
           value={topProduct?.product ?? "—"}
           sub={`${topProduct?.views ?? 0} views`}
+          valueSize={20}
         />
         <Kpi
           label="INSTAGRAM TRAFFIC"
@@ -123,7 +126,19 @@ function DashboardPage() {
   );
 }
 
-function Kpi({ label, value, sub }: { label: string; value: string; sub?: string }) {
+function Kpi({
+  label,
+  value,
+  sub,
+  delta,
+  valueSize = 30,
+}: {
+  label: string;
+  value: string;
+  sub?: string;
+  delta?: string;
+  valueSize?: number;
+}) {
   return (
     <div style={cardStyle}>
       <div style={{ ...mono, fontSize: 10, color: "rgba(255,205,0,0.7)", letterSpacing: "0.2em" }}>
@@ -131,15 +146,35 @@ function Kpi({ label, value, sub }: { label: string; value: string; sub?: string
       </div>
       <div
         style={{
-          ...mono,
-          fontSize: 30,
-          color: "white",
+          display: "flex",
+          alignItems: "baseline",
+          gap: 10,
           marginTop: 10,
-          lineHeight: 1,
-          fontWeight: 500,
         }}
       >
-        {value}
+        <div
+          style={{
+            ...mono,
+            fontSize: valueSize,
+            color: "white",
+            lineHeight: 1,
+            fontWeight: 500,
+          }}
+        >
+          {value}
+        </div>
+        {delta && (
+          <div
+            style={{
+              ...mono,
+              fontSize: 11,
+              color: "#22C55E",
+              letterSpacing: "0.1em",
+            }}
+          >
+            {delta}
+          </div>
+        )}
       </div>
       {sub && (
         <div

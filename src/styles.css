@@ -244,3 +244,46 @@
 /* hide scrollbars on horizontal scroller */
 .pd-scroller::-webkit-scrollbar { display: none; }
 .pd-scroller { scrollbar-width: none; }
+
+/* ============================================================
+   Admin theme tokens (light + dark)
+   Scoped to [data-pd-theme] wrapper on admin shell.
+   ============================================================ */
+[data-pd-theme="dark"] {
+  --pdx-bg: #0A0A08;
+  --pdx-shell-glow:
+    radial-gradient(1200px 600px at 80% -10%, rgba(255,205,0,0.06), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, rgba(255,205,0,0.04), transparent 60%);
+  --pdx-sidebar: #080806;
+  --pdx-header: #0A0A08;
+  --pdx-panel: #0E0E0C;
+  --pdx-panel-grad: linear-gradient(180deg, rgba(255,255,255,0.025) 0%, rgba(255,255,255,0.005) 100%);
+  --pdx-text: rgba(255,255,255,0.92);
+  --pdx-text-dim: rgba(255,255,255,0.6);
+  --pdx-text-mute: rgba(255,255,255,0.4);
+  --pdx-text-faint: rgba(255,255,255,0.25);
+  --pdx-border: rgba(255,255,255,0.06);
+  --pdx-border-y: rgba(255,205,0,0.08);
+  --pdx-row-hover: rgba(255,205,0,0.03);
+  --pdx-value-grad: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.7) 100%);
+  --pdx-fade: #0E0E0C;
+}
+[data-pd-theme="light"] {
+  --pdx-bg: #F5F4EE;
+  --pdx-shell-glow:
+    radial-gradient(1200px 600px at 80% -10%, rgba(255,205,0,0.22), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, rgba(255,205,0,0.12), transparent 60%);
+  --pdx-sidebar: #0E0C00;
+  --pdx-header: rgba(255,255,255,0.85);
+  --pdx-panel: #FFFFFF;
+  --pdx-panel-grad: linear-gradient(180deg, #FFFFFF 0%, #FBFAF5 100%);
+  --pdx-text: #0E0C00;
+  --pdx-text-dim: rgba(14,12,0,0.7);
+  --pdx-text-mute: rgba(14,12,0,0.5);
+  --pdx-text-faint: rgba(14,12,0,0.3);
+  --pdx-border: rgba(14,12,0,0.08);
+  --pdx-border-y: rgba(180,140,0,0.25);
+  --pdx-row-hover: rgba(255,205,0,0.08);
+  --pdx-value-grad: linear-gradient(180deg, #0E0C00 0%, rgba(14,12,0,0.65) 100%);
+  --pdx-fade: #FFFFFF;
+}

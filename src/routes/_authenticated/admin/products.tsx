@@ -10,7 +10,7 @@ function ProductsPage() {
   const { data, loading } = useIntelligence();
   const { mode, setMode } = useIntelMode();
 
-  if (loading) return <div style={{ ...mono, color: "rgba(255,255,255,0.4)", fontSize: 12 }}>Loading…</div>;
+  if (loading) return <div style={{ ...mono, color: "var(--pdx-text-mute)", fontSize: 12 }}>Loading…</div>;
   if (!data) return <EmptyState />;
 
   const max = Math.max(...data.productStats.map((p) => p.views), 1);
@@ -29,18 +29,18 @@ function ProductsPage() {
           {data.productStats.map((p) => (
             <div key={p.product}>
               <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-                <span style={{ ...mono, fontSize: 12, color: "white", letterSpacing: "0.05em" }}>
+                <span style={{ ...mono, fontSize: 12, color: "var(--pdx-text)", letterSpacing: "0.05em" }}>
                   {p.product}
                 </span>
-                <span style={{ ...mono, fontSize: 11, color: "rgba(255,255,255,0.6)" }}>
+                <span style={{ ...mono, fontSize: 11, color: "var(--pdx-text-dim)" }}>
                   {p.views} views · {p.uniqueCompanies} cos
-                  <span style={{ marginLeft: 10, color: p.trend === "up" ? "#22C55E" : p.trend === "down" ? "#EF4444" : "rgba(255,255,255,0.4)" }}>
+                  <span style={{ marginLeft: 10, color: p.trend === "up" ? "#22C55E" : p.trend === "down" ? "#EF4444" : "var(--pdx-text-mute)" }}>
                     {p.trend === "up" ? "↑" : p.trend === "down" ? "↓" : "→"} {p.trendPercent > 0 ? "+" : ""}{p.trendPercent}%
                   </span>
                 </span>
 
               </div>
-              <div style={{ height: 6, background: "rgba(255,255,255,0.04)" }}>
+              <div style={{ height: 6, background: "var(--pdx-border)" }}>
                 <div
                   style={{
                     width: `${(p.views / max) * 100}%`,
@@ -61,7 +61,7 @@ function ProductsPage() {
         <div style={{ overflowX: "auto" }}>
           <table style={{ width: "100%", borderCollapse: "collapse" }}>
             <thead>
-              <tr style={{ ...mono, fontSize: 9, color: "rgba(255,255,255,0.4)", letterSpacing: "0.15em" }}>
+              <tr style={{ ...mono, fontSize: 9, color: "var(--pdx-text-mute)", letterSpacing: "0.15em" }}>
                 <th style={{ textAlign: "left", padding: "8px 10px" }}>Product</th>
                 <th style={{ textAlign: "left", padding: "8px 10px" }}>Interested Companies</th>
               </tr>
@@ -73,9 +73,9 @@ function ProductsPage() {
                   .map((l) => l.company);
 
                 return (
-                  <tr key={p.product} style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-                    <td style={{ padding: "12px 10px", ...mono, fontSize: 12, color: "white" }}>{p.product}</td>
-                    <td style={{ padding: "12px 10px", ...mono, fontSize: 11, color: "rgba(255,255,255,0.6)" }}>
+                  <tr key={p.product} style={{ borderTop: "1px solid var(--pdx-border)" }}>
+                    <td style={{ padding: "12px 10px", ...mono, fontSize: 12, color: "var(--pdx-text)" }}>{p.product}</td>
+                    <td style={{ padding: "12px 10px", ...mono, fontSize: 11, color: "var(--pdx-text-dim)" }}>
                       {cos.length ? cos.join(" · ") : "—"}
                     </td>
                   </tr>

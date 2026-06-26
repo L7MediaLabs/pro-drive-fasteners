@@ -15,6 +15,7 @@ import {
   isCurrentUserAdmin,
 } from "@/lib/admin.functions";
 import { getLatestIntelligence } from "@/lib/intelligence.functions";
+import { ThemeToggle, usePdTheme } from "@/components/admin/ui";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({
@@ -45,6 +46,7 @@ function AdminLayout() {
   const [bootstrapping, setBootstrapping] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
   const [email, setEmail] = useState("");
+  const [theme, setTheme] = usePdTheme();
 
   useEffect(() => {
     (async () => {
@@ -164,11 +166,11 @@ function AdminLayout() {
 
   return (
     <div
+      data-pd-theme={theme}
       style={{
         minHeight: "100vh",
-        background:
-          "radial-gradient(1200px 600px at 80% -10%, rgba(255,205,0,0.06), transparent 60%), radial-gradient(900px 500px at -10% 110%, rgba(255,205,0,0.04), transparent 60%), #0A0A08",
-        color: "rgba(255,255,255,0.85)",
+        background: "var(--pdx-shell-glow), var(--pdx-bg)",
+        color: "var(--pdx-text)",
         display: "flex",
       }}
     >
@@ -318,12 +320,14 @@ function AdminLayout() {
         <header
           style={{
             height: 50,
-            borderBottom: "1px solid rgba(255,205,0,0.06)",
+            borderBottom: "1px solid var(--pdx-border)",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
             padding: "0 28px",
-            background: "#0A0A08",
+            background: "var(--pdx-header)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
             position: "sticky",
             top: 0,
             zIndex: 10,
@@ -334,17 +338,18 @@ function AdminLayout() {
               fontFamily: "Assistant, sans-serif",
               fontWeight: 700,
               fontSize: 15,
-              color: "white",
+              color: "var(--pdx-text)",
             }}
           >
             {currentPage}
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <ThemeToggle theme={theme} setTheme={setTheme} />
             <button
               onClick={() => window.print()}
               style={{
-                border: "1px solid rgba(255,205,0,0.4)",
-                color: "#FFCD00",
+                border: "1px solid rgba(255,205,0,0.45)",
+                color: "#A87800",
                 padding: "6px 14px",
                 fontFamily: "'IBM Plex Mono', monospace",
                 fontSize: 10,
@@ -361,7 +366,7 @@ function AdminLayout() {
               style={{
                 fontFamily: "'IBM Plex Mono', monospace",
                 fontSize: 10,
-                color: "rgba(255,255,255,0.4)",
+                color: "var(--pdx-text-mute)",
                 textTransform: "uppercase",
                 letterSpacing: "0.15em",
               }}
@@ -371,8 +376,8 @@ function AdminLayout() {
             <button
               onClick={signOut}
               style={{
-                border: "1px solid rgba(255,255,255,0.12)",
-                color: "rgba(255,255,255,0.6)",
+                border: "1px solid var(--pdx-border)",
+                color: "var(--pdx-text-dim)",
                 padding: "5px 12px",
                 fontFamily: "'IBM Plex Mono', monospace",
                 fontSize: 10,

@@ -27,11 +27,11 @@ export const Route = createFileRoute("/_authenticated/admin")({
 });
 
 const NAV = [
-  { to: "/admin/dashboard", label: "Dashboard" },
-  { to: "/admin/leads", label: "Leads" },
-  { to: "/admin/products", label: "Products" },
-  { to: "/admin/reports", label: "Reports" },
-  { to: "/admin/settings", label: "Settings" },
+  { to: "/admin/dashboard", label: "Dashboard", icon: "▢" },
+  { to: "/admin/leads", label: "Leads", icon: "▢" },
+  { to: "/admin/products", label: "Products", icon: "▢" },
+  { to: "/admin/reports", label: "Reports", icon: "▢" },
+  { to: "/admin/settings", label: "Settings", icon: "▢" },
 ] as const;
 
 function AdminLayout() {

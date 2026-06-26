@@ -351,7 +351,10 @@ function HotLeadsTable({ leads }: { leads: Lead[] }) {
                   style={{
                     borderTop: "1px solid rgba(255,255,255,0.06)",
                     cursor: "pointer",
+                    transition: "background .2s ease",
                   }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,205,0,0.03)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
                 >
                   <Td>
                     <div style={{ color: "white", fontFamily: "Assistant, sans-serif", fontWeight: 600, fontSize: 13 }}>

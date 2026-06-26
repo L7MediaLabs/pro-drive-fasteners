@@ -147,18 +147,10 @@ function Home() {
             {[
               { label: "50+ Years", value: "Industry Leading" },
               { label: "12 Product Lines", value: "All Major Brands Guaranteed" },
-              { label: "Made in the USA", value: "Mallets & Specialty Tools", flag: true },
+              { label: "Made in the USA", value: "Mallets & Specialty Tools" },
             ].map(s => (
               <div key={s.label}>
                 <div className="pd-eyebrow flex items-center gap-2" style={{ color: "var(--pd-yellow)", letterSpacing: "0.15em" }}>
-                  {s.flag && (
-                    <img
-                      src={images.flag}
-                      alt=""
-                      loading="lazy"
-                      style={{ height: 14, width: "auto", display: "inline-block" }}
-                    />
-                  )}
                   {s.label}
                 </div>
                 <div className="text-white mt-1" style={{ fontWeight: 800, fontSize: 22 }}>{s.value}</div>
@@ -170,14 +162,14 @@ function Home() {
             style={{ borderTop: "1px solid rgba(255,205,0,0.06)" }}
           >
             {[
-              { label: "NWFA University Sponsor", flag: false },
-              { label: "AWFS Member", flag: false },
-              { label: "50+ Years Industry Expertise", flag: false },
-              { label: "Made in the USA", flag: true },
-              { label: "Guaranteed to Fit Major Brands", flag: false },
-            ].map((item) => (
+              "NWFA University Sponsor",
+              "AWFS Member",
+              "50+ Years Industry Expertise",
+              "Made in the USA",
+              "Guaranteed to Fit Major Brands",
+            ].map((label) => (
               <span
-                key={item.label}
+                key={label}
                 className="flex items-center gap-2"
                 style={{
                   fontFamily: "Assistant, sans-serif",
@@ -188,26 +180,17 @@ function Home() {
                   color: "rgba(255,255,255,0.35)",
                 }}
               >
-                {item.flag ? (
-                  <img
-                    src={images.flag}
-                    alt=""
-                    loading="lazy"
-                    style={{ height: 12, width: "auto", display: "inline-block" }}
-                  />
-                ) : (
-                  <span
-                    aria-hidden
-                    style={{
-                      display: "inline-block",
-                      width: 5,
-                      height: 5,
-                      borderRadius: "50%",
-                      background: "rgba(255,205,0,0.35)",
-                    }}
-                  />
-                )}
-                {item.label}
+                <span
+                  aria-hidden
+                  style={{
+                    display: "inline-block",
+                    width: 5,
+                    height: 5,
+                    borderRadius: "50%",
+                    background: "rgba(255,205,0,0.35)",
+                  }}
+                />
+                {label}
               </span>
             ))}
           </div>

@@ -11,6 +11,7 @@ import {
   PANEL,
   mono,
   cardStyle,
+  cardAccentTop,
 } from "@/components/admin/ui";
 import type { Lead } from "@/lib/intelligence-types";
 

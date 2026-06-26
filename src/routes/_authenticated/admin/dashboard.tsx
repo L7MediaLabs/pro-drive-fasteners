@@ -173,8 +173,19 @@ function Kpi({
   valueSize?: number;
 }) {
   return (
-    <div style={cardStyle}>
-      <div style={{ ...mono, fontSize: 10, color: "rgba(255,205,0,0.7)", letterSpacing: "0.2em" }}>
+    <div
+      style={{ ...cardStyle, transition: "transform .25s ease, box-shadow .25s ease, border-color .25s ease" }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = "translateY(-2px)";
+        e.currentTarget.style.borderColor = "rgba(255,205,0,0.18)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = "translateY(0)";
+        e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)";
+      }}
+    >
+      <div style={cardAccentTop} />
+      <div style={{ ...mono, fontSize: 10, color: "rgba(255,205,0,0.75)", letterSpacing: "0.22em" }}>
         {label}
       </div>
       <div
@@ -182,16 +193,20 @@ function Kpi({
           display: "flex",
           alignItems: "baseline",
           gap: 10,
-          marginTop: 10,
+          marginTop: 12,
         }}
       >
         <div
           style={{
             ...mono,
             fontSize: valueSize,
-            color: "white",
             lineHeight: 1,
             fontWeight: 500,
+            background: "linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.7) 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+            letterSpacing: "-0.01em",
           }}
         >
           {value}
@@ -203,6 +218,9 @@ function Kpi({
               fontSize: 11,
               color: "#22C55E",
               letterSpacing: "0.1em",
+              padding: "2px 6px",
+              background: "rgba(34,197,94,0.1)",
+              border: "1px solid rgba(34,197,94,0.2)",
             }}
           >
             {delta}
@@ -214,8 +232,8 @@ function Kpi({
           style={{
             ...mono,
             fontSize: 10,
-            color: "rgba(255,255,255,0.4)",
-            marginTop: 8,
+            color: "rgba(255,255,255,0.42)",
+            marginTop: 10,
             letterSpacing: "0.1em",
           }}
         >

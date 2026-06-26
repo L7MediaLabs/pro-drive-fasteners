@@ -322,9 +322,9 @@ function Home() {
       <section className="px-[6%] py-20 bg-white">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {[
-            { n: "50+", h: "Years of Industry Expertise", b: "We select every material, set all specifications, and are involved in every step of manufacturing." },
+            { n: "50+", h: "Years of Industry Expertise", b: "Hollis and Carlton Henderson have spent 50+ combined years selecting every material, setting every spec, and staying involved in every step. That's the Pro-Drive difference." },
             { n: "100%", h: "Guaranteed to Fit", b: "Every product is guaranteed to work in all major brand tools — or your money back." },
-            { n: "Made", h: "in the USA", b: "Our mallets are crafted from 100% premium hickory. Built for professionals, by professionals." },
+            { n: "Made", h: "in the USA®", b: "Our mallets are crafted from 100% premium American hickory. Our products are built to professional standards — not adapted from general-purpose fasteners." },
             { n: "One", h: "Source. Everything.", b: "From staples and L-Cleats to tapping tools and air hoses — complete installation solutions." },
           ].map(x => (
             <div key={x.h}>

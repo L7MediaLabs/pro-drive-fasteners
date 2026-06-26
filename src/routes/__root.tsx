@@ -114,6 +114,7 @@ function RootComponent() {
           <Footer />
         </>
       )}
+      <PreviewBar />
     </QueryClientProvider>
   );
 }

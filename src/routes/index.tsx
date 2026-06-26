@@ -147,10 +147,20 @@ function Home() {
             {[
               { label: "50+ Years", value: "Industry Leading" },
               { label: "12 Product Lines", value: "All Major Brands Guaranteed" },
-              { label: "Made in the USA", value: "Mallets & Specialty Tools" },
+              { label: "Made in the USA", value: "Mallets & Specialty Tools", flag: true },
             ].map(s => (
               <div key={s.label}>
-                <div className="pd-eyebrow" style={{ color: "var(--pd-yellow)", letterSpacing: "0.15em" }}>{s.label}</div>
+                <div className="pd-eyebrow flex items-center gap-2" style={{ color: "var(--pd-yellow)", letterSpacing: "0.15em" }}>
+                  {s.flag && (
+                    <img
+                      src={images.flag}
+                      alt=""
+                      loading="lazy"
+                      style={{ height: 14, width: "auto", display: "inline-block" }}
+                    />
+                  )}
+                  {s.label}
+                </div>
                 <div className="text-white mt-1" style={{ fontWeight: 800, fontSize: 22 }}>{s.value}</div>
               </div>
             ))}

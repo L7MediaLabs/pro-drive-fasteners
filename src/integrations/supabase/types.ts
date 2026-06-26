@@ -14,172 +14,24 @@ export type Database = {
   }
   public: {
     Tables: {
-      intelligence_companies: {
-        Row: {
-          company_name: string
-          contact_email: string | null
-          contact_name: string | null
-          contact_title: string | null
-          created_at: string
-          domain: string | null
-          fit_reasoning: string | null
-          id: string
-          industry: string | null
-          location: string | null
-          recommended_action: string | null
-          score: number | null
-          signals: Json
-          tier: string | null
-          updated_at: string
-          week_id: string
-        }
-        Insert: {
-          company_name: string
-          contact_email?: string | null
-          contact_name?: string | null
-          contact_title?: string | null
-          created_at?: string
-          domain?: string | null
-          fit_reasoning?: string | null
-          id?: string
-          industry?: string | null
-          location?: string | null
-          recommended_action?: string | null
-          score?: number | null
-          signals?: Json
-          tier?: string | null
-          updated_at?: string
-          week_id: string
-        }
-        Update: {
-          company_name?: string
-          contact_email?: string | null
-          contact_name?: string | null
-          contact_title?: string | null
-          created_at?: string
-          domain?: string | null
-          fit_reasoning?: string | null
-          id?: string
-          industry?: string | null
-          location?: string | null
-          recommended_action?: string | null
-          score?: number | null
-          signals?: Json
-          tier?: string | null
-          updated_at?: string
-          week_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "intelligence_companies_week_id_fkey"
-            columns: ["week_id"]
-            isOneToOne: false
-            referencedRelation: "intelligence_weeks"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      intelligence_uploads: {
+      admin_settings: {
         Row: {
           created_at: string
-          filename: string
           id: string
-          raw_sample: Json | null
-          row_count: number | null
-          source: string
-          storage_path: string | null
+          recipients: Json
           updated_at: string
-          uploaded_by: string | null
-          week_id: string
         }
         Insert: {
           created_at?: string
-          filename: string
           id?: string
-          raw_sample?: Json | null
-          row_count?: number | null
-          source: string
-          storage_path?: string | null
+          recipients?: Json
           updated_at?: string
-          uploaded_by?: string | null
-          week_id: string
         }
         Update: {
           created_at?: string
-          filename?: string
           id?: string
-          raw_sample?: Json | null
-          row_count?: number | null
-          source?: string
-          storage_path?: string | null
+          recipients?: Json
           updated_at?: string
-          uploaded_by?: string | null
-          week_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "intelligence_uploads_week_id_fkey"
-            columns: ["week_id"]
-            isOneToOne: false
-            referencedRelation: "intelligence_weeks"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      intelligence_weeks: {
-        Row: {
-          ai_error: string | null
-          ai_model: string | null
-          created_at: string
-          created_by: string | null
-          email_filename: string | null
-          executive_summary: string | null
-          id: string
-          kpis: Json
-          period_end: string
-          period_start: string
-          processed_at: string | null
-          social_filename: string | null
-          status: string
-          updated_at: string
-          web_filename: string | null
-          week_label: string
-        }
-        Insert: {
-          ai_error?: string | null
-          ai_model?: string | null
-          created_at?: string
-          created_by?: string | null
-          email_filename?: string | null
-          executive_summary?: string | null
-          id?: string
-          kpis?: Json
-          period_end: string
-          period_start: string
-          processed_at?: string | null
-          social_filename?: string | null
-          status?: string
-          updated_at?: string
-          web_filename?: string | null
-          week_label: string
-        }
-        Update: {
-          ai_error?: string | null
-          ai_model?: string | null
-          created_at?: string
-          created_by?: string | null
-          email_filename?: string | null
-          executive_summary?: string | null
-          id?: string
-          kpis?: Json
-          period_end?: string
-          period_start?: string
-          processed_at?: string | null
-          social_filename?: string | null
-          status?: string
-          updated_at?: string
-          web_filename?: string | null
-          week_label?: string
         }
         Relationships: []
       }
@@ -270,6 +122,30 @@ export type Database = {
           id?: string
           role?: Database["public"]["Enums"]["app_role"]
           user_id?: string
+        }
+        Relationships: []
+      }
+      weekly_intelligence: {
+        Row: {
+          data: Json
+          id: string
+          uploaded_at: string
+          uploaded_by: string | null
+          week_of: string
+        }
+        Insert: {
+          data: Json
+          id?: string
+          uploaded_at?: string
+          uploaded_by?: string | null
+          week_of: string
+        }
+        Update: {
+          data?: Json
+          id?: string
+          uploaded_at?: string
+          uploaded_by?: string | null
+          week_of?: string
         }
         Relationships: []
       }

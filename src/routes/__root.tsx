@@ -4,10 +4,12 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -65,8 +67,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800;900&family=Saira+Condensed:wght@600;700;800;900&display=swap" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@300;400;500;600;700&family=Saira+Condensed:wght@600;700;800;900&display=swap" },
     ],
+
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -95,14 +98,23 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isAdmin = pathname.startsWith("/admin");
   return (
     <QueryClientProvider client={queryClient}>
-      <Nav />
-      <LangToast />
-      <main style={{ paddingTop: 68 }}>
+      {isAdmin ? (
         <Outlet />
-      </main>
-      <Footer />
+      ) : (
+        <>
+          <Nav />
+          <LangToast />
+          <main style={{ paddingTop: 68 }}>
+            <Outlet />
+          </main>
+          <Footer />
+        </>
+      )}
     </QueryClientProvider>
   );
 }
+

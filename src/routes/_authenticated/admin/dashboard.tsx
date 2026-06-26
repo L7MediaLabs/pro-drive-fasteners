@@ -313,15 +313,20 @@ function HotLeadsTable({ leads }: { leads: Lead[] }) {
   const [expanded, setExpanded] = useState<string | null>(null);
   return (
     <div style={cardStyle}>
+      <div style={cardAccentTop} />
       <div
         style={{
           ...mono,
           fontSize: 11,
           color: YELLOW,
-          letterSpacing: "0.2em",
-          marginBottom: 16,
+          letterSpacing: "0.22em",
+          marginBottom: 18,
+          display: "flex",
+          alignItems: "center",
+          gap: 8,
         }}
       >
+        <span style={{ width: 6, height: 6, background: YELLOW, borderRadius: "50%", boxShadow: `0 0 8px ${YELLOW}` }} />
         HOT LEADS
       </div>
       <div style={{ overflowX: "auto" }}>

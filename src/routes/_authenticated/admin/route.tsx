@@ -166,7 +166,8 @@ function AdminLayout() {
     <div
       style={{
         minHeight: "100vh",
-        background: "#0A0A08",
+        background:
+          "radial-gradient(1200px 600px at 80% -10%, rgba(255,205,0,0.06), transparent 60%), radial-gradient(900px 500px at -10% 110%, rgba(255,205,0,0.04), transparent 60%), #0A0A08",
         color: "rgba(255,255,255,0.85)",
         display: "flex",
       }}

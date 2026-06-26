@@ -343,6 +343,25 @@ function Home() {
             <h2 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: "clamp(28px, 4vw, 44px)" }}>
               Stock Pro-Drive. Full Line Offering.
             </h2>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {["NWFA University Sponsor", "AWFS Member", "Made in the USA"].map(b => (
+                <span
+                  key={b}
+                  style={{
+                    background: "rgba(25,20,0,0.1)",
+                    padding: "4px 10px",
+                    fontFamily: "Assistant, sans-serif",
+                    fontWeight: 600,
+                    fontSize: 10,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.12em",
+                    color: "rgba(25,20,0,0.6)",
+                  }}
+                >
+                  {b}
+                </span>
+              ))}
+            </div>
             <p className="mt-3" style={{ color: "rgba(25,20,0,0.6)", fontSize: 15 }}>
               Wholesale distributor pricing available. Contact us to become an authorized distributor.
             </p>

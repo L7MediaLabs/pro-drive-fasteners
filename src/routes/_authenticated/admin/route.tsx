@@ -46,6 +46,7 @@ function AdminLayout() {
   const [bootstrapping, setBootstrapping] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
   const [email, setEmail] = useState("");
+  const [theme, setTheme] = usePdTheme();
 
   useEffect(() => {
     (async () => {

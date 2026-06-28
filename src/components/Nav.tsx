@@ -78,8 +78,15 @@ export function Nav() {
               <button className="pd-nav-link" style={navLink}>Products ▾</button>
               {drop && (
                 <div
-                  className="absolute left-0 top-full grid grid-cols-3 gap-8 p-6 pd-glass-dark"
-                  style={{ minWidth: 720, boxShadow: "var(--shadow-lg)" }}
+                  className="absolute left-0 top-full grid grid-cols-3 gap-8 p-6"
+                  style={{
+                    minWidth: 720,
+                    background: "rgba(14,12,0,0.97)",
+                    backdropFilter: "blur(20px) saturate(160%)",
+                    border: "1px solid rgba(255,205,0,0.18)",
+                    borderRadius: 6,
+                    boxShadow: "0 24px 60px -16px rgba(0,0,0,0.7)",
+                  }}
                 >
                   {[products, tools, equipment].map((col, i) => (
                     <div key={i}>

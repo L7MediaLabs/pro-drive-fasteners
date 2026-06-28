@@ -1,44 +1,42 @@
-## Reorient: Display-Only Intelligence Dashboard
+## Fix the Tapping Rings page imagery
 
-Discard the in-app processing pipeline and rebuild `/admin` as a pure display layer fed by a weekly JSON paste.
+The cards on `/tapping-rings` currently show the yellow tapping *block* image for all three rings. Swap in the actual ring photos the client just provided.
 
-### Teardown (rollback DB2/DB6/DB7)
+### Asset uploads (Lovable CDN)
 
-- Drop tables: `intelligence_weeks`, `intelligence_companies`, `intelligence_uploads` (migration).
-- Delete server functions / lib files created for CSV ingest, Anthropic calls, or the state machine.
-- Remove `papaparse` and any Anthropic SDK from `package.json` if installed.
-- No Anthropic key requested.
+Create asset pointers from `/mnt/user-uploads/` for:
 
-### Keep
+1. `Red_tapping_ring.jpg` → Red ring (front-on)
+2. `Orange_Tapping_Ring_1.jpg` → Orange ring (front-on, clean)
+3. `Orange_Tapping_Ring_2.jpg` → Orange ring (front-on, with branding visible) — use as the hero/lifestyle background
+4. `Orange_Tapping_Ring_3.jpg` → Orange ring (side/3D angle)
+5. `LOGO_picture.jpg` → Yellow ring (front-on)
 
-- Auth system (`/auth`, `_authenticated/route.tsx`, profiles, user_roles, has_role).
-- `reports` table (untouched).
-- Admin shell restructure from DB4 — refit to the new sidebar spec.
+Pointers saved to `src/assets/products/tapping_rings/ring-{red|orange|orange-angle|yellow|orange-detail}.jpg.asset.json`.
 
-### Build (per simplified v3 spec)
+### `src/data/images.ts`
 
-1. **Migration** — create `weekly_intelligence` and `admin_settings` tables, admin-only RLS via `has_role`, required GRANTs.
-2. **Types** — `src/lib/intelligence-types.ts` with `WeeklyIntelligenceData` interface + Zod schema for client-side validation.
-3. **Mock data** — `src/data/mockIntelligence.ts` with 7 HOT/WARM + 27 WATCHING/NEW leads, 12 products, traffic mix per spec.
-4. **Server functions** — `src/lib/intelligence.functions.ts`:
-   - `getLatestIntelligence` — most recent week (full row).
-   - `uploadWeeklyIntelligence` — admin-only insert.
-   - `listIntelligenceWeeks` — last 10 rows ordered by `week_of` desc, projecting only `id, week_of, uploaded_at, uploaded_by` (no `data` jsonb). Used by Settings upload history.
-   - `getRecipients` / `saveRecipients` — admin_settings recipients editor.
-5. **Admin shell** — `src/routes/_authenticated/admin/route.tsx` with sidebar (PD INTELLIGENCE, nav, week-of status footer) + top bar; child routes: `index` (redirect to dashboard), `dashboard`, `leads`, `products`, `reports`, `settings`.
-6. **Dashboard page** — empty state + loaded state: Weekly Insight card, 4 KPI cards, live ticker, Hot Leads table with Signal Stack badges, urgency tags, expandable AI context, Call Now button.
-7. **Leads page** — full table with search + status/signal filters + DEMO/LIVE toggle (sessionStorage).
-8. **Products page** — horizontal bar chart of productStats + Company×Product matrix.
-9. **Reports page** — Craig's Opening Line card (copy button), three-source summary, white email preview, Copy + mailto Send buttons.
-10. **Settings page** — Weekly Upload panel (date + JSON textarea + Zod Validate + Upload), Recipients editor, **Upload History list fed by `listIntelligenceWeeks`** (week + uploader + timestamp), terminal-style workflow doc.
-11. **Footer hidden dot** — single `·` link to `/admin` in Footer copyright bar.
-12. **Smoke test** — paste mock JSON, verify each page renders, DEMO toggle works, upload history populates.
+Extend the `tappingRings` block with per-color URLs:
 
-### Technical Notes
+```ts
+tappingRings: {
+  primary: ...,           // keep existing for any other refs
+  lifestyle: orangeRing2, // swap hero bg to the new orange detail shot
+  red: redRing,
+  orange: orangeRing1,
+  orangeAngle: orangeRing3,
+  yellow: yellowRing,
+}
+```
 
-- All server fns use `requireSupabaseAuth`; admin check via `supabase.rpc('has_role', ...)` inside handler for write/list endpoints.
-- Loaders under `_authenticated/` call protected fns; render via `useSuspenseQuery` per project pattern.
-- Validate is client-side Zod against `WeeklyIntelligenceData`; surfaces field errors inline. Upload disabled until valid.
-- Styling tokens per spec: `#FFCD00`, `#080806`, `#111110`, IBM Plex Mono labels, Gotham/Assistant body. Add IBM Plex Mono + Assistant via `<link>` in `__root.tsx` head if not already loaded.
-- DEMO/LIVE toggle: when DEMO, hooks return `mockIntelligence` instead of querying.
-- No Anthropic, no CSV, no Edge Functions, no state machine.
+### `src/routes/tapping-rings.tsx`
+
+- Add an `image` field on each ring in the `rings` array pointing to the matching photo.
+- Replace the `<img src={images.tappingRings.primary} ...>` in the card with `r.image`.
+- Remove the `mixBlendMode: "screen"` (it tints the white background) and the dark inner panel; use a white card image area so the rings read true to color.
+- Update the hero background `<img>` to the new orange ring 2 (or keep lifestyle key now pointing to it).
+- Tighten the card image height to ~220px and use `objectFit: contain` with `padding: 24px` on a white background for a clean product-shot look.
+
+### Result
+
+Each ring card displays its actual product photo (red ring, orange ring, yellow ring), matching the color dot beneath. Hero retains a Pro-Drive-branded ring photo as the atmospheric backdrop.

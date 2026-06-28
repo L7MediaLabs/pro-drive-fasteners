@@ -1,0 +1,74 @@
+id,name,category,subcategory,gauge,crown,angle,finish,point,length_mm,length_in,count,pack_qty,weight_lbs,compatible_tools,notes,active,image_key
+FS-150-5000,"1-1/2"" (38mm) Flooring Staple",Flooring Staples,15.5 GA Hardwood,15.5,,,Electro-Galvanized,Chisel Point,38,"1-1/2""",5000,1,18.2,,,TRUE,staples.gauge155a
+FS-175-5000,"1-3/4"" (44mm) Flooring Staple",Flooring Staples,15.5 GA Hardwood,15.5,,,Electro-Galvanized,Chisel Point,44,"1-3/4""",5000,1,20.4,,,TRUE,staples.gauge155a
+FS-175-9000,"1-3/4"" (44mm) Flooring Staple",Flooring Staples,15.5 GA Hardwood,15.5,,,Electro-Galvanized,Chisel Point,44,"1-3/4""",9000,1,36.9,,,TRUE,staples.gauge155a
+FS-200-5000,"2"" (50mm) Flooring Staple",Flooring Staples,15.5 GA Hardwood,15.5,,,Electro-Galvanized,Chisel Point,50,"2""",5000,1,23.8,,,TRUE,staples.gauge155a
+FS-200-6000,"2"" (50mm) Flooring Staple",Flooring Staples,15.5 GA Hardwood,15.5,,,Electro-Galvanized,Chisel Point,50,"2""",1000,6,28.1,,"1,000 x 6 pack",TRUE,staples.gauge155a
+FS-200-7200,"2"" (50mm) Flooring Staple",Flooring Staples,15.5 GA Hardwood,15.5,,,Electro-Galvanized,Chisel Point,50,"2""",7720,1,35.1,,Contractor Bulk,TRUE,staples.gauge155a
+FS-10300-150,"1-1/2"" (38mm) Flooring Staple",Flooring Staples,15.5 GA Hardwood,15.5,,,Electro-Galvanized,Chisel Point,38,"1-1/2""",10300,1,36.9,,Contractor Bulk,TRUE,staples.gauge155a
+Q21,"2"" (50mm) Q-Wire Staple",Flooring Staples,"15 GA Q-Wire 7/16"" Crown",15,"7/16""",,E-G Galvanized,Chisel Point,50,"2""",5000,1,23.1,Senco SQS55; FASCO F45C; Duo-Fast MS-1580D,,TRUE,staples.gauge15Banner
+Q25,"2-1/2"" (64mm) Q-Wire Staple",Flooring Staples,"15 GA Q-Wire 7/16"" Crown",15,"7/16""",,E-G Galvanized,Chisel Point,64,"2-1/2""",5000,1,29.7,Senco SQS55; FASCO F45C; Duo-Fast MS-1580D,,TRUE,staples.gauge15Banner
+LC150-16,"1-1/2"" (38mm) L-Cleat",L-Cleats,16 GA,16,,,,,38,"1-1/2""",1000,5,,,"1,000 Count x 5 Boxes",TRUE,
+LC175-16,"1-3/4"" (44mm) L-Cleat",L-Cleats,16 GA,16,,,,,44,"1-3/4""",1000,5,,,"1,000 Count x 5 Boxes",TRUE,
+LC200-16,"2"" (50mm) L-Cleat",L-Cleats,16 GA,16,,,,,50,"2""",1000,5,,,"1,000 Count x 5 Boxes",TRUE,
+LC125-18,"1-1/4"" (32mm) L-Cleat",L-Cleats,18 GA,18,,,,,32,"1-1/4""",1000,5,,,"1,000 Count x 5 Boxes",TRUE,
+LC150-18,"1-1/2"" (38mm) L-Cleat",L-Cleats,18 GA,18,,,,,38,"1-1/2""",1000,5,,,"1,000 Count x 5 Boxes",TRUE,
+LC175-18,"1-3/4"" (44mm) L-Cleat",L-Cleats,18 GA,18,,,,,44,"1-3/4""",1000,5,,,"1,000 Count x 5 Boxes",TRUE,
+M1W,M1W® Mallet — Steel Head / White Cap,Mallets & Caps,Mallets,,,,,,,"15""",8,1,2.6,,Packed 8 per carton (20.8 lbs total),TRUE,mallets.m1w
+M5W,M5W® Mallet — Steel Head / White Cap,Mallets & Caps,Mallets,,,,,,,"15""",8,1,3.2,,Packed 8 per carton (25.6 lbs total),TRUE,mallets.m5w
+V-CAP,V-CAP Mallet — White Cap,Mallets & Caps,Mallets,,,,,,,"15""",12,1,1.5,,24 oz; Packed 12 per carton (18 lbs total),TRUE,mallets.vcap
+DHW,DHW® Mallet — Steel Head / Two White Caps,Mallets & Caps,Mallets,,,,,,,"15""",8,1,3.3,,Packed 8 per carton (26.4 lbs total),TRUE,mallets.dhw
+R5W,R5W® Mallet — Steel Head / White Cap,Mallets & Caps,Mallets,,,,,,,"15""",8,1,2.8,,Packed 8 per carton (22.4 lbs total),TRUE,mallets.r5w
+TR-RED,Red Tapping Ring,Tapping Tools,Tapping Rings,,,,,,,,,,,,,TRUE,tappingRings.red
+TR-ORANGE,Orange Tapping Ring,Tapping Tools,Tapping Rings,,,,,,,,,,,,,TRUE,tappingRings.orange
+TR-YELLOW,Yellow Tapping Ring,Tapping Tools,Tapping Rings,,,,,,,,,,,,,TRUE,tappingRings.yellow
+TB-PRO-312,ONE TAP™ Heavy-Duty Tapping Block,Tapping Tools,Tapping Blocks,,,,,,,,5,1,3.0,,48oz; Ergonomic wooden handle; Beveled edges; 5 per carton 15 lbs,TRUE,tappingBlocks.tbPro
+561-TB,561 Tapping Block,Tapping Tools,Tapping Blocks,,,,,,,"3""x7""x3/4""",8,1,0.75,,Plank alignment channels; Beveled edges; 8 per carton 6 lbs,TRUE,tappingBlocks.tb561
+392-TB,Wide Plank Wood Driving Tool,Tapping Tools,Tapping Blocks,,,,,,,"11.5""x4.5""x4""",2,1,3.5,,Use with dead-blow mallets; 2 per carton 7 lbs,TRUE,tappingBlocks.lifestyle
+TDT-S5,Tipper-De-Tipper™ Series 5,Tapping Tools,Tipper-De-Tipper,,,,,,,,,,,All major mallet brands,5-station design; Safest fastest mallet cap replacement,TRUE,tipper.product
+BRAD18,18 GA Brad Nailer,Air Tools,Brad Nailers,18,,,,,,,,1,3.06,,"9.7""x2.4""x9.9""; 70-110 psi; 110 brad capacity; 5/8"" to 2"" range",TRUE,airTools.nailer18
+BRAD16,16 GA Brad Nailer,Air Tools,Brad Nailers,16,,,,,,,,1,4.19,,"10.7""x2.8""x11.1""; 70-110 psi; 100 brad capacity; 1"" to 2-1/2"" range",TRUE,airTools.nailer16
+ORK6-KIT-B,ORK-6 Maintenance Kit,Accessories,Maintenance,,,,,,,,20,1,,All Bostitch 15.5 GA staplers; 16 GA L-Cleat tools,20 per case,TRUE,
+MALLET-DISP,Mallet Display,Accessories,Displays,,,,,,,,8,1,,,Holds up to 8 mallets; Contact sales for availability,TRUE,
+MC750-N11,"3/4"" (19mm) N-Wire Staple",Flooring Staples,"16 GA N-Wire 7/16"" Crown",16,"7/16""",,E-G Galvanized,Chisel Point,19,"3/4""",15000,1,21.0,,,TRUE,
+MC875-N12,"7/8"" (22mm) N-Wire Staple",Flooring Staples,"16 GA N-Wire 7/16"" Crown",16,"7/16""",,E-G Galvanized,Chisel Point,22,"7/8""",15000,1,21.5,,,TRUE,
+MC100-N13,"1"" (25mm) N-Wire Staple",Flooring Staples,"16 GA N-Wire 7/16"" Crown",16,"7/16""",,E-G Galvanized,Chisel Point,25,"1""",12000,1,21.3,,,TRUE,
+MC125-N15,"1-1/4"" (32mm) N-Wire Staple",Flooring Staples,"16 GA N-Wire 7/16"" Crown",16,"7/16""",,E-G Galvanized,Chisel Point,32,"1-1/4""",10000,1,22.0,,,TRUE,
+MC150-N17,"1-1/2"" (38mm) N-Wire Staple",Flooring Staples,"16 GA N-Wire 7/16"" Crown",16,"7/16""",,E-G Galvanized,Chisel Point,38,"1-1/2""",10000,1,25.3,,,TRUE,
+MC200-N21,"2"" (50mm) N-Wire Staple",Flooring Staples,"16 GA N-Wire 7/16"" Crown",16,"7/16""",,E-G Galvanized,Chisel Point,50,"2""",10000,1,34.0,,,TRUE,
+M10BAB58,"5/8"" M-Wire Staple",Flooring Staples,"18 GA M-Wire 3/8"" Crown",18,"3/8""",,E-G Galvanized,Chisel Point,16,"5/8""",5000,10,36.5,,"50,000 total",TRUE,
+M11BAB34,"3/4"" M-Wire Staple",Flooring Staples,"18 GA M-Wire 3/8"" Crown",18,"3/8""",,E-G Galvanized,Chisel Point,19,"3/4""",5000,10,43.7,,"50,000 total",TRUE,
+M12BAB78,"7/8"" M-Wire Staple",Flooring Staples,"18 GA M-Wire 3/8"" Crown",18,"3/8""",,E-G Galvanized,Chisel Point,22,"7/8""",5000,10,23.1,,"50,000 total",TRUE,
+M13BAB100,"1"" M-Wire Staple",Flooring Staples,"18 GA M-Wire 3/8"" Crown",18,"3/8""",,E-G Galvanized,Chisel Point,25,"1""",5000,10,56.4,,"50,000 total",TRUE,
+M15BAB125,"1-1/4"" M-Wire Staple",Flooring Staples,"18 GA M-Wire 3/8"" Crown",18,"3/8""",,E-G Galvanized,Chisel Point,32,"1-1/4""",5000,8,55.3,,"40,000 total",TRUE,
+1824-L11,"3/4"" L-Wire Staple",Flooring Staples,"18 GA L-Wire 1/4"" Crown (Duo-Fast 1800)",18,"1/4""",,E-G Galvanized,Chisel Point,19,"3/4""",5000,8,37.8,Duo-Fast 1800,"40,000 total",TRUE,
+1828-L12,"7/8"" L-Wire Staple",Flooring Staples,"18 GA L-Wire 1/4"" Crown (Duo-Fast 1800)",18,"1/4""",,E-G Galvanized,Chisel Point,22,"7/8""",5000,8,42.0,Duo-Fast 1800,"40,000 total",TRUE,
+1832-L13,"1"" L-Wire Staple",Flooring Staples,"18 GA L-Wire 1/4"" Crown (Duo-Fast 1800)",18,"1/4""",,E-G Galvanized,Chisel Point,25,"1""",5000,8,46.8,Duo-Fast 1800,"40,000 total",TRUE,
+1836-L14,"1-1/8"" L-Wire Staple",Flooring Staples,"18 GA L-Wire 1/4"" Crown (Duo-Fast 1800)",18,"1/4""",,E-G Galvanized,Chisel Point,28,"1-1/8""",5000,8,46.8,Duo-Fast 1800,"40,000 total",TRUE,
+1840-L15,"1-1/4"" L-Wire Staple",Flooring Staples,"18 GA L-Wire 1/4"" Crown (Duo-Fast 1800)",18,"1/4""",,E-G Galvanized,Chisel Point,32,"1-1/4""",5000,8,53.2,Duo-Fast 1800,"40,000 total",TRUE,
+1848-L17,"1-1/2"" L-Wire Staple",Flooring Staples,"18 GA L-Wire 1/4"" Crown (Duo-Fast 1800)",18,"1/4""",,E-G Galvanized,Chisel Point,38,"1-1/2""",5000,8,62.7,Duo-Fast 1800,"40,000 total",TRUE,
+A11-10D,A11 Pad Staple,Divergent Staples,Pad Staples,20,"13/32""",,E-G Galvanized,Chisel Point,10,"3/8"" Leg",5000,20,,Arrow T50; Duo-Fast A-11; Arrow T55; Senco H; Rapid R11,"100,000 total",TRUE,
+5010-D,5010 Pad Staple,Divergent Staples,Pad Staples,20,"1/2""",,E-G Galvanized,Chisel Point,10,"3/8"" Leg",5000,20,,BeA 95; Haubold 900; JK64; Prebena AD; Spotnails 35; Fasco ED-50,"100,000 total",TRUE,
+7512D,7512 Hammer Tacker Staple,Divergent Staples,Hammer Tacker,19,"15/32""",,,,10,"3/8"" Leg",5000,20,,Duo-Fast HT-755; HT-755M,"100,000 total",TRUE,
+5418D,5418 Stair Tread / Carpet Staple,Divergent Staples,Stair Tread,19,"3/16""",,,,14,"9/16"" Leg",5000,20,,Bostitch CR1000E; Cran 625 Pro; Duo-Fast DNS-5424; Fasco F1A 54DF-18,"Available Tan or Gray Crown; 100,000 total",TRUE,
+FN1520-125,"1-1/4"" (32mm) FN Nail",Brads & Finish Nails,15 GA Finish Nails (Bostitch 25°),15,,25°,E-G Galvanized,,32,"1-1/4""",3655,4,,Bostitch,,TRUE,
+FN1524-15O,"1-1/2"" (38mm) FN Nail",Brads & Finish Nails,15 GA Finish Nails (Bostitch 25°),15,,25°,E-G Galvanized,,38,"1-1/2""",3655,4,,Bostitch,,TRUE,
+FN1532-200,"2"" (50mm) FN Nail",Brads & Finish Nails,15 GA Finish Nails (Bostitch 25°),15,,25°,E-G Galvanized,,50,"2""",3655,4,,Bostitch,,TRUE,
+DA13-100,"1"" (25mm) DA Nail",Brads & Finish Nails,15 GA DA Nails (Senco 34°),15,,34°,E-G Galvanized,Chisel,25,"1""",4000,4,24.2,Senco,,TRUE,
+DA25-250SS,"2-1/2"" (64mm) DA Nail — Stainless",Brads & Finish Nails,15 GA DA Nails (Senco 34°),15,,34°,Stainless Steel,Chisel,64,"2-1/2""",4000,4,,Senco,,TRUE,
+CZ10-58,"5/8"" (16mm) Micro Pin",Brads & Finish Nails,23 GA Micro Pins,23,,,E-G Galvanized,,16,"5/8""",4500,24,10.1,,,TRUE,
+CZ13-100,"1"" (25mm) Micro Pin",Brads & Finish Nails,23 GA Micro Pins,23,,,E-G Galvanized,,25,"1""",4500,24,16.0,,,TRUE,
+POLY01-ORG,"2"" Orange Striking Face",Mallets & Caps,Poly Striking Faces,,,,,,,"2""",16,1,,,Hardness: SOFT; 16 per case,TRUE,
+POLY01-RED,"2"" Red Striking Face",Mallets & Caps,Poly Striking Faces,,,,,,,"2""",16,1,,,Hardness: HARD; 16 per case,TRUE,
+POLY01-BLK,"2"" Black Striking Face",Mallets & Caps,Poly Striking Faces,,,,,,,"2""",16,1,,,Hardness: TOUGH; 16 per case,TRUE,
+200L-POLY-O-BR,Poly Dead Blow — Orange & Brown,Mallets & Caps,Dead Blow Mallets,,,,,,,,,,2.2,,"2"" Poly Caps",TRUE,
+200L-POLY-O-BL,Poly Dead Blow — Orange & Black,Mallets & Caps,Dead Blow Mallets,,,,,,,,,,2.2,,"2"" Poly Caps",TRUE,
+23002-150,"1-1/2"" White Hammer Face",Mallets & Caps,Split Head Hammer Faces,,,,,,,"1-1/2""",80,1,,Garland split-head mallets,Non-marring; 80 per case,TRUE,mallets.misc1
+23004-200,"2"" White Hammer Face",Mallets & Caps,Split Head Hammer Faces,,,,,,,"2""",55,1,,Garland split-head mallets,Non-marring; 55 per case,TRUE,mallets.misc1
+BLUE-AIR250-50,E-Z Connect® Blue Braided Hose · 50 ft,Air Tools,Air Hoses,,,,,,,50 ft,20,1,42,,"1/4"" ID · 3/8"" OD; 200 psi max; 20 per carton",TRUE,
+RED-AIR250-50R,E-Z Connect® Red Braided Hose · 50 ft,Air Tools,Air Hoses,,,,,,,50 ft,20,1,42,,"1/4"" ID · 3/8"" OD; 200 psi max; 20 per carton",TRUE,
+AIR-PVC-YELLOW-50,Super-Flex Hybrid PVC Hose · Yellow · 50 ft,Air Tools,Air Hoses,,,,,,,50 ft,12,1,39.1,,300 psi max; 12 per carton,TRUE,
+AIR-MP20M,"Industrial 6-Ball 1/4"" NPT Male",Air Tools,Fittings & Couplers,,,,,,,,10,1,0.43,,10 per bag,TRUE,
+AIR-MIC20F,"Quick Coupler Industrial Nipple Brass 1/4"" NPT Female",Air Tools,Fittings & Couplers,,,,Brass,,,,10,1,2.36,,10 per bag,TRUE,
+AIR-UCB1414,"Brass Splicer for 3/8"" x 1/4"" Hose (Reusable)",Air Tools,Fittings & Couplers,,,,Brass,,,,10,1,1.6,,10 per bag; Reusable,TRUE,
+AIR-SW-MP20M,"360° Swivel Nipple x 1/4"" NPT Male",Air Tools,Fittings & Couplers,,,,,,,,10,1,1.9,,10 per bag,TRUE,

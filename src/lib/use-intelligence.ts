@@ -9,7 +9,7 @@ const KEY = "pd-intel-mode";
 export type IntelMode = "DEMO" | "LIVE";
 
 export function useIntelMode() {
-  const [mode, setModeState] = useState<IntelMode>("LIVE");
+  const [mode, setModeState] = useState<IntelMode>("DEMO");
   useEffect(() => {
     const v = sessionStorage.getItem(KEY);
     if (v === "DEMO" || v === "LIVE") setModeState(v);

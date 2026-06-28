@@ -86,7 +86,7 @@ function TappingRings() {
                 className="flex flex-col"
                 style={{ background: r.bg, border: `1px solid ${r.border}`, borderTop: `3px solid ${r.color}` }}
               >
-                <div style={{ background: "#fff", padding: 24, display: "flex", justifyContent: "center", alignItems: "center", height: 260 }}>
+                <div style={{ background: "#fff", padding: 24, display: "flex", justifyContent: "center", alignItems: "center", height: 260, overflow: "hidden" }}>
                   <img
                     src={r.image}
                     alt={`Pro-Drive ${r.name} ${r.id}`}

@@ -162,3 +162,13 @@ export const images = {
 } as const;
 
 export type ImageManifest = typeof images;
+
+// ─── Video assets (Google Drive embeds) ──────────────────────────────────────
+// Embed pattern: https://drive.google.com/file/d/${id}/preview
+export const videos = {
+  tipper: {
+    commercial_horizon: "1FUMcvs0KySqo0STEFD4a3hxujEZ1-64f",
+    commercial:         "14NTGUSJRl2mKSUi1GzEV3YyVKGGFzfBv",
+    operation_guide:    "18ZAbX4q2OA2QsEN6D_grDtrpMDy786M5",
+  },
+} as const;

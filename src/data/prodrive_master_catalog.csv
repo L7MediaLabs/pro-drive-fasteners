@@ -5,7 +5,7 @@ FS-175-9000,"1-3/4"" (44mm) Flooring Staple",Flooring Staples,15.5 GA Hardwood,1
 FS-200-5000,"2"" (50mm) Flooring Staple",Flooring Staples,15.5 GA Hardwood,15.5,,,Electro-Galvanized,Chisel Point,50,"2""",5000,1,23.8,,,TRUE,staples.gauge155a
 FS-200-6000,"2"" (50mm) Flooring Staple",Flooring Staples,15.5 GA Hardwood,15.5,,,Electro-Galvanized,Chisel Point,50,"2""",1000,6,28.1,,"1,000 x 6 pack",TRUE,staples.gauge155a
 FS-200-7200,"2"" (50mm) Flooring Staple",Flooring Staples,15.5 GA Hardwood,15.5,,,Electro-Galvanized,Chisel Point,50,"2""",7720,1,35.1,,Contractor Bulk,TRUE,staples.gauge155a
-FS-10300-150,"1-1/2"" (38mm) Flooring Staple",Flooring Staples,15.5 GA Hardwood,15.5,,,Electro-Galvanized,Chisel Point,38,"1-1/2""",10300,1,36.9,,Contractor Bulk,TRUE,staples.gauge155a
+FS-150-10300,"1-1/2"" (38mm) Flooring Staple",Flooring Staples,15.5 GA Hardwood,15.5,,,Electro-Galvanized,Chisel Point,38,"1-1/2""",10300,1,36.9,,Contractor Bulk,TRUE,staples.gauge155a
 Q21,"2"" (50mm) Q-Wire Staple",Flooring Staples,"15 GA Q-Wire 7/16"" Crown",15,"7/16""",,E-G Galvanized,Chisel Point,50,"2""",5000,1,23.1,Senco SQS55; FASCO F45C; Duo-Fast MS-1580D,,TRUE,staples.gauge15Banner
 Q25,"2-1/2"" (64mm) Q-Wire Staple",Flooring Staples,"15 GA Q-Wire 7/16"" Crown",15,"7/16""",,E-G Galvanized,Chisel Point,64,"2-1/2""",5000,1,29.7,Senco SQS55; FASCO F45C; Duo-Fast MS-1580D,,TRUE,staples.gauge15Banner
 LC150-16,"1-1/2"" (38mm) L-Cleat",L-Cleats,16 GA,16,,,,,38,"1-1/2""",1000,5,,,"1,000 Count x 5 Boxes",TRUE,
@@ -19,16 +19,16 @@ M5W,M5W® Mallet — Steel Head / White Cap,Mallets & Caps,Mallets,,,,,,,"15""",
 V-CAP,V-CAP Mallet — White Cap,Mallets & Caps,Mallets,,,,,,,"15""",12,1,1.5,,24 oz; Packed 12 per carton (18 lbs total),TRUE,mallets.vcap
 DHW,DHW® Mallet — Steel Head / Two White Caps,Mallets & Caps,Mallets,,,,,,,"15""",8,1,3.3,,Packed 8 per carton (26.4 lbs total),TRUE,mallets.dhw
 R5W,R5W® Mallet — Steel Head / White Cap,Mallets & Caps,Mallets,,,,,,,"15""",8,1,2.8,,Packed 8 per carton (22.4 lbs total),TRUE,mallets.r5w
-TR-RED,Red Tapping Ring,Tapping Tools,Tapping Rings,,,,,,,,,,,,,TRUE,tappingRings.red
-TR-ORANGE,Orange Tapping Ring,Tapping Tools,Tapping Rings,,,,,,,,,,,,,TRUE,tappingRings.orange
-TR-YELLOW,Yellow Tapping Ring,Tapping Tools,Tapping Rings,,,,,,,,,,,,,TRUE,tappingRings.yellow
+V-6RING-R,Red Tapping Ring,Tapping Tools,Tapping Rings,,,,,,,,,,2.1,,,TRUE,tappingRings.red
+V-6RING-O,Orange Tapping Ring,Tapping Tools,Tapping Rings,,,,,,,,,,2.1,,,TRUE,tappingRings.orange
+V-6RING-Y,Yellow Tapping Ring,Tapping Tools,Tapping Rings,,,,,,,,,,2.1,,,TRUE,tappingRings.yellow
 TB-PRO-312,ONE TAP™ Heavy-Duty Tapping Block,Tapping Tools,Tapping Blocks,,,,,,,,5,1,3.0,,48oz; Ergonomic wooden handle; Beveled edges; 5 per carton 15 lbs,TRUE,tappingBlocks.tbPro
 561-TB,561 Tapping Block,Tapping Tools,Tapping Blocks,,,,,,,"3""x7""x3/4""",8,1,0.75,,Plank alignment channels; Beveled edges; 8 per carton 6 lbs,TRUE,tappingBlocks.tb561
 392-TB,Wide Plank Wood Driving Tool,Tapping Tools,Tapping Blocks,,,,,,,"11.5""x4.5""x4""",2,1,3.5,,Use with dead-blow mallets; 2 per carton 7 lbs,TRUE,tappingBlocks.lifestyle
 TDT-S5,Tipper-De-Tipper™ Series 5,Tapping Tools,Tipper-De-Tipper,,,,,,,,,,,All major mallet brands,5-station design; Safest fastest mallet cap replacement,TRUE,tipper.product
 BRAD18,18 GA Brad Nailer,Air Tools,Brad Nailers,18,,,,,,,,1,3.06,,"9.7""x2.4""x9.9""; 70-110 psi; 110 brad capacity; 5/8"" to 2"" range",TRUE,airTools.nailer18
 BRAD16,16 GA Brad Nailer,Air Tools,Brad Nailers,16,,,,,,,,1,4.19,,"10.7""x2.8""x11.1""; 70-110 psi; 100 brad capacity; 1"" to 2-1/2"" range",TRUE,airTools.nailer16
-ORK6-KIT-B,ORK-6 Maintenance Kit,Accessories,Maintenance,,,,,,,,20,1,,All Bostitch 15.5 GA staplers; 16 GA L-Cleat tools,20 per case,TRUE,
+ORK-6-KIT-B,ORK-6 Maintenance Kit,Accessories,Maintenance,,,,,,,,20,1,,All Bostitch 15.5 GA staplers; 16 GA L-Cleat tools,"20 per case; Models: MIII, MIIIFN, MIIIFS, MIII886, MIII812, MFIII, BTFP12569, DWMIIIFN Type 0 & 1",TRUE,
 MALLET-DISP,Mallet Display,Accessories,Displays,,,,,,,,8,1,,,Holds up to 8 mallets; Contact sales for availability,TRUE,
 MC750-N11,"3/4"" (19mm) N-Wire Staple",Flooring Staples,"16 GA N-Wire 7/16"" Crown",16,"7/16""",,E-G Galvanized,Chisel Point,19,"3/4""",15000,1,21.0,,,TRUE,
 MC875-N12,"7/8"" (22mm) N-Wire Staple",Flooring Staples,"16 GA N-Wire 7/16"" Crown",16,"7/16""",,E-G Galvanized,Chisel Point,22,"7/8""",15000,1,21.5,,,TRUE,
@@ -58,9 +58,9 @@ DA13-100,"1"" (25mm) DA Nail",Brads & Finish Nails,15 GA DA Nails (Senco 34°),1
 DA25-250SS,"2-1/2"" (64mm) DA Nail — Stainless",Brads & Finish Nails,15 GA DA Nails (Senco 34°),15,,34°,Stainless Steel,Chisel,64,"2-1/2""",4000,4,,Senco,,TRUE,
 CZ10-58,"5/8"" (16mm) Micro Pin",Brads & Finish Nails,23 GA Micro Pins,23,,,E-G Galvanized,,16,"5/8""",4500,24,10.1,,,TRUE,
 CZ13-100,"1"" (25mm) Micro Pin",Brads & Finish Nails,23 GA Micro Pins,23,,,E-G Galvanized,,25,"1""",4500,24,16.0,,,TRUE,
-POLY01-ORG,"2"" Orange Striking Face",Mallets & Caps,Poly Striking Faces,,,,,,,"2""",16,1,,,Hardness: SOFT; 16 per case,TRUE,
-POLY01-RED,"2"" Red Striking Face",Mallets & Caps,Poly Striking Faces,,,,,,,"2""",16,1,,,Hardness: HARD; 16 per case,TRUE,
-POLY01-BLK,"2"" Black Striking Face",Mallets & Caps,Poly Striking Faces,,,,,,,"2""",16,1,,,Hardness: TOUGH; 16 per case,TRUE,
+POLY01-ORG,"2"" Poly Striking Face — SOFT (Orange)",Mallets & Caps,Poly Striking Faces,,,,,,,"2""",16,1,,,Hardness: SOFT; 16 per case,TRUE,
+POLY01-RED,"2"" Poly Striking Face — HARD (Red)",Mallets & Caps,Poly Striking Faces,,,,,,,"2""",16,1,,,Hardness: HARD; 16 per case,TRUE,
+POLY01-BLK,"2"" Poly Striking Face — TOUGH (Black)",Mallets & Caps,Poly Striking Faces,,,,,,,"2""",16,1,,,Hardness: TOUGH; 16 per case,TRUE,
 200L-POLY-O-BR,Poly Dead Blow — Orange & Brown,Mallets & Caps,Dead Blow Mallets,,,,,,,,,,2.2,,"2"" Poly Caps",TRUE,
 200L-POLY-O-BL,Poly Dead Blow — Orange & Black,Mallets & Caps,Dead Blow Mallets,,,,,,,,,,2.2,,"2"" Poly Caps",TRUE,
 23002-150,"1-1/2"" White Hammer Face",Mallets & Caps,Split Head Hammer Faces,,,,,,,"1-1/2""",80,1,,Garland split-head mallets,Non-marring; 80 per case,TRUE,mallets.misc1
@@ -104,6 +104,17 @@ CZ10-58-10,"5/8"" Micro Pin — Job Pack",Brads & Finish Nails,23 GA Micro Pins,
 CZ-11-34-10,"3/4"" Micro Pin — Job Pack",Brads & Finish Nails,23 GA Micro Pins,23,,,E-G Galvanized,,19,"3/4""",10000,48,48.1,,Job Pack,TRUE,
 CZ13-100-10,"1"" Micro Pin — Job Pack",Brads & Finish Nails,23 GA Micro Pins,23,,,E-G Galvanized,,25,"1""",10000,48,69.0,,Job Pack,TRUE,
 CZ16-138-10,"1-3/8"" Micro Pin — Job Pack",Brads & Finish Nails,23 GA Micro Pins,23,,,E-G Galvanized,,35,"1-3/8""",10000,24,45.5,,Job Pack,TRUE,
-100-V-CAP,"White 2"" V-Cap",Mallets & Caps,Mallet Caps,,,,,,,"2""",,,,,Pro-Angle™ Design; For engineered flooring,TRUE,
-CAP601B,"Black 2-1/2"" Cap",Mallets & Caps,Mallet Caps,,,,,,,"2-1/2""",,,,,For standard rubber cap mallets,TRUE,
-GRAY-V-CAP,Gray V-Cap,Mallets & Caps,Mallet Caps,,,,,,,,,,,,For 24oz mallet,TRUE,
+100-V-CAP,"White V-Cap for 24oz Mallet 2""",Mallets & Caps,Mallet Caps,,,,,,,"2""",,,,,Pro-Angle™ Design; For engineered flooring,TRUE,
+CAP601B,"Black Mallet Cap 2-1/2""",Mallets & Caps,Mallet Caps,,,,,,,"2-1/2""",,,,,For standard rubber cap mallets,TRUE,
+CAP602G,"Gray Mallet Cap 2-1/2""",Mallets & Caps,Mallet Caps,,,,,,,,,,,,For 24oz mallet,TRUE,
+POLY01-BRO,"2"" Poly Striking Face — SOFT/MED (Brown)",Mallets & Caps,Poly Striking Faces,,,,,,,"2""",16,1,,,"Hardness: SOFT/MED; 16 per case; 3/8"" x 16 thread",TRUE,
+POLY01-GRE,"2"" Poly Striking Face — MEDIUM (Green)",Mallets & Caps,Poly Striking Faces,,,,,,,"2""",16,1,,,Hardness: MEDIUM; 16 per case,TRUE,
+200L-2000,Dead Blow Mallet — Replace Inserts,Mallets & Caps,Dead Blow Mallets,,,,,,,,,,,,Replacement inserts for 200L series dead blow mallets,TRUE,
+200L-1000,Dead Blow Mallet — Steel Replacement Shot,Mallets & Caps,Dead Blow Mallets,,,,,,,,,,,,Steel shot replacement for 200L series dead blow mallets,TRUE,
+200L-POLY-O-G,Poly Dead Blow — Orange & Green,Mallets & Caps,Dead Blow Mallets,,,,,,,,,,2.2,,Special Order Only,TRUE,
+200L-POLY-BR-BR,Poly Dead Blow — Brown & Brown,Mallets & Caps,Dead Blow Mallets,,,,,,,,,,2.2,,Special Order Only,TRUE,
+CAP600PA,"Pro-Angle™ Mallet Cap — White 2-1/2""",Mallets & Caps,Mallet Caps,,,,,,,"2-1/2""",,,,All major rubber cap mallets,Pro-Angle design; Improved edge clearance; faster installation; Patented E-Z 2CAP design,TRUE,
+CAP600W,"White Mallet Cap 2-1/2""",Mallets & Caps,Mallet Caps,,,,,,,"2-1/2""",,,,All major rubber cap mallets,Patented E-Z 2CAP design; 30-second install,TRUE,
+BLUE-AIR250-100,E-Z Connect® Blue Braided Hose · 100 ft,Air Tools,Air Hoses,,,,,,,100 ft,20,1,,,"1/4"" ID · 3/8"" OD; 200 psi max",TRUE,
+YELLOW-CH14,"1/4"" NPT Hose Barb Fitting",Air Tools,Fittings & Couplers,,,,,,,,10,1,12.4,,For Super-Flex Yellow hose; 10 per bag,TRUE,
+YELLOW-FE14,"1/4"" Ferrule",Air Tools,Fittings & Couplers,,,,,,,,10,1,7.2,,For Super-Flex Yellow hose; 10 per bag,TRUE,

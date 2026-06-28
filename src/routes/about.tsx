@@ -45,7 +45,7 @@ function About() {
               <div className="pd-display" style={{ fontSize: 32, color: "var(--pd-dark)" }}>
                 {s.v}
               </div>
-              <div className="pd-label mt-1" style={{ color: "var(--pd-gold)" }}>{s.l}</div>
+              <div className="pd-label mt-1" style={{ color: "rgba(25,20,0,0.6)" }}>{s.l}</div>
             </div>
           ))}
         </div>
@@ -53,8 +53,8 @@ function About() {
 
       <section className="px-[6%] py-20 text-center" style={{ background: "var(--pd-dark)" }}>
         <p className="pd-display text-white mx-auto max-w-4xl" style={{ fontSize: "clamp(28px, 4.5vw, 48px)", lineHeight: 1.15 }}>
-          We don't follow trends — we set higher standards.<br />
-          <span style={{ color: "var(--pd-yellow)" }}>Don't compromise. Drive performance with Pro-Drive Fasteners.</span>
+          We don't follow the standards —<br />we set them.<br />
+          <span style={{ color: "var(--pd-yellow)" }}>Drive performance with Pro-Drive Fasteners®.</span>
         </p>
       </section>
     </div>

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { PageHeader } from "../components/PageHeader";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -15,13 +16,20 @@ export const Route = createFileRoute("/contact")({
 function Contact() {
   const [sent, setSent] = useState(false);
 
-  function handle(e: FormEvent<HTMLFormElement>) {
+  async function handle(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const data = Object.fromEntries(new FormData(e.currentTarget).entries());
-    // Phase 1: log only
-    console.log("Pro-Drive contact submission:", data);
+    const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form).entries());
+    await supabase.from("contact_submissions").insert({
+      name: String(data.name),
+      company: String(data.company),
+      email: String(data.email),
+      phone: String(data.phone ?? ""),
+      interest: String(data.interest ?? ""),
+      message: String(data.message ?? ""),
+    });
     setSent(true);
-    e.currentTarget.reset();
+    form.reset();
     setTimeout(() => setSent(false), 5000);
   }
 

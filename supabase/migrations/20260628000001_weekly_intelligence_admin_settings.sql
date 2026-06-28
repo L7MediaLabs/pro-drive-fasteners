@@ -1,60 +1,31 @@
--- =========================================================
--- weekly_intelligence table
--- Missing from schema — required for dashboard LIVE mode
--- =========================================================
-
-CREATE TABLE public.weekly_intelligence (
-  id           UUID        NOT NULL DEFAULT gen_random_uuid() PRIMARY KEY,
-  week_of      DATE        NOT NULL UNIQUE,
-  uploaded_by  UUID        REFERENCES auth.users(id) ON DELETE SET NULL,
-  uploaded_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
-  data         JSONB       NOT NULL,
-  created_at   TIMESTAMPTZ NOT NULL DEFAULT now(),
-  updated_at   TIMESTAMPTZ NOT NULL DEFAULT now()
-);
-
-GRANT SELECT, INSERT, UPDATE, DELETE ON public.weekly_intelligence TO authenticated;
-GRANT ALL ON public.weekly_intelligence TO service_role;
-
-ALTER TABLE public.weekly_intelligence ENABLE ROW LEVEL SECURITY;
-
-CREATE POLICY "Admins manage weekly intelligence"
-  ON public.weekly_intelligence
-  FOR ALL TO authenticated
-  USING  (public.has_role(auth.uid(), 'admin'))
-  WITH CHECK (public.has_role(auth.uid(), 'admin'));
-
-CREATE TRIGGER weekly_intelligence_set_updated_at
-  BEFORE UPDATE ON public.weekly_intelligence
-  FOR EACH ROW EXECUTE FUNCTION public.update_updated_at_column();
-
-CREATE INDEX idx_weekly_intelligence_week_of
-  ON public.weekly_intelligence (week_of DESC);
-
--- =========================================================
--- admin_settings table
--- Required for recipient management (saveRecipients fn)
--- =========================================================
-
-CREATE TABLE IF NOT EXISTS public.admin_settings (
+-- contact_submissions table
+-- Captures form submissions from the public /contact page
+CREATE TABLE IF NOT EXISTS public.contact_submissions (
   id          UUID        NOT NULL DEFAULT gen_random_uuid() PRIMARY KEY,
-  recipients  JSONB       NOT NULL DEFAULT '[]'::jsonb,
-  created_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
-  updated_at  TIMESTAMPTZ NOT NULL DEFAULT now()
+  name        TEXT        NOT NULL,
+  company     TEXT        NOT NULL,
+  email       TEXT        NOT NULL,
+  phone       TEXT,
+  interest    TEXT,
+  message     TEXT,
+  created_at  TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
-GRANT SELECT, INSERT, UPDATE ON public.admin_settings TO authenticated;
-GRANT ALL ON public.admin_settings TO service_role;
+GRANT INSERT ON public.contact_submissions TO anon, authenticated;
+GRANT SELECT, UPDATE, DELETE ON public.contact_submissions TO authenticated;
+GRANT ALL ON public.contact_submissions TO service_role;
 
-ALTER TABLE public.admin_settings ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.contact_submissions ENABLE ROW LEVEL SECURITY;
 
-CREATE POLICY "Admins manage admin settings"
-  ON public.admin_settings
-  FOR ALL TO authenticated
-  USING  (public.has_role(auth.uid(), 'admin'))
-  WITH CHECK (public.has_role(auth.uid(), 'admin'));
+-- Anyone can submit (public form)
+CREATE POLICY "Anyone can submit contact form"
+  ON public.contact_submissions FOR INSERT TO anon, authenticated
+  WITH CHECK (true);
 
-CREATE TRIGGER admin_settings_set_updated_at
-  BEFORE UPDATE ON public.admin_settings
-  FOR EACH ROW EXECUTE FUNCTION public.update_updated_at_column();
+-- Only admins can read submissions
+CREATE POLICY "Admins can read contact submissions"
+  ON public.contact_submissions FOR SELECT TO authenticated
+  USING (public.has_role(auth.uid(), 'admin'));
 
+CREATE INDEX idx_contact_submissions_created
+  ON public.contact_submissions (created_at DESC);

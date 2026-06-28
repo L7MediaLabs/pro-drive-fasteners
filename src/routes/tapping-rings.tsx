@@ -23,6 +23,7 @@ const rings = [
     bg: "rgba(180,30,30,0.15)",
     border: "rgba(200,50,50,0.25)",
     image: images.tappingRings.red,
+    scale: 1,
     best: "Parquet · Glue-Down Vinyl · Laminate",
     bullets: ["Works great for most types of flooring", "Made from highly durable urethane"],
   },
@@ -33,6 +34,7 @@ const rings = [
     bg: "rgba(180,90,20,0.15)",
     border: "rgba(200,100,30,0.25)",
     image: images.tappingRings.orange1,
+    scale: 1.35,
     best: "Most flooring types",
     bullets: ["Softened density increases surface grip", "Exceptional control and positioning", "Guaranteed non-marring"],
   },
@@ -43,6 +45,7 @@ const rings = [
     bg: "rgba(200,160,0,0.15)",
     border: "rgba(220,180,0,0.25)",
     image: images.tappingRings.logo,
+    scale: 1,
     best: "Wide plank · Precision applications",
     bullets: ["Compact, ergonomic, lightweight", "Unrivaled precision and control", "Goes where traditional mallets cannot"],
   },
@@ -88,7 +91,7 @@ function TappingRings() {
                     src={r.image}
                     alt={`Pro-Drive ${r.name} ${r.id}`}
                     loading="lazy"
-                    style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }}
+                    style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain", transform: `scale(${r.scale})` }}
                   />
                 </div>
                 <div className="p-6">

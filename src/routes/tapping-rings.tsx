@@ -53,7 +53,7 @@ function TappingRings() {
     <div>
       <section className="px-[6%] pt-20 pb-12 relative overflow-hidden" style={{ background: "var(--pd-dark)" }}>
         <img
-          src={images.tappingRings.lifestyle}
+          src={images.tappingRings.orange2}
           alt=""
           aria-hidden
           style={{
@@ -83,12 +83,12 @@ function TappingRings() {
                 className="flex flex-col"
                 style={{ background: r.bg, border: `1px solid ${r.border}`, borderTop: `3px solid ${r.color}` }}
               >
-                <div style={{ background: "rgba(0,0,0,0.25)", padding: 16, display: "flex", justifyContent: "center", alignItems: "center", height: 200 }}>
+                <div style={{ background: "#fff", padding: 24, display: "flex", justifyContent: "center", alignItems: "center", height: 260 }}>
                   <img
-                    src={images.tappingRings.primary}
+                    src={r.image}
                     alt={`Pro-Drive ${r.name} ${r.id}`}
                     loading="lazy"
-                    style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain", mixBlendMode: "screen" }}
+                    style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }}
                   />
                 </div>
                 <div className="p-6">

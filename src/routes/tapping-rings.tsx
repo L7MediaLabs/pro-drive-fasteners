@@ -22,6 +22,7 @@ const rings = [
     color: "#C83228",
     bg: "rgba(180,30,30,0.15)",
     border: "rgba(200,50,50,0.25)",
+    image: images.tappingRings.red,
     best: "Parquet · Glue-Down Vinyl · Laminate",
     bullets: ["Works great for most types of flooring", "Made from highly durable urethane"],
   },
@@ -31,6 +32,7 @@ const rings = [
     color: "#E07020",
     bg: "rgba(180,90,20,0.15)",
     border: "rgba(200,100,30,0.25)",
+    image: images.tappingRings.orange1,
     best: "Most flooring types",
     bullets: ["Softened density increases surface grip", "Exceptional control and positioning", "Guaranteed non-marring"],
   },
@@ -40,6 +42,7 @@ const rings = [
     color: "#FFCD00",
     bg: "rgba(200,160,0,0.15)",
     border: "rgba(220,180,0,0.25)",
+    image: images.tappingRings.logo,
     best: "Wide plank · Precision applications",
     bullets: ["Compact, ergonomic, lightweight", "Unrivaled precision and control", "Goes where traditional mallets cannot"],
   },
@@ -50,7 +53,7 @@ function TappingRings() {
     <div>
       <section className="px-[6%] pt-20 pb-12 relative overflow-hidden" style={{ background: "var(--pd-dark)" }}>
         <img
-          src={images.tappingRings.lifestyle}
+          src={images.tappingRings.orange2}
           alt=""
           aria-hidden
           style={{
@@ -80,12 +83,12 @@ function TappingRings() {
                 className="flex flex-col"
                 style={{ background: r.bg, border: `1px solid ${r.border}`, borderTop: `3px solid ${r.color}` }}
               >
-                <div style={{ background: "rgba(0,0,0,0.25)", padding: 16, display: "flex", justifyContent: "center", alignItems: "center", height: 200 }}>
+                <div style={{ background: "#fff", padding: 24, display: "flex", justifyContent: "center", alignItems: "center", height: 260 }}>
                   <img
-                    src={images.tappingRings.primary}
+                    src={r.image}
                     alt={`Pro-Drive ${r.name} ${r.id}`}
                     loading="lazy"
-                    style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain", mixBlendMode: "screen" }}
+                    style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }}
                   />
                 </div>
                 <div className="p-6">

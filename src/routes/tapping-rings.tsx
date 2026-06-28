@@ -91,7 +91,7 @@ function TappingRings() {
                     src={r.image}
                     alt={`Pro-Drive ${r.name} ${r.id}`}
                     loading="lazy"
-                    style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }}
+                    style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain", transform: `scale(${r.scale})` }}
                   />
                 </div>
                 <div className="p-6">

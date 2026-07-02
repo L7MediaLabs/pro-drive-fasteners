@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
-    "build:dev": "vite build --mode development",
+    "build": "vite build && node scripts/verify-preview.mjs",
+    "build:dev": "vite build --mode development && node scripts/verify-preview.mjs",
     "preview": "vite preview",
+    "verify:preview": "node scripts/verify-preview.mjs",
     "lint": "eslint .",
     "format": "prettier --write ."
   },

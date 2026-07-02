@@ -3,6 +3,26 @@
 // To update products: edit the CSV, commit, Lovable/Netlify rebuilds automatically.
 
 import type { Product } from "@/components/ProductCard";
+import { images } from "./images";
+
+// ─── image_key resolver ───────────────────────────────────────────────────────
+// Resolves dot-path keys like "lCleats.lc175_16" against the images manifest.
+// Returns undefined for empty/unknown keys — ProductCard falls back gracefully.
+function resolveImage(key: string): string | undefined {
+  if (!key) return undefined;
+  const parts = key.trim().split(".");
+  let node: unknown = images;
+  for (const p of parts) {
+    if (node && typeof node === "object" && p in (node as Record<string, unknown>)) {
+      node = (node as Record<string, unknown>)[p];
+    } else {
+      return undefined;
+    }
+  }
+  // Arrays (e.g. galleher) → first frame; only strings are valid srcs
+  if (Array.isArray(node)) node = node[0];
+  return typeof node === "string" ? node : undefined;
+}
 
 // ─── CSV loader ───────────────────────────────────────────────────────────────
 
@@ -61,6 +81,7 @@ function toProduct(row: Record<string, string>): Product {
     name:  row.name,
     specs: specs.length ? specs : undefined,
     pack:  pack || undefined,
+    image: resolveImage(row.image_key),
   };
 }
 

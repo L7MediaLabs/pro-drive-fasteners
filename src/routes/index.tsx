@@ -1,10 +1,47 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import instagramDisplay from "../assets/instagram-display.png.asset.json";
 import instagramInstall1 from "../assets/instagram-install-1.png.asset.json";
 import instagramInstall2 from "../assets/instagram-install-2.png.asset.json";
 import instagramRingCloseup from "../assets/instagram-ring-closeup.png.asset.json";
 import instagramTools from "../assets/instagram-tools.png.asset.json";
 import { images } from "../data/images";
+
+const heroSlides = [
+  { src: images.mallets.hero, position: "center" },
+  { src: images.lCleats.lifestyle, position: "center" },
+  { src: images.tappingRings.orange2, position: "center" },
+] as const;
+
+function HeroSlider() {
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setIndex((i) => (i + 1) % heroSlides.length), 5500);
+    return () => clearInterval(id);
+  }, []);
+  return (
+    <>
+      {heroSlides.map((s, i) => (
+        <img
+          key={i}
+          src={s.src}
+          alt=""
+          aria-hidden
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: s.position,
+            opacity: i === index ? 0.35 : 0,
+            transition: "opacity 1.4s ease-in-out",
+          }}
+        />
+      ))}
+    </>
+  );
+}
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -82,20 +119,7 @@ function Home() {
         }}
         className="flex flex-col justify-end"
       >
-        <img
-          src={images.mallets.hero}
-          alt=""
-          aria-hidden
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "center",
-            opacity: 0.35,
-          }}
-        />
+        <HeroSlider />
         <div
           aria-hidden
           style={{

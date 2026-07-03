@@ -119,20 +119,7 @@ function Home() {
         }}
         className="flex flex-col justify-end"
       >
-        <img
-          src={images.mallets.hero}
-          alt=""
-          aria-hidden
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "center",
-            opacity: 0.35,
-          }}
-        />
+        <HeroSlider />
         <div
           aria-hidden
           style={{

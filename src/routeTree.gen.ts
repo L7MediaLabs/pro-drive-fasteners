@@ -16,6 +16,7 @@ import { Route as TappingBlocksRouteImport } from './routes/tapping-blocks'
 import { Route as StaplesRouteImport } from './routes/staples'
 import { Route as SplitHeadHammerFacesRouteImport } from './routes/split-head-hammer-faces'
 import { Route as ProductsRouteImport } from './routes/products'
+import { Route as McpRouteImport } from './routes/mcp'
 import { Route as MalletsRouteImport } from './routes/mallets'
 import { Route as LCleatsRouteImport } from './routes/l-cleats'
 import { Route as DivergentStaplesRouteImport } from './routes/divergent-staples'
@@ -27,6 +28,8 @@ import { Route as AccessoriesRouteImport } from './routes/accessories'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
+import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as AuthenticatedAdminRouteRouteImport } from './routes/_authenticated/admin/route'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin/index'
 import { Route as AuthenticatedAdminSettingsRouteImport } from './routes/_authenticated/admin/settings'
@@ -34,6 +37,7 @@ import { Route as AuthenticatedAdminReportsRouteImport } from './routes/_authent
 import { Route as AuthenticatedAdminProductsRouteImport } from './routes/_authenticated/admin/products'
 import { Route as AuthenticatedAdminLeadsRouteImport } from './routes/_authenticated/admin/leads'
 import { Route as AuthenticatedAdminDashboardRouteImport } from './routes/_authenticated/admin/dashboard'
+import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 
 const VideosRoute = VideosRouteImport.update({
   id: '/videos',
@@ -68,6 +72,11 @@ const SplitHeadHammerFacesRoute = SplitHeadHammerFacesRouteImport.update({
 const ProductsRoute = ProductsRouteImport.update({
   id: '/products',
   path: '/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const McpRoute = McpRouteImport.update({
+  id: '/mcp',
+  path: '/mcp',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MalletsRoute = MalletsRouteImport.update({
@@ -124,6 +133,18 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Char91DotwellKnownChar93OauthProtectedResourceRoute =
+  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
+    id: '/.well-known/oauth-protected-resource',
+    path: '/.well-known/oauth-protected-resource',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char91DotmcpChar93ListToolsRoute =
+  Char91DotmcpChar93ListToolsRouteImport.update({
+    id: '/.mcp/list-tools',
+    path: '/.mcp/list-tools',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const AuthenticatedAdminRouteRoute = AuthenticatedAdminRouteRouteImport.update({
   id: '/admin',
   path: '/admin',
@@ -163,6 +184,12 @@ const AuthenticatedAdminDashboardRoute =
     path: '/dashboard',
     getParentRoute: () => AuthenticatedAdminRouteRoute,
   } as any)
+const Char91DotmcpChar93InvokeToolToolRoute =
+  Char91DotmcpChar93InvokeToolToolRouteImport.update({
+    id: '/.mcp/invoke-tool/$tool',
+    path: '/.mcp/invoke-tool/$tool',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -175,6 +202,7 @@ export interface FileRoutesByFullPath {
   '/divergent-staples': typeof DivergentStaplesRoute
   '/l-cleats': typeof LCleatsRoute
   '/mallets': typeof MalletsRoute
+  '/mcp': typeof McpRoute
   '/products': typeof ProductsRoute
   '/split-head-hammer-faces': typeof SplitHeadHammerFacesRoute
   '/staples': typeof StaplesRoute
@@ -183,6 +211,9 @@ export interface FileRoutesByFullPath {
   '/tipper-de-tipper': typeof TipperDeTipperRoute
   '/videos': typeof VideosRoute
   '/admin': typeof AuthenticatedAdminRouteRouteWithChildren
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
   '/admin/leads': typeof AuthenticatedAdminLeadsRoute
   '/admin/products': typeof AuthenticatedAdminProductsRoute
@@ -201,6 +232,7 @@ export interface FileRoutesByTo {
   '/divergent-staples': typeof DivergentStaplesRoute
   '/l-cleats': typeof LCleatsRoute
   '/mallets': typeof MalletsRoute
+  '/mcp': typeof McpRoute
   '/products': typeof ProductsRoute
   '/split-head-hammer-faces': typeof SplitHeadHammerFacesRoute
   '/staples': typeof StaplesRoute
@@ -208,6 +240,9 @@ export interface FileRoutesByTo {
   '/tapping-rings': typeof TappingRingsRoute
   '/tipper-de-tipper': typeof TipperDeTipperRoute
   '/videos': typeof VideosRoute
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
   '/admin/leads': typeof AuthenticatedAdminLeadsRoute
   '/admin/products': typeof AuthenticatedAdminProductsRoute
@@ -228,6 +263,7 @@ export interface FileRoutesById {
   '/divergent-staples': typeof DivergentStaplesRoute
   '/l-cleats': typeof LCleatsRoute
   '/mallets': typeof MalletsRoute
+  '/mcp': typeof McpRoute
   '/products': typeof ProductsRoute
   '/split-head-hammer-faces': typeof SplitHeadHammerFacesRoute
   '/staples': typeof StaplesRoute
@@ -236,6 +272,9 @@ export interface FileRoutesById {
   '/tipper-de-tipper': typeof TipperDeTipperRoute
   '/videos': typeof VideosRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRouteRouteWithChildren
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/_authenticated/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
   '/_authenticated/admin/leads': typeof AuthenticatedAdminLeadsRoute
   '/_authenticated/admin/products': typeof AuthenticatedAdminProductsRoute
@@ -256,6 +295,7 @@ export interface FileRouteTypes {
     | '/divergent-staples'
     | '/l-cleats'
     | '/mallets'
+    | '/mcp'
     | '/products'
     | '/split-head-hammer-faces'
     | '/staples'
@@ -264,6 +304,9 @@ export interface FileRouteTypes {
     | '/tipper-de-tipper'
     | '/videos'
     | '/admin'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
+    | '/.mcp/invoke-tool/$tool'
     | '/admin/dashboard'
     | '/admin/leads'
     | '/admin/products'
@@ -282,6 +325,7 @@ export interface FileRouteTypes {
     | '/divergent-staples'
     | '/l-cleats'
     | '/mallets'
+    | '/mcp'
     | '/products'
     | '/split-head-hammer-faces'
     | '/staples'
@@ -289,6 +333,9 @@ export interface FileRouteTypes {
     | '/tapping-rings'
     | '/tipper-de-tipper'
     | '/videos'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
+    | '/.mcp/invoke-tool/$tool'
     | '/admin/dashboard'
     | '/admin/leads'
     | '/admin/products'
@@ -308,6 +355,7 @@ export interface FileRouteTypes {
     | '/divergent-staples'
     | '/l-cleats'
     | '/mallets'
+    | '/mcp'
     | '/products'
     | '/split-head-hammer-faces'
     | '/staples'
@@ -316,6 +364,9 @@ export interface FileRouteTypes {
     | '/tipper-de-tipper'
     | '/videos'
     | '/_authenticated/admin'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
+    | '/.mcp/invoke-tool/$tool'
     | '/_authenticated/admin/dashboard'
     | '/_authenticated/admin/leads'
     | '/_authenticated/admin/products'
@@ -336,6 +387,7 @@ export interface RootRouteChildren {
   DivergentStaplesRoute: typeof DivergentStaplesRoute
   LCleatsRoute: typeof LCleatsRoute
   MalletsRoute: typeof MalletsRoute
+  McpRoute: typeof McpRoute
   ProductsRoute: typeof ProductsRoute
   SplitHeadHammerFacesRoute: typeof SplitHeadHammerFacesRoute
   StaplesRoute: typeof StaplesRoute
@@ -343,6 +395,9 @@ export interface RootRouteChildren {
   TappingRingsRoute: typeof TappingRingsRoute
   TipperDeTipperRoute: typeof TipperDeTipperRoute
   VideosRoute: typeof VideosRoute
+  Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
+  Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -394,6 +449,13 @@ declare module '@tanstack/react-router' {
       path: '/products'
       fullPath: '/products'
       preLoaderRoute: typeof ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mcp': {
+      id: '/mcp'
+      path: '/mcp'
+      fullPath: '/mcp'
+      preLoaderRoute: typeof McpRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mallets': {
@@ -473,6 +535,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/.well-known/oauth-protected-resource': {
+      id: '/.well-known/oauth-protected-resource'
+      path: '/.well-known/oauth-protected-resource'
+      fullPath: '/.well-known/oauth-protected-resource'
+      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.mcp/list-tools': {
+      id: '/.mcp/list-tools'
+      path: '/.mcp/list-tools'
+      fullPath: '/.mcp/list-tools'
+      preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated/admin': {
       id: '/_authenticated/admin'
       path: '/admin'
@@ -521,6 +597,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/admin/dashboard'
       preLoaderRoute: typeof AuthenticatedAdminDashboardRouteImport
       parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/.mcp/invoke-tool/$tool': {
+      id: '/.mcp/invoke-tool/$tool'
+      path: '/.mcp/invoke-tool/$tool'
+      fullPath: '/.mcp/invoke-tool/$tool'
+      preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
 }
@@ -572,6 +655,7 @@ const rootRouteChildren: RootRouteChildren = {
   DivergentStaplesRoute: DivergentStaplesRoute,
   LCleatsRoute: LCleatsRoute,
   MalletsRoute: MalletsRoute,
+  McpRoute: McpRoute,
   ProductsRoute: ProductsRoute,
   SplitHeadHammerFacesRoute: SplitHeadHammerFacesRoute,
   StaplesRoute: StaplesRoute,
@@ -579,6 +663,10 @@ const rootRouteChildren: RootRouteChildren = {
   TappingRingsRoute: TappingRingsRoute,
   TipperDeTipperRoute: TipperDeTipperRoute,
   VideosRoute: VideosRoute,
+  Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
+  Char91DotwellKnownChar93OauthProtectedResourceRoute:
+    Char91DotwellKnownChar93OauthProtectedResourceRoute,
+  Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

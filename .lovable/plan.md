@@ -1,42 +1,34 @@
-## Fix the Tapping Rings page imagery
+## Imagery overhaul — working plan
 
-The cards on `/tapping-rings` currently show the yellow tapping *block* image for all three rings. Swap in the actual ring photos the client just provided.
+We'll walk the product catalog section by section. For each one I'll: (1) audit what's currently mapped on the page, (2) take the new photos you send, (3) upload them to the Lovable CDN, (4) remap `src/data/images.ts` and the route file so the right photo lands in the right slot, (5) remove/retire any old renders that were mis-mapped.
 
-### Asset uploads (Lovable CDN)
+### Order of sections
+1. **Staples & L-Cleats** (starting now)
+2. Mallets
+3. Tapping Blocks
+4. Tapping Rings (already partially done — will verify)
+5. Tipper / De-Tipper
+6. Air Tools (brads, hoses, fittings)
+7. Divergent Staples
+8. Accessories (ORK-6, etc.)
 
-Create asset pointers from `/mnt/user-uploads/` for:
+### Section 1 — Staples & L-Cleats
 
-1. `Red_tapping_ring.jpg` → Red ring (front-on)
-2. `Orange_Tapping_Ring_1.jpg` → Orange ring (front-on, clean)
-3. `Orange_Tapping_Ring_2.jpg` → Orange ring (front-on, with branding visible) — use as the hero/lifestyle background
-4. `Orange_Tapping_Ring_3.jpg` → Orange ring (side/3D angle)
-5. `LOGO_picture.jpg` → Yellow ring (front-on)
+Pages in scope: `src/routes/staples.tsx`, `src/routes/l-cleats.tsx`, plus any card thumbnails on `src/routes/products.tsx` and the home page that pull from `images.staples.*` / `images.lCleats.*`.
 
-Pointers saved to `src/assets/products/tapping_rings/ring-{red|orange|orange-angle|yellow|orange-detail}.jpg.asset.json`.
+Steps once you send the photos:
+- Confirm each photo's intended slot (hero, product card, packaging shot, gallery, lifestyle background, etc.).
+- Upload each to the CDN via `lovable-assets create` under `src/assets/products/staples/` or `src/assets/products/lCleats/`.
+- Update `src/data/images.ts` — replace the mis-mapped catalog renders in the `staples` / `lCleats` blocks with the new pointers, keep only the renders that are still accurate.
+- Update the route files so each `<img>` uses the correct key, and fix any card that's currently showing the wrong product.
+- Verify visually in the preview before moving to the next section.
 
-### `src/data/images.ts`
+### What I need from you next
+Drop the Staples & L-Cleats photos into the chat. For each one (or as a batch), tell me:
+- Which product it is (e.g. "15ga staple", "16ga L-cleat 1-3/4", packaging, lifestyle, etc.).
+- Whether it's meant as the hero, a card thumbnail, packaging detail, or gallery.
 
-Extend the `tappingRings` block with per-color URLs:
+If you'd rather just dump the photos and let me guess placement from filenames + the current page, that works too — I'll propose a mapping before committing.
 
-```ts
-tappingRings: {
-  primary: ...,           // keep existing for any other refs
-  lifestyle: orangeRing2, // swap hero bg to the new orange detail shot
-  red: redRing,
-  orange: orangeRing1,
-  orangeAngle: orangeRing3,
-  yellow: yellowRing,
-}
-```
-
-### `src/routes/tapping-rings.tsx`
-
-- Add an `image` field on each ring in the `rings` array pointing to the matching photo.
-- Replace the `<img src={images.tappingRings.primary} ...>` in the card with `r.image`.
-- Remove the `mixBlendMode: "screen"` (it tints the white background) and the dark inner panel; use a white card image area so the rings read true to color.
-- Update the hero background `<img>` to the new orange ring 2 (or keep lifestyle key now pointing to it).
-- Tighten the card image height to ~220px and use `objectFit: contain` with `padding: 24px` on a white background for a clean product-shot look.
-
-### Result
-
-Each ring card displays its actual product photo (red ring, orange ring, yellow ring), matching the color dot beneath. Hero retains a Pro-Drive-branded ring photo as the atmospheric backdrop.
+### Catalog content pass (after imagery)
+Once the images are locked, we do a full text/spec pass against the master catalog to catch missing copy, and I'll flag every chart/diagram/visual the pages are still missing so you can queue them up for creation.

@@ -54,6 +54,7 @@ const rings = [
 ];
 
 function TappingRings() {
+  const related = pickRelated(["V-6RING-R","V-6RING-O","V-6RING-Y"], 6);
   return (
     <div>
       <section className="px-[6%] pt-20 pb-12 relative overflow-hidden" style={{ background: "var(--pd-dark)" }}>

@@ -244,8 +244,6 @@ function AirTools() {
           <span className="pd-label" style={{ color: "var(--pd-yellow)", fontSize: 11 }}>SPEC</span>
           1/4" ID · 3/8" OD · Operating range −40°F to 140°F · 6-ball industrial-grade couplers throughout the line.
         </div>
-      </section>
-
         <div className="mt-6 grid md:grid-cols-2 gap-4 text-white/80" style={{ fontSize: 13 }}>
           <div className="p-5" style={{ background: "rgba(255,255,255,0.04)", borderLeft: "3px solid var(--pd-yellow)" }}>
             <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>E-Z Connect® Braided</div>
@@ -257,6 +255,7 @@ function AirTools() {
           </div>
         </div>
       </section>
+
 
       {/* FITTINGS */}
       <section className="px-[6%] py-16" style={{ background: "var(--pd-light-bg)" }}>

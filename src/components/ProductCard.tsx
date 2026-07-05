@@ -45,7 +45,7 @@ export function ProductCard({ product }: { product: Product }) {
           className="pd-btn-primary mt-4"
           style={{ padding: "10px", fontSize: 11, width: "100%", marginTop: "auto", paddingTop: 10 }}
         >
-          Get Pricing →
+          Contact for Pricing →
         </Link>
       </div>
     </article>

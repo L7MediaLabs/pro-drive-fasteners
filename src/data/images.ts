@@ -137,6 +137,8 @@ export const images = {
       tough:      polyfaceTough.url,
     },
     deadBlow: polyDeadblow.url,
+    deadBlowInsert: deadblow200l2000.url,
+    deadBlowShot:   deadblow200l1000.url,
   },
   staples: {
     hero:           s155Masterpack.url,

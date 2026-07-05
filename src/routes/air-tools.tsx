@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { images } from "../data/images";
+import { InfoPanel } from "../components/PageHeader";
 
 export const Route = createFileRoute("/air-tools")({
   head: () => ({
@@ -189,6 +190,14 @@ function AirTools() {
             </article>
           ))}
         </div>
+        <div className="grid md:grid-cols-2 gap-4 mt-6">
+          <InfoPanel title="BRAD18 — 18 GA Brad Nailer">
+            <div>3.06 lbs · 9.7″×2.4″×9.9″ · 70–110 psi · 110-brad capacity · 5/8″–2″ range. 360° exhaust deflector, tool-free depth-adjustment, front access for jam removal, E-Z open magazine latch, non-mar pad.</div>
+          </InfoPanel>
+          <InfoPanel title="BRAD16 — 16 GA Brad Nailer">
+            <div>4.19 lbs · 10.7″×2.8″×11.1″ · 70–110 psi · 100-brad capacity · 1″–2-1/2″ range. Accepts 16 GA finish nails. 360° adjustable air deflector, quick-release nose cover, well balanced. No-Mar rubber pad available (#21903602).</div>
+          </InfoPanel>
+        </div>
       </section>
 
       {/* HOSES */}
@@ -235,7 +244,18 @@ function AirTools() {
           <span className="pd-label" style={{ color: "var(--pd-yellow)", fontSize: 11 }}>SPEC</span>
           1/4" ID · 3/8" OD · Operating range −40°F to 140°F · 6-ball industrial-grade couplers throughout the line.
         </div>
+        <div className="mt-6 grid md:grid-cols-2 gap-4 text-white/80" style={{ fontSize: 13 }}>
+          <div className="p-5" style={{ background: "rgba(255,255,255,0.04)", borderLeft: "3px solid var(--pd-yellow)" }}>
+            <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>E-Z Connect® Braided</div>
+            <p className="mt-2" style={{ lineHeight: 1.65 }}>Max 200 psi · 1/4″ ID · 3/8″ OD. Field repairable with reusable fittings. Industrial-grade 6-ball couplers. Cold-weather flexibility −40°F to 140°F. High abrasion resistance. 40–50% lighter than traditional air hoses — eliminates the need for whip hoses.</p>
+          </div>
+          <div className="p-5" style={{ background: "rgba(255,255,255,0.04)", borderLeft: "3px solid var(--pd-yellow)" }}>
+            <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>Super-Flex Yellow (Premium)</div>
+            <p className="mt-2" style={{ lineHeight: 1.65 }}>Max 300 psi. Industrial 6-ball couplers. Kink-, oil-, and UV-resistant. −25°C to +60°C. ROHS compliant.</p>
+          </div>
+        </div>
       </section>
+
 
       {/* FITTINGS */}
       <section className="px-[6%] py-16" style={{ background: "var(--pd-light-bg)" }}>
@@ -263,6 +283,12 @@ function AirTools() {
             </article>
           ))}
         </div>
+        <div className="mt-8"><InfoPanel title="Fittings Detail">
+          <div><strong style={{ color: "var(--pd-dark)" }}>AIR-SW-MP20M:</strong> 360° swivel connector — eliminates hose tangles and improves tool placement.</div>
+          <div><strong style={{ color: "var(--pd-dark)" }}>AIR-MP20M:</strong> Male connector, professional grade, brass-plated steel.</div>
+          <div><strong style={{ color: "var(--pd-dark)" }}>AIR-MIC20F:</strong> Quick coupler with knurled body for enhanced grip, industrial 6-ball design.</div>
+          <div><strong style={{ color: "var(--pd-dark)" }}>AIR-UCB1414:</strong> Reusable brass splicer for 3/8″ hose — quick field repair.</div>
+        </InfoPanel></div>
       </section>
 
       {/* CTA STRIP */}

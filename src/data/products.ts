@@ -57,9 +57,8 @@ function toProduct(row: Record<string, string>): Product {
   if (row.angle)   specs.push(`${row.angle} Angle`);
   if (row.finish)  specs.push(row.finish);
   if (row.point)   specs.push(row.point);
-  if (row.compatible_tools) {
-    row.compatible_tools.split(";").forEach((t) => specs.push(t.trim()));
-  }
+  // Note: compatible_tools intentionally NOT added to card specs.
+  // Full interchange lists are rendered on route pages via <InterchangeList />.
 
   const countNum = row.count ? parseInt(row.count, 10) : null;
   const packNum  = row.pack_qty ? parseInt(row.pack_qty, 10) : null;

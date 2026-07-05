@@ -150,6 +150,18 @@ function TDT() {
           ))}
         </div>
 
+        <div className="mt-10 p-6" style={{ background: "rgba(255,205,0,0.06)", borderLeft: "3px solid var(--pd-yellow)" }}>
+          <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>The Complete Story</div>
+          <p className="mt-3 text-white/75" style={{ fontSize: 14, lineHeight: 1.75 }}>
+            The safest and fastest method to replace mallet caps. Eliminates risk of injury.
+            Replaces and removes caps in under 30 seconds. Robust construction with virtually no
+            maintenance. 5-station design fits all major brands of round or angle rubber caps.
+            <br />
+            <span style={{ color: "var(--pd-yellow)", fontWeight: 700 }}>Patent #20220388265A1 · Made in the USA.</span>
+          </p>
+        </div>
+
+
 
         <div className="mt-14">
           <div className="pd-label mb-4" style={{ color: "var(--pd-yellow)" }}>Series 5 — In Action</div>

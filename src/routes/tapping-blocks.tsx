@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHeader } from "../components/PageHeader";
+import { PageHeader, InfoPanel } from "../components/PageHeader";
 import { ProductGrid } from "../components/ProductCard";
 import { TAPPING_BLOCKS } from "../data/products";
 import { images } from "../data/images";

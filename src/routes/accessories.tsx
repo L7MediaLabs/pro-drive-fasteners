@@ -138,12 +138,12 @@ function Acc() {
           </div>
           <div className="grid sm:grid-cols-2 gap-px" style={{ background: "rgba(0,0,0,0.08)" }}>
             {[
-              { n: "O-Rings", d: "Complete sealing set" },
-              { n: "Head Gaskets", d: "Reinforced fiber" },
-              { n: "Driver Bumpers", d: "Energy-absorbing" },
-              { n: "Trigger Valve Kit", d: "Bagged sub-assembly" },
-              { n: "Cylinder Seals", d: "Pre-lubricated" },
-              { n: "Small Hardware", d: "Pins, springs, clips" },
+              { n: "Big Gasket", d: "1× included" },
+              { n: "Small Gasket", d: "1× included" },
+              { n: "O-Rings", d: "7× complete set" },
+              { n: "UA2810 Screws", d: "3× included" },
+              { n: "LW8.2 Washers", d: "3× included" },
+              { n: "Parts Diagram", d: "Reference sheet" },
             ].map(item => (
               <div key={item.n} className="bg-white p-5">
                 <div className="pd-label" style={{ color: "var(--pd-gold)", fontSize: 10 }}>Component</div>

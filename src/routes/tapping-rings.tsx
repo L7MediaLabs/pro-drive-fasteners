@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { images } from "../data/images";
+import { TechReference, RelatedProducts, PageDisclaimers } from "../components/editorial";
+import { pickRelated } from "../data/products";
 
 export const Route = createFileRoute("/tapping-rings")({
   head: () => ({

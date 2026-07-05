@@ -246,6 +246,18 @@ function AirTools() {
         </div>
       </section>
 
+        <div className="mt-6 grid md:grid-cols-2 gap-4 text-white/80" style={{ fontSize: 13 }}>
+          <div className="p-5" style={{ background: "rgba(255,255,255,0.04)", borderLeft: "3px solid var(--pd-yellow)" }}>
+            <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>E-Z Connect® Braided</div>
+            <p className="mt-2" style={{ lineHeight: 1.65 }}>Max 200 psi · 1/4″ ID · 3/8″ OD. Field repairable with reusable fittings. Industrial-grade 6-ball couplers. Cold-weather flexibility −40°F to 140°F. High abrasion resistance. 40–50% lighter than traditional air hoses — eliminates the need for whip hoses.</p>
+          </div>
+          <div className="p-5" style={{ background: "rgba(255,255,255,0.04)", borderLeft: "3px solid var(--pd-yellow)" }}>
+            <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>Super-Flex Yellow (Premium)</div>
+            <p className="mt-2" style={{ lineHeight: 1.65 }}>Max 300 psi. Industrial 6-ball couplers. Kink-, oil-, and UV-resistant. −25°C to +60°C. ROHS compliant.</p>
+          </div>
+        </div>
+      </section>
+
       {/* FITTINGS */}
       <section className="px-[6%] py-16" style={{ background: "var(--pd-light-bg)" }}>
         <div className="flex items-end justify-between flex-wrap gap-4">

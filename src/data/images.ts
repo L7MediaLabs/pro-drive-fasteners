@@ -114,6 +114,13 @@ export const images = {
     misc1:       u.malletsP21_01,
     misc2:       u.malletsP22_08,
     galleher:    [u.malletsP5_01, u.malletsP5_02, u.malletsP5_03, u.malletsP5_05],
+    caps: {
+      cap600w:  capCap600W.url,
+      cap601b:  capCap601B.url,
+      cap602g:  capCap602G.url,
+      vcap100:  cap100Vcap.url,
+      cap600pa: capCap600PA.url,
+    },
   },
   staples: {
     hero:           s155Masterpack.url,

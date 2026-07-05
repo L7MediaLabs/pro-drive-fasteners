@@ -277,9 +277,10 @@ function AirTools() {
           </div>
         </div>
       </section>
-
+      )}
 
       {/* FITTINGS */}
+      {tab === "fittings" && (
       <section className="px-[6%] py-16" style={{ background: "var(--pd-light-bg)" }}>
         <div className="flex items-end justify-between flex-wrap gap-4">
           <div>

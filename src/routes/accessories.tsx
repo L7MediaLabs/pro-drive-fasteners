@@ -96,7 +96,7 @@ function Acc() {
 
               <div className="flex gap-3 mt-7 flex-wrap">
                 <Link to="/contact" className="pd-btn-primary" style={{ padding: "12px 22px", fontSize: 12 }}>
-                  Get Pricing →
+                  Request Distributor Pricing →
                 </Link>
                 <a
                   href={ork6Pdf.url}

@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { images } from "../data/images";
+import { InfoPanel } from "../components/PageHeader";
 
 export const Route = createFileRoute("/air-tools")({
   head: () => ({

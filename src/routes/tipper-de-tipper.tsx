@@ -114,30 +114,22 @@ function StepCard({ index, image, caption, total }: { index: number; image: stri
 }
 
 function TDT() {
+  const related = pickRelated(["TDT-S5"], 6);
   return (
     <div>
-      <section className="px-[6%] py-12" style={{ background: "var(--pd-yellow)" }}>
-        <div className="grid lg:grid-cols-[1fr_320px] gap-10 items-center">
-          <div>
-            <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Patent #20220388265A1</div>
-            <h1 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: "clamp(40px, 8vw, 72px)" }}>Tipper-De-Tipper™</h1>
-            <p className="mt-3" style={{ color: "rgba(25,20,0,0.65)", fontSize: 20 }}>The safest & fastest method to replace mallet caps.</p>
-            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-[12px]" style={{ color: "var(--pd-dark)", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
-              <span>5-Station Design</span><span>·</span>
-              <span>All Major Brands</span><span>·</span>
-              <span>Under 30 Seconds</span><span>·</span>
-              <span>Virtually No Maintenance</span>
-            </div>
-          </div>
-          <div style={{ background: "var(--pd-dark)", padding: 16 }}>
-            <img
-              src={images.tipper.product}
-              alt="Pro-Drive Tipper-De-Tipper Series 5"
-              style={{ width: "100%", height: "auto", objectFit: "contain", display: "block" }}
-            />
-          </div>
-        </div>
-      </section>
+      <CinematicHero
+        kicker="Patent #20220388265A1"
+        title={<>Tipper-De-Tipper™<br />Series 5</>}
+        description="The safest and fastest method to replace mallet caps. 5-station design fits all major brands of round or angle rubber caps. Under 30 seconds. Virtually no maintenance."
+        bgImage={images.tipper.extra}
+        badges={[
+          { label: "MADE IN USA" },
+          { label: "5-STATION DESIGN" },
+          { label: "UNDER 30 SECONDS" },
+        ]}
+        rightImage={images.tipper.product}
+        rightImageAlt="Pro-Drive Tipper-De-Tipper Series 5"
+      />
 
       <section className="px-[6%] py-16" style={{ background: "var(--pd-dark)" }}>
         <div className="mb-8 p-5" style={{ border: "1px solid var(--pd-yellow)", color: "var(--pd-yellow)" }}>

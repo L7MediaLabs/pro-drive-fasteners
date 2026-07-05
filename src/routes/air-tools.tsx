@@ -123,7 +123,14 @@ const fittings = [
   },
 ];
 
+type AirTab = "nailers" | "hoses" | "fittings";
+
 function AirTools() {
+  const [tab, setTab] = useTabs<AirTab>("nailers");
+  const related = pickRelated(
+    [...NAILERS, ...HOSES, ...FITTINGS].map(p => p.id),
+    6
+  );
   return (
     <div>
       {/* HERO */}

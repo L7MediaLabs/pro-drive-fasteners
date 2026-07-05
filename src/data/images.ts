@@ -226,6 +226,14 @@ export const images = {
     da21_200ss:  finishNailsStrip.url,
     strip:       finishNailsStrip.url,
   },
+  brads18: {
+    axx08_500: brad18_500.url,
+    axx10_625: brad18_625.url,
+    axx13_100: brad18_100.url,
+    axx15_125: brad18_125.url,
+    axx17_150: brad18_150.url,
+    axx21_200: brad18_200.url,
+  },
   flag: "/__l5e/assets-v1/21fec0ab-e7e9-4f98-91cb-e05584679dc5/usa-flag-clean.png",
 } as const;
 

@@ -24,6 +24,7 @@ const compatibility = [
 ];
 
 function Acc() {
+  const related = pickRelated(ACCESSORIES_LIST.map(p => p.id), 6);
   return (
     <div>
       {/* HERO + ORK-6 FEATURE */}

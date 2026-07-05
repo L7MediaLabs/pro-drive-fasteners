@@ -126,6 +126,13 @@ export const images = {
       vcap100:  cap100Vcap.url,
       cap600pa: capCap600PA.url,
     },
+    poly: {
+      soft:       polyfaceSoft.url,
+      softMedium: polyfaceSoftMedium.url,
+      medium:     polyfaceMedium.url,
+      hard:       polyfaceHard.url,
+      tough:      polyfaceTough.url,
+    },
   },
   staples: {
     hero:           s155Masterpack.url,

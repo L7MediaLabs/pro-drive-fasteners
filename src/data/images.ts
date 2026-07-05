@@ -57,6 +57,7 @@ import polyfaceSoftMedium from "../assets/products/mallets/polyface_soft_medium.
 import polyfaceMedium     from "../assets/products/mallets/polyface_medium.png.asset.json";
 import polyfaceHard       from "../assets/products/mallets/polyface_hard.png.asset.json";
 import polyfaceTough      from "../assets/products/mallets/polyface_tough.png.asset.json";
+import polyDeadblow       from "../assets/products/mallets/poly_deadblow.png.asset.json";
 import s155Masterpack     from "../assets/products/staples/staples_155_masterpack.png.asset.json";
 import s155_1_5in         from "../assets/products/staples/staples_155_1_5in.png.asset.json";
 import s155_2in_1000      from "../assets/products/staples/staples_155_2in_1000.png.asset.json";
@@ -133,6 +134,7 @@ export const images = {
       hard:       polyfaceHard.url,
       tough:      polyfaceTough.url,
     },
+    deadBlow: polyDeadblow.url,
   },
   staples: {
     hero:           s155Masterpack.url,

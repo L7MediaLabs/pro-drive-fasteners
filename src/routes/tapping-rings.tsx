@@ -184,3 +184,6 @@ function TappingRings() {
       <RelatedProducts products={related} />
       <PageDisclaimers />
     </div>
+  );
+}
+

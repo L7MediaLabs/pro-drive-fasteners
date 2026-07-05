@@ -58,6 +58,8 @@ import polyfaceMedium     from "../assets/products/mallets/polyface_medium.png.a
 import polyfaceHard       from "../assets/products/mallets/polyface_hard.png.asset.json";
 import polyfaceTough      from "../assets/products/mallets/polyface_tough.png.asset.json";
 import polyDeadblow       from "../assets/products/mallets/poly_deadblow.png.asset.json";
+import deadblow200l2000   from "../assets/products/mallets/deadblow_200l_2000.png.asset.json";
+import deadblow200l1000   from "../assets/products/mallets/deadblow_200l_1000.png.asset.json";
 import s155Masterpack     from "../assets/products/staples/staples_155_masterpack.png.asset.json";
 import s155_1_5in         from "../assets/products/staples/staples_155_1_5in.png.asset.json";
 import s155_2in_1000      from "../assets/products/staples/staples_155_2in_1000.png.asset.json";

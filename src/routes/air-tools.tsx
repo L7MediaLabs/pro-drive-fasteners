@@ -313,6 +313,7 @@ function AirTools() {
           <div><strong style={{ color: "var(--pd-dark)" }}>AIR-UCB1414:</strong> Reusable brass splicer for 3/8″ hose — quick field repair.</div>
         </InfoPanel></div>
       </section>
+      )}
 
       {/* CTA STRIP */}
       <section className="px-[6%] py-12" style={{ background: "var(--pd-dark)" }}>
@@ -321,9 +322,12 @@ function AirTools() {
             <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>Build Your Kit</div>
             <h3 className="pd-display text-white mt-2" style={{ fontSize: 28 }}>Nailer + hose + fittings, priced for the crew.</h3>
           </div>
-          <Link to="/contact" className="pd-btn-primary" style={{ padding: "14px 28px", fontSize: 12 }}>Request Pricing →</Link>
+          <Link to="/contact" className="pd-btn-primary" style={{ padding: "14px 28px", fontSize: 12 }}>Request Distributor Pricing →</Link>
         </div>
       </section>
+
+      <RelatedProducts products={related} />
+      <PageDisclaimers />
     </div>
   );
 }

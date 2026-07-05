@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { InfoPanel } from "../components/PageHeader";
+
 import { ProductGrid } from "../components/ProductCard";
 import {
   CinematicHero,

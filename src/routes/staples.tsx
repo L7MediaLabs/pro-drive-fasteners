@@ -271,9 +271,7 @@ function Staples() {
 
       <RelatedProducts products={related} />
       <PageDisclaimers galvanized trademarks />
-      <div className="px-[6%] pt-2 pb-8" style={{ background: "#F5F4F0" }}>
-        <SectionLabel>Legend</SectionLabel>
-      </div>
     </div>
   );
 }
+

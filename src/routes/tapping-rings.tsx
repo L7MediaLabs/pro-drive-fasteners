@@ -127,6 +127,14 @@ function TappingRings() {
           <p className="text-center mx-auto mt-5 max-w-2xl" style={{ color: "rgba(255,255,255,0.6)", fontWeight: 300, fontSize: 15, lineHeight: 1.8 }}>
             See the tapping ring in action on glue-down vinyl and laminate flooring. Watch how the urethane face distributes force without marring the surface.
           </p>
+          <div className="mt-10 p-6" style={{ background: "rgba(255,205,0,0.06)", borderLeft: "3px solid var(--pd-yellow)" }}>
+            <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>Made in the USA</div>
+            <p className="mt-2 text-white/75" style={{ fontSize: 14, lineHeight: 1.7 }}>
+              100% Made in the USA. Only 2.1 lbs. Guaranteed non-marring — eliminates scratches and dents.
+              Three rings engineered for every flooring application, from parquet and glue-down vinyl to
+              wide plank installations that demand precision.
+            </p>
+          </div>
         </div>
       </section>
     </div>

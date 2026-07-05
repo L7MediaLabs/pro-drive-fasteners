@@ -212,6 +212,14 @@ export const images = {
   accessories: {
     ork6: accessoriesOrk6,
   },
+  finishNails: {
+    fn1532_200:  fn1532_200.url,
+    fn1520_125:  fn1520_125.url,
+    fn1524:      finishNailsStrip.url,
+    da21_200:    da21_200.url,
+    da21_200ss:  finishNailsStrip.url,
+    strip:       finishNailsStrip.url,
+  },
   flag: "/__l5e/assets-v1/21fec0ab-e7e9-4f98-91cb-e05584679dc5/usa-flag-clean.png",
 } as const;
 

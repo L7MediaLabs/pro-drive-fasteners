@@ -170,7 +170,18 @@ function AirTools() {
         </div>
       </section>
 
+      <TabNav
+        tabs={[
+          { key: "nailers",  label: "Brad Nailers" },
+          { key: "hoses",    label: "Air Hoses" },
+          { key: "fittings", label: "Fittings & Couplers" },
+        ]}
+        value={tab}
+        onChange={setTab}
+      />
+
       {/* NAILERS */}
+      {tab === "nailers" && (
       <section className="px-[6%] py-16" style={{ background: "var(--pd-light-bg)" }}>
         <div className="flex items-end justify-between flex-wrap gap-4">
           <div>

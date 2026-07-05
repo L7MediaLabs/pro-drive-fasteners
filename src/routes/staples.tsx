@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHeader, SectionLabel, Callout } from "../components/PageHeader";
+import { PageHeader, SectionLabel, Callout, InfoPanel, InterchangeList, FastenerDisclaimer } from "../components/PageHeader";
 import { ProductGrid } from "../components/ProductCard";
 import { STAPLES_15_5, STAPLES_15_Q, STAPLES_16_N, STAPLES_18_M, STAPLES_18_L } from "../data/products";
 import { images } from "../data/images";
@@ -15,6 +15,9 @@ export const Route = createFileRoute("/staples")({
   }),
   component: Staples,
 });
+
+const MWIRE_TOOLS = "Duo-Fast W-1800;Josef Kihlberg G4450;Prebena G;Senco M;Spotnails 6800".split(";");
+const LWIRE_TOOLS = "ATRO 90;BeA 90;Duo-Fast 1800;Prebena EB;Haubold KL 6000;Hitachi N3804;Porter Cable NS100;Porter Cable NS150A;Senco L;Spotnails 4800;JK 781".split(";");
 
 function Staples() {
   return (
@@ -40,6 +43,11 @@ function Staples() {
             </div>
           </div>
           <Callout>Guaranteed to fit all standard 15.5 gauge flooring tools. Chisel point reduces splitting during installation. Contractor Bulk-Job or Job packs available.</Callout>
+          <InfoPanel
+            applications="Excellent for all types of hardwood flooring installations."
+            materials="Electro-Galvanized steel. Not recommended for exterior application or ACQ-treated lumber."
+            standards="Meets ASTM F1667."
+          />
         </div>
         <div>
           <SectionLabel>15 GA Q-Wire Staples — 7/16" Crown</SectionLabel>
@@ -52,22 +60,41 @@ function Staples() {
             />
           </div>
           <div className="mt-4"><ProductGrid products={STAPLES_15_Q} /></div>
-          <Callout>Senco® Style. Ideal for framing, sheathing, roof decking, and furniture frames. Meets or exceeds ASTM A641. Compatible: Senco® SQS55, FASCO® F45C, Duo-Fast® MS-1580D.</Callout>
+          <Callout>Senco® Style. Ideal for framing, sheathing, roof decking, and furniture frames. Meets or exceeds ASTM A641.</Callout>
+          <InterchangeList
+            fitsPrimary="Senco SQS55, FASCO F45C SQ-55 SS(CT), F5 SQ-65 CT, SQS55XP; Spotnail MS6564; Duo-Fast MS-1580D"
+            tools={["BeA 180", "Duo-Fast 1500", "Senco Q-Wire", "Spotnail"]}
+          />
         </div>
         <div>
           <SectionLabel>16 GA N-Wire Staples — 7/16" Crown</SectionLabel>
           <div className="mt-4"><ProductGrid products={STAPLES_16_N} /></div>
-          <Callout>Furniture frames, cabinet sub-assembly, millwork, door jambs. Meets or exceeds ASTM A641.</Callout>
+          <InfoPanel
+            applications="Furniture Frames, Cabinet Sub-Assembly, Millwork, Door Jambs."
+            standards="Meets or Exceeds ASTM A641."
+          />
         </div>
         <div>
           <SectionLabel>18 GA Staples — M-Wire (3/8" Crown)</SectionLabel>
           <div className="mt-4"><ProductGrid products={STAPLES_18_M} /></div>
+          <InfoPanel
+            applications="Cabinet assembly, insulation, plastic sheeting, Tyvek, roofing paper, house wrap."
+          >
+            <div><strong style={{ color: "var(--pd-dark)" }}>Note:</strong> Made from Extra Hard Wire. Not compatible with Arrow T50 series.</div>
+          </InfoPanel>
+          <InterchangeList tools={MWIRE_TOOLS} />
         </div>
         <div>
           <SectionLabel>18 GA Staples — L-Wire (1/4" Crown · Duo-Fast 1800)</SectionLabel>
           <div className="mt-4"><ProductGrid products={STAPLES_18_L} /></div>
+          <InfoPanel
+            applications="Finish and trim staples for cabinets, drawers, case backs, upholstery, soffits, underlayment, lattice, insulation sheathing, engineered flooring."
+          />
+          <InterchangeList tools={LWIRE_TOOLS} />
         </div>
+        <FastenerDisclaimer mentionsBrands />
       </section>
     </div>
   );
 }
+

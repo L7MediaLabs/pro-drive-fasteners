@@ -65,6 +65,10 @@ import s155_1_5in         from "../assets/products/staples/staples_155_1_5in.png
 import s155_2in_1000      from "../assets/products/staples/staples_155_2in_1000.png.asset.json";
 import s155_2in_5000      from "../assets/products/staples/staples_155_2in_5000.png.asset.json";
 import s155_2in_7720      from "../assets/products/staples/staples_155_2in_7720.png.asset.json";
+import fn1532_200         from "../assets/products/finishNails/fn1532_200.png.asset.json";
+import fn1520_125         from "../assets/products/finishNails/fn1520_125.png.asset.json";
+import da21_200           from "../assets/products/finishNails/da21_200.png.asset.json";
+import finishNailsStrip   from "../assets/products/finishNails/finish_nails_strip.png.asset.json";
 import lcleatVertical     from "../assets/products/lCleats/lcleat_vertical.jpg";
 import lcleatStanding     from "../assets/products/lCleats/lcleat_standing.jpg";
 import lcleatBanner       from "../assets/products/lCleats/lcleat_banner.jpg";

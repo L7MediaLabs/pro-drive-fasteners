@@ -83,6 +83,9 @@ function Mallets() {
             </div>
           </div>
           <Callout><strong>PATENTED SURE 2 LOCK™</strong> head design virtually eliminates loosening of handle — even after years of use. Epoxy-filled handle attached with steel safety wedge.</Callout>
+          <InfoPanel>
+            <div>Made in the USA from 100% premium hickory. Six-ring easy-grip pattern with flared handle provides slip resistance. Epoxy-filled handle attached with steel safety wedge. <strong>U.S. Patent No. 11,759,941.</strong></div>
+          </InfoPanel>
         </div>
         <div>
           <SectionLabel>Mallet Caps (Rubber)</SectionLabel>

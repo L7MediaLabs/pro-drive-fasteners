@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { images } from "../data/images";
 import { InfoPanel } from "../components/PageHeader";
+import { TabNav, RelatedProducts, PageDisclaimers, useTabs } from "../components/editorial";
+import { NAILERS, HOSES, FITTINGS, pickRelated } from "../data/products";
 
 export const Route = createFileRoute("/air-tools")({
   head: () => ({
@@ -121,7 +123,14 @@ const fittings = [
   },
 ];
 
+type AirTab = "nailers" | "hoses" | "fittings";
+
 function AirTools() {
+  const [tab, setTab] = useTabs<AirTab>("nailers");
+  const related = pickRelated(
+    [...NAILERS, ...HOSES, ...FITTINGS].map(p => p.id),
+    6
+  );
   return (
     <div>
       {/* HERO */}
@@ -161,7 +170,18 @@ function AirTools() {
         </div>
       </section>
 
+      <TabNav
+        tabs={[
+          { key: "nailers",  label: "Brad Nailers" },
+          { key: "hoses",    label: "Air Hoses" },
+          { key: "fittings", label: "Fittings & Couplers" },
+        ]}
+        value={tab}
+        onChange={setTab}
+      />
+
       {/* NAILERS */}
+      {tab === "nailers" && (
       <section className="px-[6%] py-16" style={{ background: "var(--pd-light-bg)" }}>
         <div className="flex items-end justify-between flex-wrap gap-4">
           <div>
@@ -185,7 +205,7 @@ function AirTools() {
                 <ul className="grid grid-cols-2 gap-x-4 gap-y-1.5 mt-4 text-[12px]" style={{ color: "var(--pd-dark)" }}>
                   {n.specs.map(s => <li key={s} className="flex gap-2"><span style={{ color: n.accent }}>—</span>{s}</li>)}
                 </ul>
-                <Link to="/contact" className="pd-btn-primary mt-5 inline-block" style={{ padding: "10px 22px", fontSize: 11, width: "100%", textAlign: "center" }}>Get Pricing →</Link>
+                <Link to="/contact" className="pd-btn-primary mt-5 inline-block" style={{ padding: "10px 22px", fontSize: 11, width: "100%", textAlign: "center" }}>Request Distributor Pricing →</Link>
               </div>
             </article>
           ))}
@@ -199,8 +219,10 @@ function AirTools() {
           </InfoPanel>
         </div>
       </section>
+      )}
 
       {/* HOSES */}
+      {tab === "hoses" && (
       <section className="px-[6%] py-16 relative overflow-hidden" style={{ background: "var(--pd-darker)" }}>
         <div className="flex items-end justify-between flex-wrap gap-4">
           <div>
@@ -255,9 +277,10 @@ function AirTools() {
           </div>
         </div>
       </section>
-
+      )}
 
       {/* FITTINGS */}
+      {tab === "fittings" && (
       <section className="px-[6%] py-16" style={{ background: "var(--pd-light-bg)" }}>
         <div className="flex items-end justify-between flex-wrap gap-4">
           <div>
@@ -290,6 +313,7 @@ function AirTools() {
           <div><strong style={{ color: "var(--pd-dark)" }}>AIR-UCB1414:</strong> Reusable brass splicer for 3/8″ hose — quick field repair.</div>
         </InfoPanel></div>
       </section>
+      )}
 
       {/* CTA STRIP */}
       <section className="px-[6%] py-12" style={{ background: "var(--pd-dark)" }}>
@@ -298,9 +322,12 @@ function AirTools() {
             <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>Build Your Kit</div>
             <h3 className="pd-display text-white mt-2" style={{ fontSize: 28 }}>Nailer + hose + fittings, priced for the crew.</h3>
           </div>
-          <Link to="/contact" className="pd-btn-primary" style={{ padding: "14px 28px", fontSize: 12 }}>Request Pricing →</Link>
+          <Link to="/contact" className="pd-btn-primary" style={{ padding: "14px 28px", fontSize: 12 }}>Request Distributor Pricing →</Link>
         </div>
       </section>
+
+      <RelatedProducts products={related} />
+      <PageDisclaimers />
     </div>
   );
 }

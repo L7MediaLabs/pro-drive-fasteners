@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { images } from "../data/images";
+import { TechReference, RelatedProducts, PageDisclaimers } from "../components/editorial";
+import { pickRelated } from "../data/products";
 
 export const Route = createFileRoute("/tapping-rings")({
   head: () => ({
@@ -52,6 +54,7 @@ const rings = [
 ];
 
 function TappingRings() {
+  const related = pickRelated(["V-6RING-R","V-6RING-O","V-6RING-Y"], 6);
   return (
     <div>
       <section className="px-[6%] pt-20 pb-12 relative overflow-hidden" style={{ background: "var(--pd-dark)" }}>
@@ -104,7 +107,7 @@ function TappingRings() {
                   <ul className="mt-3 space-y-1.5 text-sm text-white/65">
                     {r.bullets.map(b => <li key={b}>— {b}</li>)}
                   </ul>
-                  <Link to="/contact" className="pd-btn-primary mt-6" style={{ padding: "10px", width: "100%", fontSize: 11 }}>Get Pricing →</Link>
+                  <Link to="/contact" className="pd-btn-primary mt-6" style={{ padding: "10px", width: "100%", fontSize: 11 }}>Request Distributor Pricing →</Link>
                 </div>
               </article>
             ))}
@@ -137,6 +140,50 @@ function TappingRings() {
           </div>
         </div>
       </section>
+
+      <TechReference
+        kicker="Reference"
+        title="Application Matrix"
+        intro="Match the right ring to the flooring type. ★★★ = ideal · ★★ = good · ★ = acceptable."
+      >
+        <div className="bg-white p-6 overflow-x-auto" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
+          <table className="w-full text-sm" style={{ borderCollapse: "collapse" }}>
+            <thead>
+              <tr>
+                <th className="pd-label text-left py-3" style={{ color: "var(--pd-muted)", fontSize: 10 }}>Ring</th>
+                {["Parquet","Glue-Down Vinyl","Laminate","Engineered","Wide Plank"].map(h => (
+                  <th key={h} className="pd-label text-center py-3 px-3" style={{ color: "var(--pd-muted)", fontSize: 10 }}>{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                { color: "#C83228", name: "Red",    scores: [3,3,3,2,2] },
+                { color: "#E07020", name: "Orange", scores: [2,2,2,3,3] },
+                { color: "#FFCD00", name: "Yellow", scores: [2,1,2,3,3] },
+              ].map(r => (
+                <tr key={r.name} style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}>
+                  <td className="py-3">
+                    <span className="inline-flex items-center gap-2">
+                      <span style={{ width: 18, height: 18, borderRadius: "50%", background: r.color, display: "inline-block" }} />
+                      <strong style={{ color: "var(--pd-dark)" }}>{r.name}</strong>
+                    </span>
+                  </td>
+                  {r.scores.map((s, i) => (
+                    <td key={i} className="text-center py-3 px-3" style={{ color: r.color, fontSize: 18, letterSpacing: 2 }}>
+                      {"★".repeat(s)}<span style={{ color: "#e6e5df" }}>{"★".repeat(3 - s)}</span>
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </TechReference>
+
+      <RelatedProducts products={related} />
+      <PageDisclaimers />
     </div>
   );
 }
+

@@ -137,3 +137,39 @@ export const ACCESSORIES_LIST = byCat("Accessories");
 // ─── Full catalog (for admin/reporting) ───────────────────────────────────────
 export const ALL_PRODUCTS  = active.map(toProduct);
 export const RAW_CATALOG   = active; // raw CSV rows — for InDesign data merge export
+
+// ─── Related products helper ─────────────────────────────────────────────────
+// Returns up to `count` products, excluding ones already shown on the page.
+// Deterministic: picks the first eligible product from each *other* category
+// so the strip always shows a diverse cross-section, and results are stable
+// across renders (no shuffling).
+export function pickRelated(excludeIds: string[], count = 4): Product[] {
+  const excluded = new Set(excludeIds);
+  const seenCategory = new Set<string>();
+  const currentCategories = new Set(
+    active.filter(r => excluded.has(r.id)).map(r => r.category)
+  );
+  const picks: Product[] = [];
+  for (const row of active) {
+    if (excluded.has(row.id)) continue;
+    if (currentCategories.has(row.category)) continue;
+    if (seenCategory.has(row.category)) continue;
+    if (!row.image_key) continue; // only visual products in strip
+    seenCategory.add(row.category);
+    picks.push(toProduct(row));
+    if (picks.length >= count) break;
+  }
+  // Fallback: fill from any remaining products if not enough categories
+  if (picks.length < count) {
+    for (const row of active) {
+      if (excluded.has(row.id)) continue;
+      if (picks.find(p => p.id === row.id)) continue;
+      if (currentCategories.has(row.category)) continue;
+      if (!row.image_key) continue;
+      picks.push(toProduct(row));
+      if (picks.length >= count) break;
+    }
+  }
+  return picks;
+}
+

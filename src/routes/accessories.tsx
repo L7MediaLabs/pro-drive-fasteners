@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import ork6Pkg from "../assets/ork6_package.jpg.asset.json";
 import ork6Pdf from "../assets/ork6_parts_diagram.pdf.asset.json";
+import { RelatedProducts, PageDisclaimers } from "../components/editorial";
+import { ACCESSORIES_LIST, pickRelated } from "../data/products";
 
 export const Route = createFileRoute("/accessories")({
   head: () => ({
@@ -22,6 +24,7 @@ const compatibility = [
 ];
 
 function Acc() {
+  const related = pickRelated(ACCESSORIES_LIST.map(p => p.id), 6);
   return (
     <div>
       {/* HERO + ORK-6 FEATURE */}
@@ -93,7 +96,7 @@ function Acc() {
 
               <div className="flex gap-3 mt-7 flex-wrap">
                 <Link to="/contact" className="pd-btn-primary" style={{ padding: "12px 22px", fontSize: 12 }}>
-                  Get Pricing →
+                  Request Distributor Pricing →
                 </Link>
                 <a
                   href={ork6Pdf.url}
@@ -195,6 +198,9 @@ function Acc() {
           </article>
         </div>
       </section>
+
+      <RelatedProducts products={related} />
+      <PageDisclaimers trademarks />
     </div>
   );
 }

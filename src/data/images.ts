@@ -41,6 +41,11 @@ const u = {
 // ─── Evie's photos (repo assets) ─────────────────────────────────────────────
 // Import as static assets so Vite handles hashing + CDN in production
 import lcleatStripHero    from "../assets/products/lCleats/lcleat_strip_hero.jpg";
+import malletM1w          from "../assets/products/mallets/mallet_m1w.png.asset.json";
+import malletM5w          from "../assets/products/mallets/mallet_m5w.png.asset.json";
+import malletR5w          from "../assets/products/mallets/mallet_r5w.png.asset.json";
+import malletDhw          from "../assets/products/mallets/mallet_dhw.png.asset.json";
+import malletVcap         from "../assets/products/mallets/mallet_vcap.png.asset.json";
 import s155Masterpack     from "../assets/products/staples/staples_155_masterpack.png.asset.json";
 import s155_1_5in         from "../assets/products/staples/staples_155_1_5in.png.asset.json";
 import s155_2in_1000      from "../assets/products/staples/staples_155_2in_1000.png.asset.json";

@@ -185,9 +185,12 @@ function TDT() {
         </div>
 
         <div className="mt-12 text-center">
-          <Link to="/contact" className="pd-btn-primary">Request Pricing</Link>
+          <Link to="/contact" className="pd-btn-primary">Request Distributor Pricing</Link>
         </div>
       </section>
+
+      <RelatedProducts products={related} />
+      <PageDisclaimers trademarks />
     </div>
   );
 }

@@ -17,7 +17,7 @@ export const Route = createFileRoute("/accessories")({
 });
 
 const compatibility = [
-  "MIII", "MIIFN", "MIIFS", "MIII886",
+  "MIII", "MIIIFN", "MIIIFS", "MIII886",
   "MIII812", "MFIII", "BTFP12569", "DWMIIIFN Type 0 & 1",
 ];
 

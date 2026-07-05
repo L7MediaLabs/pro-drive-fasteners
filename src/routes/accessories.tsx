@@ -198,6 +198,9 @@ function Acc() {
           </article>
         </div>
       </section>
+
+      <RelatedProducts products={related} />
+      <PageDisclaimers trademarks />
     </div>
   );
 }

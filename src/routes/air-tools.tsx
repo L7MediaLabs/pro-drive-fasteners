@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { images } from "../data/images";
 import { InfoPanel } from "../components/PageHeader";
+import { TabNav, RelatedProducts, PageDisclaimers, useTabs } from "../components/editorial";
+import { NAILERS, HOSES, FITTINGS, pickRelated } from "../data/products";
 
 export const Route = createFileRoute("/air-tools")({
   head: () => ({

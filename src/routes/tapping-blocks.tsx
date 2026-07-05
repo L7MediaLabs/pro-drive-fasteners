@@ -46,6 +46,17 @@ function Blocks() {
           ))}
         </div>
         <ProductGrid products={TAPPING_BLOCKS} />
+        <div className="mt-8 space-y-4">
+          <InfoPanel title="TB-PRO-312 — ONE TAP™">
+            <div>3″ × 7″ × 3/4″. Recessed channels ensure optimal plank alignment and even force distribution. Beveled edges interlock with plank tongues to eliminate cracking. Ergonomic knob for rapid placement.</div>
+          </InfoPanel>
+          <InfoPanel title="561-TB — 561 Tapping Block">
+            <div>11.5″ × 4.5″ × 4″ · 3.5 lbs. Designed for wide plank flooring. Most effective for glue-down installs. Built-in plastic edge protects flooring surface. Designed for use with dead-blow mallets.</div>
+          </InfoPanel>
+          <InfoPanel title="392-TB — Wide Plank Wood Driving Tool">
+            <div>Wide plank wood driving tool. 2 per carton · 7 lbs.</div>
+          </InfoPanel>
+        </div>
       </section>
     </div>
   );

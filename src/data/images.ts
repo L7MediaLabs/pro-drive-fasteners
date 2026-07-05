@@ -41,6 +41,11 @@ const u = {
 // ─── Evie's photos (repo assets) ─────────────────────────────────────────────
 // Import as static assets so Vite handles hashing + CDN in production
 import lcleatStripHero    from "../assets/products/lCleats/lcleat_strip_hero.jpg";
+import malletM1w          from "../assets/products/mallets/mallet_m1w.png.asset.json";
+import malletM5w          from "../assets/products/mallets/mallet_m5w.png.asset.json";
+import malletR5w          from "../assets/products/mallets/mallet_r5w.png.asset.json";
+import malletDhw          from "../assets/products/mallets/mallet_dhw.png.asset.json";
+import malletVcap         from "../assets/products/mallets/mallet_vcap.png.asset.json";
 import s155Masterpack     from "../assets/products/staples/staples_155_masterpack.png.asset.json";
 import s155_1_5in         from "../assets/products/staples/staples_155_1_5in.png.asset.json";
 import s155_2in_1000      from "../assets/products/staples/staples_155_2in_1000.png.asset.json";
@@ -91,9 +96,13 @@ export const images = {
     hero:        u.malletsP22_07,
     lineup:      u.malletsP21_02,
     family:      u.malletsP22_06,
-    dhw:         u.malletsP22_10,
+    m1w:         malletM1w.url,
+    m5w:         malletM5w.url,
+    r5w:         malletR5w.url,
+    dhw:         malletDhw.url,
+    vCap:        malletVcap.url,
     capsLineup:  u.malletsP23_01,
-    vCapBanner:  u.malletsP23_02,
+    vCapBanner:  malletVcap.url,
     polyColors:  u.malletsP24_02,
     polyDetail:  u.malletsP24_03,
     misc1:       u.malletsP21_01,

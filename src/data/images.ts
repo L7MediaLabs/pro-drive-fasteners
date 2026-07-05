@@ -102,7 +102,7 @@ export const images = {
     r5w:         malletR5w.url,
     dhw:         malletDhw.url,
     vCap:        malletVcap.url,
-    capsLineup:  u.malletsP23_01,
+    capsLineup:  malletCapsDisplay.url,
     vCapBanner:  malletVcap.url,
     polyColors:  u.malletsP24_02,
     polyDetail:  u.malletsP24_03,

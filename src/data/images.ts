@@ -41,6 +41,11 @@ const u = {
 // ─── Evie's photos (repo assets) ─────────────────────────────────────────────
 // Import as static assets so Vite handles hashing + CDN in production
 import lcleatStripHero    from "../assets/products/lCleats/lcleat_strip_hero.jpg";
+import s155Masterpack     from "../assets/products/staples/staples_155_masterpack.png.asset.json";
+import s155_1_5in         from "../assets/products/staples/staples_155_1_5in.png.asset.json";
+import s155_2in_1000      from "../assets/products/staples/staples_155_2in_1000.png.asset.json";
+import s155_2in_5000      from "../assets/products/staples/staples_155_2in_5000.png.asset.json";
+import s155_2in_7720      from "../assets/products/staples/staples_155_2in_7720.png.asset.json";
 import lcleatVertical     from "../assets/products/lCleats/lcleat_vertical.jpg";
 import lcleatStanding     from "../assets/products/lCleats/lcleat_standing.jpg";
 import lcleatBanner       from "../assets/products/lCleats/lcleat_banner.jpg";
@@ -96,9 +101,14 @@ export const images = {
     galleher:    [u.malletsP5_01, u.malletsP5_02, u.malletsP5_03, u.malletsP5_05],
   },
   staples: {
-    hero:           u.staplesP04_08,
-    gauge155a:      u.staplesP04_01,
-    gauge155b:      u.staplesP05_02,
+    hero:           s155Masterpack.url,
+    s155_masterpack: s155Masterpack.url,
+    s155_1_5in:     s155_1_5in.url,
+    s155_2in_1000:  s155_2in_1000.url,
+    s155_2in_5000:  s155_2in_5000.url,
+    s155_2in_7720:  s155_2in_7720.url,
+    gauge155a:      s155_2in_5000.url,
+    gauge155b:      s155_1_5in.url,
     gauge15Banner:  u.staplesP07_02,
     gauge15Vertical: u.staplesP08_01,
   },

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SectionLabel, Callout, InfoPanel, InterchangeList } from "../components/PageHeader";
+import { Callout, InfoPanel, InterchangeList } from "../components/PageHeader";
 import { ProductGrid } from "../components/ProductCard";
 import {
   CinematicHero,

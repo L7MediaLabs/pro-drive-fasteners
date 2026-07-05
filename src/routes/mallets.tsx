@@ -144,7 +144,3 @@ function Mallets() {
     </div>
   );
 }
-      </section>
-    </div>
-  );
-}

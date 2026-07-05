@@ -190,6 +190,14 @@ function AirTools() {
             </article>
           ))}
         </div>
+        <div className="grid md:grid-cols-2 gap-4 mt-6">
+          <InfoPanel title="BRAD18 — 18 GA Brad Nailer">
+            <div>3.06 lbs · 9.7″×2.4″×9.9″ · 70–110 psi · 110-brad capacity · 5/8″–2″ range. 360° exhaust deflector, tool-free depth-adjustment, front access for jam removal, E-Z open magazine latch, non-mar pad.</div>
+          </InfoPanel>
+          <InfoPanel title="BRAD16 — 16 GA Brad Nailer">
+            <div>4.19 lbs · 10.7″×2.8″×11.1″ · 70–110 psi · 100-brad capacity · 1″–2-1/2″ range. Accepts 16 GA finish nails. 360° adjustable air deflector, quick-release nose cover, well balanced. No-Mar rubber pad available (#21903602).</div>
+          </InfoPanel>
+        </div>
       </section>
 
       {/* HOSES */}

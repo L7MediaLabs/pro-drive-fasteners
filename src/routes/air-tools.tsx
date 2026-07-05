@@ -219,8 +219,10 @@ function AirTools() {
           </InfoPanel>
         </div>
       </section>
+      )}
 
       {/* HOSES */}
+      {tab === "hoses" && (
       <section className="px-[6%] py-16 relative overflow-hidden" style={{ background: "var(--pd-darker)" }}>
         <div className="flex items-end justify-between flex-wrap gap-4">
           <div>

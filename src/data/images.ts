@@ -47,6 +47,11 @@ import malletR5w          from "../assets/products/mallets/mallet_r5w.png.asset.
 import malletDhw          from "../assets/products/mallets/mallet_dhw.png.asset.json";
 import malletVcap         from "../assets/products/mallets/mallet_vcap.png.asset.json";
 import malletCapsDisplay  from "../assets/products/mallets/mallet_caps_display.png.asset.json";
+import capCap600W         from "../assets/products/mallets/cap600w.png.asset.json";
+import capCap601B         from "../assets/products/mallets/cap601b.png.asset.json";
+import capCap602G         from "../assets/products/mallets/cap602g.png.asset.json";
+import cap100Vcap         from "../assets/products/mallets/cap_100vcap.png.asset.json";
+import capCap600PA        from "../assets/products/mallets/cap600pa.png.asset.json";
 import s155Masterpack     from "../assets/products/staples/staples_155_masterpack.png.asset.json";
 import s155_1_5in         from "../assets/products/staples/staples_155_1_5in.png.asset.json";
 import s155_2in_1000      from "../assets/products/staples/staples_155_2in_1000.png.asset.json";
@@ -109,6 +114,13 @@ export const images = {
     misc1:       u.malletsP21_01,
     misc2:       u.malletsP22_08,
     galleher:    [u.malletsP5_01, u.malletsP5_02, u.malletsP5_03, u.malletsP5_05],
+    caps: {
+      cap600w:  capCap600W.url,
+      cap601b:  capCap601B.url,
+      cap602g:  capCap602G.url,
+      vcap100:  cap100Vcap.url,
+      cap600pa: capCap600PA.url,
+    },
   },
   staples: {
     hero:           s155Masterpack.url,

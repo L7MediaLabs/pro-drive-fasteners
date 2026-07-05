@@ -52,6 +52,11 @@ import capCap601B         from "../assets/products/mallets/cap601b.png.asset.jso
 import capCap602G         from "../assets/products/mallets/cap602g.png.asset.json";
 import cap100Vcap         from "../assets/products/mallets/cap_100vcap.png.asset.json";
 import capCap600PA        from "../assets/products/mallets/cap600pa.png.asset.json";
+import polyfaceSoft       from "../assets/products/mallets/polyface_soft.png.asset.json";
+import polyfaceSoftMedium from "../assets/products/mallets/polyface_soft_medium.png.asset.json";
+import polyfaceMedium     from "../assets/products/mallets/polyface_medium.png.asset.json";
+import polyfaceHard       from "../assets/products/mallets/polyface_hard.png.asset.json";
+import polyfaceTough      from "../assets/products/mallets/polyface_tough.png.asset.json";
 import s155Masterpack     from "../assets/products/staples/staples_155_masterpack.png.asset.json";
 import s155_1_5in         from "../assets/products/staples/staples_155_1_5in.png.asset.json";
 import s155_2in_1000      from "../assets/products/staples/staples_155_2in_1000.png.asset.json";
@@ -120,6 +125,13 @@ export const images = {
       cap602g:  capCap602G.url,
       vcap100:  cap100Vcap.url,
       cap600pa: capCap600PA.url,
+    },
+    poly: {
+      soft:       polyfaceSoft.url,
+      softMedium: polyfaceSoftMedium.url,
+      medium:     polyfaceMedium.url,
+      hard:       polyfaceHard.url,
+      tough:      polyfaceTough.url,
     },
   },
   staples: {

@@ -194,8 +194,6 @@ function Blocks() {
 
       <RelatedProducts products={related} />
       <PageDisclaimers />
-      {/* Reserved: <InfoPanel/> retained for future spec notes */}
-      <div hidden><InfoPanel /></div>
     </div>
   );
 }

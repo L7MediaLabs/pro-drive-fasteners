@@ -283,6 +283,12 @@ function AirTools() {
             </article>
           ))}
         </div>
+        <div className="mt-8"><InfoPanel title="Fittings Detail">
+          <div><strong style={{ color: "var(--pd-dark)" }}>AIR-SW-MP20M:</strong> 360° swivel connector — eliminates hose tangles and improves tool placement.</div>
+          <div><strong style={{ color: "var(--pd-dark)" }}>AIR-MP20M:</strong> Male connector, professional grade, brass-plated steel.</div>
+          <div><strong style={{ color: "var(--pd-dark)" }}>AIR-MIC20F:</strong> Quick coupler with knurled body for enhanced grip, industrial 6-ball design.</div>
+          <div><strong style={{ color: "var(--pd-dark)" }}>AIR-UCB1414:</strong> Reusable brass splicer for 3/8″ hose — quick field repair.</div>
+        </InfoPanel></div>
       </section>
 
       {/* CTA STRIP */}

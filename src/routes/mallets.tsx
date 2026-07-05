@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHeader, SectionLabel, Callout } from "../components/PageHeader";
+import { PageHeader, SectionLabel, Callout, InfoPanel } from "../components/PageHeader";
 import { ProductGrid } from "../components/ProductCard";
 import { MALLETS, MALLET_CAPS, POLY_FACES, DEAD_BLOW } from "../data/products";
 import { images } from "../data/images";

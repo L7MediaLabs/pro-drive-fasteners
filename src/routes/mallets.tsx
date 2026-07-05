@@ -99,6 +99,10 @@ function Mallets() {
             </div>
           </div>
           <Callout><strong>E-Z 2CAP®</strong> — caps installed or removed in 30 seconds or less. PATENTED DESIGN.</Callout>
+          <InfoPanel>
+            <div>Heavy-duty chrome-plated steel retention ring. Guaranteed to fit all major brands of rubber flooring mallets — or your money back. <strong>U.S. Patent No. 11,370,097</strong>.</div>
+            <div><strong style={{ color: "var(--pd-dark)" }}>Pro-Angle™ cap:</strong> Designed for engineered flooring with improved edge-clearance contact for faster installation.</div>
+          </InfoPanel>
         </div>
         <div>
           <SectionLabel>Urethane Striking Faces (Poly Caps)</SectionLabel>
@@ -124,12 +128,22 @@ function Mallets() {
             ))}
           </div>
           <Callout>5 colors denoting hardness. Guaranteed to fit leading brands with 3/8" x 16 standard thread. Free counter display with purchase of 16 Poly Striking Faces.</Callout>
+          <InfoPanel>
+            <div>Ideal replacement for 2″ poly faces. Unaffected by liquids, solvents, and lubricants. Will not damage, mar, or dent. <strong>Made in the USA.</strong></div>
+          </InfoPanel>
         </div>
         <div>
           <SectionLabel>Poly Dead Blow Mallet (US Patent 11,759,941)</SectionLabel>
           <div className="mt-4"><ProductGrid products={DEAD_BLOW} /></div>
           <Callout>Only 2.2 lbs. Head cavity partially filled with steel shot for greater striking force. Increases productivity, reduces installer fatigue.</Callout>
+          <InfoPanel>
+            <div>Head cavity partially filled with steel shot for greater striking force. Face absorbs a portion of blow energy, reducing rebound. 100% premium hickory handle. <strong>U.S. Patent No. 11,759,941.</strong></div>
+          </InfoPanel>
         </div>
+      </section>
+    </div>
+  );
+}
       </section>
     </div>
   );

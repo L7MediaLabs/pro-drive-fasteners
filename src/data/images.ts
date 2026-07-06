@@ -78,6 +78,12 @@ import brad18_100         from "../assets/products/brads/axx13eaa-100.png.asset.
 import brad18_125         from "../assets/products/brads/axx15eaa-125.png.asset.json";
 import brad18_150         from "../assets/products/brads/axx17eaa-150.png.asset.json";
 import brad18_200         from "../assets/products/brads/axx21eaa-200.png.asset.json";
+import famFn15_25         from "../assets/products/finishNails/families/fn15_25.png.asset.json";
+import famDa15_34         from "../assets/products/finishNails/families/da15_34.png.asset.json";
+import famC16Straight     from "../assets/products/finishNails/families/c16_straight.png.asset.json";
+import famAfn16_20        from "../assets/products/finishNails/families/afn16_20.png.asset.json";
+import famBrad18Straight  from "../assets/products/finishNails/families/brad18_straight.png.asset.json";
+import famPin23Micro      from "../assets/products/finishNails/families/pin23_micro.png.asset.json";
 import lcleatVertical     from "../assets/products/lCleats/lcleat_vertical.jpg";
 import lcleatStanding     from "../assets/products/lCleats/lcleat_standing.jpg";
 import lcleatBanner       from "../assets/products/lCleats/lcleat_banner.jpg";
@@ -241,6 +247,14 @@ export const images = {
     axx15_125: brad18_125.url,
     axx17_150: brad18_150.url,
     axx21_200: brad18_200.url,
+  },
+  nailFamilies: {
+    fn15_25:       famFn15_25.url,
+    da15_34:       famDa15_34.url,
+    c16_straight:  famC16Straight.url,
+    afn16_20:      famAfn16_20.url,
+    brad18_straight: famBrad18Straight.url,
+    pin23_micro:   famPin23Micro.url,
   },
   flag: "/__l5e/assets-v1/21fec0ab-e7e9-4f98-91cb-e05584679dc5/usa-flag-clean.png",
 } as const;

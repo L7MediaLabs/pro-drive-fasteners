@@ -120,11 +120,12 @@ const tabData = {
 
 // Depth chart data — R22 pg. 5. 15.5 GA staples embedded in 3/4" tongue-and-groove.
 type StapleSpec = { crown: string; crownMm: string; pen: string };
-type StapleGroup = { len: string; items: StapleSpec[] };
+type StapleGroup = { len: string; lenIn: number; items: StapleSpec[] };
 
 const depthChart: StapleGroup[] = [
   {
     len: '2" Staples',
+    lenIn: 2.0,
     items: [
       { crown: '5/8"', crownMm: "16mm", pen: '1-1/16"' },
       { crown: '3/4"', crownMm: "19mm", pen: '1"' },
@@ -132,6 +133,7 @@ const depthChart: StapleGroup[] = [
   },
   {
     len: '1-3/4" Staples',
+    lenIn: 1.75,
     items: [
       { crown: '1/2"',  crownMm: "12mm", pen: '31/32"' },
       { crown: '9/16"', crownMm: "14mm", pen: '29/32"' },
@@ -141,6 +143,7 @@ const depthChart: StapleGroup[] = [
   },
   {
     len: '1-1/2" Staples',
+    lenIn: 1.5,
     items: [
       { crown: '3/8"',  crownMm: "10mm", pen: '7/8"' },
       { crown: '1/2"',  crownMm: "12mm", pen: '13/16"' },
@@ -152,106 +155,183 @@ const depthChart: StapleGroup[] = [
 ];
 
 const TONGUE = '3/4"';
+const TONGUE_IN = 0.75;
+
+// Parse fractional inch strings — "1-1/16", "31/32", "5/8", "3/4"
+function toDec(input: string): number {
+  const s = input.replace(/"/g, "").trim();
+  if (s.includes("-")) {
+    const [w, f] = s.split("-");
+    const [n, d] = f.split("/").map(Number);
+    return Number(w) + n / d;
+  }
+  if (s.includes("/")) {
+    const [n, d] = s.split("/").map(Number);
+    return n / d;
+  }
+  return Number(s);
+}
+
+// Shared scale — every diagram uses the same pixels-per-inch, so cross-card
+// comparison is meaningful (tongue height, penetration depth, staple length).
+const PPI = 60;
+const WOOD_H = TONGUE_IN * PPI;   // 45px — 3/4" tongue
+const CROWN_H = 18;                // top brown strip (visual only)
+const LEFT_PAD = 14;
+const RIGHT_GUTTER = 46;           // reserves space for the tongue arrow
+const WOOD_W = 130;                // fixed wood block width for the whole chart
+// Max staple horizontal run: 2" staple w/ 1" pen = sqrt(4-1)=1.73"·60 ≈ 104px.
+// The 2" staple w/ 1-1/16" pen tip drops ~1.06"·60 ≈ 64px past the wood top,
+// so the below-wood extension needs to fit the longest penetration case.
+const MAX_PEN_PX = 1.0625 * PPI;   // 63.75px
+const BELOW_WOOD = Math.max(0, MAX_PEN_PX - WOOD_H); // ~19px
+const VB_W = LEFT_PAD + WOOD_W + RIGHT_GUTTER;
+const VB_H = CROWN_H + WOOD_H + BELOW_WOOD + 14;
 
 // SVG diagram of one staple embedded in a 3/4" tongue-and-groove floor cross-section.
-function StapleDepthDiagram({ spec, uid }: { spec: StapleSpec; uid: string }) {
-  // Coordinate system
-  const W = 200, H = 150;
-  const crownH = 26;
-  const woodTop = crownH;
-  const woodH = 96;
-  const woodBottom = woodTop + woodH;
-  const rightGutter = 46; // space for tongue arrow
+// All geometry is scaled from real dimensions so diagrams are visually comparable.
+function StapleDepthDiagram({
+  spec,
+  uid,
+  stapleLenIn,
+}: {
+  spec: StapleSpec;
+  uid: string;
+  stapleLenIn: number;
+}) {
+  const penIn = toDec(spec.pen);
+  const penPx = penIn * PPI;
+  const stapleLenPx = stapleLenIn * PPI;
+  // Right triangle: staple length² = horizontal run² + penetration²
+  const horizRun = Math.sqrt(Math.max(0, stapleLenPx ** 2 - penPx ** 2));
 
-  // Staple diagonal: from crown left edge down-right into wood
-  const stapleTopX = 22;
-  const stapleTopY = crownH;
-  const stapleBotX = 82;
-  const stapleBotY = crownH + 78; // penetration end
+  const woodTop = CROWN_H;
+  const woodBottom = woodTop + WOOD_H;
 
-  // Vertical penetration arrow inside wood
-  const penX = stapleBotX + 14;
+  // Staple enters at the top of the wood, near the left edge, and travels
+  // down-right by (horizRun, penPx). If horizRun overflows WOOD_W, cap the
+  // entry point so the tip lands inside the reserved wood width.
+  const stapleX1 = Math.min(LEFT_PAD + 8 + horizRun, LEFT_PAD + WOOD_W - 14);
+  const stapleX0 = stapleX1 - horizRun;
+  const stapleY0 = woodTop;
+  const stapleY1 = woodTop + penPx;
+
+  const penArrowX = stapleX1 + 10;
+  const tongueArrowX = LEFT_PAD + WOOD_W + 12;
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: "block" }} aria-hidden>
+    <svg
+      viewBox={`0 0 ${VB_W} ${VB_H}`}
+      width="100%"
+      style={{ display: "block" }}
+      aria-hidden
+    >
       <defs>
         <pattern id={`grain-${uid}`} width="60" height="14" patternUnits="userSpaceOnUse">
           <line x1="0" y1="7" x2="60" y2="7" stroke="rgba(0,0,0,0.18)" strokeWidth="0.6" strokeDasharray="10 4 4 4 6 6" />
         </pattern>
       </defs>
 
-      {/* Crown / top strip (brown, matches R22) */}
-      <rect x="0" y="0" width={W - rightGutter} height={crownH} fill="#5C4128" />
-      {/* Notch on left (represents groove-side tab) */}
-      <rect x="0" y={crownH * 0.35} width="4" height={crownH * 0.55} fill="#F5F4EE" />
-      {/* Crown label */}
-      <text x="12" y={crownH * 0.68} fill="#fff" fontFamily="Assistant, sans-serif" fontWeight="800" fontSize="11">
+      {/* Crown / top strip (brown board top) */}
+      <rect x={LEFT_PAD} y="0" width={WOOD_W} height={CROWN_H} fill="#5C4128" />
+      {/* Groove notch on the left */}
+      <rect x={LEFT_PAD} y={CROWN_H * 0.35} width="4" height={CROWN_H * 0.55} fill="#F5F4EE" />
+      {/* Crown size label */}
+      <text
+        x={LEFT_PAD + 8}
+        y={CROWN_H * 0.7}
+        fill="#fff"
+        fontFamily="Assistant, sans-serif"
+        fontWeight="800"
+        fontSize="10"
+      >
         {spec.crown}
       </text>
-      <text x="12" y={crownH * 0.68} dx={spec.crown.length * 6.5 + 6} fill="rgba(255,255,255,0.75)" fontFamily="Assistant, sans-serif" fontWeight="600" fontSize="8">
+      <text
+        x={LEFT_PAD + 8}
+        y={CROWN_H * 0.7}
+        dx={spec.crown.length * 6.2 + 6}
+        fill="rgba(255,255,255,0.75)"
+        fontFamily="Assistant, sans-serif"
+        fontWeight="600"
+        fontSize="7.5"
+      >
         ({spec.crownMm})
       </text>
 
-      {/* Wood body */}
-      <rect x="0" y={woodTop} width={W - rightGutter} height={woodH} fill="#D9C89F" />
-      <rect x="0" y={woodTop} width={W - rightGutter} height={woodH} fill={`url(#grain-${uid})`} />
-      {/* Additional grain hairlines for detail */}
-      {[0.2, 0.42, 0.6, 0.78].map(f => (
+      {/* Wood body — always 3/4" tall (shared scale) */}
+      <rect x={LEFT_PAD} y={woodTop} width={WOOD_W} height={WOOD_H} fill="#D9C89F" />
+      <rect x={LEFT_PAD} y={woodTop} width={WOOD_W} height={WOOD_H} fill={`url(#grain-${uid})`} />
+      {[0.22, 0.48, 0.72].map(f => (
         <line
           key={f}
-          x1="0"
-          y1={woodTop + woodH * f}
-          x2={W - rightGutter}
-          y2={woodTop + woodH * f}
+          x1={LEFT_PAD}
+          y1={woodTop + WOOD_H * f}
+          x2={LEFT_PAD + WOOD_W}
+          y2={woodTop + WOOD_H * f}
           stroke="rgba(0,0,0,0.14)"
           strokeWidth="0.5"
           strokeDasharray="12 5 4 6"
         />
       ))}
 
-      {/* Staple: shank as thin light metallic line */}
-      <line x1={stapleTopX} y1={stapleTopY} x2={stapleBotX} y2={stapleBotY} stroke="#C8C8CC" strokeWidth="1.6" strokeLinecap="round" />
-      <line x1={stapleTopX} y1={stapleTopY} x2={stapleBotX} y2={stapleBotY} stroke="rgba(255,255,255,0.7)" strokeWidth="0.5" />
-      {/* Staple point */}
+      {/* Staple shank — length + angle are true to scale */}
+      <line
+        x1={stapleX0}
+        y1={stapleY0}
+        x2={stapleX1}
+        y2={stapleY1}
+        stroke="#B8B8BE"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+      <line
+        x1={stapleX0}
+        y1={stapleY0}
+        x2={stapleX1}
+        y2={stapleY1}
+        stroke="rgba(255,255,255,0.75)"
+        strokeWidth="0.5"
+      />
+      {/* Chisel point at the tip */}
       <polygon
-        points={`${stapleBotX - 2},${stapleBotY - 3} ${stapleBotX + 3},${stapleBotY + 1} ${stapleBotX - 1},${stapleBotY + 2}`}
+        points={`${stapleX1 - 2.5},${stapleY1 - 3} ${stapleX1 + 3.5},${stapleY1 + 1.2} ${stapleX1 - 1},${stapleY1 + 2.5}`}
         fill="#1a1a1a"
       />
 
-      {/* Penetration arrow (inside wood) */}
-      <line x1={penX} y1={woodTop + 2} x2={penX} y2={stapleBotY} stroke="#1a1a1a" strokeWidth="1" />
-      {/* Arrowheads */}
-      <polygon points={`${penX},${woodTop + 2} ${penX - 3},${woodTop + 8} ${penX + 3},${woodTop + 8}`} fill="#1a1a1a" />
-      <polygon points={`${penX},${stapleBotY} ${penX - 3},${stapleBotY - 6} ${penX + 3},${stapleBotY - 6}`} fill="#1a1a1a" />
-      {/* Penetration label */}
+      {/* Penetration arrow — from wood top down to the staple tip (true depth) */}
+      <line x1={penArrowX} y1={woodTop + 1} x2={penArrowX} y2={stapleY1} stroke="#1a1a1a" strokeWidth="1" />
+      <polygon points={`${penArrowX},${woodTop + 1} ${penArrowX - 3},${woodTop + 7} ${penArrowX + 3},${woodTop + 7}`} fill="#1a1a1a" />
+      <polygon points={`${penArrowX},${stapleY1} ${penArrowX - 3},${stapleY1 - 6} ${penArrowX + 3},${stapleY1 - 6}`} fill="#1a1a1a" />
       <text
-        x={penX + 6}
-        y={(woodTop + stapleBotY) / 2 + 4}
+        x={penArrowX + 5}
+        y={(woodTop + stapleY1) / 2 + 4}
         fill="#1a1a1a"
         fontFamily="Assistant, sans-serif"
         fontWeight="800"
-        fontSize="11"
+        fontSize="10"
       >
         {spec.pen}
       </text>
 
-      {/* Tongue (3/4") arrow gutter — outside wood block, right side */}
-      <line x1={W - rightGutter + 10} y1={woodTop} x2={W - rightGutter + 10} y2={woodBottom} stroke="#1a1a1a" strokeWidth="1" />
-      <polygon points={`${W - rightGutter + 10},${woodTop} ${W - rightGutter + 7},${woodTop + 6} ${W - rightGutter + 13},${woodTop + 6}`} fill="#1a1a1a" />
-      <polygon points={`${W - rightGutter + 10},${woodBottom} ${W - rightGutter + 7},${woodBottom - 6} ${W - rightGutter + 13},${woodBottom - 6}`} fill="#1a1a1a" />
+      {/* Tongue (3/4") reference arrow — same length on every card */}
+      <line x1={tongueArrowX} y1={woodTop} x2={tongueArrowX} y2={woodBottom} stroke="#1a1a1a" strokeWidth="1" />
+      <polygon points={`${tongueArrowX},${woodTop} ${tongueArrowX - 3},${woodTop + 6} ${tongueArrowX + 3},${woodTop + 6}`} fill="#1a1a1a" />
+      <polygon points={`${tongueArrowX},${woodBottom} ${tongueArrowX - 3},${woodBottom - 6} ${tongueArrowX + 3},${woodBottom - 6}`} fill="#1a1a1a" />
       <text
-        x={W - rightGutter + 17}
+        x={tongueArrowX + 6}
         y={(woodTop + woodBottom) / 2 + 4}
         fill="#1a1a1a"
         fontFamily="Assistant, sans-serif"
         fontWeight="800"
-        fontSize="11"
+        fontSize="10"
       >
         {TONGUE}
       </text>
     </svg>
   );
 }
+
 
 
 function Staples() {

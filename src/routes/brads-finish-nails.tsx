@@ -317,34 +317,16 @@ function Brads() {
       <TechReference
         kicker="Reference"
         title="18 GA Brad Size Comparison"
-        intro='All Pro-Drive 18 GA brads share a .0468" chisel-point shank. Compare relative lengths at a glance — 1/2" through 2-1/4".'
+        intro='All Pro-Drive 18 GA brads share a .0468" chisel-point shank. Every nail is drawn to the same scale — compare relative lengths at a glance from 1/2" through 2-1/8".'
       >
         <div className="bg-white p-6" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
-          <div className="space-y-2">
-            {brad18Sizes.map(b => {
-              const pct = (b.lenIn / 2.25) * 100;
-              return (
-                <div key={b.sku} className="grid grid-cols-[110px_1fr_60px] items-center gap-3">
-                  <div style={{ fontFamily: "ui-monospace, monospace", fontSize: 12, color: "var(--pd-muted)" }}>{b.sku}</div>
-                  <div style={{ background: "#f0efe8", height: 22, position: "relative" }}>
-                    <div
-                      style={{
-                        width: `${pct}%`,
-                        height: "100%",
-                        background: "linear-gradient(90deg, var(--pd-yellow), #E5B800)",
-                      }}
-                    />
-                  </div>
-                  <div className="font-bold text-right" style={{ color: "var(--pd-dark)", fontSize: 13 }}>{b.label}</div>
-                </div>
-              );
-            })}
-          </div>
+          <BradNailDiagram sizes={brad18Sizes} />
           <div className="mt-5 pt-4 text-xs" style={{ color: "var(--pd-muted)", borderTop: "1px solid rgba(0,0,0,0.06)", fontFamily: "ui-monospace, monospace" }}>
-            Shank Ø .0468" · Chisel Point · Smooth Shank · Meets ASTM F1667
+            Shank Ø .0468" · Chisel Point · Smooth Shank · Meets ASTM F1667 · Drawn to scale
           </div>
         </div>
       </TechReference>
+
 
       <RelatedProducts products={related} />
       <PageDisclaimers galvanized trademarks />

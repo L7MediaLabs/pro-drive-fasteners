@@ -248,6 +248,14 @@ export const images = {
     axx17_150: brad18_150.url,
     axx21_200: brad18_200.url,
   },
+  nailFamilies: {
+    fn15_25:       famFn15_25.url,
+    da15_34:       famDa15_34.url,
+    c16_straight:  famC16Straight.url,
+    afn16_20:      famAfn16_20.url,
+    brad18_straight: famBrad18Straight.url,
+    pin23_micro:   famPin23Micro.url,
+  },
   flag: "/__l5e/assets-v1/21fec0ab-e7e9-4f98-91cb-e05584679dc5/usa-flag-clean.png",
 } as const;
 

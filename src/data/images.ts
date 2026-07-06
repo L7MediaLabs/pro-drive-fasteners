@@ -78,6 +78,12 @@ import brad18_100         from "../assets/products/brads/axx13eaa-100.png.asset.
 import brad18_125         from "../assets/products/brads/axx15eaa-125.png.asset.json";
 import brad18_150         from "../assets/products/brads/axx17eaa-150.png.asset.json";
 import brad18_200         from "../assets/products/brads/axx21eaa-200.png.asset.json";
+import famFn15_25         from "../assets/products/finishNails/families/fn15_25.png.asset.json";
+import famDa15_34         from "../assets/products/finishNails/families/da15_34.png.asset.json";
+import famC16Straight     from "../assets/products/finishNails/families/c16_straight.png.asset.json";
+import famAfn16_20        from "../assets/products/finishNails/families/afn16_20.png.asset.json";
+import famBrad18Straight  from "../assets/products/finishNails/families/brad18_straight.png.asset.json";
+import famPin23Micro      from "../assets/products/finishNails/families/pin23_micro.png.asset.json";
 import lcleatVertical     from "../assets/products/lCleats/lcleat_vertical.jpg";
 import lcleatStanding     from "../assets/products/lCleats/lcleat_standing.jpg";
 import lcleatBanner       from "../assets/products/lCleats/lcleat_banner.jpg";

@@ -363,17 +363,68 @@ function Staples() {
         intro="Select the correct 15.5 GA staple length and crown width for your subfloor thickness. All penetration and tongue-clearance figures from Pro-Drive R22 spec sheet."
         footnote="Actual fastener depth can vary based on wood milling or tongue profile. This chart is for reference purposes only. Consult wood manufacturers or NWFA for correct fastener length before installation."
       >
-        <div className="grid md:grid-cols-3" style={{ gap: 2 }}>
-          {depthChart.map(s => (
-            <div key={s.len} className="bg-white p-5" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
-              <div className="font-bold" style={{ color: "var(--pd-dark)", fontSize: 14 }}>{s.len}</div>
-              <ul className="mt-3 space-y-1.5" style={{ fontSize: 12, color: "var(--pd-muted)", fontFamily: "ui-monospace, monospace" }}>
-                {s.rows.map(r => <li key={r}>{r}</li>)}
-              </ul>
+        <div className="space-y-8">
+          {depthChart.map(group => (
+            <div key={group.len}>
+              <div className="flex items-baseline gap-3 mb-4">
+                <h3 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: 22, lineHeight: 1 }}>
+                  {group.len}
+                </h3>
+                <span className="pd-label" style={{ color: "var(--pd-gold)", fontSize: 11 }}>15.5 Gauge</span>
+                <span
+                  aria-hidden
+                  className="flex-1"
+                  style={{ borderBottom: "1px solid rgba(0,0,0,0.1)", transform: "translateY(-4px)" }}
+                />
+              </div>
+              <div
+                className="grid gap-3"
+                style={{ gridTemplateColumns: `repeat(auto-fit, minmax(200px, 1fr))` }}
+              >
+                {group.items.map(spec => (
+                  <div
+                    key={`${group.len}-${spec.crown}`}
+                    className="bg-white"
+                    style={{
+                      border: "1px solid rgba(0,0,0,0.08)",
+                      borderTop: "2px solid var(--pd-yellow)",
+                      padding: "12px 12px 10px",
+                    }}
+                  >
+                    <StapleDepthDiagram spec={spec} />
+                    <div
+                      className="mt-2 pt-2 flex items-center justify-between"
+                      style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}
+                    >
+                      <span
+                        style={{
+                          fontFamily: "ui-monospace, monospace",
+                          fontSize: 10,
+                          color: "var(--pd-muted)",
+                          letterSpacing: "0.05em",
+                        }}
+                      >
+                        {spec.crown} crown
+                      </span>
+                      <span
+                        style={{
+                          fontFamily: "ui-monospace, monospace",
+                          fontSize: 10,
+                          color: "var(--pd-dark)",
+                          fontWeight: 700,
+                        }}
+                      >
+                        {spec.pen} pen · {TONGUE} tongue
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>
       </TechReference>
+
 
       <RelatedProducts products={related} />
       <PageDisclaimers galvanized trademarks />

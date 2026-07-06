@@ -22,7 +22,7 @@ const u = {
   staplesP04_08: "/__l5e/assets-v1/b19adc4f-d5a5-4225-8fb6-98d713bc718f/staples_p04_img08.png",
   staplesP05_02: "/__l5e/assets-v1/0adda93e-360c-400d-90bc-aefd8d45e13e/staples_p05_img02.png",
   staplesP07_02: "/__l5e/assets-v1/f721a7d3-90fb-48d8-abdd-f89e4f02b10c/staples_p07_img02.png",
-  staplesP08_01: "/__l5e/assets-v1/961c0a9d-29b5-4146-93a8-49e1f10e60b3/staples_p08_img01.png",
+  staplesP08_01: "/__l5e/assets-v1/3fcfa264-9500-4d12-ba7b-f69f06293313/lcleats_175_16ga_box.png",
   blocksP28_03:  "/__l5e/assets-v1/45bfe327-4704-4647-bda0-0c8bed1da54c/tapping_blocks_p28_img03.png",
   blocksP28_04:  "/__l5e/assets-v1/a7c08099-7f90-4f4f-aa64-68dd8966a086/tapping_blocks_p28_img04.png",
   ringsP26_01:   "/__l5e/assets-v1/59554107-918d-4c60-9332-f0d9766792f7/tapping_rings_p26_img01.png",

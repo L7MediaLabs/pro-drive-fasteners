@@ -194,7 +194,7 @@ function StapleDepthDiagram({ spec, uid }: { spec: StapleSpec; uid: string }) {
 
       {/* Wood body */}
       <rect x="0" y={woodTop} width={W - rightGutter} height={woodH} fill="#D9C89F" />
-      <rect x="0" y={woodTop} width={W - rightGutter} height={woodH} fill={`url(#grain-${spec.crown}-${spec.pen})`} />
+      <rect x="0" y={woodTop} width={W - rightGutter} height={woodH} fill={`url(#grain-${uid})`} />
       {/* Additional grain hairlines for detail */}
       {[0.2, 0.42, 0.6, 0.78].map(f => (
         <line

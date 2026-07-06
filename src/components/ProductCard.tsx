@@ -52,9 +52,12 @@ export function ProductCard({ product }: { product: Product }) {
   );
 }
 
-export function ProductGrid({ products }: { products: Product[] }) {
+export function ProductGrid({ products, cols = 3 }: { products: Product[]; cols?: 3 | 4 }) {
+  const colsClass = cols === 4
+    ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+    : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3";
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: 2 }}>
+    <div className={colsClass} style={{ gap: 2 }}>
       {products.map(p => <ProductCard key={p.id} product={p} />)}
     </div>
   );

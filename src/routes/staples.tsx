@@ -379,7 +379,7 @@ function Staples() {
               </div>
               <div
                 className="grid gap-3"
-                style={{ gridTemplateColumns: `repeat(auto-fit, minmax(200px, 1fr))` }}
+                style={{ gridTemplateColumns: `repeat(auto-fill, minmax(220px, 260px))` }}
               >
                 {group.items.map(spec => (
                   <div

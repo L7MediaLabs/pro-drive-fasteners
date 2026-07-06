@@ -43,27 +43,27 @@ export function CinematicHero({
           background: "linear-gradient(90deg, rgba(15,15,15,0.88), rgba(15,15,15,0.55))",
         }}
       />
-      <div className={`relative z-10 grid ${rightImage ? "lg:grid-cols-[1.1fr_0.9fr]" : ""} gap-12 items-center`}>
+      <div className={`relative z-10 grid ${rightImage ? "lg:grid-cols-[1.15fr_0.85fr]" : ""} gap-10 lg:gap-14 items-center`}>
         <div>
           <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>{kicker}</div>
-          <h1 className="pd-display text-white mt-3" style={{ fontSize: "clamp(40px, 7vw, 68px)", lineHeight: 1.02 }}>
+          <h1 className="pd-display text-white mt-3" style={{ fontSize: "clamp(38px, 6.2vw, 62px)", lineHeight: 1.05, letterSpacing: "-0.01em" }}>
             {title}
           </h1>
           {description && (
-            <p className="mt-5 text-white/70 max-w-xl" style={{ fontSize: 17, lineHeight: 1.6 }}>
+            <p className="mt-5 text-white/70 max-w-xl" style={{ fontSize: 16.5, lineHeight: 1.6 }}>
               {description}
             </p>
           )}
           {badges && badges.length > 0 && (
-            <div className="flex flex-wrap gap-3 mt-7">
+            <div className="flex flex-wrap gap-2.5 mt-7">
               {badges.map((b, i) => (
                 <div
                   key={i}
-                  className="pd-glass-light px-4 py-2"
+                  className="pd-glass-light px-3.5 py-2"
                   style={{
-                    fontSize: 12,
+                    fontSize: 11,
                     color: b.accent ?? i === 0 ? "var(--pd-yellow)" : "#fff",
-                    letterSpacing: "0.12em",
+                    letterSpacing: "0.14em",
                     fontWeight: 700,
                   }}
                 >
@@ -75,10 +75,11 @@ export function CinematicHero({
         </div>
         {rightImage && (
           <div
-            className="relative"
+            className="relative mx-auto w-full"
             style={{
-              aspectRatio: "4/5",
-              maxHeight: 520,
+              aspectRatio: rightImageFit === "contain" ? "5/4" : "4/5",
+              maxHeight: rightImageFit === "contain" ? 420 : 500,
+              maxWidth: rightImageFit === "contain" ? 520 : 440,
               background: rightImageFit === "contain" ? "#fff" : "transparent",
               borderRadius: 4,
               boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
@@ -93,7 +94,7 @@ export function CinematicHero({
                 width: "100%", height: "100%",
                 objectFit: rightImageFit,
                 objectPosition: "center",
-                padding: rightImageFit === "contain" ? 16 : 0,
+                padding: rightImageFit === "contain" ? 20 : 0,
               }}
             />
           </div>
@@ -171,8 +172,20 @@ export function SplitLayout({
 
 export function GalleryHero({ src, alt, caption }: { src: string; alt: string; caption?: string }) {
   return (
-    <div style={{ background: "#fff", padding: 16, borderTop: "3px solid var(--pd-yellow)" }}>
-      <img src={src} alt={alt} loading="lazy" style={{ width: "100%", height: "auto", display: "block" }} />
+    <div style={{ background: "#fff", padding: 20, borderTop: "3px solid var(--pd-yellow)" }}>
+      <div
+        style={{
+          display: "flex", alignItems: "center", justifyContent: "center",
+          aspectRatio: "1 / 1", maxHeight: 380,
+        }}
+      >
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", display: "block" }}
+        />
+      </div>
       {caption && (
         <div className="pd-label mt-3" style={{ color: "var(--pd-gold)", fontSize: 11 }}>{caption}</div>
       )}

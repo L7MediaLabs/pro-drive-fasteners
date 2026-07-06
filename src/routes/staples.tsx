@@ -546,6 +546,7 @@ function Staples() {
         ]}
         rightImage={images.staples.s155_masterpack}
         rightImageAlt="Pro-Drive 15.5 GA hardwood flooring staples masterpack"
+        rightImageFit="contain"
       />
 
       <TabNav

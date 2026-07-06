@@ -175,7 +175,7 @@ function StapleDepthDiagram({ spec, uid }: { spec: StapleSpec; uid: string }) {
   return (
     <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: "block" }} aria-hidden>
       <defs>
-        <pattern id={`grain-${spec.crown}-${spec.pen}`} width="60" height="14" patternUnits="userSpaceOnUse">
+        <pattern id={`grain-${uid}`} width="60" height="14" patternUnits="userSpaceOnUse">
           <line x1="0" y1="7" x2="60" y2="7" stroke="rgba(0,0,0,0.18)" strokeWidth="0.6" strokeDasharray="10 4 4 4 6 6" />
         </pattern>
       </defs>

@@ -323,8 +323,130 @@ function Home() {
         </div>
       </section>
 
+      {/* 7C.5 Engineering Triptych — catalog cover illustrations */}
+      <section
+        style={{
+          background: "#F5F4EE",
+          backgroundImage:
+            "radial-gradient(rgba(0,0,0,0.05) 1px, transparent 1px)",
+          backgroundSize: "22px 22px",
+          borderTop: "1px solid rgba(0,0,0,0.08)",
+          borderBottom: "1px solid rgba(0,0,0,0.08)",
+        }}
+        className="px-[6%] py-20"
+      >
+        <div className="flex items-end justify-between flex-wrap gap-6 mb-12">
+          <div>
+            <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Engineered Fasteners</div>
+            <h2
+              className="pd-display mt-2"
+              style={{ color: "var(--pd-dark)", fontSize: "clamp(32px, 4.5vw, 52px)", lineHeight: 1.02, maxWidth: 720 }}
+            >
+              Every fastener, drawn from spec.
+            </h2>
+          </div>
+          <p
+            className="max-w-md"
+            style={{ color: "var(--pd-muted)", fontSize: 14, lineHeight: 1.7, fontWeight: 300 }}
+          >
+            Three families. One standard. Illustrations from the Pro-Drive R22 reference catalog — the same drawings our engineers work from on the line.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: 1, background: "rgba(0,0,0,0.08)" }}>
+          {engineeringTriptych.map((t) => (
+            <Link
+              key={t.plate}
+              to={t.to}
+              className="group block relative overflow-hidden"
+              style={{ background: "#FAF9F4" }}
+            >
+              <div
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  top: 16,
+                  left: 20,
+                  fontFamily: "ui-monospace, monospace",
+                  fontSize: 10,
+                  letterSpacing: "0.2em",
+                  color: "rgba(0,0,0,0.35)",
+                  zIndex: 2,
+                }}
+              >
+                {t.plate}
+              </div>
+              <div
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  top: 16,
+                  right: 20,
+                  fontFamily: "ui-monospace, monospace",
+                  fontSize: 10,
+                  letterSpacing: "0.2em",
+                  color: "rgba(0,0,0,0.35)",
+                  zIndex: 2,
+                }}
+              >
+                FIG. {String(engineeringTriptych.indexOf(t) + 1).padStart(2, "0")}
+              </div>
+              <div
+                className="flex items-center justify-center"
+                style={{
+                  height: 340,
+                  padding: "48px 32px 24px",
+                  background:
+                    "radial-gradient(ellipse 70% 55% at 50% 60%, rgba(255,205,0,0.10), transparent 70%)",
+                }}
+              >
+                <img
+                  src={t.image}
+                  alt={t.title}
+                  loading="lazy"
+                  className="transition-transform duration-700 group-hover:scale-105"
+                  style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain" }}
+                />
+              </div>
+              <div
+                className="px-7 pb-8 pt-2"
+                style={{ borderTop: "1px solid rgba(0,0,0,0.08)" }}
+              >
+                <div className="pd-label mt-5" style={{ color: "var(--pd-gold)", fontSize: 11 }}>{t.kicker}</div>
+                <h3
+                  className="mt-1.5"
+                  style={{ color: "var(--pd-dark)", fontWeight: 800, fontSize: 22, lineHeight: 1.15 }}
+                >
+                  {t.title}
+                </h3>
+                <p
+                  className="mt-2"
+                  style={{ color: "var(--pd-muted)", fontSize: 13, lineHeight: 1.65, fontWeight: 300 }}
+                >
+                  {t.body}
+                </p>
+                <div
+                  className="pd-label mt-5 inline-flex items-center gap-2 transition-colors"
+                  style={{ color: "var(--pd-dark)", fontSize: 11, letterSpacing: "0.14em" }}
+                >
+                  Explore Family
+                  <span
+                    aria-hidden
+                    className="transition-transform duration-300 group-hover:translate-x-1"
+                    style={{ color: "var(--pd-gold)" }}
+                  >
+                    →
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       {/* 7D Tapping Ring Video */}
       <section className="px-[6%] py-20" style={{ background: "var(--pd-dark)" }}>
+
         <div className="grid lg:grid-cols-[42%_58%] gap-8 items-start">
           <div>
             <div style={{ position: "relative", paddingTop: "177.78%" }}>

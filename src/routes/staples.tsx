@@ -588,7 +588,7 @@ function Staples() {
                   />
                 </div>
                 <div style={{ maxWidth: 360, margin: "0 auto" }}>
-                  <QWireStapleDiagram />
+                  <SencoStapleDiagram crownIn={7/16} crownLabel={'7/16"'} lengths={QWIRE_15_LENGTHS} ppi={70} />
                 </div>
                 <p
                   className="mt-3 text-center"

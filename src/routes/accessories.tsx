@@ -200,3 +200,136 @@ function Acc() {
     </div>
   );
 }
+
+/* ---------- ORK-6 Parts Diagram (to-scale vector recreation) ---------- */
+
+function Ring({ cx, cy, outer, stroke }: { cx: number; cy: number; outer: number; stroke: number }) {
+  return (
+    <circle
+      cx={cx}
+      cy={cy}
+      r={outer - stroke / 2}
+      fill="none"
+      stroke="var(--pd-dark)"
+      strokeWidth={stroke}
+    />
+  );
+}
+
+function PartLabel({
+  x,
+  y,
+  title,
+  code,
+  sub,
+}: {
+  x: number;
+  y: number;
+  title: React.ReactNode;
+  code: string;
+  sub?: string;
+}) {
+  return (
+    <g textAnchor="middle" style={{ fontFamily: "'Gotham Bold', system-ui, sans-serif" }}>
+      <text x={x} y={y} fontSize={22} fill="var(--pd-dark)" fontWeight={600}>
+        {title}
+      </text>
+      {sub && (
+        <text x={x} y={y + 26} fontSize={20} fill="var(--pd-dark)" fontWeight={600}>
+          {sub}
+        </text>
+      )}
+      <text x={x} y={y + (sub ? 58 : 32)} fontSize={26} fill="var(--pd-dark)" fontWeight={800}>
+        {code}
+      </text>
+    </g>
+  );
+}
+
+function ORK6PartsDiagram() {
+  return (
+    <svg
+      viewBox="0 0 1600 1150"
+      role="img"
+      aria-label="ORK-6 Maintenance Kit — parts diagram shown to scale"
+      style={{ width: "100%", height: "auto", display: "block" }}
+    >
+      {/* LEFT COLUMN — O-rings */}
+      {/* 86460 Poppet Piston O-ring */}
+      <Ring cx={270} cy={230} outer={170} stroke={22} />
+      <PartLabel x={270} y={455} title="POPPET PISTON O-RING" code="86460" />
+
+      {/* 850143 Poppet I.D. O-ring */}
+      <Ring cx={555} cy={295} outer={62} stroke={14} />
+      <PartLabel x={555} y={410} title="POPPET" sub="I.D. O-RING" code="850143" />
+
+      {/* 86458 Plunger Internal */}
+      <Ring cx={555} cy={555} outer={68} stroke={14} />
+      <PartLabel x={555} y={680} title="PLUNGER" sub="O-RING (INTERNAL)" code="86458" />
+
+      {/* 850626 Piston O-ring — largest */}
+      <Ring cx={270} cy={720} outer={190} stroke={24} />
+      <PartLabel x={270} y={960} title="PISTON O-RING" code="850626" />
+
+      {/* Note block */}
+      <g textAnchor="middle" style={{ fontFamily: "'Gotham Bold', system-ui, sans-serif", fontStyle: "italic" }}>
+        <text x={555} y={880} fontSize={20} fill="var(--pd-dark)" fontWeight={700}>ITEMS ARE SHOWN</text>
+        <text x={555} y={906} fontSize={20} fill="var(--pd-dark)" fontWeight={700}>TO SCALE. SCREWS AND</text>
+        <text x={555} y={932} fontSize={20} fill="var(--pd-dark)" fontWeight={700}>WASHERS NOT PICTURED.</text>
+      </g>
+
+      {/* RIGHT COLUMN — Gaskets + more O-rings */}
+
+      {/* #6500 BIG gasket — keyhole / teardrop shape */}
+      {/*
+         Composite: large upper circle + tapered neck + smaller lower stem with rounded end
+         drawn as a single filled path, then punched holes.
+      */}
+      <g>
+        <path
+          d={`
+            M 1000 90
+            C 1130 90, 1220 200, 1220 320
+            C 1220 430, 1150 495, 1080 520
+            L 1075 640
+            C 1075 685, 1060 705, 1035 715
+            L 1000 725
+            L 965 715
+            C 940 705, 925 685, 925 640
+            L 920 520
+            C 850 495, 780 430, 780 320
+            C 780 200, 870 90, 1000 90 Z
+          `}
+          fill="var(--pd-dark)"
+        />
+        {/* mounting holes (white punch-outs) */}
+        <circle cx={870} cy={175} r={18} fill="#fff" />
+        <circle cx={1130} cy={175} r={18} fill="#fff" />
+        <circle cx={870} cy={470} r={16} fill="#fff" />
+        <circle cx={1130} cy={470} r={16} fill="#fff" />
+        {/* elongated bottom slot */}
+        <rect x={985} y={640} width={30} height={70} rx={15} fill="#fff" />
+      </g>
+      <PartLabel x={1000} y={790} title="GASKET" code="#6500 BIG" />
+
+      {/* #6500 SMALL gasket — round flange with center hole and 3 outer holes */}
+      <g>
+        <circle cx={1400} cy={340} r={130} fill="var(--pd-dark)" />
+        <circle cx={1400} cy={340} r={50} fill="#fff" />
+        <circle cx={1400} cy={230} r={16} fill="#fff" />
+        <circle cx={1305} cy={395} r={16} fill="#fff" />
+        <circle cx={1495} cy={395} r={16} fill="#fff" />
+      </g>
+      <PartLabel x={1400} y={545} title="GASKET" code="#6500 SMALL" />
+
+      {/* 88998 Piloted Valve O-ring (lower) x2 */}
+      <Ring cx={1050} cy={870} outer={95} stroke={16} />
+      <PartLabel x={1050} y={1010} title="PILOTED VALVE" sub="O-RING (LOWER) × 2" code="88998" />
+
+      {/* 85144 Plunger External */}
+      <Ring cx={1400} cy={870} outer={95} stroke={16} />
+      <PartLabel x={1400} y={1010} title="PLUNGER" sub="O-RING (EXTERNAL)" code="85144" />
+    </svg>
+  );
+}
+

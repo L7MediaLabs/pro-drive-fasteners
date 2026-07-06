@@ -152,6 +152,11 @@ export const images = {
     deadBlow: polyDeadblow.url,
     deadBlowInsert: deadblow200l2000.url,
     deadBlowShot:   deadblow200l1000.url,
+    splitHead: {
+      hero:     splitheadHero.url,
+      face200:  splithead23004.url,
+      face150:  splithead23002.url,
+    },
   },
   staples: {
     hero:           s155Masterpack.url,

@@ -9,8 +9,8 @@ import illoStaples from "../assets/illustrations/staples_stack.png.asset.json";
 import illoCleats from "../assets/illustrations/cleats_stack.png.asset.json";
 import illoNails from "../assets/illustrations/nails_stack.png.asset.json";
 import badgeContractor from "../assets/badge-contractor-grade.svg.asset.json";
-import badgeMulti from "../assets/badge-multi-grade.svg.asset.json";
-import badgeIndustrial from "../assets/badge-industrial-grade.svg.asset.json";
+import badgeMulti from "../assets/badge-multi-grade.png.asset.json";
+import badgeIndustrial from "../assets/badge-industrial-grade.png.asset.json";
 import { images } from "../data/images";
 
 const gradeStandards = [

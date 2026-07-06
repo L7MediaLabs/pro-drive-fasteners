@@ -46,19 +46,127 @@ const families: Family[] = [
   { id: "pin23",  gauge: "23 GA", brand: "Universal",       label: "Micro Pin",        image: images.nailFamilies.pin23_micro },
 ];
 
-// 18 GA size chart (AX08 → AX22)
-const brad18Sizes = [
-  { sku: "AXX08EAA", label: '1/2"',    lenIn: 0.5 },
-  { sku: "AXX10EAA", label: '5/8"',    lenIn: 0.625 },
-  { sku: "AXX11EAA", label: '3/4"',    lenIn: 0.75 },
-  { sku: "AXX12EAA", label: '7/8"',    lenIn: 0.875 },
-  { sku: "AXX13EAA", label: '1"',      lenIn: 1.0 },
-  { sku: "AXX15EAA", label: '1-1/4"',  lenIn: 1.25 },
-  { sku: "AXX17EAA", label: '1-1/2"',  lenIn: 1.5 },
-  { sku: "AXX19EAA", label: '1-3/4"',  lenIn: 1.75 },
-  { sku: "AXX21EAA", label: '2"',      lenIn: 2.0 },
-  { sku: "AXX22EAA", label: '2-1/4"',  lenIn: 2.25 },
+// 18 GA size chart (AX08 → AX22) — matches printed comparison chart
+const brad18Sizes: { sku: string; label: string; lenIn: number }[] = [
+  { sku: "AX08", label: '1/2"',    lenIn: 0.5 },
+  { sku: "AX10", label: '5/8"',    lenIn: 0.625 },
+  { sku: "AX11", label: '3/4"',    lenIn: 0.75 },
+  { sku: "AX13", label: '1"',      lenIn: 1.0 },
+  { sku: "AX15", label: '1-1/4"',  lenIn: 1.25 },
+  { sku: "AX17", label: '1-1/2"',  lenIn: 1.5 },
+  { sku: "AX18", label: '1-5/8"',  lenIn: 1.625 },
+  { sku: "AX19", label: '1-3/4"',  lenIn: 1.75 },
+  { sku: "AX21", label: '2"',      lenIn: 2.0 },
+  { sku: "AX22", label: '2-1/8"',  lenIn: 2.125 },
 ];
+
+// ─── 18 GA Brad Diagram — every nail drawn to the same pixels-per-inch ─────
+const BRAD_PPI = 130;                       // vertical scale
+const BRAD_COL_W = 60;                      // horizontal spacing per nail
+const BRAD_LEFT_PAD = 24;
+const BRAD_TOP_PAD = 48;                    // room for SKU label + gauge box
+const BRAD_BOTTOM_PAD = 28;                 // room for length label
+const BRAD_SHANK_W = 2.4;
+
+function BradNailDiagram({ sizes }: { sizes: typeof brad18Sizes }) {
+  const maxLen = Math.max(...sizes.map(s => s.lenIn));
+  const w = BRAD_LEFT_PAD * 2 + sizes.length * BRAD_COL_W;
+  const h = BRAD_TOP_PAD + maxLen * BRAD_PPI + BRAD_BOTTOM_PAD;
+
+  return (
+    <svg viewBox={`0 0 ${w} ${h}`} width="100%" style={{ display: "block" }} aria-hidden>
+      {sizes.map((s, i) => {
+        const cx = BRAD_LEFT_PAD + i * BRAD_COL_W + BRAD_COL_W / 2;
+        const lenPx = s.lenIn * BRAD_PPI;
+        const shankTop = BRAD_TOP_PAD;
+        const shankBottom = shankTop + lenPx;
+        return (
+          <g key={s.sku}>
+            {/* Gauge badge above head */}
+            <rect
+              x={cx - 22}
+              y={4}
+              width={44}
+              height={18}
+              fill="#e9e9ec"
+              stroke="rgba(0,0,0,0.08)"
+              strokeWidth="0.5"
+            />
+            <text
+              x={cx}
+              y={17}
+              textAnchor="middle"
+              fontFamily="Assistant, sans-serif"
+              fontWeight="800"
+              fontSize="11"
+              fill="#1a1a1a"
+            >
+              {s.sku}
+            </text>
+            <text
+              x={cx}
+              y={34}
+              textAnchor="middle"
+              fontFamily="ui-monospace, monospace"
+              fontSize="9"
+              fill="var(--pd-muted)"
+            >
+              .0468&quot;
+            </text>
+
+            {/* Head — small horizontal cap */}
+            <rect
+              x={cx - 3.5}
+              y={shankTop - 2}
+              width={7}
+              height={3}
+              fill="#1a1a1a"
+            />
+
+            {/* Shank — vertical nail body, true to scale */}
+            <line
+              x1={cx}
+              y1={shankTop}
+              x2={cx}
+              y2={shankBottom - 4}
+              stroke="#8a8a90"
+              strokeWidth={BRAD_SHANK_W}
+              strokeLinecap="butt"
+            />
+            {/* highlight */}
+            <line
+              x1={cx - 0.6}
+              y1={shankTop}
+              x2={cx - 0.6}
+              y2={shankBottom - 4}
+              stroke="rgba(255,255,255,0.7)"
+              strokeWidth="0.5"
+            />
+            {/* Chisel point */}
+            <polygon
+              points={`${cx - BRAD_SHANK_W / 2},${shankBottom - 4} ${cx + BRAD_SHANK_W / 2},${shankBottom - 4} ${cx + 0.6},${shankBottom}`}
+              fill="#1a1a1a"
+            />
+
+            {/* Length label — italic script feel via style, positioned at tip */}
+            <text
+              x={cx + 8}
+              y={shankBottom + 2}
+              fontFamily="Georgia, 'Times New Roman', serif"
+              fontStyle="italic"
+              fontSize="12"
+              fontWeight="600"
+              fill="var(--pd-dark)"
+            >
+              {s.label}
+            </text>
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
 
 function Brads() {
   const allShownIds = [...FN15, ...DA15, ...C16, ...AFN, ...BRAD18, ...PINS23].map(p => p.id);

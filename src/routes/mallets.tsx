@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout, InfoPanel } from "../components/PageHeader";
 import { ProductGrid } from "../components/ProductCard";
 import {

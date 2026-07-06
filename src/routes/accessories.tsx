@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import ork6Pkg from "../assets/ork6_package.jpg.asset.json";
 import ork6Pdf from "../assets/ork6_parts_diagram.pdf.asset.json";
+import malletDisplay from "../assets/mallet_display.png.asset.json";
 import { RelatedProducts, PageDisclaimers } from "../components/editorial";
 import { ACCESSORIES_LIST, pickRelated } from "../data/products";
 

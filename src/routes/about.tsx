@@ -42,7 +42,7 @@ function About() {
             { v: "Guaranteed", l: "To Fit Major Brands" },
           ].map(s => (
             <div key={s.l}>
-              <div className="pd-display" style={{ fontSize: 32, color: "var(--pd-dark)" }}>
+              <div className="pd-display" style={{ fontSize: "clamp(20px, 4.5vw, 32px)", color: "var(--pd-dark)", lineHeight: 1.05, overflowWrap: "break-word" }}>
                 {s.v}
               </div>
               <div className="pd-label mt-1" style={{ color: "rgba(25,20,0,0.6)" }}>{s.l}</div>

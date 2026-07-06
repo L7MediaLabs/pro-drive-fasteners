@@ -60,6 +60,9 @@ import polyfaceTough      from "../assets/products/mallets/polyface_tough.png.as
 import polyDeadblow       from "../assets/products/mallets/poly_deadblow.png.asset.json";
 import deadblow200l2000   from "../assets/products/mallets/deadblow_200l_2000.png.asset.json";
 import deadblow200l1000   from "../assets/products/mallets/deadblow_200l_1000.png.asset.json";
+import splitheadHero      from "../assets/products/splithead/splithead_hero.png.asset.json";
+import splithead23004     from "../assets/products/splithead/splithead_23004_200.png.asset.json";
+import splithead23002     from "../assets/products/splithead/splithead_23002_150.png.asset.json";
 import s155Masterpack     from "../assets/products/staples/staples_155_masterpack.png.asset.json";
 import s155_1_5in         from "../assets/products/staples/staples_155_1_5in.png.asset.json";
 import s155_2in_1000      from "../assets/products/staples/staples_155_2in_1000.png.asset.json";
@@ -149,6 +152,11 @@ export const images = {
     deadBlow: polyDeadblow.url,
     deadBlowInsert: deadblow200l2000.url,
     deadBlowShot:   deadblow200l1000.url,
+    splitHead: {
+      hero:     splitheadHero.url,
+      face200:  splithead23004.url,
+      face150:  splithead23002.url,
+    },
   },
   staples: {
     hero:           s155Masterpack.url,

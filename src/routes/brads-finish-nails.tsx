@@ -32,42 +32,19 @@ const PIN23_TOOLS = "Cadex 23/15-10M;Duo-Fast 2320;Fasco ES2316P;Grex P6/15L;Gri
 type Family = {
   id: string;
   gauge: string;
-  angle: number; // degrees, 0 = straight
   brand: string;
   label: string;
+  image: string;
 };
 
 const families: Family[] = [
-  { id: "fn15",   gauge: "15 GA", angle: 25, brand: "Fits Bostitch®",  label: "FN 25° Angle" },
-  { id: "da15",   gauge: "15 GA", angle: 34, brand: "Fits Senco®",     label: "DA 34° Angle" },
-  { id: "c16",    gauge: "16 GA", angle: 0,  brand: "Universal",        label: "Straight" },
-  { id: "afn16",  gauge: "16 GA", angle: 20, brand: "Fits Paslode®",   label: "AFN 20° Angle" },
-  { id: "brad18", gauge: "18 GA", angle: 0,  brand: "Universal",        label: "Straight Brad" },
-  { id: "pin23",  gauge: "23 GA", angle: 0,  brand: "Universal",        label: "Micro Pin" },
+  { id: "fn15",   gauge: "15 GA", brand: "Fits Bostitch®", label: "FN 25° Angle",     image: images.nailFamilies.fn15_25 },
+  { id: "da15",   gauge: "15 GA", brand: "Fits Senco®",    label: "DA 34° Angle",     image: images.nailFamilies.da15_34 },
+  { id: "c16",    gauge: "16 GA", brand: "Universal",       label: "Straight",         image: images.nailFamilies.c16_straight },
+  { id: "afn16",  gauge: "16 GA", brand: "Fits Paslode®",  label: "AFN 20° Angle",    image: images.nailFamilies.afn16_20 },
+  { id: "brad18", gauge: "18 GA", brand: "Universal",       label: "Straight Brad",    image: images.nailFamilies.brad18_straight },
+  { id: "pin23",  gauge: "23 GA", brand: "Universal",       label: "Micro Pin",        image: images.nailFamilies.pin23_micro },
 ];
-
-// Angled-line SVG representing collation angle
-function AngleGlyph({ angle }: { angle: number }) {
-  // 0 = vertical stripes, higher = tilted
-  const rad = (angle * Math.PI) / 180;
-  const dx = Math.sin(rad) * 24;
-  return (
-    <svg viewBox="0 0 80 60" width="80" height="60" aria-hidden>
-      {[0, 12, 24, 36, 48].map((x, i) => (
-        <line
-          key={i}
-          x1={x + 12 + dx}
-          y1={6}
-          x2={x + 12}
-          y2={54}
-          stroke="var(--pd-yellow)"
-          strokeWidth={2}
-          strokeLinecap="round"
-        />
-      ))}
-    </svg>
-  );
-}
 
 // 18 GA size chart (AX08 → AX22)
 const brad18Sizes = [

@@ -249,7 +249,7 @@ function PartLabel({
 function ORK6PartsDiagram() {
   return (
     <svg
-      viewBox="0 0 1600 1150"
+      viewBox="0 0 1600 1260"
       role="img"
       aria-label="ORK-6 Maintenance Kit — parts diagram shown to scale"
       style={{ width: "100%", height: "auto", display: "block" }}
@@ -323,12 +323,12 @@ function ORK6PartsDiagram() {
       <PartLabel x={1400} y={545} title="GASKET" code="#6500 SMALL" />
 
       {/* 88998 Piloted Valve O-ring (lower) x2 */}
-      <Ring cx={1050} cy={870} outer={95} stroke={16} />
-      <PartLabel x={1050} y={1010} title="PILOTED VALVE" sub="O-RING (LOWER) × 2" code="88998" />
+      <Ring cx={1050} cy={1000} outer={95} stroke={16} />
+      <PartLabel x={1050} y={1140} title="PILOTED VALVE" sub="O-RING (LOWER) × 2" code="88998" />
 
       {/* 85144 Plunger External */}
-      <Ring cx={1400} cy={870} outer={95} stroke={16} />
-      <PartLabel x={1400} y={1010} title="PLUNGER" sub="O-RING (EXTERNAL)" code="85144" />
+      <Ring cx={1400} cy={1000} outer={95} stroke={16} />
+      <PartLabel x={1400} y={1140} title="PLUNGER" sub="O-RING (EXTERNAL)" code="85144" />
     </svg>
   );
 }

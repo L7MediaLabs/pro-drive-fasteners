@@ -246,90 +246,71 @@ function PartLabel({
   );
 }
 
+/**
+ * Vector paths traced from the OEM ORK-6 parts diagram at true scale.
+ * Native coordinate system: 1622 × 1206 (matching the source artwork).
+ * Path data lives inside a group with the inverted-Y potrace transform.
+ */
+const ORK6_TRACED_PATHS: string[] = [
+  // BIG gasket (#6500) — top-right teardrop with mounting ears + stem
+  "M10430 11559 c-120 -14 -268 -46 -526 -114 -133 -36 -358 -94 -501 -129 -321 -79 -366 -101 -418 -205 -16 -32 -320 -952 -372 -1126 -63 -209 -91 -623 -55 -805 26 -129 65 -279 123 -467 32 -106 126 -432 208 -725 245 -872 258 -920 361 -1253 98 -316 187 -613 195 -648 23 -102 154 -536 175 -583 82 -181 250 -363 427 -462 227 -126 345 -158 563 -149 433 17 831 274 978 633 92 223 1094 3278 1151 3509 65 262 67 580 6 850 -75 330 -316 1177 -348 1222 -56 79 -61 81 -737 273 -450 127 -595 162 -752 179 -111 13 -368 12 -478 0z m455 -279 c612 -71 1158 -445 1423 -975 296 -594 248 -1299 -130 -1871 -148 -224 -369 -414 -694 -599 -180 -102 -268 -225 -284 -396 -7 -81 -27 -886 -24 -977 1 -19 16 -54 37 -85 161 -243 163 -562 6 -803 -178 -273 -499 -400 -817 -324 -308 74 -532 371 -534 710 -1 159 28 255 131 420 46 75 46 75 53 585 7 567 5 596 -53 706 -43 80 -121 149 -258 227 -145 83 -272 181 -401 311 -375 378 -569 981 -489 1516 83 551 422 1042 913 1322 61 35 113 63 118 63 4 0 36 13 70 29 272 124 621 176 933 141z m-1598 -161 c89 -43 123 -170 62 -235 -100 -108 -269 -47 -269 96 0 75 32 122 97 146 51 18 60 17 110 -7z m2961 -49 c126 -77 82 -266 -65 -278 -73 -6 -115 15 -143 73 -67 139 79 283 208 205z m-2501 -3869 c53 -28 72 -147 34 -205 -93 -141 -325 -40 -282 122 25 93 152 135 248 83z m1938 -20 c135 -76 73 -273 -86 -275 -139 -2 -200 184 -88 267 52 38 115 41 174 8z",
+  // 86460 Poppet Piston O-Ring (upper-left large ring)
+  "M3165 10340 c-1189 -121 -1961 -1286 -1589 -2399 274 -820 1102 -1345 1972 -1250 1290 140 2042 1493 1467 2639 -338 674 -1093 1086 -1850 1010z m343 -280 c695 -73 1241 -560 1394 -1242 30 -136 33 -451 5 -591 -127 -626 -604 -1100 -1247 -1238 -152 -33 -477 -33 -627 -1 -723 157 -1231 737 -1270 1450 -50 942 790 1723 1745 1622z",
+  // 850143 Poppet I.D. O-Ring (small ring upper-center)
+  "M6542 8405 c-164 -36 -338 -170 -410 -315 -135 -276 -50 -599 202 -768 116 -78 184 -97 341 -97 157 0 225 19 341 97 316 211 358 643 89 914 -152 154 -354 214 -563 169z m300 -232 c246 -115 312 -418 133 -612 -168 -181 -431 -182 -597 -2 -238 257 -43 662 312 648 70 -2 97 -8 152 -34z",
+  // SMALL gasket (#6500) — round flange w/ center bore + 3 outer holes
+  "M13840 7743 c-967 -70 -1587 -1061 -1223 -1953 384 -937 1612 -1183 2328 -466 851 851 324 2303 -875 2415 -112 11 -136 11 -230 4z m176 -182 c118 -72 50 -256 -89 -238 -82 11 -132 99 -101 177 30 74 121 103 190 61z m44 -461 c517 -82 815 -632 594 -1099 -307 -652 -1241 -593 -1471 94 -38 113 -40 331 -5 445 122 388 490 622 882 560z m-1056 -1204 c94 -39 105 -185 16 -231 -136 -70 -267 98 -157 202 49 46 83 53 141 29z m1973 -31 c109 -72 59 -238 -71 -238 -77 0 -126 53 -126 136 0 100 112 158 197 102z",
+  // 86458 Plunger Internal (small ring center)
+  "M6563 5800 c-362 -77 -556 -460 -397 -784 146 -298 536 -405 816 -224 458 296 265 991 -282 1013 -52 2 -114 0 -137 -5z m281 -188 c87 -41 155 -106 197 -189 48 -94 50 -234 4 -328 -149 -307 -591 -307 -740 0 -43 89 -44 232 -1 320 36 72 94 137 155 173 25 14 49 31 53 37 4 5 8 7 8 4 0 -3 21 0 48 8 78 22 199 11 276 -25z",
+  // 850626 Piston O-Ring (lower-left largest ring)
+  "M3063 5555 c-1138 -173 -1881 -1233 -1637 -2334 86 -384 309 -760 607 -1022 768 -674 1934 -654 2675 45 804 760 806 2027 5 2787 -272 257 -594 424 -975 505 -154 32 -519 43 -675 19z m547 -281 c860 -130 1482 -899 1419 -1752 -75 -1004 -1041 -1716 -2038 -1501 -51 12 -101 22 -110 24 -9 2 -61 20 -116 40 -556 208 -955 666 -1075 1232 -30 142 -37 392 -16 546 76 536 418 1007 911 1251 324 161 666 214 1025 160z",
+  // 88998 Piloted Valve O-Ring (bottom-center ring)
+  "M10510 3793 c-640 -84 -912 -843 -465 -1297 417 -423 1146 -230 1301 344 25 90 25 291 0 380 -72 268 -288 483 -552 550 -76 20 -222 32 -284 23z m271 -235 c387 -142 507 -622 227 -907 -397 -405 -1079 -55 -963 494 69 325 427 526 736 413z",
+  // 85144 Plunger External (bottom-right ring)
+  "M13905 3624 c-224 -28 -403 -136 -509 -307 -157 -254 -121 -581 87 -789 299 -299 791 -255 1022 91 227 343 85 797 -300 958 -78 32 -227 56 -300 47z m195 -180 c309 -86 452 -456 279 -725 -264 -412 -919 -231 -919 254 0 333 311 562 640 471z",
+];
+
 function ORK6PartsDiagram() {
   return (
     <svg
-      viewBox="0 0 1600 1260"
+      viewBox="0 0 1622 1310"
       role="img"
       aria-label="ORK-6 Maintenance Kit — parts diagram shown to scale"
       style={{ width: "100%", height: "auto", display: "block" }}
     >
-      {/* LEFT COLUMN — O-rings */}
-      {/* 86460 Poppet Piston O-ring */}
-      <Ring cx={270} cy={230} outer={170} stroke={22} />
-      <PartLabel x={270} y={455} title="POPPET PISTON O-RING" code="86460" />
+      {/* Traced OEM shape paths — native scale, Y-flipped like potrace output */}
+      <g transform="translate(0,1206) scale(0.1,-0.1)" fill="var(--pd-dark)" stroke="none">
+        {ORK6_TRACED_PATHS.map((d, i) => (
+          <path key={i} d={d} fillRule="evenodd" />
+        ))}
+      </g>
 
-      {/* 850143 Poppet I.D. O-ring */}
-      <Ring cx={555} cy={295} outer={62} stroke={14} />
-      <PartLabel x={555} y={410} title="POPPET" sub="I.D. O-RING" code="850143" />
+      {/* Labels — positioned in natural viewBox coordinates below each shape */}
+      {/* 86460 Poppet Piston O-Ring — cx≈334 cy≈354 */}
+      <PartLabel x={334} y={585} title="POPPET PISTON O-RING" code="86460" />
+      {/* 850143 Poppet I.D. — cx≈667 cy≈423 */}
+      <PartLabel x={667} y={520} title="POPPET" sub="I.D. O-RING" code="850143" />
+      {/* 86458 Plunger Internal — cx≈667 cy≈680 */}
+      <PartLabel x={667} y={775} title="PLUNGER" sub="O-RING (INTERNAL)" code="86458" />
+      {/* 850626 Piston O-Ring — cx≈334 cy≈841 */}
+      <PartLabel x={334} y={1075} title="PISTON O-RING" code="850626" />
+      {/* BIG gasket — bbox cx≈1066 h ends 716 */}
+      <PartLabel x={1066} y={770} title="GASKET" code="#6500 BIG" />
+      {/* SMALL gasket — cx≈1393 h ends 714 */}
+      <PartLabel x={1393} y={770} title="GASKET" code="#6500 SMALL" />
+      {/* 88998 Piloted Valve — cx≈1059 cy≈902 */}
+      <PartLabel x={1059} y={1030} title="PILOTED VALVE" sub="O-RING (LOWER) × 2" code="88998" />
+      {/* 85144 Plunger External — cx≈1395 cy≈908 */}
+      <PartLabel x={1395} y={1030} title="PLUNGER" sub="O-RING (EXTERNAL)" code="85144" />
 
-      {/* 86458 Plunger Internal */}
-      <Ring cx={555} cy={555} outer={68} stroke={14} />
-      <PartLabel x={555} y={680} title="PLUNGER" sub="O-RING (INTERNAL)" code="86458" />
-
-      {/* 850626 Piston O-ring — largest */}
-      <Ring cx={270} cy={720} outer={190} stroke={24} />
-      <PartLabel x={270} y={960} title="PISTON O-RING" code="850626" />
-
-      {/* Note block */}
+      {/* "Shown to scale" note — sits in the empty gap between columns */}
       <g textAnchor="middle" style={{ fontFamily: "'Gotham Bold', system-ui, sans-serif", fontStyle: "italic" }}>
-        <text x={555} y={880} fontSize={20} fill="var(--pd-dark)" fontWeight={700}>ITEMS ARE SHOWN</text>
-        <text x={555} y={906} fontSize={20} fill="var(--pd-dark)" fontWeight={700}>TO SCALE. SCREWS AND</text>
-        <text x={555} y={932} fontSize={20} fill="var(--pd-dark)" fontWeight={700}>WASHERS NOT PICTURED.</text>
+        <text x={667} y={905} fontSize={19} fill="var(--pd-dark)" fontWeight={700}>ITEMS ARE SHOWN</text>
+        <text x={667} y={928} fontSize={19} fill="var(--pd-dark)" fontWeight={700}>TO SCALE. SCREWS AND</text>
+        <text x={667} y={951} fontSize={19} fill="var(--pd-dark)" fontWeight={700}>WASHERS NOT PICTURED.</text>
       </g>
-
-      {/* RIGHT COLUMN — Gaskets + more O-rings */}
-
-      {/* #6500 BIG gasket — keyhole / teardrop shape */}
-      {/*
-         Composite: large upper circle + tapered neck + smaller lower stem with rounded end
-         drawn as a single filled path, then punched holes.
-      */}
-      <g>
-        <path
-          d={`
-            M 1000 90
-            C 1130 90, 1220 200, 1220 320
-            C 1220 430, 1150 495, 1080 520
-            L 1075 640
-            C 1075 685, 1060 705, 1035 715
-            L 1000 725
-            L 965 715
-            C 940 705, 925 685, 925 640
-            L 920 520
-            C 850 495, 780 430, 780 320
-            C 780 200, 870 90, 1000 90 Z
-          `}
-          fill="var(--pd-dark)"
-        />
-        {/* mounting holes (white punch-outs) */}
-        <circle cx={870} cy={175} r={18} fill="#fff" />
-        <circle cx={1130} cy={175} r={18} fill="#fff" />
-        <circle cx={870} cy={470} r={16} fill="#fff" />
-        <circle cx={1130} cy={470} r={16} fill="#fff" />
-        {/* elongated bottom slot */}
-        <rect x={985} y={640} width={30} height={70} rx={15} fill="#fff" />
-      </g>
-      <PartLabel x={1000} y={790} title="GASKET" code="#6500 BIG" />
-
-      {/* #6500 SMALL gasket — round flange with center hole and 3 outer holes */}
-      <g>
-        <circle cx={1400} cy={340} r={130} fill="var(--pd-dark)" />
-        <circle cx={1400} cy={340} r={50} fill="#fff" />
-        <circle cx={1400} cy={230} r={16} fill="#fff" />
-        <circle cx={1305} cy={395} r={16} fill="#fff" />
-        <circle cx={1495} cy={395} r={16} fill="#fff" />
-      </g>
-      <PartLabel x={1400} y={545} title="GASKET" code="#6500 SMALL" />
-
-      {/* 88998 Piloted Valve O-ring (lower) x2 */}
-      <Ring cx={1050} cy={1000} outer={95} stroke={16} />
-      <PartLabel x={1050} y={1140} title="PILOTED VALVE" sub="O-RING (LOWER) × 2" code="88998" />
-
-      {/* 85144 Plunger External */}
-      <Ring cx={1400} cy={1000} outer={95} stroke={16} />
-      <PartLabel x={1400} y={1140} title="PLUNGER" sub="O-RING (EXTERNAL)" code="85144" />
     </svg>
   );
 }
+
 

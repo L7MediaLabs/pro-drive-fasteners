@@ -333,26 +333,33 @@ function StapleDepthDiagram({
 }
 
 
-// ─── 15 GA Q-Wire staple technical drawing (7/16" crown, 3 lengths) ────────
-// Full U-shape staple drawn true to scale — crown width and leg lengths
-// share the same pixels-per-inch so the three variants stack visually correct.
-function QWireStapleDiagram() {
-  const PPI = 70;
-  const CROWN_IN = 7 / 16;          // 0.4375"
-  const LENGTHS = [
-    { in: 1.5,  label: '1-1/2"', mm: "38mm" },
-    { in: 2.0,  label: '2"',     mm: "50mm" },
-    { in: 2.5,  label: '2-1/2"', mm: "64mm" },
-  ];
+// ─── Generic Senco-style U-staple technical drawing ────────────────────────
+// Full staple drawn true to scale. Crown width and every leg-length tick
+// share the same pixels-per-inch so all variants read comparably.
+type StapleLenTick = { in: number; label: string; mm: string };
+
+function SencoStapleDiagram({
+  crownIn,
+  crownLabel,
+  lengths,
+  ppi = 70,
+  labelFontSize = 12,
+}: {
+  crownIn: number;
+  crownLabel: string;
+  lengths: StapleLenTick[];
+  ppi?: number;
+  labelFontSize?: number;
+}) {
+  const LENGTHS = [...lengths].sort((a, b) => a.in - b.in);
   const maxLen = LENGTHS[LENGTHS.length - 1].in;
 
-  const crownPx = CROWN_IN * PPI;      // ~30.6px
-  const legMaxPx = maxLen * PPI;       // 175px
+  const crownPx = crownIn * ppi;
+  const legMaxPx = maxLen * ppi;
   const legStroke = 4;
   const wireR = legStroke / 2;
 
-  // Layout: center the staple on a canvas with room for side labels + ticks.
-  const SIDE_LABEL_W = 88;             // left (mm) + right (inches) label column widths
+  const SIDE_LABEL_W = 78;
   const TICK_LEN = 10;
   const CROWN_LABEL_H = 32;
   const TOP_PAD = 8;
@@ -368,12 +375,11 @@ function QWireStapleDiagram() {
   const VB_W = (SIDE_LABEL_W + TICK_LEN) * 2 + stapleW;
   const VB_H = stapleTop + legMaxPx + BOTTOM_PAD;
 
-  // Slight chisel-point flare at the bottom of the longest legs (visual tips).
   const tipFlare = 3;
 
   return (
     <svg viewBox={`0 0 ${VB_W} ${VB_H}`} width="100%" style={{ display: "block" }} aria-hidden>
-      {/* Crown label at top */}
+      {/* Crown label */}
       <text
         x={cx}
         y={TOP_PAD + 18}
@@ -383,15 +389,14 @@ function QWireStapleDiagram() {
         fontWeight="700"
         fontSize="14"
       >
-        7/16&quot;
+        {crownLabel}
       </text>
       {/* Crown dimension bracket */}
       <line x1={legXL} y1={TOP_PAD + 24} x2={legXR} y2={TOP_PAD + 24} stroke="#1a1a1a" strokeWidth="0.8" />
       <line x1={legXL} y1={TOP_PAD + 21} x2={legXL} y2={TOP_PAD + 27} stroke="#1a1a1a" strokeWidth="0.8" />
       <line x1={legXR} y1={TOP_PAD + 21} x2={legXR} y2={TOP_PAD + 27} stroke="#1a1a1a" strokeWidth="0.8" />
 
-      {/* Staple body — U-shape drawn as one outer + one inner rounded outline */}
-      {/* Outer outline */}
+      {/* Outer U outline */}
       <path
         d={`
           M ${legXL - wireR} ${stapleTop + legMaxPx + tipFlare}
@@ -407,7 +412,7 @@ function QWireStapleDiagram() {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      {/* Inner outline — creates the wire thickness illusion */}
+      {/* Inner U outline — wire thickness */}
       <path
         d={`
           M ${legXL + wireR + 1.2} ${stapleTop + legMaxPx}
@@ -426,7 +431,7 @@ function QWireStapleDiagram() {
 
       {/* Length markers — mm on left leg, inches on right leg */}
       {LENGTHS.map(({ in: lenIn, label, mm }) => {
-        const y = stapleTop + lenIn * PPI;
+        const y = stapleTop + lenIn * ppi;
         const leftLabelX = SIDE_LABEL_W - 6;
         const leftTickX0 = SIDE_LABEL_W;
         const leftTickX1 = legXL - wireR - 2;
@@ -435,15 +440,14 @@ function QWireStapleDiagram() {
         const rightLabelX = VB_W - SIDE_LABEL_W + 6;
         return (
           <g key={label}>
-            {/* left mm label + leader */}
             <text
               x={leftLabelX}
-              y={y + 4}
+              y={y + labelFontSize / 3}
               textAnchor="end"
               fill="#1a1a1a"
               fontFamily="Assistant, sans-serif"
               fontWeight="600"
-              fontSize="12"
+              fontSize={labelFontSize}
             >
               {mm}
             </text>
@@ -452,7 +456,6 @@ function QWireStapleDiagram() {
               points={`${leftTickX1},${y} ${leftTickX1 - 5},${y - 3} ${leftTickX1 - 5},${y + 3}`}
               fill="#1a1a1a"
             />
-            {/* right inch label + leader */}
             <line x1={rightTickX0} y1={y} x2={rightTickX1} y2={y} stroke="#1a1a1a" strokeWidth="0.8" />
             <polygon
               points={`${rightTickX0},${y} ${rightTickX0 + 5},${y - 3} ${rightTickX0 + 5},${y + 3}`}
@@ -460,12 +463,12 @@ function QWireStapleDiagram() {
             />
             <text
               x={rightLabelX}
-              y={y + 4}
+              y={y + labelFontSize / 3}
               textAnchor="start"
               fill="#1a1a1a"
               fontFamily="Assistant, sans-serif"
               fontWeight="600"
-              fontSize="12"
+              fontSize={labelFontSize}
             >
               {label}
             </text>
@@ -475,6 +478,25 @@ function QWireStapleDiagram() {
     </svg>
   );
 }
+
+const QWIRE_15_LENGTHS: StapleLenTick[] = [
+  { in: 1.5, label: '1-1/2"', mm: "38mm" },
+  { in: 2.0, label: '2"',     mm: "50mm" },
+  { in: 2.5, label: '2-1/2"', mm: "64mm" },
+];
+
+const NWIRE_16_LENGTHS: StapleLenTick[] = [
+  { in: 0.75,  label: '3/4"',   mm: "19mm" },
+  { in: 0.875, label: '7/8"',   mm: "22mm" },
+  { in: 1.0,   label: '1"',     mm: "25mm" },
+  { in: 1.25,  label: '1-1/4"', mm: "32mm" },
+  { in: 1.375, label: '1-3/8"', mm: "35mm" },
+  { in: 1.5,   label: '1-1/2"', mm: "38mm" },
+  { in: 1.75,  label: '1-3/4"', mm: "45mm" },
+  { in: 2.0,   label: '2"',     mm: "50mm" },
+];
+
+
 
 
 
@@ -566,7 +588,7 @@ function Staples() {
                   />
                 </div>
                 <div style={{ maxWidth: 360, margin: "0 auto" }}>
-                  <QWireStapleDiagram />
+                  <SencoStapleDiagram crownIn={7/16} crownLabel={'7/16"'} lengths={QWIRE_15_LENGTHS} ppi={70} />
                 </div>
                 <p
                   className="mt-3 text-center"
@@ -583,11 +605,49 @@ function Staples() {
           )}
 
           {tab === "16n" && (
-            <InfoPanel
-              applications="Furniture Frames, Cabinet Sub-Assembly, Millwork, Door Jambs."
-              standards="Meets or Exceeds ASTM A641."
-            />
+            <>
+              <InfoPanel
+                applications="Furniture Frames, Cabinet Sub-Assembly, Millwork, Door Jambs."
+                standards="Meets or Exceeds ASTM A641."
+              />
+              <div
+                className="mt-6 bg-white"
+                style={{
+                  border: "1px solid rgba(0,0,0,0.08)",
+                  borderTop: "2px solid var(--pd-yellow)",
+                  padding: "20px 24px 18px",
+                }}
+              >
+                <div className="flex items-baseline gap-3 mb-4">
+                  <div className="pd-label" style={{ color: "var(--pd-gold)", fontSize: 11 }}>Dimensions</div>
+                  <h4 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1 }}>
+                    7/16&quot; Medium Crown · Eight Lengths
+                  </h4>
+                  <span
+                    aria-hidden
+                    className="flex-1"
+                    style={{ borderBottom: "1px solid rgba(0,0,0,0.1)", transform: "translateY(-4px)" }}
+                  />
+                </div>
+                <div style={{ maxWidth: 340, margin: "0 auto" }}>
+                  <SencoStapleDiagram
+                    crownIn={7/16}
+                    crownLabel={'7/16"'}
+                    lengths={NWIRE_16_LENGTHS}
+                    ppi={90}
+                    labelFontSize={10}
+                  />
+                </div>
+                <p
+                  className="mt-3 text-center"
+                  style={{ fontFamily: "ui-monospace, monospace", fontSize: 10, color: "var(--pd-muted)", letterSpacing: "0.05em" }}
+                >
+                  Drawn to scale · millimetres (left) · inches (right)
+                </p>
+              </div>
+            </>
           )}
+
           {tab === "18m" && (
             <>
               <InfoPanel applications="Cabinet assembly, insulation, plastic sheeting, Tyvek, roofing paper, house wrap.">

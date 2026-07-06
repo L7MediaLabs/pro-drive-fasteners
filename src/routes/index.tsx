@@ -5,7 +5,37 @@ import instagramInstall1 from "../assets/instagram-install-1.png.asset.json";
 import instagramInstall2 from "../assets/instagram-install-2.png.asset.json";
 import instagramRingCloseup from "../assets/instagram-ring-closeup.png.asset.json";
 import instagramTools from "../assets/instagram-tools.png.asset.json";
+import illoStaples from "../assets/illustrations/staples_stack.png.asset.json";
+import illoCleats from "../assets/illustrations/cleats_stack.png.asset.json";
+import illoNails from "../assets/illustrations/nails_stack.png.asset.json";
 import { images } from "../data/images";
+
+const engineeringTriptych = [
+  {
+    image: illoStaples.url,
+    plate: "PL. I",
+    kicker: "Flooring Staples",
+    title: "Crown & Chisel",
+    body: "15.5, 15, 16, and 18 gauge — precision-collated for every hardwood, laminate, and specialty flooring nailer.",
+    to: "/staples",
+  },
+  {
+    image: illoCleats.url,
+    plate: "PL. II",
+    kicker: "L-Cleats",
+    title: "The Angle That Holds",
+    body: "16 GA and 18 GA L-Cleats with a barbed shank and depth guide. Guaranteed not to jam in any major brand tool.",
+    to: "/l-cleats",
+  },
+  {
+    image: illoNails.url,
+    plate: "PL. III",
+    kicker: "Brads & Finish Nails",
+    title: "Every Angle. Every Gauge.",
+    body: "15, 16, 18 GA finish nails and 23 GA micro pins — chisel-point, smooth-shank, contractor-tested.",
+    to: "/brads-finish-nails",
+  },
+] as const;
 
 const heroSlides = [
   { src: images.mallets.hero, position: "center" },

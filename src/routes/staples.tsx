@@ -573,26 +573,47 @@ function Staples() {
           <div className="mt-6">
             <SpecCardGrid specs={[...g.specs]} />
           </div>
-          <div className="mt-8">
-            <ProductGrid products={g.products} />
-          </div>
-
-          {/* Per-tab supplementary panels */}
           {tab === "155" && (
-            <>
+            <div className="mt-6">
               <Callout>Guaranteed to fit all standard 15.5 gauge flooring tools. Chisel point reduces splitting. Contractor Bulk-Job or Job packs available.</Callout>
-              <InfoPanel
-                applications="Excellent for all types of hardwood flooring installations."
-                materials="Electro-Galvanized steel. Not recommended for exterior application or ACQ-treated lumber."
-                standards="Meets ASTM F1667."
-              />
-            </>
+            </div>
+          )}
+          {tab === "15q" && (
+            <div className="mt-6">
+              <Callout>Senco® Style. Ideal for framing, sheathing, roof decking, and furniture frames. Meets or exceeds ASTM A641.</Callout>
+            </div>
+          )}
+        </SplitLayout>
+
+        {/* Full-width product grid */}
+        <div className="mt-12">
+          <div className="flex items-baseline gap-3 mb-5">
+            <div className="pd-label" style={{ color: "var(--pd-gold)", fontSize: 11 }}>Product Line</div>
+            <h3 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: 18, lineHeight: 1 }}>
+              {g.kicker}
+            </h3>
+            <span
+              aria-hidden
+              className="flex-1"
+              style={{ borderBottom: "1px solid rgba(0,0,0,0.1)", transform: "translateY(-4px)" }}
+            />
+          </div>
+          <ProductGrid products={g.products} cols={4} />
+        </div>
+
+        {/* Centered supplementary panels */}
+        <div className="mt-12 mx-auto" style={{ maxWidth: 880 }}>
+          {tab === "155" && (
+            <InfoPanel
+              applications="Excellent for all types of hardwood flooring installations."
+              materials="Electro-Galvanized steel. Not recommended for exterior application or ACQ-treated lumber."
+              standards="Meets ASTM F1667."
+            />
           )}
           {tab === "15q" && (
             <>
-              <Callout>Senco® Style. Ideal for framing, sheathing, roof decking, and furniture frames. Meets or exceeds ASTM A641.</Callout>
               <div
-                className="mt-6 bg-white"
+                className="bg-white"
                 style={{
                   border: "1px solid rgba(0,0,0,0.08)",
                   borderTop: "2px solid var(--pd-yellow)",
@@ -620,10 +641,12 @@ function Staples() {
                   Drawn to scale · millimetres (left) · inches (right)
                 </p>
               </div>
-              <InterchangeList
-                fitsPrimary="Senco SQS55, FASCO F45C SQ-55 SS(CT), F5 SQ-65 CT, SQS55XP; Spotnail MS6564; Duo-Fast MS-1580D"
-                tools={["BeA 180", "Duo-Fast 1500", "Senco Q-Wire", "Spotnail"]}
-              />
+              <div className="mt-6">
+                <InterchangeList
+                  fitsPrimary="Senco SQS55, FASCO F45C SQ-55 SS(CT), F5 SQ-65 CT, SQS55XP; Spotnail MS6564; Duo-Fast MS-1580D"
+                  tools={["BeA 180", "Duo-Fast 1500", "Senco Q-Wire", "Spotnail"]}
+                />
+              </div>
             </>
           )}
 
@@ -711,7 +734,9 @@ function Staples() {
                   Drawn to scale · millimetres (left) · inches (right)
                 </p>
               </div>
-              <InterchangeList tools={MWIRE_TOOLS} />
+              <div className="mt-6">
+                <InterchangeList tools={MWIRE_TOOLS} />
+              </div>
             </>
           )}
           {tab === "18l" && (
@@ -752,11 +777,12 @@ function Staples() {
                   Drawn to scale · millimetres (left) · inches (right)
                 </p>
               </div>
-              <InterchangeList tools={LWIRE_TOOLS} />
+              <div className="mt-6">
+                <InterchangeList tools={LWIRE_TOOLS} />
+              </div>
             </>
           )}
-
-        </SplitLayout>
+        </div>
       </section>
 
       <LifestyleBanner

@@ -154,7 +154,7 @@ const depthChart: StapleGroup[] = [
 const TONGUE = '3/4"';
 
 // SVG diagram of one staple embedded in a 3/4" tongue-and-groove floor cross-section.
-function StapleDepthDiagram({ spec }: { spec: StapleSpec }) {
+function StapleDepthDiagram({ spec, uid }: { spec: StapleSpec; uid: string }) {
   // Coordinate system
   const W = 200, H = 150;
   const crownH = 26;

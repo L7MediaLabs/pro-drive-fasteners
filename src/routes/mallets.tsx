@@ -118,6 +118,7 @@ function Mallets() {
                 <div className="pd-label mt-3" style={{ color: "var(--pd-gold)" }}>Cap Lineup</div>
               </div>
             </div>
+            <EZ2CapBanner />
             <Callout><strong>E-Z 2CAP®</strong> — caps installed or removed in 30 seconds or less. PATENTED DESIGN.</Callout>
             <InfoPanel>
               <div>Heavy-duty chrome-plated steel retention ring. Guaranteed to fit all major brands of rubber flooring mallets — or your money back. <strong>U.S. Patent No. 11,370,097</strong>.</div>

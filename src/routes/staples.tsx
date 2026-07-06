@@ -118,35 +118,141 @@ const tabData = {
   },
 } as const;
 
-// Depth chart data — R22 pg. 5
-const depthChart = [
+// Depth chart data — R22 pg. 5. 15.5 GA staples embedded in 3/4" tongue-and-groove.
+type StapleSpec = { crown: string; crownMm: string; pen: string };
+type StapleGroup = { len: string; items: StapleSpec[] };
+
+const depthChart: StapleGroup[] = [
   {
     len: '2" Staples',
-    rows: [
-      '5/8" Crown → 1-1/16" pen · 3/4" tongue',
-      '3/4" Crown → 1" pen · 3/4" tongue',
+    items: [
+      { crown: '5/8"', crownMm: "16mm", pen: '1-1/16"' },
+      { crown: '3/4"', crownMm: "19mm", pen: '1"' },
     ],
   },
   {
     len: '1-3/4" Staples',
-    rows: [
-      '1/2" Crown  → 31/32" · 3/4"',
-      '9/16" Crown → 29/32" · 3/4"',
-      '5/8" Crown  → 7/8"   · 3/4"',
-      '3/4" Crown  → 13/16" · 3/4"',
+    items: [
+      { crown: '1/2"',  crownMm: "12mm", pen: '31/32"' },
+      { crown: '9/16"', crownMm: "14mm", pen: '29/32"' },
+      { crown: '5/8"',  crownMm: "16mm", pen: '7/8"' },
+      { crown: '3/4"',  crownMm: "19mm", pen: '13/16"' },
     ],
   },
   {
     len: '1-1/2" Staples',
-    rows: [
-      '3/8" Crown  → 7/8"   · 3/4"',
-      '1/2" Crown  → 13/16" · 3/4"',
-      '9/16" Crown → 3/4"   · 3/4"',
-      '5/8" Crown  → 11/16" · 3/4"',
-      '3/4" Crown  → 5/8"   · 3/4"',
+    items: [
+      { crown: '3/8"',  crownMm: "10mm", pen: '7/8"' },
+      { crown: '1/2"',  crownMm: "12mm", pen: '13/16"' },
+      { crown: '9/16"', crownMm: "14mm", pen: '3/4"' },
+      { crown: '5/8"',  crownMm: "16mm", pen: '11/16"' },
+      { crown: '3/4"',  crownMm: "19mm", pen: '5/8"' },
     ],
   },
 ];
+
+const TONGUE = '3/4"';
+
+// SVG diagram of one staple embedded in a 3/4" tongue-and-groove floor cross-section.
+function StapleDepthDiagram({ spec, uid }: { spec: StapleSpec; uid: string }) {
+  // Coordinate system
+  const W = 200, H = 150;
+  const crownH = 26;
+  const woodTop = crownH;
+  const woodH = 96;
+  const woodBottom = woodTop + woodH;
+  const rightGutter = 46; // space for tongue arrow
+
+  // Staple diagonal: from crown left edge down-right into wood
+  const stapleTopX = 22;
+  const stapleTopY = crownH;
+  const stapleBotX = 82;
+  const stapleBotY = crownH + 78; // penetration end
+
+  // Vertical penetration arrow inside wood
+  const penX = stapleBotX + 14;
+
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: "block" }} aria-hidden>
+      <defs>
+        <pattern id={`grain-${uid}`} width="60" height="14" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="7" x2="60" y2="7" stroke="rgba(0,0,0,0.18)" strokeWidth="0.6" strokeDasharray="10 4 4 4 6 6" />
+        </pattern>
+      </defs>
+
+      {/* Crown / top strip (brown, matches R22) */}
+      <rect x="0" y="0" width={W - rightGutter} height={crownH} fill="#5C4128" />
+      {/* Notch on left (represents groove-side tab) */}
+      <rect x="0" y={crownH * 0.35} width="4" height={crownH * 0.55} fill="#F5F4EE" />
+      {/* Crown label */}
+      <text x="12" y={crownH * 0.68} fill="#fff" fontFamily="Assistant, sans-serif" fontWeight="800" fontSize="11">
+        {spec.crown}
+      </text>
+      <text x="12" y={crownH * 0.68} dx={spec.crown.length * 6.5 + 6} fill="rgba(255,255,255,0.75)" fontFamily="Assistant, sans-serif" fontWeight="600" fontSize="8">
+        ({spec.crownMm})
+      </text>
+
+      {/* Wood body */}
+      <rect x="0" y={woodTop} width={W - rightGutter} height={woodH} fill="#D9C89F" />
+      <rect x="0" y={woodTop} width={W - rightGutter} height={woodH} fill={`url(#grain-${uid})`} />
+      {/* Additional grain hairlines for detail */}
+      {[0.2, 0.42, 0.6, 0.78].map(f => (
+        <line
+          key={f}
+          x1="0"
+          y1={woodTop + woodH * f}
+          x2={W - rightGutter}
+          y2={woodTop + woodH * f}
+          stroke="rgba(0,0,0,0.14)"
+          strokeWidth="0.5"
+          strokeDasharray="12 5 4 6"
+        />
+      ))}
+
+      {/* Staple: shank as thin light metallic line */}
+      <line x1={stapleTopX} y1={stapleTopY} x2={stapleBotX} y2={stapleBotY} stroke="#C8C8CC" strokeWidth="1.6" strokeLinecap="round" />
+      <line x1={stapleTopX} y1={stapleTopY} x2={stapleBotX} y2={stapleBotY} stroke="rgba(255,255,255,0.7)" strokeWidth="0.5" />
+      {/* Staple point */}
+      <polygon
+        points={`${stapleBotX - 2},${stapleBotY - 3} ${stapleBotX + 3},${stapleBotY + 1} ${stapleBotX - 1},${stapleBotY + 2}`}
+        fill="#1a1a1a"
+      />
+
+      {/* Penetration arrow (inside wood) */}
+      <line x1={penX} y1={woodTop + 2} x2={penX} y2={stapleBotY} stroke="#1a1a1a" strokeWidth="1" />
+      {/* Arrowheads */}
+      <polygon points={`${penX},${woodTop + 2} ${penX - 3},${woodTop + 8} ${penX + 3},${woodTop + 8}`} fill="#1a1a1a" />
+      <polygon points={`${penX},${stapleBotY} ${penX - 3},${stapleBotY - 6} ${penX + 3},${stapleBotY - 6}`} fill="#1a1a1a" />
+      {/* Penetration label */}
+      <text
+        x={penX + 6}
+        y={(woodTop + stapleBotY) / 2 + 4}
+        fill="#1a1a1a"
+        fontFamily="Assistant, sans-serif"
+        fontWeight="800"
+        fontSize="11"
+      >
+        {spec.pen}
+      </text>
+
+      {/* Tongue (3/4") arrow gutter — outside wood block, right side */}
+      <line x1={W - rightGutter + 10} y1={woodTop} x2={W - rightGutter + 10} y2={woodBottom} stroke="#1a1a1a" strokeWidth="1" />
+      <polygon points={`${W - rightGutter + 10},${woodTop} ${W - rightGutter + 7},${woodTop + 6} ${W - rightGutter + 13},${woodTop + 6}`} fill="#1a1a1a" />
+      <polygon points={`${W - rightGutter + 10},${woodBottom} ${W - rightGutter + 7},${woodBottom - 6} ${W - rightGutter + 13},${woodBottom - 6}`} fill="#1a1a1a" />
+      <text
+        x={W - rightGutter + 17}
+        y={(woodTop + woodBottom) / 2 + 4}
+        fill="#1a1a1a"
+        fontFamily="Assistant, sans-serif"
+        fontWeight="800"
+        fontSize="11"
+      >
+        {TONGUE}
+      </text>
+    </svg>
+  );
+}
+
 
 function Staples() {
   const [tab, setTab] = useTabs<TabKey>("155");
@@ -257,17 +363,68 @@ function Staples() {
         intro="Select the correct 15.5 GA staple length and crown width for your subfloor thickness. All penetration and tongue-clearance figures from Pro-Drive R22 spec sheet."
         footnote="Actual fastener depth can vary based on wood milling or tongue profile. This chart is for reference purposes only. Consult wood manufacturers or NWFA for correct fastener length before installation."
       >
-        <div className="grid md:grid-cols-3" style={{ gap: 2 }}>
-          {depthChart.map(s => (
-            <div key={s.len} className="bg-white p-5" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
-              <div className="font-bold" style={{ color: "var(--pd-dark)", fontSize: 14 }}>{s.len}</div>
-              <ul className="mt-3 space-y-1.5" style={{ fontSize: 12, color: "var(--pd-muted)", fontFamily: "ui-monospace, monospace" }}>
-                {s.rows.map(r => <li key={r}>{r}</li>)}
-              </ul>
+        <div className="space-y-8">
+          {depthChart.map(group => (
+            <div key={group.len}>
+              <div className="flex items-baseline gap-3 mb-4">
+                <h3 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: 22, lineHeight: 1 }}>
+                  {group.len}
+                </h3>
+                <span className="pd-label" style={{ color: "var(--pd-gold)", fontSize: 11 }}>15.5 Gauge</span>
+                <span
+                  aria-hidden
+                  className="flex-1"
+                  style={{ borderBottom: "1px solid rgba(0,0,0,0.1)", transform: "translateY(-4px)" }}
+                />
+              </div>
+              <div
+                className="grid gap-3"
+                style={{ gridTemplateColumns: `repeat(auto-fill, minmax(220px, 260px))` }}
+              >
+                {group.items.map(spec => (
+                  <div
+                    key={`${group.len}-${spec.crown}`}
+                    className="bg-white"
+                    style={{
+                      border: "1px solid rgba(0,0,0,0.08)",
+                      borderTop: "2px solid var(--pd-yellow)",
+                      padding: "12px 12px 10px",
+                    }}
+                  >
+                    <StapleDepthDiagram spec={spec} uid={`${group.len.replace(/\W+/g, "")}-${spec.crown.replace(/\W+/g, "")}`} />
+                    <div
+                      className="mt-2 pt-2 flex items-center justify-between"
+                      style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}
+                    >
+                      <span
+                        style={{
+                          fontFamily: "ui-monospace, monospace",
+                          fontSize: 10,
+                          color: "var(--pd-muted)",
+                          letterSpacing: "0.05em",
+                        }}
+                      >
+                        {spec.crown} crown
+                      </span>
+                      <span
+                        style={{
+                          fontFamily: "ui-monospace, monospace",
+                          fontSize: 10,
+                          color: "var(--pd-dark)",
+                          fontWeight: 700,
+                        }}
+                      >
+                        {spec.pen} pen · {TONGUE} tongue
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>
       </TechReference>
+
 
       <RelatedProducts products={related} />
       <PageDisclaimers galvanized trademarks />

@@ -84,28 +84,44 @@ function Brads() {
       <section className="px-[6%] py-14" style={{ background: "var(--pd-dark)" }}>
         <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>Select a Nail Family</div>
         <h2 className="pd-display text-white mt-2" style={{ fontSize: 30 }}>Six angles. One promise: no jams.</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 mt-8" style={{ gap: 2 }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-8 gap-3">
           {families.map(f => (
             <a
               key={f.id}
               href={`#${f.id}`}
-              className="p-6 transition-colors block"
-              style={{ background: "rgba(255,205,0,0.06)", border: "1px solid rgba(255,205,0,0.15)" }}
-              onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,205,0,0.13)")}
-              onMouseLeave={e => (e.currentTarget.style.background = "rgba(255,205,0,0.06)")}
+              className="block group overflow-hidden transition-all"
+              style={{ background: "rgba(255,205,0,0.04)", border: "1px solid rgba(255,205,0,0.15)" }}
+              onMouseEnter={e => (e.currentTarget.style.borderColor = "var(--pd-yellow)")}
+              onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(255,205,0,0.15)")}
             >
-              <div className="flex items-center justify-between gap-4">
+              <div
+                className="w-full flex items-center justify-center overflow-hidden"
+                style={{ height: 140, background: "#0a0a0a" }}
+              >
+                <img
+                  src={f.image}
+                  alt={`${f.gauge} ${f.label} collation`}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  style={{ objectPosition: "center" }}
+                />
+              </div>
+              <div className="p-5 flex items-start justify-between gap-3">
                 <div>
                   <div className="pd-label" style={{ color: "var(--pd-yellow)", fontSize: 11 }}>{f.gauge}</div>
                   <div className="font-bold text-white mt-1" style={{ fontSize: 16 }}>{f.label}</div>
                   <div className="mt-1" style={{ color: "rgba(255,255,255,0.6)", fontSize: 12 }}>{f.brand}</div>
                 </div>
-                <AngleGlyph angle={f.angle} />
+                <div
+                  className="shrink-0 mt-1"
+                  style={{ color: "var(--pd-yellow)", fontSize: 20, lineHeight: 1 }}
+                  aria-hidden
+                >→</div>
               </div>
             </a>
           ))}
         </div>
       </section>
+
 
       <section className="px-[6%] py-12 space-y-14" style={{ background: "var(--pd-light-bg)" }}>
         <div id="fn15">

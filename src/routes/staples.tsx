@@ -478,7 +478,9 @@ function QWireStapleDiagram() {
 
 
 
+function Staples() {
   const [tab, setTab] = useTabs<TabKey>("155");
+
   const g = tabData[tab];
 
   const allShownIds = [

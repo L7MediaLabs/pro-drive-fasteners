@@ -605,11 +605,49 @@ function Staples() {
           )}
 
           {tab === "16n" && (
-            <InfoPanel
-              applications="Furniture Frames, Cabinet Sub-Assembly, Millwork, Door Jambs."
-              standards="Meets or Exceeds ASTM A641."
-            />
+            <>
+              <InfoPanel
+                applications="Furniture Frames, Cabinet Sub-Assembly, Millwork, Door Jambs."
+                standards="Meets or Exceeds ASTM A641."
+              />
+              <div
+                className="mt-6 bg-white"
+                style={{
+                  border: "1px solid rgba(0,0,0,0.08)",
+                  borderTop: "2px solid var(--pd-yellow)",
+                  padding: "20px 24px 18px",
+                }}
+              >
+                <div className="flex items-baseline gap-3 mb-4">
+                  <div className="pd-label" style={{ color: "var(--pd-gold)", fontSize: 11 }}>Dimensions</div>
+                  <h4 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1 }}>
+                    7/16&quot; Medium Crown · Eight Lengths
+                  </h4>
+                  <span
+                    aria-hidden
+                    className="flex-1"
+                    style={{ borderBottom: "1px solid rgba(0,0,0,0.1)", transform: "translateY(-4px)" }}
+                  />
+                </div>
+                <div style={{ maxWidth: 340, margin: "0 auto" }}>
+                  <SencoStapleDiagram
+                    crownIn={7/16}
+                    crownLabel={'7/16"'}
+                    lengths={NWIRE_16_LENGTHS}
+                    ppi={90}
+                    labelFontSize={10}
+                  />
+                </div>
+                <p
+                  className="mt-3 text-center"
+                  style={{ fontFamily: "ui-monospace, monospace", fontSize: 10, color: "var(--pd-muted)", letterSpacing: "0.05em" }}
+                >
+                  Drawn to scale · millimetres (left) · inches (right)
+                </p>
+              </div>
+            </>
           )}
+
           {tab === "18m" && (
             <>
               <InfoPanel applications="Cabinet assembly, insulation, plastic sheeting, Tyvek, roofing paper, house wrap.">

@@ -72,6 +72,7 @@ import fn1532_200         from "../assets/products/finishNails/fn1532_200.png.as
 import fn1520_125         from "../assets/products/finishNails/fn1520_125.png.asset.json";
 import da21_200           from "../assets/products/finishNails/da21_200.png.asset.json";
 import finishNailsStrip   from "../assets/products/finishNails/finish_nails_strip.png.asset.json";
+import finishNailsStripHD from "../assets/products/finishNails/finish_nails_strip_hd.png";
 import brad18_500         from "../assets/products/brads/axx08eaa-500.png.asset.json";
 import brad18_625         from "../assets/products/brads/axx10eaa-625.png.asset.json";
 import brad18_100         from "../assets/products/brads/axx13eaa-100.png.asset.json";
@@ -238,7 +239,7 @@ export const images = {
     fn1524:      finishNailsStrip.url,
     da21_200:    da21_200.url,
     da21_200ss:  finishNailsStrip.url,
-    strip:       finishNailsStrip.url,
+    strip:       finishNailsStripHD,
   },
   brads18: {
     axx08_500: brad18_500.url,

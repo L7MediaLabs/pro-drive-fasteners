@@ -12,6 +12,7 @@ export function CinematicHero({
   badges,
   rightImage,
   rightImageAlt,
+  rightImageFit = "cover",
 }: {
   kicker: string;
   title: ReactNode;
@@ -20,6 +21,7 @@ export function CinematicHero({
   badges?: { label: string; accent?: boolean }[];
   rightImage?: string;
   rightImageAlt?: string;
+  rightImageFit?: "cover" | "contain";
 }) {
   return (
     <section className="px-[6%] pt-20 pb-16 relative overflow-hidden" style={{ background: "var(--pd-dark)" }}>

@@ -172,8 +172,20 @@ export function SplitLayout({
 
 export function GalleryHero({ src, alt, caption }: { src: string; alt: string; caption?: string }) {
   return (
-    <div style={{ background: "#fff", padding: 16, borderTop: "3px solid var(--pd-yellow)" }}>
-      <img src={src} alt={alt} loading="lazy" style={{ width: "100%", height: "auto", display: "block" }} />
+    <div style={{ background: "#fff", padding: 20, borderTop: "3px solid var(--pd-yellow)" }}>
+      <div
+        style={{
+          display: "flex", alignItems: "center", justifyContent: "center",
+          aspectRatio: "1 / 1", maxHeight: 380,
+        }}
+      >
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", display: "block" }}
+        />
+      </div>
       {caption && (
         <div className="pd-label mt-3" style={{ color: "var(--pd-gold)", fontSize: 11 }}>{caption}</div>
       )}

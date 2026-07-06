@@ -391,7 +391,7 @@ function Staples() {
                       padding: "12px 12px 10px",
                     }}
                   >
-                    <StapleDepthDiagram spec={spec} />
+                    <StapleDepthDiagram spec={spec} uid={`${group.len.replace(/\W+/g, "")}-${spec.crown.replace(/\W+/g, "")}`} />
                     <div
                       className="mt-2 pt-2 flex items-center justify-between"
                       style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}

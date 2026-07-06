@@ -207,7 +207,7 @@ function Home() {
           </div>
           <h1
             className="pd-display text-white"
-            style={{ fontSize: "clamp(56px, 9vw, 112px)", lineHeight: 0.93, margin: 0 }}
+            style={{ fontSize: "clamp(42px, 9vw, 112px)", lineHeight: 0.93, margin: 0, overflowWrap: "break-word" }}
           >
             PRO-DRIVE<br />FASTENERS<span style={{ fontSize: "0.5em", verticalAlign: "top" }}>®</span>
           </h1>

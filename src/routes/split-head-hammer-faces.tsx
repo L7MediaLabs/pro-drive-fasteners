@@ -29,7 +29,7 @@ function SplitHead() {
         kicker="Split Head Replacement"
         title={<>Non-Marring Faces.<br />Made to Fit.</>}
         description="Replacement rubber faces for Garland® split-head mallets. Available in 1-1/2 inch and 2 inch sizes. Durable for pre-finished and unfinished wood."
-        bgImage={images.mallets.family}
+        bgImage={images.mallets.splitHead.hero}
         badges={[
           { label: "NON-MARRING" },
           { label: "FITS GARLAND®" },

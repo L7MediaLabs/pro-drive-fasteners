@@ -347,6 +347,73 @@ function Home() {
         </div>
       </section>
 
+      {/* 7C.25 Grade Standards */}
+      <section
+        className="px-[6%] py-20"
+        style={{ background: "var(--pd-dark)", position: "relative", overflow: "hidden" }}
+      >
+        <div
+          aria-hidden
+          style={{
+            position: "absolute", inset: 0, pointerEvents: "none",
+            backgroundImage:
+              "linear-gradient(rgba(255,205,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,205,0,0.04) 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+          }}
+        />
+        <div className="relative flex items-end justify-between flex-wrap gap-6 mb-12">
+          <div>
+            <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>Grade Standards</div>
+            <h2
+              className="pd-display mt-2"
+              style={{ color: "#fff", fontSize: "clamp(32px, 4.5vw, 52px)", lineHeight: 1.02, maxWidth: 720 }}
+            >
+              Three tiers. One guarantee.
+            </h2>
+          </div>
+          <p
+            className="max-w-md"
+            style={{ color: "rgba(255,255,255,0.55)", fontSize: 14, lineHeight: 1.7, fontWeight: 300 }}
+          >
+            Every Pro-Drive product is stamped to a specification tier. Match the badge to the job — from daily contractor installs to industrial production lines.
+          </p>
+        </div>
+        <div className="relative grid grid-cols-1 md:grid-cols-3" style={{ gap: 1, background: "rgba(255,205,0,0.15)" }}>
+          {gradeStandards.map((g) => (
+            <div
+              key={g.name}
+              className="flex flex-col items-center text-center"
+              style={{ background: "var(--pd-dark)", padding: "40px 28px" }}
+            >
+              <img
+                src={g.image}
+                alt={`${g.name} badge`}
+                loading="lazy"
+                style={{ width: 148, height: 148, objectFit: "contain" }}
+              />
+              <div
+                className="pd-label mt-6"
+                style={{ color: "var(--pd-yellow)", letterSpacing: "0.2em" }}
+              >
+                {g.tier}
+              </div>
+              <div
+                className="mt-2"
+                style={{ color: "#fff", fontWeight: 800, fontSize: 22, letterSpacing: "0.02em" }}
+              >
+                {g.name}
+              </div>
+              <p
+                className="mt-3"
+                style={{ color: "rgba(255,255,255,0.6)", fontSize: 13, lineHeight: 1.7, fontWeight: 300, maxWidth: 300 }}
+              >
+                {g.body}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* 7C.5 Engineering Triptych — catalog cover illustrations */}
       <section
         style={{

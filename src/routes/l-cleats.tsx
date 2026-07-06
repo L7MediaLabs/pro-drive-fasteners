@@ -421,29 +421,78 @@ function LCleats() {
       </section>
 
       {/* DEPTH GUIDE */}
-      <section className="px-[6%] py-16" style={{ background: "var(--pd-light-bg)" }}>
-        <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Reference</div>
-        <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 36 }}>L-Cleat Depth Guide</h2>
-        <p className="mt-2" style={{ color: "var(--pd-muted)" }}>Select the correct cleat length for your subfloor thickness.</p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 mt-6" style={{ gap: 2 }}>
-          {[
-            { len: '2" L-Cleats (16 GA)', rows: ['Subfloor 5/8" → Clearance 3/4"', 'Subfloor 3/4" → Clearance 3/4"'] },
-            { len: '1-3/4" L-Cleats (16 or 18 GA)', rows: ['1/2" → 31/32" + 3/4"', '9/16" → 29/32" + 3/4"', '5/8" → 7/8" + 3/4"', '3/4" → 13/16" + 3/4"'] },
-            { len: '1-1/2" L-Cleats (16 or 18 GA)', rows: ['1/2" → 13/16" + 3/4"', '9/16" → 3/4" + 3/4"', '5/8" → 11/16" + 3/4"', '3/4" → 5/8" + 3/4"'] },
-            { len: '1-1/4" L-Cleats (18 or 20 GA)', rows: ['5/16" → 3/4" + 3/4"', '3/8" → 11/16" + 3/4"', '1/2" → 5/8" + 3/4"'] },
-          ].map(s => (
-            <div key={s.len} className="bg-white p-5" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
-              <div className="font-bold" style={{ color: "var(--pd-dark)", fontSize: 14 }}>{s.len}</div>
-              <ul className="mt-3 space-y-1.5" style={{ fontSize: 12, color: "var(--pd-muted)", fontFamily: "ui-monospace, monospace" }}>
-                {s.rows.map(r => <li key={r}>{r}</li>)}
-              </ul>
+      <TechReference
+        kicker="Reference"
+        title="L-Cleat Subfloor Depth Chart"
+        intro="Select the correct cleat length and gauge for your flooring thickness. Every diagram is drawn to the same scale — cleat length, flooring thickness, and penetration are directly comparable across cards."
+        footnote="Actual fastener depth can vary based on wood milling or tongue profile. This chart is for reference purposes only. Consult wood manufacturers or NWFA for correct fastener length before installation."
+      >
+        <div className="space-y-8">
+          {cleatDepthChart.map(group => (
+            <div key={group.len}>
+              <div className="flex items-baseline gap-3 mb-4">
+                <h3 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: 22, lineHeight: 1 }}>
+                  {group.len}
+                </h3>
+                <span className="pd-label" style={{ color: "var(--pd-gold)", fontSize: 11 }}>{group.gauge}</span>
+                <span
+                  aria-hidden
+                  className="flex-1"
+                  style={{ borderBottom: "1px solid rgba(0,0,0,0.1)", transform: "translateY(-4px)" }}
+                />
+              </div>
+              <div
+                className="grid gap-3"
+                style={{ gridTemplateColumns: `repeat(auto-fill, minmax(220px, 260px))` }}
+              >
+                {group.items.map(spec => (
+                  <div
+                    key={`${group.len}-${spec.floor}`}
+                    className="bg-white"
+                    style={{
+                      border: "1px solid rgba(0,0,0,0.08)",
+                      borderTop: "2px solid var(--pd-yellow)",
+                      padding: "12px 12px 10px",
+                    }}
+                  >
+                    <CleatDepthDiagram
+                      spec={spec}
+                      cleatLenIn={group.lenIn}
+                      uid={`${group.len.replace(/\W+/g, "")}-${spec.floor.replace(/\W+/g, "")}`}
+                    />
+                    <div
+                      className="mt-2 pt-2 flex items-center justify-between"
+                      style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}
+                    >
+                      <span
+                        style={{
+                          fontFamily: "ui-monospace, monospace",
+                          fontSize: 10,
+                          color: "var(--pd-muted)",
+                          letterSpacing: "0.05em",
+                        }}
+                      >
+                        {spec.floor} floor
+                      </span>
+                      <span
+                        style={{
+                          fontFamily: "ui-monospace, monospace",
+                          fontSize: 10,
+                          color: "var(--pd-dark)",
+                          fontWeight: 700,
+                        }}
+                      >
+                        {spec.pen} pen · {CLEAT_TONGUE} sub
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>
-        <div className="bg-white px-5 py-4 mt-6 text-sm" style={{ borderLeft: "3px solid var(--pd-yellow)" }}>
-          Actual fastener depth can vary based on wood milling or tongue profile. This chart is for reference purposes only. Consult wood manufacturers or NWFA for correct fastener length before installation.
-        </div>
-      </section>
+      </TechReference>
+
     </div>
   );
 }

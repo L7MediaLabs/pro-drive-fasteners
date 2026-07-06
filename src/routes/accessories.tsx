@@ -166,20 +166,30 @@ function Acc() {
           </p>
         </div>
         <div className="grid md:grid-cols-2 gap-4 mt-8">
-          <article className="pd-glass-light p-6" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
-            <div className="pd-label" style={{ color: "var(--pd-yellow)", fontSize: 11 }}>MALLET-DISP</div>
-            <h3 className="text-white mt-2 font-bold" style={{ fontSize: 20 }}>Mallet Display</h3>
-            <p className="text-white/65 mt-2 text-sm leading-relaxed">
-              Branded floor display that merchandises the full Pro-Drive mallet line. Holds up to 8 mallets in a compact, retail-friendly footprint.
-            </p>
-            <div className="flex gap-4 mt-4 text-[11px]" style={{ color: "var(--pd-yellow)", letterSpacing: "0.1em", fontWeight: 700 }}>
-              <span>HOLDS 8 MALLETS</span>
-              <span>·</span>
-              <span>BRANDED FIXTURE</span>
+          <article className="bg-white overflow-hidden" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
+            <div className="grid md:grid-cols-[1.05fr_1fr] gap-0">
+              <div className="relative flex items-center justify-center p-6" style={{ background: "#F5F4F0" }}>
+                <img
+                  src={malletDisplay.url}
+                  alt="Pro-Drive branded mallet display holding 8 mallets and poly caps"
+                  loading="lazy"
+                  style={{ width: "100%", height: "auto", maxHeight: 380, objectFit: "contain", display: "block" }}
+                />
+              </div>
+              <div className="p-6 flex flex-col">
+                <div className="pd-label" style={{ color: "var(--pd-gold)", fontSize: 11 }}>MALLET-DISP</div>
+                <h3 className="mt-2 font-bold" style={{ fontSize: 22, color: "var(--pd-dark)" }}>Mallet & Poly Cap Display</h3>
+                <ul className="mt-4 space-y-2 text-sm" style={{ color: "var(--pd-text)", lineHeight: 1.6 }}>
+                  <li>• Secure method to display all mallet and poly caps</li>
+                  <li>• Heavy duty construction holds up to 8 mallets</li>
+                  <li>• Displayable on any type of background</li>
+                  <li>• Contact sales for additional information</li>
+                </ul>
+                <Link to="/contact" className="pd-btn-primary mt-6 inline-block self-start" style={{ padding: "10px 20px", fontSize: 11 }}>
+                  Contact Sales →
+                </Link>
+              </div>
             </div>
-            <Link to="/contact" className="pd-btn-primary mt-5 inline-block" style={{ padding: "10px 20px", fontSize: 11 }}>
-              Contact Sales →
-            </Link>
           </article>
           <article className="pd-glass-light p-6" style={{ borderTop: "3px solid rgba(255,205,0,0.4)" }}>
             <div className="pd-label" style={{ color: "rgba(255,205,0,0.6)", fontSize: 11 }}>Custom</div>

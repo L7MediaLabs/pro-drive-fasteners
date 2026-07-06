@@ -333,9 +333,154 @@ function StapleDepthDiagram({
 }
 
 
+// ─── 15 GA Q-Wire staple technical drawing (7/16" crown, 3 lengths) ────────
+// Full U-shape staple drawn true to scale — crown width and leg lengths
+// share the same pixels-per-inch so the three variants stack visually correct.
+function QWireStapleDiagram() {
+  const PPI = 70;
+  const CROWN_IN = 7 / 16;          // 0.4375"
+  const LENGTHS = [
+    { in: 1.5,  label: '1-1/2"', mm: "38mm" },
+    { in: 2.0,  label: '2"',     mm: "50mm" },
+    { in: 2.5,  label: '2-1/2"', mm: "64mm" },
+  ];
+  const maxLen = LENGTHS[LENGTHS.length - 1].in;
+
+  const crownPx = CROWN_IN * PPI;      // ~30.6px
+  const legMaxPx = maxLen * PPI;       // 175px
+  const legStroke = 4;
+  const wireR = legStroke / 2;
+
+  // Layout: center the staple on a canvas with room for side labels + ticks.
+  const SIDE_LABEL_W = 88;             // left (mm) + right (inches) label column widths
+  const TICK_LEN = 10;
+  const CROWN_LABEL_H = 32;
+  const TOP_PAD = 8;
+  const BOTTOM_PAD = 14;
+
+  const stapleW = crownPx + legStroke;
+  const cx = SIDE_LABEL_W + TICK_LEN + stapleW / 2;
+  const stapleTop = TOP_PAD + CROWN_LABEL_H;
+
+  const legXL = cx - crownPx / 2;
+  const legXR = cx + crownPx / 2;
+
+  const VB_W = (SIDE_LABEL_W + TICK_LEN) * 2 + stapleW;
+  const VB_H = stapleTop + legMaxPx + BOTTOM_PAD;
+
+  // Slight chisel-point flare at the bottom of the longest legs (visual tips).
+  const tipFlare = 3;
+
+  return (
+    <svg viewBox={`0 0 ${VB_W} ${VB_H}`} width="100%" style={{ display: "block" }} aria-hidden>
+      {/* Crown label at top */}
+      <text
+        x={cx}
+        y={TOP_PAD + 18}
+        textAnchor="middle"
+        fill="#1a1a1a"
+        fontFamily="Assistant, sans-serif"
+        fontWeight="700"
+        fontSize="14"
+      >
+        7/16&quot;
+      </text>
+      {/* Crown dimension bracket */}
+      <line x1={legXL} y1={TOP_PAD + 24} x2={legXR} y2={TOP_PAD + 24} stroke="#1a1a1a" strokeWidth="0.8" />
+      <line x1={legXL} y1={TOP_PAD + 21} x2={legXL} y2={TOP_PAD + 27} stroke="#1a1a1a" strokeWidth="0.8" />
+      <line x1={legXR} y1={TOP_PAD + 21} x2={legXR} y2={TOP_PAD + 27} stroke="#1a1a1a" strokeWidth="0.8" />
+
+      {/* Staple body — U-shape drawn as one outer + one inner rounded outline */}
+      {/* Outer outline */}
+      <path
+        d={`
+          M ${legXL - wireR} ${stapleTop + legMaxPx + tipFlare}
+          L ${legXL - wireR} ${stapleTop + wireR}
+          Q ${legXL - wireR} ${stapleTop - wireR} ${legXL + wireR} ${stapleTop - wireR}
+          L ${legXR - wireR} ${stapleTop - wireR}
+          Q ${legXR + wireR} ${stapleTop - wireR} ${legXR + wireR} ${stapleTop + wireR}
+          L ${legXR + wireR} ${stapleTop + legMaxPx + tipFlare}
+        `}
+        fill="none"
+        stroke="#1a1a1a"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      {/* Inner outline — creates the wire thickness illusion */}
+      <path
+        d={`
+          M ${legXL + wireR + 1.2} ${stapleTop + legMaxPx}
+          L ${legXL + wireR + 1.2} ${stapleTop + wireR + 1.2}
+          Q ${legXL + wireR + 1.2} ${stapleTop + wireR + 0.6} ${legXL + wireR + 2.4} ${stapleTop + wireR + 0.6}
+          L ${legXR - wireR - 2.4} ${stapleTop + wireR + 0.6}
+          Q ${legXR - wireR - 1.2} ${stapleTop + wireR + 0.6} ${legXR - wireR - 1.2} ${stapleTop + wireR + 1.2}
+          L ${legXR - wireR - 1.2} ${stapleTop + legMaxPx}
+        `}
+        fill="none"
+        stroke="#1a1a1a"
+        strokeWidth="1"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+
+      {/* Length markers — mm on left leg, inches on right leg */}
+      {LENGTHS.map(({ in: lenIn, label, mm }) => {
+        const y = stapleTop + lenIn * PPI;
+        const leftLabelX = SIDE_LABEL_W - 6;
+        const leftTickX0 = SIDE_LABEL_W;
+        const leftTickX1 = legXL - wireR - 2;
+        const rightTickX0 = legXR + wireR + 2;
+        const rightTickX1 = VB_W - SIDE_LABEL_W;
+        const rightLabelX = VB_W - SIDE_LABEL_W + 6;
+        return (
+          <g key={label}>
+            {/* left mm label + leader */}
+            <text
+              x={leftLabelX}
+              y={y + 4}
+              textAnchor="end"
+              fill="#1a1a1a"
+              fontFamily="Assistant, sans-serif"
+              fontWeight="600"
+              fontSize="12"
+            >
+              {mm}
+            </text>
+            <line x1={leftTickX0} y1={y} x2={leftTickX1} y2={y} stroke="#1a1a1a" strokeWidth="0.8" />
+            <polygon
+              points={`${leftTickX1},${y} ${leftTickX1 - 5},${y - 3} ${leftTickX1 - 5},${y + 3}`}
+              fill="#1a1a1a"
+            />
+            {/* right inch label + leader */}
+            <line x1={rightTickX0} y1={y} x2={rightTickX1} y2={y} stroke="#1a1a1a" strokeWidth="0.8" />
+            <polygon
+              points={`${rightTickX0},${y} ${rightTickX0 + 5},${y - 3} ${rightTickX0 + 5},${y + 3}`}
+              fill="#1a1a1a"
+            />
+            <text
+              x={rightLabelX}
+              y={y + 4}
+              textAnchor="start"
+              fill="#1a1a1a"
+              fontFamily="Assistant, sans-serif"
+              fontWeight="600"
+              fontSize="12"
+            >
+              {label}
+            </text>
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
+
 
 function Staples() {
   const [tab, setTab] = useTabs<TabKey>("155");
+
   const g = tabData[tab];
 
   const allShownIds = [
@@ -401,12 +546,42 @@ function Staples() {
           {tab === "15q" && (
             <>
               <Callout>Senco® Style. Ideal for framing, sheathing, roof decking, and furniture frames. Meets or exceeds ASTM A641.</Callout>
+              <div
+                className="mt-6 bg-white"
+                style={{
+                  border: "1px solid rgba(0,0,0,0.08)",
+                  borderTop: "2px solid var(--pd-yellow)",
+                  padding: "20px 24px 18px",
+                }}
+              >
+                <div className="flex items-baseline gap-3 mb-4">
+                  <div className="pd-label" style={{ color: "var(--pd-gold)", fontSize: 11 }}>Dimensions</div>
+                  <h4 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1 }}>
+                    7/16&quot; Crown · Three Lengths
+                  </h4>
+                  <span
+                    aria-hidden
+                    className="flex-1"
+                    style={{ borderBottom: "1px solid rgba(0,0,0,0.1)", transform: "translateY(-4px)" }}
+                  />
+                </div>
+                <div style={{ maxWidth: 360, margin: "0 auto" }}>
+                  <QWireStapleDiagram />
+                </div>
+                <p
+                  className="mt-3 text-center"
+                  style={{ fontFamily: "ui-monospace, monospace", fontSize: 10, color: "var(--pd-muted)", letterSpacing: "0.05em" }}
+                >
+                  Drawn to scale · millimetres (left) · inches (right)
+                </p>
+              </div>
               <InterchangeList
                 fitsPrimary="Senco SQS55, FASCO F45C SQ-55 SS(CT), F5 SQ-65 CT, SQS55XP; Spotnail MS6564; Duo-Fast MS-1580D"
                 tools={["BeA 180", "Duo-Fast 1500", "Senco Q-Wire", "Spotnail"]}
               />
             </>
           )}
+
           {tab === "16n" && (
             <InfoPanel
               applications="Furniture Frames, Cabinet Sub-Assembly, Millwork, Door Jambs."

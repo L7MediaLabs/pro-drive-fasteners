@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Callout, InfoPanel } from "../components/PageHeader";
 import { ProductGrid } from "../components/ProductCard";
 import {
@@ -45,6 +45,145 @@ const malletCompare = [
   { model: "DHW",   handle: '15"', headOz: 52.8, cartons: 8,  bar: 0.92 }, // 3.3 lbs
   { model: "R5W",   handle: '15"', headOz: 44.8, cartons: 8,  bar: 0.78 }, // 2.8 lbs
 ];
+
+const steps = [
+  "Position cap on mallet head",
+  "Press down firmly",
+  "Twist to lock",
+  "Secured — ready to work",
+];
+
+function Check({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex items-start gap-2">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style={{ flexShrink: 0, marginTop: 2 }}>
+        <circle cx="9" cy="9" r="9" fill="var(--pd-dark)" />
+        <path d="M5 9l2.5 2.5L13 6" stroke="var(--pd-yellow)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+      <span style={{ fontSize: 14, lineHeight: 1.5, color: "var(--pd-dark)" }}>{children}</span>
+    </div>
+  );
+}
+
+function EZ2CapBanner() {
+  return (
+    <section style={{ background: "var(--pd-yellow)" }} className="my-8">
+      <div className="px-[6%] py-12">
+        {/* Headline */}
+        <h2 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: 32 }}>
+          E-Z 2CAP<sup style={{ fontSize: 14, verticalAlign: "super" }}>®</sup> patented feature
+        </h2>
+        <p className="mt-2" style={{ color: "var(--pd-dark)", fontSize: 16, opacity: 0.9 }}>
+          Patented design makes our caps easier &amp; faster to install!
+        </p>
+
+        <div className="grid lg:grid-cols-[3fr_2fr] gap-10 mt-8 items-start">
+          {/* Left column */}
+          <div>
+            {/* 4-Step Visual Strip */}
+            <div className="flex items-start gap-0 mb-8">
+              {steps.map((label, i) => (
+                <div key={i} className="flex-1 flex flex-col items-center text-center relative">
+                  <div
+                    style={{
+                      width: 36,
+                      height: 36,
+                      borderRadius: "50%",
+                      background: "var(--pd-dark)",
+                      color: "var(--pd-yellow)",
+                      fontWeight: 700,
+                      fontSize: 15,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      zIndex: 2,
+                    }}
+                  >
+                    {i + 1}
+                  </div>
+                  {/* connecting line */}
+                  {i < steps.length - 1 && (
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: 18,
+                        left: "50%",
+                        width: "100%",
+                        height: 2,
+                        background: "var(--pd-dark)",
+                        opacity: 0.25,
+                        zIndex: 1,
+                      }}
+                    />
+                  )}
+                  <div className="mt-3 px-1" style={{ fontSize: 12, lineHeight: 1.35, color: "var(--pd-dark)", fontWeight: 600 }}>
+                    {label}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Selling points */}
+            <div className="space-y-3">
+              <Check>Universal application for Unfinished and Pre-Finished flooring installations</Check>
+              <Check>Non-marring, premium rubber available in White, Gray, Black, or White Pro-Angle™</Check>
+            </div>
+
+            {/* Patent badge */}
+            <div
+              className="inline-block mt-6 px-3 py-1.5"
+              style={{
+                border: "1.5px solid var(--pd-dark)",
+                borderRadius: 4,
+                fontSize: 11,
+                fontWeight: 600,
+                color: "var(--pd-dark)",
+                textTransform: "uppercase",
+                letterSpacing: 0.5,
+              }}
+            >
+              U.S. Patent No. 11,370,097
+            </div>
+          </div>
+
+          {/* Right column — stat + guarantee */}
+          <div className="flex flex-col gap-6">
+            {/* 30 seconds stat */}
+            <div
+              className="p-6 text-center"
+              style={{
+                background: "var(--pd-dark)",
+                borderRadius: 6,
+              }}
+            >
+              <div className="flex items-baseline justify-center gap-2">
+                <span className="pd-display" style={{ color: "var(--pd-yellow)", fontSize: 64, lineHeight: 1 }}>30</span>
+                <span style={{ color: "var(--pd-yellow)", fontWeight: 700, fontSize: 18 }}>seconds</span>
+              </div>
+              <p className="mt-2" style={{ color: "rgba(255,255,255,0.85)", fontSize: 13 }}>
+                Caps removed &amp; installed in 30 seconds or less!
+              </p>
+            </div>
+
+            {/* Guarantee badge */}
+            <div
+              className="p-5"
+              style={{
+                background: "rgba(0,0,0,0.06)",
+                borderRadius: 6,
+                borderLeft: "4px solid var(--pd-dark)",
+              }}
+            >
+              <p style={{ fontSize: 13, lineHeight: 1.6, color: "var(--pd-dark)", fontWeight: 600 }}>
+                Pro-Drive Fasteners<sup>®</sup> E-Z 2CAP<sup>®</sup> mallet caps will fit all major brands of rubber flooring mallets. <span style={{ textDecoration: "underline", fontWeight: 700 }}>GUARANTEED.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 function Mallets() {
   const [tab, setTab] = useTabs<TabKey>("mallets");
@@ -118,6 +257,7 @@ function Mallets() {
                 <div className="pd-label mt-3" style={{ color: "var(--pd-gold)" }}>Cap Lineup</div>
               </div>
             </div>
+            <EZ2CapBanner />
             <Callout><strong>E-Z 2CAP®</strong> — caps installed or removed in 30 seconds or less. PATENTED DESIGN.</Callout>
             <InfoPanel>
               <div>Heavy-duty chrome-plated steel retention ring. Guaranteed to fit all major brands of rubber flooring mallets — or your money back. <strong>U.S. Patent No. 11,370,097</strong>.</div>

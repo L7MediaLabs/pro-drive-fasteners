@@ -119,41 +119,37 @@ function Acc() {
 
       {/* WHAT'S INSIDE */}
       <section className="px-[6%] py-16" style={{ background: "var(--pd-light-bg)" }}>
-        <div className="grid lg:grid-cols-[1fr_1.4fr] gap-10 items-start">
-          <div>
+        <div className="flex items-end justify-between flex-wrap gap-6 mb-10">
+          <div className="max-w-xl">
             <div className="pd-label" style={{ color: "var(--pd-gold)" }}>What's Inside</div>
             <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 36, lineHeight: 1.1 }}>
               Every wear part, ready to install.
             </h2>
             <p className="mt-4" style={{ color: "var(--pd-muted)", fontSize: 15, lineHeight: 1.7 }}>
-              The ORK-6 includes the full O-ring set, gaskets, bumpers, and small wear components that
-              keep flooring tools driving cleanly through high-volume installs.
+              The ORK-6 includes the full O-ring set and both piston gaskets — shown to scale below.
+              Screws and washers are also in the kit but not pictured.
             </p>
-            <a
-              href={ork6Pdf.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="pd-btn-primary mt-6 inline-block"
-              style={{ padding: "12px 22px", fontSize: 12 }}
-            >
-              ↓ Full Parts Diagram
-            </a>
           </div>
-          <div className="grid sm:grid-cols-2 gap-px" style={{ background: "rgba(0,0,0,0.08)" }}>
-            {[
-              { n: "Big Gasket", d: "1× included" },
-              { n: "Small Gasket", d: "1× included" },
-              { n: "O-Rings", d: "7× complete set" },
-              { n: "UA2810 Screws", d: "3× included" },
-              { n: "LW8.2 Washers", d: "3× included" },
-              { n: "Parts Diagram", d: "Reference sheet" },
-            ].map(item => (
-              <div key={item.n} className="bg-white p-5">
-                <div className="pd-label" style={{ color: "var(--pd-gold)", fontSize: 10 }}>Component</div>
-                <div className="mt-1 font-bold" style={{ color: "var(--pd-dark)", fontSize: 15 }}>{item.n}</div>
-                <div className="text-[12px] mt-1" style={{ color: "var(--pd-muted)" }}>{item.d}</div>
-              </div>
-            ))}
+          <a
+            href={ork6Pdf.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="pd-btn-primary"
+            style={{ padding: "12px 22px", fontSize: 12 }}
+          >
+            ↓ Full Parts Diagram (PDF)
+          </a>
+        </div>
+
+        <div className="bg-white p-8 md:p-12" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
+          <ORK6PartsDiagram />
+          <div className="mt-8 pt-6 flex items-center justify-between flex-wrap gap-4" style={{ borderTop: "1px solid rgba(0,0,0,0.08)" }}>
+            <div className="pd-label" style={{ color: "var(--pd-gold)", fontSize: 10 }}>
+              Items shown to scale · Screws and washers not pictured
+            </div>
+            <div className="pd-label" style={{ color: "var(--pd-dark)", fontSize: 10 }}>
+              ORK6-KIT-B · Pro-Drive Fasteners®
+            </div>
           </div>
         </div>
       </section>

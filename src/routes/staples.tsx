@@ -538,7 +538,7 @@ function Staples() {
         kicker="Flooring Fasteners"
         title={<>Flooring Staples.<br />Every Gauge. Every Job.</>}
         description="Medium crown and specialty staples engineered for hardwood, laminate, and engineered flooring — plus framing, cabinetry, insulation, and upholstery."
-        bgImage={images.staples.hero}
+        bgImage={images.staples.gauge15Banner}
         badges={[
           { label: "CONTRACTOR GRADE" },
           { label: "MEETS ASTM F1667" },

@@ -496,6 +496,28 @@ const NWIRE_16_LENGTHS: StapleLenTick[] = [
   { in: 2.0,   label: '2"',     mm: "50mm" },
 ];
 
+const MWIRE_18_LENGTHS: StapleLenTick[] = [
+  { in: 0.5,   label: '1/2"',   mm: "12mm" },
+  { in: 0.625, label: '5/8"',   mm: "16mm" },
+  { in: 0.75,  label: '3/4"',   mm: "19mm" },
+  { in: 0.875, label: '7/8"',   mm: "22mm" },
+  { in: 1.0,   label: '1"',     mm: "25mm" },
+  { in: 1.25,  label: '1-1/4"', mm: "32mm" },
+  { in: 1.5,   label: '1-1/2"', mm: "38mm" },
+];
+
+const LWIRE_18_LENGTHS: StapleLenTick[] = [
+  { in: 0.5,   label: '1/2"',   mm: "12mm" },
+  { in: 0.625, label: '5/8"',   mm: "16mm" },
+  { in: 0.75,  label: '3/4"',   mm: "19mm" },
+  { in: 0.875, label: '7/8"',   mm: "22mm" },
+  { in: 1.0,   label: '1"',     mm: "25mm" },
+  { in: 1.125, label: '1-1/8"', mm: "28mm" },
+  { in: 1.25,  label: '1-1/4"', mm: "32mm" },
+  { in: 1.5,   label: '1-1/2"', mm: "38mm" },
+];
+
+
 
 
 

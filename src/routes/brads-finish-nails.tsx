@@ -78,6 +78,7 @@ function Brads() {
         ]}
         rightImage={images.finishNails.fn1520_125}
         rightImageAlt="Pro-Drive 15 GA Finish Nails"
+        rightImageFit="contain"
       />
 
       {/* Visual family selector */}

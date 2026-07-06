@@ -12,6 +12,7 @@ export function CinematicHero({
   badges,
   rightImage,
   rightImageAlt,
+  rightImageFit = "cover",
 }: {
   kicker: string;
   title: ReactNode;
@@ -20,6 +21,7 @@ export function CinematicHero({
   badges?: { label: string; accent?: boolean }[];
   rightImage?: string;
   rightImageAlt?: string;
+  rightImageFit?: "cover" | "contain";
 }) {
   return (
     <section className="px-[6%] pt-20 pb-16 relative overflow-hidden" style={{ background: "var(--pd-dark)" }}>
@@ -72,14 +74,26 @@ export function CinematicHero({
           )}
         </div>
         {rightImage && (
-          <div className="relative" style={{ aspectRatio: "4/5", maxHeight: 520 }}>
+          <div
+            className="relative"
+            style={{
+              aspectRatio: "4/5",
+              maxHeight: 520,
+              background: rightImageFit === "contain" ? "#fff" : "transparent",
+              borderRadius: 4,
+              boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
+              overflow: "hidden",
+            }}
+          >
             <img
               src={rightImage}
               alt={rightImageAlt ?? ""}
               loading="eager"
               style={{
-                width: "100%", height: "100%", objectFit: "cover",
-                borderRadius: 4, boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
+                width: "100%", height: "100%",
+                objectFit: rightImageFit,
+                objectPosition: "center",
+                padding: rightImageFit === "contain" ? 16 : 0,
               }}
             />
           </div>

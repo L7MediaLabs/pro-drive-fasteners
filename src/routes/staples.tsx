@@ -496,6 +496,28 @@ const NWIRE_16_LENGTHS: StapleLenTick[] = [
   { in: 2.0,   label: '2"',     mm: "50mm" },
 ];
 
+const MWIRE_18_LENGTHS: StapleLenTick[] = [
+  { in: 0.5,   label: '1/2"',   mm: "12mm" },
+  { in: 0.625, label: '5/8"',   mm: "16mm" },
+  { in: 0.75,  label: '3/4"',   mm: "19mm" },
+  { in: 0.875, label: '7/8"',   mm: "22mm" },
+  { in: 1.0,   label: '1"',     mm: "25mm" },
+  { in: 1.25,  label: '1-1/4"', mm: "32mm" },
+  { in: 1.5,   label: '1-1/2"', mm: "38mm" },
+];
+
+const LWIRE_18_LENGTHS: StapleLenTick[] = [
+  { in: 0.5,   label: '1/2"',   mm: "12mm" },
+  { in: 0.625, label: '5/8"',   mm: "16mm" },
+  { in: 0.75,  label: '3/4"',   mm: "19mm" },
+  { in: 0.875, label: '7/8"',   mm: "22mm" },
+  { in: 1.0,   label: '1"',     mm: "25mm" },
+  { in: 1.125, label: '1-1/8"', mm: "28mm" },
+  { in: 1.25,  label: '1-1/4"', mm: "32mm" },
+  { in: 1.5,   label: '1-1/2"', mm: "38mm" },
+];
+
+
 
 
 
@@ -653,15 +675,86 @@ function Staples() {
               <InfoPanel applications="Cabinet assembly, insulation, plastic sheeting, Tyvek, roofing paper, house wrap.">
                 <div><strong style={{ color: "var(--pd-dark)" }}>Note:</strong> Made from Extra Hard Wire. Not compatible with Arrow T50 series.</div>
               </InfoPanel>
+              <div
+                className="mt-6 bg-white"
+                style={{
+                  border: "1px solid rgba(0,0,0,0.08)",
+                  borderTop: "2px solid var(--pd-yellow)",
+                  padding: "20px 24px 18px",
+                }}
+              >
+                <div className="flex items-baseline gap-3 mb-4">
+                  <div className="pd-label" style={{ color: "var(--pd-gold)", fontSize: 11 }}>Dimensions</div>
+                  <h4 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1 }}>
+                    3/8&quot; Crown · M-Wire Lengths
+                  </h4>
+                  <span
+                    aria-hidden
+                    className="flex-1"
+                    style={{ borderBottom: "1px solid rgba(0,0,0,0.1)", transform: "translateY(-4px)" }}
+                  />
+                </div>
+                <div style={{ maxWidth: 320, margin: "0 auto" }}>
+                  <SencoStapleDiagram
+                    crownIn={3/8}
+                    crownLabel={'3/8"'}
+                    lengths={MWIRE_18_LENGTHS}
+                    ppi={95}
+                    labelFontSize={10}
+                  />
+                </div>
+                <p
+                  className="mt-3 text-center"
+                  style={{ fontFamily: "ui-monospace, monospace", fontSize: 10, color: "var(--pd-muted)", letterSpacing: "0.05em" }}
+                >
+                  Drawn to scale · millimetres (left) · inches (right)
+                </p>
+              </div>
               <InterchangeList tools={MWIRE_TOOLS} />
             </>
           )}
           {tab === "18l" && (
             <>
               <InfoPanel applications="Finish and trim staples for cabinets, drawers, case backs, upholstery, soffits, underlayment, lattice, insulation sheathing, engineered flooring." />
+              <div
+                className="mt-6 bg-white"
+                style={{
+                  border: "1px solid rgba(0,0,0,0.08)",
+                  borderTop: "2px solid var(--pd-yellow)",
+                  padding: "20px 24px 18px",
+                }}
+              >
+                <div className="flex items-baseline gap-3 mb-4">
+                  <div className="pd-label" style={{ color: "var(--pd-gold)", fontSize: 11 }}>Dimensions</div>
+                  <h4 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1 }}>
+                    1/4&quot; Crown · L-Wire Lengths
+                  </h4>
+                  <span
+                    aria-hidden
+                    className="flex-1"
+                    style={{ borderBottom: "1px solid rgba(0,0,0,0.1)", transform: "translateY(-4px)" }}
+                  />
+                </div>
+                <div style={{ maxWidth: 320, margin: "0 auto" }}>
+                  <SencoStapleDiagram
+                    crownIn={1/4}
+                    crownLabel={'1/4"'}
+                    lengths={LWIRE_18_LENGTHS}
+                    ppi={95}
+                    labelFontSize={10}
+                  />
+                </div>
+                <p
+                  className="mt-3 text-center"
+                  style={{ fontFamily: "ui-monospace, monospace", fontSize: 10, color: "var(--pd-muted)", letterSpacing: "0.05em" }}
+                >
+                  Drawn to scale · millimetres (left) · inches (right)
+                </p>
+              </div>
               <InterchangeList tools={LWIRE_TOOLS} />
             </>
           )}
+
         </SplitLayout>
       </section>
 

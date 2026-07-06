@@ -546,12 +546,42 @@ function Staples() {
           {tab === "15q" && (
             <>
               <Callout>Senco® Style. Ideal for framing, sheathing, roof decking, and furniture frames. Meets or exceeds ASTM A641.</Callout>
+              <div
+                className="mt-6 bg-white"
+                style={{
+                  border: "1px solid rgba(0,0,0,0.08)",
+                  borderTop: "2px solid var(--pd-yellow)",
+                  padding: "20px 24px 18px",
+                }}
+              >
+                <div className="flex items-baseline gap-3 mb-4">
+                  <div className="pd-label" style={{ color: "var(--pd-gold)", fontSize: 11 }}>Dimensions</div>
+                  <h4 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1 }}>
+                    7/16&quot; Crown · Three Lengths
+                  </h4>
+                  <span
+                    aria-hidden
+                    className="flex-1"
+                    style={{ borderBottom: "1px solid rgba(0,0,0,0.1)", transform: "translateY(-4px)" }}
+                  />
+                </div>
+                <div style={{ maxWidth: 360, margin: "0 auto" }}>
+                  <QWireStapleDiagram />
+                </div>
+                <p
+                  className="mt-3 text-center"
+                  style={{ fontFamily: "ui-monospace, monospace", fontSize: 10, color: "var(--pd-muted)", letterSpacing: "0.05em" }}
+                >
+                  Drawn to scale · millimetres (left) · inches (right)
+                </p>
+              </div>
               <InterchangeList
                 fitsPrimary="Senco SQS55, FASCO F45C SQ-55 SS(CT), F5 SQ-65 CT, SQS55XP; Spotnail MS6564; Duo-Fast MS-1580D"
                 tools={["BeA 180", "Duo-Fast 1500", "Senco Q-Wire", "Spotnail"]}
               />
             </>
           )}
+
           {tab === "16n" && (
             <InfoPanel
               applications="Furniture Frames, Cabinet Sub-Assembly, Millwork, Door Jambs."

@@ -8,7 +8,31 @@ import instagramTools from "../assets/instagram-tools.png.asset.json";
 import illoStaples from "../assets/illustrations/staples_stack.png.asset.json";
 import illoCleats from "../assets/illustrations/cleats_stack.png.asset.json";
 import illoNails from "../assets/illustrations/nails_stack.png.asset.json";
+import badgeContractor from "../assets/badge-contractor-grade.svg.asset.json";
+import badgeMulti from "../assets/badge-multi-grade.svg.asset.json";
+import badgeIndustrial from "../assets/badge-industrial-grade.svg.asset.json";
 import { images } from "../data/images";
+
+const gradeStandards = [
+  {
+    image: badgeContractor.url,
+    tier: "Tier I",
+    name: "Contractor Grade",
+    body: "Jobsite-ready fasteners and tools built for the daily install. Every gauge, every angle — chisel-point precision, contractor-packed.",
+  },
+  {
+    image: badgeMulti.url,
+    tier: "Tier II",
+    name: "Multi Grade",
+    body: "Hardwood, contractor, and industrial applications in one spec. Cross-compatible fasteners that clear every major nailer without sorting.",
+  },
+  {
+    image: badgeIndustrial.url,
+    tier: "Tier III",
+    name: "Industrial Grade",
+    body: "Heavy-duty specifications for production shops and OEM lines. Tighter tolerances, high-cycle durability, guaranteed not to jam.",
+  },
+] as const;
 
 const engineeringTriptych = [
   {
@@ -319,6 +343,73 @@ function Home() {
               <p className="mt-1.5" style={{ fontSize: 13, color: "var(--pd-muted)", lineHeight: 1.65 }}>{c.desc}</p>
               <div className="pd-label mt-4" style={{ color: "var(--pd-gold)", letterSpacing: "0.1em" }}>{c.count}</div>
             </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* 7C.25 Grade Standards */}
+      <section
+        className="px-[6%] py-20"
+        style={{ background: "var(--pd-dark)", position: "relative", overflow: "hidden" }}
+      >
+        <div
+          aria-hidden
+          style={{
+            position: "absolute", inset: 0, pointerEvents: "none",
+            backgroundImage:
+              "linear-gradient(rgba(255,205,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,205,0,0.04) 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+          }}
+        />
+        <div className="relative flex items-end justify-between flex-wrap gap-6 mb-12">
+          <div>
+            <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>Grade Standards</div>
+            <h2
+              className="pd-display mt-2"
+              style={{ color: "#fff", fontSize: "clamp(32px, 4.5vw, 52px)", lineHeight: 1.02, maxWidth: 720 }}
+            >
+              Three tiers. One guarantee.
+            </h2>
+          </div>
+          <p
+            className="max-w-md"
+            style={{ color: "rgba(255,255,255,0.55)", fontSize: 14, lineHeight: 1.7, fontWeight: 300 }}
+          >
+            Every Pro-Drive product is stamped to a specification tier. Match the badge to the job — from daily contractor installs to industrial production lines.
+          </p>
+        </div>
+        <div className="relative grid grid-cols-1 md:grid-cols-3" style={{ gap: 1, background: "rgba(255,205,0,0.15)" }}>
+          {gradeStandards.map((g) => (
+            <div
+              key={g.name}
+              className="flex flex-col items-center text-center"
+              style={{ background: "var(--pd-dark)", padding: "40px 28px" }}
+            >
+              <img
+                src={g.image}
+                alt={`${g.name} badge`}
+                loading="lazy"
+                style={{ width: 148, height: 148, objectFit: "contain" }}
+              />
+              <div
+                className="pd-label mt-6"
+                style={{ color: "var(--pd-yellow)", letterSpacing: "0.2em" }}
+              >
+                {g.tier}
+              </div>
+              <div
+                className="mt-2"
+                style={{ color: "#fff", fontWeight: 800, fontSize: 22, letterSpacing: "0.02em" }}
+              >
+                {g.name}
+              </div>
+              <p
+                className="mt-3"
+                style={{ color: "rgba(255,255,255,0.6)", fontSize: 13, lineHeight: 1.7, fontWeight: 300, maxWidth: 300 }}
+              >
+                {g.body}
+              </p>
+            </div>
           ))}
         </div>
       </section>

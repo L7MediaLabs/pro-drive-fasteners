@@ -153,7 +153,7 @@ function DashboardPage() {
       <Ticker leads={data.leads} />
 
       {/* Hot Leads Table */}
-      <HotLeadsTable leads={hotWarm} />
+      <HotLeadsTable leads={hotWarm} craigCallScript={data.summary.craigCallScript} />
     </div>
   );
 }

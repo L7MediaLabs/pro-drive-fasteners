@@ -228,9 +228,14 @@ function DigestHistorySection() {
 function RecipientsPanel() {
   const get = useServerFn(getRecipients);
   const save = useServerFn(saveRecipients);
+  const getLatest = useServerFn(getLatestIntelligence);
+  const logDigest = useServerFn(sendDigestEmail);
+  const qc = useQueryClient();
   const { data } = useQuery({ queryKey: ["recipients"], queryFn: () => get() });
+  const { data: latest } = useQuery({ queryKey: ["intel-latest"], queryFn: () => getLatest() });
   const [rows, setRows] = useState<Recipient[]>([]);
   const [saved, setSaved] = useState(false);
+  const [digestReady, setDigestReady] = useState(false);
 
   useEffect(() => {
     if (data) setRows(data);
@@ -243,6 +248,54 @@ function RecipientsPanel() {
     await save({ data: { recipients: rows.filter((r) => r.email.trim()) } });
     setSaved(true);
     setTimeout(() => setSaved(false), 1500);
+  };
+
+  const onSendDigest = async () => {
+    const active = rows.filter((r) => r.email.trim());
+    if (active.length === 0 || !latest?.data) return;
+    const d: WeeklyIntelligenceData = latest.data;
+    const hot = d.leads.filter((l) => l.status === "HOT" || l.status === "WARM").slice(0, 5);
+    const subject = `Pro-Drive Intelligence Digest — Week of ${d.weekOf}`;
+    const body = [
+      `WEEKLY INSIGHT:`,
+      d.summary.weeklyInsight,
+      ``,
+      `TOP OPPORTUNITY:`,
+      d.summary.topOpportunity,
+      ``,
+      `CRAIG'S CALL SCRIPT:`,
+      d.summary.craigCallScript,
+      ``,
+      `HOT LEADS (TOP 5):`,
+      ...hot.map(
+        (l) => `- ${l.company} [${l.urgency}] — top page: ${l.topPage} — ${l.aiRecommendation}`,
+      ),
+      ``,
+      `EMAIL STATS:`,
+      `- Open rate: ${(d.stats.email.openRate * 100).toFixed(1)}%`,
+      `- Click rate: ${(d.stats.email.clickRate * 100).toFixed(1)}%`,
+      `- Top clicked link: ${d.stats.email.topClickedLink}`,
+      ``,
+      `WEBSITE:`,
+      `- Total sessions: ${d.stats.website.totalSessions}`,
+      `- Unique companies: ${d.stats.website.uniqueCompanies}`,
+      `- Top page: ${d.stats.website.topPage}`,
+      ``,
+      `INSTAGRAM:`,
+      `- Sessions: ${d.stats.meta.instagramSessions}`,
+      `- Top driving post: ${d.stats.meta.topDrivingPost}`,
+    ].join("\n");
+    const to = active.map((r) => r.email.trim()).join(",");
+    const href = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = href;
+    try {
+      await logDigest({ data: { weekOf: d.weekOf, recipientCount: active.length } });
+      qc.invalidateQueries({ queryKey: ["digest-history"] });
+    } catch {
+      /* logging failure shouldn't block the mailto */
+    }
+    setDigestReady(true);
+    setTimeout(() => setDigestReady(false), 2000);
   };
 
   return (

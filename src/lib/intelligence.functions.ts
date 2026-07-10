@@ -5,6 +5,7 @@ import type {
   WeeklyIntelligenceRow,
   WeeklyIntelligenceListRow,
   Recipient,
+  DigestLogRow,
 } from "@/lib/intelligence-types";
 
 async function assertAdmin(supabase: any, userId: string) {

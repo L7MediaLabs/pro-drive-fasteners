@@ -308,7 +308,8 @@ function Ticker({ leads }: { leads: Lead[] }) {
   );
 }
 
-function HotLeadsTable({ leads }: { leads: Lead[] }) {
+function HotLeadsTable({ leads, craigCallScript }: { leads: Lead[]; craigCallScript: string }) {
+  const topCompany = leads[0]?.company;
   const [expanded, setExpanded] = useState<string | null>(null);
   return (
     <div style={cardStyle}>

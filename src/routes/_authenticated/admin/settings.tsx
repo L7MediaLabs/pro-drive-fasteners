@@ -374,6 +374,36 @@ function RecipientsPanel() {
           </span>
         )}
       </div>
+      <div style={{ marginTop: 22, paddingTop: 18, borderTop: "1px solid var(--pdx-border)" }}>
+        <p style={{ ...mono, fontSize: 10, color: "var(--pdx-text-mute)", letterSpacing: "0.05em", margin: "0 0 10px", lineHeight: 1.6 }}>
+          Opens your default email client with the digest pre-filled for all recipients.
+        </p>
+        <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+          <button
+            onClick={onSendDigest}
+            disabled={!latest?.data || rows.filter((r) => r.email.trim()).length === 0}
+            style={{
+              ...mono,
+              background: YELLOW,
+              color: "#0A0A08",
+              border: "none",
+              padding: "10px 22px",
+              fontSize: 11,
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              cursor: latest?.data ? "pointer" : "not-allowed",
+              opacity: latest?.data && rows.filter((r) => r.email.trim()).length > 0 ? 1 : 0.4,
+            }}
+          >
+            Send Digest
+          </button>
+          {digestReady && (
+            <span style={{ ...mono, fontSize: 10, color: "#22C55E", letterSpacing: "0.15em" }}>
+              ✓ DIGEST READY
+            </span>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

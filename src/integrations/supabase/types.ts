@@ -68,6 +68,33 @@ export type Database = {
         }
         Relationships: []
       }
+      digest_log: {
+        Row: {
+          created_at: string
+          id: string
+          recipient_count: number
+          sent_at: string
+          uploaded_by: string | null
+          week_of: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          recipient_count?: number
+          sent_at?: string
+          uploaded_by?: string | null
+          week_of: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          recipient_count?: number
+          sent_at?: string
+          uploaded_by?: string | null
+          week_of?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null

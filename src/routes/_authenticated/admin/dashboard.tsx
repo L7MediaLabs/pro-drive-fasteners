@@ -153,7 +153,7 @@ function DashboardPage() {
       <Ticker leads={data.leads} />
 
       {/* Hot Leads Table */}
-      <HotLeadsTable leads={hotWarm} />
+      <HotLeadsTable leads={hotWarm} craigCallScript={data.summary.craigCallScript} />
     </div>
   );
 }
@@ -308,7 +308,8 @@ function Ticker({ leads }: { leads: Lead[] }) {
   );
 }
 
-function HotLeadsTable({ leads }: { leads: Lead[] }) {
+function HotLeadsTable({ leads, craigCallScript }: { leads: Lead[]; craigCallScript: string }) {
+  const topCompany = leads[0]?.company;
   const [expanded, setExpanded] = useState<string | null>(null);
   return (
     <div style={cardStyle}>
@@ -369,22 +370,33 @@ function HotLeadsTable({ leads }: { leads: Lead[] }) {
                   <Td><span style={{ ...mono, fontSize: 10, color: "var(--pdx-text-mute)" }}>{l.lastSeen}</span></Td>
                   <Td><UrgencyTag urgency={l.urgency} /></Td>
                   <Td>
-                    <a
-                      href={`mailto:?subject=Pro-Drive: ${l.company}`}
-                      onClick={(e) => e.stopPropagation()}
-                      style={{
-                        ...mono,
-                        display: "inline-block",
-                        border: "1px solid rgba(255,205,0,0.4)",
-                        color: YELLOW,
-                        padding: "4px 10px",
-                        fontSize: 10,
-                        letterSpacing: "0.15em",
-                        textDecoration: "none",
-                      }}
-                    >
-                      Call Now
-                    </a>
+                    {(() => {
+                      const body = l.company === topCompany ? craigCallScript : l.aiRecommendation;
+                      const href = `mailto:?subject=${encodeURIComponent(`Pro-Drive Follow-Up: ${l.company}`)}&body=${encodeURIComponent(body)}`;
+                      return (
+                        <a
+                          href={href}
+                          onClick={(e) => e.stopPropagation()}
+                          style={{
+                            ...mono,
+                            display: "inline-block",
+                            border: "1px solid rgba(255,205,0,0.4)",
+                            color: YELLOW,
+                            padding: "4px 10px",
+                            fontSize: 10,
+                            letterSpacing: "0.15em",
+                            textDecoration: "none",
+                            textAlign: "center",
+                            lineHeight: 1.3,
+                          }}
+                        >
+                          Call Now
+                          <div style={{ fontSize: 8, color: "var(--pdx-text-mute)", letterSpacing: "0.1em", marginTop: 2 }}>
+                            {l.urgency}
+                          </div>
+                        </a>
+                      );
+                    })()}
                   </Td>
                 </tr>
                 {expanded === l.company && (

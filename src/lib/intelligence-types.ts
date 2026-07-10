@@ -105,3 +105,11 @@ export type WeeklyIntelligenceListRow = {
 };
 
 export type Recipient = { name: string; email: string };
+
+export type DigestLogRow = {
+  id: string;
+  week_of: string;
+  recipient_count: number;
+  sent_at: string;
+  uploaded_by: string | null;
+};

@@ -7,8 +7,11 @@ import {
   saveRecipients,
   uploadWeeklyIntelligence,
   listIntelligenceWeeks,
+  getLatestIntelligence,
+  sendDigestEmail,
+  listDigestLog,
 } from "@/lib/intelligence.functions";
-import { WeeklyIntelligenceDataSchema, type Recipient } from "@/lib/intelligence-types";
+import { WeeklyIntelligenceDataSchema, type Recipient, type WeeklyIntelligenceData } from "@/lib/intelligence-types";
 import { YELLOW, mono, cardStyle } from "@/components/admin/ui";
 
 export const Route = createFileRoute("/_authenticated/admin/settings")({
@@ -172,6 +175,52 @@ function HistoryPanel() {
           </tbody>
         </table>
       )}
+      <DigestHistorySection />
+    </div>
+  );
+}
+
+function DigestHistorySection() {
+  const list = useServerFn(listDigestLog);
+  const { data, isLoading } = useQuery({
+    queryKey: ["digest-history"],
+    queryFn: () => list(),
+  });
+  return (
+    <div style={{ marginTop: 28 }}>
+      <div style={{ ...mono, fontSize: 11, color: YELLOW, letterSpacing: "0.2em", marginBottom: 14 }}>
+        DIGEST HISTORY — LAST 10
+      </div>
+      {isLoading ? (
+        <div style={{ ...mono, fontSize: 11, color: "var(--pdx-text-mute)" }}>Loading…</div>
+      ) : !data || data.length === 0 ? (
+        <div style={{ ...mono, fontSize: 11, color: "var(--pdx-text-mute)" }}>
+          No digests sent yet.
+        </div>
+      ) : (
+        <table style={{ width: "100%", borderCollapse: "collapse" }}>
+          <thead>
+            <tr style={{ ...mono, fontSize: 9, color: "var(--pdx-text-mute)", letterSpacing: "0.15em", textAlign: "left" }}>
+              <th style={{ padding: "8px 10px" }}>Sent At</th>
+              <th style={{ padding: "8px 10px" }}>Week Of</th>
+              <th style={{ padding: "8px 10px" }}>Recipients</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((r) => (
+              <tr key={r.id} style={{ borderTop: "1px solid var(--pdx-border)" }}>
+                <td style={{ padding: "10px", ...mono, fontSize: 11, color: "var(--pdx-text-dim)" }}>
+                  {new Date(r.sent_at).toLocaleString()}
+                </td>
+                <td style={{ padding: "10px", ...mono, fontSize: 12, color: "var(--pdx-text)" }}>{r.week_of}</td>
+                <td style={{ padding: "10px", ...mono, fontSize: 11, color: "var(--pdx-text-dim)" }}>
+                  {r.recipient_count}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 }
@@ -179,9 +228,14 @@ function HistoryPanel() {
 function RecipientsPanel() {
   const get = useServerFn(getRecipients);
   const save = useServerFn(saveRecipients);
+  const getLatest = useServerFn(getLatestIntelligence);
+  const logDigest = useServerFn(sendDigestEmail);
+  const qc = useQueryClient();
   const { data } = useQuery({ queryKey: ["recipients"], queryFn: () => get() });
+  const { data: latest } = useQuery({ queryKey: ["intel-latest"], queryFn: () => getLatest() });
   const [rows, setRows] = useState<Recipient[]>([]);
   const [saved, setSaved] = useState(false);
+  const [digestReady, setDigestReady] = useState(false);
 
   useEffect(() => {
     if (data) setRows(data);
@@ -194,6 +248,54 @@ function RecipientsPanel() {
     await save({ data: { recipients: rows.filter((r) => r.email.trim()) } });
     setSaved(true);
     setTimeout(() => setSaved(false), 1500);
+  };
+
+  const onSendDigest = async () => {
+    const active = rows.filter((r) => r.email.trim());
+    if (active.length === 0 || !latest?.data) return;
+    const d: WeeklyIntelligenceData = latest.data;
+    const hot = d.leads.filter((l) => l.status === "HOT" || l.status === "WARM").slice(0, 5);
+    const subject = `Pro-Drive Intelligence Digest — Week of ${d.weekOf}`;
+    const body = [
+      `WEEKLY INSIGHT:`,
+      d.summary.weeklyInsight,
+      ``,
+      `TOP OPPORTUNITY:`,
+      d.summary.topOpportunity,
+      ``,
+      `CRAIG'S CALL SCRIPT:`,
+      d.summary.craigCallScript,
+      ``,
+      `HOT LEADS (TOP 5):`,
+      ...hot.map(
+        (l) => `- ${l.company} [${l.urgency}] — top page: ${l.topPage} — ${l.aiRecommendation}`,
+      ),
+      ``,
+      `EMAIL STATS:`,
+      `- Open rate: ${(d.stats.email.openRate * 100).toFixed(1)}%`,
+      `- Click rate: ${(d.stats.email.clickRate * 100).toFixed(1)}%`,
+      `- Top clicked link: ${d.stats.email.topClickedLink}`,
+      ``,
+      `WEBSITE:`,
+      `- Total sessions: ${d.stats.website.totalSessions}`,
+      `- Unique companies: ${d.stats.website.uniqueCompanies}`,
+      `- Top page: ${d.stats.website.topPage}`,
+      ``,
+      `INSTAGRAM:`,
+      `- Sessions: ${d.stats.meta.instagramSessions}`,
+      `- Top driving post: ${d.stats.meta.topDrivingPost}`,
+    ].join("\n");
+    const to = active.map((r) => r.email.trim()).join(",");
+    const href = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = href;
+    try {
+      await logDigest({ data: { weekOf: d.weekOf, recipientCount: active.length } });
+      qc.invalidateQueries({ queryKey: ["digest-history"] });
+    } catch {
+      /* logging failure shouldn't block the mailto */
+    }
+    setDigestReady(true);
+    setTimeout(() => setDigestReady(false), 2000);
   };
 
   return (
@@ -271,6 +373,36 @@ function RecipientsPanel() {
             ✓ SAVED
           </span>
         )}
+      </div>
+      <div style={{ marginTop: 22, paddingTop: 18, borderTop: "1px solid var(--pdx-border)" }}>
+        <p style={{ ...mono, fontSize: 10, color: "var(--pdx-text-mute)", letterSpacing: "0.05em", margin: "0 0 10px", lineHeight: 1.6 }}>
+          Opens your default email client with the digest pre-filled for all recipients.
+        </p>
+        <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+          <button
+            onClick={onSendDigest}
+            disabled={!latest?.data || rows.filter((r) => r.email.trim()).length === 0}
+            style={{
+              ...mono,
+              background: YELLOW,
+              color: "#0A0A08",
+              border: "none",
+              padding: "10px 22px",
+              fontSize: 11,
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              cursor: latest?.data ? "pointer" : "not-allowed",
+              opacity: latest?.data && rows.filter((r) => r.email.trim()).length > 0 ? 1 : 0.4,
+            }}
+          >
+            Send Digest
+          </button>
+          {digestReady && (
+            <span style={{ ...mono, fontSize: 10, color: "#22C55E", letterSpacing: "0.15em" }}>
+              ✓ DIGEST READY
+            </span>
+          )}
+        </div>
       </div>
     </div>
   );

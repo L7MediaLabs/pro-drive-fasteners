@@ -203,7 +203,7 @@ const WATCHING_LEADS: Lead[] = [
 export const mockIntelligence: WeeklyIntelligenceData = {
   weekOf: "2026-06-23",
   processedAt: "2026-06-26T07:00:00",
-  sourcesIncluded: ["email", "website", "meta"],
+  sourcesIncluded: ["activecampaign", "website", "meta"],
   summary: {
     weeklyInsight:
       "Tapping Rings led the week with 7 enterprise visits and 2 hot leads (Floor & Décor + NDM Floors). Instagram drove 31% of all traffic — your highest share in 6 weeks.",
@@ -214,7 +214,7 @@ export const mockIntelligence: WeeklyIntelligenceData = {
   },
   stats: {
     email: {
-      campaignName: "Weekly Spec Drop — June 23",
+      campaignName: "ActiveCampaign — Weekly Spec Drop — June 23",
       openRate: 0.27,
       clickRate: 0.041,
       topClickedLink: "/tapping-rings",

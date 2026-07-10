@@ -175,6 +175,52 @@ function HistoryPanel() {
           </tbody>
         </table>
       )}
+      <DigestHistorySection />
+    </div>
+  );
+}
+
+function DigestHistorySection() {
+  const list = useServerFn(listDigestLog);
+  const { data, isLoading } = useQuery({
+    queryKey: ["digest-history"],
+    queryFn: () => list(),
+  });
+  return (
+    <div style={{ marginTop: 28 }}>
+      <div style={{ ...mono, fontSize: 11, color: YELLOW, letterSpacing: "0.2em", marginBottom: 14 }}>
+        DIGEST HISTORY — LAST 10
+      </div>
+      {isLoading ? (
+        <div style={{ ...mono, fontSize: 11, color: "var(--pdx-text-mute)" }}>Loading…</div>
+      ) : !data || data.length === 0 ? (
+        <div style={{ ...mono, fontSize: 11, color: "var(--pdx-text-mute)" }}>
+          No digests sent yet.
+        </div>
+      ) : (
+        <table style={{ width: "100%", borderCollapse: "collapse" }}>
+          <thead>
+            <tr style={{ ...mono, fontSize: 9, color: "var(--pdx-text-mute)", letterSpacing: "0.15em", textAlign: "left" }}>
+              <th style={{ padding: "8px 10px" }}>Sent At</th>
+              <th style={{ padding: "8px 10px" }}>Week Of</th>
+              <th style={{ padding: "8px 10px" }}>Recipients</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((r) => (
+              <tr key={r.id} style={{ borderTop: "1px solid var(--pdx-border)" }}>
+                <td style={{ padding: "10px", ...mono, fontSize: 11, color: "var(--pdx-text-dim)" }}>
+                  {new Date(r.sent_at).toLocaleString()}
+                </td>
+                <td style={{ padding: "10px", ...mono, fontSize: 12, color: "var(--pdx-text)" }}>{r.week_of}</td>
+                <td style={{ padding: "10px", ...mono, fontSize: 11, color: "var(--pdx-text-dim)" }}>
+                  {r.recipient_count}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 }

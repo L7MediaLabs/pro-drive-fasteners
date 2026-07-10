@@ -7,8 +7,11 @@ import {
   saveRecipients,
   uploadWeeklyIntelligence,
   listIntelligenceWeeks,
+  getLatestIntelligence,
+  sendDigestEmail,
+  listDigestLog,
 } from "@/lib/intelligence.functions";
-import { WeeklyIntelligenceDataSchema, type Recipient } from "@/lib/intelligence-types";
+import { WeeklyIntelligenceDataSchema, type Recipient, type WeeklyIntelligenceData } from "@/lib/intelligence-types";
 import { YELLOW, mono, cardStyle } from "@/components/admin/ui";
 
 export const Route = createFileRoute("/_authenticated/admin/settings")({

@@ -115,3 +115,30 @@ export const saveRecipients = createServerFn({ method: "POST" })
     }
     return { success: true as const };
   });
+
+export const sendDigestEmail = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((input: { weekOf: string; recipientCount: number }) => input)
+  .handler(async ({ context, data }) => {
+    await assertAdmin(context.supabase, context.userId);
+    const { error } = await context.supabase.from("digest_log").insert({
+      week_of: data.weekOf,
+      recipient_count: data.recipientCount,
+      uploaded_by: context.userId,
+    });
+    if (error) throw error;
+    return { success: true as const };
+  });
+
+export const listDigestLog = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }): Promise<DigestLogRow[]> => {
+    await assertAdmin(context.supabase, context.userId);
+    const { data, error } = await context.supabase
+      .from("digest_log")
+      .select("id, week_of, recipient_count, sent_at, uploaded_by")
+      .order("sent_at", { ascending: false })
+      .limit(10);
+    if (error) throw error;
+    return (data ?? []) as DigestLogRow[];
+  });

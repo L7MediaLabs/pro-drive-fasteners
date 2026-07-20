@@ -100,7 +100,24 @@ function TappingRings() {
                 <div className="p-6">
                   <span style={{ display: "inline-block", width: 32, height: 32, borderRadius: "50%", background: r.color }} />
                   <div className="pd-label mt-4" style={{ color: "rgba(255,205,0,0.5)" }}>{r.id}</div>
-                  <h3 className="text-white mt-1" style={{ fontWeight: 800, fontSize: 20 }}>{r.name.toUpperCase()}</h3>
+                  <div className="flex items-center gap-2 mt-1 flex-wrap">
+                    <h3 className="text-white" style={{ fontWeight: 800, fontSize: 20 }}>{r.name.toUpperCase()}</h3>
+                    {r.id === "V-6RING-O" && (
+                      <span
+                        style={{
+                          background: "var(--pd-yellow)",
+                          color: "var(--pd-dark)",
+                          fontSize: 9.5,
+                          fontWeight: 800,
+                          letterSpacing: "0.14em",
+                          padding: "3px 7px",
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        Patent Pending
+                      </span>
+                    )}
+                  </div>
                   <div className="mt-3 text-white/80 text-sm">
                     <strong style={{ color: "var(--pd-yellow)" }}>Best for: </strong>{r.best}
                   </div>

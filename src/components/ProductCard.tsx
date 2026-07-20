@@ -5,6 +5,8 @@ export type Product = {
   name: string;
   specs?: string[];
   pack?: string;
+  packTier?: string;
+  packTierRank?: number;
   image?: string;
 };
 
@@ -37,8 +39,23 @@ export function ProductCard({ product }: { product: Product }) {
             {product.specs.map((s, i) => <li key={i}>{s}</li>)}
           </ul>
         )}
+        {product.packTier && (
+          <div
+            className="mt-2 inline-block self-start px-2 py-0.5"
+            style={{
+              background: "var(--pd-yellow)",
+              color: "var(--pd-dark)",
+              fontSize: 9.5,
+              fontWeight: 800,
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+            }}
+          >
+            {product.packTier}
+          </div>
+        )}
         {product.pack && (
-          <div className="mt-2.5 text-[12px] font-semibold" style={{ color: "var(--pd-dark)" }}>{product.pack}</div>
+          <div className="mt-2 text-[12px] font-semibold" style={{ color: "var(--pd-dark)" }}>{product.pack}</div>
         )}
         <Link
           to="/contact"

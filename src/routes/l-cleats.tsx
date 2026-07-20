@@ -4,6 +4,9 @@ import { ProductGrid } from "../components/ProductCard";
 import { TechReference } from "../components/editorial";
 import { LCLEATS_16, LCLEATS_18 } from "../data/products";
 import { images } from "../data/images";
+import contractorBadge from "../assets/badge-contractor-grade.png.asset.json";
+
+const contractorBadgeUrl = contractorBadge.url;
 
 // ─── L-Cleat depth diagram — shared pixels-per-inch across every card ──────
 type CleatSpec = { floor: string; floorMm: string; pen: string };
@@ -377,7 +380,7 @@ function LCleats() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-px mt-6" style={{ background: "rgba(0,0,0,0.08)" }}>
               {g.spec.map(s => (
                 <div key={s.k} className="bg-white px-4 py-3">
-                  <div className="pd-label" style={{ color: "var(--pd-muted)", fontSize: 10 }}>{s.k}</div>
+                  <div className="pd-label" style={{ color: "var(--pd-dark)", fontSize: 10, fontWeight: 800 }}>{s.k}</div>
                   <div className="font-bold mt-1" style={{ color: "var(--pd-dark)", fontSize: 13 }}>{s.v}</div>
                 </div>
               ))}
@@ -390,7 +393,7 @@ function LCleats() {
       </section>
 
       {/* LIFESTYLE BANNER */}
-      <section className="relative overflow-hidden" style={{ height: 360 }}>
+      <section className="relative overflow-hidden" style={{ height: 420 }}>
         <img
           src={images.lCleats.lifestyle}
           alt="L-Cleats installed in hardwood flooring"
@@ -401,21 +404,35 @@ function LCleats() {
           aria-hidden
           style={{
             position: "absolute", inset: 0,
-            background: "linear-gradient(90deg, rgba(15,15,15,0.85) 0%, rgba(15,15,15,0.45) 60%, rgba(15,15,15,0.15) 100%)",
+            background: "linear-gradient(90deg, rgba(15,15,15,0.88) 0%, rgba(15,15,15,0.55) 60%, rgba(15,15,15,0.2) 100%)",
           }}
         />
         <div className="relative z-10 h-full flex items-center px-[6%]">
-          <div className="max-w-xl">
-            <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>Built for the Job</div>
-            <h3 className="pd-display text-white mt-3" style={{ fontSize: 36, lineHeight: 1.1 }}>
-              Pro installers trust Pro-Drive.
-            </h3>
-            <p className="mt-4 text-white/75" style={{ fontSize: 15, lineHeight: 1.7 }}>
-              Tight, consistent strips. Galvanized for corrosion resistance. Engineered to feed cleanly through every major brand of nailer — Bostitch®, Powernail, Primatech, and more.
-            </p>
-            <Link to="/contact" className="pd-btn-primary mt-6 inline-block" style={{ padding: "12px 24px", fontSize: 12 }}>
-              Request Pricing →
-            </Link>
+          <div className="max-w-2xl flex gap-6 items-start">
+            <img
+              src={contractorBadgeUrl}
+              alt="Contractor Grade badge"
+              loading="lazy"
+              style={{ width: 104, height: "auto", flexShrink: 0, marginTop: 4 }}
+            />
+            <div>
+              <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>Built for the Job</div>
+              <h3 className="pd-display text-white mt-3" style={{ fontSize: 36, lineHeight: 1.1 }}>
+                Pro installers trust Pro-Drive.
+              </h3>
+              <p className="mt-4 text-white/80" style={{ fontSize: 15, lineHeight: 1.7 }}>
+                Tight, consistent strips. Engineered to feed cleanly through every major brand of nailer — Bostitch®, Powernail®, Primatech®, and more.
+              </p>
+              <p className="mt-3 text-white/80" style={{ fontSize: 15, lineHeight: 1.7 }}>
+                Heavy-duty hold for solid hardwood — 1-1/2&quot;, 1-3/4&quot;, and 2&quot; lengths.
+              </p>
+              <p className="mt-3 text-white/80" style={{ fontSize: 15, lineHeight: 1.7 }}>
+                Made with premium grade recycled US steel.
+              </p>
+              <Link to="/contact" className="pd-btn-primary mt-6 inline-block" style={{ padding: "12px 24px", fontSize: 12 }}>
+                Request Pricing →
+              </Link>
+            </div>
           </div>
         </div>
       </section>

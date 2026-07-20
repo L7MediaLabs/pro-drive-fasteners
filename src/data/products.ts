@@ -50,6 +50,17 @@ function parseCSV(raw: string): Record<string, string>[] {
   });
 }
 
+// Pack tier ordering — used both as a label and as a sort key so matching
+// count tiers group together within each product family.
+// Lower rank = shown first.
+function packTierFor(countNum: number | null): { label: string; rank: number } | null {
+  if (!countNum) return null;
+  if (countNum >= 7000) return { label: "CONTRACTOR BULK CARTON", rank: 0 };
+  if (countNum >= 4500) return { label: "JOB PACK",              rank: 1 };
+  if (countNum >= 900)  return { label: "PROJECT PACK",          rank: 2 };
+  return null;
+}
+
 function toProduct(row: Record<string, string>): Product {
   const specs: string[] = [];
   if (row.gauge)   specs.push(`${row.gauge} GA`);
@@ -75,13 +86,28 @@ function toProduct(row: Record<string, string>): Product {
     pack = row.notes;
   }
 
+  const tier = packTierFor(countNum);
+
   return {
     id:    row.id,
     name:  row.name,
     specs: specs.length ? specs : undefined,
     pack:  pack || undefined,
+    packTier: tier?.label,
+    packTierRank: tier?.rank,
     image: resolveImage(row.image_key),
   };
+}
+
+// Group matching pack-count tiers together within each family; keep original
+// CSV order for products with no tier (e.g. accessories, tools) by using a
+// stable sort keyed only on packTierRank.
+function sortByPackTier(products: Product[]): Product[] {
+  return [...products].sort((a, b) => {
+    const ar = a.packTierRank ?? 99;
+    const br = b.packTierRank ?? 99;
+    return ar - br;
+  });
 }
 
 // Vite raw import — zero runtime cost, bundled at build time
@@ -91,15 +117,15 @@ const allRows = parseCSV(rawCSV);
 const active  = allRows.filter((r) => r.active === "TRUE");
 
 function bySubcat(subcategory: string) {
-  return active
-    .filter((r) => r.subcategory === subcategory)
-    .map(toProduct);
+  return sortByPackTier(
+    active.filter((r) => r.subcategory === subcategory).map(toProduct)
+  );
 }
 
 function byCat(category: string) {
-  return active
-    .filter((r) => r.category === category)
-    .map(toProduct);
+  return sortByPackTier(
+    active.filter((r) => r.category === category).map(toProduct)
+  );
 }
 
 // ─── Named exports (drop-in replacements for previous hardcoded arrays) ───────

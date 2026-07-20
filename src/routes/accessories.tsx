@@ -67,7 +67,7 @@ function Acc() {
               </h2>
               <div className="text-white/70 mt-3" style={{ fontSize: 16, lineHeight: 1.6 }}>
                 Complete O-ring and gasket kit for MIII staplers, nailers, and cleat tools. Everything a
-                contractor needs to rebuild the most common Bostitch-pattern flooring tools — sold in
+                contractor needs to rebuild the most common Bostitch®-pattern flooring tools — sold in
                 contractor-ready retail packaging.
               </div>
 

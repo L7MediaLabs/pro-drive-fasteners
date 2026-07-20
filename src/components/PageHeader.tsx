@@ -191,7 +191,8 @@ export function FastenerDisclaimer({ mentionsBrands = false }: { mentionsBrands?
       {mentionsBrands && (
         <p className="mt-2" style={{ fontStyle: "italic" }}>
           This product is made and sold by Pro-Drive Fasteners® and has no relationship with any of the
-          other companies whose trademarks or item numbers are mentioned above.
+          other companies whose trademarks or item numbers are mentioned above. All brand names and
+          trademarks are the property of their respective owners.
         </p>
       )}
     </div>

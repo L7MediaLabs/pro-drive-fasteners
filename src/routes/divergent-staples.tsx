@@ -64,9 +64,9 @@ function Div() {
 
         <div>
           <div className="pd-label" style={{ color: "var(--pd-gold)" }}>02 — Hammer Tacker</div>
-          <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32 }}>7512 for the Duo-Fast HT-755.</h2>
+          <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32 }}>7512 for the Duo-Fast® HT-755.</h2>
           <p className="mt-3 max-w-2xl" style={{ color: "var(--pd-muted)", fontSize: 15, lineHeight: 1.6 }}>
-            19 GA, 15/32" crown, 3/8" leg. Purpose-built for the industry-standard Duo-Fast HT-755 hammer tacker. Ideal for roofing paper, house wrap, insulation, and vapor barrier.
+            19 GA, 15/32" crown, 3/8" leg. Purpose-built for the industry-standard Duo-Fast® HT-755 hammer tacker. Ideal for roofing paper, house wrap, insulation, and vapor barrier.
           </p>
           <div className="mt-6"><ProductGrid products={hammerTacker} /></div>
           <InterchangeList tools={["Duo-Fast HT-755", "Duo-Fast HT-755M"]} />

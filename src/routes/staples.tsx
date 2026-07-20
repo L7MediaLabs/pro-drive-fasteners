@@ -697,7 +697,7 @@ function Staples() {
           {tab === "18m" && (
             <>
               <InfoPanel applications="Cabinet assembly, insulation, plastic sheeting, Tyvek, roofing paper, house wrap.">
-                <div><strong style={{ color: "var(--pd-dark)" }}>Note:</strong> Made from Extra Hard Wire. Not compatible with Arrow T50 series.</div>
+                <div><strong style={{ color: "var(--pd-dark)" }}>Note:</strong> Made from Extra Hard Wire. Not compatible with Arrow® T50 series.</div>
               </InfoPanel>
               <div
                 className="mt-6 bg-white"

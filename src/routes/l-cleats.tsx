@@ -377,7 +377,7 @@ function LCleats() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-px mt-6" style={{ background: "rgba(0,0,0,0.08)" }}>
               {g.spec.map(s => (
                 <div key={s.k} className="bg-white px-4 py-3">
-                  <div className="pd-label" style={{ color: "var(--pd-muted)", fontSize: 10 }}>{s.k}</div>
+                  <div className="pd-label" style={{ color: "var(--pd-dark)", fontSize: 10, fontWeight: 800 }}>{s.k}</div>
                   <div className="font-bold mt-1" style={{ color: "var(--pd-dark)", fontSize: 13 }}>{s.v}</div>
                 </div>
               ))}

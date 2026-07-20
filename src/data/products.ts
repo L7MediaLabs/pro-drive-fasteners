@@ -117,15 +117,15 @@ const allRows = parseCSV(rawCSV);
 const active  = allRows.filter((r) => r.active === "TRUE");
 
 function bySubcat(subcategory: string) {
-  return active
-    .filter((r) => r.subcategory === subcategory)
-    .map(toProduct);
+  return sortByPackTier(
+    active.filter((r) => r.subcategory === subcategory).map(toProduct)
+  );
 }
 
 function byCat(category: string) {
-  return active
-    .filter((r) => r.category === category)
-    .map(toProduct);
+  return sortByPackTier(
+    active.filter((r) => r.category === category).map(toProduct)
+  );
 }
 
 // ─── Named exports (drop-in replacements for previous hardcoded arrays) ───────

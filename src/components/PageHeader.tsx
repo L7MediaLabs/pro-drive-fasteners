@@ -157,11 +157,11 @@ export function InterchangeList({
       <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>Guaranteed to Interchange</div>
       {fitsPrimary && (
         <div className="mt-2 text-sm" style={{ color: "#fff" }}>
-          <strong style={{ color: "var(--pd-yellow)" }}>Fits: </strong>{fitsPrimary}
+          <strong style={{ color: "var(--pd-yellow)" }}>Fits: </strong>{withRegistered(fitsPrimary)}
         </div>
       )}
       <ul className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-1 mt-3 text-[13px]" style={{ color: "rgba(255,255,255,0.82)" }}>
-        {tools.map(t => <li key={t}>— {t}</li>)}
+        {tools.map(t => <li key={t}>— {withRegistered(t)}</li>)}
       </ul>
       <div className="mt-4 text-[11px]" style={{ color: "rgba(255,205,0,0.55)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
         Verify compatibility by consulting owner manual

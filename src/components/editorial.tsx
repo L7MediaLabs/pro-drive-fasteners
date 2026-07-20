@@ -146,7 +146,12 @@ export function SpecCardGrid({ specs }: { specs: { k: string; v: string }[] }) {
     >
       {specs.map(s => (
         <div key={s.k} className="bg-white px-4 py-3">
-          <div className="pd-label" style={{ color: "var(--pd-muted)", fontSize: 10 }}>{s.k}</div>
+          <div
+            className="pd-label"
+            style={{ color: "var(--pd-dark)", fontSize: 10, fontWeight: 800 }}
+          >
+            {s.k}
+          </div>
           <div className="font-bold mt-1" style={{ color: "var(--pd-dark)", fontSize: 13 }}>{s.v}</div>
         </div>
       ))}

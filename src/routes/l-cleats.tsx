@@ -411,7 +411,7 @@ function LCleats() {
               Pro installers trust Pro-Drive.
             </h3>
             <p className="mt-4 text-white/75" style={{ fontSize: 15, lineHeight: 1.7 }}>
-              Tight, consistent strips. Galvanized for corrosion resistance. Engineered to feed cleanly through every major brand of nailer — Bostitch, Powernail, Primatech, and more.
+              Tight, consistent strips. Galvanized for corrosion resistance. Engineered to feed cleanly through every major brand of nailer — Bostitch®, Powernail, Primatech, and more.
             </p>
             <Link to="/contact" className="pd-btn-primary mt-6 inline-block" style={{ padding: "12px 24px", fontSize: 12 }}>
               Request Pricing →

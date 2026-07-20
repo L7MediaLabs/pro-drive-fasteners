@@ -5,6 +5,8 @@ export type Product = {
   name: string;
   specs?: string[];
   pack?: string;
+  packTier?: string;
+  packTierRank?: number;
   image?: string;
 };
 

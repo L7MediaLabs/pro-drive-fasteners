@@ -221,13 +221,15 @@ export function LifestyleBanner({
   body,
   cta = { label: "Request Distributor Pricing →", to: "/contact" },
   height = 360,
+  badge,
 }: {
   image?: string;
   kicker: string;
   title: string;
-  body: string;
+  body: ReactNode;
   cta?: { label: string; to: string };
   height?: number;
+  badge?: { src: string; alt: string };
 }) {
   return (
     <section className="relative overflow-hidden" style={{ height, background: "var(--pd-dark)" }}>
@@ -248,17 +250,27 @@ export function LifestyleBanner({
         }}
       />
       <div className="relative z-10 h-full flex items-center px-[6%]">
-        <div className="max-w-xl">
-          <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>{kicker}</div>
-          <h3 className="pd-display text-white mt-3" style={{ fontSize: 36, lineHeight: 1.1 }}>
-            {title}
-          </h3>
-          <p className="mt-4 text-white/75" style={{ fontSize: 15, lineHeight: 1.7 }}>
-            {body}
-          </p>
-          <Link to={cta.to} className="pd-btn-primary mt-6 inline-block" style={{ padding: "12px 24px", fontSize: 12 }}>
-            {cta.label}
-          </Link>
+        <div className="max-w-xl flex gap-6 items-start">
+          {badge && (
+            <img
+              src={badge.src}
+              alt={badge.alt}
+              loading="lazy"
+              style={{ width: 96, height: "auto", flexShrink: 0, marginTop: 4 }}
+            />
+          )}
+          <div>
+            <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>{kicker}</div>
+            <h3 className="pd-display text-white mt-3" style={{ fontSize: 36, lineHeight: 1.1 }}>
+              {title}
+            </h3>
+            <div className="mt-4 text-white/75 space-y-2" style={{ fontSize: 15, lineHeight: 1.7 }}>
+              {typeof body === "string" ? <p>{body}</p> : body}
+            </div>
+            <Link to={cta.to} className="pd-btn-primary mt-6 inline-block" style={{ padding: "12px 24px", fontSize: 12 }}>
+              {cta.label}
+            </Link>
+          </div>
         </div>
       </div>
     </section>

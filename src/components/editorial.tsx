@@ -233,21 +233,21 @@ export function LifestyleBanner({
   badge?: { src: string; alt: string };
 }) {
   return (
-    <section className="relative overflow-hidden" style={{ height, background: "var(--pd-dark)" }}>
+    <section className="relative overflow-hidden" style={{ height, background: "var(--pd-cream)" }}>
       {image && (
         <img
           src={image}
           alt=""
           aria-hidden
           loading="lazy"
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.55 }}
         />
       )}
       <div
         aria-hidden
         style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(90deg, rgba(15,15,15,0.85) 0%, rgba(15,15,15,0.45) 60%, rgba(15,15,15,0.15) 100%)",
+          background: "linear-gradient(90deg, rgba(245,241,232,0.94) 0%, rgba(245,241,232,0.65) 55%, rgba(245,241,232,0.2) 100%)",
         }}
       />
       <div className="relative z-10 h-full flex items-center px-[6%]">
@@ -261,14 +261,14 @@ export function LifestyleBanner({
             />
           )}
           <div>
-            <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>{kicker}</div>
-            <h3 className="pd-display text-white mt-3" style={{ fontSize: 36, lineHeight: 1.1 }}>
+            <div className="pd-label" style={{ color: "var(--pd-gold)" }}>{kicker}</div>
+            <h3 className="pd-display mt-3" style={{ color: "var(--pd-dark)", fontSize: 36, lineHeight: 1.1 }}>
               {title}
             </h3>
-            <div className="mt-4 text-white/75 space-y-2" style={{ fontSize: 15, lineHeight: 1.7 }}>
+            <div className="mt-4 space-y-2" style={{ color: "rgba(25,20,0,0.78)", fontSize: 15, lineHeight: 1.7 }}>
               {typeof body === "string" ? <p>{body}</p> : body}
             </div>
-            <Link to={cta.to} className="pd-btn-primary mt-6 inline-block" style={{ padding: "12px 24px", fontSize: 12 }}>
+            <Link to={cta.to} className="pd-btn-dark mt-6 inline-block" style={{ padding: "12px 24px", fontSize: 12 }}>
               {cta.label}
             </Link>
           </div>

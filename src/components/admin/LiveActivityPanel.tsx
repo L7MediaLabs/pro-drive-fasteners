@@ -51,6 +51,7 @@ export function LiveActivityPanel() {
     product_slug: "",
     cta_label: "",
   });
+  const [search, setSearch] = useState("");
   const [range, setRange] = useState<{ from: Date; to: Date }>(() => {
     const to = endOfDay(new Date());
     const from = startOfDay(subDays(to, 6));

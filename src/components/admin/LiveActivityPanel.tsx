@@ -221,6 +221,27 @@ export function LiveActivityPanel() {
               Clear filters ({activeFilters.length})
             </button>
           )}
+          <button
+            onClick={() => {
+              const filename = `live-activity-${format(range.from, "yyyy-MM-dd")}-${format(range.to, "yyyy-MM-dd")}.csv`;
+              exportEventsCsv(filtered, filename);
+            }}
+            style={{
+              ...mono,
+              fontSize: 10,
+              color: "var(--pdx-text)",
+              background: "transparent",
+              border: "1px solid var(--pdx-border)",
+              borderRadius: 2,
+              padding: "4px 10px",
+              cursor: "pointer",
+              letterSpacing: "0.1em",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.borderColor = YELLOW)}
+            onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--pdx-border)")}
+          >
+            Export CSV
+          </button>
         </div>
       </div>
 

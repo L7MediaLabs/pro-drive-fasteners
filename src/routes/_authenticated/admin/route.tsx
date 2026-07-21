@@ -313,6 +313,29 @@ function AdminLayout() {
           <div>uploaded {uploadedAt}</div>
           <style>{`@keyframes pd-pulse{0%,100%{opacity:1}50%{opacity:.4}}`}</style>
         </div>
+
+        <div
+          style={{
+            margin: "12px 20px 0",
+            paddingTop: 10,
+            borderTop: "1px solid rgba(255,205,0,0.06)",
+            fontFamily: "'IBM Plex Mono', monospace",
+            fontSize: 9,
+            color: "rgba(255,255,255,0.25)",
+            letterSpacing: "0.06em",
+            lineHeight: 1.5,
+          }}
+        >
+          <a
+            href="https://seventhstatecreative.com/james"
+            target="_blank"
+            rel="noreferrer"
+            style={{ color: "rgba(255,205,0,0.35)", textDecoration: "none" }}
+            className="hover:!text-[color:var(--pd-yellow)]"
+          >
+            Designed by Seventh State Creative
+          </a>
+        </div>
       </aside>
 
       {/* Main column */}

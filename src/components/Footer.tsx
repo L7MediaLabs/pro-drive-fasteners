@@ -90,7 +90,7 @@ export function Footer() {
             <Link to="/auth" style={{ color: "rgba(255,205,0,0.5)" }} className="hover:!text-[color:var(--pd-yellow)]">Client Login</Link>
           </div>
           <a
-            href="https://www.seventhstatecreative.com"
+            href="https://seventhstatecreative.com/james"
             target="_blank"
             rel="noreferrer"
             style={{ color: "rgba(255,205,0,0.4)" }}

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Fragment, useState } from "react";
+import { Fragment, useState, type CSSProperties, type ReactNode } from "react";
 
 import { useIntelligence, useIntelMode } from "@/lib/use-intelligence";
 import {
@@ -19,16 +19,19 @@ export const Route = createFileRoute("/_authenticated/admin/dashboard")({
   component: DashboardPage,
 });
 
+/* ---------------- Page ---------------- */
+
 function DashboardPage() {
   const { data, loading } = useIntelligence();
   const { mode, setMode } = useIntelMode();
 
-  if (loading)
+  if (loading) {
     return (
       <div style={{ ...mono, color: "var(--pdx-text-mute)", fontSize: 12 }}>
         Loading…
       </div>
     );
+  }
   if (!data) return <EmptyState />;
 
   const hotWarm = data.leads.filter(
@@ -39,89 +42,53 @@ function DashboardPage() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+      {/* Header row */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          gap: 12,
+          flexWrap: "wrap",
+        }}
+      >
+        <div>
+          <div
+            style={{
+              ...mono,
+              fontSize: 10,
+              letterSpacing: "0.28em",
+              color: "var(--pdx-text-mute)",
+            }}
+          >
+            INTELLIGENCE // WEEK IN REVIEW
+          </div>
+          <div
+            style={{
+              fontFamily: "Assistant, sans-serif",
+              fontSize: 22,
+              fontWeight: 600,
+              color: "var(--pdx-text)",
+              marginTop: 4,
+            }}
+          >
+            Dashboard
+          </div>
+        </div>
         <ModeToggle mode={mode} setMode={setMode} />
       </div>
 
       {/* Weekly Insight */}
-      <div
-        style={{
-          position: "relative",
-          background:
-            "linear-gradient(135deg, rgba(255,205,0,0.08) 0%, rgba(255,205,0,0.02) 60%, rgba(255,255,255,0.01) 100%)",
-          borderLeft: `2px solid ${YELLOW}`,
-          border: "1px solid rgba(255,205,0,0.12)",
-          borderLeftWidth: 2,
-          padding: "22px 26px",
-          borderRadius: 2,
-          boxShadow:
-            "0 0 0 1px rgba(255,205,0,0.04), 0 20px 60px -30px rgba(255,205,0,0.25)",
-          overflow: "hidden",
-        }}
-      >
-        <div
-          aria-hidden
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "radial-gradient(600px 200px at 100% 0%, rgba(255,205,0,0.08), transparent 70%)",
-            pointerEvents: "none",
-          }}
-        />
-        <div
-          style={{
-            ...mono,
-            fontSize: 10,
-            color: YELLOW,
-            letterSpacing: "0.25em",
-            marginBottom: 10,
-            display: "flex",
-            alignItems: "center",
-            gap: 8,
-          }}
-        >
-          <span
-            style={{
-              width: 6,
-              height: 6,
-              background: YELLOW,
-              borderRadius: "50%",
-              boxShadow: `0 0 8px ${YELLOW}`,
-            }}
-          />
-          WEEKLY INSIGHT
-        </div>
-        <div
-          style={{
-            fontFamily: "Assistant, sans-serif",
-            fontWeight: 400,
-            fontSize: 16,
-            color: "var(--pdx-text)",
-            lineHeight: 1.6,
-            position: "relative",
-          }}
-        >
-          {data.summary.weeklyInsight}
-        </div>
-        <div
-          style={{
-            marginTop: 12,
-            fontSize: 13,
-            color: "var(--pdx-text-dim)",
-            fontFamily: "Assistant, sans-serif",
-            position: "relative",
-          }}
-        >
-          → {data.summary.topOpportunity}
-        </div>
-      </div>
+      <WeeklyInsight
+        insight={data.summary.weeklyInsight}
+        opportunity={data.summary.topOpportunity}
+      />
 
       {/* KPI cards */}
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
+          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
           gap: 12,
         }}
       >
@@ -129,7 +96,7 @@ function DashboardPage() {
           label="COMPANIES IDENTIFIED"
           value={String(data.stats.website.uniqueCompanies)}
           delta="+8"
-          sub={`avg ${data.stats.website.avgSessionsPerCompany} sessions/co`}
+          sub={`avg ${data.stats.website.avgSessionsPerCompany} sessions / co`}
         />
         <Kpi
           label="HOT LEADS"
@@ -140,7 +107,7 @@ function DashboardPage() {
         <Kpi
           label="TOP PRODUCT"
           value={topProduct?.product ?? "—"}
-          sub={`${topProduct?.views ?? 0} views`}
+          sub={`${topProduct?.views ?? 0} views this week`}
           valueSize={20}
         />
         <Kpi
@@ -153,15 +120,67 @@ function DashboardPage() {
       {/* Ticker */}
       <Ticker leads={data.leads} />
 
-      {/* Hot Leads Table */}
-      {/* Live Site Activity — real-time visitor data */}
+      {/* Live Site Activity */}
       <LiveActivityPanel />
 
-      {/* Hot Leads Table */}
-      <HotLeadsTable leads={hotWarm} craigCallScript={data.summary.craigCallScript} />
+      {/* Hot Leads */}
+      <HotLeadsTable
+        leads={hotWarm}
+        craigCallScript={data.summary.craigCallScript}
+      />
     </div>
   );
 }
+
+/* ---------------- Weekly Insight ---------------- */
+
+function WeeklyInsight({
+  insight,
+  opportunity,
+}: {
+  insight: string;
+  opportunity: string;
+}) {
+  return (
+    <div
+      style={{
+        position: "relative",
+        background:
+          "linear-gradient(135deg, rgba(255,205,0,0.10) 0%, rgba(255,205,0,0.02) 60%, transparent 100%)",
+        border: "1px solid rgba(255,205,0,0.18)",
+        borderLeft: `2px solid ${YELLOW}`,
+        padding: "22px 26px",
+        borderRadius: 2,
+        overflow: "hidden",
+      }}
+    >
+      <SectionLabel>WEEKLY INSIGHT</SectionLabel>
+      <div
+        style={{
+          fontFamily: "Assistant, sans-serif",
+          fontSize: 16,
+          color: "var(--pdx-text)",
+          lineHeight: 1.6,
+          marginTop: 10,
+        }}
+      >
+        {insight}
+      </div>
+      <div
+        style={{
+          marginTop: 12,
+          fontSize: 13,
+          color: "var(--pdx-text-dim)",
+          fontFamily: "Assistant, sans-serif",
+        }}
+      >
+        → {opportunity}
+      </div>
+    </div>
+  );
+}
+
+/* ---------------- KPI ---------------- */
 
 function Kpi({
   label,
@@ -177,19 +196,16 @@ function Kpi({
   valueSize?: number;
 }) {
   return (
-    <div
-      style={{ ...cardStyle, transition: "transform .25s ease, box-shadow .25s ease, border-color .25s ease" }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "translateY(-2px)";
-        e.currentTarget.style.borderColor = "rgba(255,205,0,0.18)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = "translateY(0)";
-        e.currentTarget.style.borderColor = "var(--pdx-border)";
-      }}
-    >
+    <div style={cardStyle}>
       <div style={cardAccentTop} />
-      <div style={{ ...mono, fontSize: 10, color: "rgba(255,205,0,0.75)", letterSpacing: "0.22em" }}>
+      <div
+        style={{
+          ...mono,
+          fontSize: 10,
+          color: "rgba(255,205,0,0.85)",
+          letterSpacing: "0.22em",
+        }}
+      >
         {label}
       </div>
       <div
@@ -206,10 +222,7 @@ function Kpi({
             fontSize: valueSize,
             lineHeight: 1,
             fontWeight: 500,
-            background: "linear-gradient(180deg, #ffffff 0%, var(--pdx-text-dim) 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
+            color: "var(--pdx-text)",
             letterSpacing: "-0.01em",
           }}
         >
@@ -223,8 +236,9 @@ function Kpi({
               color: "#22C55E",
               letterSpacing: "0.1em",
               padding: "2px 6px",
-              background: "rgba(34,197,94,0.1)",
-              border: "1px solid rgba(34,197,94,0.2)",
+              background: "rgba(34,197,94,0.12)",
+              border: "1px solid rgba(34,197,94,0.25)",
+              borderRadius: 2,
             }}
           >
             {delta}
@@ -238,7 +252,7 @@ function Kpi({
             fontSize: 10,
             color: "var(--pdx-text-mute)",
             marginTop: 10,
-            letterSpacing: "0.1em",
+            letterSpacing: "0.08em",
           }}
         >
           {sub}
@@ -248,26 +262,31 @@ function Kpi({
   );
 }
 
+/* ---------------- Ticker ---------------- */
+
 function Ticker({ leads }: { leads: Lead[] }) {
   const items = leads.slice(0, 30);
+  if (items.length === 0) return null;
   return (
     <div
       style={{
         height: 44,
-        background:
-          "var(--pdx-panel-grad), var(--pdx-panel)",
-        overflow: "hidden",
-        position: "relative",
+        background: "var(--pdx-panel-grad), var(--pdx-panel)",
         border: "1px solid var(--pdx-border)",
         borderRadius: 2,
-        boxShadow: "0 10px 30px -20px rgba(0,0,0,0.6)",
+        overflow: "hidden",
+        position: "relative",
       }}
       onMouseEnter={(e) => {
-        const el = e.currentTarget.querySelector("[data-track]") as HTMLElement | null;
+        const el = e.currentTarget.querySelector(
+          "[data-track]",
+        ) as HTMLElement | null;
         if (el) el.style.animationPlayState = "paused";
       }}
       onMouseLeave={(e) => {
-        const el = e.currentTarget.querySelector("[data-track]") as HTMLElement | null;
+        const el = e.currentTarget.querySelector(
+          "[data-track]",
+        ) as HTMLElement | null;
         if (el) el.style.animationPlayState = "running";
       }}
     >
@@ -292,12 +311,11 @@ function Ticker({ leads }: { leads: Lead[] }) {
               letterSpacing: "0.05em",
             }}
           >
-            <span style={{ color: YELLOW, marginRight: 8, textShadow: `0 0 6px ${YELLOW}` }}>●</span>
+            <span style={{ color: YELLOW, marginRight: 8 }}>●</span>
             {l.company} — viewed {l.topPage} — {l.status}
           </span>
         ))}
       </div>
-      {/* Edge fades */}
       <div
         aria-hidden
         style={{
@@ -313,140 +331,294 @@ function Ticker({ leads }: { leads: Lead[] }) {
   );
 }
 
-function HotLeadsTable({ leads, craigCallScript }: { leads: Lead[]; craigCallScript: string }) {
+/* ---------------- Hot Leads ---------------- */
+
+function HotLeadsTable({
+  leads,
+  craigCallScript,
+}: {
+  leads: Lead[];
+  craigCallScript: string;
+}) {
   const topCompany = leads[0]?.company;
   const [expanded, setExpanded] = useState<string | null>(null);
+
   return (
     <div style={cardStyle}>
       <div style={cardAccentTop} />
-      <div
-        style={{
-          ...mono,
-          fontSize: 11,
-          color: YELLOW,
-          letterSpacing: "0.22em",
-          marginBottom: 18,
-          display: "flex",
-          alignItems: "center",
-          gap: 8,
-        }}
-      >
-        <span style={{ width: 6, height: 6, background: YELLOW, borderRadius: "50%", boxShadow: `0 0 8px ${YELLOW}` }} />
-        HOT LEADS
-      </div>
-      <div style={{ overflowX: "auto" }}>
-        <table style={{ width: "100%", borderCollapse: "collapse" }}>
-          <thead>
-            <tr style={{ ...mono, fontSize: 9, color: "var(--pdx-text-mute)", letterSpacing: "0.15em", textAlign: "left" }}>
-              <Th>Company</Th>
-              <Th>Signal Stack</Th>
-              <Th>Visits</Th>
-              <Th>Top Page</Th>
-              <Th>Last Seen</Th>
-              <Th>Urgency</Th>
-              <Th>Action</Th>
-            </tr>
-          </thead>
-          <tbody>
-            {leads.map((l) => (
-              <Fragment key={l.company}>
-                <tr
-                  key={l.company}
-                  onClick={() => setExpanded(expanded === l.company ? null : l.company)}
-                  style={{
-                    borderTop: "1px solid var(--pdx-border)",
-                    cursor: "pointer",
-                    transition: "background .2s ease",
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,205,0,0.03)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
-                >
-                  <Td>
-                    <div style={{ color: "var(--pdx-text)", fontFamily: "Assistant, sans-serif", fontWeight: 600, fontSize: 13 }}>
-                      {l.company}
-                    </div>
-                    <div style={{ ...mono, fontSize: 9, color: "var(--pdx-text-faint)", letterSpacing: "0.1em" }}>
-                      {l.location}
-                    </div>
-                  </Td>
-                  <Td><SignalBadges signals={l.signals} /></Td>
-                  <Td><span style={{ ...mono, color: "var(--pdx-text)", fontSize: 12 }}>{l.websiteVisits}</span></Td>
-                  <Td><span style={{ ...mono, fontSize: 11, color: "var(--pdx-text-dim)" }}>{l.topPage}</span></Td>
-                  <Td><span style={{ ...mono, fontSize: 10, color: "var(--pdx-text-mute)" }}>{l.lastSeen}</span></Td>
-                  <Td><UrgencyTag urgency={l.urgency} /></Td>
-                  <Td>
-                    {(() => {
-                      const body = l.company === topCompany ? craigCallScript : l.aiRecommendation;
-                      const href = `mailto:?subject=${encodeURIComponent(`Pro-Drive Follow-Up: ${l.company}`)}&body=${encodeURIComponent(body)}`;
-                      return (
+      <SectionLabel dot>HOT LEADS</SectionLabel>
+
+      {leads.length === 0 ? (
+        <div
+          style={{
+            ...mono,
+            fontSize: 12,
+            color: "var(--pdx-text-mute)",
+            padding: "24px 0",
+          }}
+        >
+          No hot leads this week.
+        </div>
+      ) : (
+        <div style={{ overflowX: "auto", marginTop: 18 }}>
+          <table style={{ width: "100%", borderCollapse: "collapse" }}>
+            <thead>
+              <tr
+                style={{
+                  ...mono,
+                  fontSize: 9,
+                  color: "var(--pdx-text-mute)",
+                  letterSpacing: "0.15em",
+                  textAlign: "left",
+                }}
+              >
+                <Th>Company</Th>
+                <Th>Signal Stack</Th>
+                <Th>Visits</Th>
+                <Th>Top Page</Th>
+                <Th>Last Seen</Th>
+                <Th>Urgency</Th>
+                <Th>Action</Th>
+              </tr>
+            </thead>
+            <tbody>
+              {leads.map((l) => {
+                const isOpen = expanded === l.company;
+                const body =
+                  l.company === topCompany ? craigCallScript : l.aiRecommendation;
+                const href = `mailto:?subject=${encodeURIComponent(
+                  `Pro-Drive Follow-Up: ${l.company}`,
+                )}&body=${encodeURIComponent(body)}`;
+                return (
+                  <Fragment key={l.company}>
+                    <tr
+                      onClick={() =>
+                        setExpanded(isOpen ? null : l.company)
+                      }
+                      style={{
+                        borderTop: "1px solid var(--pdx-border)",
+                        cursor: "pointer",
+                        transition: "background .2s ease",
+                        background: isOpen
+                          ? "rgba(255,205,0,0.04)"
+                          : "transparent",
+                      }}
+                      onMouseEnter={(e) =>
+                        (e.currentTarget.style.background =
+                          "rgba(255,205,0,0.05)")
+                      }
+                      onMouseLeave={(e) =>
+                        (e.currentTarget.style.background = isOpen
+                          ? "rgba(255,205,0,0.04)"
+                          : "transparent")
+                      }
+                    >
+                      <Td>
+                        <div
+                          style={{
+                            color: "var(--pdx-text)",
+                            fontFamily: "Assistant, sans-serif",
+                            fontWeight: 600,
+                            fontSize: 13,
+                          }}
+                        >
+                          {l.company}
+                        </div>
+                        <div
+                          style={{
+                            ...mono,
+                            fontSize: 9,
+                            color: "var(--pdx-text-faint)",
+                            letterSpacing: "0.1em",
+                          }}
+                        >
+                          {l.location}
+                        </div>
+                      </Td>
+                      <Td>
+                        <SignalBadges signals={l.signals} />
+                      </Td>
+                      <Td>
+                        <span
+                          style={{
+                            ...mono,
+                            color: "var(--pdx-text)",
+                            fontSize: 12,
+                          }}
+                        >
+                          {l.websiteVisits}
+                        </span>
+                      </Td>
+                      <Td>
+                        <span
+                          style={{
+                            ...mono,
+                            fontSize: 11,
+                            color: "var(--pdx-text-dim)",
+                          }}
+                        >
+                          {l.topPage}
+                        </span>
+                      </Td>
+                      <Td>
+                        <span
+                          style={{
+                            ...mono,
+                            fontSize: 10,
+                            color: "var(--pdx-text-mute)",
+                          }}
+                        >
+                          {l.lastSeen}
+                        </span>
+                      </Td>
+                      <Td>
+                        <UrgencyTag urgency={l.urgency} />
+                      </Td>
+                      <Td>
                         <a
                           href={href}
                           onClick={(e) => e.stopPropagation()}
                           style={{
                             ...mono,
                             display: "inline-block",
-                            border: "1px solid rgba(255,205,0,0.4)",
+                            border: "1px solid rgba(255,205,0,0.45)",
                             color: YELLOW,
-                            padding: "4px 10px",
+                            padding: "5px 10px",
                             fontSize: 10,
                             letterSpacing: "0.15em",
                             textDecoration: "none",
                             textAlign: "center",
                             lineHeight: 1.3,
+                            borderRadius: 2,
                           }}
                         >
                           Call Now
-                          <div style={{ fontSize: 8, color: "var(--pdx-text-mute)", letterSpacing: "0.1em", marginTop: 2 }}>
+                          <div
+                            style={{
+                              fontSize: 8,
+                              color: "var(--pdx-text-mute)",
+                              letterSpacing: "0.1em",
+                              marginTop: 2,
+                            }}
+                          >
                             {l.urgency}
                           </div>
                         </a>
-                      );
-                    })()}
-                  </Td>
-                </tr>
-                {expanded === l.company && (
-                  <tr key={l.company + "-x"}>
-                    <td colSpan={7} style={{ background: "rgba(255,205,0,0.02)" }}>
-                      <div
-                        style={{
-                          borderLeft: `2px solid ${YELLOW}`,
-                          margin: "12px 0",
-                          padding: "8px 18px",
-                          fontFamily: "Assistant, sans-serif",
-                        }}
-                      >
-                        <div style={{ ...mono, fontSize: 9, color: YELLOW, letterSpacing: "0.2em", marginBottom: 6 }}>
-                          AI CONTEXT
-                        </div>
-                        <div style={{ color: "var(--pdx-text-dim)", fontSize: 13, lineHeight: 1.55, marginBottom: 10 }}>
-                          {l.aiContext}
-                        </div>
-                        <div style={{ ...mono, fontSize: 9, color: YELLOW, letterSpacing: "0.2em", marginBottom: 6 }}>
-                          RECOMMENDATION
-                        </div>
-                        <div style={{ color: "var(--pdx-text-dim)", fontSize: 13, lineHeight: 1.55 }}>
-                          {l.aiRecommendation}
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                )}
-              </Fragment>
-            ))}
-          </tbody>
-        </table>
-      </div>
+                      </Td>
+                    </tr>
+                    {isOpen && (
+                      <tr>
+                        <td
+                          colSpan={7}
+                          style={{ background: "rgba(255,205,0,0.03)" }}
+                        >
+                          <div
+                            style={{
+                              borderLeft: `2px solid ${YELLOW}`,
+                              margin: "12px 0",
+                              padding: "8px 18px",
+                              fontFamily: "Assistant, sans-serif",
+                            }}
+                          >
+                            <MiniLabel>AI CONTEXT</MiniLabel>
+                            <div
+                              style={{
+                                color: "var(--pdx-text-dim)",
+                                fontSize: 13,
+                                lineHeight: 1.55,
+                                marginBottom: 12,
+                              }}
+                            >
+                              {l.aiContext}
+                            </div>
+                            <MiniLabel>RECOMMENDATION</MiniLabel>
+                            <div
+                              style={{
+                                color: "var(--pdx-text-dim)",
+                                fontSize: 13,
+                                lineHeight: 1.55,
+                              }}
+                            >
+                              {l.aiRecommendation}
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    )}
+                  </Fragment>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 }
 
-function Th({ children }: { children: React.ReactNode }) {
+/* ---------------- Small helpers ---------------- */
+
+function SectionLabel({
+  children,
+  dot,
+}: {
+  children: ReactNode;
+  dot?: boolean;
+}) {
   return (
-    <th style={{ padding: "8px 10px", fontWeight: 500, textTransform: "uppercase" }}>
+    <div
+      style={{
+        ...mono,
+        fontSize: 10,
+        color: YELLOW,
+        letterSpacing: "0.25em",
+        display: "flex",
+        alignItems: "center",
+        gap: 8,
+      }}
+    >
+      {dot && (
+        <span
+          style={{
+            width: 6,
+            height: 6,
+            background: YELLOW,
+            borderRadius: "50%",
+            boxShadow: `0 0 8px ${YELLOW}`,
+          }}
+        />
+      )}
       {children}
-    </th>
+    </div>
   );
 }
-function Td({ children }: { children: React.ReactNode }) {
-  return <td style={{ padding: "12px 10px", verticalAlign: "middle" }}>{children}</td>;
+
+function MiniLabel({ children }: { children: ReactNode }) {
+  return (
+    <div
+      style={{
+        ...mono,
+        fontSize: 9,
+        color: YELLOW,
+        letterSpacing: "0.2em",
+        marginBottom: 6,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+const thStyle: CSSProperties = {
+  padding: "8px 10px",
+  fontWeight: 500,
+  textTransform: "uppercase",
+};
+const tdStyle: CSSProperties = { padding: "12px 10px", verticalAlign: "middle" };
+
+function Th({ children }: { children: ReactNode }) {
+  return <th style={thStyle}>{children}</th>;
+}
+function Td({ children }: { children: ReactNode }) {
+  return <td style={tdStyle}>{children}</td>;
 }

@@ -52,6 +52,10 @@ function AdminLayout() {
   const [week, setWeek] = useState("—");
 
   useEffect(() => {
+    const today = new Date();
+    setWeek(
+      today.toLocaleDateString("en-US", { month: "short", day: "numeric" })
+    );
     (async () => {
       const { data } = await supabase.auth.getUser();
       setEmail(data.user?.email ?? "");
@@ -157,12 +161,6 @@ function AdminLayout() {
     );
   }
 
-  const week = latestQ.data?.week_of
-    ? new Date(latestQ.data.week_of).toLocaleDateString("en-US", {
-        month: "short",
-        day: "numeric",
-      })
-    : "—";
   const uploadedAt = latestQ.data?.uploaded_at
     ? timeAgo(latestQ.data.uploaded_at)
     : "no data";

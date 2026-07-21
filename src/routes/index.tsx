@@ -216,7 +216,7 @@ function Home() {
           </p>
           <div className="flex flex-wrap gap-3.5">
             <Link to="/products" className="pd-btn-primary">Browse Full Line</Link>
-            <Link to="/contact" onClick={() => trackEvent("cta_click")} className="pd-btn-outline-dark">Contact for Pricing</Link>
+            <Link to="/contact" onClick={() => trackEvent("cta_click", { ctaLabel: "Contact for Pricing" })} className="pd-btn-outline-dark">Contact for Pricing</Link>
           </div>
           <div
             className="mt-16 pt-8 flex flex-wrap gap-12"
@@ -626,7 +626,7 @@ function Home() {
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Link to="/contact" onClick={() => trackEvent("cta_click")} className="pd-btn-dark">Request Distributor Pricing</Link>
+            <Link to="/contact" onClick={() => trackEvent("cta_click", { ctaLabel: "Request Distributor Pricing" })} className="pd-btn-dark">Request Distributor Pricing</Link>
             <a href="#" target="_blank" rel="noreferrer" className="pd-btn-outline-dark">Download Catalog</a>
           </div>
         </div>

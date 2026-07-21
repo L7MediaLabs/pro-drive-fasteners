@@ -97,7 +97,7 @@ function Acc() {
               </div>
 
               <div className="flex gap-3 mt-7 flex-wrap">
-                <Link to="/contact" onClick={() => trackEvent("cta_click")} className="pd-btn-primary" style={{ padding: "12px 22px", fontSize: 12 }}>
+                <Link to="/contact" onClick={() => trackEvent("cta_click", { ctaLabel: "Request Distributor Pricing" })} className="pd-btn-primary" style={{ padding: "12px 22px", fontSize: 12 }}>
                   Request Distributor Pricing →
                 </Link>
                 <a
@@ -187,7 +187,7 @@ function Acc() {
                   <li>• Displayable on any type of background</li>
                   <li>• Contact sales for additional information</li>
                 </ul>
-                <Link to="/contact" onClick={() => trackEvent("cta_click")} className="pd-btn-primary mt-6 inline-block self-start" style={{ padding: "10px 20px", fontSize: 11 }}>
+                <Link to="/contact" onClick={() => trackEvent("cta_click", { ctaLabel: "Request Distributor Pricing" })} className="pd-btn-primary mt-6 inline-block self-start" style={{ padding: "10px 20px", fontSize: 11 }}>
                   Contact Sales →
                 </Link>
               </div>
@@ -200,7 +200,7 @@ function Acc() {
               Working on a flagship distributor program or a regional rollout? Our team builds custom point-of-purchase displays
               and co-branded merchandising to fit your floor plan.
             </p>
-            <Link to="/contact" onClick={() => trackEvent("cta_click")} className="pd-btn-primary mt-5 inline-block" style={{ padding: "10px 20px", fontSize: 11 }}>
+            <Link to="/contact" onClick={() => trackEvent("cta_click", { ctaLabel: "Request Distributor Pricing" })} className="pd-btn-primary mt-5 inline-block" style={{ padding: "10px 20px", fontSize: 11 }}>
               Start a Conversation →
             </Link>
           </article>

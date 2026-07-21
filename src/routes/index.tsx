@@ -166,7 +166,7 @@ function Home() {
       {/* 7A Hero */}
       <section
         style={{
-          background: "var(--pd-dark)",
+          background: "var(--pd-cream)",
           minHeight: "90vh",
           position: "relative",
           overflow: "hidden",
@@ -179,7 +179,7 @@ function Home() {
           style={{
             position: "absolute", inset: 0, pointerEvents: "none",
             background:
-              "linear-gradient(180deg, rgba(25,20,0,0.55) 0%, rgba(25,20,0,0.85) 70%, rgba(25,20,0,0.95) 100%)",
+              "linear-gradient(180deg, rgba(245,241,232,0.55) 0%, rgba(245,241,232,0.82) 70%, rgba(245,241,232,0.95) 100%)",
           }}
         />
         <div
@@ -187,9 +187,8 @@ function Home() {
           style={{
             position: "absolute", inset: 0, pointerEvents: "none",
             backgroundImage:
-              "linear-gradient(rgba(255,205,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,205,0,0.05) 1px, transparent 1px)",
+              "linear-gradient(rgba(25,20,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(25,20,0,0.05) 1px, transparent 1px)",
             backgroundSize: "48px 48px",
-            mixBlendMode: "overlay",
           }}
         />
         <div
@@ -197,30 +196,30 @@ function Home() {
           style={{
             position: "absolute", inset: 0, pointerEvents: "none",
             backgroundImage:
-              "radial-gradient(ellipse 60% 45% at 70% 20%, rgba(255,205,0,0.06), transparent 70%), radial-gradient(ellipse 40% 50% at 10% 90%, rgba(77,65,14,0.18), transparent 70%)",
+              "radial-gradient(ellipse 60% 45% at 70% 20%, rgba(255,205,0,0.14), transparent 70%), radial-gradient(ellipse 40% 50% at 10% 90%, rgba(77,65,14,0.08), transparent 70%)",
           }}
         />
         <div className="px-[6%] pt-20 pb-18 relative z-10" style={{ paddingBottom: 72 }}>
           <div className="flex items-center gap-4 mb-7">
-            <span style={{ display: "inline-block", width: 40, height: 2, background: "var(--pd-yellow)" }} />
-            <span className="pd-eyebrow" style={{ color: "rgba(255,205,0,0.65)" }}>Pro-Driven Industrial Products and Solutions™</span>
+            <span style={{ display: "inline-block", width: 40, height: 2, background: "var(--pd-dark)" }} />
+            <span className="pd-eyebrow" style={{ color: "var(--pd-gold)" }}>Pro-Driven Industrial Products and Solutions™</span>
           </div>
           <h1
-            className="pd-display text-white"
-            style={{ fontSize: "clamp(42px, 9vw, 112px)", lineHeight: 0.93, margin: 0, overflowWrap: "break-word" }}
+            className="pd-display"
+            style={{ color: "var(--pd-dark)", fontSize: "clamp(42px, 9vw, 112px)", lineHeight: 0.93, margin: 0, overflowWrap: "break-word" }}
           >
             PRO-DRIVE<br />FASTENERS<span style={{ fontSize: "0.5em", verticalAlign: "top" }}>®</span>
           </h1>
-          <p style={{ color: "rgba(255,255,255,0.5)", maxWidth: 880, lineHeight: 1.7, fontWeight: 300, fontSize: 18 }} className="mt-7 mb-12">
+          <p style={{ color: "rgba(25,20,0,0.68)", maxWidth: 880, lineHeight: 1.7, fontWeight: 400, fontSize: 18 }} className="mt-7 mb-12">
             We don't follow the standards — we set them. Premium fastening solutions<br />for flooring professionals, guaranteed to fit every major brand tool.
           </p>
           <div className="flex flex-wrap gap-3.5">
             <Link to="/products" className="pd-btn-primary">Browse Full Line</Link>
-            <Link to="/contact" className="pd-btn-outline-light">Contact for Pricing</Link>
+            <Link to="/contact" className="pd-btn-outline-dark">Contact for Pricing</Link>
           </div>
           <div
             className="mt-16 pt-8 flex flex-wrap gap-12"
-            style={{ borderTop: "1px solid rgba(255,205,0,0.1)" }}
+            style={{ borderTop: "1px solid rgba(25,20,0,0.12)" }}
           >
             {[
               { label: "50+ Years", value: "Industry Leading" },
@@ -228,16 +227,16 @@ function Home() {
               { label: "Made in the USA", value: "Mallets & Specialty Tools" },
             ].map(s => (
               <div key={s.label}>
-                <div className="pd-eyebrow flex items-center gap-2" style={{ color: "var(--pd-yellow)", letterSpacing: "0.15em" }}>
+                <div className="pd-eyebrow flex items-center gap-2" style={{ color: "var(--pd-gold)", letterSpacing: "0.15em" }}>
                   {s.label}
                 </div>
-                <div className="text-white mt-1" style={{ fontWeight: 800, fontSize: 22 }}>{s.value}</div>
+                <div className="mt-1" style={{ color: "var(--pd-dark)", fontWeight: 800, fontSize: 22 }}>{s.value}</div>
               </div>
             ))}
           </div>
           <div
             className="mt-6 pt-5 flex flex-wrap items-center gap-x-10 gap-y-2"
-            style={{ borderTop: "1px solid rgba(255,205,0,0.06)" }}
+            style={{ borderTop: "1px solid rgba(25,20,0,0.08)" }}
           >
             {[
               "NWFA University Sponsor",
@@ -255,7 +254,7 @@ function Home() {
                   fontSize: 11,
                   textTransform: "uppercase",
                   letterSpacing: "0.12em",
-                  color: "rgba(255,255,255,0.35)",
+                  color: "rgba(25,20,0,0.5)",
                 }}
               >
                 <span
@@ -265,7 +264,7 @@ function Home() {
                     width: 5,
                     height: 5,
                     borderRadius: "50%",
-                    background: "rgba(255,205,0,0.35)",
+                    background: "var(--pd-gold)",
                   }}
                 />
                 {label}

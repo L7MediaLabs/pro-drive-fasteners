@@ -45,6 +45,7 @@ export type Database = {
           message: string | null
           name: string
           phone: string | null
+          session_id: string | null
         }
         Insert: {
           company: string
@@ -55,6 +56,7 @@ export type Database = {
           message?: string | null
           name: string
           phone?: string | null
+          session_id?: string | null
         }
         Update: {
           company?: string
@@ -65,6 +67,7 @@ export type Database = {
           message?: string | null
           name?: string
           phone?: string | null
+          session_id?: string | null
         }
         Relationships: []
       }
@@ -161,6 +164,51 @@ export type Database = {
           summary?: string | null
           title?: string
           updated_at?: string
+        }
+        Relationships: []
+      }
+      site_events: {
+        Row: {
+          created_at: string
+          event_type: string
+          id: string
+          path: string
+          product_name: string | null
+          product_sku: string | null
+          referrer: string | null
+          session_id: string
+          user_agent: string | null
+          utm_campaign: string | null
+          utm_medium: string | null
+          utm_source: string | null
+        }
+        Insert: {
+          created_at?: string
+          event_type: string
+          id?: string
+          path: string
+          product_name?: string | null
+          product_sku?: string | null
+          referrer?: string | null
+          session_id: string
+          user_agent?: string | null
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Update: {
+          created_at?: string
+          event_type?: string
+          id?: string
+          path?: string
+          product_name?: string | null
+          product_sku?: string | null
+          referrer?: string | null
+          session_id?: string
+          user_agent?: string | null
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
         }
         Relationships: []
       }

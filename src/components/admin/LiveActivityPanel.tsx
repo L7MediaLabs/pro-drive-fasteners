@@ -268,3 +268,52 @@ function Row({ left, right }: { left: string; right: string }) {
 function Empty() {
   return <div style={{ fontSize: 12, color: "var(--pdx-text-mute)", fontStyle: "italic", padding: "6px 0" }}>No data yet.</div>;
 }
+
+function FilterSelect({
+  label,
+  value,
+  options,
+  onChange,
+  formatLabel,
+  truncate,
+}: {
+  label: string;
+  value: string;
+  options: { value: string; count: number }[];
+  onChange: (value: string) => void;
+  formatLabel?: (value: string) => string;
+  truncate?: boolean;
+}) {
+  return (
+    <div>
+      <label style={{ ...mono, display: "block", fontSize: 9, color: "var(--pdx-text-mute)", letterSpacing: "0.15em", marginBottom: 4 }}>
+        {label}
+      </label>
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        style={{
+          width: "100%",
+          ...mono,
+          fontSize: 11,
+          color: "var(--pdx-text)",
+          background: "var(--pdx-input-bg, var(--pdx-panel))",
+          border: "1px solid var(--pdx-border)",
+          borderRadius: 2,
+          padding: "6px 8px",
+          cursor: "pointer",
+        }}
+      >
+        <option value="">All {label.toLowerCase()}s</option>
+        {options.map((o) => {
+          const display = formatLabel ? formatLabel(o.value) : o.value;
+          return (
+            <option key={o.value} value={o.value}>
+              {truncate && display.length > 38 ? `${display.slice(0, 38)}…` : display} ({o.count})
+            </option>
+          );
+        })}
+      </select>
+    </div>
+  );
+}

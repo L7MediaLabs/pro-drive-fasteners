@@ -49,6 +49,7 @@ function AdminLayout() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [email, setEmail] = useState("");
   const [theme, setTheme] = usePdTheme();
+  const [week, setWeek] = useState("—");
 
   useEffect(() => {
     (async () => {

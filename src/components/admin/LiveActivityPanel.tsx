@@ -385,9 +385,9 @@ function EventDetailsSheet({ event, onClose }: { event: SiteEvent | null; onClos
     <SheetContent
       side="right"
       style={{
-        background: "var(--pdx-panel, #0f172a)",
-        borderLeft: "1px solid var(--pdx-border)",
-        color: "var(--pdx-text)",
+        background: "#0f172a",
+        borderLeft: "1px solid rgba(255,205,0,0.18)",
+        color: "rgba(255,255,255,0.92)",
         maxWidth: 480,
         width: "100%",
       }}
@@ -396,7 +396,7 @@ function EventDetailsSheet({ event, onClose }: { event: SiteEvent | null; onClos
         <SheetTitle style={{ fontSize: 14, color: YELLOW, letterSpacing: "0.12em", ...mono }}>
           {event.event_type.replace(/_/g, " ").toUpperCase()}
         </SheetTitle>
-        <SheetDescription style={{ fontSize: 12, color: "var(--pdx-text-mute)" }}>
+        <SheetDescription style={{ fontSize: 12, color: "rgba(255,255,255,0.6)" }}>
           {format(new Date(event.created_at), "MMM d, yyyy h:mm:ss a")}
         </SheetDescription>
       </SheetHeader>
@@ -430,7 +430,7 @@ function EventDetailsSheet({ event, onClose }: { event: SiteEvent | null; onClos
 
         {event.user_agent && (
           <DetailGroup title="User Agent">
-            <div style={{ fontSize: 11, color: "var(--pdx-text-dim)", wordBreak: "break-word", lineHeight: 1.5 }}>
+            <div style={{ fontSize: 11, color: "rgba(255,255,255,0.7)", wordBreak: "break-word", lineHeight: 1.5 }}>
               {event.user_agent}
             </div>
           </DetailGroup>
@@ -441,19 +441,20 @@ function EventDetailsSheet({ event, onClose }: { event: SiteEvent | null; onClos
         <Button
           variant="outline"
           onClick={onClose}
-          style={{ ...mono, fontSize: 10, letterSpacing: "0.1em", borderRadius: 2, borderColor: "var(--pdx-border)" }}
+          style={{ ...mono, fontSize: 10, letterSpacing: "0.1em", borderRadius: 2, background: "#fff", color: "#0f172a", borderColor: "rgba(255,205,0,0.18)" }}
         >
           CLOSE
         </Button>
       </div>
     </SheetContent>
+
   );
 }
 
 function DetailGroup({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <div style={{ ...mono, fontSize: 10, color: "var(--pdx-text-mute)", letterSpacing: "0.2em", marginBottom: 8 }}>
+      <div style={{ ...mono, fontSize: 10, color: "rgba(255,205,0,0.7)", letterSpacing: "0.2em", marginBottom: 8 }}>
         {title}
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>{children}</div>
@@ -464,8 +465,8 @@ function DetailGroup({ title, children }: { title: string; children: React.React
 function DetailItem({ label, value, mono: useMono }: { label: string; value: string | null; mono?: boolean }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-      <div style={{ fontSize: 10, color: "var(--pdx-text-dim)", ...mono }}>{label}</div>
-      <div style={{ fontSize: 12, color: value ? "var(--pdx-text)" : "var(--pdx-text-mute)", ...(useMono ? mono : {}), wordBreak: "break-word" }}>
+      <div style={{ fontSize: 10, color: "rgba(255,255,255,0.5)", ...mono }}>{label}</div>
+      <div style={{ fontSize: 12, color: value ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.35)", ...(useMono ? mono : {}), wordBreak: "break-word" }}>
         {value ?? "—"}
       </div>
     </div>
@@ -478,9 +479,9 @@ function JsonBlock({ data }: { data: Record<string, unknown> }) {
       style={{
         ...mono,
         fontSize: 11,
-        color: "var(--pdx-text-dim)",
-        background: "var(--pdx-input-bg, rgba(255,255,255,0.04))",
-        border: "1px solid var(--pdx-border)",
+        color: "rgba(255,255,255,0.85)",
+        background: "rgba(255,255,255,0.04)",
+        border: "1px solid rgba(255,205,0,0.18)",
         borderRadius: 2,
         padding: 10,
         overflow: "auto",
@@ -493,6 +494,7 @@ function JsonBlock({ data }: { data: Record<string, unknown> }) {
     </pre>
   );
 }
+
 
 function Row({ left, right }: { left: string; right: string }) {
   return (

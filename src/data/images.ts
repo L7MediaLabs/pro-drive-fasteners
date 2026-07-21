@@ -94,7 +94,7 @@ import lcleat16gaInner    from "../assets/products/lCleats/lcleat_16ga_innerpack
 import lcleat18gaMaster   from "../assets/products/lCleats/lcleat_18ga_masterpack.jpg";
 import lcleat18gaInner    from "../assets/products/lCleats/lcleat_18ga_innerpack.jpg";
 import lcleatLc175_16     from "../assets/products/lCleats/lcleat_lc175_16.jpg";
-import lcleatLc200_16     from "../assets/products/lCleats/lcleat_lc200_16.jpg";
+import lcleatLc200_16     from "../assets/products/lcleats/lc-200-16-masterpack.png.asset.json";
 
 import blockTbPro         from "../assets/products/tapping_blocks/block_tbpro.jpg";
 import block561           from "../assets/products/tapping_blocks/block_561.jpg";

@@ -51,6 +51,7 @@ export function LiveActivityPanel() {
     product_slug: "",
     cta_label: "",
   });
+  const [search, setSearch] = useState("");
   const [range, setRange] = useState<{ from: Date; to: Date }>(() => {
     const to = endOfDay(new Date());
     const from = startOfDay(subDays(to, 6));
@@ -77,14 +78,19 @@ export function LiveActivityPanel() {
   }, [range.from.toISOString(), range.to.toISOString()]);
 
   const filtered = useMemo(() => {
+    const q = search.trim().toLowerCase();
     return (events ?? []).filter((e) => {
       if (filters.event_type && e.event_type !== filters.event_type) return false;
       if (filters.page_url && e.page_url !== filters.page_url) return false;
       if (filters.product_slug && e.product_slug !== filters.product_slug) return false;
       if (filters.cta_label && e.cta_label !== filters.cta_label) return false;
+      if (q) {
+        const haystack = `${e.path} ${e.page_url ?? ""}`.toLowerCase();
+        if (!haystack.includes(q)) return false;
+      }
       return true;
     });
-  }, [events, filters]);
+  }, [events, filters, search]);
 
   const totalSessions = filtered ? new Set(filtered.map((e) => e.session_id)).size : 0;
 
@@ -161,6 +167,14 @@ export function LiveActivityPanel() {
       {error && (
         <div style={{ fontSize: 12, color: "#c33", marginBottom: 12 }}>{error}</div>
       )}
+
+      <div style={{ marginBottom: 12 }}>
+        <SearchInput
+          value={search}
+          onChange={setSearch}
+          placeholder="Search pages, paths, or URLs…"
+        />
+      </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12, marginBottom: 18 }}>
         <FilterSelect
@@ -348,6 +362,59 @@ function DatePickerButton({
         <Calendar mode="single" selected={date} onSelect={onSelect} initialFocus className={cn("p-3 pointer-events-auto")} />
       </PopoverContent>
     </Popover>
+  );
+}
+
+function SearchInput({
+  value,
+  onChange,
+  placeholder,
+}: {
+  value: string;
+  onChange: (value: string) => void;
+  placeholder: string;
+}) {
+  return (
+    <div style={{ position: "relative" }}>
+      <input
+        type="text"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        style={{
+          width: "100%",
+          ...mono,
+          fontSize: 12,
+          color: "var(--pdx-text)",
+          background: "var(--pdx-input-bg, var(--pdx-panel))",
+          border: "1px solid var(--pdx-border)",
+          borderRadius: 2,
+          padding: "8px 32px 8px 12px",
+          outline: "none",
+        }}
+      />
+      {value && (
+        <button
+          onClick={() => onChange("")}
+          aria-label="Clear search"
+          style={{
+            position: "absolute",
+            right: 8,
+            top: "50%",
+            transform: "translateY(-50%)",
+            background: "transparent",
+            border: "none",
+            color: "var(--pdx-text-mute)",
+            cursor: "pointer",
+            fontSize: 14,
+            lineHeight: 1,
+            padding: 2,
+          }}
+        >
+          ×
+        </button>
+      )}
+    </div>
   );
 }
 

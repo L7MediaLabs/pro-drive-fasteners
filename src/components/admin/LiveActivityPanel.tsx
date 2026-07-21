@@ -192,8 +192,10 @@ export function LiveActivityPanel() {
   const activeFilters = (Object.entries(filters) as [FilterKey, string][]).filter(([_, v]) => v !== "");
 
   return (
-    <div style={{ ...cardStyle, ...cardAccentTop, padding: 22 }}>
+    <div style={{ ...cardStyle, padding: 22 }}>
+      <div style={cardAccentTop} />
       <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 16, flexWrap: "wrap", marginBottom: 14 }}>
+
         <div style={{ ...mono, fontSize: 10, color: YELLOW, letterSpacing: "0.25em" }}>
           LIVE SITE ACTIVITY · {format(range.from, "MMM d")}–{format(range.to, "MMM d, yyyy")}
         </div>

@@ -55,9 +55,9 @@ function parseCSV(raw: string): Record<string, string>[] {
 // Lower rank = shown first.
 function packTierFor(countNum: number | null): { label: string; rank: number } | null {
   if (!countNum) return null;
-  if (countNum >= 7000) return { label: "CONTRACTOR BULK CARTON", rank: 0 };
-  if (countNum >= 4500) return { label: "JOB PACK",              rank: 1 };
-  if (countNum >= 900)  return { label: "PROJECT PACK",          rank: 2 };
+  if (countNum >= 7000) return { label: "CONTRACTOR BULK CARTONS", rank: 0 };
+  if (countNum >= 4500) return { label: "JOB PACKS",               rank: 1 };
+  if (countNum >= 900)  return { label: "PROJECT PACK",            rank: 2 };
   return null;
 }
 

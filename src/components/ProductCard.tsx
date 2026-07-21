@@ -82,6 +82,7 @@ export function ProductCard({ product }: { product: Product }) {
         )}
         <Link
           to="/contact"
+          onClick={() => trackEvent("cta_click", { productSku: product.id, productName: product.name })}
           className="pd-btn-primary mt-4"
           style={{ padding: "10px", fontSize: 11, width: "100%", marginTop: "auto", paddingTop: 10 }}
         >

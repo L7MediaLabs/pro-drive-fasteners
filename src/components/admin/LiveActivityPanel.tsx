@@ -385,9 +385,9 @@ function EventDetailsSheet({ event, onClose }: { event: SiteEvent | null; onClos
     <SheetContent
       side="right"
       style={{
-        background: "var(--pdx-panel, #0f172a)",
-        borderLeft: "1px solid var(--pdx-border)",
-        color: "var(--pdx-text)",
+        background: "#0f172a",
+        borderLeft: "1px solid rgba(255,205,0,0.18)",
+        color: "rgba(255,255,255,0.92)",
         maxWidth: 480,
         width: "100%",
       }}
@@ -396,7 +396,7 @@ function EventDetailsSheet({ event, onClose }: { event: SiteEvent | null; onClos
         <SheetTitle style={{ fontSize: 14, color: YELLOW, letterSpacing: "0.12em", ...mono }}>
           {event.event_type.replace(/_/g, " ").toUpperCase()}
         </SheetTitle>
-        <SheetDescription style={{ fontSize: 12, color: "var(--pdx-text-mute)" }}>
+        <SheetDescription style={{ fontSize: 12, color: "rgba(255,255,255,0.6)" }}>
           {format(new Date(event.created_at), "MMM d, yyyy h:mm:ss a")}
         </SheetDescription>
       </SheetHeader>
@@ -430,7 +430,7 @@ function EventDetailsSheet({ event, onClose }: { event: SiteEvent | null; onClos
 
         {event.user_agent && (
           <DetailGroup title="User Agent">
-            <div style={{ fontSize: 11, color: "var(--pdx-text-dim)", wordBreak: "break-word", lineHeight: 1.5 }}>
+            <div style={{ fontSize: 11, color: "rgba(255,255,255,0.7)", wordBreak: "break-word", lineHeight: 1.5 }}>
               {event.user_agent}
             </div>
           </DetailGroup>
@@ -441,12 +441,13 @@ function EventDetailsSheet({ event, onClose }: { event: SiteEvent | null; onClos
         <Button
           variant="outline"
           onClick={onClose}
-          style={{ ...mono, fontSize: 10, letterSpacing: "0.1em", borderRadius: 2, borderColor: "var(--pdx-border)" }}
+          style={{ ...mono, fontSize: 10, letterSpacing: "0.1em", borderRadius: 2, background: "#fff", color: "#0f172a", borderColor: "rgba(255,205,0,0.18)" }}
         >
           CLOSE
         </Button>
       </div>
     </SheetContent>
+
   );
 }
 

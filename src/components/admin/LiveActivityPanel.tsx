@@ -70,7 +70,7 @@ export function LiveActivityPanel() {
     async function load() {
       const { data, error } = await supabase
         .from("site_events")
-        .select("id, session_id, event_type, path, page_url, product_sku, product_name, product_slug, cta_label, form_fields, created_at")
+        .select("id, session_id, event_type, path, page_url, product_sku, product_name, product_slug, cta_label, form_fields, referrer, utm_source, utm_medium, utm_campaign, user_agent, created_at")
         .gte("created_at", range.from.toISOString())
         .lte("created_at", range.to.toISOString())
         .order("created_at", { ascending: false })

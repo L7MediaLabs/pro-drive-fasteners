@@ -197,11 +197,12 @@ function AdminLayout() {
             alt="Pro-Drive Fasteners"
             style={{
               display: "block",
-              width: "100%",
+              width: "70%",
               height: "auto",
               objectFit: "contain",
               borderRadius: 2,
               boxShadow: "0 2px 8px rgba(0,0,0,0.35)",
+              margin: "0 auto",
             }}
           />
           <div

@@ -51,15 +51,20 @@ export function LiveActivityPanel() {
     product_slug: "",
     cta_label: "",
   });
+  const [range, setRange] = useState<{ from: Date; to: Date }>(() => {
+    const to = endOfDay(new Date());
+    const from = startOfDay(subDays(to, 6));
+    return { from, to };
+  });
 
   useEffect(() => {
     let cancelled = false;
     async function load() {
-      const sevenDays = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
       const { data, error } = await supabase
         .from("site_events")
         .select("id, session_id, event_type, path, page_url, product_sku, product_name, product_slug, cta_label, form_fields, created_at")
-        .gte("created_at", sevenDays)
+        .gte("created_at", range.from.toISOString())
+        .lte("created_at", range.to.toISOString())
         .order("created_at", { ascending: false })
         .limit(2000);
       if (cancelled) return;
@@ -69,7 +74,7 @@ export function LiveActivityPanel() {
     load();
     const t = setInterval(load, 30_000);
     return () => { cancelled = true; clearInterval(t); };
-  }, []);
+  }, [range.from.toISOString(), range.to.toISOString()]);
 
   const filtered = useMemo(() => {
     return (events ?? []).filter((e) => {

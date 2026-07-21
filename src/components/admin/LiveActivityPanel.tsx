@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { YELLOW, mono, cardStyle, cardAccentTop } from "@/components/admin/ui";
 
@@ -16,6 +16,15 @@ type SiteEvent = {
   created_at: string;
 };
 
+type FilterKey = "event_type" | "page_url" | "product_slug" | "cta_label";
+
+type Filters = {
+  event_type: string;
+  page_url: string;
+  product_slug: string;
+  cta_label: string;
+};
+
 function since(iso: string): string {
   const diff = Date.now() - new Date(iso).getTime();
   const s = Math.round(diff / 1000);
@@ -30,6 +39,12 @@ function since(iso: string): string {
 export function LiveActivityPanel() {
   const [events, setEvents] = useState<SiteEvent[] | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [filters, setFilters] = useState<Filters>({
+    event_type: "",
+    page_url: "",
+    product_slug: "",
+    cta_label: "",
+  });
 
   useEffect(() => {
     let cancelled = false;
@@ -50,11 +65,21 @@ export function LiveActivityPanel() {
     return () => { cancelled = true; clearInterval(t); };
   }, []);
 
-  const totalSessions = events ? new Set(events.map((e) => e.session_id)).size : 0;
+  const filtered = useMemo(() => {
+    return (events ?? []).filter((e) => {
+      if (filters.event_type && e.event_type !== filters.event_type) return false;
+      if (filters.page_url && e.page_url !== filters.page_url) return false;
+      if (filters.product_slug && e.product_slug !== filters.product_slug) return false;
+      if (filters.cta_label && e.cta_label !== filters.cta_label) return false;
+      return true;
+    });
+  }, [events, filters]);
+
+  const totalSessions = filtered ? new Set(filtered.map((e) => e.session_id)).size : 0;
 
   const productCounts = new Map<string, { sku: string; name: string; count: number }>();
   const pageCounts = new Map<string, number>();
-  for (const e of events ?? []) {
+  for (const e of filtered ?? []) {
     if (e.event_type === "product_view" && e.product_sku) {
       const cur = productCounts.get(e.product_sku) ?? { sku: e.product_sku, name: e.product_name ?? e.product_sku, count: 0 };
       cur.count += 1;
@@ -66,23 +91,95 @@ export function LiveActivityPanel() {
   }
   const topProducts = [...productCounts.values()].sort((a, b) => b.count - a.count).slice(0, 5);
   const topPages = [...pageCounts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5);
-  const recent = (events ?? []).slice(0, 20);
+  const recent = (filtered ?? []).slice(0, 20);
+
+  const filterOptions = useMemo(() => {
+    const all = events ?? [];
+    const pick = (key: FilterKey) => {
+      const counts = new Map<string, number>();
+      for (const e of all) {
+        const v = e[key];
+        if (!v) continue;
+        counts.set(v, (counts.get(v) ?? 0) + 1);
+      }
+      return [...counts.entries()].sort((a, b) => b[1] - a[1]).map(([value, count]) => ({ value, count }));
+    };
+    return {
+      event_type: pick("event_type"),
+      page_url: pick("page_url"),
+      product_slug: pick("product_slug"),
+      cta_label: pick("cta_label"),
+    };
+  }, [events]);
+
+  const activeFilters = (Object.entries(filters) as [FilterKey, string][]).filter(([_, v]) => v !== "");
 
   return (
     <div style={{ ...cardStyle, ...cardAccentTop, padding: 22 }}>
-      <div style={{ ...mono, fontSize: 10, color: YELLOW, letterSpacing: "0.25em", marginBottom: 14 }}>
-        LIVE SITE ACTIVITY · LAST 7 DAYS
+      <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 16, flexWrap: "wrap", marginBottom: 14 }}>
+        <div style={{ ...mono, fontSize: 10, color: YELLOW, letterSpacing: "0.25em" }}>
+          LIVE SITE ACTIVITY · LAST 7 DAYS
+        </div>
+        {activeFilters.length > 0 && (
+          <button
+            onClick={() => setFilters({ event_type: "", page_url: "", product_slug: "", cta_label: "" })}
+            style={{
+              ...mono,
+              fontSize: 10,
+              color: YELLOW,
+              background: "transparent",
+              border: `1px solid ${YELLOW}`,
+              borderRadius: 2,
+              padding: "4px 10px",
+              cursor: "pointer",
+              letterSpacing: "0.1em",
+            }}
+          >
+            Clear filters ({activeFilters.length})
+          </button>
+        )}
       </div>
 
       {error && (
         <div style={{ fontSize: 12, color: "#c33", marginBottom: 12 }}>{error}</div>
       )}
 
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12, marginBottom: 18 }}>
+        <FilterSelect
+          label="Event Type"
+          value={filters.event_type}
+          options={filterOptions.event_type}
+          onChange={(v) => setFilters((f) => ({ ...f, event_type: v }))}
+          formatLabel={(v) => v.replace(/_/g, " ").toUpperCase()}
+        />
+        <FilterSelect
+          label="Page URL"
+          value={filters.page_url}
+          options={filterOptions.page_url}
+          onChange={(v) => setFilters((f) => ({ ...f, page_url: v }))}
+          truncate
+        />
+        <FilterSelect
+          label="Product"
+          value={filters.product_slug}
+          options={filterOptions.product_slug}
+          onChange={(v) => setFilters((f) => ({ ...f, product_slug: v }))}
+          truncate
+        />
+        <FilterSelect
+          label="CTA Label"
+          value={filters.cta_label}
+          options={filterOptions.cta_label}
+          onChange={(v) => setFilters((f) => ({ ...f, cta_label: v }))}
+          truncate
+        />
+      </div>
+
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 16, marginBottom: 22 }}>
         <Stat label="TOTAL SESSIONS" value={events ? String(totalSessions) : "…"} />
-        <Stat label="TOTAL EVENTS" value={events ? String(events.length) : "…"} />
-        <Stat label="PRODUCT VIEWS" value={events ? String(events.filter(e => e.event_type === "product_view").length) : "…"} />
-        <Stat label="CTA CLICKS" value={events ? String(events.filter(e => e.event_type === "cta_click").length) : "…"} />
+        <Stat label="TOTAL EVENTS" value={events ? String(filtered.length) : "…"} />
+        <Stat label="PRODUCT VIEWS" value={events ? String(filtered.filter(e => e.event_type === "product_view").length) : "…"} />
+        <Stat label="CTA CLICKS" value={events ? String(filtered.filter(e => e.event_type === "cta_click").length) : "…"} />
       </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 22 }}>
@@ -170,4 +267,53 @@ function Row({ left, right }: { left: string; right: string }) {
 
 function Empty() {
   return <div style={{ fontSize: 12, color: "var(--pdx-text-mute)", fontStyle: "italic", padding: "6px 0" }}>No data yet.</div>;
+}
+
+function FilterSelect({
+  label,
+  value,
+  options,
+  onChange,
+  formatLabel,
+  truncate,
+}: {
+  label: string;
+  value: string;
+  options: { value: string; count: number }[];
+  onChange: (value: string) => void;
+  formatLabel?: (value: string) => string;
+  truncate?: boolean;
+}) {
+  return (
+    <div>
+      <label style={{ ...mono, display: "block", fontSize: 9, color: "var(--pdx-text-mute)", letterSpacing: "0.15em", marginBottom: 4 }}>
+        {label}
+      </label>
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        style={{
+          width: "100%",
+          ...mono,
+          fontSize: 11,
+          color: "var(--pdx-text)",
+          background: "var(--pdx-input-bg, var(--pdx-panel))",
+          border: "1px solid var(--pdx-border)",
+          borderRadius: 2,
+          padding: "6px 8px",
+          cursor: "pointer",
+        }}
+      >
+        <option value="">All {label.toLowerCase()}s</option>
+        {options.map((o) => {
+          const display = formatLabel ? formatLabel(o.value) : o.value;
+          return (
+            <option key={o.value} value={o.value}>
+              {truncate && display.length > 38 ? `${display.slice(0, 38)}…` : display} ({o.count})
+            </option>
+          );
+        })}
+      </select>
+    </div>
+  );
 }

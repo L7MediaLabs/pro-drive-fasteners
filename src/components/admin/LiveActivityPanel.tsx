@@ -287,6 +287,70 @@ function Empty() {
   return <div style={{ fontSize: 12, color: "var(--pdx-text-mute)", fontStyle: "italic", padding: "6px 0" }}>No data yet.</div>;
 }
 
+function QuickRange({ label, onClick }: { label: string; onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      style={{
+        ...mono,
+        fontSize: 10,
+        color: "var(--pdx-text-dim)",
+        background: "transparent",
+        border: "1px solid var(--pdx-border)",
+        borderRadius: 2,
+        padding: "4px 10px",
+        cursor: "pointer",
+        letterSpacing: "0.1em",
+      }}
+      onMouseEnter={(e) => (e.currentTarget.style.borderColor = YELLOW)}
+      onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--pdx-border)")}
+    >
+      {label}
+    </button>
+  );
+}
+
+function DatePickerButton({
+  date,
+  onSelect,
+  label,
+}: {
+  date: Date;
+  onSelect: (date: Date | undefined) => void;
+  label: string;
+}) {
+  return (
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button
+          variant="outline"
+          className={cn(
+            "justify-start text-left font-normal h-auto",
+            !date && "text-muted-foreground"
+          )}
+          style={{
+            ...mono,
+            fontSize: 10,
+            letterSpacing: "0.05em",
+            padding: "4px 10px",
+            borderRadius: 2,
+            border: "1px solid var(--pdx-border)",
+            background: "var(--pdx-input-bg, var(--pdx-panel))",
+            color: "var(--pdx-text)",
+            gap: 6,
+          }}
+        >
+          <CalendarIcon size={12} />
+          <span style={{ color: "var(--pdx-text-mute)" }}>{label}:</span> {format(date, "MMM d")}
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-auto p-0" align="end">
+        <Calendar mode="single" selected={date} onSelect={onSelect} initialFocus className={cn("p-3 pointer-events-auto")} />
+      </PopoverContent>
+    </Popover>
+  );
+}
+
 function FilterSelect({
   label,
   value,

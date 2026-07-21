@@ -1,4 +1,6 @@
 import { Link } from "@tanstack/react-router";
+import { useEffect, useRef } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 export type Product = {
   id: string;

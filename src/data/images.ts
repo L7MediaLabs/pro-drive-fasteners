@@ -70,6 +70,7 @@ import s155_2in_5000      from "../assets/products/staples/staples_155_2in_5000.
 import s155_2in_7720      from "../assets/products/staples/staples_155_2in_7720.png.asset.json";
 import fn1532_200         from "../assets/products/finishNails/fn1532_200.png.asset.json";
 import fn1520_125         from "../assets/products/finishNails/fn1520_125.png.asset.json";
+import fn1524_150         from "../assets/products/finishNails/fn1524_150.png.asset.json";
 import da21_200           from "../assets/products/finishNails/da21_200.png.asset.json";
 import finishNailsStrip   from "../assets/products/finishNails/finish_nails_strip.png.asset.json";
 import finishNailsStripHD from "../assets/products/finishNails/finish_nails_strip_hd.png";

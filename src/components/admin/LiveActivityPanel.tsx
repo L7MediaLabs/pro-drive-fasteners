@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { YELLOW, mono, cardStyle, cardAccentTop } from "@/components/admin/ui";
 
 type SiteEvent = {
@@ -19,6 +20,11 @@ type SiteEvent = {
   product_slug: string | null;
   cta_label: string | null;
   form_fields: Record<string, unknown> | null;
+  referrer: string | null;
+  utm_source: string | null;
+  utm_medium: string | null;
+  utm_campaign: string | null;
+  user_agent: string | null;
   created_at: string;
 };
 
@@ -57,13 +63,14 @@ export function LiveActivityPanel() {
     const from = startOfDay(subDays(to, 6));
     return { from, to };
   });
+  const [selectedEvent, setSelectedEvent] = useState<SiteEvent | null>(null);
 
   useEffect(() => {
     let cancelled = false;
     async function load() {
       const { data, error } = await supabase
         .from("site_events")
-        .select("id, session_id, event_type, path, page_url, product_sku, product_name, product_slug, cta_label, form_fields, created_at")
+        .select("id, session_id, event_type, path, page_url, product_sku, product_name, product_slug, cta_label, form_fields, referrer, utm_source, utm_medium, utm_campaign, user_agent, created_at")
         .gte("created_at", range.from.toISOString())
         .lte("created_at", range.to.toISOString())
         .order("created_at", { ascending: false })
@@ -235,46 +242,54 @@ export function LiveActivityPanel() {
         </div>
       </div>
 
-      <div style={{ marginTop: 22 }}>
-        <div style={{ ...mono, fontSize: 10, color: "var(--pdx-text-mute)", letterSpacing: "0.2em", marginBottom: 8 }}>
-          RECENT ACTIVITY
+      <Sheet open={!!selectedEvent} onOpenChange={(open) => !open && setSelectedEvent(null)}>
+        <div style={{ marginTop: 22 }}>
+          <div style={{ ...mono, fontSize: 10, color: "var(--pdx-text-mute)", letterSpacing: "0.2em", marginBottom: 8 }}>
+            RECENT ACTIVITY
+          </div>
+          {recent.length === 0 && <Empty />}
+          {recent.map((e) => {
+            const detail = e.product_name
+              ? `${e.product_sku ?? ""} — ${e.product_name}`
+              : e.cta_label
+                ? `${e.cta_label} · ${e.path}`
+                : e.event_type === "contact_submit" && e.form_fields
+                  ? `Lead · ${(e.form_fields as { interest?: string }).interest ?? "—"}`
+                  : e.path;
+            return (
+              <button
+                key={e.id}
+                onClick={() => setSelectedEvent(e)}
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "120px 1fr 90px",
+                  gap: 10,
+                  width: "100%",
+                  textAlign: "left",
+                  padding: "6px 0",
+                  borderBottom: "1px solid var(--pdx-border)",
+                  fontSize: 12,
+                  color: "var(--pdx-text)",
+                  background: "transparent",
+                  cursor: "pointer",
+                }}
+                title={e.page_url ?? undefined}
+              >
+                <span style={{ ...mono, fontSize: 10, color: YELLOW, letterSpacing: "0.14em" }}>
+                  {e.event_type.replace("_", " ").toUpperCase()}
+                </span>
+                <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                  {detail}
+                </span>
+                <span style={{ ...mono, fontSize: 10, color: "var(--pdx-text-mute)", textAlign: "right" }}>
+                  {since(e.created_at)}
+                </span>
+              </button>
+            );
+          })}
         </div>
-        {recent.length === 0 && <Empty />}
-        {recent.map((e) => {
-          const detail = e.product_name
-            ? `${e.product_sku ?? ""} — ${e.product_name}`
-            : e.cta_label
-              ? `${e.cta_label} · ${e.path}`
-              : e.event_type === "contact_submit" && e.form_fields
-                ? `Lead · ${(e.form_fields as { interest?: string }).interest ?? "—"}`
-                : e.path;
-          return (
-            <div
-              key={e.id}
-              style={{
-                display: "grid",
-                gridTemplateColumns: "120px 1fr 90px",
-                gap: 10,
-                padding: "6px 0",
-                borderBottom: "1px solid var(--pdx-border)",
-                fontSize: 12,
-                color: "var(--pdx-text)",
-              }}
-              title={e.page_url ?? undefined}
-            >
-              <span style={{ ...mono, fontSize: 10, color: YELLOW, letterSpacing: "0.14em" }}>
-                {e.event_type.replace("_", " ").toUpperCase()}
-              </span>
-              <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                {detail}
-              </span>
-              <span style={{ ...mono, fontSize: 10, color: "var(--pdx-text-mute)", textAlign: "right" }}>
-                {since(e.created_at)}
-              </span>
-            </div>
-          );
-        })}
-      </div>
+        <EventDetailsSheet event={selectedEvent} onClose={() => setSelectedEvent(null)} />
+      </Sheet>
     </div>
   );
 }
@@ -285,6 +300,121 @@ function Stat({ label, value }: { label: string; value: string }) {
       <div style={{ ...mono, fontSize: 9.5, color: "var(--pdx-text-mute)", letterSpacing: "0.22em" }}>{label}</div>
       <div style={{ fontFamily: "Assistant, sans-serif", fontWeight: 700, fontSize: 26, color: "var(--pdx-text)", marginTop: 4 }}>{value}</div>
     </div>
+  );
+}
+
+function EventDetailsSheet({ event, onClose }: { event: SiteEvent | null; onClose: () => void }) {
+  if (!event) return null;
+  return (
+    <SheetContent
+      side="right"
+      style={{
+        background: "var(--pdx-panel, #0f172a)",
+        borderLeft: "1px solid var(--pdx-border)",
+        color: "var(--pdx-text)",
+        maxWidth: 480,
+        width: "100%",
+      }}
+    >
+      <SheetHeader>
+        <SheetTitle style={{ fontSize: 14, color: YELLOW, letterSpacing: "0.12em", ...mono }}>
+          {event.event_type.replace(/_/g, " ").toUpperCase()}
+        </SheetTitle>
+        <SheetDescription style={{ fontSize: 12, color: "var(--pdx-text-mute)" }}>
+          {format(new Date(event.created_at), "MMM d, yyyy h:mm:ss a")}
+        </SheetDescription>
+      </SheetHeader>
+
+      <div style={{ marginTop: 24, display: "flex", flexDirection: "column", gap: 18 }}>
+        <DetailGroup title="Session">
+          <DetailItem label="Session ID" value={event.session_id} mono />
+          <DetailItem label="Path" value={event.path} />
+          <DetailItem label="Page URL" value={event.page_url} />
+          <DetailItem label="Referrer" value={event.referrer} />
+        </DetailGroup>
+
+        <DetailGroup title="Product / CTA">
+          <DetailItem label="Product SKU" value={event.product_sku} />
+          <DetailItem label="Product Name" value={event.product_name} />
+          <DetailItem label="Product Slug" value={event.product_slug} />
+          <DetailItem label="CTA Label" value={event.cta_label} />
+        </DetailGroup>
+
+        <DetailGroup title="UTM">
+          <DetailItem label="utm_source" value={event.utm_source} />
+          <DetailItem label="utm_medium" value={event.utm_medium} />
+          <DetailItem label="utm_campaign" value={event.utm_campaign} />
+        </DetailGroup>
+
+        {event.form_fields && (
+          <DetailGroup title="Form Fields">
+            <JsonBlock data={event.form_fields} />
+          </DetailGroup>
+        )}
+
+        {event.user_agent && (
+          <DetailGroup title="User Agent">
+            <div style={{ fontSize: 11, color: "var(--pdx-text-dim)", wordBreak: "break-word", lineHeight: 1.5 }}>
+              {event.user_agent}
+            </div>
+          </DetailGroup>
+        )}
+      </div>
+
+      <div style={{ marginTop: 24 }}>
+        <Button
+          variant="outline"
+          onClick={onClose}
+          style={{ ...mono, fontSize: 10, letterSpacing: "0.1em", borderRadius: 2, borderColor: "var(--pdx-border)" }}
+        >
+          CLOSE
+        </Button>
+      </div>
+    </SheetContent>
+  );
+}
+
+function DetailGroup({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <div style={{ ...mono, fontSize: 10, color: "var(--pdx-text-mute)", letterSpacing: "0.2em", marginBottom: 8 }}>
+        {title}
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>{children}</div>
+    </div>
+  );
+}
+
+function DetailItem({ label, value, mono: useMono }: { label: string; value: string | null; mono?: boolean }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+      <div style={{ fontSize: 10, color: "var(--pdx-text-dim)", ...mono }}>{label}</div>
+      <div style={{ fontSize: 12, color: value ? "var(--pdx-text)" : "var(--pdx-text-mute)", ...(useMono ? mono : {}), wordBreak: "break-word" }}>
+        {value ?? "—"}
+      </div>
+    </div>
+  );
+}
+
+function JsonBlock({ data }: { data: Record<string, unknown> }) {
+  return (
+    <pre
+      style={{
+        ...mono,
+        fontSize: 11,
+        color: "var(--pdx-text-dim)",
+        background: "var(--pdx-input-bg, rgba(255,255,255,0.04))",
+        border: "1px solid var(--pdx-border)",
+        borderRadius: 2,
+        padding: 10,
+        overflow: "auto",
+        maxHeight: 240,
+        whiteSpace: "pre-wrap",
+        wordBreak: "break-word",
+      }}
+    >
+      {JSON.stringify(data, null, 2)}
+    </pre>
   );
 }
 

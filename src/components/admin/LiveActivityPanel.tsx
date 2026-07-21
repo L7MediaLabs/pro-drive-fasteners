@@ -39,6 +39,12 @@ function since(iso: string): string {
 export function LiveActivityPanel() {
   const [events, setEvents] = useState<SiteEvent[] | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [filters, setFilters] = useState<Filters>({
+    event_type: "",
+    page_url: "",
+    product_slug: "",
+    cta_label: "",
+  });
 
   useEffect(() => {
     let cancelled = false;
@@ -59,11 +65,21 @@ export function LiveActivityPanel() {
     return () => { cancelled = true; clearInterval(t); };
   }, []);
 
-  const totalSessions = events ? new Set(events.map((e) => e.session_id)).size : 0;
+  const filtered = useMemo(() => {
+    return (events ?? []).filter((e) => {
+      if (filters.event_type && e.event_type !== filters.event_type) return false;
+      if (filters.page_url && e.page_url !== filters.page_url) return false;
+      if (filters.product_slug && e.product_slug !== filters.product_slug) return false;
+      if (filters.cta_label && e.cta_label !== filters.cta_label) return false;
+      return true;
+    });
+  }, [events, filters]);
+
+  const totalSessions = filtered ? new Set(filtered.map((e) => e.session_id)).size : 0;
 
   const productCounts = new Map<string, { sku: string; name: string; count: number }>();
   const pageCounts = new Map<string, number>();
-  for (const e of events ?? []) {
+  for (const e of filtered ?? []) {
     if (e.event_type === "product_view" && e.product_sku) {
       const cur = productCounts.get(e.product_sku) ?? { sku: e.product_sku, name: e.product_name ?? e.product_sku, count: 0 };
       cur.count += 1;
@@ -75,7 +91,26 @@ export function LiveActivityPanel() {
   }
   const topProducts = [...productCounts.values()].sort((a, b) => b.count - a.count).slice(0, 5);
   const topPages = [...pageCounts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5);
-  const recent = (events ?? []).slice(0, 20);
+  const recent = (filtered ?? []).slice(0, 20);
+
+  const filterOptions = useMemo(() => {
+    const all = events ?? [];
+    const pick = (key: FilterKey) => {
+      const counts = new Map<string, number>();
+      for (const e of all) {
+        const v = e[key];
+        if (!v) continue;
+        counts.set(v, (counts.get(v) ?? 0) + 1);
+      }
+      return [...counts.entries()].sort((a, b) => b[1] - a[1]).map(([value, count]) => ({ value, count }));
+    };
+    return {
+      event_type: pick("event_type"),
+      page_url: pick("page_url"),
+      product_slug: pick("product_slug"),
+      cta_label: pick("cta_label"),
+    };
+  }, [events]);
 
   return (
     <div style={{ ...cardStyle, ...cardAccentTop, padding: 22 }}>

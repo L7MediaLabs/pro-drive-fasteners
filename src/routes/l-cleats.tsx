@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { trackEvent } from "@/lib/analytics";
 import { useState } from "react";
 import { ProductGrid } from "../components/ProductCard";
 import { TechReference } from "../components/editorial";
@@ -429,7 +430,7 @@ function LCleats() {
               <p className="mt-3 text-white/80" style={{ fontSize: 15, lineHeight: 1.7 }}>
                 Made with premium grade recycled US steel.
               </p>
-              <Link to="/contact" className="pd-btn-primary mt-6 inline-block" style={{ padding: "12px 24px", fontSize: 12 }}>
+              <Link to="/contact" onClick={() => trackEvent("cta_click")} className="pd-btn-primary mt-6 inline-block" style={{ padding: "12px 24px", fontSize: 12 }}>
                 Request Pricing →
               </Link>
             </div>

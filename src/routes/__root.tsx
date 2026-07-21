@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { initAnalytics, trackEvent } from "../lib/analytics";
 import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 import { LangToast } from "../components/LangToast";
@@ -83,10 +84,10 @@ function RootShell({ children }: { children: ReactNode }) {
       <head>
         <HeadContent />
         {/* Pro-Drive Intelligence Layer — Installed by Seventh State Creative */}
-        {/* Apollo.io Visitor Identification — DO NOT REMOVE */}
-        {/* REPLACE THIS COMMENT WITH YOUR APOLLO SNIPPET */}
-        {/* Meta Pixel — Instagram and Facebook Traffic Tracking — DO NOT REMOVE */}
-        {/* REPLACE THIS COMMENT WITH YOUR META PIXEL CODE */}
+        {/* Apollo.io Visitor Identification */}
+        <ApolloScript />
+        {/* Meta Pixel — Instagram and Facebook Traffic Tracking */}
+        <MetaPixelScript />
       </head>
       <body>
         {children}
@@ -100,6 +101,16 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const hideChrome = pathname.startsWith("/admin") || pathname.startsWith("/auth");
+
+  useEffect(() => {
+    initAnalytics();
+  }, []);
+
+  useEffect(() => {
+    if (pathname.startsWith("/admin") || pathname.startsWith("/auth")) return;
+    trackEvent("page_view", { path: pathname });
+  }, [pathname]);
+
   return (
     <QueryClientProvider client={queryClient}>
       {hideChrome ? (
@@ -117,5 +128,32 @@ function RootComponent() {
       <PreviewBar />
     </QueryClientProvider>
   );
+}
+
+function ApolloScript() {
+  const id = import.meta.env.VITE_APOLLO_TRACKING_ID as string | undefined;
+  if (!id || id === "SET_IN_PRODUCTION") return null;
+  const src = `https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache=${Math.random().toString(36).slice(2)}`;
+  const html = `
+    function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");
+    o.src="${src}",o.async=true,o.defer=true,
+    o.onload=function(){window.trackingFunctions.onLoad({appId:"${id}"})};
+    document.head.appendChild(o)}initApollo();
+  `;
+  return <script dangerouslySetInnerHTML={{ __html: html }} />;
+}
+
+function MetaPixelScript() {
+  const id = import.meta.env.VITE_META_PIXEL_ID as string | undefined;
+  if (!id || id === "SET_IN_PRODUCTION") return null;
+  const html = `
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+    (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','${id}');fbq('track','PageView');
+  `;
+  return <script dangerouslySetInnerHTML={{ __html: html }} />;
 }
 

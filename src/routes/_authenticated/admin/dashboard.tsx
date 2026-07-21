@@ -12,6 +12,7 @@ import {
   cardStyle,
   cardAccentTop,
 } from "@/components/admin/ui";
+import { LiveActivityPanel } from "@/components/admin/LiveActivityPanel";
 import type { Lead } from "@/lib/intelligence-types";
 
 export const Route = createFileRoute("/_authenticated/admin/dashboard")({
@@ -151,6 +152,10 @@ function DashboardPage() {
 
       {/* Ticker */}
       <Ticker leads={data.leads} />
+
+      {/* Hot Leads Table */}
+      {/* Live Site Activity — real-time visitor data */}
+      <LiveActivityPanel />
 
       {/* Hot Leads Table */}
       <HotLeadsTable leads={hotWarm} craigCallScript={data.summary.craigCallScript} />

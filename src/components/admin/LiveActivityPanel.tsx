@@ -242,46 +242,54 @@ export function LiveActivityPanel() {
         </div>
       </div>
 
-      <div style={{ marginTop: 22 }}>
-        <div style={{ ...mono, fontSize: 10, color: "var(--pdx-text-mute)", letterSpacing: "0.2em", marginBottom: 8 }}>
-          RECENT ACTIVITY
+      <Sheet open={!!selectedEvent} onOpenChange={(open) => !open && setSelectedEvent(null)}>
+        <div style={{ marginTop: 22 }}>
+          <div style={{ ...mono, fontSize: 10, color: "var(--pdx-text-mute)", letterSpacing: "0.2em", marginBottom: 8 }}>
+            RECENT ACTIVITY
+          </div>
+          {recent.length === 0 && <Empty />}
+          {recent.map((e) => {
+            const detail = e.product_name
+              ? `${e.product_sku ?? ""} — ${e.product_name}`
+              : e.cta_label
+                ? `${e.cta_label} · ${e.path}`
+                : e.event_type === "contact_submit" && e.form_fields
+                  ? `Lead · ${(e.form_fields as { interest?: string }).interest ?? "—"}`
+                  : e.path;
+            return (
+              <button
+                key={e.id}
+                onClick={() => setSelectedEvent(e)}
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "120px 1fr 90px",
+                  gap: 10,
+                  width: "100%",
+                  textAlign: "left",
+                  padding: "6px 0",
+                  borderBottom: "1px solid var(--pdx-border)",
+                  fontSize: 12,
+                  color: "var(--pdx-text)",
+                  background: "transparent",
+                  cursor: "pointer",
+                }}
+                title={e.page_url ?? undefined}
+              >
+                <span style={{ ...mono, fontSize: 10, color: YELLOW, letterSpacing: "0.14em" }}>
+                  {e.event_type.replace("_", " ").toUpperCase()}
+                </span>
+                <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                  {detail}
+                </span>
+                <span style={{ ...mono, fontSize: 10, color: "var(--pdx-text-mute)", textAlign: "right" }}>
+                  {since(e.created_at)}
+                </span>
+              </button>
+            );
+          })}
         </div>
-        {recent.length === 0 && <Empty />}
-        {recent.map((e) => {
-          const detail = e.product_name
-            ? `${e.product_sku ?? ""} — ${e.product_name}`
-            : e.cta_label
-              ? `${e.cta_label} · ${e.path}`
-              : e.event_type === "contact_submit" && e.form_fields
-                ? `Lead · ${(e.form_fields as { interest?: string }).interest ?? "—"}`
-                : e.path;
-          return (
-            <div
-              key={e.id}
-              style={{
-                display: "grid",
-                gridTemplateColumns: "120px 1fr 90px",
-                gap: 10,
-                padding: "6px 0",
-                borderBottom: "1px solid var(--pdx-border)",
-                fontSize: 12,
-                color: "var(--pdx-text)",
-              }}
-              title={e.page_url ?? undefined}
-            >
-              <span style={{ ...mono, fontSize: 10, color: YELLOW, letterSpacing: "0.14em" }}>
-                {e.event_type.replace("_", " ").toUpperCase()}
-              </span>
-              <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                {detail}
-              </span>
-              <span style={{ ...mono, fontSize: 10, color: "var(--pdx-text-mute)", textAlign: "right" }}>
-                {since(e.created_at)}
-              </span>
-            </div>
-          );
-        })}
-      </div>
+        <EventDetailsSheet event={selectedEvent} onClose={() => setSelectedEvent(null)} />
+      </Sheet>
     </div>
   );
 }

@@ -24,7 +24,7 @@ export function CinematicHero({
   rightImageFit?: "cover" | "contain";
 }) {
   return (
-    <section className="px-[6%] pt-20 pb-16 relative overflow-hidden" style={{ background: "var(--pd-dark)" }}>
+    <section className="px-[6%] pt-20 pb-16 relative overflow-hidden" style={{ background: "var(--pd-cream)" }}>
       {bgImage && (
         <img
           src={bgImage}
@@ -32,7 +32,7 @@ export function CinematicHero({
           aria-hidden
           style={{
             position: "absolute", inset: 0, width: "100%", height: "100%",
-            objectFit: "cover", objectPosition: "center", opacity: 0.26,
+            objectFit: "cover", objectPosition: "center", opacity: 0.22,
           }}
         />
       )}
@@ -40,17 +40,17 @@ export function CinematicHero({
         aria-hidden
         style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(90deg, rgba(15,15,15,0.88), rgba(15,15,15,0.55))",
+          background: "linear-gradient(90deg, rgba(245,241,232,0.92), rgba(245,241,232,0.55))",
         }}
       />
       <div className={`relative z-10 grid ${rightImage ? "lg:grid-cols-[1.15fr_0.85fr]" : ""} gap-10 lg:gap-14 items-center`}>
         <div>
-          <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>{kicker}</div>
-          <h1 className="pd-display text-white mt-3" style={{ fontSize: "clamp(38px, 6.2vw, 62px)", lineHeight: 1.05, letterSpacing: "-0.01em" }}>
+          <div className="pd-label" style={{ color: "var(--pd-gold)" }}>{kicker}</div>
+          <h1 className="pd-display mt-3" style={{ color: "var(--pd-dark)", fontSize: "clamp(38px, 6.2vw, 62px)", lineHeight: 1.05, letterSpacing: "-0.01em" }}>
             {title}
           </h1>
           {description && (
-            <p className="mt-5 text-white/70 max-w-xl" style={{ fontSize: 16.5, lineHeight: 1.6 }}>
+            <p className="mt-5 max-w-xl" style={{ color: "rgba(25,20,0,0.72)", fontSize: 16.5, lineHeight: 1.6 }}>
               {description}
             </p>
           )}
@@ -59,8 +59,9 @@ export function CinematicHero({
               {badges.map((b, i) => (
                 <div
                   key={i}
-                  className="pd-glass-light px-3.5 py-2"
+                  className="px-3.5 py-2"
                   style={{
+                    background: "var(--pd-dark)",
                     fontSize: 11,
                     color: b.accent ?? i === 0 ? "var(--pd-yellow)" : "#fff",
                     letterSpacing: "0.14em",

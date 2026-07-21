@@ -7,8 +7,12 @@ type SiteEvent = {
   session_id: string;
   event_type: string;
   path: string;
+  page_url: string | null;
   product_sku: string | null;
   product_name: string | null;
+  product_slug: string | null;
+  cta_label: string | null;
+  form_fields: Record<string, unknown> | null;
   created_at: string;
 };
 

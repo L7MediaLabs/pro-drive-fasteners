@@ -112,21 +112,74 @@ export function LiveActivityPanel() {
     };
   }, [events]);
 
+  const activeFilters = (Object.entries(filters) as [FilterKey, string][]).filter(([_, v]) => v !== "");
+
   return (
     <div style={{ ...cardStyle, ...cardAccentTop, padding: 22 }}>
-      <div style={{ ...mono, fontSize: 10, color: YELLOW, letterSpacing: "0.25em", marginBottom: 14 }}>
-        LIVE SITE ACTIVITY · LAST 7 DAYS
+      <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 16, flexWrap: "wrap", marginBottom: 14 }}>
+        <div style={{ ...mono, fontSize: 10, color: YELLOW, letterSpacing: "0.25em" }}>
+          LIVE SITE ACTIVITY · LAST 7 DAYS
+        </div>
+        {activeFilters.length > 0 && (
+          <button
+            onClick={() => setFilters({ event_type: "", page_url: "", product_slug: "", cta_label: "" })}
+            style={{
+              ...mono,
+              fontSize: 10,
+              color: YELLOW,
+              background: "transparent",
+              border: `1px solid ${YELLOW}`,
+              borderRadius: 2,
+              padding: "4px 10px",
+              cursor: "pointer",
+              letterSpacing: "0.1em",
+            }}
+          >
+            Clear filters ({activeFilters.length})
+          </button>
+        )}
       </div>
 
       {error && (
         <div style={{ fontSize: 12, color: "#c33", marginBottom: 12 }}>{error}</div>
       )}
 
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12, marginBottom: 18 }}>
+        <FilterSelect
+          label="Event Type"
+          value={filters.event_type}
+          options={filterOptions.event_type}
+          onChange={(v) => setFilters((f) => ({ ...f, event_type: v }))}
+          formatLabel={(v) => v.replace(/_/g, " ").toUpperCase()}
+        />
+        <FilterSelect
+          label="Page URL"
+          value={filters.page_url}
+          options={filterOptions.page_url}
+          onChange={(v) => setFilters((f) => ({ ...f, page_url: v }))}
+          truncate
+        />
+        <FilterSelect
+          label="Product"
+          value={filters.product_slug}
+          options={filterOptions.product_slug}
+          onChange={(v) => setFilters((f) => ({ ...f, product_slug: v }))}
+          truncate
+        />
+        <FilterSelect
+          label="CTA Label"
+          value={filters.cta_label}
+          options={filterOptions.cta_label}
+          onChange={(v) => setFilters((f) => ({ ...f, cta_label: v }))}
+          truncate
+        />
+      </div>
+
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 16, marginBottom: 22 }}>
         <Stat label="TOTAL SESSIONS" value={events ? String(totalSessions) : "…"} />
-        <Stat label="TOTAL EVENTS" value={events ? String(events.length) : "…"} />
-        <Stat label="PRODUCT VIEWS" value={events ? String(events.filter(e => e.event_type === "product_view").length) : "…"} />
-        <Stat label="CTA CLICKS" value={events ? String(events.filter(e => e.event_type === "cta_click").length) : "…"} />
+        <Stat label="TOTAL EVENTS" value={events ? String(filtered.length) : "…"} />
+        <Stat label="PRODUCT VIEWS" value={events ? String(filtered.filter(e => e.event_type === "product_view").length) : "…"} />
+        <Stat label="CTA CLICKS" value={events ? String(filtered.filter(e => e.event_type === "cta_click").length) : "…"} />
       </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 22 }}>

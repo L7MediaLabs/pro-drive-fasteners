@@ -191,20 +191,28 @@ function AdminLayout() {
           alignSelf: "flex-start",
         }}
       >
-        <div style={{ padding: "0 22px", marginBottom: 36 }}>
+        <div style={{ padding: "0 20px", marginBottom: 36 }}>
           <img
             src={logoAsset.url}
             alt="Pro-Drive Fasteners"
-            style={{ height: 32, width: "auto", display: "block", filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.35))" }}
+            style={{
+              display: "block",
+              width: "100%",
+              height: "auto",
+              objectFit: "contain",
+              borderRadius: 2,
+              boxShadow: "0 2px 8px rgba(0,0,0,0.35)",
+            }}
           />
           <div
             style={{
-              marginTop: 8,
+              marginTop: 10,
               fontFamily: "'IBM Plex Mono', monospace",
               fontSize: 9,
-              color: "rgba(255,205,0,0.45)",
+              color: "rgba(255,205,0,0.5)",
               textTransform: "uppercase",
-              letterSpacing: "0.28em",
+              letterSpacing: "0.32em",
+              textAlign: "center",
             }}
           >
             Intelligence

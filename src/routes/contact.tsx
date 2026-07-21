@@ -21,7 +21,7 @@ function Contact() {
     e.preventDefault();
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries());
-    await supabase.from("contact_submissions").insert({
+    const payload = {
       name: String(data.name),
       company: String(data.company),
       email: String(data.email),
@@ -29,8 +29,18 @@ function Contact() {
       interest: String(data.interest ?? ""),
       message: String(data.message ?? ""),
       session_id: getSessionId(),
+    };
+    await supabase.from("contact_submissions").insert(payload);
+    trackEvent("contact_submit", {
+      ctaLabel: "Send Message",
+      formFields: {
+        interest: payload.interest,
+        company: payload.company,
+        has_phone: Boolean(payload.phone),
+        has_message: Boolean(payload.message),
+        message_length: payload.message.length,
+      },
     });
-    trackEvent("contact_submit");
     setSent(true);
     form.reset();
     setTimeout(() => setSent(false), 5000);

@@ -63,6 +63,7 @@ export function LiveActivityPanel() {
     const from = startOfDay(subDays(to, 6));
     return { from, to };
   });
+  const [selectedEvent, setSelectedEvent] = useState<SiteEvent | null>(null);
 
   useEffect(() => {
     let cancelled = false;

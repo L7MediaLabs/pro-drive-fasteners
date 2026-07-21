@@ -1,5 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
+import { format, startOfDay, endOfDay, subDays } from "date-fns";
+import { CalendarIcon } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { YELLOW, mono, cardStyle, cardAccentTop } from "@/components/admin/ui";
 
 type SiteEvent = {
@@ -45,15 +51,20 @@ export function LiveActivityPanel() {
     product_slug: "",
     cta_label: "",
   });
+  const [range, setRange] = useState<{ from: Date; to: Date }>(() => {
+    const to = endOfDay(new Date());
+    const from = startOfDay(subDays(to, 6));
+    return { from, to };
+  });
 
   useEffect(() => {
     let cancelled = false;
     async function load() {
-      const sevenDays = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
       const { data, error } = await supabase
         .from("site_events")
         .select("id, session_id, event_type, path, page_url, product_sku, product_name, product_slug, cta_label, form_fields, created_at")
-        .gte("created_at", sevenDays)
+        .gte("created_at", range.from.toISOString())
+        .lte("created_at", range.to.toISOString())
         .order("created_at", { ascending: false })
         .limit(2000);
       if (cancelled) return;
@@ -63,7 +74,7 @@ export function LiveActivityPanel() {
     load();
     const t = setInterval(load, 30_000);
     return () => { cancelled = true; clearInterval(t); };
-  }, []);
+  }, [range.from.toISOString(), range.to.toISOString()]);
 
   const filtered = useMemo(() => {
     return (events ?? []).filter((e) => {
@@ -118,26 +129,33 @@ export function LiveActivityPanel() {
     <div style={{ ...cardStyle, ...cardAccentTop, padding: 22 }}>
       <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 16, flexWrap: "wrap", marginBottom: 14 }}>
         <div style={{ ...mono, fontSize: 10, color: YELLOW, letterSpacing: "0.25em" }}>
-          LIVE SITE ACTIVITY · LAST 7 DAYS
+          LIVE SITE ACTIVITY · {format(range.from, "MMM d")}–{format(range.to, "MMM d, yyyy")}
         </div>
-        {activeFilters.length > 0 && (
-          <button
-            onClick={() => setFilters({ event_type: "", page_url: "", product_slug: "", cta_label: "" })}
-            style={{
-              ...mono,
-              fontSize: 10,
-              color: YELLOW,
-              background: "transparent",
-              border: `1px solid ${YELLOW}`,
-              borderRadius: 2,
-              padding: "4px 10px",
-              cursor: "pointer",
-              letterSpacing: "0.1em",
-            }}
-          >
-            Clear filters ({activeFilters.length})
-          </button>
-        )}
+        <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+          <QuickRange label="Today" onClick={() => setRange({ from: startOfDay(new Date()), to: endOfDay(new Date()) })} />
+          <QuickRange label="7d" onClick={() => setRange({ from: startOfDay(subDays(new Date(), 6)), to: endOfDay(new Date()) })} />
+          <QuickRange label="30d" onClick={() => setRange({ from: startOfDay(subDays(new Date(), 29)), to: endOfDay(new Date()) })} />
+          <DatePickerButton date={range.from} onSelect={(d) => d && setRange((r) => ({ ...r, from: startOfDay(d) }))} label="From" />
+          <DatePickerButton date={range.to} onSelect={(d) => d && setRange((r) => ({ ...r, to: endOfDay(d) }))} label="To" />
+          {activeFilters.length > 0 && (
+            <button
+              onClick={() => setFilters({ event_type: "", page_url: "", product_slug: "", cta_label: "" })}
+              style={{
+                ...mono,
+                fontSize: 10,
+                color: YELLOW,
+                background: "transparent",
+                border: `1px solid ${YELLOW}`,
+                borderRadius: 2,
+                padding: "4px 10px",
+                cursor: "pointer",
+                letterSpacing: "0.1em",
+              }}
+            >
+              Clear filters ({activeFilters.length})
+            </button>
+          )}
+        </div>
       </div>
 
       {error && (
@@ -267,6 +285,70 @@ function Row({ left, right }: { left: string; right: string }) {
 
 function Empty() {
   return <div style={{ fontSize: 12, color: "var(--pdx-text-mute)", fontStyle: "italic", padding: "6px 0" }}>No data yet.</div>;
+}
+
+function QuickRange({ label, onClick }: { label: string; onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      style={{
+        ...mono,
+        fontSize: 10,
+        color: "var(--pdx-text-dim)",
+        background: "transparent",
+        border: "1px solid var(--pdx-border)",
+        borderRadius: 2,
+        padding: "4px 10px",
+        cursor: "pointer",
+        letterSpacing: "0.1em",
+      }}
+      onMouseEnter={(e) => (e.currentTarget.style.borderColor = YELLOW)}
+      onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--pdx-border)")}
+    >
+      {label}
+    </button>
+  );
+}
+
+function DatePickerButton({
+  date,
+  onSelect,
+  label,
+}: {
+  date: Date;
+  onSelect: (date: Date | undefined) => void;
+  label: string;
+}) {
+  return (
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button
+          variant="outline"
+          className={cn(
+            "justify-start text-left font-normal h-auto",
+            !date && "text-muted-foreground"
+          )}
+          style={{
+            ...mono,
+            fontSize: 10,
+            letterSpacing: "0.05em",
+            padding: "4px 10px",
+            borderRadius: 2,
+            border: "1px solid var(--pdx-border)",
+            background: "var(--pdx-input-bg, var(--pdx-panel))",
+            color: "var(--pdx-text)",
+            gap: 6,
+          }}
+        >
+          <CalendarIcon size={12} />
+          <span style={{ color: "var(--pdx-text-mute)" }}>{label}:</span> {format(date, "MMM d")}
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-auto p-0" align="end">
+        <Calendar mode="single" selected={date} onSelect={onSelect} initialFocus className={cn("p-3 pointer-events-auto")} />
+      </PopoverContent>
+    </Popover>
+  );
 }
 
 function FilterSelect({

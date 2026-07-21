@@ -78,14 +78,19 @@ export function LiveActivityPanel() {
   }, [range.from.toISOString(), range.to.toISOString()]);
 
   const filtered = useMemo(() => {
+    const q = search.trim().toLowerCase();
     return (events ?? []).filter((e) => {
       if (filters.event_type && e.event_type !== filters.event_type) return false;
       if (filters.page_url && e.page_url !== filters.page_url) return false;
       if (filters.product_slug && e.product_slug !== filters.product_slug) return false;
       if (filters.cta_label && e.cta_label !== filters.cta_label) return false;
+      if (q) {
+        const haystack = `${e.path} ${e.page_url ?? ""}`.toLowerCase();
+        if (!haystack.includes(q)) return false;
+      }
       return true;
     });
-  }, [events, filters]);
+  }, [events, filters, search]);
 
   const totalSessions = filtered ? new Set(filtered.map((e) => e.session_id)).size : 0;
 

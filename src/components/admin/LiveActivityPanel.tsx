@@ -303,6 +303,121 @@ function Stat({ label, value }: { label: string; value: string }) {
   );
 }
 
+function EventDetailsSheet({ event, onClose }: { event: SiteEvent | null; onClose: () => void }) {
+  if (!event) return null;
+  return (
+    <SheetContent
+      side="right"
+      style={{
+        background: "var(--pdx-panel, #0f172a)",
+        borderLeft: "1px solid var(--pdx-border)",
+        color: "var(--pdx-text)",
+        maxWidth: 480,
+        width: "100%",
+      }}
+    >
+      <SheetHeader>
+        <SheetTitle style={{ fontSize: 14, color: YELLOW, letterSpacing: "0.12em", ...mono }}>
+          {event.event_type.replace(/_/g, " ").toUpperCase()}
+        </SheetTitle>
+        <SheetDescription style={{ fontSize: 12, color: "var(--pdx-text-mute)" }}>
+          {format(new Date(event.created_at), "MMM d, yyyy h:mm:ss a")}
+        </SheetDescription>
+      </SheetHeader>
+
+      <div style={{ marginTop: 24, display: "flex", flexDirection: "column", gap: 18 }}>
+        <DetailGroup title="Session">
+          <DetailItem label="Session ID" value={event.session_id} mono />
+          <DetailItem label="Path" value={event.path} />
+          <DetailItem label="Page URL" value={event.page_url} />
+          <DetailItem label="Referrer" value={event.referrer} />
+        </DetailGroup>
+
+        <DetailGroup title="Product / CTA">
+          <DetailItem label="Product SKU" value={event.product_sku} />
+          <DetailItem label="Product Name" value={event.product_name} />
+          <DetailItem label="Product Slug" value={event.product_slug} />
+          <DetailItem label="CTA Label" value={event.cta_label} />
+        </DetailGroup>
+
+        <DetailGroup title="UTM">
+          <DetailItem label="utm_source" value={event.utm_source} />
+          <DetailItem label="utm_medium" value={event.utm_medium} />
+          <DetailItem label="utm_campaign" value={event.utm_campaign} />
+        </DetailGroup>
+
+        {event.form_fields && (
+          <DetailGroup title="Form Fields">
+            <JsonBlock data={event.form_fields} />
+          </DetailGroup>
+        )}
+
+        {event.user_agent && (
+          <DetailGroup title="User Agent">
+            <div style={{ fontSize: 11, color: "var(--pdx-text-dim)", wordBreak: "break-word", lineHeight: 1.5 }}>
+              {event.user_agent}
+            </div>
+          </DetailGroup>
+        )}
+      </div>
+
+      <div style={{ marginTop: 24 }}>
+        <Button
+          variant="outline"
+          onClick={onClose}
+          style={{ ...mono, fontSize: 10, letterSpacing: "0.1em", borderRadius: 2, borderColor: "var(--pdx-border)" }}
+        >
+          CLOSE
+        </Button>
+      </div>
+    </SheetContent>
+  );
+}
+
+function DetailGroup({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <div style={{ ...mono, fontSize: 10, color: "var(--pdx-text-mute)", letterSpacing: "0.2em", marginBottom: 8 }}>
+        {title}
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>{children}</div>
+    </div>
+  );
+}
+
+function DetailItem({ label, value, mono: useMono }: { label: string; value: string | null; mono?: boolean }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+      <div style={{ fontSize: 10, color: "var(--pdx-text-dim)", ...mono }}>{label}</div>
+      <div style={{ fontSize: 12, color: value ? "var(--pdx-text)" : "var(--pdx-text-mute)", ...(useMono ? mono : {}), wordBreak: "break-word" }}>
+        {value ?? "—"}
+      </div>
+    </div>
+  );
+}
+
+function JsonBlock({ data }: { data: Record<string, unknown> }) {
+  return (
+    <pre
+      style={{
+        ...mono,
+        fontSize: 11,
+        color: "var(--pdx-text-dim)",
+        background: "var(--pdx-input-bg, rgba(255,255,255,0.04))",
+        border: "1px solid var(--pdx-border)",
+        borderRadius: 2,
+        padding: 10,
+        overflow: "auto",
+        maxHeight: 240,
+        whiteSpace: "pre-wrap",
+        wordBreak: "break-word",
+      }}
+    >
+      {JSON.stringify(data, null, 2)}
+    </pre>
+  );
+}
+
 function Row({ left, right }: { left: string; right: string }) {
   return (
     <div style={{ display: "flex", justifyContent: "space-between", padding: "6px 0", borderBottom: "1px solid var(--pdx-border)", fontSize: 12, color: "var(--pdx-text)" }}>

@@ -57,29 +57,29 @@ function TappingRings() {
   const related = pickRelated(["V-6RING-R","V-6RING-O","V-6RING-Y"], 6);
   return (
     <div>
-      <section className="px-[6%] pt-20 pb-12 relative overflow-hidden" style={{ background: "var(--pd-dark)" }}>
+      <section className="px-[6%] pt-20 pb-12 relative overflow-hidden" style={{ background: "var(--pd-cream)" }}>
         <img
           src={images.tappingRings.orange2}
           alt=""
           aria-hidden
           style={{
             position: "absolute", inset: 0, width: "100%", height: "100%",
-            objectFit: "cover", objectPosition: "center", opacity: 0.22,
+            objectFit: "cover", objectPosition: "center", opacity: 0.2,
           }}
         />
         <div
           aria-hidden
           style={{
             position: "absolute", inset: 0,
-            background: "linear-gradient(90deg, rgba(25,20,0,0.85), rgba(25,20,0,0.55))",
+            background: "linear-gradient(90deg, rgba(245,241,232,0.92), rgba(245,241,232,0.58))",
           }}
         />
         <div className="relative z-10">
-          <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>Pro-Drive Exclusive</div>
-          <h1 className="pd-display text-white mt-3" style={{ fontSize: "clamp(40px, 8vw, 72px)" }}>
+          <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Pro-Drive Exclusive</div>
+          <h1 className="pd-display mt-3" style={{ color: "var(--pd-dark)", fontSize: "clamp(40px, 8vw, 72px)" }}>
             Three Rings.<br />Every Flooring Type.
           </h1>
-          <div className="mt-4" style={{ color: "var(--pd-yellow)", fontSize: 18, fontWeight: 600 }}>
+          <div className="mt-4" style={{ color: "var(--pd-gold)", fontSize: 18, fontWeight: 700 }}>
             2.1 lbs. Non-marring. Guaranteed.
           </div>
           <div className="grid md:grid-cols-3 gap-4 mt-12">

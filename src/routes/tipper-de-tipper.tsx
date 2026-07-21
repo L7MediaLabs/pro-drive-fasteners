@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { trackEvent } from "@/lib/analytics";
 import { images } from "../data/images";
 import { CinematicHero, RelatedProducts, PageDisclaimers } from "../components/editorial";
 import { pickRelated } from "../data/products";
@@ -185,7 +186,7 @@ function TDT() {
         </div>
 
         <div className="mt-12 text-center">
-          <Link to="/contact" className="pd-btn-primary">Request Distributor Pricing</Link>
+          <Link to="/contact" onClick={() => trackEvent("cta_click")} className="pd-btn-primary">Request Distributor Pricing</Link>
         </div>
       </section>
 

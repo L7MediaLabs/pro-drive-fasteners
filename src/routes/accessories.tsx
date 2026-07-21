@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { trackEvent } from "@/lib/analytics";
 import ork6Pkg from "../assets/ork6_package.jpg.asset.json";
 import ork6Pdf from "../assets/ork6_parts_diagram.pdf.asset.json";
 import malletDisplay from "../assets/mallet_display.png.asset.json";
@@ -96,7 +97,7 @@ function Acc() {
               </div>
 
               <div className="flex gap-3 mt-7 flex-wrap">
-                <Link to="/contact" className="pd-btn-primary" style={{ padding: "12px 22px", fontSize: 12 }}>
+                <Link to="/contact" onClick={() => trackEvent("cta_click")} className="pd-btn-primary" style={{ padding: "12px 22px", fontSize: 12 }}>
                   Request Distributor Pricing →
                 </Link>
                 <a
@@ -186,7 +187,7 @@ function Acc() {
                   <li>• Displayable on any type of background</li>
                   <li>• Contact sales for additional information</li>
                 </ul>
-                <Link to="/contact" className="pd-btn-primary mt-6 inline-block self-start" style={{ padding: "10px 20px", fontSize: 11 }}>
+                <Link to="/contact" onClick={() => trackEvent("cta_click")} className="pd-btn-primary mt-6 inline-block self-start" style={{ padding: "10px 20px", fontSize: 11 }}>
                   Contact Sales →
                 </Link>
               </div>
@@ -199,7 +200,7 @@ function Acc() {
               Working on a flagship distributor program or a regional rollout? Our team builds custom point-of-purchase displays
               and co-branded merchandising to fit your floor plan.
             </p>
-            <Link to="/contact" className="pd-btn-primary mt-5 inline-block" style={{ padding: "10px 20px", fontSize: 11 }}>
+            <Link to="/contact" onClick={() => trackEvent("cta_click")} className="pd-btn-primary mt-5 inline-block" style={{ padding: "10px 20px", fontSize: 11 }}>
               Start a Conversation →
             </Link>
           </article>

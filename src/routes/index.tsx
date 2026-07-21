@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { trackEvent } from "@/lib/analytics";
 import { useEffect, useState } from "react";
 import instagramDisplay from "../assets/instagram-display.png.asset.json";
 import instagramInstall1 from "../assets/instagram-install-1.png.asset.json";
@@ -215,7 +216,7 @@ function Home() {
           </p>
           <div className="flex flex-wrap gap-3.5">
             <Link to="/products" className="pd-btn-primary">Browse Full Line</Link>
-            <Link to="/contact" className="pd-btn-outline-dark">Contact for Pricing</Link>
+            <Link to="/contact" onClick={() => trackEvent("cta_click")} className="pd-btn-outline-dark">Contact for Pricing</Link>
           </div>
           <div
             className="mt-16 pt-8 flex flex-wrap gap-12"
@@ -625,7 +626,7 @@ function Home() {
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Link to="/contact" className="pd-btn-dark">Request Distributor Pricing</Link>
+            <Link to="/contact" onClick={() => trackEvent("cta_click")} className="pd-btn-dark">Request Distributor Pricing</Link>
             <a href="#" target="_blank" rel="noreferrer" className="pd-btn-outline-dark">Download Catalog</a>
           </div>
         </div>

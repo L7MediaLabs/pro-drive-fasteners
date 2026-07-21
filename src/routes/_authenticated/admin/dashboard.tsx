@@ -154,6 +154,10 @@ function DashboardPage() {
       <Ticker leads={data.leads} />
 
       {/* Hot Leads Table */}
+      {/* Live Site Activity — real-time visitor data */}
+      <LiveActivityPanel />
+
+      {/* Hot Leads Table */}
       <HotLeadsTable leads={hotWarm} craigCallScript={data.summary.craigCallScript} />
     </div>
   );

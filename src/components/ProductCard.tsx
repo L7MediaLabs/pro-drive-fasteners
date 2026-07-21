@@ -13,8 +13,29 @@ export type Product = {
 };
 
 export function ProductCard({ product }: { product: Product }) {
+  const ref = useRef<HTMLElement | null>(null);
+  const seen = useRef(false);
+  useEffect(() => {
+    if (!ref.current || seen.current) return;
+    const el = ref.current;
+    const key = `pd_pv_${product.id}`;
+    if (sessionStorage.getItem(key)) { seen.current = true; return; }
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting && !seen.current) {
+          seen.current = true;
+          sessionStorage.setItem(key, "1");
+          trackEvent("product_view", { productSku: product.id, productName: product.name });
+          io.disconnect();
+        }
+      }
+    }, { threshold: 0.5 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [product.id, product.name]);
   return (
     <article
+      ref={ref}
       className="bg-white flex flex-col transition-shadow overflow-hidden"
       style={{ borderTop: "3px solid var(--pd-yellow)" }}
       onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 4px 20px rgba(255,205,0,0.18)")}

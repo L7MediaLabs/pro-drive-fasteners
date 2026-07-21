@@ -127,11 +127,11 @@ function CleatDepthDiagram({
       ))}
 
       {/* Cleat shank — length + angle true to scale */}
-      <line x1={stapleX0} y1={stapleY0} x2={stapleX1} y2={stapleY1} stroke="#B8B8BE" strokeWidth="1.8" strokeLinecap="round" />
-      <line x1={stapleX0} y1={stapleY0} x2={stapleX1} y2={stapleY1} stroke="rgba(255,255,255,0.75)" strokeWidth="0.5" />
+      <line x1={stapleX0} y1={stapleY0} x2={stapleX1} y2={stapleY1} stroke="#B8B8BE" strokeWidth="3.5" strokeLinecap="round" />
+      <line x1={stapleX0} y1={stapleY0} x2={stapleX1} y2={stapleY1} stroke="rgba(255,255,255,0.75)" strokeWidth="1" />
       {/* Chisel point at tip */}
       <polygon
-        points={`${stapleX1 - 2.5},${stapleY1 - 3} ${stapleX1 + 3.5},${stapleY1 + 1.2} ${stapleX1 - 1},${stapleY1 + 2.5}`}
+        points={`${stapleX1 - 4.5},${stapleY1 - 5} ${stapleX1 + 6},${stapleY1 + 2} ${stapleX1 - 1.5},${stapleY1 + 4}`}
         fill="#1a1a1a"
       />
 

@@ -100,9 +100,9 @@ function TappingRings() {
                 </div>
                 <div className="p-6">
                   <span style={{ display: "inline-block", width: 32, height: 32, borderRadius: "50%", background: r.color }} />
-                  <div className="pd-label mt-4" style={{ color: "rgba(255,205,0,0.5)" }}>{r.id}</div>
+                  <div className="pd-label mt-4" style={{ color: "var(--pd-muted)" }}>{r.id}</div>
                   <div className="flex items-center gap-2 mt-1 flex-wrap">
-                    <h3 className="text-white" style={{ fontWeight: 800, fontSize: 20 }}>{r.name.toUpperCase()}</h3>
+                    <h3 style={{ fontWeight: 800, fontSize: 20, color: "var(--pd-dark)" }}>{r.name.toUpperCase()}</h3>
                     {r.id === "V-6RING-O" && (
                       <span
                         style={{
@@ -119,10 +119,10 @@ function TappingRings() {
                       </span>
                     )}
                   </div>
-                  <div className="mt-3 text-white/80 text-sm">
-                    <strong style={{ color: "var(--pd-yellow)" }}>Best for: </strong>{r.best}
+                  <div className="mt-3 text-sm" style={{ color: "var(--pd-dark)" }}>
+                    <strong style={{ color: "var(--pd-gold)" }}>Best for: </strong>{r.best}
                   </div>
-                  <ul className="mt-3 space-y-1.5 text-sm text-white/65">
+                  <ul className="mt-3 space-y-1.5 text-sm" style={{ color: "var(--pd-muted)" }}>
                     {r.bullets.map(b => <li key={b}>— {b}</li>)}
                   </ul>
                   <Link to="/contact" onClick={() => trackEvent("cta_click", { ctaLabel: "Request Distributor Pricing" })} className="pd-btn-primary mt-6" style={{ padding: "10px", width: "100%", fontSize: 11 }}>Request Distributor Pricing →</Link>

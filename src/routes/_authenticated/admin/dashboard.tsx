@@ -12,6 +12,7 @@ import {
   cardStyle,
   cardAccentTop,
 } from "@/components/admin/ui";
+import { LiveActivityPanel } from "@/components/admin/LiveActivityPanel";
 import type { Lead } from "@/lib/intelligence-types";
 
 export const Route = createFileRoute("/_authenticated/admin/dashboard")({

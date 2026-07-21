@@ -129,26 +129,33 @@ export function LiveActivityPanel() {
     <div style={{ ...cardStyle, ...cardAccentTop, padding: 22 }}>
       <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 16, flexWrap: "wrap", marginBottom: 14 }}>
         <div style={{ ...mono, fontSize: 10, color: YELLOW, letterSpacing: "0.25em" }}>
-          LIVE SITE ACTIVITY · LAST 7 DAYS
+          LIVE SITE ACTIVITY · {format(range.from, "MMM d")}–{format(range.to, "MMM d, yyyy")}
         </div>
-        {activeFilters.length > 0 && (
-          <button
-            onClick={() => setFilters({ event_type: "", page_url: "", product_slug: "", cta_label: "" })}
-            style={{
-              ...mono,
-              fontSize: 10,
-              color: YELLOW,
-              background: "transparent",
-              border: `1px solid ${YELLOW}`,
-              borderRadius: 2,
-              padding: "4px 10px",
-              cursor: "pointer",
-              letterSpacing: "0.1em",
-            }}
-          >
-            Clear filters ({activeFilters.length})
-          </button>
-        )}
+        <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+          <QuickRange label="Today" onClick={() => setRange({ from: startOfDay(new Date()), to: endOfDay(new Date()) })} />
+          <QuickRange label="7d" onClick={() => setRange({ from: startOfDay(subDays(new Date(), 6)), to: endOfDay(new Date()) })} />
+          <QuickRange label="30d" onClick={() => setRange({ from: startOfDay(subDays(new Date(), 29)), to: endOfDay(new Date()) })} />
+          <DatePickerButton date={range.from} onSelect={(d) => d && setRange((r) => ({ ...r, from: startOfDay(d) }))} label="From" />
+          <DatePickerButton date={range.to} onSelect={(d) => d && setRange((r) => ({ ...r, to: endOfDay(d) }))} label="To" />
+          {activeFilters.length > 0 && (
+            <button
+              onClick={() => setFilters({ event_type: "", page_url: "", product_slug: "", cta_label: "" })}
+              style={{
+                ...mono,
+                fontSize: 10,
+                color: YELLOW,
+                background: "transparent",
+                border: `1px solid ${YELLOW}`,
+                borderRadius: 2,
+                padding: "4px 10px",
+                cursor: "pointer",
+                letterSpacing: "0.1em",
+              }}
+            >
+              Clear filters ({activeFilters.length})
+            </button>
+          )}
+        </div>
       </div>
 
       {error && (

@@ -454,7 +454,7 @@ function EventDetailsSheet({ event, onClose }: { event: SiteEvent | null; onClos
 function DetailGroup({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <div style={{ ...mono, fontSize: 10, color: "var(--pdx-text-mute)", letterSpacing: "0.2em", marginBottom: 8 }}>
+      <div style={{ ...mono, fontSize: 10, color: "rgba(255,205,0,0.7)", letterSpacing: "0.2em", marginBottom: 8 }}>
         {title}
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>{children}</div>
@@ -465,8 +465,8 @@ function DetailGroup({ title, children }: { title: string; children: React.React
 function DetailItem({ label, value, mono: useMono }: { label: string; value: string | null; mono?: boolean }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-      <div style={{ fontSize: 10, color: "var(--pdx-text-dim)", ...mono }}>{label}</div>
-      <div style={{ fontSize: 12, color: value ? "var(--pdx-text)" : "var(--pdx-text-mute)", ...(useMono ? mono : {}), wordBreak: "break-word" }}>
+      <div style={{ fontSize: 10, color: "rgba(255,255,255,0.5)", ...mono }}>{label}</div>
+      <div style={{ fontSize: 12, color: value ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.35)", ...(useMono ? mono : {}), wordBreak: "break-word" }}>
         {value ?? "—"}
       </div>
     </div>
@@ -479,9 +479,9 @@ function JsonBlock({ data }: { data: Record<string, unknown> }) {
       style={{
         ...mono,
         fontSize: 11,
-        color: "var(--pdx-text-dim)",
-        background: "var(--pdx-input-bg, rgba(255,255,255,0.04))",
-        border: "1px solid var(--pdx-border)",
+        color: "rgba(255,255,255,0.85)",
+        background: "rgba(255,255,255,0.04)",
+        border: "1px solid rgba(255,205,0,0.18)",
         borderRadius: 2,
         padding: 10,
         overflow: "auto",
@@ -494,6 +494,7 @@ function JsonBlock({ data }: { data: Record<string, unknown> }) {
     </pre>
   );
 }
+
 
 function Row({ left, right }: { left: string; right: string }) {
   return (

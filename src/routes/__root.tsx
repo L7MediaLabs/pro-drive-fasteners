@@ -84,10 +84,10 @@ function RootShell({ children }: { children: ReactNode }) {
       <head>
         <HeadContent />
         {/* Pro-Drive Intelligence Layer — Installed by Seventh State Creative */}
-        {/* Apollo.io Visitor Identification — DO NOT REMOVE */}
-        {/* REPLACE THIS COMMENT WITH YOUR APOLLO SNIPPET */}
-        {/* Meta Pixel — Instagram and Facebook Traffic Tracking — DO NOT REMOVE */}
-        {/* REPLACE THIS COMMENT WITH YOUR META PIXEL CODE */}
+        {/* Apollo.io Visitor Identification */}
+        <ApolloScript />
+        {/* Meta Pixel — Instagram and Facebook Traffic Tracking */}
+        <MetaPixelScript />
       </head>
       <body>
         {children}

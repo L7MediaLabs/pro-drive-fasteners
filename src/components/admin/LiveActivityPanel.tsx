@@ -168,6 +168,14 @@ export function LiveActivityPanel() {
         <div style={{ fontSize: 12, color: "#c33", marginBottom: 12 }}>{error}</div>
       )}
 
+      <div style={{ marginBottom: 12 }}>
+        <SearchInput
+          value={search}
+          onChange={setSearch}
+          placeholder="Search pages, paths, or URLs…"
+        />
+      </div>
+
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12, marginBottom: 18 }}>
         <FilterSelect
           label="Event Type"

@@ -35,6 +35,24 @@ export type Database = {
         }
         Relationships: []
       }
+      allowed_admin_emails: {
+        Row: {
+          added_by: string | null
+          created_at: string
+          email: string
+        }
+        Insert: {
+          added_by?: string | null
+          created_at?: string
+          email: string
+        }
+        Update: {
+          added_by?: string | null
+          created_at?: string
+          email?: string
+        }
+        Relationships: []
+      }
       contact_submissions: {
         Row: {
           company: string

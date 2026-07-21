@@ -186,7 +186,7 @@ function TDT() {
         </div>
 
         <div className="mt-12 text-center">
-          <Link to="/contact" onClick={() => trackEvent("cta_click")} className="pd-btn-primary">Request Distributor Pricing</Link>
+          <Link to="/contact" onClick={() => trackEvent("cta_click", { ctaLabel: "Request Distributor Pricing" })} className="pd-btn-primary">Request Distributor Pricing</Link>
         </div>
       </section>
 

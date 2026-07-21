@@ -125,7 +125,7 @@ function TappingRings() {
                   <ul className="mt-3 space-y-1.5 text-sm text-white/65">
                     {r.bullets.map(b => <li key={b}>— {b}</li>)}
                   </ul>
-                  <Link to="/contact" onClick={() => trackEvent("cta_click")} className="pd-btn-primary mt-6" style={{ padding: "10px", width: "100%", fontSize: 11 }}>Request Distributor Pricing →</Link>
+                  <Link to="/contact" onClick={() => trackEvent("cta_click", { ctaLabel: "Request Distributor Pricing" })} className="pd-btn-primary mt-6" style={{ padding: "10px", width: "100%", fontSize: 11 }}>Request Distributor Pricing →</Link>
                 </div>
               </article>
             ))}

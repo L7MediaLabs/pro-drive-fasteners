@@ -206,7 +206,7 @@ function AirTools() {
                 <ul className="grid grid-cols-2 gap-x-4 gap-y-1.5 mt-4 text-[12px]" style={{ color: "var(--pd-dark)" }}>
                   {n.specs.map(s => <li key={s} className="flex gap-2"><span style={{ color: n.accent }}>—</span>{s}</li>)}
                 </ul>
-                <Link to="/contact" onClick={() => trackEvent("cta_click")} className="pd-btn-primary mt-5 inline-block" style={{ padding: "10px 22px", fontSize: 11, width: "100%", textAlign: "center" }}>Request Distributor Pricing →</Link>
+                <Link to="/contact" onClick={() => trackEvent("cta_click", { ctaLabel: "Request Distributor Pricing" })} className="pd-btn-primary mt-5 inline-block" style={{ padding: "10px 22px", fontSize: 11, width: "100%", textAlign: "center" }}>Request Distributor Pricing →</Link>
               </div>
             </article>
           ))}
@@ -323,7 +323,7 @@ function AirTools() {
             <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>Build Your Kit</div>
             <h3 className="pd-display text-white mt-2" style={{ fontSize: 28 }}>Nailer + hose + fittings, priced for the crew.</h3>
           </div>
-          <Link to="/contact" onClick={() => trackEvent("cta_click")} className="pd-btn-primary" style={{ padding: "14px 28px", fontSize: 12 }}>Request Distributor Pricing →</Link>
+          <Link to="/contact" onClick={() => trackEvent("cta_click", { ctaLabel: "Request Distributor Pricing" })} className="pd-btn-primary" style={{ padding: "14px 28px", fontSize: 12 }}>Request Distributor Pricing →</Link>
         </div>
       </section>
 

@@ -269,7 +269,7 @@ export function LifestyleBanner({
             <div className="mt-4 space-y-2" style={{ color: "rgba(25,20,0,0.78)", fontSize: 15, lineHeight: 1.7 }}>
               {typeof body === "string" ? <p>{body}</p> : body}
             </div>
-            <Link to={cta.to} onClick={() => cta.to === "/contact" && trackEvent("cta_click")} className="pd-btn-dark mt-6 inline-block" style={{ padding: "12px 24px", fontSize: 12 }}>
+            <Link to={cta.to} onClick={() => cta.to === "/contact" && trackEvent("cta_click", { ctaLabel: cta.label ?? "Contact" })} className="pd-btn-dark mt-6 inline-block" style={{ padding: "12px 24px", fontSize: 12 }}>
               {cta.label}
             </Link>
           </div>

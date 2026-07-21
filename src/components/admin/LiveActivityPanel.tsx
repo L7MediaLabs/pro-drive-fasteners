@@ -7,8 +7,12 @@ type SiteEvent = {
   session_id: string;
   event_type: string;
   path: string;
+  page_url: string | null;
   product_sku: string | null;
   product_name: string | null;
+  product_slug: string | null;
+  cta_label: string | null;
+  form_fields: Record<string, unknown> | null;
   created_at: string;
 };
 
@@ -33,7 +37,7 @@ export function LiveActivityPanel() {
       const sevenDays = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
       const { data, error } = await supabase
         .from("site_events")
-        .select("id, session_id, event_type, path, product_sku, product_name, created_at")
+        .select("id, session_id, event_type, path, page_url, product_sku, product_name, product_slug, cta_label, form_fields, created_at")
         .gte("created_at", sevenDays)
         .order("created_at", { ascending: false })
         .limit(2000);
@@ -107,30 +111,40 @@ export function LiveActivityPanel() {
           RECENT ACTIVITY
         </div>
         {recent.length === 0 && <Empty />}
-        {recent.map((e) => (
-          <div
-            key={e.id}
-            style={{
-              display: "grid",
-              gridTemplateColumns: "120px 1fr 90px",
-              gap: 10,
-              padding: "6px 0",
-              borderBottom: "1px solid var(--pdx-border)",
-              fontSize: 12,
-              color: "var(--pdx-text)",
-            }}
-          >
-            <span style={{ ...mono, fontSize: 10, color: YELLOW, letterSpacing: "0.14em" }}>
-              {e.event_type.replace("_", " ").toUpperCase()}
-            </span>
-            <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-              {e.product_name ? `${e.product_sku} — ${e.product_name}` : e.path}
-            </span>
-            <span style={{ ...mono, fontSize: 10, color: "var(--pdx-text-mute)", textAlign: "right" }}>
-              {since(e.created_at)}
-            </span>
-          </div>
-        ))}
+        {recent.map((e) => {
+          const detail = e.product_name
+            ? `${e.product_sku ?? ""} — ${e.product_name}`
+            : e.cta_label
+              ? `${e.cta_label} · ${e.path}`
+              : e.event_type === "contact_submit" && e.form_fields
+                ? `Lead · ${(e.form_fields as { interest?: string }).interest ?? "—"}`
+                : e.path;
+          return (
+            <div
+              key={e.id}
+              style={{
+                display: "grid",
+                gridTemplateColumns: "120px 1fr 90px",
+                gap: 10,
+                padding: "6px 0",
+                borderBottom: "1px solid var(--pdx-border)",
+                fontSize: 12,
+                color: "var(--pdx-text)",
+              }}
+              title={e.page_url ?? undefined}
+            >
+              <span style={{ ...mono, fontSize: 10, color: YELLOW, letterSpacing: "0.14em" }}>
+                {e.event_type.replace("_", " ").toUpperCase()}
+              </span>
+              <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                {detail}
+              </span>
+              <span style={{ ...mono, fontSize: 10, color: "var(--pdx-text-mute)", textAlign: "right" }}>
+                {since(e.created_at)}
+              </span>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

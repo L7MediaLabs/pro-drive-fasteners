@@ -170,11 +170,15 @@ export type Database = {
       site_events: {
         Row: {
           created_at: string
+          cta_label: string | null
           event_type: string
+          form_fields: Json | null
           id: string
+          page_url: string | null
           path: string
           product_name: string | null
           product_sku: string | null
+          product_slug: string | null
           referrer: string | null
           session_id: string
           user_agent: string | null
@@ -184,11 +188,15 @@ export type Database = {
         }
         Insert: {
           created_at?: string
+          cta_label?: string | null
           event_type: string
+          form_fields?: Json | null
           id?: string
+          page_url?: string | null
           path: string
           product_name?: string | null
           product_sku?: string | null
+          product_slug?: string | null
           referrer?: string | null
           session_id: string
           user_agent?: string | null
@@ -198,11 +206,15 @@ export type Database = {
         }
         Update: {
           created_at?: string
+          cta_label?: string | null
           event_type?: string
+          form_fields?: Json | null
           id?: string
+          page_url?: string | null
           path?: string
           product_name?: string | null
           product_sku?: string | null
+          product_slug?: string | null
           referrer?: string | null
           session_id?: string
           user_agent?: string | null

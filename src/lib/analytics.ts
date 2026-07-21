@@ -80,7 +80,7 @@ export function trackEvent(eventType: string, meta: TrackMeta = {}) {
         product_name: meta.productName ?? null,
         product_slug: meta.productSlug ?? null,
         cta_label: meta.ctaLabel ?? null,
-        form_fields: meta.formFields ?? null,
+        form_fields: (meta.formFields ?? null) as never,
         referrer: document.referrer || null,
         utm_source: utm.utm_source ?? null,
         utm_medium: utm.utm_medium ?? null,

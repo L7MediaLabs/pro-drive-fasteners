@@ -365,6 +365,59 @@ function DatePickerButton({
   );
 }
 
+function SearchInput({
+  value,
+  onChange,
+  placeholder,
+}: {
+  value: string;
+  onChange: (value: string) => void;
+  placeholder: string;
+}) {
+  return (
+    <div style={{ position: "relative" }}>
+      <input
+        type="text"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        style={{
+          width: "100%",
+          ...mono,
+          fontSize: 12,
+          color: "var(--pdx-text)",
+          background: "var(--pdx-input-bg, var(--pdx-panel))",
+          border: "1px solid var(--pdx-border)",
+          borderRadius: 2,
+          padding: "8px 32px 8px 12px",
+          outline: "none",
+        }}
+      />
+      {value && (
+        <button
+          onClick={() => onChange("")}
+          aria-label="Clear search"
+          style={{
+            position: "absolute",
+            right: 8,
+            top: "50%",
+            transform: "translateY(-50%)",
+            background: "transparent",
+            border: "none",
+            color: "var(--pdx-text-mute)",
+            cursor: "pointer",
+            fontSize: 14,
+            lineHeight: 1,
+            padding: 2,
+          }}
+        >
+          ×
+        </button>
+      )}
+    </div>
+  );
+}
+
 function FilterSelect({
   label,
   value,

@@ -8,6 +8,8 @@ import {
 } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
+import logoAsset from "@/assets/prodrive-logo-prev.svg.asset.json";
+
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import {
@@ -190,21 +192,14 @@ function AdminLayout() {
         }}
       >
         <div style={{ padding: "0 22px", marginBottom: 36 }}>
+          <img
+            src={logoAsset.url}
+            alt="Pro-Drive Fasteners"
+            style={{ height: 32, width: "auto", display: "block", filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.35))" }}
+          />
           <div
             style={{
-              fontFamily: "Gotham, 'Saira Condensed', sans-serif",
-              fontWeight: 900,
-              fontSize: 22,
-              color: "#FFCD00",
-              letterSpacing: "0.04em",
-              lineHeight: 1,
-            }}
-          >
-            PD
-          </div>
-          <div
-            style={{
-              marginTop: 6,
+              marginTop: 8,
               fontFamily: "'IBM Plex Mono', monospace",
               fontSize: 9,
               color: "rgba(255,205,0,0.45)",
@@ -215,6 +210,7 @@ function AdminLayout() {
             Intelligence
           </div>
         </div>
+
 
         <nav style={{ flex: 1, display: "flex", flexDirection: "column" }}>
           {NAV.map((n) => {

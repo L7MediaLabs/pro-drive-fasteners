@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { YELLOW, mono, cardStyle, cardAccentTop } from "@/components/admin/ui";
 
 type SiteEvent = {
@@ -19,6 +20,11 @@ type SiteEvent = {
   product_slug: string | null;
   cta_label: string | null;
   form_fields: Record<string, unknown> | null;
+  referrer: string | null;
+  utm_source: string | null;
+  utm_medium: string | null;
+  utm_campaign: string | null;
+  user_agent: string | null;
   created_at: string;
 };
 

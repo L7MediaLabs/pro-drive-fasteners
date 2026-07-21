@@ -66,7 +66,7 @@ const BRAD_COL_W = 60;                      // horizontal spacing per nail
 const BRAD_LEFT_PAD = 24;
 const BRAD_TOP_PAD = 48;                    // room for SKU label + gauge box
 const BRAD_BOTTOM_PAD = 28;                 // room for length label
-const BRAD_SHANK_W = 2.4;
+const BRAD_SHANK_W = 4.5;
 
 function BradNailDiagram({ sizes }: { sizes: typeof brad18Sizes }) {
   const maxLen = Math.max(...sizes.map(s => s.lenIn));
@@ -116,10 +116,10 @@ function BradNailDiagram({ sizes }: { sizes: typeof brad18Sizes }) {
 
             {/* Head — small horizontal cap */}
             <rect
-              x={cx - 3.5}
-              y={shankTop - 2}
-              width={7}
-              height={3}
+              x={cx - 5.5}
+              y={shankTop - 3}
+              width={11}
+              height={4}
               fill="#1a1a1a"
             />
 
@@ -128,23 +128,23 @@ function BradNailDiagram({ sizes }: { sizes: typeof brad18Sizes }) {
               x1={cx}
               y1={shankTop}
               x2={cx}
-              y2={shankBottom - 4}
+              y2={shankBottom - 6}
               stroke="#8a8a90"
               strokeWidth={BRAD_SHANK_W}
               strokeLinecap="butt"
             />
             {/* highlight */}
             <line
-              x1={cx - 0.6}
+              x1={cx - 1}
               y1={shankTop}
-              x2={cx - 0.6}
-              y2={shankBottom - 4}
+              x2={cx - 1}
+              y2={shankBottom - 6}
               stroke="rgba(255,255,255,0.7)"
-              strokeWidth="0.5"
+              strokeWidth="1"
             />
             {/* Chisel point */}
             <polygon
-              points={`${cx - BRAD_SHANK_W / 2},${shankBottom - 4} ${cx + BRAD_SHANK_W / 2},${shankBottom - 4} ${cx + 0.6},${shankBottom}`}
+              points={`${cx - BRAD_SHANK_W / 2},${shankBottom - 6} ${cx + BRAD_SHANK_W / 2},${shankBottom - 6} ${cx + 1},${shankBottom}`}
               fill="#1a1a1a"
             />
 

@@ -282,7 +282,7 @@ function StapleDepthDiagram({
         x2={stapleX1}
         y2={stapleY1}
         stroke="#B8B8BE"
-        strokeWidth="1.8"
+        strokeWidth="3.5"
         strokeLinecap="round"
       />
       <line
@@ -291,11 +291,11 @@ function StapleDepthDiagram({
         x2={stapleX1}
         y2={stapleY1}
         stroke="rgba(255,255,255,0.75)"
-        strokeWidth="0.5"
+        strokeWidth="1"
       />
       {/* Chisel point at the tip */}
       <polygon
-        points={`${stapleX1 - 2.5},${stapleY1 - 3} ${stapleX1 + 3.5},${stapleY1 + 1.2} ${stapleX1 - 1},${stapleY1 + 2.5}`}
+        points={`${stapleX1 - 4.5},${stapleY1 - 5} ${stapleX1 + 6},${stapleY1 + 2} ${stapleX1 - 1.5},${stapleY1 + 4}`}
         fill="#1a1a1a"
       />
 
@@ -356,7 +356,7 @@ function SencoStapleDiagram({
 
   const crownPx = crownIn * ppi;
   const legMaxPx = maxLen * ppi;
-  const legStroke = 4;
+  const legStroke = 7;
   const wireR = legStroke / 2;
 
   const SIDE_LABEL_W = 78;
@@ -375,7 +375,7 @@ function SencoStapleDiagram({
   const VB_W = (SIDE_LABEL_W + TICK_LEN) * 2 + stapleW;
   const VB_H = stapleTop + legMaxPx + BOTTOM_PAD;
 
-  const tipFlare = 3;
+  const tipFlare = 5;
 
   return (
     <svg viewBox={`0 0 ${VB_W} ${VB_H}`} width="100%" style={{ display: "block" }} aria-hidden>
@@ -408,23 +408,23 @@ function SencoStapleDiagram({
         `}
         fill="none"
         stroke="#1a1a1a"
-        strokeWidth="1.4"
+        strokeWidth="2.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       {/* Inner U outline — wire thickness */}
       <path
         d={`
-          M ${legXL + wireR + 1.2} ${stapleTop + legMaxPx}
-          L ${legXL + wireR + 1.2} ${stapleTop + wireR + 1.2}
-          Q ${legXL + wireR + 1.2} ${stapleTop + wireR + 0.6} ${legXL + wireR + 2.4} ${stapleTop + wireR + 0.6}
-          L ${legXR - wireR - 2.4} ${stapleTop + wireR + 0.6}
-          Q ${legXR - wireR - 1.2} ${stapleTop + wireR + 0.6} ${legXR - wireR - 1.2} ${stapleTop + wireR + 1.2}
-          L ${legXR - wireR - 1.2} ${stapleTop + legMaxPx}
+          M ${legXL + wireR + 1.8} ${stapleTop + legMaxPx}
+          L ${legXL + wireR + 1.8} ${stapleTop + wireR + 1.8}
+          Q ${legXL + wireR + 1.8} ${stapleTop + wireR + 0.9} ${legXL + wireR + 3.6} ${stapleTop + wireR + 0.9}
+          L ${legXR - wireR - 3.6} ${stapleTop + wireR + 0.9}
+          Q ${legXR - wireR - 1.8} ${stapleTop + wireR + 0.9} ${legXR - wireR - 1.8} ${stapleTop + wireR + 1.8}
+          L ${legXR - wireR - 1.8} ${stapleTop + legMaxPx}
         `}
         fill="none"
         stroke="#1a1a1a"
-        strokeWidth="1"
+        strokeWidth="1.8"
         strokeLinecap="round"
         strokeLinejoin="round"
       />

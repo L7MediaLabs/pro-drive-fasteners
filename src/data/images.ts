@@ -188,7 +188,7 @@ export const images = {
     masterpack18: lcleat18gaMaster,
     innerpack18:  lcleat18gaInner,
     lc175_16:    lcleatLc175_16,
-    lc200_16:    lcleatLc200_16,
+    lc200_16:    lcleatLc200_16.url,
   },
   tappingBlocks: {
     tbPro:      blockTbPro,

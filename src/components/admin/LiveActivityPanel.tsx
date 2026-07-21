@@ -48,6 +48,59 @@ function since(iso: string): string {
   return `${Math.round(h / 24)}d ago`;
 }
 
+function csvCell(value: string | null | undefined): string {
+  const str = value ?? "";
+  const needsQuote = str.includes('"') || str.includes(",") || str.includes("\n") || str.includes("\r");
+  return needsQuote ? `"${str.replace(/"/g, '""')}"` : str;
+}
+
+function exportEventsCsv(events: SiteEvent[], filename: string) {
+  const headers = [
+    "event_type",
+    "session_id",
+    "created_at",
+    "path",
+    "page_url",
+    "product_sku",
+    "product_name",
+    "product_slug",
+    "cta_label",
+    "referrer",
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "form_fields",
+    "user_agent",
+  ];
+  const rows = events.map((e) => [
+    e.event_type,
+    e.session_id,
+    new Date(e.created_at).toISOString(),
+    e.path,
+    e.page_url,
+    e.product_sku,
+    e.product_name,
+    e.product_slug,
+    e.cta_label,
+    e.referrer,
+    e.utm_source,
+    e.utm_medium,
+    e.utm_campaign,
+    e.form_fields ? JSON.stringify(e.form_fields) : null,
+    e.user_agent,
+  ]);
+  const csv = [headers.join(","), ...rows.map((row) => row.map(csvCell).join(","))].join("\n");
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
 export function LiveActivityPanel() {
   const [events, setEvents] = useState<SiteEvent[] | null>(null);
   const [error, setError] = useState<string | null>(null);

@@ -37,7 +37,7 @@ export function LiveActivityPanel() {
       const sevenDays = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
       const { data, error } = await supabase
         .from("site_events")
-        .select("id, session_id, event_type, path, product_sku, product_name, created_at")
+        .select("id, session_id, event_type, path, page_url, product_sku, product_name, product_slug, cta_label, form_fields, created_at")
         .gte("created_at", sevenDays)
         .order("created_at", { ascending: false })
         .limit(2000);

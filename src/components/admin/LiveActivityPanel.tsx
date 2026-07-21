@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { YELLOW, mono, cardStyle, cardAccentTop } from "@/components/admin/ui";
 
@@ -14,6 +14,15 @@ type SiteEvent = {
   cta_label: string | null;
   form_fields: Record<string, unknown> | null;
   created_at: string;
+};
+
+type FilterKey = "event_type" | "page_url" | "product_slug" | "cta_label";
+
+type Filters = {
+  event_type: string;
+  page_url: string;
+  product_slug: string;
+  cta_label: string;
 };
 
 function since(iso: string): string {

@@ -28,7 +28,9 @@ function Contact() {
       phone: String(data.phone ?? ""),
       interest: String(data.interest ?? ""),
       message: String(data.message ?? ""),
+      session_id: getSessionId(),
     });
+    trackEvent("contact_submit");
     setSent(true);
     form.reset();
     setTimeout(() => setSent(false), 5000);

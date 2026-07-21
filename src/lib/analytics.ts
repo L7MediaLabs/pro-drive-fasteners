@@ -55,6 +55,9 @@ export function initAnalytics() {
 export type TrackMeta = {
   productSku?: string;
   productName?: string;
+  productSlug?: string;
+  ctaLabel?: string;
+  formFields?: Record<string, unknown>;
   path?: string;
 };
 
@@ -64,6 +67,7 @@ export function trackEvent(eventType: string, meta: TrackMeta = {}) {
     const session_id = getSessionId();
     const utm = captureUtmFromUrl();
     const path = meta.path ?? window.location.pathname;
+    const page_url = window.location.href;
     // Fire and forget
     void supabase
       .from("site_events")
@@ -71,8 +75,12 @@ export function trackEvent(eventType: string, meta: TrackMeta = {}) {
         session_id,
         event_type: eventType,
         path,
+        page_url,
         product_sku: meta.productSku ?? null,
         product_name: meta.productName ?? null,
+        product_slug: meta.productSlug ?? null,
+        cta_label: meta.ctaLabel ?? null,
+        form_fields: meta.formFields ?? null,
         referrer: document.referrer || null,
         utm_source: utm.utm_source ?? null,
         utm_medium: utm.utm_medium ?? null,

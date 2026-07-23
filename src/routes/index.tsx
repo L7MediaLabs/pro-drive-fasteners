@@ -277,6 +277,15 @@ function Home() {
         </div>
       </section>
 
+      {/* Agency credit — prominent placement near top of homepage */}
+      <section
+        className="px-[6%] py-8 flex justify-center"
+        style={{ background: "var(--pd-dark)", borderTop: "1px solid rgba(255,205,0,0.15)" }}
+      >
+        <AgencyCredit variant="prominent" tone="dark" />
+      </section>
+
+
       {/* 7B New Products */}
       <section className="px-[6%] py-14" style={{ background: "var(--pd-yellow)" }}>
         <div className="flex justify-between items-end mb-8 flex-wrap gap-4">

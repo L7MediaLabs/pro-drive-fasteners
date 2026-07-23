@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout, InfoPanel, InterchangeList } from "../components/PageHeader";
-import { ProductGrid } from "../components/ProductCard";
+import { ProductGrid, ProductTierSections } from "../components/ProductCard";
 import {
   CinematicHero,
   TabNav,
@@ -585,9 +585,9 @@ function Staples() {
           )}
         </SplitLayout>
 
-        {/* Full-width product grid */}
+        {/* Full-width product grid grouped by pack tier */}
         <div className="mt-12">
-          <div className="flex items-baseline gap-3 mb-5">
+          <div className="flex items-baseline gap-3 mb-8">
             <div className="pd-label" style={{ color: "var(--pd-gold)", fontSize: 11 }}>Product Line</div>
             <h3 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: 18, lineHeight: 1 }}>
               {g.kicker}
@@ -598,7 +598,15 @@ function Staples() {
               style={{ borderBottom: "1px solid rgba(0,0,0,0.1)", transform: "translateY(-4px)" }}
             />
           </div>
-          <ProductGrid products={g.products} cols={4} />
+          <ProductTierSections
+            products={g.products}
+            cols={4}
+            descriptions={{
+              "CONTRACTOR BULK CARTONS": "Full-scale cartons for high-volume professional crews and large flooring jobs.",
+              "JOB PACKS": "Mid-size packs built for production job sites and repeat installs.",
+              "PROJECT PACK": "Compact 1,000-count packs ideal for small installs, samples, and touch-ups.",
+            }}
+          />
         </div>
 
         {/* Centered supplementary panels */}

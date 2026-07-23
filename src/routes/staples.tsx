@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Callout, InfoPanel, InterchangeList } from "../components/PageHeader";
-import { ProductGrid } from "../components/ProductCard";
+import { ProductGrid, ProductTierSections } from "../components/ProductCard";
 import {
   CinematicHero,
   TabNav,

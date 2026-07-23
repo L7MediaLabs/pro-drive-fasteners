@@ -545,7 +545,7 @@ function Staples() {
           { label: "E-G GALVANIZED" },
         ]}
         rightImage={images.staples.s155_2in_7720}
-        rightImageAlt="Pro-Drive FS-200-7720 15.5 GA 2\" flooring staples box"
+        rightImageAlt='Pro-Drive FS-200-7720 15.5 GA 2" flooring staples box'
         rightImageFit="contain"
       />
 

@@ -12,7 +12,7 @@ export type Product = {
   image?: string;
 };
 
-export function ProductCard({ product }: { product: Product }) {
+export function ProductCard({ product, showPackTier = true }: { product: Product; showPackTier?: boolean }) {
   const ref = useRef<HTMLElement | null>(null);
   const seen = useRef(false);
   useEffect(() => {
@@ -62,7 +62,7 @@ export function ProductCard({ product }: { product: Product }) {
             {product.specs.map((s, i) => <li key={i}>{s}</li>)}
           </ul>
         )}
-        {product.packTier && (
+        {showPackTier && product.packTier && (
           <div
             className="mt-2 inline-block self-start px-2 py-0.5"
             style={{

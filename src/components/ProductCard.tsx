@@ -185,7 +185,7 @@ export function ProductTierSections({
                 </span>
               </div>
             </div>
-            <ProductGrid products={items} cols={cols} />
+            <ProductGrid products={items} cols={cols} showPackTier={false} />
           </section>
         );
       })}
@@ -198,7 +198,7 @@ export function ProductTierSections({
               Standard packaging options for general use.
             </p>
           </div>
-          <ProductGrid products={untiered} cols={cols} />
+          <ProductGrid products={untiered} cols={cols} showPackTier={false} />
         </section>
       )}
     </div>

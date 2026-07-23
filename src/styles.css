@@ -108,7 +108,8 @@
   }
   /* Shrunk ® mark, applied globally via useShrinkRegistered().
      Also styles any hand-authored <sup class="pd-reg"> instances. */
-  sup.pd-reg {
+  sup.pd-reg,
+  sup.pd-tm {
     font-size: 0.58em;
     vertical-align: super;
     line-height: 0;
@@ -120,15 +121,21 @@
 @layer components {
   .pd-label {
     font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 0.18em;
+    font-size: 13px;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
   }
   .pd-eyebrow {
     font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 0.22em;
+    font-size: 13px;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
+  }
+  @media (max-width: 640px) {
+    .pd-label,
+    .pd-eyebrow {
+      font-size: 14px;
+    }
   }
   .pd-display {
     font-family: var(--font-display);

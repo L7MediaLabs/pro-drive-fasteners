@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { withRegistered } from "@/lib/brand";
+import { AgencyCredit } from "./AgencyCredit";
 
 export function PageHeader({
   breadcrumb,

@@ -386,6 +386,12 @@ function LCleats() {
                 </div>
               ))}
             </div>
+            <div
+              className="mt-3 px-4 py-3 text-sm"
+              style={{ background: "#fff", borderLeft: "3px solid var(--pd-yellow)", color: "var(--pd-text)", lineHeight: 1.6 }}
+            >
+              <strong style={{ color: "var(--pd-dark)" }}>Packaging:</strong> All L-Cleats are shipped in 1,000ct boxes and packed in master cartons of 5 (1,000ct &times; 5 = 5,000ct per master carton).
+            </div>
             <div className="mt-8">
               <ProductGrid products={g.products} />
             </div>
@@ -422,7 +428,7 @@ function LCleats() {
                 Pro installers trust Pro-Drive.
               </h3>
               <p className="mt-4 text-white/80" style={{ fontSize: 15, lineHeight: 1.7 }}>
-                Tight, consistent strips. Engineered to feed cleanly through every major brand of nailer — Bostitch®, Powernail®, Primatech®, and more.
+                Collated flexible strips. Engineered to feed and drive without any issues through any major brand of nailer &mdash; Bostitch&reg;, Powernail&reg;, Primatech&reg;, and more.
               </p>
               <p className="mt-3 text-white/80" style={{ fontSize: 15, lineHeight: 1.7 }}>
                 Heavy-duty hold for solid hardwood — 1-1/2&quot;, 1-3/4&quot;, and 2&quot; lengths.

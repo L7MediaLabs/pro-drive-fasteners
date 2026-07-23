@@ -17,6 +17,8 @@ import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 import { LangToast } from "../components/LangToast";
 import { PreviewBar } from "../components/PreviewBar";
+import { useShrinkRegistered } from "../lib/useShrinkRegistered";
+
 
 function NotFoundComponent() {
   return (
@@ -105,6 +107,7 @@ function RootComponent() {
   useEffect(() => {
     initAnalytics();
   }, []);
+  useShrinkRegistered();
 
   useEffect(() => {
     if (pathname.startsWith("/admin") || pathname.startsWith("/auth")) return;

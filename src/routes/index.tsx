@@ -403,7 +403,7 @@ function Home() {
                 className="mt-2"
                 style={{ color: "#fff", fontWeight: 800, fontSize: 22, letterSpacing: "0.02em" }}
               >
-                {g.name}
+                {g.name}<sup className="pd-tm">™</sup>
               </div>
               <p
                 className="mt-3"

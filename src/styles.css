@@ -108,7 +108,8 @@
   }
   /* Shrunk ® mark, applied globally via useShrinkRegistered().
      Also styles any hand-authored <sup class="pd-reg"> instances. */
-  sup.pd-reg {
+  sup.pd-reg,
+  sup.pd-tm {
     font-size: 0.58em;
     vertical-align: super;
     line-height: 0;

@@ -69,6 +69,9 @@ export function PageHeader({
             {description}
           </p>
         )}
+        <div className="mt-6">
+          <AgencyCredit variant="compact" tone={dark ? "dark" : "light"} />
+        </div>
       </div>
     </header>
   );

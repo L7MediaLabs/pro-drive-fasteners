@@ -254,7 +254,7 @@ function Home() {
                 style={{
                   fontFamily: "Assistant, sans-serif",
                   fontWeight: 600,
-                  fontSize: 11,
+                  fontSize: 12,
                   textTransform: "uppercase",
                   letterSpacing: "0.12em",
                   color: "rgba(25,20,0,0.5)",
@@ -321,8 +321,8 @@ function Home() {
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-2">
-                  <span style={{ background: "rgba(255,205,0,0.15)", color: "var(--pd-yellow)", padding: "3px 8px", fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 700 }}>NEW</span>
-                  <span style={{ color: "rgba(255,205,0,0.4)", fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 700 }}>{p.category}</span>
+                  <span style={{ background: "rgba(255,205,0,0.15)", color: "var(--pd-yellow)", padding: "3px 8px", fontSize: 12, letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 700 }}>NEW</span>
+                  <span style={{ color: "rgba(255,205,0,0.4)", fontSize: 12, letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 700 }}>{p.category}</span>
                 </div>
                 <h3 className="text-white mt-3" style={{ fontWeight: 700, fontSize: 17 }}>{p.name}</h3>
                 <p style={{ color: "rgba(255,255,255,0.5)", fontWeight: 300, fontSize: 13, lineHeight: 1.65 }} className="mt-1.5">{p.description}</p>
@@ -470,7 +470,7 @@ function Home() {
                   top: 16,
                   left: 20,
                   fontFamily: "ui-monospace, monospace",
-                  fontSize: 10,
+                  fontSize: 12,
                   letterSpacing: "0.2em",
                   color: "rgba(0,0,0,0.35)",
                   zIndex: 2,
@@ -485,7 +485,7 @@ function Home() {
                   top: 16,
                   right: 20,
                   fontFamily: "ui-monospace, monospace",
-                  fontSize: 10,
+                  fontSize: 12,
                   letterSpacing: "0.2em",
                   color: "rgba(0,0,0,0.35)",
                   zIndex: 2,
@@ -514,7 +514,7 @@ function Home() {
                 className="px-7 pb-8 pt-2"
                 style={{ borderTop: "1px solid rgba(0,0,0,0.08)" }}
               >
-                <div className="pd-label mt-5" style={{ color: "var(--pd-gold)", fontSize: 11 }}>{t.kicker}</div>
+                <div className="pd-label mt-5" style={{ color: "var(--pd-gold)", fontSize: 12 }}>{t.kicker}</div>
                 <h3
                   className="mt-1.5"
                   style={{ color: "var(--pd-dark)", fontWeight: 800, fontSize: 22, lineHeight: 1.15 }}
@@ -529,7 +529,7 @@ function Home() {
                 </p>
                 <div
                   className="pd-label mt-5 inline-flex items-center gap-2 transition-colors"
-                  style={{ color: "var(--pd-dark)", fontSize: 11, letterSpacing: "0.14em" }}
+                  style={{ color: "var(--pd-dark)", fontSize: 12, letterSpacing: "0.14em" }}
                 >
                   Explore Family
                   <span
@@ -622,7 +622,7 @@ function Home() {
                     padding: "4px 10px",
                     fontFamily: "Assistant, sans-serif",
                     fontWeight: 600,
-                    fontSize: 10,
+                    fontSize: 12,
                     textTransform: "uppercase",
                     letterSpacing: "0.12em",
                     color: "rgba(25,20,0,0.6)",

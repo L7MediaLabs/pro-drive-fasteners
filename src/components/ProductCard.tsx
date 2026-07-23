@@ -93,13 +93,13 @@ export function ProductCard({ product, showPackTier = true }: { product: Product
   );
 }
 
-export function ProductGrid({ products, cols = 3 }: { products: Product[]; cols?: 3 | 4 }) {
+export function ProductGrid({ products, cols = 3, showPackTier = true }: { products: Product[]; cols?: 3 | 4; showPackTier?: boolean }) {
   const colsClass = cols === 4
     ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
     : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3";
   return (
     <div className={colsClass} style={{ gap: 2 }}>
-      {products.map(p => <ProductCard key={p.id} product={p} />)}
+      {products.map(p => <ProductCard key={p.id} product={p} showPackTier={showPackTier} />)}
     </div>
   );
 }

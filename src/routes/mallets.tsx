@@ -29,21 +29,21 @@ export const Route = createFileRoute("/mallets")({
 
 type TabKey = "mallets" | "caps" | "poly" | "deadblow";
 
-const hardnessScale = [
-  { color: "#F08A30", label: "Soft",      note: "Delicate assembly, soft materials" },
-  { color: "#6B4E2E", label: "Soft/Med",  note: "General woodworking, trim" },
-  { color: "#4FA85F", label: "Medium",    note: "Everyday flooring installation" },
-  { color: "#C83228", label: "Hard",      note: "Dense hardwoods, tapping blocks" },
-  { color: "#111",    label: "Tough",     note: "Heavy-duty demolition strikes" },
+const polyGuide = [
+  { id: "POLY01-ORG", color: "#F08A30", name: "Orange", firmness: "Soft, flexible, and forgiving",     like: "Soft rubber sneaker sole",         thread: '3/8" 16 Thread Bolt' },
+  { id: "POLY01-GRE", color: "#4FA85F", name: "Green",  firmness: "Firm but still pliable",             like: "Soft cruiser-style skateboard wheel", thread: '3/8" 16 Thread Bolt' },
+  { id: "POLY01-BRO", color: "#6B4E2E", name: "Brown",  firmness: "A balanced, medium-firm feel",       like: "Harder work-boot soles",           thread: '3/8" 16 Thread Bolt' },
+  { id: "POLY01-RED", color: "#C83228", name: "Red",    firmness: "Hard and durable — minimal flex",    like: "Shopping cart wheel",              thread: '3/8" 16 Thread Bolt' },
+  { id: "POLY01-BLK", color: "#111",    name: "Black",  firmness: "Very firm — maximum durability",     like: "Inline skate wheel",               thread: '3/8" 16 Thread Bolt' },
 ];
 
 // Mallet comparison data
 const malletCompare = [
-  { model: "M1W",   handle: '15"', headOz: 41.6, cartons: 8,  bar: 0.72 }, // 2.6 lbs
-  { model: "M5W",   handle: '15"', headOz: 51.2, cartons: 8,  bar: 0.89 }, // 3.2 lbs
-  { model: "V-CAP", handle: '15"', headOz: 24.0, cartons: 12, bar: 0.42 }, // 24 oz
-  { model: "DHW",   handle: '15"', headOz: 52.8, cartons: 8,  bar: 0.92 }, // 3.3 lbs
-  { model: "R5W",   handle: '15"', headOz: 44.8, cartons: 8,  bar: 0.78 }, // 2.8 lbs
+  { model: "M1W",   handle: '15"', headOz: 41.6, lbs: 2.6, cartons: 8,  bar: 0.72 },
+  { model: "M5W",   handle: '15"', headOz: 51.2, lbs: 3.2, cartons: 8,  bar: 0.89 },
+  { model: "V-CAP", handle: '15"', headOz: 24.0, lbs: 1.5, cartons: 12, bar: 0.42 },
+  { model: "DHW",   handle: '15"', headOz: 52.8, lbs: 3.3, cartons: 8,  bar: 0.92 },
+  { model: "R5W",   handle: '15"', headOz: 44.8, lbs: 2.8, cartons: 8,  bar: 0.78 },
 ];
 
 const steps = [
@@ -262,6 +262,8 @@ function Mallets() {
             <InfoPanel>
               <div>Heavy-duty chrome-plated steel retention ring. Guaranteed to fit all major brands of rubber flooring mallets — or your money back. <strong>U.S. Patent No. 11,370,097</strong>.</div>
               <div><strong style={{ color: "var(--pd-dark)" }}>Pro-Angle™ cap:</strong> Designed for engineered flooring with improved edge-clearance contact for faster installation.</div>
+              <div>Plus fits all major brands.</div>
+              <div>We are the only manufacturer who blends our own rubber compound, allowing us to provide the highest quality at the most affordable price.</div>
             </InfoPanel>
           </div>
         )}
@@ -336,7 +338,7 @@ function Mallets() {
                     />
                   </div>
                   <div className="mt-1" style={{ fontFamily: "ui-monospace, monospace", fontSize: 11, color: "var(--pd-muted)" }}>
-                    {m.headOz} oz
+                    {m.headOz} oz ({m.lbs} lbs)
                   </div>
                 </div>
                 <div className="text-right" style={{ fontFamily: "ui-monospace, monospace", fontSize: 12, color: "var(--pd-dark)" }}>{m.handle}</div>
@@ -349,25 +351,48 @@ function Mallets() {
 
       <TechReference
         kicker="Hardness Guide"
-        title="Poly Striking Face Hardness Scale"
+        title="Polyurethane Strike Face Tips User Guide"
         intro="Choose the right durometer for your material. Softer faces protect delicate assemblies; harder faces transfer maximum energy for dense hardwoods."
       >
-        <div className="space-y-2">
-          {hardnessScale.map((h, i) => {
-            const pct = ((i + 1) / hardnessScale.length) * 100;
-            return (
-              <div key={h.label} className="bg-white grid grid-cols-[110px_1fr_1.2fr] items-center gap-4 p-4" style={{ borderLeft: `4px solid ${h.color}` }}>
-                <div className="flex items-center gap-2">
-                  <span style={{ width: 20, height: 20, borderRadius: "50%", background: h.color, display: "inline-block", flexShrink: 0 }} />
-                  <span className="font-bold" style={{ fontSize: 13, color: "var(--pd-dark)" }}>{h.label}</span>
-                </div>
-                <div style={{ background: "#f0efe8", height: 12 }}>
-                  <div style={{ width: `${pct}%`, height: "100%", background: h.color }} />
-                </div>
-                <div style={{ fontSize: 12, color: "var(--pd-muted)" }}>{h.note}</div>
+        <div className="bg-white overflow-hidden" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
+          <div
+            className="grid gap-4 px-5 py-3 pd-label"
+            style={{
+              gridTemplateColumns: "1.2fr 0.8fr 1.5fr 1.5fr 1.2fr",
+              color: "var(--pd-muted)",
+              fontSize: 10,
+              borderBottom: "1px solid rgba(0,0,0,0.08)",
+              background: "#F5F4F0",
+            }}
+          >
+            <div>Item ID</div>
+            <div>Color Code</div>
+            <div>Firmness</div>
+            <div>Like This Item</div>
+            <div>Industry Standard Thread</div>
+          </div>
+          {polyGuide.map((r) => (
+            <div
+              key={r.id}
+              className="grid gap-4 items-center px-5 py-4"
+              style={{
+                gridTemplateColumns: "1.2fr 0.8fr 1.5fr 1.5fr 1.2fr",
+                borderLeft: `4px solid ${r.color}`,
+                borderBottom: "1px solid rgba(0,0,0,0.06)",
+                fontSize: 13,
+                color: "var(--pd-dark)",
+              }}
+            >
+              <div style={{ fontFamily: "ui-monospace, monospace", fontWeight: 700, fontSize: 12 }}>{r.id}</div>
+              <div className="flex items-center gap-2">
+                <span style={{ width: 16, height: 16, borderRadius: "50%", background: r.color, display: "inline-block", flexShrink: 0, border: "1px solid rgba(0,0,0,0.1)" }} />
+                <span style={{ fontWeight: 700 }}>{r.name}</span>
               </div>
-            );
-          })}
+              <div style={{ color: "var(--pd-text)" }}>{r.firmness}</div>
+              <div style={{ color: "var(--pd-muted)" }}>{r.like}</div>
+              <div style={{ fontFamily: "ui-monospace, monospace", fontSize: 12, color: "var(--pd-text)" }}>{r.thread}</div>
+            </div>
+          ))}
         </div>
       </TechReference>
 

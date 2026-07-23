@@ -178,7 +178,7 @@ function Brads() {
         kicker="Brads & Finish Nails"
         title={<>The Right Nail.<br />Every Angle. Every Gauge.</>}
         description="Professional grade finish nails in every collation angle. Contractor tested. Chisel-point, smooth shank. Meets ASTM F1667."
-        bgImage={images.finishNails.strip}
+        bgImage={images.finishNails.fn1520_125}
         badges={[
           { label: "CONTRACTOR TESTED" },
           { label: "JAM-FREE GUARANTEE" },

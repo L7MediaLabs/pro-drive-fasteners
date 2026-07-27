@@ -304,6 +304,70 @@ function Mallets() {
         )}
       </section>
 
+      {/* Heritage callout — "We turn our own handles"
+          NOTE: Awaiting a dedicated lath/heritage photo (Hollis, July 22).
+          Using existing hickory-handle mallet close-up as a placeholder until
+          the wood-lath heritage image lands under src/assets/products/mallets/. */}
+      <section className="px-[6%] py-16" style={{ background: "var(--pd-cream, #F5F1E8)" }}>
+        <div className="grid lg:grid-cols-[1.1fr_1fr] gap-10 items-center max-w-[1200px] mx-auto">
+          <div>
+            <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Heritage</div>
+            <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 38, lineHeight: 1.05, letterSpacing: "-0.01em" }}>
+              We turn our own handles.
+            </h2>
+            <p className="mt-5" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1.7, maxWidth: 560, opacity: 0.88 }}>
+              Every Pro-Drive<sup>®</sup> mallet handle is turned from <strong>112-year-old wood lath</strong> — premium hickory with a century of seasoning behind it. It's the kind of detail most manufacturers skip and most contractors feel the first time they swing one.
+            </p>
+            <p className="mt-4" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1.7, maxWidth: 560, opacity: 0.75, fontStyle: "italic" }}>
+              When you control the material from the raw stock up, you control the quality all the way down.
+            </p>
+            <div
+              className="inline-block mt-6 px-3 py-1.5"
+              style={{
+                border: "1.5px solid var(--pd-dark)",
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                color: "var(--pd-dark)",
+              }}
+            >
+              112-Year Seasoned Hickory
+            </div>
+          </div>
+          <div
+            className="relative overflow-hidden"
+            style={{
+              aspectRatio: "4 / 3",
+              background: "#e8e2d2",
+              borderTop: "3px solid var(--pd-yellow)",
+              boxShadow: "0 10px 40px rgba(0,0,0,0.08)",
+            }}
+          >
+            <img
+              src={images.mallets.misc1}
+              alt="Pro-Drive premium hickory mallet handle — turned in-house from century-old wood lath"
+              loading="lazy"
+              style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
+            />
+            <div
+              className="absolute bottom-0 left-0 right-0 px-4 py-3"
+              style={{
+                background: "linear-gradient(0deg, rgba(0,0,0,0.55), transparent)",
+                color: "#fff",
+                fontSize: 11,
+                letterSpacing: "0.16em",
+                textTransform: "uppercase",
+                fontWeight: 700,
+              }}
+            >
+              Turned In-House · Made in USA
+            </div>
+          </div>
+        </div>
+      </section>
+
+
       <LifestyleBanner
         image={images.mallets.family}
         kicker="Patented Design"

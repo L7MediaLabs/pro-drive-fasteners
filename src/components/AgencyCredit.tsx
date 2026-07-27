@@ -47,7 +47,7 @@ export function AgencyCredit({
         className="inline-flex items-center gap-2 hover:!text-[color:var(--pd-yellow)]"
         style={{ color: textSecondary, fontSize: 13, fontWeight: 500 }}
       >
-        <Mark size={18} color={accent} />
+        <Mark size={18} onDark={onDark} />
         <span>
           Designed by <strong style={{ color: textPrimary }}>Seventh State Creative</strong>
         </span>
@@ -70,7 +70,7 @@ export function AgencyCredit({
           textDecoration: "none",
         }}
       >
-        <Mark size={22} color={accent} />
+        <Mark size={22} onDark={onDark} />
         <span
           style={{
             fontSize: 12,
@@ -122,7 +122,7 @@ export function AgencyCredit({
           textDecoration: "none",
         }}
       >
-        <Mark size={56} color={accent} />
+        <Mark size={56} onDark={onDark} />
         <div className="mt-5" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
           <div
             style={{
@@ -184,7 +184,7 @@ export function AgencyCredit({
         maxWidth: "100%",
       }}
     >
-      <Mark size={52} color={accent} />
+      <Mark size={52} onDark={onDark} />
       <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
         <div
           style={{

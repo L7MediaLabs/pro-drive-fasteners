@@ -192,8 +192,10 @@ export const images = {
     lc200_16:    lcleatLc200_16.url,
   },
   tappingBlocks: {
-    tbPro:      blockTbPro,
-    tb561:      block561,
+    // Files block_tbpro.jpg / block_561.jpg are labeled in file names, but the
+    // photographs are swapped — remap so each product shows its own photo.
+    tbPro:      block561,
+    tb561:      blockTbPro,
     widePlank:  blockWidePlank,
     lifestyle:  u.blocksP28_03,
   },

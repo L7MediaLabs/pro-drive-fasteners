@@ -13,7 +13,6 @@ import badgeContractor from "../assets/badge-contractor-grade.png.asset.json";
 import badgeMulti from "../assets/badge-multi-grade.png.asset.json";
 import badgeIndustrial from "../assets/badge-industrial-grade.png.asset.json";
 import { images } from "../data/images";
-import { AgencyCredit } from "../components/AgencyCredit";
 
 const gradeStandards = [
   {

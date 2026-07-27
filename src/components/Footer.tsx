@@ -81,7 +81,9 @@ export function Footer() {
           </div>
         </div>
 
-        <AgencyCredit variant="footer" tone="dark" />
+        <div className="mt-10">
+          <AgencyCredit variant="footer" tone="dark" />
+        </div>
 
         <div
           className="mt-8 pt-5 flex flex-col md:flex-row md:justify-between gap-3 text-[13px]"

@@ -63,12 +63,21 @@ const engineeringTriptych = [
   },
 ] as const;
 
-const heroSlides = [
-  { src: images.staples.s155_2in_7720, position: "center" },
-  { src: images.mallets.hero, position: "center" },
-  { src: images.lCleats.lifestyle, position: "center" },
-  { src: images.tappingRings.orange2, position: "center" },
-] as const;
+type HeroSlide = {
+  src: string;
+  position?: string;
+  fit?: "cover" | "contain";
+};
+
+const heroSlides: HeroSlide[] = [
+  // Lead with the strongest lifestyle/product shots — box photo moved to last
+  // and rendered "contained" on cream so it reads as a beauty shot, not a
+  // stretched full-bleed background.
+  { src: images.mallets.hero,           position: "center", fit: "cover" },
+  { src: images.lCleats.lifestyle,      position: "center", fit: "cover" },
+  { src: images.tappingRings.orange2,   position: "center", fit: "cover" },
+  { src: images.staples.s155_2in_7720,  position: "center", fit: "contain" },
+];
 
 function HeroSlider() {
   const [index, setIndex] = useState(0);
@@ -78,27 +87,42 @@ function HeroSlider() {
   }, []);
   return (
     <>
-      {heroSlides.map((s, i) => (
-        <img
-          key={i}
-          src={s.src}
-          alt=""
-          aria-hidden
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: s.position,
-            opacity: i === index ? 0.35 : 0,
-            transition: "opacity 1.4s ease-in-out",
-          }}
-        />
-      ))}
+      {heroSlides.map((s, i) => {
+        const isContained = s.fit === "contain";
+        return (
+          <div
+            key={i}
+            aria-hidden
+            style={{
+              position: "absolute",
+              inset: 0,
+              opacity: i === index ? 1 : 0,
+              transition: "opacity 1.4s ease-in-out",
+              background: isContained ? "var(--pd-cream, #F5F1E8)" : "transparent",
+            }}
+          >
+            <img
+              src={s.src}
+              alt=""
+              aria-hidden
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+                objectFit: s.fit ?? "cover",
+                objectPosition: s.position ?? "center",
+                opacity: isContained ? 0.6 : 0.35,
+                padding: isContained ? "6% 8%" : 0,
+              }}
+            />
+          </div>
+        );
+      })}
     </>
   );
 }
+
 
 export const Route = createFileRoute("/")({
   head: () => ({

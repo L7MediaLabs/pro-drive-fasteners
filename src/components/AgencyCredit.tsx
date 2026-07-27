@@ -1,9 +1,10 @@
-// Seventh State Creative credit block, three variants.
-// prominent: large, boxed, for footer + homepage feature slot
+// Seventh State Creative credit block, four variants.
+// prominent: large, boxed, for homepage feature slot
 // compact:   inline, single-row, for page headers
 // minimal:   subtle text link, fallback for tight spots
+// footer:    full-width centered sign-off at the bottom of the footer
 
-type Variant = "prominent" | "compact" | "minimal";
+type Variant = "prominent" | "compact" | "minimal" | "footer";
 
 const HREF = "https://seventhstatecreative.com/james";
 const LOCATION = "Dallas, GA · Serving Metro Atlanta";
@@ -110,6 +111,67 @@ export function AgencyCredit({
           }}
         >
           {LOCATION}
+        </span>
+      </a>
+    );
+  }
+
+  // footer — full-width centered sign-off band
+  if (variant === "footer") {
+    return (
+      <a
+        href={HREF}
+        target="_blank"
+        rel="noreferrer"
+        className="group flex flex-col items-center text-center w-full hover:!opacity-100 transition-opacity"
+        style={{
+          padding: "42px 24px",
+          borderTop: `1px solid ${borderColor}`,
+          color: textPrimary,
+          textDecoration: "none",
+        }}
+      >
+        <Mark size={56} color={accent} />
+        <div className="mt-5" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+          <div
+            style={{
+              fontSize: 12,
+              fontWeight: 700,
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              color: accent,
+            }}
+          >
+            Designed & Built By
+          </div>
+          <div
+            style={{
+              fontSize: 26,
+              fontWeight: 800,
+              color: textPrimary,
+              letterSpacing: "0.005em",
+              lineHeight: 1.05,
+            }}
+          >
+            Seventh State Creative
+          </div>
+          <div
+            style={{
+              fontSize: 14,
+              fontWeight: 500,
+              color: textSecondary,
+              letterSpacing: "0.02em",
+            }}
+          >
+            {LOCATION}
+          </div>
+        </div>
+        <span
+          aria-hidden
+          className="transition-transform duration-300 group-hover:translate-x-1"
+          style={{ color: accent, fontSize: 20, marginTop: 12, fontWeight: 700 }}
+        >
+          ↗
         </span>
       </a>
     );

@@ -123,19 +123,19 @@ export function AgencyCredit({
       rel="noreferrer"
       className="inline-flex items-center gap-5 group hover:!opacity-100 transition-opacity"
       style={{
-        padding: "18px 26px",
+        padding: "22px 32px",
         border: `1px solid ${borderColor}`,
-        background: onDark ? "rgba(255,205,0,0.05)" : "rgba(255,205,0,0.08)",
+        background: onDark ? "rgba(255,205,0,0.06)" : "rgba(255,205,0,0.08)",
         color: textPrimary,
         textDecoration: "none",
         maxWidth: "100%",
       }}
     >
-      <Mark size={44} color={accent} />
-      <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+      <Mark size={52} color={accent} />
+      <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
         <div
           style={{
-            fontSize: 12,
+            fontSize: 13,
             fontWeight: 700,
             letterSpacing: "0.18em",
             textTransform: "uppercase",
@@ -146,7 +146,7 @@ export function AgencyCredit({
         </div>
         <div
           style={{
-            fontSize: 20,
+            fontSize: 22,
             fontWeight: 800,
             color: textPrimary,
             letterSpacing: "0.005em",
@@ -157,7 +157,7 @@ export function AgencyCredit({
         </div>
         <div
           style={{
-            fontSize: 13,
+            fontSize: 14,
             fontWeight: 500,
             color: textSecondary,
             letterSpacing: "0.02em",
@@ -169,7 +169,7 @@ export function AgencyCredit({
       <span
         aria-hidden
         className="transition-transform duration-300 group-hover:translate-x-1"
-        style={{ color: accent, fontSize: 22, marginLeft: 6, fontWeight: 700 }}
+        style={{ color: accent, fontSize: 24, marginLeft: 8, fontWeight: 700 }}
       >
         ↗
       </span>

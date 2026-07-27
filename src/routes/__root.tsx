@@ -16,7 +16,7 @@ import { initAnalytics, trackEvent } from "../lib/analytics";
 import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 import { LangToast } from "../components/LangToast";
-import { PreviewBar } from "../components/PreviewBar";
+
 import { useShrinkRegistered } from "../lib/useShrinkRegistered";
 
 
@@ -128,7 +128,7 @@ function RootComponent() {
           <Footer />
         </>
       )}
-      <PreviewBar />
+      
     </QueryClientProvider>
   );
 }

@@ -9,28 +9,19 @@ type Variant = "prominent" | "compact" | "minimal" | "footer";
 const HREF = "https://seventhstatecreative.com/james";
 const LOCATION = "Dallas, GA · Serving Metro Atlanta";
 
-function Mark({ size = 28, color = "var(--pd-yellow)" }: { size?: number; color?: string }) {
-  // Stylized "7" monogram inside a bordered square — Seventh State Creative mark.
+import logoWhite from "@/assets/7sc-logo-white.svg";
+import logoColor from "@/assets/7sc-logo.svg";
+
+function Mark({ size = 28, onDark = true }: { size?: number; onDark?: boolean; color?: string }) {
+  // Official Seventh State Creative mark; white variant on dark surfaces, full-color on light.
   return (
-    <svg
+    <img
+      src={onDark ? logoWhite : logoColor}
+      alt="Seventh State Creative"
       width={size}
       height={size}
-      viewBox="0 0 40 40"
-      role="img"
-      aria-label="Seventh State Creative"
-      style={{ flex: "none" }}
-    >
-      <rect x="1.5" y="1.5" width="37" height="37" fill="none" stroke={color} strokeWidth="2" />
-      <path
-        d="M10 11 H30 L20 30"
-        fill="none"
-        stroke={color}
-        strokeWidth="2.5"
-        strokeLinecap="square"
-        strokeLinejoin="miter"
-      />
-      <circle cx="20" cy="30" r="1.8" fill={color} />
-    </svg>
+      style={{ flex: "none", display: "block", width: size, height: "auto" }}
+    />
   );
 }
 

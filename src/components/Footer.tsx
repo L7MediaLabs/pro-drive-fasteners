@@ -81,13 +81,9 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8" style={{ borderTop: "1px solid rgba(255,205,0,0.12)" }}>
-          <AgencyCredit variant="prominent" tone="dark" />
-        </div>
-
         <div
-          className="mt-8 pt-5 flex flex-col md:flex-row md:justify-between gap-3 text-[13px]"
-          style={{ borderTop: "1px solid rgba(255,205,0,0.08)" }}
+          className="mt-12 pt-5 flex flex-col md:flex-row md:justify-between gap-3 text-[13px]"
+          style={{ borderTop: "1px solid rgba(255,205,0,0.12)" }}
         >
           <div className="text-white/50 flex items-center gap-4 flex-wrap">
             <span>© 2026 Pro-Drive Fasteners®. All rights reserved.</span>
@@ -95,6 +91,8 @@ export function Footer() {
             <Link to="/auth" style={{ color: "rgba(255,205,0,0.6)" }} className="hover:!text-[color:var(--pd-yellow)]">Client Login</Link>
           </div>
         </div>
+
+        <AgencyCredit variant="footer" tone="dark" />
       </div>
     </footer>
   );

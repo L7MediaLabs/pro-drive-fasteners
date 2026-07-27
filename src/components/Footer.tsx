@@ -57,7 +57,7 @@ export function Footer() {
           {cols.map(col => (
             <div key={col.title}>
               <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>{col.title}</div>
-              <ul className="mt-4 space-y-2 text-sm">
+              <ul className="mt-4 space-y-1 text-sm">
                 {col.links.map(l => (
                   <li key={l.label}>
                     {"external" in l && l.external ? (

@@ -219,10 +219,12 @@ function StapleDepthDiagram({
   spec,
   uid,
   stapleLenIn,
+  stapleLenLabel,
 }: {
   spec: StapleSpec;
   uid: string;
   stapleLenIn: number;
+  stapleLenLabel: string;
 }) {
   const floorIn = toDec(spec.floor);
   const penIn = toDec(spec.pen);
@@ -240,16 +242,22 @@ function StapleDepthDiagram({
   const subfloorTop = floorBottom;
   const subfloorBottom = subfloorTop + SUBFLOOR_H;
 
-  const stapleX0 = LEFT_PAD + 46;             // crown seated on the tongue
+  // Seat the staple around the middle of the plank
+  const stapleX0 = LEFT_PAD + WOOD_W / 2 - horizRun / 2;
   const stapleX1 = stapleX0 + horizRun;       // tips travel down-right
   const stapleY0 = floorTop;
   const stapleY1 = floorTop + verticalSpan;
 
-  const penArrowX = Math.min(stapleX1 + 12, LEFT_PAD + WOOD_W - 6);
+  const penArrowX = Math.min(stapleX1 + 14, LEFT_PAD + WOOD_W - 6);
   const tongueArrowX = LEFT_PAD + WOOD_W + 12;
 
+  const crownPx = STAPLE_CROWN_IN * PPI;
+  const halfCrown = crownPx / 2 + STAPLE_WIRE_PX / 2;
+  const lenDimX = -halfCrown - 13;
+
   return (
-    <svg viewBox={`0 -12 ${VB_W} ${VB_H + 12}`} width="100%" style={{ display: "block" }} aria-hidden>
+    <svg viewBox={`-22 -30 ${VB_W + 22} ${VB_H + 30}`} width="100%" style={{ display: "block" }} aria-hidden>
+
       <defs>
         <pattern id={`grain-${uid}`} width="60" height="14" patternUnits="userSpaceOnUse">
           <line x1="0" y1="7" x2="60" y2="7" stroke="rgba(0,0,0,0.18)" strokeWidth="0.6" strokeDasharray="10 4 4 4 6 6" />

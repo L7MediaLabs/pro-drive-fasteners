@@ -73,7 +73,7 @@ function CleatDepthDiagram({
   const subfloorTop = floorBottom;
   const subfloorBottom = subfloorTop + CSUBFLOOR_H;
 
-  const stapleX0 = CLEFT_PAD + CWOOD_W - 30; // L-head seated inside the plank
+  const stapleX0 = CLEFT_PAD + CWOOD_W - 50; // L-head seated more fully inside the plank
   const stapleX1 = stapleX0 - horizRun; // tip extends left
   const stapleY0 = floorTop;
   const stapleY1 = floorTop + verticalSpan;

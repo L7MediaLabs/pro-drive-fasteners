@@ -338,18 +338,13 @@ function LCleatProfileDiagram({
               {gaugeLabel}
             </text>
 
-            {/* L-head — horizontal flange bent perpendicular off the shank top */}
-            <rect x={headLeft} y={top - headT} width={flangeW + shankW} height={headT} fill="#1a1a1a" />
-            {/* short return lip at the outer edge of the flange */}
-            <rect x={headLeft} y={top - headT} width={2.2} height={headT + 3} fill="#1a1a1a" />
-
             {/* Flange width dimension bracket (above the head) */}
-            <line x1={headLeft} y1={top - headT - 8} x2={cx + shankW / 2} y2={top - headT - 8} stroke="#1a1a1a" strokeWidth="0.8" />
-            <line x1={headLeft} y1={top - headT - 11} x2={headLeft} y2={top - headT - 5} stroke="#1a1a1a" strokeWidth="0.8" />
-            <line x1={cx + shankW / 2} y1={top - headT - 11} x2={cx + shankW / 2} y2={top - headT - 5} stroke="#1a1a1a" strokeWidth="0.8" />
+            <line x1={headLeft} y1={top - 10} x2={cx + shankW / 2} y2={top - 10} stroke="#1a1a1a" strokeWidth="0.8" />
+            <line x1={headLeft} y1={top - 13} x2={headLeft} y2={top - 7} stroke="#1a1a1a" strokeWidth="0.8" />
+            <line x1={cx + shankW / 2} y1={top - 13} x2={cx + shankW / 2} y2={top - 7} stroke="#1a1a1a" strokeWidth="0.8" />
             <text
               x={(headLeft + cx + shankW / 2) / 2}
-              y={top - headT - 13}
+              y={top - 15}
               textAnchor="middle"
               fontFamily="ui-monospace, monospace"
               fontSize="9"
@@ -358,18 +353,17 @@ function LCleatProfileDiagram({
               L-head
             </text>
 
-            {/* Shank — flat stock, true to scale */}
-            <rect x={cx - shankW / 2} y={top} width={shankW} height={lenPx - 7} fill="#B8B8BE" />
-            <rect x={cx - shankW / 2 + 1} y={top} width={1.3} height={lenPx - 7} fill="rgba(255,255,255,0.75)" />
+            {/* Cleat silhouette — matches the carton artwork */}
+            <g transform={`translate(${cx} ${top})`}>
+              <path
+                d={lCleatPath(lenPx, shankW, flangeW, headT, -1)}
+                fill="#EDEDF1"
+                stroke="#1a1a1a"
+                strokeWidth="1.2"
+                strokeLinejoin="round"
+              />
+            </g>
 
-            {/* smooth shank — no serrations */}
-
-
-            {/* Chisel point */}
-            <polygon
-              points={`${cx - shankW / 2},${bottom - 7} ${cx + shankW / 2},${bottom - 7} ${cx + shankW / 2 - 1},${bottom}`}
-              fill="#1a1a1a"
-            />
 
             {/* Shank length tick + label */}
             <line x1={cx + 16} y1={top} x2={cx + 16} y2={bottom} stroke="#1a1a1a" strokeWidth="0.8" />

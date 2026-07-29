@@ -243,8 +243,10 @@ function StapleDepthDiagram({
   const subfloorTop = floorBottom;
   const subfloorBottom = subfloorTop + SUBFLOOR_H;
 
-  // Seat the staple around the middle of the plank
-  const stapleX0 = LEFT_PAD + WOOD_W / 2 - horizRun / 2;
+  // Seat the staple right of the plank's geometric center so the crown sits
+  // closer to the visual middle of the flooring section.
+  const stapleX0 = LEFT_PAD + WOOD_W * 0.58 - horizRun / 2;
+
   const stapleX1 = stapleX0 + horizRun;       // tips travel down-right
   const stapleY0 = floorTop;
   const stapleY1 = floorTop + verticalSpan;

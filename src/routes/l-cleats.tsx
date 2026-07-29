@@ -66,14 +66,14 @@ function CleatDepthDiagram({
   const SHANK_W = 4.4;          // flat cleat shank thickness
   const HEAD_FLANGE = 9;        // horizontal foot of the "L" head
   const HEAD_T = 4.2;           // head thickness
-  const barbCount = Math.max(3, Math.floor(cleatLenIn / 0.28));
+  
 
   const floorTop = 0;
   const floorBottom = floorPx;
   const subfloorTop = floorBottom;
   const subfloorBottom = subfloorTop + CSUBFLOOR_H;
 
-  const stapleX0 = CLEFT_PAD + CWOOD_W - 12; // L-head on the right side of the floor
+  const stapleX0 = CLEFT_PAD + CWOOD_W - 30; // L-head seated inside the plank
   const stapleX1 = stapleX0 - horizRun; // tip extends left
   const stapleY0 = floorTop;
   const stapleY1 = floorTop + verticalSpan;
@@ -132,7 +132,7 @@ function CleatDepthDiagram({
         />
       ))}
 
-      {/* L-CLEAT — flat barbed shank driven at the true install angle, with the
+      {/* L-CLEAT — flat shank driven at the true install angle, with the
           perpendicular L-head foot bent off the top of the shank. */}
       <g transform={`rotate(-${driveDeg} ${stapleX0} ${stapleY0})`}>
         {/* Shank body (flat stock, drawn as a rectangle so barbs read) */}
@@ -150,17 +150,8 @@ function CleatDepthDiagram({
           height={Math.max(0, cleatLenPx - 5)}
           fill="rgba(255,255,255,0.75)"
         />
-        {/* Serrated barbs down the trailing edge of the shank */}
-        {Array.from({ length: barbCount }).map((_, i) => {
-          const by = stapleY0 + 8 + ((cleatLenPx - 16) / barbCount) * i;
-          return (
-            <polygon
-              key={i}
-              points={`${stapleX0 + SHANK_W / 2},${by} ${stapleX0 + SHANK_W / 2 + 2.6},${by + 3.4} ${stapleX0 + SHANK_W / 2},${by + 3.4}`}
-              fill="#8f8f97"
-            />
-          );
-        })}
+        {/* smooth shank — no serrations */}
+
         {/* Chisel point at the tip */}
         <polygon
           points={`${stapleX0 - SHANK_W / 2},${stapleY0 + cleatLenPx - 5} ${stapleX0 + SHANK_W / 2},${stapleY0 + cleatLenPx - 5} ${stapleX0 + SHANK_W / 2 - 0.6},${stapleY0 + cleatLenPx}`}
@@ -306,7 +297,6 @@ function LCleatProfileDiagram({
         const lenPx = s.lenIn * LCP_PPI;
         const top = LCP_TOP_PAD;
         const bottom = top + lenPx;
-        const barbs = Math.max(4, Math.floor(s.lenIn / 0.22));
         const headLeft = cx - shankW / 2 - flangeW;
 
         return (
@@ -344,17 +334,8 @@ function LCleatProfileDiagram({
             <rect x={cx - shankW / 2} y={top} width={shankW} height={lenPx - 7} fill="#B8B8BE" />
             <rect x={cx - shankW / 2 + 1} y={top} width={1.3} height={lenPx - 7} fill="rgba(255,255,255,0.75)" />
 
-            {/* Barbs / serrations down the trailing edge */}
-            {Array.from({ length: barbs }).map((_, b) => {
-              const by = top + 10 + ((lenPx - 22) / barbs) * b;
-              return (
-                <polygon
-                  key={b}
-                  points={`${cx + shankW / 2},${by} ${cx + shankW / 2 + 3},${by + 4} ${cx + shankW / 2},${by + 4}`}
-                  fill="#8f8f97"
-                />
-              );
-            })}
+            {/* smooth shank — no serrations */}
+
 
             {/* Chisel point */}
             <polygon
@@ -691,21 +672,21 @@ function LCleats() {
       <TechReference
         kicker="Dimensions"
         title="L-Cleat Profile — 16 GA & 18 GA"
-        intro='Elevation view of the Pro-Drive L-cleat: a flat, barbed shank with a perpendicular L-head flange bent off the top. Both gauges are drawn at the same scale — 16 GA runs a heavier shank and wider head flange than 18 GA.'
+        intro='Elevation view of the Pro-Drive L-cleat: a flat, smooth shank with a perpendicular L-head flange bent off the top. Both gauges are drawn at the same scale — 16 GA runs a heavier shank and wider head flange than 18 GA.'
       >
         <div className="grid md:grid-cols-2 gap-6">
           <div className="bg-white p-6" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
             <div className="pd-label mb-4" style={{ color: "var(--pd-gold)", fontSize: 11 }}>16 Gauge</div>
             <LCleatProfileDiagram sizes={LC16_SIZES} shankW={7} flangeW={13} gaugeLabel="16 GA" />
             <div className="mt-5 pt-4 text-xs" style={{ color: "var(--pd-muted)", borderTop: "1px solid rgba(0,0,0,0.06)", fontFamily: "ui-monospace, monospace" }}>
-              16 GA · L-Head · Barbed Flat Shank · Chisel Point · 45&deg; Drive · E-G Galvanized · Meets ASTM F1667
+              16 GA · L-Head · Smooth Flat Shank · Chisel Point · 45&deg; Drive · E-G Galvanized · Meets ASTM F1667
             </div>
           </div>
           <div className="bg-white p-6" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
             <div className="pd-label mb-4" style={{ color: "var(--pd-gold)", fontSize: 11 }}>18 Gauge</div>
             <LCleatProfileDiagram sizes={LC18_SIZES} shankW={5.4} flangeW={10} gaugeLabel="18 GA" />
             <div className="mt-5 pt-4 text-xs" style={{ color: "var(--pd-muted)", borderTop: "1px solid rgba(0,0,0,0.06)", fontFamily: "ui-monospace, monospace" }}>
-              18 GA · L-Head · Barbed Flat Shank · Chisel Point · 45&deg; Drive · E-G Galvanized · Meets ASTM F1667
+              18 GA · L-Head · Smooth Flat Shank · Chisel Point · 45&deg; Drive · E-G Galvanized · Meets ASTM F1667
             </div>
           </div>
         </div>

@@ -815,7 +815,7 @@ function Staples() {
       <TechReference
         kicker="Reference"
         title="Staple Subfloor Depth Chart"
-        intro="Select the correct 15.5 GA staple length and crown width for your subfloor thickness. All penetration and tongue-clearance figures from Pro-Drive R22 spec sheet."
+        intro="Match 15.5 GA staple length to your flooring thickness. Each card is drawn to a single shared scale — flooring, 3/4" subfloor, and penetration depth are all proportional. All penetration and tongue-clearance figures from Pro-Drive R22 spec sheet."
         footnote="Actual fastener depth can vary based on wood milling or tongue profile. This chart is for reference purposes only. Consult wood manufacturers or NWFA for correct fastener length before installation."
       >
         <div className="space-y-8">
@@ -838,7 +838,7 @@ function Staples() {
               >
                 {group.items.map(spec => (
                   <div
-                    key={`${group.len}-${spec.crown}`}
+                    key={`${group.len}-${spec.floor}`}
                     className="bg-white"
                     style={{
                       border: "1px solid rgba(0,0,0,0.08)",
@@ -846,7 +846,7 @@ function Staples() {
                       padding: "12px 12px 10px",
                     }}
                   >
-                    <StapleDepthDiagram spec={spec} stapleLenIn={group.lenIn} uid={`${group.len.replace(/\W+/g, "")}-${spec.crown.replace(/\W+/g, "")}`} />
+                    <StapleDepthDiagram spec={spec} stapleLenIn={group.lenIn} uid={`${group.len.replace(/\W+/g, "")}-${spec.floor.replace(/\W+/g, "")}`} />
                     <div
                       className="mt-2 pt-2 flex items-center justify-between"
                       style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}
@@ -859,7 +859,7 @@ function Staples() {
                           letterSpacing: "0.05em",
                         }}
                       >
-                        {spec.crown} crown
+                        {spec.floor} flooring
                       </span>
                       <span
                         style={{

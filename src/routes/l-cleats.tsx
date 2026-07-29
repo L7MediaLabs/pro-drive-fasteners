@@ -694,7 +694,7 @@ function LCleats() {
       <TechReference
         kicker="Dimensions"
         title="L-Cleat Profile — 16 GA & 18 GA"
-        intro='Elevation view of the Pro-Drive L-cleat: a flat, smooth shank with a perpendicular L-head flange bent off the top. Both gauges are drawn at the same scale — 16 GA runs a heavier shank and wider head flange than 18 GA.'
+        intro='Elevation view of the Pro-Drive L-cleat: a flat barbed shank with a perpendicular L-head flange bent off the top. Both gauges are drawn at the same scale — 16 GA runs a heavier shank and wider head flange than 18 GA.'
       >
         <div className="grid md:grid-cols-2 gap-6">
           <div className="bg-white p-6" style={{ borderTop: "3px solid var(--pd-yellow)" }}>

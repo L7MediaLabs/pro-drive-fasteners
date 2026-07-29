@@ -119,7 +119,8 @@ const tabData = {
 } as const;
 
 // Depth chart data — R22 pg. 5. 15.5 GA staples embedded in 3/4" tongue-and-groove.
-type StapleSpec = { crown: string; crownMm: string; pen: string };
+// Each row = flooring thickness → penetration achieved into the subfloor.
+type StapleSpec = { floor: string; floorMm: string; pen: string };
 type StapleGroup = { len: string; lenIn: number; items: StapleSpec[] };
 
 const depthChart: StapleGroup[] = [

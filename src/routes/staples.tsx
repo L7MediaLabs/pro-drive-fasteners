@@ -247,16 +247,16 @@ function StapleDepthDiagram({
   const subfloorTop = floorBottom;
   const subfloorBottom = subfloorTop + SUBFLOOR_H;
 
-  // Seat the staple near the right-center of the plank so the crown sits
-  // close to the visual middle / tongue area of the flooring section.
-  const stapleX0 = LEFT_PAD + WOOD_W * 0.74 - horizRun / 2;
+  // Seat the staple crown over the tongue-and-groove gap between planks so the
+  // legs drive through the joint and into the subfloor beneath the next board.
+  const stapleX0 = LEFT_PAD + WOOD_W + GAP_W / 2;
 
-  const stapleX1 = stapleX0 + horizRun;       // tips travel down-right
+  const stapleX1 = stapleX0 + horizRun;       // tips travel down-right into subfloor
   const stapleY0 = floorTop;
   const stapleY1 = floorTop + verticalSpan;
 
-  const penArrowX = Math.min(stapleX1 + 14, LEFT_PAD + WOOD_W - 6);
-  const tongueArrowX = LEFT_PAD + WOOD_W + 12;
+  const penArrowX = Math.min(stapleX1 + 8, LEFT_PAD + SUBFLOOR_W - 6);
+  const tongueArrowX = LEFT_PAD + SUBFLOOR_W + 10;
 
   const crownPx = STAPLE_CROWN_IN * PPI;
   const halfCrown = crownPx / 2 + STAPLE_WIRE_PX / 2;

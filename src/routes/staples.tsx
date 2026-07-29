@@ -180,10 +180,14 @@ const SUBFLOOR_H = TONGUE_IN * PPI;   // 3/4" subfloor block
 const MAX_FLOOR_IN = 0.75;
 const MAX_PEN_IN = 1.0625;            // deepest penetration in the chart
 const LEFT_PAD = 14;
-const RIGHT_GUTTER = 46;              // reserves space for the tongue arrow
+const RIGHT_GUTTER = 40;              // reserves space for the tongue arrow + pen label
 const WOOD_W = 138;
+const GAP_W = 8;                      // tongue-and-groove joint gap between planks
+const PLANK2_W = 74;                  // partial second plank so the gap is visible
+const SUBFLOOR_W = WOOD_W + GAP_W + PLANK2_W;
+const PLANK2_X = LEFT_PAD + WOOD_W + GAP_W;
 const MAX_TOTAL = MAX_FLOOR_IN + MAX_PEN_IN;
-const VB_W = LEFT_PAD + WOOD_W + RIGHT_GUTTER;
+const VB_W = LEFT_PAD + SUBFLOOR_W + RIGHT_GUTTER;
 const VB_H = MAX_TOTAL * PPI + 18;
 
 // 15.5 GA flooring staple: 1/2" crown, .072" wire.
@@ -243,16 +247,16 @@ function StapleDepthDiagram({
   const subfloorTop = floorBottom;
   const subfloorBottom = subfloorTop + SUBFLOOR_H;
 
-  // Seat the staple near the right-center of the plank so the crown sits
-  // close to the visual middle / tongue area of the flooring section.
-  const stapleX0 = LEFT_PAD + WOOD_W * 0.74 - horizRun / 2;
+  // Seat the staple crown over the tongue-and-groove gap between planks so the
+  // legs drive through the joint and into the subfloor beneath the next board.
+  const stapleX0 = LEFT_PAD + WOOD_W + GAP_W / 2;
 
-  const stapleX1 = stapleX0 + horizRun;       // tips travel down-right
+  const stapleX1 = stapleX0 + horizRun;       // tips travel down-right into subfloor
   const stapleY0 = floorTop;
   const stapleY1 = floorTop + verticalSpan;
 
-  const penArrowX = Math.min(stapleX1 + 14, LEFT_PAD + WOOD_W - 6);
-  const tongueArrowX = LEFT_PAD + WOOD_W + 12;
+  const penArrowX = Math.min(stapleX1 + 8, LEFT_PAD + SUBFLOOR_W - 6);
+  const tongueArrowX = LEFT_PAD + SUBFLOOR_W + 10;
 
   const crownPx = STAPLE_CROWN_IN * PPI;
   const halfCrown = crownPx / 2 + STAPLE_WIRE_PX / 2;
@@ -267,11 +271,15 @@ function StapleDepthDiagram({
         </pattern>
       </defs>
 
-      {/* Flooring plank (brown) — height scales with flooring thickness */}
+      {/* First flooring plank (brown) — height scales with flooring thickness */}
       <rect x={LEFT_PAD} y={floorTop} width={WOOD_W} height={floorPx} fill="#5C4128" />
-      {/* Groove notch on the left */}
+      {/* Groove notch on the left of the first plank */}
       <rect x={LEFT_PAD} y={floorPx * 0.35} width="4" height={Math.max(4, floorPx * 0.55)} fill="#F5F4EE" />
-      {/* Flooring size label */}
+      {/* Second flooring plank to the right, separated by the T&G gap */}
+      <rect x={PLANK2_X} y={floorTop} width={PLANK2_W} height={floorPx} fill="#5C4128" />
+      {/* Groove notch on the left of the second plank */}
+      <rect x={PLANK2_X} y={floorPx * 0.35} width="3" height={Math.max(4, floorPx * 0.55)} fill="#F5F4EE" />
+      {/* Flooring size label (first plank) */}
       <text
         x={LEFT_PAD + 8}
         y={Math.min(floorPx - 4, 12)}
@@ -294,15 +302,15 @@ function StapleDepthDiagram({
         ({spec.floorMm})
       </text>
 
-      {/* Subfloor body — always 3/4" tall (shared scale) */}
-      <rect x={LEFT_PAD} y={subfloorTop} width={WOOD_W} height={SUBFLOOR_H} fill="#D9C89F" />
-      <rect x={LEFT_PAD} y={subfloorTop} width={WOOD_W} height={SUBFLOOR_H} fill={`url(#grain-${uid})`} />
+      {/* Subfloor body — extends under both planks and the joint */}
+      <rect x={LEFT_PAD} y={subfloorTop} width={SUBFLOOR_W} height={SUBFLOOR_H} fill="#D9C89F" />
+      <rect x={LEFT_PAD} y={subfloorTop} width={SUBFLOOR_W} height={SUBFLOOR_H} fill={`url(#grain-${uid})`} />
       {[0.22, 0.48, 0.72].map(f => (
         <line
           key={f}
           x1={LEFT_PAD}
           y1={subfloorTop + SUBFLOOR_H * f}
-          x2={LEFT_PAD + WOOD_W}
+          x2={LEFT_PAD + SUBFLOOR_W}
           y2={subfloorTop + SUBFLOOR_H * f}
           stroke="rgba(0,0,0,0.14)"
           strokeWidth="0.5"

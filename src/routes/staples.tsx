@@ -113,7 +113,7 @@ const tabData = {
       { k: "Lengths", v: '3/4" – 1-1/2"' },
       { k: "Application", v: "Trim · Cabinets · Engineered Flooring" },
     ],
-    galleryHero: { src: images.staples.gauge15Vertical, caption: "L-Wire Strip" },
+    galleryHero: { src: images.staples.gauge15Banner, caption: "L-Wire Strip" },
     galleryPair: [],
   },
 } as const;

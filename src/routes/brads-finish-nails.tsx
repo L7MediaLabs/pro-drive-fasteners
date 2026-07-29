@@ -282,42 +282,45 @@ function THeadNailDiagram({
       {collationDeg > 0 && (
         <g>
           <line
-            x1={BRAD_LEFT_PAD}
+            x1={BRAD_LEFT_PAD + 4}
             y1={BRAD_TOP_PAD}
-            x2={BRAD_LEFT_PAD + 46}
+            x2={BRAD_LEFT_PAD + 52}
             y2={BRAD_TOP_PAD}
-            stroke="rgba(0,0,0,0.35)"
+            stroke="rgba(0,0,0,0.3)"
             strokeWidth="0.8"
             strokeDasharray="4 3"
           />
           <line
-            x1={BRAD_LEFT_PAD + 6}
+            x1={BRAD_LEFT_PAD + 46}
             y1={BRAD_TOP_PAD - 2}
-            x2={BRAD_LEFT_PAD + 6}
-            y2={BRAD_TOP_PAD + 54}
-            stroke="rgba(0,0,0,0.35)"
+            x2={BRAD_LEFT_PAD + 46}
+            y2={BRAD_TOP_PAD + 62}
+            stroke="rgba(0,0,0,0.3)"
             strokeWidth="0.8"
             strokeDasharray="4 3"
           />
           <line
-            x1={BRAD_LEFT_PAD + 6}
+            x1={BRAD_LEFT_PAD + 46}
             y1={BRAD_TOP_PAD - 2}
-            x2={BRAD_LEFT_PAD + 6 - Math.sin(rad) * 56}
-            y2={BRAD_TOP_PAD - 2 + Math.cos(rad) * 56}
-            stroke="var(--pd-gold, #b8891f)"
-            strokeWidth="1.2"
+            x2={BRAD_LEFT_PAD + 46 - Math.sin(rad) * 62}
+            y2={BRAD_TOP_PAD - 2 + Math.cos(rad) * 62}
+            stroke="#b8891f"
+            strokeWidth="1.4"
           />
           <text
-            x={BRAD_LEFT_PAD + 12}
-            y={BRAD_TOP_PAD + 30}
+            x={BRAD_LEFT_PAD + 40}
+            y={BRAD_TOP_PAD + 46}
+            textAnchor="end"
             fontFamily="ui-monospace, monospace"
-            fontSize="10"
+            fontSize="11"
+            fontWeight="700"
             fill="var(--pd-dark)"
           >
             {collationDeg}°
           </text>
         </g>
       )}
+
     </svg>
   );
 }

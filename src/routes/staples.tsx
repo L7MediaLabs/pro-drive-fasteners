@@ -310,13 +310,45 @@ function StapleDepthDiagram({
       {/* STAPLE — true 1/2" crown, two legs, driven at the real install angle */}
       <g transform={`rotate(${driveDeg} ${stapleX0} ${stapleY0}) translate(${stapleX0} ${stapleY0})`}>
         <path
-          d={staplePath(stapleLenPx, STAPLE_CROWN_IN * PPI, STAPLE_WIRE_PX)}
+          d={staplePath(stapleLenPx, crownPx, STAPLE_WIRE_PX)}
           fill="#EDEDF1"
           stroke="#1a1a1a"
           strokeWidth="1.1"
           strokeLinejoin="round"
         />
+
+        {/* Crown width dimension (1/2") above the crown */}
+        <line x1={-halfCrown} y1={-13} x2={halfCrown} y2={-13} stroke="#1a1a1a" strokeWidth="0.9" />
+        <line x1={-halfCrown} y1={-17} x2={-halfCrown} y2={-9} stroke="#1a1a1a" strokeWidth="0.9" />
+        <line x1={halfCrown} y1={-17} x2={halfCrown} y2={-9} stroke="#1a1a1a" strokeWidth="0.9" />
+        <text
+          x={0}
+          y={-19}
+          textAnchor="middle"
+          fill="#1a1a1a"
+          fontFamily="Assistant, sans-serif"
+          fontWeight="800"
+          fontSize="9"
+        >
+          {STAPLE_CROWN_LABEL} crown
+        </text>
+
+        {/* Staple length dimension alongside the legs */}
+        <line x1={lenDimX} y1={0} x2={lenDimX} y2={stapleLenPx} stroke="#1a1a1a" strokeWidth="0.9" />
+        <line x1={lenDimX - 4} y1={0} x2={lenDimX + 4} y2={0} stroke="#1a1a1a" strokeWidth="0.9" />
+        <line x1={lenDimX - 4} y1={stapleLenPx} x2={lenDimX + 4} y2={stapleLenPx} stroke="#1a1a1a" strokeWidth="0.9" />
+        <text
+          transform={`translate(${lenDimX - 5} ${stapleLenPx / 2}) rotate(-90)`}
+          textAnchor="middle"
+          fill="#1a1a1a"
+          fontFamily="Assistant, sans-serif"
+          fontWeight="800"
+          fontSize="9"
+        >
+          {stapleLenLabel} leg
+        </text>
       </g>
+
 
       {/* Penetration arrow — from top of subfloor down to the staple tips */}
       <line x1={penArrowX} y1={subfloorTop + 1} x2={penArrowX} y2={stapleY1} stroke="#1a1a1a" strokeWidth="1" />

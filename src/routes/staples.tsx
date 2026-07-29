@@ -188,6 +188,7 @@ const VB_H = MAX_TOTAL * PPI + 18;
 
 // 15.5 GA flooring staple: 1/2" crown, .072" wire.
 const STAPLE_CROWN_IN = 0.5;
+const STAPLE_CROWN_LABEL = '1/2"';
 const STAPLE_WIRE_PX = 4.2;
 
 /**
@@ -886,7 +887,7 @@ function Staples() {
                       padding: "12px 12px 10px",
                     }}
                   >
-                    <StapleDepthDiagram spec={spec} stapleLenIn={group.lenIn} uid={`${group.len.replace(/\W+/g, "")}-${spec.floor.replace(/\W+/g, "")}`} />
+                    <StapleDepthDiagram spec={spec} stapleLenIn={group.lenIn} stapleLenLabel={group.len} uid={`${group.len.replace(/\W+/g, "")}-${spec.floor.replace(/\W+/g, "")}`} />
                     <div
                       className="mt-2 pt-2 flex items-center justify-between"
                       style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}

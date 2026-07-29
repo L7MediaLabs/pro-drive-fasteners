@@ -211,7 +211,7 @@ function THeadNailDiagram({
         const shankTop = BRAD_TOP_PAD;
         const shankBottom = shankTop + lenPx;
         // Tip position once the nail is tilted to the collation angle.
-        const tipX = cx + Math.sin(rad) * lenPx;
+        const tipX = cx - Math.sin(rad) * lenPx;
         const tipY = shankTop + Math.cos(rad) * lenPx;
         return (
           <g key={s.sku}>
@@ -302,7 +302,7 @@ function THeadNailDiagram({
           <line
             x1={BRAD_LEFT_PAD + 6}
             y1={BRAD_TOP_PAD - 2}
-            x2={BRAD_LEFT_PAD + 6 + Math.sin(rad) * 56}
+            x2={BRAD_LEFT_PAD + 6 - Math.sin(rad) * 56}
             y2={BRAD_TOP_PAD - 2 + Math.cos(rad) * 56}
             stroke="var(--pd-gold, #b8891f)"
             strokeWidth="1.2"

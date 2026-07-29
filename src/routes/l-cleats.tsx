@@ -139,7 +139,7 @@ function CleatDepthDiagram({
   const tongueArrowX = CLEFT_PAD + CWOOD_W + 12;
 
   return (
-    <svg viewBox={`-26 -12 ${CVB_W + 26} ${CVB_H + 12}`} width="100%" style={{ display: "block" }} aria-hidden>
+    <svg viewBox={`-52 -12 ${CVB_W + 52} ${CVB_H + 12}`} width="100%" style={{ display: "block" }} aria-hidden>
       <defs>
         <pattern id={`cleat-grain-${uid}`} width="60" height="14" patternUnits="userSpaceOnUse">
           <line x1="0" y1="7" x2="60" y2="7" stroke="rgba(0,0,0,0.18)" strokeWidth="0.6" strokeDasharray="10 4 4 4 6 6" />

@@ -57,12 +57,17 @@ import polyfaceSoftMedium from "../assets/products/mallets/polyface_soft_medium.
 import polyfaceMedium     from "../assets/products/mallets/polyface_medium.png.asset.json";
 import polyfaceHard       from "../assets/products/mallets/polyface_hard.png.asset.json";
 import polyfaceTough      from "../assets/products/mallets/polyface_tough.png.asset.json";
+// Generic poly dead blow render — fallback for variants without a dedicated photo
 import polyDeadblow       from "../assets/products/mallets/poly_deadblow.png.asset.json";
-import deadblow200l2000   from "../assets/products/mallets/deadblow_200l_2000.png.asset.json";
-import deadblow200l1000   from "../assets/products/mallets/deadblow_200l_1000.png.asset.json";
+import deadblowOrangeBlack from "../assets/products/mallets/deadblow_200l_o_bl.jpg.asset.json";
+import deadblowOrangeBrown from "../assets/products/mallets/deadblow_200l_obr.jpg.asset.json";
+import deadblow200l2000   from "../assets/products/mallets/deadblow_200l_2000_photo.jpg.asset.json";
+import deadblow200l1000   from "../assets/products/mallets/deadblow_200l_1000_photo.jpg.asset.json";
+import malletHeritageLath from "../assets/products/mallets/mallet_heritage_lath.jpg.asset.json";
+import malletCapsOpenBox  from "../assets/products/mallets/mallet_caps_display_openbox.jpg.asset.json";
 import splitheadHero      from "../assets/products/splithead/splithead_hero.png.asset.json";
-import splithead23004     from "../assets/products/splithead/splithead_23004_200.png.asset.json";
-import splithead23002     from "../assets/products/splithead/splithead_23002_150.png.asset.json";
+import splithead23004     from "../assets/products/splithead/splithead_23004_200_photo.jpg.asset.json";
+import splithead23002     from "../assets/products/splithead/splithead_23002_150_photo.jpg.asset.json";
 import s155Masterpack     from "../assets/products/staples/staples_155_masterpack.png.asset.json";
 import s155_1_5in         from "../assets/products/staples/staples_155_1_5in.png.asset.json";
 import s155_2in_1000      from "../assets/products/staples/staples_155_2in_1000.png.asset.json";
@@ -129,17 +134,19 @@ import accessoriesOrk6    from "../assets/products/accessories/accessories_ork6.
 export const images = {
   mallets: {
     hero:        u.malletsP22_07,
-    lineup:      malletCapsDisplay.url,
+    lineup:      malletCapsOpenBox.url,
     family:      u.malletsP22_06,
     m1w:         malletM1w.url,
     m5w:         malletM5w.url,
     r5w:         malletR5w.url,
     dhw:         malletDhw.url,
     vCap:        malletVcap.url,
-    capsLineup:  malletCapsDisplay.url,
+    capsLineup:  malletCapsOpenBox.url,
+    capsDisplayRender: malletCapsDisplay.url,
     vCapBanner:  malletVcap.url,
     polyColors:  u.malletsP24_02,
     polyDetail:  u.malletsP24_03,
+    heritageLath: malletHeritageLath.url,
     misc1:       u.malletsP21_01,
     misc2:       u.malletsP22_08,
     galleher:    [u.malletsP5_01, u.malletsP5_02, u.malletsP5_03, u.malletsP5_05],
@@ -157,7 +164,11 @@ export const images = {
       hard:       polyfaceHard.url,
       tough:      polyfaceTough.url,
     },
+    // Fallback render — still used by 200L-OG and 200L-BR-BR (special order,
+    // no dedicated product photo yet).
     deadBlow: polyDeadblow.url,
+    deadBlowOrangeBlack: deadblowOrangeBlack.url,
+    deadBlowOrangeBrown: deadblowOrangeBrown.url,
     deadBlowInsert: deadblow200l2000.url,
     deadBlowShot:   deadblow200l1000.url,
     splitHead: {

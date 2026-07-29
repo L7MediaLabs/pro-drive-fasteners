@@ -346,7 +346,7 @@ function StapleDepthDiagram({
           fontWeight="800"
           fontSize="9"
         >
-          {stapleLenLabel} leg
+          {stapleLenLabel} long
         </text>
       </g>
 
@@ -887,7 +887,7 @@ function Staples() {
                       padding: "12px 12px 10px",
                     }}
                   >
-                    <StapleDepthDiagram spec={spec} stapleLenIn={group.lenIn} stapleLenLabel={group.len} uid={`${group.len.replace(/\W+/g, "")}-${spec.floor.replace(/\W+/g, "")}`} />
+                    <StapleDepthDiagram spec={spec} stapleLenIn={group.lenIn} stapleLenLabel={group.len.replace(/\s*staples?/i, "")} uid={`${group.len.replace(/\W+/g, "")}-${spec.floor.replace(/\W+/g, "")}`} />
                     <div
                       className="mt-2 pt-2 flex items-center justify-between"
                       style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}

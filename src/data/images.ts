@@ -134,7 +134,7 @@ import accessoriesOrk6    from "../assets/products/accessories/accessories_ork6.
 export const images = {
   mallets: {
     hero:        u.malletsP22_07,
-    lineup:      malletCapsDisplay.url,
+    lineup:      malletCapsOpenBox.url,
     family:      u.malletsP22_06,
     m1w:         malletM1w.url,
     m5w:         malletM5w.url,

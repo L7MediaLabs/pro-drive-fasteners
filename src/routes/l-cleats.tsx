@@ -132,14 +132,57 @@ function CleatDepthDiagram({
         />
       ))}
 
-      {/* Cleat shank — length + angle true to scale */}
-      <line x1={stapleX0} y1={stapleY0} x2={stapleX1} y2={stapleY1} stroke="#B8B8BE" strokeWidth="3.5" strokeLinecap="round" />
-      <line x1={stapleX0} y1={stapleY0} x2={stapleX1} y2={stapleY1} stroke="rgba(255,255,255,0.75)" strokeWidth="1" />
-      {/* Chisel point at tip */}
-      <polygon
-        points={`${stapleX1 - 4.5},${stapleY1 - 5} ${stapleX1 + 6},${stapleY1 + 2} ${stapleX1 - 1.5},${stapleY1 + 4}`}
-        fill="#1a1a1a"
-      />
+      {/* L-CLEAT — flat barbed shank driven at the true install angle, with the
+          perpendicular L-head foot bent off the top of the shank. */}
+      <g transform={`rotate(${driveDeg} ${stapleX0} ${stapleY0})`}>
+        {/* Shank body (flat stock, drawn as a rectangle so barbs read) */}
+        <rect
+          x={stapleX0 - SHANK_W / 2}
+          y={stapleY0}
+          width={SHANK_W}
+          height={Math.max(0, cleatLenPx - 5)}
+          fill="#B8B8BE"
+        />
+        <rect
+          x={stapleX0 - SHANK_W / 2 + 0.7}
+          y={stapleY0}
+          width={1.1}
+          height={Math.max(0, cleatLenPx - 5)}
+          fill="rgba(255,255,255,0.75)"
+        />
+        {/* Serrated barbs down the trailing edge of the shank */}
+        {Array.from({ length: barbCount }).map((_, i) => {
+          const by = stapleY0 + 8 + ((cleatLenPx - 16) / barbCount) * i;
+          return (
+            <polygon
+              key={i}
+              points={`${stapleX0 + SHANK_W / 2},${by} ${stapleX0 + SHANK_W / 2 + 2.6},${by + 3.4} ${stapleX0 + SHANK_W / 2},${by + 3.4}`}
+              fill="#8f8f97"
+            />
+          );
+        })}
+        {/* Chisel point at the tip */}
+        <polygon
+          points={`${stapleX0 - SHANK_W / 2},${stapleY0 + cleatLenPx - 5} ${stapleX0 + SHANK_W / 2},${stapleY0 + cleatLenPx - 5} ${stapleX0 + SHANK_W / 2 - 0.6},${stapleY0 + cleatLenPx}`}
+          fill="#1a1a1a"
+        />
+        {/* L-head — flat foot bent perpendicular off the top of the shank */}
+        <rect
+          x={stapleX0 - SHANK_W / 2 - HEAD_FLANGE}
+          y={stapleY0 - HEAD_T}
+          width={HEAD_FLANGE + SHANK_W}
+          height={HEAD_T}
+          fill="#1a1a1a"
+        />
+        <rect
+          x={stapleX0 - SHANK_W / 2 - HEAD_FLANGE}
+          y={stapleY0 - HEAD_T}
+          width={2}
+          height={HEAD_T + 2.4}
+          fill="#1a1a1a"
+        />
+      </g>
+
 
       {/* Penetration arrow — inside subfloor, from top of subfloor to cleat tip */}
       <line x1={penArrowX} y1={subfloorTop + 1} x2={penArrowX} y2={stapleY1} stroke="#1a1a1a" strokeWidth="1" />

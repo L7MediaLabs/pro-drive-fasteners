@@ -180,10 +180,14 @@ const SUBFLOOR_H = TONGUE_IN * PPI;   // 3/4" subfloor block
 const MAX_FLOOR_IN = 0.75;
 const MAX_PEN_IN = 1.0625;            // deepest penetration in the chart
 const LEFT_PAD = 14;
-const RIGHT_GUTTER = 46;              // reserves space for the tongue arrow
+const RIGHT_GUTTER = 40;              // reserves space for the tongue arrow + pen label
 const WOOD_W = 138;
+const GAP_W = 8;                      // tongue-and-groove joint gap between planks
+const PLANK2_W = 74;                  // partial second plank so the gap is visible
+const SUBFLOOR_W = WOOD_W + GAP_W + PLANK2_W;
+const PLANK2_X = LEFT_PAD + WOOD_W + GAP_W;
 const MAX_TOTAL = MAX_FLOOR_IN + MAX_PEN_IN;
-const VB_W = LEFT_PAD + WOOD_W + RIGHT_GUTTER;
+const VB_W = LEFT_PAD + SUBFLOOR_W + RIGHT_GUTTER;
 const VB_H = MAX_TOTAL * PPI + 18;
 
 // 15.5 GA flooring staple: 1/2" crown, .072" wire.

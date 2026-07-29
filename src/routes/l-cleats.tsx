@@ -61,6 +61,12 @@ function CleatDepthDiagram({
   // Cleat travels diagonally covering (floor + pen) vertically.
   const verticalSpan = floorPx + penPx;
   const horizRun = Math.sqrt(Math.max(0, cleatLenPx ** 2 - verticalSpan ** 2));
+  // Drive angle measured off vertical — used to rotate the whole cleat body.
+  const driveDeg = (Math.atan2(horizRun, verticalSpan) * 180) / Math.PI;
+  const SHANK_W = 4.4;          // flat cleat shank thickness
+  const HEAD_FLANGE = 9;        // horizontal foot of the "L" head
+  const HEAD_T = 4.2;           // head thickness
+  const barbCount = Math.max(3, Math.floor(cleatLenIn / 0.28));
 
   const floorTop = 0;
   const floorBottom = floorPx;

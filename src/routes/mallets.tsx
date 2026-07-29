@@ -345,8 +345,8 @@ function Mallets() {
             }}
           >
             <img
-              src={images.mallets.misc1}
-              alt="Pro-Drive premium hickory mallet handle — turned in-house from century-old wood lath"
+              src={images.mallets.heritageLath}
+              alt="Pro-Drive's in-house handle-turning shop — lathes and hickory handle blanks surrounded by wood shavings, where every mallet handle is turned on 112-year-old equipment"
               loading="lazy"
               style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
             />

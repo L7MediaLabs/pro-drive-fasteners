@@ -132,7 +132,7 @@ function CleatDepthDiagram({
         />
       ))}
 
-      {/* L-CLEAT — flat barbed shank driven at the true install angle, with the
+      {/* L-CLEAT — flat shank driven at the true install angle, with the
           perpendicular L-head foot bent off the top of the shank. */}
       <g transform={`rotate(-${driveDeg} ${stapleX0} ${stapleY0})`}>
         {/* Shank body (flat stock, drawn as a rectangle so barbs read) */}
@@ -297,7 +297,6 @@ function LCleatProfileDiagram({
         const lenPx = s.lenIn * LCP_PPI;
         const top = LCP_TOP_PAD;
         const bottom = top + lenPx;
-        const barbs = Math.max(4, Math.floor(s.lenIn / 0.22));
         const headLeft = cx - shankW / 2 - flangeW;
 
         return (
@@ -673,21 +672,21 @@ function LCleats() {
       <TechReference
         kicker="Dimensions"
         title="L-Cleat Profile — 16 GA & 18 GA"
-        intro='Elevation view of the Pro-Drive L-cleat: a flat, barbed shank with a perpendicular L-head flange bent off the top. Both gauges are drawn at the same scale — 16 GA runs a heavier shank and wider head flange than 18 GA.'
+        intro='Elevation view of the Pro-Drive L-cleat: a flat, smooth shank with a perpendicular L-head flange bent off the top. Both gauges are drawn at the same scale — 16 GA runs a heavier shank and wider head flange than 18 GA.'
       >
         <div className="grid md:grid-cols-2 gap-6">
           <div className="bg-white p-6" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
             <div className="pd-label mb-4" style={{ color: "var(--pd-gold)", fontSize: 11 }}>16 Gauge</div>
             <LCleatProfileDiagram sizes={LC16_SIZES} shankW={7} flangeW={13} gaugeLabel="16 GA" />
             <div className="mt-5 pt-4 text-xs" style={{ color: "var(--pd-muted)", borderTop: "1px solid rgba(0,0,0,0.06)", fontFamily: "ui-monospace, monospace" }}>
-              16 GA · L-Head · Barbed Flat Shank · Chisel Point · 45&deg; Drive · E-G Galvanized · Meets ASTM F1667
+              16 GA · L-Head · Smooth Flat Shank · Chisel Point · 45&deg; Drive · E-G Galvanized · Meets ASTM F1667
             </div>
           </div>
           <div className="bg-white p-6" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
             <div className="pd-label mb-4" style={{ color: "var(--pd-gold)", fontSize: 11 }}>18 Gauge</div>
             <LCleatProfileDiagram sizes={LC18_SIZES} shankW={5.4} flangeW={10} gaugeLabel="18 GA" />
             <div className="mt-5 pt-4 text-xs" style={{ color: "var(--pd-muted)", borderTop: "1px solid rgba(0,0,0,0.06)", fontFamily: "ui-monospace, monospace" }}>
-              18 GA · L-Head · Barbed Flat Shank · Chisel Point · 45&deg; Drive · E-G Galvanized · Meets ASTM F1667
+              18 GA · L-Head · Smooth Flat Shank · Chisel Point · 45&deg; Drive · E-G Galvanized · Meets ASTM F1667
             </div>
           </div>
         </div>

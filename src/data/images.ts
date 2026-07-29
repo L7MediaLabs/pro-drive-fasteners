@@ -164,7 +164,11 @@ export const images = {
       hard:       polyfaceHard.url,
       tough:      polyfaceTough.url,
     },
+    // Fallback render — still used by 200L-OG and 200L-BR-BR (special order,
+    // no dedicated product photo yet).
     deadBlow: polyDeadblow.url,
+    deadBlowOrangeBlack: deadblowOrangeBlack.url,
+    deadBlowOrangeBrown: deadblowOrangeBrown.url,
     deadBlowInsert: deadblow200l2000.url,
     deadBlowShot:   deadblow200l1000.url,
     splitHead: {

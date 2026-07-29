@@ -190,21 +190,29 @@ const TH_HEAD_H = 20;   // bar height — tall, pronounced T-head
 function THeadNailDiagram({
   sizes,
   gaugeLabel = '.0625"',
+  collationDeg = 0,
 }: {
   sizes: { sku: string; label: string; lenIn: number }[];
   gaugeLabel?: string;
+  collationDeg?: number;
 }) {
   const maxLen = Math.max(...sizes.map(s => s.lenIn));
-  const w = BRAD_LEFT_PAD * 2 + sizes.length * BRAD_COL_W;
-  const h = BRAD_TOP_PAD + maxLen * BRAD_PPI + BRAD_BOTTOM_PAD;
+  const rad = (collationDeg * Math.PI) / 180;
+  const maxRun = Math.sin(rad) * maxLen * BRAD_PPI;   // horizontal drift from the tilt
+  const colW = BRAD_COL_W + maxRun * 0.75;
+  const w = BRAD_LEFT_PAD * 2 + sizes.length * colW + maxRun;
+  const h = BRAD_TOP_PAD + Math.cos(rad) * maxLen * BRAD_PPI + BRAD_BOTTOM_PAD;
 
   return (
     <svg viewBox={`0 0 ${w} ${h}`} width="100%" style={{ display: "block" }} aria-hidden>
       {sizes.map((s, i) => {
-        const cx = BRAD_LEFT_PAD + i * BRAD_COL_W + BRAD_COL_W / 2;
+        const cx = BRAD_LEFT_PAD + maxRun + i * colW + colW / 2;
         const lenPx = s.lenIn * BRAD_PPI;
         const shankTop = BRAD_TOP_PAD;
         const shankBottom = shankTop + lenPx;
+        // Tip position once the nail is tilted to the collation angle.
+        const tipX = cx - Math.sin(rad) * lenPx;
+        const tipY = shankTop + Math.cos(rad) * lenPx;
         return (
           <g key={s.sku}>
             {/* SKU badge */}
@@ -216,45 +224,48 @@ function THeadNailDiagram({
               {gaugeLabel}
             </text>
 
-            {/* T-HEAD — tall offset rectangular bar to one side of the shank */}
-            <rect
-              x={cx - TH_SHANK_W / 2 - TH_HEAD_W}
-              y={shankTop - 2}
-              width={TH_HEAD_W + TH_SHANK_W}
-              height={TH_HEAD_H}
-              fill="#1a1a1a"
-            />
-            {/* top cap across shank + head for the flat T crown */}
-            <rect x={cx - TH_SHANK_W / 2 - TH_HEAD_W} y={shankTop - 5} width={TH_HEAD_W + TH_SHANK_W} height={4} fill="#1a1a1a" />
+            {/* Nail body — rotated to the collation angle (0° for straight strips) */}
+            <g transform={`rotate(${collationDeg} ${cx} ${shankTop})`}>
+              {/* T-HEAD — tall offset rectangular bar to one side of the shank */}
+              <rect
+                x={cx - TH_SHANK_W / 2 - TH_HEAD_W}
+                y={shankTop - 2}
+                width={TH_HEAD_W + TH_SHANK_W}
+                height={TH_HEAD_H}
+                fill="#1a1a1a"
+              />
+              {/* top cap across shank + head for the flat T crown */}
+              <rect x={cx - TH_SHANK_W / 2 - TH_HEAD_W} y={shankTop - 5} width={TH_HEAD_W + TH_SHANK_W} height={4} fill="#1a1a1a" />
 
-            {/* Shank */}
-            <line
-              x1={cx}
-              y1={shankTop}
-              x2={cx}
-              y2={shankBottom - 7}
-              stroke="#8a8a90"
-              strokeWidth={TH_SHANK_W}
-              strokeLinecap="butt"
-            />
-            <line
-              x1={cx - 1.2}
-              y1={shankTop + TH_HEAD_H}
-              x2={cx - 1.2}
-              y2={shankBottom - 7}
-              stroke="rgba(255,255,255,0.7)"
-              strokeWidth="1.2"
-            />
-            {/* Chisel point */}
-            <polygon
-              points={`${cx - TH_SHANK_W / 2},${shankBottom - 7} ${cx + TH_SHANK_W / 2},${shankBottom - 7} ${cx + 1},${shankBottom}`}
-              fill="#1a1a1a"
-            />
+              {/* Shank */}
+              <line
+                x1={cx}
+                y1={shankTop}
+                x2={cx}
+                y2={shankBottom - 7}
+                stroke="#8a8a90"
+                strokeWidth={TH_SHANK_W}
+                strokeLinecap="butt"
+              />
+              <line
+                x1={cx - 1.2}
+                y1={shankTop + TH_HEAD_H}
+                x2={cx - 1.2}
+                y2={shankBottom - 7}
+                stroke="rgba(255,255,255,0.7)"
+                strokeWidth="1.2"
+              />
+              {/* Chisel point */}
+              <polygon
+                points={`${cx - TH_SHANK_W / 2},${shankBottom - 7} ${cx + TH_SHANK_W / 2},${shankBottom - 7} ${cx + 1},${shankBottom}`}
+                fill="#1a1a1a"
+              />
+            </g>
 
             {/* Length label */}
             <text
-              x={cx + 9}
-              y={shankBottom + 2}
+              x={tipX + 9}
+              y={tipY + 2}
               fontFamily="Georgia, 'Times New Roman', serif"
               fontStyle="italic"
               fontSize="12"
@@ -266,9 +277,54 @@ function THeadNailDiagram({
           </g>
         );
       })}
+
+      {/* Collation angle callout */}
+      {collationDeg > 0 && (
+        <g>
+          <line
+            x1={BRAD_LEFT_PAD + 4}
+            y1={BRAD_TOP_PAD}
+            x2={BRAD_LEFT_PAD + 52}
+            y2={BRAD_TOP_PAD}
+            stroke="rgba(0,0,0,0.3)"
+            strokeWidth="0.8"
+            strokeDasharray="4 3"
+          />
+          <line
+            x1={BRAD_LEFT_PAD + 46}
+            y1={BRAD_TOP_PAD - 2}
+            x2={BRAD_LEFT_PAD + 46}
+            y2={BRAD_TOP_PAD + 62}
+            stroke="rgba(0,0,0,0.3)"
+            strokeWidth="0.8"
+            strokeDasharray="4 3"
+          />
+          <line
+            x1={BRAD_LEFT_PAD + 46}
+            y1={BRAD_TOP_PAD - 2}
+            x2={BRAD_LEFT_PAD + 46 - Math.sin(rad) * 62}
+            y2={BRAD_TOP_PAD - 2 + Math.cos(rad) * 62}
+            stroke="#b8891f"
+            strokeWidth="1.4"
+          />
+          <text
+            x={BRAD_LEFT_PAD + 40}
+            y={BRAD_TOP_PAD + 46}
+            textAnchor="end"
+            fontFamily="ui-monospace, monospace"
+            fontSize="11"
+            fontWeight="700"
+            fill="var(--pd-dark)"
+          >
+            {collationDeg}°
+          </text>
+        </g>
+      )}
+
     </svg>
   );
 }
+
 
 
 function Brads() {
@@ -449,7 +505,7 @@ function Brads() {
         intro="AFN angled 16 GA nails carry the same offset T-head bar profile, collated at 20° for Paslode® angle finish nailers. Shown at the same scale for direct comparison."
       >
         <div className="bg-white p-6" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
-          <THeadNailDiagram sizes={afnSizes} />
+          <THeadNailDiagram sizes={afnSizes} collationDeg={20} />
           <div className="mt-5 pt-4 text-xs" style={{ color: "var(--pd-muted)", borderTop: "1px solid rgba(0,0,0,0.06)", fontFamily: "ui-monospace, monospace" }}>
             Shank Ø .0625" · T-Head · Chisel Point · 20° Collation · Meets ASTM F1667 · Drawn to scale
           </div>

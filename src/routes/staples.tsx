@@ -119,7 +119,8 @@ const tabData = {
 } as const;
 
 // Depth chart data — R22 pg. 5. 15.5 GA staples embedded in 3/4" tongue-and-groove.
-type StapleSpec = { crown: string; crownMm: string; pen: string };
+// Each row = flooring thickness → penetration achieved into the subfloor.
+type StapleSpec = { floor: string; floorMm: string; pen: string };
 type StapleGroup = { len: string; lenIn: number; items: StapleSpec[] };
 
 const depthChart: StapleGroup[] = [
@@ -127,29 +128,29 @@ const depthChart: StapleGroup[] = [
     len: '2" Staples',
     lenIn: 2.0,
     items: [
-      { crown: '5/8"', crownMm: "16mm", pen: '1-1/16"' },
-      { crown: '3/4"', crownMm: "19mm", pen: '1"' },
+      { floor: '5/8"', floorMm: "16mm", pen: '1-1/16"' },
+      { floor: '3/4"', floorMm: "19mm", pen: '1"' },
     ],
   },
   {
     len: '1-3/4" Staples',
     lenIn: 1.75,
     items: [
-      { crown: '1/2"',  crownMm: "12mm", pen: '31/32"' },
-      { crown: '9/16"', crownMm: "14mm", pen: '29/32"' },
-      { crown: '5/8"',  crownMm: "16mm", pen: '7/8"' },
-      { crown: '3/4"',  crownMm: "19mm", pen: '13/16"' },
+      { floor: '1/2"',  floorMm: "12mm", pen: '31/32"' },
+      { floor: '9/16"', floorMm: "14mm", pen: '29/32"' },
+      { floor: '5/8"',  floorMm: "16mm", pen: '7/8"' },
+      { floor: '3/4"',  floorMm: "19mm", pen: '13/16"' },
     ],
   },
   {
     len: '1-1/2" Staples',
     lenIn: 1.5,
     items: [
-      { crown: '3/8"',  crownMm: "10mm", pen: '7/8"' },
-      { crown: '1/2"',  crownMm: "12mm", pen: '13/16"' },
-      { crown: '9/16"', crownMm: "14mm", pen: '3/4"' },
-      { crown: '5/8"',  crownMm: "16mm", pen: '11/16"' },
-      { crown: '3/4"',  crownMm: "19mm", pen: '5/8"' },
+      { floor: '3/8"',  floorMm: "10mm", pen: '7/8"' },
+      { floor: '1/2"',  floorMm: "12mm", pen: '13/16"' },
+      { floor: '9/16"', floorMm: "14mm", pen: '3/4"' },
+      { floor: '5/8"',  floorMm: "16mm", pen: '11/16"' },
+      { floor: '3/4"',  floorMm: "19mm", pen: '5/8"' },
     ],
   },
 ];
@@ -173,22 +174,46 @@ function toDec(input: string): number {
 }
 
 // Shared scale — every diagram uses the same pixels-per-inch, so cross-card
-// comparison is meaningful (tongue height, penetration depth, staple length).
-const PPI = 60;
-const WOOD_H = TONGUE_IN * PPI;   // 45px — 3/4" tongue
-const CROWN_H = 18;                // top brown strip (visual only)
+// comparison is meaningful (flooring thickness, penetration depth, staple length).
+const PPI = 56;
+const SUBFLOOR_H = TONGUE_IN * PPI;   // 3/4" subfloor block
+const MAX_FLOOR_IN = 0.75;
+const MAX_PEN_IN = 1.0625;            // deepest penetration in the chart
 const LEFT_PAD = 14;
-const RIGHT_GUTTER = 46;           // reserves space for the tongue arrow
-const WOOD_W = 130;                // fixed wood block width for the whole chart
-// Max staple horizontal run: 2" staple w/ 1" pen = sqrt(4-1)=1.73"·60 ≈ 104px.
-// The 2" staple w/ 1-1/16" pen tip drops ~1.06"·60 ≈ 64px past the wood top,
-// so the below-wood extension needs to fit the longest penetration case.
-const MAX_PEN_PX = 1.0625 * PPI;   // 63.75px
-const BELOW_WOOD = Math.max(0, MAX_PEN_PX - WOOD_H); // ~19px
+const RIGHT_GUTTER = 46;              // reserves space for the tongue arrow
+const WOOD_W = 138;
+const MAX_TOTAL = MAX_FLOOR_IN + MAX_PEN_IN;
 const VB_W = LEFT_PAD + WOOD_W + RIGHT_GUTTER;
-const VB_H = CROWN_H + WOOD_H + BELOW_WOOD + 14;
+const VB_H = MAX_TOTAL * PPI + 18;
 
-// SVG diagram of one staple embedded in a 3/4" tongue-and-groove floor cross-section.
+// 15.5 GA flooring staple: 1/2" crown, .072" wire.
+const STAPLE_CROWN_IN = 0.5;
+const STAPLE_WIRE_PX = 4.2;
+
+/**
+ * Silhouette of a 15.5 GA flooring staple — crown bar across the top with two
+ * parallel legs and chisel points, drawn in local coordinates: crown centred on
+ * x = 0, crown top at y = 0, leg tips at y = L.
+ */
+function staplePath(L: number, crownPx: number, wire: number): string {
+  const half = crownPx / 2;
+  const tip = wire * 1.4;
+  return [
+    `M ${-half - wire / 2} 0`,
+    `L ${half + wire / 2} 0`,
+    `L ${half + wire / 2} ${L - tip}`,
+    `L ${half} ${L}`,                       // chisel point, right leg
+    `L ${half - wire / 2} ${L - tip}`,
+    `L ${half - wire / 2} ${wire}`,
+    `L ${-half + wire / 2} ${wire}`,
+    `L ${-half + wire / 2} ${L - tip}`,
+    `L ${-half} ${L}`,                      // chisel point, left leg
+    `L ${-half - wire / 2} ${L - tip}`,
+    "Z",
+  ].join(" ");
+}
+
+// SVG diagram of one staple embedded in a tongue-and-groove floor cross-section.
 // All geometry is scaled from real dimensions so diagrams are visually comparable.
 function StapleDepthDiagram({
   spec,
@@ -199,113 +224,99 @@ function StapleDepthDiagram({
   uid: string;
   stapleLenIn: number;
 }) {
+  const floorIn = toDec(spec.floor);
   const penIn = toDec(spec.pen);
+  const floorPx = floorIn * PPI;
   const penPx = penIn * PPI;
   const stapleLenPx = stapleLenIn * PPI;
-  // Right triangle: staple length² = horizontal run² + penetration²
-  const horizRun = Math.sqrt(Math.max(0, stapleLenPx ** 2 - penPx ** 2));
 
-  const woodTop = CROWN_H;
-  const woodBottom = woodTop + WOOD_H;
+  // Right triangle: staple length² = horizontal run² + (floor + penetration)²
+  const verticalSpan = floorPx + penPx;
+  const horizRun = Math.sqrt(Math.max(0, stapleLenPx ** 2 - verticalSpan ** 2));
+  const driveDeg = (Math.atan2(horizRun, verticalSpan) * 180) / Math.PI;
 
-  // Staple enters at the top of the wood, near the left edge, and travels
-  // down-right by (horizRun, penPx). If horizRun overflows WOOD_W, cap the
-  // entry point so the tip lands inside the reserved wood width.
-  const stapleX1 = Math.min(LEFT_PAD + 8 + horizRun, LEFT_PAD + WOOD_W - 14);
-  const stapleX0 = stapleX1 - horizRun;
-  const stapleY0 = woodTop;
-  const stapleY1 = woodTop + penPx;
+  const floorTop = 0;
+  const floorBottom = floorPx;
+  const subfloorTop = floorBottom;
+  const subfloorBottom = subfloorTop + SUBFLOOR_H;
 
-  const penArrowX = stapleX1 + 10;
+  const stapleX0 = LEFT_PAD + 46;             // crown seated on the tongue
+  const stapleX1 = stapleX0 + horizRun;       // tips travel down-right
+  const stapleY0 = floorTop;
+  const stapleY1 = floorTop + verticalSpan;
+
+  const penArrowX = Math.min(stapleX1 + 12, LEFT_PAD + WOOD_W - 6);
   const tongueArrowX = LEFT_PAD + WOOD_W + 12;
 
   return (
-    <svg
-      viewBox={`0 0 ${VB_W} ${VB_H}`}
-      width="100%"
-      style={{ display: "block" }}
-      aria-hidden
-    >
+    <svg viewBox={`0 -12 ${VB_W} ${VB_H + 12}`} width="100%" style={{ display: "block" }} aria-hidden>
       <defs>
         <pattern id={`grain-${uid}`} width="60" height="14" patternUnits="userSpaceOnUse">
           <line x1="0" y1="7" x2="60" y2="7" stroke="rgba(0,0,0,0.18)" strokeWidth="0.6" strokeDasharray="10 4 4 4 6 6" />
         </pattern>
       </defs>
 
-      {/* Crown / top strip (brown board top) */}
-      <rect x={LEFT_PAD} y="0" width={WOOD_W} height={CROWN_H} fill="#5C4128" />
+      {/* Flooring plank (brown) — height scales with flooring thickness */}
+      <rect x={LEFT_PAD} y={floorTop} width={WOOD_W} height={floorPx} fill="#5C4128" />
       {/* Groove notch on the left */}
-      <rect x={LEFT_PAD} y={CROWN_H * 0.35} width="4" height={CROWN_H * 0.55} fill="#F5F4EE" />
-      {/* Crown size label */}
+      <rect x={LEFT_PAD} y={floorPx * 0.35} width="4" height={Math.max(4, floorPx * 0.55)} fill="#F5F4EE" />
+      {/* Flooring size label */}
       <text
         x={LEFT_PAD + 8}
-        y={CROWN_H * 0.7}
+        y={Math.min(floorPx - 4, 12)}
         fill="#fff"
         fontFamily="Assistant, sans-serif"
         fontWeight="800"
         fontSize="10"
       >
-        {spec.crown}
+        {spec.floor}
       </text>
       <text
         x={LEFT_PAD + 8}
-        y={CROWN_H * 0.7}
-        dx={spec.crown.length * 6.2 + 6}
+        y={Math.min(floorPx - 4, 12)}
+        dx={spec.floor.length * 6.2 + 6}
         fill="rgba(255,255,255,0.75)"
         fontFamily="Assistant, sans-serif"
         fontWeight="600"
         fontSize="7.5"
       >
-        ({spec.crownMm})
+        ({spec.floorMm})
       </text>
 
-      {/* Wood body — always 3/4" tall (shared scale) */}
-      <rect x={LEFT_PAD} y={woodTop} width={WOOD_W} height={WOOD_H} fill="#D9C89F" />
-      <rect x={LEFT_PAD} y={woodTop} width={WOOD_W} height={WOOD_H} fill={`url(#grain-${uid})`} />
+      {/* Subfloor body — always 3/4" tall (shared scale) */}
+      <rect x={LEFT_PAD} y={subfloorTop} width={WOOD_W} height={SUBFLOOR_H} fill="#D9C89F" />
+      <rect x={LEFT_PAD} y={subfloorTop} width={WOOD_W} height={SUBFLOOR_H} fill={`url(#grain-${uid})`} />
       {[0.22, 0.48, 0.72].map(f => (
         <line
           key={f}
           x1={LEFT_PAD}
-          y1={woodTop + WOOD_H * f}
+          y1={subfloorTop + SUBFLOOR_H * f}
           x2={LEFT_PAD + WOOD_W}
-          y2={woodTop + WOOD_H * f}
+          y2={subfloorTop + SUBFLOOR_H * f}
           stroke="rgba(0,0,0,0.14)"
           strokeWidth="0.5"
           strokeDasharray="12 5 4 6"
         />
       ))}
 
-      {/* Staple shank — length + angle are true to scale */}
-      <line
-        x1={stapleX0}
-        y1={stapleY0}
-        x2={stapleX1}
-        y2={stapleY1}
-        stroke="#B8B8BE"
-        strokeWidth="3.5"
-        strokeLinecap="round"
-      />
-      <line
-        x1={stapleX0}
-        y1={stapleY0}
-        x2={stapleX1}
-        y2={stapleY1}
-        stroke="rgba(255,255,255,0.75)"
-        strokeWidth="1"
-      />
-      {/* Chisel point at the tip */}
-      <polygon
-        points={`${stapleX1 - 4.5},${stapleY1 - 5} ${stapleX1 + 6},${stapleY1 + 2} ${stapleX1 - 1.5},${stapleY1 + 4}`}
-        fill="#1a1a1a"
-      />
+      {/* STAPLE — true 1/2" crown, two legs, driven at the real install angle */}
+      <g transform={`rotate(${driveDeg} ${stapleX0} ${stapleY0}) translate(${stapleX0} ${stapleY0})`}>
+        <path
+          d={staplePath(stapleLenPx, STAPLE_CROWN_IN * PPI, STAPLE_WIRE_PX)}
+          fill="#EDEDF1"
+          stroke="#1a1a1a"
+          strokeWidth="1.1"
+          strokeLinejoin="round"
+        />
+      </g>
 
-      {/* Penetration arrow — from wood top down to the staple tip (true depth) */}
-      <line x1={penArrowX} y1={woodTop + 1} x2={penArrowX} y2={stapleY1} stroke="#1a1a1a" strokeWidth="1" />
-      <polygon points={`${penArrowX},${woodTop + 1} ${penArrowX - 3},${woodTop + 7} ${penArrowX + 3},${woodTop + 7}`} fill="#1a1a1a" />
+      {/* Penetration arrow — from top of subfloor down to the staple tips */}
+      <line x1={penArrowX} y1={subfloorTop + 1} x2={penArrowX} y2={stapleY1} stroke="#1a1a1a" strokeWidth="1" />
+      <polygon points={`${penArrowX},${subfloorTop + 1} ${penArrowX - 3},${subfloorTop + 7} ${penArrowX + 3},${subfloorTop + 7}`} fill="#1a1a1a" />
       <polygon points={`${penArrowX},${stapleY1} ${penArrowX - 3},${stapleY1 - 6} ${penArrowX + 3},${stapleY1 - 6}`} fill="#1a1a1a" />
       <text
         x={penArrowX + 5}
-        y={(woodTop + stapleY1) / 2 + 4}
+        y={(subfloorTop + stapleY1) / 2 + 4}
         fill="#1a1a1a"
         fontFamily="Assistant, sans-serif"
         fontWeight="800"
@@ -314,13 +325,13 @@ function StapleDepthDiagram({
         {spec.pen}
       </text>
 
-      {/* Tongue (3/4") reference arrow — same length on every card */}
-      <line x1={tongueArrowX} y1={woodTop} x2={tongueArrowX} y2={woodBottom} stroke="#1a1a1a" strokeWidth="1" />
-      <polygon points={`${tongueArrowX},${woodTop} ${tongueArrowX - 3},${woodTop + 6} ${tongueArrowX + 3},${woodTop + 6}`} fill="#1a1a1a" />
-      <polygon points={`${tongueArrowX},${woodBottom} ${tongueArrowX - 3},${woodBottom - 6} ${tongueArrowX + 3},${woodBottom - 6}`} fill="#1a1a1a" />
+      {/* Subfloor (3/4") reference arrow — same length on every card */}
+      <line x1={tongueArrowX} y1={subfloorTop} x2={tongueArrowX} y2={subfloorBottom} stroke="#1a1a1a" strokeWidth="1" />
+      <polygon points={`${tongueArrowX},${subfloorTop} ${tongueArrowX - 3},${subfloorTop + 6} ${tongueArrowX + 3},${subfloorTop + 6}`} fill="#1a1a1a" />
+      <polygon points={`${tongueArrowX},${subfloorBottom} ${tongueArrowX - 3},${subfloorBottom - 6} ${tongueArrowX + 3},${subfloorBottom - 6}`} fill="#1a1a1a" />
       <text
         x={tongueArrowX + 6}
-        y={(woodTop + woodBottom) / 2 + 4}
+        y={(subfloorTop + subfloorBottom) / 2 + 4}
         fill="#1a1a1a"
         fontFamily="Assistant, sans-serif"
         fontWeight="800"
@@ -331,6 +342,7 @@ function StapleDepthDiagram({
     </svg>
   );
 }
+
 
 
 // ─── Generic Senco-style U-staple technical drawing ────────────────────────
@@ -803,7 +815,7 @@ function Staples() {
       <TechReference
         kicker="Reference"
         title="Staple Subfloor Depth Chart"
-        intro="Select the correct 15.5 GA staple length and crown width for your subfloor thickness. All penetration and tongue-clearance figures from Pro-Drive R22 spec sheet."
+        intro='Match 15.5 GA staple length to your flooring thickness. Every card is drawn to one shared scale — flooring, 3/4" subfloor, and penetration depth are all proportional. Figures from the Pro-Drive R22 spec sheet.'
         footnote="Actual fastener depth can vary based on wood milling or tongue profile. This chart is for reference purposes only. Consult wood manufacturers or NWFA for correct fastener length before installation."
       >
         <div className="space-y-8">
@@ -826,7 +838,7 @@ function Staples() {
               >
                 {group.items.map(spec => (
                   <div
-                    key={`${group.len}-${spec.crown}`}
+                    key={`${group.len}-${spec.floor}`}
                     className="bg-white"
                     style={{
                       border: "1px solid rgba(0,0,0,0.08)",
@@ -834,7 +846,7 @@ function Staples() {
                       padding: "12px 12px 10px",
                     }}
                   >
-                    <StapleDepthDiagram spec={spec} stapleLenIn={group.lenIn} uid={`${group.len.replace(/\W+/g, "")}-${spec.crown.replace(/\W+/g, "")}`} />
+                    <StapleDepthDiagram spec={spec} stapleLenIn={group.lenIn} uid={`${group.len.replace(/\W+/g, "")}-${spec.floor.replace(/\W+/g, "")}`} />
                     <div
                       className="mt-2 pt-2 flex items-center justify-between"
                       style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}
@@ -847,7 +859,7 @@ function Staples() {
                           letterSpacing: "0.05em",
                         }}
                       >
-                        {spec.crown} crown
+                        {spec.floor} flooring
                       </span>
                       <span
                         style={{

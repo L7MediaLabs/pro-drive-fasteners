@@ -73,12 +73,12 @@ function CleatDepthDiagram({
   const subfloorTop = floorBottom;
   const subfloorBottom = subfloorTop + CSUBFLOOR_H;
 
-  const stapleX1 = Math.min(CLEFT_PAD + 6 + horizRun, CLEFT_PAD + CWOOD_W - 12);
-  const stapleX0 = stapleX1 - horizRun;
+  const stapleX0 = CLEFT_PAD + CWOOD_W - 12; // L-head on the right side of the floor
+  const stapleX1 = stapleX0 - horizRun; // tip extends left
   const stapleY0 = floorTop;
   const stapleY1 = floorTop + verticalSpan;
 
-  const penArrowX = stapleX1 + 10;
+  const penArrowX = stapleX1 - 10;
   const tongueArrowX = CLEFT_PAD + CWOOD_W + 12;
 
   return (
@@ -134,7 +134,7 @@ function CleatDepthDiagram({
 
       {/* L-CLEAT — flat barbed shank driven at the true install angle, with the
           perpendicular L-head foot bent off the top of the shank. */}
-      <g transform={`rotate(${driveDeg} ${stapleX0} ${stapleY0})`}>
+      <g transform={`rotate(-${driveDeg} ${stapleX0} ${stapleY0})`}>
         {/* Shank body (flat stock, drawn as a rectangle so barbs read) */}
         <rect
           x={stapleX0 - SHANK_W / 2}
@@ -168,14 +168,14 @@ function CleatDepthDiagram({
         />
         {/* L-head — flat foot bent perpendicular off the top of the shank */}
         <rect
-          x={stapleX0 - SHANK_W / 2 - HEAD_FLANGE}
+          x={stapleX0 - SHANK_W / 2}
           y={stapleY0 - HEAD_T}
           width={HEAD_FLANGE + SHANK_W}
           height={HEAD_T}
           fill="#1a1a1a"
         />
         <rect
-          x={stapleX0 - SHANK_W / 2 - HEAD_FLANGE}
+          x={stapleX0 + SHANK_W / 2 + HEAD_FLANGE - 2}
           y={stapleY0 - HEAD_T}
           width={2}
           height={HEAD_T + 2.4}
@@ -189,8 +189,9 @@ function CleatDepthDiagram({
       <polygon points={`${penArrowX},${subfloorTop + 1} ${penArrowX - 3},${subfloorTop + 7} ${penArrowX + 3},${subfloorTop + 7}`} fill="#1a1a1a" />
       <polygon points={`${penArrowX},${stapleY1} ${penArrowX - 3},${stapleY1 - 6} ${penArrowX + 3},${stapleY1 - 6}`} fill="#1a1a1a" />
       <text
-        x={penArrowX + 5}
+        x={penArrowX - 5}
         y={(subfloorTop + stapleY1) / 2 + 4}
+        textAnchor="end"
         fill="#1a1a1a"
         fontFamily="Assistant, sans-serif"
         fontWeight="800"

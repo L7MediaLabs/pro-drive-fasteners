@@ -275,6 +275,14 @@ function StapleDepthDiagram({
       <rect x={LEFT_PAD} y={floorTop} width={WOOD_W} height={floorPx} fill="#5C4128" />
       {/* Second flooring plank to the right, separated by the T&G joint */}
       <rect x={PLANK2_X} y={floorTop} width={PLANK2_W} height={floorPx} fill="#5C4128" />
+      {/* Fill the joint gap so no white/cream background shows through */}
+      <rect
+        x={LEFT_PAD + WOOD_W}
+        y={floorTop}
+        width={GAP_W}
+        height={floorPx}
+        fill="#5C4128"
+      />
       {/* Tongue-and-groove joint seam line between the two planks */}
       <line
         x1={LEFT_PAD + WOOD_W + GAP_W / 2}
@@ -284,14 +292,14 @@ function StapleDepthDiagram({
         stroke="#3D2B1B"
         strokeWidth="1.2"
       />
-      {/* Tongue of the left plank (fills the lower half of the joint gap) */}
+      {/* Tongue of the left plank (subtle tone-on-tone detail) */}
       <rect
         x={LEFT_PAD + WOOD_W}
         y={floorTop + floorPx * 0.45}
         width={GAP_W - 0.5}
         height={Math.max(3, floorPx * 0.55)}
         fill="#6B4E35"
-        opacity={0.8}
+        opacity={0.5}
       />
       {/* Flooring size label (first plank) */}
       <text

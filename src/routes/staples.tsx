@@ -188,6 +188,7 @@ const VB_H = MAX_TOTAL * PPI + 18;
 
 // 15.5 GA flooring staple: 1/2" crown, .072" wire.
 const STAPLE_CROWN_IN = 0.5;
+const STAPLE_CROWN_LABEL = '1/2"';
 const STAPLE_WIRE_PX = 4.2;
 
 /**
@@ -219,10 +220,12 @@ function StapleDepthDiagram({
   spec,
   uid,
   stapleLenIn,
+  stapleLenLabel,
 }: {
   spec: StapleSpec;
   uid: string;
   stapleLenIn: number;
+  stapleLenLabel: string;
 }) {
   const floorIn = toDec(spec.floor);
   const penIn = toDec(spec.pen);
@@ -240,16 +243,22 @@ function StapleDepthDiagram({
   const subfloorTop = floorBottom;
   const subfloorBottom = subfloorTop + SUBFLOOR_H;
 
-  const stapleX0 = LEFT_PAD + 46;             // crown seated on the tongue
+  // Seat the staple around the middle of the plank
+  const stapleX0 = LEFT_PAD + WOOD_W / 2 - horizRun / 2;
   const stapleX1 = stapleX0 + horizRun;       // tips travel down-right
   const stapleY0 = floorTop;
   const stapleY1 = floorTop + verticalSpan;
 
-  const penArrowX = Math.min(stapleX1 + 12, LEFT_PAD + WOOD_W - 6);
+  const penArrowX = Math.min(stapleX1 + 14, LEFT_PAD + WOOD_W - 6);
   const tongueArrowX = LEFT_PAD + WOOD_W + 12;
 
+  const crownPx = STAPLE_CROWN_IN * PPI;
+  const halfCrown = crownPx / 2 + STAPLE_WIRE_PX / 2;
+  const lenDimX = -halfCrown - 13;
+
   return (
-    <svg viewBox={`0 -12 ${VB_W} ${VB_H + 12}`} width="100%" style={{ display: "block" }} aria-hidden>
+    <svg viewBox={`-22 -30 ${VB_W + 22} ${VB_H + 30}`} width="100%" style={{ display: "block" }} aria-hidden>
+
       <defs>
         <pattern id={`grain-${uid}`} width="60" height="14" patternUnits="userSpaceOnUse">
           <line x1="0" y1="7" x2="60" y2="7" stroke="rgba(0,0,0,0.18)" strokeWidth="0.6" strokeDasharray="10 4 4 4 6 6" />
@@ -302,13 +311,45 @@ function StapleDepthDiagram({
       {/* STAPLE — true 1/2" crown, two legs, driven at the real install angle */}
       <g transform={`rotate(${driveDeg} ${stapleX0} ${stapleY0}) translate(${stapleX0} ${stapleY0})`}>
         <path
-          d={staplePath(stapleLenPx, STAPLE_CROWN_IN * PPI, STAPLE_WIRE_PX)}
+          d={staplePath(stapleLenPx, crownPx, STAPLE_WIRE_PX)}
           fill="#EDEDF1"
           stroke="#1a1a1a"
           strokeWidth="1.1"
           strokeLinejoin="round"
         />
+
+        {/* Crown width dimension (1/2") above the crown */}
+        <line x1={-halfCrown} y1={-13} x2={halfCrown} y2={-13} stroke="#1a1a1a" strokeWidth="0.9" />
+        <line x1={-halfCrown} y1={-17} x2={-halfCrown} y2={-9} stroke="#1a1a1a" strokeWidth="0.9" />
+        <line x1={halfCrown} y1={-17} x2={halfCrown} y2={-9} stroke="#1a1a1a" strokeWidth="0.9" />
+        <text
+          x={0}
+          y={-19}
+          textAnchor="middle"
+          fill="#1a1a1a"
+          fontFamily="Assistant, sans-serif"
+          fontWeight="800"
+          fontSize="9"
+        >
+          {STAPLE_CROWN_LABEL} crown
+        </text>
+
+        {/* Staple length dimension alongside the legs */}
+        <line x1={lenDimX} y1={0} x2={lenDimX} y2={stapleLenPx} stroke="#1a1a1a" strokeWidth="0.9" />
+        <line x1={lenDimX - 4} y1={0} x2={lenDimX + 4} y2={0} stroke="#1a1a1a" strokeWidth="0.9" />
+        <line x1={lenDimX - 4} y1={stapleLenPx} x2={lenDimX + 4} y2={stapleLenPx} stroke="#1a1a1a" strokeWidth="0.9" />
+        <text
+          transform={`translate(${lenDimX - 5} ${stapleLenPx / 2}) rotate(-90)`}
+          textAnchor="middle"
+          fill="#1a1a1a"
+          fontFamily="Assistant, sans-serif"
+          fontWeight="800"
+          fontSize="9"
+        >
+          {stapleLenLabel} long
+        </text>
       </g>
+
 
       {/* Penetration arrow — from top of subfloor down to the staple tips */}
       <line x1={penArrowX} y1={subfloorTop + 1} x2={penArrowX} y2={stapleY1} stroke="#1a1a1a" strokeWidth="1" />
@@ -846,7 +887,7 @@ function Staples() {
                       padding: "12px 12px 10px",
                     }}
                   >
-                    <StapleDepthDiagram spec={spec} stapleLenIn={group.lenIn} uid={`${group.len.replace(/\W+/g, "")}-${spec.floor.replace(/\W+/g, "")}`} />
+                    <StapleDepthDiagram spec={spec} stapleLenIn={group.lenIn} stapleLenLabel={group.len.replace(/\s*staples?/i, "")} uid={`${group.len.replace(/\W+/g, "")}-${spec.floor.replace(/\W+/g, "")}`} />
                     <div
                       className="mt-2 pt-2 flex items-center justify-between"
                       style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}

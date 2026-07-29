@@ -167,6 +167,109 @@ function BradNailDiagram({ sizes }: { sizes: typeof brad18Sizes }) {
   );
 }
 
+// ─── 16 GA T-Head Diagram — same PPI convention as the 18 GA brad diagram ──
+const c16Sizes: { sku: string; label: string; lenIn: number }[] = [
+  { sku: "C25",  label: '1"',     lenIn: 1.0 },
+  { sku: "C32",  label: '1-1/4"', lenIn: 1.25 },
+  { sku: "C38",  label: '1-1/2"', lenIn: 1.5 },
+  { sku: "C45",  label: '1-3/4"', lenIn: 1.75 },
+  { sku: "C50",  label: '2"',     lenIn: 2.0 },
+  { sku: "C64",  label: '2-1/2"', lenIn: 2.5 },
+];
+
+const afnSizes: { sku: string; label: string; lenIn: number }[] = [
+  { sku: "AFN38", label: '1-1/2"', lenIn: 1.5 },
+  { sku: "AFN45", label: '1-3/4"', lenIn: 1.75 },
+  { sku: "AFN50", label: '2"',     lenIn: 2.0 },
+];
+
+const TH_SHANK_W = 5.5;
+const TH_HEAD_W = 5;    // bar thickness (horizontal extent of the offset bar)
+const TH_HEAD_H = 20;   // bar height — tall, pronounced T-head
+
+function THeadNailDiagram({
+  sizes,
+  gaugeLabel = '.0625"',
+}: {
+  sizes: { sku: string; label: string; lenIn: number }[];
+  gaugeLabel?: string;
+}) {
+  const maxLen = Math.max(...sizes.map(s => s.lenIn));
+  const w = BRAD_LEFT_PAD * 2 + sizes.length * BRAD_COL_W;
+  const h = BRAD_TOP_PAD + maxLen * BRAD_PPI + BRAD_BOTTOM_PAD;
+
+  return (
+    <svg viewBox={`0 0 ${w} ${h}`} width="100%" style={{ display: "block" }} aria-hidden>
+      {sizes.map((s, i) => {
+        const cx = BRAD_LEFT_PAD + i * BRAD_COL_W + BRAD_COL_W / 2;
+        const lenPx = s.lenIn * BRAD_PPI;
+        const shankTop = BRAD_TOP_PAD;
+        const shankBottom = shankTop + lenPx;
+        return (
+          <g key={s.sku}>
+            {/* SKU badge */}
+            <rect x={cx - 24} y={4} width={48} height={18} fill="#e9e9ec" stroke="rgba(0,0,0,0.08)" strokeWidth="0.5" />
+            <text x={cx} y={17} textAnchor="middle" fontFamily="Assistant, sans-serif" fontWeight="800" fontSize="11" fill="#1a1a1a">
+              {s.sku}
+            </text>
+            <text x={cx} y={34} textAnchor="middle" fontFamily="ui-monospace, monospace" fontSize="9" fill="var(--pd-muted)">
+              {gaugeLabel}
+            </text>
+
+            {/* T-HEAD — tall offset rectangular bar to one side of the shank */}
+            <rect
+              x={cx - TH_SHANK_W / 2 - TH_HEAD_W}
+              y={shankTop - 2}
+              width={TH_HEAD_W + TH_SHANK_W}
+              height={TH_HEAD_H}
+              fill="#1a1a1a"
+            />
+            {/* top cap across shank + head for the flat T crown */}
+            <rect x={cx - TH_SHANK_W / 2 - TH_HEAD_W} y={shankTop - 5} width={TH_HEAD_W + TH_SHANK_W} height={4} fill="#1a1a1a" />
+
+            {/* Shank */}
+            <line
+              x1={cx}
+              y1={shankTop}
+              x2={cx}
+              y2={shankBottom - 7}
+              stroke="#8a8a90"
+              strokeWidth={TH_SHANK_W}
+              strokeLinecap="butt"
+            />
+            <line
+              x1={cx - 1.2}
+              y1={shankTop + TH_HEAD_H}
+              x2={cx - 1.2}
+              y2={shankBottom - 7}
+              stroke="rgba(255,255,255,0.7)"
+              strokeWidth="1.2"
+            />
+            {/* Chisel point */}
+            <polygon
+              points={`${cx - TH_SHANK_W / 2},${shankBottom - 7} ${cx + TH_SHANK_W / 2},${shankBottom - 7} ${cx + 1},${shankBottom}`}
+              fill="#1a1a1a"
+            />
+
+            {/* Length label */}
+            <text
+              x={cx + 9}
+              y={shankBottom + 2}
+              fontFamily="Georgia, 'Times New Roman', serif"
+              fontStyle="italic"
+              fontSize="12"
+              fontWeight="600"
+              fill="var(--pd-dark)"
+            >
+              {s.label}
+            </text>
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
 
 function Brads() {
   const allShownIds = [...FN15, ...DA15, ...C16, ...AFN, ...BRAD18, ...PINS23].map(p => p.id);
@@ -323,6 +426,32 @@ function Brads() {
           <BradNailDiagram sizes={brad18Sizes} />
           <div className="mt-5 pt-4 text-xs" style={{ color: "var(--pd-muted)", borderTop: "1px solid rgba(0,0,0,0.06)", fontFamily: "ui-monospace, monospace" }}>
             Shank Ø .0468" · Chisel Point · Smooth Shank · Meets ASTM F1667 · Drawn to scale
+          </div>
+        </div>
+      </TechReference>
+
+      <TechReference
+        kicker="Reference"
+        title="16 GA T-Head Profile — Straight (C-Series)"
+        intro='Pro-Drive 16 GA straight finish nails use a T-head: a tall, offset rectangular bar head set to one side of the .0625" shank — noticeably more pronounced than the small cap head on an 18 GA brad. Drawn to the same scale as the brad chart.'
+      >
+        <div className="bg-white p-6" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
+          <THeadNailDiagram sizes={c16Sizes} />
+          <div className="mt-5 pt-4 text-xs" style={{ color: "var(--pd-muted)", borderTop: "1px solid rgba(0,0,0,0.06)", fontFamily: "ui-monospace, monospace" }}>
+            Shank Ø .0625" · T-Head · Blunt Chisel Point · Smooth Shank · Meets ASTM F1667 · Drawn to scale
+          </div>
+        </div>
+      </TechReference>
+
+      <TechReference
+        kicker="Reference"
+        title="16 GA T-Head Profile — AFN 20° (Paslode® Fit)"
+        intro="AFN angled 16 GA nails carry the same offset T-head bar profile, collated at 20° for Paslode® angle finish nailers. Shown at the same scale for direct comparison."
+      >
+        <div className="bg-white p-6" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
+          <THeadNailDiagram sizes={afnSizes} />
+          <div className="mt-5 pt-4 text-xs" style={{ color: "var(--pd-muted)", borderTop: "1px solid rgba(0,0,0,0.06)", fontFamily: "ui-monospace, monospace" }}>
+            Shank Ø .0625" · T-Head · Chisel Point · 20° Collation · Meets ASTM F1667 · Drawn to scale
           </div>
         </div>
       </TechReference>

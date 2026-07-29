@@ -273,12 +273,26 @@ function StapleDepthDiagram({
 
       {/* First flooring plank (brown) — height scales with flooring thickness */}
       <rect x={LEFT_PAD} y={floorTop} width={WOOD_W} height={floorPx} fill="#5C4128" />
-      {/* Groove notch on the left of the first plank */}
-      <rect x={LEFT_PAD} y={floorPx * 0.35} width="4" height={Math.max(4, floorPx * 0.55)} fill="#F5F4EE" />
-      {/* Second flooring plank to the right, separated by the T&G gap */}
+      {/* Second flooring plank to the right, separated by the T&G joint */}
       <rect x={PLANK2_X} y={floorTop} width={PLANK2_W} height={floorPx} fill="#5C4128" />
-      {/* Groove notch on the left of the second plank */}
-      <rect x={PLANK2_X} y={floorPx * 0.35} width="3" height={Math.max(4, floorPx * 0.55)} fill="#F5F4EE" />
+      {/* Tongue-and-groove joint seam line between the two planks */}
+      <line
+        x1={LEFT_PAD + WOOD_W + GAP_W / 2}
+        y1={floorTop}
+        x2={LEFT_PAD + WOOD_W + GAP_W / 2}
+        y2={floorBottom}
+        stroke="#3D2B1B"
+        strokeWidth="1.2"
+      />
+      {/* Tongue of the left plank (fills the lower half of the joint gap) */}
+      <rect
+        x={LEFT_PAD + WOOD_W}
+        y={floorTop + floorPx * 0.45}
+        width={GAP_W - 0.5}
+        height={Math.max(3, floorPx * 0.55)}
+        fill="#6B4E35"
+        opacity={0.8}
+      />
       {/* Flooring size label (first plank) */}
       <text
         x={LEFT_PAD + 8}

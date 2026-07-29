@@ -502,7 +502,7 @@ function Brads() {
         intro="AFN angled 16 GA nails carry the same offset T-head bar profile, collated at 20° for Paslode® angle finish nailers. Shown at the same scale for direct comparison."
       >
         <div className="bg-white p-6" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
-          <THeadNailDiagram sizes={afnSizes} />
+          <THeadNailDiagram sizes={afnSizes} collationDeg={20} />
           <div className="mt-5 pt-4 text-xs" style={{ color: "var(--pd-muted)", borderTop: "1px solid rgba(0,0,0,0.06)", fontFamily: "ui-monospace, monospace" }}>
             Shank Ø .0625" · T-Head · Chisel Point · 20° Collation · Meets ASTM F1667 · Drawn to scale
           </div>

@@ -66,14 +66,14 @@ function CleatDepthDiagram({
   const SHANK_W = 4.4;          // flat cleat shank thickness
   const HEAD_FLANGE = 9;        // horizontal foot of the "L" head
   const HEAD_T = 4.2;           // head thickness
-  const barbCount = Math.max(3, Math.floor(cleatLenIn / 0.28));
+  
 
   const floorTop = 0;
   const floorBottom = floorPx;
   const subfloorTop = floorBottom;
   const subfloorBottom = subfloorTop + CSUBFLOOR_H;
 
-  const stapleX0 = CLEFT_PAD + CWOOD_W - 12; // L-head on the right side of the floor
+  const stapleX0 = CLEFT_PAD + CWOOD_W - 30; // L-head seated inside the plank
   const stapleX1 = stapleX0 - horizRun; // tip extends left
   const stapleY0 = floorTop;
   const stapleY1 = floorTop + verticalSpan;
@@ -150,17 +150,8 @@ function CleatDepthDiagram({
           height={Math.max(0, cleatLenPx - 5)}
           fill="rgba(255,255,255,0.75)"
         />
-        {/* Serrated barbs down the trailing edge of the shank */}
-        {Array.from({ length: barbCount }).map((_, i) => {
-          const by = stapleY0 + 8 + ((cleatLenPx - 16) / barbCount) * i;
-          return (
-            <polygon
-              key={i}
-              points={`${stapleX0 + SHANK_W / 2},${by} ${stapleX0 + SHANK_W / 2 + 2.6},${by + 3.4} ${stapleX0 + SHANK_W / 2},${by + 3.4}`}
-              fill="#8f8f97"
-            />
-          );
-        })}
+        {/* smooth shank — no serrations */}
+
         {/* Chisel point at the tip */}
         <polygon
           points={`${stapleX0 - SHANK_W / 2},${stapleY0 + cleatLenPx - 5} ${stapleX0 + SHANK_W / 2},${stapleY0 + cleatLenPx - 5} ${stapleX0 + SHANK_W / 2 - 0.6},${stapleY0 + cleatLenPx}`}
@@ -344,17 +335,8 @@ function LCleatProfileDiagram({
             <rect x={cx - shankW / 2} y={top} width={shankW} height={lenPx - 7} fill="#B8B8BE" />
             <rect x={cx - shankW / 2 + 1} y={top} width={1.3} height={lenPx - 7} fill="rgba(255,255,255,0.75)" />
 
-            {/* Barbs / serrations down the trailing edge */}
-            {Array.from({ length: barbs }).map((_, b) => {
-              const by = top + 10 + ((lenPx - 22) / barbs) * b;
-              return (
-                <polygon
-                  key={b}
-                  points={`${cx + shankW / 2},${by} ${cx + shankW / 2 + 3},${by + 4} ${cx + shankW / 2},${by + 4}`}
-                  fill="#8f8f97"
-                />
-              );
-            })}
+            {/* smooth shank — no serrations */}
+
 
             {/* Chisel point */}
             <polygon

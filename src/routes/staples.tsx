@@ -70,7 +70,7 @@ const tabData = {
     ],
     galleryHero: { src: images.staples.gauge15Banner, caption: "Q-Wire Strip" },
     galleryPair: [
-      { src: images.staples.gauge15Vertical, caption: "Standing Detail" },
+      { src: images.staples.q15BulkPack, caption: "2-1/2\" Bulk Pack" },
       { src: images.staples.gauge15Banner, caption: "Collated" },
     ],
   },

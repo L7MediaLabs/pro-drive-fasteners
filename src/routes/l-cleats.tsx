@@ -279,7 +279,7 @@ const LC18_SIZES: CleatSize[] = [
 const LCP_PPI = 118;         // vertical scale — shared by both gauges
 const LCP_COL_W = 96;
 const LCP_LEFT_PAD = 26;
-const LCP_TOP_PAD = 56;      // SKU badge + gauge label
+const LCP_TOP_PAD = 84;      // SKU badge + gauge label + flange bracket
 const LCP_BOTTOM_PAD = 34;   // length label
 
 function LCleatProfileDiagram({

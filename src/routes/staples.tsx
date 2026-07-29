@@ -271,11 +271,15 @@ function StapleDepthDiagram({
         </pattern>
       </defs>
 
-      {/* Flooring plank (brown) — height scales with flooring thickness */}
+      {/* First flooring plank (brown) — height scales with flooring thickness */}
       <rect x={LEFT_PAD} y={floorTop} width={WOOD_W} height={floorPx} fill="#5C4128" />
-      {/* Groove notch on the left */}
+      {/* Groove notch on the left of the first plank */}
       <rect x={LEFT_PAD} y={floorPx * 0.35} width="4" height={Math.max(4, floorPx * 0.55)} fill="#F5F4EE" />
-      {/* Flooring size label */}
+      {/* Second flooring plank to the right, separated by the T&G gap */}
+      <rect x={PLANK2_X} y={floorTop} width={PLANK2_W} height={floorPx} fill="#5C4128" />
+      {/* Groove notch on the left of the second plank */}
+      <rect x={PLANK2_X} y={floorPx * 0.35} width="3" height={Math.max(4, floorPx * 0.55)} fill="#F5F4EE" />
+      {/* Flooring size label (first plank) */}
       <text
         x={LEFT_PAD + 8}
         y={Math.min(floorPx - 4, 12)}
@@ -298,15 +302,15 @@ function StapleDepthDiagram({
         ({spec.floorMm})
       </text>
 
-      {/* Subfloor body — always 3/4" tall (shared scale) */}
-      <rect x={LEFT_PAD} y={subfloorTop} width={WOOD_W} height={SUBFLOOR_H} fill="#D9C89F" />
-      <rect x={LEFT_PAD} y={subfloorTop} width={WOOD_W} height={SUBFLOOR_H} fill={`url(#grain-${uid})`} />
+      {/* Subfloor body — extends under both planks and the joint */}
+      <rect x={LEFT_PAD} y={subfloorTop} width={SUBFLOOR_W} height={SUBFLOOR_H} fill="#D9C89F" />
+      <rect x={LEFT_PAD} y={subfloorTop} width={SUBFLOOR_W} height={SUBFLOOR_H} fill={`url(#grain-${uid})`} />
       {[0.22, 0.48, 0.72].map(f => (
         <line
           key={f}
           x1={LEFT_PAD}
           y1={subfloorTop + SUBFLOOR_H * f}
-          x2={LEFT_PAD + WOOD_W}
+          x2={LEFT_PAD + SUBFLOOR_W}
           y2={subfloorTop + SUBFLOOR_H * f}
           stroke="rgba(0,0,0,0.14)"
           strokeWidth="0.5"

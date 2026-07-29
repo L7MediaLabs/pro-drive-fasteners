@@ -815,7 +815,7 @@ function Staples() {
       <TechReference
         kicker="Reference"
         title="Staple Subfloor Depth Chart"
-        intro="Match 15.5 GA staple length to your flooring thickness. Each card is drawn to a single shared scale — flooring, 3/4" subfloor, and penetration depth are all proportional. All penetration and tongue-clearance figures from Pro-Drive R22 spec sheet."
+        intro='Match 15.5 GA staple length to your flooring thickness. Every card is drawn to one shared scale — flooring, 3/4" subfloor, and penetration depth are all proportional. Figures from the Pro-Drive R22 spec sheet.'
         footnote="Actual fastener depth can vary based on wood milling or tongue profile. This chart is for reference purposes only. Consult wood manufacturers or NWFA for correct fastener length before installation."
       >
         <div className="space-y-8">

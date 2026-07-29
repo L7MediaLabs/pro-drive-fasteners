@@ -206,7 +206,7 @@ function THeadNailDiagram({
   return (
     <svg viewBox={`0 0 ${w} ${h}`} width="100%" style={{ display: "block" }} aria-hidden>
       {sizes.map((s, i) => {
-        const cx = BRAD_LEFT_PAD + i * colW + colW / 2;
+        const cx = BRAD_LEFT_PAD + maxRun + i * colW + colW / 2;
         const lenPx = s.lenIn * BRAD_PPI;
         const shankTop = BRAD_TOP_PAD;
         const shankBottom = shankTop + lenPx;

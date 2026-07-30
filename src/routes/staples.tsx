@@ -715,7 +715,7 @@ function Staples() {
                 <div className="flex items-baseline gap-3 mb-4">
                   <div className="pd-label" style={{ color: "var(--pd-gold)", fontSize: 11 }}>Dimensions</div>
                   <h4 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1 }}>
-                    7/16&quot; Crown · Three Lengths
+                    7/16&quot; Crown · Two Lengths
                   </h4>
                   <span
                     aria-hidden

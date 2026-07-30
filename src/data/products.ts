@@ -61,6 +61,29 @@ function packTierFor(countNum: number | null): { label: string; rank: number } |
   return null;
 }
 
+// ─── category → route map ────────────────────────────────────────────────────
+const SUBCAT_ROUTES: Record<string, Product["href"]> = {
+  "Split Head Hammer Faces": "/split-head-hammer-faces",
+  "Tapping Blocks": "/tapping-blocks",
+  "Tapping Rings": "/tapping-rings",
+  "Tipper-De-Tipper": "/tipper-de-tipper",
+};
+
+const CAT_ROUTES: Record<string, Product["href"]> = {
+  "Flooring Staples": "/staples",
+  "L-Cleats": "/l-cleats",
+  "Brads & Finish Nails": "/brads-finish-nails",
+  "Divergent Staples": "/divergent-staples",
+  "Mallets & Caps": "/mallets",
+  "Tapping Tools": "/tapping-blocks",
+  "Air Tools": "/air-tools",
+  "Accessories": "/accessories",
+};
+
+function routeFor(row: Record<string, string>): Product["href"] {
+  return SUBCAT_ROUTES[row.subcategory] ?? CAT_ROUTES[row.category] ?? "/products";
+}
+
 function toProduct(row: Record<string, string>): Product {
   const specs: string[] = [];
   if (row.gauge)   specs.push(`${row.gauge} GA`);
@@ -96,6 +119,7 @@ function toProduct(row: Record<string, string>): Product {
     packTier: tier?.label,
     packTierRank: tier?.rank,
     image: resolveImage(row.image_key),
+    href: routeFor(row),
   };
 }
 

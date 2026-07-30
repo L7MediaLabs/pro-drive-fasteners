@@ -10,6 +10,19 @@ export type Product = {
   packTier?: string;
   packTierRank?: number;
   image?: string;
+  href?:
+    | "/staples"
+    | "/l-cleats"
+    | "/brads-finish-nails"
+    | "/divergent-staples"
+    | "/mallets"
+    | "/split-head-hammer-faces"
+    | "/tapping-blocks"
+    | "/tapping-rings"
+    | "/tipper-de-tipper"
+    | "/air-tools"
+    | "/accessories"
+    | "/products";
 };
 
 export function ProductCard({ product, showPackTier = true }: { product: Product; showPackTier?: boolean }) {

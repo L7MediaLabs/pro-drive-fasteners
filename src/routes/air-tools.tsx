@@ -122,7 +122,22 @@ const fittings = [
     image: images.airTools.fittingFe14,
     pack: "10 per bag",
   },
+  {
+    id: "YELLOW-CH14",
+    name: "Hose Barb Fitting",
+    sub: '1/4" NPT · For Super-Flex Yellow Hose',
+    image: images.airTools.fittingCh1414,
+    pack: "10 per bag",
+  },
+  {
+    id: "YELLOW-FE14",
+    name: "Ferrule",
+    sub: '1/4" · For Super-Flex Yellow Hose',
+    image: images.airTools.fittingFe14,
+    pack: "10 per bag",
+  },
 ];
+
 
 type AirTab = "nailers" | "hoses" | "fittings";
 

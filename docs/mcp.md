@@ -8,7 +8,8 @@ catalog and submit sales leads on a user's behalf.
 
 - **URL:** `https://<your-domain>/mcp`
 - **Transport:** MCP Streamable HTTP
-- **Auth:** none (public catalog + public lead-submission form)
+- **Auth:** OAuth 2.1 (Supabase). Clients register dynamically and the user
+  signs in and approves access before any tool can be called.
 
 For unpublished projects, publish the app first — the `/mcp` route is only
 reachable on the published URL.

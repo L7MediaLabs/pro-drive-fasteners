@@ -62,10 +62,7 @@ function Acc() {
               </div>
             </div>
             <div>
-              <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>ORK6-KIT-B</div>
-              <div className="mt-1" style={{ color: "rgba(255,255,255,0.55)", fontSize: 12, letterSpacing: "0.06em" }}>
-                Also supplied as <strong style={{ color: "rgba(255,255,255,0.8)" }}>ROMORK6KIT</strong>
-              </div>
+              <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>ORK6-KIT</div>
               <h2 className="pd-display text-white mt-2" style={{ fontSize: 42, lineHeight: 1.05 }}>
                 ORK-6 Maintenance Kit
               </h2>

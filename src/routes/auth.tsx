@@ -50,18 +50,18 @@ function AuthPage() {
       if (mode === "signin") {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
-        navigate({ to: "/admin", replace: true });
+        goNext();
       } else {
         const { data, error } = await supabase.auth.signUp({
           email,
           password,
           options: {
-            emailRedirectTo: window.location.origin + "/admin",
+            emailRedirectTo: window.location.origin + (next ?? "/admin"),
             data: { full_name: fullName, company },
           },
         });
         if (error) throw error;
-        if (data.session) navigate({ to: "/admin", replace: true });
+        if (data.session) goNext();
         else setMsg("Check your email to confirm your account.");
       }
     } catch (e: unknown) {
@@ -74,12 +74,14 @@ function AuthPage() {
   async function onGoogle() {
     setErr(null);
     const result = await lovable.auth.signInWithOAuth("google", {
-      redirect_uri: window.location.origin + "/auth",
+      redirect_uri:
+        window.location.origin + "/auth" + (next ? `?next=${encodeURIComponent(next)}` : ""),
     });
     if (result.error) { setErr(result.error.message); return; }
     if (result.redirected) return;
-    navigate({ to: "/admin", replace: true });
+    goNext();
   }
+
 
   return (
     <div className="min-h-screen grid lg:grid-cols-2" style={{ background: "#0a0900" }}>

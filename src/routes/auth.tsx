@@ -6,9 +6,11 @@ import { images } from "@/data/images";
 import logo from "@/assets/prodrive-logo-yellow.png";
 
 export const Route = createFileRoute("/auth")({
-  validateSearch: (s: Record<string, unknown>) => ({
-    next: typeof s.next === "string" && s.next.startsWith("/") && !s.next.startsWith("//") ? s.next : undefined,
-  }),
+  // `next` is optional — linking to /auth without it must stay valid.
+  validateSearch: (s: Record<string, unknown>): { next?: string } =>
+    typeof s.next === "string" && s.next.startsWith("/") && !s.next.startsWith("//")
+      ? { next: s.next }
+      : {},
   head: () => ({
     meta: [
       { title: "Client Portal | Pro-Drive Fasteners®" },

@@ -7,6 +7,10 @@ export const Route = createFileRoute("/about")({
     meta: [
       { title: "About | Pro-Drive Fasteners®" },
       { name: "description", content: "Pro-Drive Fasteners® is a premier provider of top-quality products for the flooring industry — 50+ years of expertise." },
+      { property: "og:title", content: "About | Pro-Drive Fasteners®" },
+      { property: "og:description", content: "50+ years supplying the flooring industry with pro-grade fasteners and installation tools." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: About,

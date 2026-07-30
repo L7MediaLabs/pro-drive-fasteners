@@ -2,9 +2,17 @@
 // Runs after hydration in the browser only; wraps ® in <sup class="pd-reg">
 // so it reads as a mark rather than a same-size character.
 //
+// IMPORTANT: this must never run before React has hydrated the current route.
+// Route components are lazy, so they commit after the root effect fires. If the
+// walker splits a server-rendered text node ("Bostitch® 25° tools.") before that
+// commit, React sees mismatched text and logs a hydration error. We therefore
+// wait for the router's `onRendered` event (plus late fallbacks) rather than
+// processing on mount.
+//
 // Skips: <script>, <style>, <head>, and any element marked [data-no-reg].
 // Idempotent: skips text nodes whose parent is already .pd-reg.
 import { useEffect } from "react";
+import { useRouter } from "@tanstack/react-router";
 
 const REG = "\u00AE";
 const SKIP_TAGS = new Set(["SCRIPT", "STYLE", "NOSCRIPT", "TEXTAREA", "CODE", "PRE"]);
@@ -50,9 +58,35 @@ function process(root: Node) {
 }
 
 export function useShrinkRegistered() {
+  const router = useRouter();
+
   useEffect(() => {
     if (typeof window === "undefined") return;
-    process(document.body);
+
+    let raf = 0;
+    let disposed = false;
+    const schedule = () => {
+      if (disposed) return;
+      cancelAnimationFrame(raf);
+      // Two frames: let React finish committing the freshly rendered match
+      // before we touch any of its text nodes.
+      raf = requestAnimationFrame(() =>
+        requestAnimationFrame(() => {
+          if (!disposed) process(document.body);
+        }),
+      );
+    };
+
+    const unsubscribe = router.subscribe("onRendered", schedule);
+
+    // Fallbacks in case `onRendered` already fired before we subscribed. Both
+    // are late enough that hydration has certainly committed, and `process` is
+    // idempotent so extra passes are harmless.
+    window.addEventListener("load", schedule);
+    const timer = window.setTimeout(schedule, 1200);
+
+    // Content added after hydration (route changes, tab panels, modals) is safe
+    // to process immediately — React created those nodes, it won't re-hydrate them.
     const obs = new MutationObserver((mutations) => {
       for (const m of mutations) {
         for (const node of Array.from(m.addedNodes)) {
@@ -61,6 +95,14 @@ export function useShrinkRegistered() {
       }
     });
     obs.observe(document.body, { childList: true, subtree: true });
-    return () => obs.disconnect();
-  }, []);
+
+    return () => {
+      disposed = true;
+      cancelAnimationFrame(raf);
+      window.clearTimeout(timer);
+      window.removeEventListener("load", schedule);
+      unsubscribe();
+      obs.disconnect();
+    };
+  }, [router]);
 }

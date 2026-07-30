@@ -116,7 +116,7 @@ export function AgencyCredit({
         rel="noreferrer"
         className="group flex flex-col items-center text-center w-full hover:!opacity-100 transition-opacity"
         style={{
-          padding: "42px 24px",
+          padding: "64px 24px 42px",
           borderTop: `1px solid ${borderColor}`,
           color: textPrimary,
           textDecoration: "none",

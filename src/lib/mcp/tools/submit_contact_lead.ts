@@ -1,5 +1,15 @@
-import { defineTool } from "@lovable.dev/mcp-js";
+import { createClient } from "@supabase/supabase-js";
+import { defineTool, type ToolContext } from "@lovable.dev/mcp-js";
 import { z } from "zod";
+import type { Database } from "@/integrations/supabase/types";
+
+function supabaseForUser(ctx: ToolContext) {
+  const key = process.env.SUPABASE_PUBLISHABLE_KEY!;
+  return createClient<Database>(process.env.SUPABASE_URL!, key, {
+    global: { headers: { Authorization: `Bearer ${ctx.getToken()}` } },
+    auth: { persistSession: false, autoRefreshToken: false },
+  });
+}
 
 export default defineTool({
   name: "submit_contact_lead",
@@ -15,9 +25,14 @@ export default defineTool({
     message: z.string().trim().max(5000).optional(),
   },
   annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: false },
-  handler: async (input) => {
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const { data, error } = await supabaseAdmin
+  handler: async (input, ctx) => {
+    if (!ctx.isAuthenticated()) {
+      return {
+        content: [{ type: "text", text: "Not authenticated" }],
+        isError: true,
+      };
+    }
+    const { data, error } = await supabaseForUser(ctx)
       .from("contact_submissions")
       .insert({
         name: input.name,

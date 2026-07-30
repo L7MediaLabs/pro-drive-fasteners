@@ -6,6 +6,9 @@ import { images } from "@/data/images";
 import logo from "@/assets/prodrive-logo-yellow.png";
 
 export const Route = createFileRoute("/auth")({
+  validateSearch: (s: Record<string, unknown>) => ({
+    next: typeof s.next === "string" && s.next.startsWith("/") && !s.next.startsWith("//") ? s.next : undefined,
+  }),
   head: () => ({
     meta: [
       { title: "Client Portal | Pro-Drive Fasteners®" },
@@ -17,6 +20,7 @@ export const Route = createFileRoute("/auth")({
 
 function AuthPage() {
   const navigate = useNavigate();
+  const { next } = Route.useSearch();
   const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,11 +30,18 @@ function AuthPage() {
   const [err, setErr] = useState<string | null>(null);
   const [msg, setMsg] = useState<string | null>(null);
 
+  function goNext() {
+    if (next) { window.location.href = next; return; }
+    navigate({ to: "/admin", replace: true });
+  }
+
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
-      if (data.session) navigate({ to: "/admin", replace: true });
+      if (data.session) goNext();
     });
-  }, [navigate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigate, next]);
+
 
   async function onEmailSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -39,18 +50,18 @@ function AuthPage() {
       if (mode === "signin") {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
-        navigate({ to: "/admin", replace: true });
+        goNext();
       } else {
         const { data, error } = await supabase.auth.signUp({
           email,
           password,
           options: {
-            emailRedirectTo: window.location.origin + "/admin",
+            emailRedirectTo: window.location.origin + (next ?? "/admin"),
             data: { full_name: fullName, company },
           },
         });
         if (error) throw error;
-        if (data.session) navigate({ to: "/admin", replace: true });
+        if (data.session) goNext();
         else setMsg("Check your email to confirm your account.");
       }
     } catch (e: unknown) {
@@ -63,12 +74,14 @@ function AuthPage() {
   async function onGoogle() {
     setErr(null);
     const result = await lovable.auth.signInWithOAuth("google", {
-      redirect_uri: window.location.origin + "/auth",
+      redirect_uri:
+        window.location.origin + "/auth" + (next ? `?next=${encodeURIComponent(next)}` : ""),
     });
     if (result.error) { setErr(result.error.message); return; }
     if (result.redirected) return;
-    navigate({ to: "/admin", replace: true });
+    goNext();
   }
+
 
   return (
     <div className="min-h-screen grid lg:grid-cols-2" style={{ background: "#0a0900" }}>

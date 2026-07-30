@@ -565,7 +565,6 @@ function SencoStapleDiagram({
 }
 
 const QWIRE_15_LENGTHS: StapleLenTick[] = [
-  { in: 1.5, label: '1-1/2"', mm: "38mm" },
   { in: 2.0, label: '2"',     mm: "50mm" },
   { in: 2.5, label: '2-1/2"', mm: "64mm" },
 ];

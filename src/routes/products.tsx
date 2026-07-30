@@ -5,6 +5,10 @@ export const Route = createFileRoute("/products")({
     meta: [
       { title: "All Products | Pro-Drive Fasteners®" },
       { name: "description", content: "Complete Pro-Drive product line — staples, L-Cleats, brads, mallets, tapping tools, air tools, and accessories." },
+      { property: "og:title", content: "All Products | Pro-Drive Fasteners®" },
+      { property: "og:description", content: "Browse the full Pro-Drive catalog: flooring staples, L-Cleats, brads, mallets, tapping tools, and air tools." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: AllProducts,

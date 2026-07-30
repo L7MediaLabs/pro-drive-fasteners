@@ -150,7 +150,7 @@ function Acc() {
               Items shown to scale · Screws and washers not pictured
             </div>
             <div className="pd-label" style={{ color: "var(--pd-dark)", fontSize: 10 }}>
-              ORK6-KIT-B · Pro-Drive Fasteners®
+              ORK6-KIT · Pro-Drive Fasteners®
             </div>
           </div>
         </div>

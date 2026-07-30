@@ -81,7 +81,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10">
+        <div className="mt-8">
           <AgencyCredit variant="footer" tone="dark" />
         </div>
 

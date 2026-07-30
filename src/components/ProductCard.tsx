@@ -25,6 +25,11 @@ export type Product = {
     | "/products";
 };
 
+function MaybeLink({ href, className, style, children }: { href?: Product["href"]; className?: string; style?: React.CSSProperties; children: React.ReactNode }) {
+  if (!href) return <div className={className} style={style}>{children}</div>;
+  return <Link to={href} className={className} style={style}>{children}</Link>;
+}
+
 export function ProductCard({ product, showPackTier = true }: { product: Product; showPackTier?: boolean }) {
   const ref = useRef<HTMLElement | null>(null);
   const seen = useRef(false);
@@ -55,21 +60,22 @@ export function ProductCard({ product, showPackTier = true }: { product: Product
       onMouseLeave={e => (e.currentTarget.style.boxShadow = "")}
     >
       {product.image && (
-        <div
-          className="flex items-center justify-center"
-          style={{ height: 170, background: "#fafaf8", borderBottom: "1px solid rgba(0,0,0,0.05)" }}
-        >
+        <MaybeLink href={product.href} className="flex items-center justify-center" style={{ height: 170, background: "#fafaf8", borderBottom: "1px solid rgba(0,0,0,0.05)" }}>
           <img
             src={product.image}
             alt={product.name}
             loading="lazy"
             style={{ maxWidth: "88%", maxHeight: "88%", objectFit: "contain" }}
           />
-        </div>
+        </MaybeLink>
       )}
       <div className="p-6 flex flex-col flex-1">
         <div className="pd-label" style={{ color: "var(--pd-gold)", letterSpacing: "0.15em" }}>{product.id}</div>
-        <h3 className="mt-1.5 font-bold" style={{ fontSize: 16, color: "var(--pd-dark)" }}>{product.name}</h3>
+        <h3 className="mt-1.5 font-bold" style={{ fontSize: 16, color: "var(--pd-dark)" }}>
+          {product.href ? (
+            <Link to={product.href} className="hover:underline" style={{ color: "inherit" }}>{product.name}</Link>
+          ) : product.name}
+        </h3>
         {product.specs && (
           <ul className="mt-2 text-[12px]" style={{ color: "var(--pd-muted)", lineHeight: 1.7 }}>
             {product.specs.map((s, i) => <li key={i}>{s}</li>)}

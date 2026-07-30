@@ -30,14 +30,19 @@ function parseCSV(raw: string): Record<string, string>[] {
   const lines = raw.trim().split("\n");
   const headers = lines[0].split(",").map((h) => h.trim().replace(/^"|"$/g, ""));
   return lines.slice(1).map((line) => {
-    // Handle quoted fields containing commas
+    // RFC-4180: quoted fields may contain commas and escaped quotes ("")
     const values: string[] = [];
     let current = "";
     let inQuotes = false;
     for (let i = 0; i < line.length; i++) {
       const ch = line[i];
       if (ch === '"') {
-        inQuotes = !inQuotes;
+        if (inQuotes && line[i + 1] === '"') {
+          current += '"';
+          i++;
+        } else {
+          inQuotes = !inQuotes;
+        }
       } else if (ch === "," && !inQuotes) {
         values.push(current.trim());
         current = "";
@@ -46,6 +51,7 @@ function parseCSV(raw: string): Record<string, string>[] {
       }
     }
     values.push(current.trim());
+
     return Object.fromEntries(headers.map((h, i) => [h, values[i] ?? ""]));
   });
 }

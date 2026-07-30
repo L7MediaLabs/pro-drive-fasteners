@@ -6,6 +6,10 @@ export const Route = createFileRoute("/videos")({
     meta: [
       { title: "Videos | Pro-Drive Fasteners®" },
       { name: "description", content: "Pro-Drive in action. Installation demos, product features, and field techniques." },
+      { property: "og:title", content: "Videos | Pro-Drive Fasteners®" },
+      { property: "og:description", content: "Installation demos, product features, and field techniques from Pro-Drive Fasteners®." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Videos,

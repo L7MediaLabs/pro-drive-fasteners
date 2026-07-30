@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { Product } from "./ProductCard";
 import { ProductCard } from "./ProductCard";
 import { trackEvent } from "@/lib/analytics";
@@ -310,6 +310,34 @@ export function TechReference({
 
 // ─── RelatedProducts scroller ────────────────────────────────────────────────
 export function RelatedProducts({ products, title = "Related Products" }: { products: Product[]; title?: string }) {
+  const railRef = useRef<HTMLDivElement | null>(null);
+  const [thumb, setThumb] = useState({ width: 100, left: 0 });
+
+  useEffect(() => {
+    const el = railRef.current;
+    if (!el) return;
+    const update = () => {
+      const ratio = el.clientWidth / el.scrollWidth;
+      const width = Math.min(100, ratio * 100);
+      const maxScroll = el.scrollWidth - el.clientWidth;
+      const left = maxScroll > 0 ? (el.scrollLeft / maxScroll) * (100 - width) : 0;
+      setThumb({ width, left });
+    };
+    update();
+    el.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      el.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, [products.length]);
+
+  const scrollBy = (dir: number) => {
+    const el = railRef.current;
+    if (!el) return;
+    el.scrollBy({ left: dir * Math.max(260, el.clientWidth * 0.8), behavior: "smooth" });
+  };
+
   if (!products.length) return null;
   return (
     <section className="px-[6%] py-14" style={{ background: "var(--pd-dark)" }}>
@@ -322,15 +350,47 @@ export function RelatedProducts({ products, title = "Related Products" }: { prod
           View All Products →
         </Link>
       </div>
-      <div
-        className="grid grid-flow-col auto-cols-[minmax(240px,1fr)] gap-3 overflow-x-auto pb-2"
-        style={{ scrollSnapType: "x mandatory" }}
-      >
-        {products.map(p => (
-          <div key={p.id} style={{ scrollSnapAlign: "start" }}>
-            <ProductCard product={p} />
+      <div className="relative">
+        <div
+          ref={railRef}
+          className="pd-scroller grid grid-flow-col auto-cols-[minmax(240px,1fr)] gap-3 overflow-x-auto pb-1"
+          style={{ scrollSnapType: "x mandatory", scrollBehavior: "smooth" }}
+        >
+          {products.map(p => (
+            <div key={p.id} style={{ scrollSnapAlign: "start" }}>
+              <ProductCard product={p} />
+            </div>
+          ))}
+        </div>
+        <div className="mt-5 flex items-center gap-4">
+          <div className="h-[3px] flex-1" style={{ background: "rgba(255,255,255,0.12)" }}>
+            <div
+              className="h-full transition-[width,margin] duration-200"
+              style={{ background: "var(--pd-yellow)", width: `${thumb.width}%`, marginLeft: `${thumb.left}%` }}
+            />
           </div>
-        ))}
+          <div className="flex gap-2">
+            {[-1, 1].map(dir => (
+              <button
+                key={dir}
+                type="button"
+                aria-label={dir === -1 ? "Scroll left" : "Scroll right"}
+                onClick={() => scrollBy(dir)}
+                className="flex items-center justify-center transition-colors"
+                style={{
+                  width: 38, height: 38,
+                  border: "1px solid rgba(255,255,255,0.2)",
+                  color: "var(--pd-yellow)",
+                  background: "transparent",
+                }}
+                onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,205,0,0.12)")}
+                onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
+              >
+                {dir === -1 ? "←" : "→"}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

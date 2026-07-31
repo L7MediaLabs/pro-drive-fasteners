@@ -124,6 +124,8 @@ function toProduct(row: Record<string, string>): Product {
     pack:  pack || undefined,
     packTier: tier?.label,
     packTierRank: tier?.rank,
+    // Distinguishing product attribute badge (e.g. BARBED on DA15-BARB).
+    badge: row.notes && /^barbed$/i.test(row.notes.trim()) ? "BARBED" : undefined,
     image: resolveImage(row.image_key),
     href: routeFor(row),
   };

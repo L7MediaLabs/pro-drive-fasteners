@@ -72,8 +72,8 @@ import deadblow200l1000   from "../assets/products/mallets/deadblow_200l_1000_ph
 import malletHeritageLath from "../assets/products/mallets/mallet_heritage_lath.jpg.asset.json";
 import malletCapsOpenBox  from "../assets/products/mallets/mallet_caps_display_openbox.jpg.asset.json";
 import splitheadHero      from "../assets/products/splithead/splithead_hero.png.asset.json";
-import splithead23004     from "../assets/products/splithead/splithead_23004_200_photo.jpg.asset.json";
-import splithead23002     from "../assets/products/splithead/splithead_23002_150_photo.jpg.asset.json";
+import splithead23004     from "../assets/products/splithead/splithead_23004_200_face.jpg.asset.json";
+import splithead23002     from "../assets/products/splithead/splithead_23002_150_face.jpg.asset.json";
 import s155Masterpack     from "../assets/products/staples/staples_155_masterpack.png.asset.json";
 import s155_1_5in         from "../assets/products/staples/staples_155_1_5in.png.asset.json";
 import s155_2in_1000      from "../assets/products/staples/staples_155_2in_1000.png.asset.json";

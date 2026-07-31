@@ -162,8 +162,18 @@ export function ProductCard({ product, showPackTier = true }: { product: Product
           Contact for Pricing →
         </Link>
       </div>
+      {zoom && product.image && (
+        <ImageLightbox
+          src={product.image}
+          alt={product.name}
+          sku={product.id}
+          name={product.name}
+          onClose={() => setZoom(false)}
+        />
+      )}
     </article>
   );
+
 }
 
 export function ProductGrid({ products, cols = 3, showPackTier = true }: { products: Product[]; cols?: 3 | 4; showPackTier?: boolean }) {

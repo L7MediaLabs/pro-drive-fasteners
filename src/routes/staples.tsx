@@ -7,7 +7,6 @@ import {
   SpecCardGrid,
   SplitLayout,
   GalleryHero,
-  GalleryPair,
   LifestyleBanner,
   TechReference,
   RelatedProducts,
@@ -642,13 +641,9 @@ function Staples() {
       <section className="px-[6%] py-16" style={{ background: "var(--pd-light-bg)" }}>
         <SplitLayout
           gallery={
-            <>
-              <GalleryHero src={g.galleryHero.src} alt={g.kicker} caption={g.galleryHero.caption} />
-              {g.galleryPair.length > 0 && (
-                <GalleryPair items={g.galleryPair.map(x => ({ src: x.src, alt: g.kicker, caption: x.caption }))} />
-              )}
-            </>
+            <GalleryHero src={g.galleryHero.src} alt={g.kicker} caption={g.galleryHero.caption} />
           }
+
         >
           <div className="pd-label" style={{ color: "var(--pd-gold)" }}>{g.label}</div>
           <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 34, lineHeight: 1.1 }}>

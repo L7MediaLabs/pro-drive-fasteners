@@ -93,6 +93,7 @@ import brad18_100         from "../assets/products/brads/axx13eaa-100.png.asset.
 import brad18_125         from "../assets/products/brads/axx15eaa-125.png.asset.json";
 import brad18_150         from "../assets/products/brads/axx17eaa-150.png.asset.json";
 import brad18_200         from "../assets/products/brads/axx21eaa-200.png.asset.json";
+import c50200Box          from "../assets/products/brads/c50_200_box.png.asset.json";
 import famFn15_25         from "../assets/products/finishNails/families/fn15_25.png.asset.json";
 import famDa15_34         from "../assets/products/finishNails/families/da15_34.png.asset.json";
 import famC16Straight     from "../assets/products/finishNails/families/c16_straight.png.asset.json";

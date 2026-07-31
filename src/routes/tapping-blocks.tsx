@@ -10,7 +10,7 @@ import {
   RelatedProducts,
   PageDisclaimers,
 } from "../components/editorial";
-import { TAPPING_BLOCKS, pickRelated } from "../data/products";
+import { TAPPING_BLOCKS, RAW_CATALOG, pickRelated } from "../data/products";
 import { images } from "../data/images";
 
 export const Route = createFileRoute("/tapping-blocks")({
@@ -38,25 +38,16 @@ type Block = {
   bestFor: string;
 };
 
-const blockData: Block[] = [
+// Source of truth for all dimensions, weights, carton counts and feature
+// bullets is src/data/prodrive_master_catalog.csv (verified against R22 p.27).
+// Only editorial copy (tagline / best-for / imagery) is defined here.
+const blockCopy: { id: string; title: string; image: string; alt: string; tagline: string; bestFor: string }[] = [
   {
     id: "TB-PRO-312",
     title: "ONE TAP™ Tapping Block",
     image: images.tappingBlocks.tbPro,
     alt: "Pro-Drive One Tap Tapping Block TB-PRO-312",
-    tagline: "The everyday installer's block. Ergonomic knob for rapid one-hand placement.",
-    specs: [
-      { k: "Dimensions", v: '3" × 7" × 3/4"' },
-      { k: "Weight",     v: "0.9 lbs" },
-      { k: "Best For",   v: "Standard install" },
-      { k: "Carton",     v: "12" },
-    ],
-    bullets: [
-      "Recessed channels ensure optimal plank alignment",
-      "Even force distribution across the block face",
-      "Beveled edges interlock with plank tongues to prevent cracking",
-      "Ergonomic knob for rapid one-hand placement",
-    ],
+    tagline: "The everyday installer's block. Ergonomic wooden handle for rapid one-hand placement.",
     bestFor: "Everyday flooring installation",
   },
   {
@@ -64,20 +55,8 @@ const blockData: Block[] = [
     title: "561 Tapping Block",
     image: images.tappingBlocks.tb561,
     alt: "Pro-Drive 561 Tapping Block",
-    tagline: "Wide-plank workhorse. Built for glue-down installs and dead-blow strikes.",
-    specs: [
-      { k: "Dimensions", v: '11.5" × 4.5" × 4"' },
-      { k: "Weight",     v: "3.5 lbs" },
-      { k: "Best For",   v: "Glue-down · wide plank" },
-      { k: "Carton",     v: "6" },
-    ],
-    bullets: [
-      "Designed for wide plank flooring",
-      "Most effective for glue-down installs",
-      "Built-in plastic edge protects flooring surface",
-      "Designed for use with dead-blow mallets",
-    ],
-    bestFor: "Wide plank glue-down installation",
+    tagline: "Compact alignment block with recessed channels and plank-safe beveled edges.",
+    bestFor: "Standard plank alignment",
   },
   {
     id: "392-TB",
@@ -85,21 +64,26 @@ const blockData: Block[] = [
     image: images.tappingBlocks.widePlank,
     alt: "Pro-Drive Wide Plank Wood Driving Tool",
     tagline: "Heavy hardwood driving tool for the toughest wide-plank jobs.",
-    specs: [
-      { k: "Weight",     v: "7 lbs (2 per carton)" },
-      { k: "Material",   v: "Solid hardwood" },
-      { k: "Best For",   v: "Heavy wide plank" },
-      { k: "Carton",     v: "2" },
-    ],
-    bullets: [
-      "Solid hardwood construction for maximum energy transfer",
-      "Extended face for wide plank engagement",
-      "Compatible with all flooring mallets",
-      "Built to last decades of daily use",
-    ],
-    bestFor: "Heavy-duty wide plank driving",
+    bestFor: "Heavy wide plank driving",
   },
 ];
+
+function csvRow(id: string) {
+  return RAW_CATALOG.find(r => r.id === id);
+}
+
+const blockData: Block[] = blockCopy.map(c => {
+  const row = csvRow(c.id);
+  const notes = (row?.notes ?? "").split(";").map(n => n.trim()).filter(Boolean);
+  // "5 per carton 15 lbs" → carton count + carton weight
+  const cartonNote = notes.find(n => /per carton/i.test(n));
+  const specs: { k: string; v: string }[] = [];
+  specs.push({ k: "Dimensions", v: row?.length_in || "—" });
+  specs.push({ k: "Weight", v: row?.weight_lbs ? `${row.weight_lbs} lbs` : "—" });
+  specs.push({ k: "Carton", v: cartonNote ?? (row?.count || "—") });
+  specs.push({ k: "Best For", v: c.bestFor });
+  return { ...c, specs, bullets: notes };
+});
 
 function Blocks() {
   const related = pickRelated(TAPPING_BLOCKS.map(p => p.id), 6);

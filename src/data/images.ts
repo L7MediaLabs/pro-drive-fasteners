@@ -36,6 +36,12 @@ const u = {
   tipperP27_04:  "/__l5e/assets-v1/ab992fea-2af7-4301-b6c8-ac89f5db711a/tipper_p27_img04.png",
   tipperP27_05:  "/__l5e/assets-v1/5b559a39-e3d4-443d-9f05-b2b5a9e448aa/tipper_p27_img05.png",
   tipperP27_06:  "/__l5e/assets-v1/63332fe8-2720-4a4c-ab0d-a18159012e01/tipper_p27_img06.png",
+  tdtTip1:       "/__l5e/assets-v1/56499957-8e22-4d0e-a20a-9680c27a657c/tdt_tip1.png",
+  tdtTip2:       "/__l5e/assets-v1/b3aab7c3-66df-4500-9877-4dcf144995c2/tdt_tip2.png",
+  tdtTip3:       "/__l5e/assets-v1/e007e127-d77f-4b29-acf9-e13e0a3c4d03/tdt_tip3.png",
+  tdtDetip1:     "/__l5e/assets-v1/5a80d76b-59c4-4c69-8d2b-170038e256d8/tdt_detip1.png",
+  tdtDetip2:     "/__l5e/assets-v1/73bf56e2-f11f-4fc1-b50d-a7babb922acb/tdt_detip2.png",
+  tdtDetip3:     "/__l5e/assets-v1/bc474793-e942-49ce-b630-8c52aef4bc32/tdt_detip3.png",
 } as const;
 
 // ─── Evie's photos (repo assets) ─────────────────────────────────────────────
@@ -225,8 +231,8 @@ export const images = {
   },
   tipper: {
     product:    u.tipperP27_01,
-    tipping:    [u.tipperP27_03, u.tipperP27_04, u.tipperP27_05],
-    deTipping:  [u.tipperP27_06, u.tipperP14_01, u.tipperP14_02],
+    tipping:    [u.tdtTip1, u.tdtTip2, u.tdtTip3],
+    deTipping:  [u.tdtDetip1, u.tdtDetip2, u.tdtDetip3],
     extra:      u.tipperP14_07,
   },
   airTools: {

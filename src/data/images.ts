@@ -215,7 +215,7 @@ export const images = {
   },
   tappingBlocks: {
     // Each product uses the photo whose printed product label matches it:
-    // block_tbpro.jpg = E-Z CONNECT hang-card block (TB-PRO-312),
+    // tapping_block_onetap.png = ONE TAP heavy-duty block w/ wood handle (TB-PRO-312),
     // block_561.jpg   = "561 TAPPING BLOCK" labeled block (561-TB).
     tbPro:      blockOneTap.url,
     tb561:      block561,

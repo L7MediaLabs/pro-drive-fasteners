@@ -265,6 +265,7 @@ export const images = {
     fn1524:      fn1524_150.url,
     da21_200:    da21_200.url,
     da21_200ss:  finishNailsStrip.url,
+    c50_200:     c50200Box.url,
     strip:       finishNailsStripHD,
   },
   brads18: {

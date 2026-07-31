@@ -50,7 +50,7 @@ const tabData = {
       { k: "Lengths", v: '1-1/2" · 1-3/4" · 2"' },
       { k: "Application", v: "Hardwood Flooring" },
     ],
-    galleryHero: { src: images.staples.gauge155a, caption: "Masterpack" },
+    galleryHero: { src: images.staples.gauge15Banner, caption: "Collated Strip" },
     galleryPair: [
       { src: images.staples.gauge155b, caption: "1-1/2\" Length" },
       { src: images.staples.hero, caption: "Bulk Pack" },

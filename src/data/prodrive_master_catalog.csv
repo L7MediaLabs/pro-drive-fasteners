@@ -1,6 +1,6 @@
 id,name,category,subcategory,gauge,crown,angle,finish,point,length_mm,length_in,count,pack_qty,weight_lbs,compatible_tools,notes,active,image_key,description
 FS-150-5000,"1-1/2"" (38mm) Flooring Staple",Flooring Staples,15.5 GA Hardwood,15.5,,,Electro-Galvanized,Chisel Point,38,"1-1/2""",5000,1,18.2,,,TRUE,staples.s155_1_5in,
-FS-175-5000,"1-3/4"" (44mm) Flooring Staple",Flooring Staples,15.5 GA Hardwood,15.5,,,Electro-Galvanized,Chisel Point,44,"1-3/4""",5000,1,20.4,,,TRUE,staples.s155_masterpack,
+FS-175-5000,"1-3/4"" (44mm) Flooring Staple",Flooring Staples,15.5 GA Hardwood,15.5,,,Electro-Galvanized,Chisel Point,44,"1-3/4""",5000,1,20.4,,,TRUE,staples.s155_175in_box,
 FS-175-9000,"1-3/4"" (44mm) Flooring Staple",Flooring Staples,15.5 GA Hardwood,15.5,,,Electro-Galvanized,Chisel Point,44,"1-3/4""",9000,1,36.9,,,TRUE,staples.s155_masterpack,
 FS-200-5000,"2"" (50mm) Flooring Staple",Flooring Staples,15.5 GA Hardwood,15.5,,,Electro-Galvanized,Chisel Point,50,"2""",5000,1,23.8,,,TRUE,staples.s155_2in_5000,
 FS-200-6000,"2"" (50mm) Flooring Staple",Flooring Staples,15.5 GA Hardwood,15.5,,,Electro-Galvanized,Chisel Point,50,"2""",1000,6,28.1,,"1,000 x 6 pack",TRUE,staples.s155_2in_1000,

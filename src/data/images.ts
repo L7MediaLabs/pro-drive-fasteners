@@ -73,6 +73,7 @@ import s155_1_5in         from "../assets/products/staples/staples_155_1_5in.png
 import s155_2in_1000      from "../assets/products/staples/staples_155_2in_1000.png.asset.json";
 import s155_2in_5000      from "../assets/products/staples/staples_155_2in_5000.png.asset.json";
 import s155_2in_7720      from "../assets/products/staples/staples_155_2in_7720.png.asset.json";
+import s155_175in_box     from "../assets/products/staples/staples_155_175in_box.png.asset.json";
 import fn1532_200         from "../assets/products/finishNails/fn1532_200.png.asset.json";
 import fn1520_125         from "../assets/products/finishNails/fn1520_125.png.asset.json";
 import fn1524_150         from "../assets/products/finishNails/fn1524_150.png.asset.json";
@@ -184,6 +185,7 @@ export const images = {
     s155_2in_1000:  s155_2in_1000.url,
     s155_2in_5000:  s155_2in_5000.url,
     s155_2in_7720:  s155_2in_7720.url,
+    s155_175in_box: s155_175in_box.url,
     gauge155a:      s155_2in_5000.url,
     gauge155b:      s155_1_5in.url,
     gauge15Banner:  u.staplesP07_02,

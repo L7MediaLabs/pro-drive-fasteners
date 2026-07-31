@@ -84,8 +84,10 @@ const blockData: Block[] = blockCopy.map(c => {
   else specs.push({ k: "Head Weight", v: ozNote ? ozNote.replace(/oz/i, " oz") : "—" });
   specs.push({ k: "Weight", v: row?.weight_lbs ? `${row.weight_lbs} lbs` : "—" });
   specs.push({ k: "Carton", v: cartonNote ?? (row?.count || "—") });
+  specs.push({ k: "Origin", v: "Made in USA" });
   specs.push({ k: "Best For", v: c.bestFor });
   return { ...c, specs, bullets: notes };
+
 });
 
 function Blocks() {

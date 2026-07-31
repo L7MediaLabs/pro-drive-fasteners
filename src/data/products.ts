@@ -33,6 +33,8 @@ const FAMILY_FALLBACK: Record<string, string | undefined> = {
   "16 GA AFN Nails (Paslode 20°)": images.nailFamilies.afn16_20,
   "18 GA Brad Nails": images.nailFamilies.brad18_straight,
   "23 GA Micro Pins": images.nailFamilies.pin23_micro,
+  "Pad Staples": images.divergentStaples.staple5010,
+
 };
 
 // ─── CSV loader ───────────────────────────────────────────────────────────────

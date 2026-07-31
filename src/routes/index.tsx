@@ -265,9 +265,8 @@ function Home() {
             style={{ borderTop: "1px solid rgba(25,20,0,0.08)" }}
           >
             {[
-              "NWFA University Sponsor",
-              "AWFS Member",
               "50+ Years Industry Expertise",
+
               "Made in the USA",
               "Guaranteed to Fit Major Brands",
             ].map((label) => (
@@ -628,7 +627,7 @@ function Home() {
               Stock Pro-Drive. Full Line Offering.
             </h2>
             <div className="mt-4 flex flex-wrap gap-2">
-              {["NWFA University Sponsor", "AWFS Member", "Made in the USA"].map(b => (
+              {["Made in the USA"].map(b => (
                 <span
                   key={b}
                   style={{

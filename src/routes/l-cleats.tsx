@@ -479,7 +479,8 @@ function LCleats() {
                 JAM-FREE GUARANTEE
               </div>
               <div className="pd-glass-light px-4 py-2" style={{ fontSize: 12, color: "#fff", letterSpacing: "0.12em", fontWeight: 700 }}>
-                NWFA APPROVED
+                PRECISION FORMED
+
               </div>
               <div className="pd-glass-light px-4 py-2" style={{ fontSize: 12, color: "#fff", letterSpacing: "0.12em", fontWeight: 700 }}>
                 E-G GALVANIZED

@@ -32,9 +32,9 @@ const tippingSteps = [
 ];
 
 const deTippingSteps = [
-  { image: images.tipper.deTipping[0], caption: "Insert mallet into the de-tipping slot." },
-  { image: images.tipper.deTipping[1], caption: "Pull lever to release worn cap." },
-  { image: images.tipper.deTipping[2], caption: "Cap pops free — no tools, no damage." },
+  { image: images.tipper.deTipping[0], caption: "Seat the capped mallet head into the de-tipping arm." },
+  { image: images.tipper.deTipping[1], caption: "Lock the head under the arm and hold the handle." },
+  { image: images.tipper.deTipping[2], caption: "Lever the handle down — the worn cap pops free." },
 ];
 
 
@@ -92,7 +92,7 @@ function StepCard({ index, image, caption, total }: { index: number; image: stri
       <div
         style={{
           background: "#F5F4F0",
-          aspectRatio: "16 / 9",
+          aspectRatio: "437 / 179",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -103,7 +103,7 @@ function StepCard({ index, image, caption, total }: { index: number; image: stri
           src={image}
           alt={`Pro-Drive Tipper-De-Tipper step ${index} of ${total}: ${caption}`}
           loading="lazy"
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          style={{ width: "100%", height: "100%", objectFit: "contain" }}
         />
       </div>
       <div className="p-4">

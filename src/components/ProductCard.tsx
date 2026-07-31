@@ -9,7 +9,9 @@ export type Product = {
   pack?: string;
   packTier?: string;
   packTierRank?: number;
+  badge?: string;
   image?: string;
+
   href?:
     | "/staples"
     | "/l-cleats"

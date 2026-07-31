@@ -62,15 +62,24 @@ export function ProductCard({ product, showPackTier = true }: { product: Product
       onMouseLeave={e => (e.currentTarget.style.boxShadow = "")}
     >
       {product.image ? (
-        <MaybeLink href={product.href} className="flex items-center justify-center" style={{ height: 170, background: "#fafaf8", borderBottom: "1px solid rgba(0,0,0,0.05)" }}>
+        // Click-to-enlarge: card thumbnails are ~213px wide, too small to read
+        // printed item numbers / QTY on box art. Opens the full-res asset.
+        <button
+          type="button"
+          onClick={() => setZoom(true)}
+          aria-label={`Enlarge photo of ${product.id} — ${product.name}`}
+          className="flex items-center justify-center w-full cursor-zoom-in"
+          style={{ height: 170, background: "#fafaf8", borderBottom: "1px solid rgba(0,0,0,0.05)" }}
+        >
           <img
             src={product.image}
             alt={product.name}
             loading="lazy"
             style={{ maxWidth: "88%", maxHeight: "88%", objectFit: "contain" }}
           />
-        </MaybeLink>
+        </button>
       ) : (
+
         // No photography on file for this SKU. Never substitute another
         // product's photo — render a neutral in-brand placeholder instead.
         <MaybeLink

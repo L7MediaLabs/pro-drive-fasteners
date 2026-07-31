@@ -624,7 +624,7 @@ function LCleats() {
         kicker="Reference"
         title="L-Cleat Subfloor Depth Chart"
         intro="Select the correct cleat length and gauge for your flooring thickness. Every diagram is drawn to the same scale — cleat length, flooring thickness, and penetration are directly comparable across cards."
-        footnote="Actual fastener depth can vary based on wood milling or tongue profile. This chart is for reference purposes only. Consult wood manufacturers or NWFA for correct fastener length before installation."
+        footnote="Actual fastener depth can vary based on wood milling or tongue profile. This chart is for reference purposes only. Consult wood manufacturers for correct fastener length before installation."
       >
         <div className="space-y-8">
           {cleatDepthChart.map(group => (

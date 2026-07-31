@@ -1,6 +1,6 @@
 // Brand normalization: appends ® to third-party brand names.
 // Pro-Drive is the client's own brand — handled separately.
-// Standards references (ASTM, NPT, NWFA) are NOT brands (NWFA is a nonprofit
+// Standards references (ASTM, NPT) are NOT brands and are left as-is by this
 // association mark and handled where appropriate outside this helper).
 
 // Order matters: longer / more specific names first so "Stanley Bostitch"

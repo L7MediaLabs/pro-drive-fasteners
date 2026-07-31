@@ -265,9 +265,8 @@ function Home() {
             style={{ borderTop: "1px solid rgba(25,20,0,0.08)" }}
           >
             {[
-              "NWFA University Sponsor",
-              "AWFS Member",
               "50+ Years Industry Expertise",
+
               "Made in the USA",
               "Guaranteed to Fit Major Brands",
             ].map((label) => (

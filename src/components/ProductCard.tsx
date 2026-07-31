@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { trackEvent } from "@/lib/analytics";
+import { ImageLightbox } from "./ImageLightbox";
+
 
 export type Product = {
   id: string;

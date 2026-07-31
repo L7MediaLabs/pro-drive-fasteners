@@ -130,9 +130,8 @@ function AuthPage() {
         </div>
 
         <div className="relative z-10 flex items-center gap-6" style={{ fontSize: 11, color: "rgba(255,255,255,0.5)", letterSpacing: "0.12em", textTransform: "uppercase" }}>
-          <span>NWFA Sponsor</span>
-          <span style={{ width: 4, height: 4, background: "rgba(255,205,0,0.5)", borderRadius: "50%" }} />
           <span>50+ Years Expertise</span>
+
           <span style={{ width: 4, height: 4, background: "rgba(255,205,0,0.5)", borderRadius: "50%" }} />
           <span>Made in USA</span>
         </div>

@@ -80,7 +80,7 @@ import s155_2in_1000      from "../assets/products/staples/staples_155_2in_1000.
 import s155_2in_5000      from "../assets/products/staples/staples_155_2in_5000.png.asset.json";
 import s155_2in_7720      from "../assets/products/staples/staples_155_2in_7720.png.asset.json";
 import s155_175in_box     from "../assets/products/staples/staples_155_175in_box_v2.png.asset.json";
-import s155_175in_box_old from "../assets/products/staples/staples_155_175in_box.png.asset.json";
+
 import fn1532_200         from "../assets/products/finishNails/fn1532_200.png.asset.json";
 import fn1520_125         from "../assets/products/finishNails/fn1520_125.png.asset.json";
 import fn1524_150         from "../assets/products/finishNails/fn1524_150.png.asset.json";
@@ -213,11 +213,13 @@ export const images = {
     lc200_16:    lcleatLc200_16.url,
   },
   tappingBlocks: {
-    // Files block_tbpro.jpg / block_561.jpg are labeled in file names, but the
-    // photographs are swapped — remap so each product shows its own photo.
-    tbPro:      block561,
-    tb561:      blockTbPro,
+    // Each product uses the photo whose printed product label matches it:
+    // block_tbpro.jpg = E-Z CONNECT hang-card block (TB-PRO-312),
+    // block_561.jpg   = "561 TAPPING BLOCK" labeled block (561-TB).
+    tbPro:      blockTbPro,
+    tb561:      block561,
     widePlank:  blockWidePlank,
+
     lifestyle:  u.blocksP28_03,
   },
   tappingRings: {

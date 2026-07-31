@@ -194,6 +194,7 @@ export const images = {
     s155_2in_5000:  s155_2in_5000.url,
     s155_2in_7720:  s155_2in_7720.url,
     s155_175in_box: s155_175in_box.url,
+    s155_175in_9000: s155_175in_9000.url,
     gauge155a:      s155_2in_5000.url,
     gauge155b:      s155_1_5in.url,
     gauge15Banner:  u.staplesP07_02,

@@ -52,7 +52,7 @@ A11-10D,A11 Pad Staple,Divergent Staples,Pad Staples,20,"13/32""",,E-G Galvanize
 7512D,7512 Hammer Tacker Staple,Divergent Staples,Hammer Tacker,19,"15/32""",,,,10,"3/8"" Leg",5000,20,,Duo-Fast HT-755; HT-755M,"100,000 total",TRUE,divergentStaples.staple7512a,
 5418D,5418 Stair Tread / Carpet Staple,Divergent Staples,Stair Tread,19,"3/16""",,,,14,"9/16"" Leg",5000,20,,Bostitch CR1000E; Cran 625 Pro; Duo-Fast DNS-5424; Fasco F1A 54DF-18,"Available Tan or Gray Crown; 100,000 total",TRUE,divergentStaples.staple5418a,
 FN1520-125,"1-1/4"" (32mm) FN Nail",Brads & Finish Nails,15 GA Finish Nails (Bostitch 25°),15,,25°,E-G Galvanized,,32,"1-1/4""",3655,4,,Bostitch,,TRUE,finishNails.fn1520_125,
-FN1524-15O,"1-1/2"" (38mm) FN Nail",Brads & Finish Nails,15 GA Finish Nails (Bostitch 25°),15,,25°,E-G Galvanized,,38,"1-1/2""",3655,4,,Bostitch,,TRUE,finishNails.fn1524,
+FN1524-150,"1-1/2"" (38mm) FN Nail",Brads & Finish Nails,15 GA Finish Nails (Bostitch 25°),15,,25°,E-G Galvanized,,38,"1-1/2""",3655,4,,Bostitch,,TRUE,finishNails.fn1524,
 FN1532-200,"2"" (50mm) FN Nail",Brads & Finish Nails,15 GA Finish Nails (Bostitch 25°),15,,25°,E-G Galvanized,,50,"2""",3655,4,,Bostitch,,TRUE,finishNails.fn1532_200,
 DA13-100,"1"" (25mm) DA Nail",Brads & Finish Nails,15 GA DA Nails (Senco 34°),15,,34°,E-G Galvanized,Chisel,25,"1""",4000,4,24.2,Senco,,TRUE,,
 DA25-250SS,"2-1/2"" (64mm) DA Nail — Stainless",Brads & Finish Nails,15 GA DA Nails (Senco 34°),15,,34°,Stainless Steel,Chisel,64,"2-1/2""",4000,4,45.3,Senco,,TRUE,,

@@ -113,7 +113,7 @@ import lcleatLc200_16     from "../assets/products/lcleats/lc-200-16-masterpack.
 
 import blockOneTap        from "../assets/tapping_block_onetap.png.asset.json";
 import block561           from "../assets/products/tapping_blocks/block_561.jpg";
-import blockWidePlank     from "../assets/products/tapping_blocks/block_wideplank.jpg";
+import blockWidePlank     from "../assets/wide_plank_driving_tool.png.asset.json";
 
 import ringOrange1        from "../assets/products/tapping_rings/ring_orange_1.jpg";
 import ringOrange2        from "../assets/products/tapping_rings/ring_orange_2.jpg";
@@ -219,7 +219,7 @@ export const images = {
     // block_561.jpg   = "561 TAPPING BLOCK" labeled block (561-TB).
     tbPro:      blockOneTap.url,
     tb561:      block561,
-    widePlank:  blockWidePlank,
+    widePlank:  blockWidePlank.url,
 
     lifestyle:  u.blocksP28_03,
   },

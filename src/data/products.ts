@@ -24,6 +24,19 @@ function resolveImage(key: string): string | undefined {
   return typeof node === "string" ? node : undefined;
 }
 
+// Family-level strip photography, used when a SKU has no dedicated photo.
+// Keyed on the CSV `subcategory` value.
+const FAMILY_FALLBACK: Record<string, string | undefined> = {
+  "15 GA Finish Nails (Bostitch 25°)": images.nailFamilies.fn15_25,
+  "15 GA DA Nails (Senco 34°)": images.nailFamilies.da15_34,
+  "16 GA Finish Nails": images.nailFamilies.c16_straight,
+  "16 GA AFN Nails (Paslode 20°)": images.nailFamilies.afn16_20,
+  "18 GA Brad Nails": images.nailFamilies.brad18_straight,
+  "23 GA Micro Pins": images.nailFamilies.pin23_micro,
+  "Pad Staples": images.divergentStaples.staple5010,
+
+};
+
 // ─── CSV loader ───────────────────────────────────────────────────────────────
 
 function parseCSV(raw: string): Record<string, string>[] {
@@ -125,9 +138,18 @@ function toProduct(row: Record<string, string>): Product {
     packTier: tier?.label,
     packTierRank: tier?.rank,
     // Distinguishing product attribute badge (e.g. BARBED on DA15-BARB).
-    badge: row.notes && /^barbed$/i.test(row.notes.trim()) ? "BARBED" : undefined,
-    image: resolveImage(row.image_key),
+    // Tapping blocks are domestically manufactured — client-requested callout.
+    badge: row.notes && /^barbed$/i.test(row.notes.trim())
+      ? "BARBED"
+      : row.subcategory?.trim() === "Tapping Blocks"
+        ? "MADE IN USA"
+        : undefined,
+
+    // Per-SKU photo when the catalog has one; otherwise fall back to the
+    // family strip photo so no card renders imageless.
+    image: resolveImage(row.image_key) ?? FAMILY_FALLBACK[row.subcategory?.trim() ?? ""],
     href: routeFor(row),
+
   };
 }
 

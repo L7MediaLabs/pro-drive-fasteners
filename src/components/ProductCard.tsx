@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { trackEvent } from "@/lib/analytics";
+import { ImageLightbox } from "./ImageLightbox";
+
 
 export type Product = {
   id: string;
@@ -35,6 +37,8 @@ function MaybeLink({ href, className, style, children }: { href?: Product["href"
 export function ProductCard({ product, showPackTier = true }: { product: Product; showPackTier?: boolean }) {
   const ref = useRef<HTMLElement | null>(null);
   const seen = useRef(false);
+  const [zoom, setZoom] = useState(false);
+
   useEffect(() => {
     if (!ref.current || seen.current) return;
     const el = ref.current;
@@ -62,15 +66,24 @@ export function ProductCard({ product, showPackTier = true }: { product: Product
       onMouseLeave={e => (e.currentTarget.style.boxShadow = "")}
     >
       {product.image ? (
-        <MaybeLink href={product.href} className="flex items-center justify-center" style={{ height: 170, background: "#fafaf8", borderBottom: "1px solid rgba(0,0,0,0.05)" }}>
+        // Click-to-enlarge: card thumbnails are ~213px wide, too small to read
+        // printed item numbers / QTY on box art. Opens the full-res asset.
+        <button
+          type="button"
+          onClick={() => setZoom(true)}
+          aria-label={`Enlarge photo of ${product.id} — ${product.name}`}
+          className="flex items-center justify-center w-full cursor-zoom-in"
+          style={{ height: 170, background: "#fafaf8", borderBottom: "1px solid rgba(0,0,0,0.05)" }}
+        >
           <img
             src={product.image}
             alt={product.name}
             loading="lazy"
             style={{ maxWidth: "88%", maxHeight: "88%", objectFit: "contain" }}
           />
-        </MaybeLink>
+        </button>
       ) : (
+
         // No photography on file for this SKU. Never substitute another
         // product's photo — render a neutral in-brand placeholder instead.
         <MaybeLink
@@ -149,8 +162,18 @@ export function ProductCard({ product, showPackTier = true }: { product: Product
           Contact for Pricing →
         </Link>
       </div>
+      {zoom && product.image && (
+        <ImageLightbox
+          src={product.image}
+          alt={product.name}
+          sku={product.id}
+          name={product.name}
+          onClose={() => setZoom(false)}
+        />
+      )}
     </article>
   );
+
 }
 
 export function ProductGrid({ products, cols = 3, showPackTier = true }: { products: Product[]; cols?: 3 | 4; showPackTier?: boolean }) {

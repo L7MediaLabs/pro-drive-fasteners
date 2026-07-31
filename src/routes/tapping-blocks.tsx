@@ -84,8 +84,10 @@ const blockData: Block[] = blockCopy.map(c => {
   else specs.push({ k: "Head Weight", v: ozNote ? ozNote.replace(/oz/i, " oz") : "—" });
   specs.push({ k: "Weight", v: row?.weight_lbs ? `${row.weight_lbs} lbs` : "—" });
   specs.push({ k: "Carton", v: cartonNote ?? (row?.count || "—") });
+  specs.push({ k: "Origin", v: "Made in USA" });
   specs.push({ k: "Best For", v: c.bestFor });
   return { ...c, specs, bullets: notes };
+
 });
 
 function Blocks() {
@@ -117,7 +119,21 @@ function Blocks() {
             >
               <div className="pd-label" style={{ color: "var(--pd-gold)" }}>{`0${i + 1} — ${b.id}`}</div>
               <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32, lineHeight: 1.1 }}>{b.title}</h2>
+              <div
+                className="mt-3 inline-block px-2 py-0.5"
+                style={{
+                  background: "var(--pd-dark)",
+                  color: "var(--pd-yellow)",
+                  fontSize: 9.5,
+                  fontWeight: 800,
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Made in USA
+              </div>
               <p className="mt-3" style={{ color: "var(--pd-muted)", fontSize: 15, lineHeight: 1.6 }}>{b.tagline}</p>
+
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-px mt-5" style={{ background: "rgba(0,0,0,0.08)" }}>
                 {b.specs.map(s => (
                   <div key={s.k} className="bg-white px-4 py-3">

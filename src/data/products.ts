@@ -137,9 +137,9 @@ function toProduct(row: Record<string, string>): Product {
         ? "MADE IN USA"
         : undefined,
 
-    // Per-SKU photo when the catalog has one; otherwise fall back to the
-    // family strip photo so no card renders imageless.
-    image: resolveImage(row.image_key) ?? FAMILY_FALLBACK[row.subcategory?.trim() ?? ""],
+    // Only the SKU's own photo. No fallback: imageless SKUs render the
+    // neutral placeholder in ProductCard.
+    image: resolveImage(row.image_key),
     href: routeFor(row),
 
   };

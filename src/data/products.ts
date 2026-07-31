@@ -125,7 +125,13 @@ function toProduct(row: Record<string, string>): Product {
     packTier: tier?.label,
     packTierRank: tier?.rank,
     // Distinguishing product attribute badge (e.g. BARBED on DA15-BARB).
-    badge: row.notes && /^barbed$/i.test(row.notes.trim()) ? "BARBED" : undefined,
+    // Tapping blocks are domestically manufactured — client-requested callout.
+    badge: row.notes && /^barbed$/i.test(row.notes.trim())
+      ? "BARBED"
+      : row.subcategory?.trim() === "Tapping Blocks"
+        ? "MADE IN USA"
+        : undefined,
+
     image: resolveImage(row.image_key),
     href: routeFor(row),
   };

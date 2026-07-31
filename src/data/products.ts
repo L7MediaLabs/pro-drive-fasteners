@@ -24,6 +24,17 @@ function resolveImage(key: string): string | undefined {
   return typeof node === "string" ? node : undefined;
 }
 
+// Family-level strip photography, used when a SKU has no dedicated photo.
+// Keyed on the CSV `subcategory` value.
+const FAMILY_FALLBACK: Record<string, string | undefined> = {
+  "15 GA Finish Nails (Bostitch 25°)": images.nailFamilies.fn15_25,
+  "15 GA DA Nails (Senco 34°)": images.nailFamilies.da15_34,
+  "16 GA Finish Nails": images.nailFamilies.c16_straight,
+  "16 GA AFN Nails (Paslode 20°)": images.nailFamilies.afn16_20,
+  "18 GA Brad Nails": images.nailFamilies.brad18_straight,
+  "23 GA Micro Pins": images.nailFamilies.pin23_micro,
+};
+
 // ─── CSV loader ───────────────────────────────────────────────────────────────
 
 function parseCSV(raw: string): Record<string, string>[] {

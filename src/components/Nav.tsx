@@ -2,20 +2,23 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import logoAsset from "../assets/prodrive-logo-prev.svg.asset.json";
 
-const products = [
+type NavLink = { label: string; to: string; search?: Record<string, string> };
+
+const products: NavLink[] = [
   { label: "Flooring Staples", to: "/staples" },
   { label: "L-Cleats", to: "/l-cleats" },
   { label: "Brads & Finish Nails", to: "/brads-finish-nails" },
   { label: "Divergent Staples", to: "/divergent-staples" },
 ];
-const tools = [
+const tools: NavLink[] = [
   { label: "Mallets & Caps", to: "/mallets" },
+  { label: "Dead Blow Mallets", to: "/mallets", search: { tab: "deadblow" } },
   { label: "Split Head Hammer Faces", to: "/split-head-hammer-faces" },
   { label: "Tapping Rings", to: "/tapping-rings" },
   { label: "Tapping Blocks", to: "/tapping-blocks" },
   { label: "Tipper-De-Tipper™", to: "/tipper-de-tipper" },
 ];
-const equipment = [
+const equipment: NavLink[] = [
   { label: "Air Tools & Hoses", to: "/air-tools" },
   { label: "Accessories", to: "/accessories" },
   { label: "View All Products", to: "/products" },
@@ -95,8 +98,8 @@ export function Nav() {
                       </div>
                       <ul className="space-y-2">
                         {col.map(l => (
-                          <li key={l.to}>
-                            <Link to={l.to} className="block text-white/75 hover:text-[color:var(--pd-yellow)] text-sm transition-colors">
+                          <li key={l.label}>
+                            <Link to={l.to} search={l.search as never} className="block text-white/75 hover:text-[color:var(--pd-yellow)] text-sm transition-colors">
                               {l.label}
                             </Link>
                           </li>
@@ -156,7 +159,7 @@ export function Nav() {
             {mobileProducts && (
               <div className="pl-4 pb-3 space-y-2">
                 {[...products, ...tools, ...equipment].map(l => (
-                  <Link key={l.to} to={l.to} onClick={() => setOpen(false)} className="block py-2 text-white/60 hover:text-[color:var(--pd-yellow)] text-sm">
+                  <Link key={l.label} to={l.to} search={l.search as never} onClick={() => setOpen(false)} className="block py-2 text-white/60 hover:text-[color:var(--pd-yellow)] text-sm">
                     {l.label}
                   </Link>
                 ))}

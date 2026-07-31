@@ -9,7 +9,9 @@ export type Product = {
   pack?: string;
   packTier?: string;
   packTierRank?: number;
+  badge?: string;
   image?: string;
+
   href?:
     | "/staples"
     | "/l-cleats"
@@ -59,7 +61,7 @@ export function ProductCard({ product, showPackTier = true }: { product: Product
       onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 4px 20px rgba(255,205,0,0.18)")}
       onMouseLeave={e => (e.currentTarget.style.boxShadow = "")}
     >
-      {product.image && (
+      {product.image ? (
         <MaybeLink href={product.href} className="flex items-center justify-center" style={{ height: 170, background: "#fafaf8", borderBottom: "1px solid rgba(0,0,0,0.05)" }}>
           <img
             src={product.image}
@@ -67,6 +69,29 @@ export function ProductCard({ product, showPackTier = true }: { product: Product
             loading="lazy"
             style={{ maxWidth: "88%", maxHeight: "88%", objectFit: "contain" }}
           />
+        </MaybeLink>
+      ) : (
+        // No photography on file for this SKU. Never substitute another
+        // product's photo — render a neutral in-brand placeholder instead.
+        <MaybeLink
+          href={product.href}
+          className="flex flex-col items-center justify-center text-center px-4"
+          style={{
+            height: 170,
+            background: "var(--pd-cream, #f5f1e6)",
+            borderBottom: "1px solid rgba(0,0,0,0.05)",
+          }}
+        >
+          <div
+            className="pd-label"
+            style={{ color: "var(--pd-dark)", fontSize: 13, letterSpacing: "0.12em", fontWeight: 800 }}
+          >
+            {product.id}
+          </div>
+          <div className="mt-2" style={{ width: 28, height: 3, background: "var(--pd-yellow)" }} />
+          <div className="mt-2" style={{ color: "var(--pd-muted)", fontSize: 10.5, letterSpacing: "0.08em", textTransform: "uppercase" }}>
+            Photography coming soon
+          </div>
         </MaybeLink>
       )}
       <div className="p-6 flex flex-col flex-1">
@@ -76,6 +101,22 @@ export function ProductCard({ product, showPackTier = true }: { product: Product
             <Link to={product.href} className="hover:underline" style={{ color: "inherit" }}>{product.name}</Link>
           ) : product.name}
         </h3>
+        {product.badge && (
+          <div
+            className="mt-2 inline-block self-start px-2 py-0.5"
+            style={{
+              background: "var(--pd-dark)",
+              color: "var(--pd-yellow)",
+              fontSize: 9.5,
+              fontWeight: 800,
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+            }}
+          >
+            {product.badge}
+          </div>
+        )}
+
         {product.specs && (
           <ul className="mt-2 text-[12px]" style={{ color: "var(--pd-muted)", lineHeight: 1.7 }}>
             {product.specs.map((s, i) => <li key={i}>{s}</li>)}

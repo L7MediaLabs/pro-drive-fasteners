@@ -40,7 +40,7 @@ type Family = {
 const families: Family[] = [
   { id: "fn15",   gauge: "15 GA", brand: "Fits Bostitch®", label: "FN 25° Angle",     image: images.nailFamilies.fn15_25 },
   { id: "da15",   gauge: "15 GA", brand: "Fits Senco®",    label: "DA 34° Angle",     image: images.nailFamilies.da15_34 },
-  { id: "c16",    gauge: "16 GA", brand: "Universal",       label: "Straight",         image: images.nailFamilies.c16_straight },
+  { id: "c16",    gauge: "16 GA", brand: "Universal",       label: "16 Straight Nail", image: images.nailFamilies.c16_straight },
   { id: "afn16",  gauge: "16 GA", brand: "Fits Paslode®",  label: "AFN 20° Angle",    image: images.nailFamilies.afn16_20 },
   { id: "brad18", gauge: "18 GA", brand: "Universal",       label: "Straight Brad",    image: images.nailFamilies.brad18_straight },
   { id: "pin23",  gauge: "23 GA", brand: "Universal",       label: "Micro Pin",        image: images.nailFamilies.pin23_micro },
@@ -420,7 +420,8 @@ function Brads() {
 
         <div id="c16">
           <div className="pd-label" style={{ color: "var(--pd-gold)" }}>16 GA — 0° Straight</div>
-          <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32 }}>Universal Fit</h2>
+          <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32 }}>16 Straight Nail</h2>
+          <p className="mt-2" style={{ color: "var(--pd-muted)", fontSize: 14 }}>16 gauge · 0° straight collation · universal fit</p>
           <div className="mt-4"><ProductGrid products={C16} /></div>
           <InfoPanel
             materials="Blunt Chisel Point, Smooth Shank. Available in Stainless Steel."

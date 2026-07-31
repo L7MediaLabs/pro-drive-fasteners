@@ -13,7 +13,14 @@ import {
 import { MALLETS, MALLET_CAPS, POLY_FACES, DEAD_BLOW, pickRelated } from "../data/products";
 import { images } from "../data/images";
 
+const TAB_KEYS = ["mallets", "caps", "poly", "deadblow"] as const;
+
 export const Route = createFileRoute("/mallets")({
+  // Deep-linkable tabs: /mallets?tab=deadblow opens the Dead Blow tab directly.
+  validateSearch: (search: Record<string, unknown>) => {
+    const t = String(search.tab ?? "");
+    return { tab: (TAB_KEYS as readonly string[]).includes(t) ? (t as TabKey) : undefined };
+  },
   head: () => ({
     meta: [
       { title: "Mallets & Caps | Pro-Drive Fasteners®" },
@@ -186,7 +193,8 @@ function EZ2CapBanner() {
 }
 
 function Mallets() {
-  const [tab, setTab] = useTabs<TabKey>("mallets");
+  const { tab: tabParam } = Route.useSearch();
+  const [tab, setTab] = useTabs<TabKey>(tabParam ?? "mallets");
   const allIds = [...MALLETS, ...MALLET_CAPS, ...POLY_FACES, ...DEAD_BLOW].map(p => p.id);
   const related = pickRelated(allIds, 6);
 

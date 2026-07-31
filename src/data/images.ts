@@ -111,7 +111,7 @@ import lcleat18gaInner    from "../assets/products/lCleats/lcleat_18ga_innerpack
 import lcleatLc175_16     from "../assets/products/lCleats/lcleat_lc175_16.jpg";
 import lcleatLc200_16     from "../assets/products/lcleats/lc-200-16-masterpack.png.asset.json";
 
-import blockTbPro         from "../assets/products/tapping_blocks/block_tbpro.jpg";
+import blockOneTap        from "../assets/tapping_block_onetap.png.asset.json";
 import block561           from "../assets/products/tapping_blocks/block_561.jpg";
 import blockWidePlank     from "../assets/products/tapping_blocks/block_wideplank.jpg";
 
@@ -215,9 +215,9 @@ export const images = {
   },
   tappingBlocks: {
     // Each product uses the photo whose printed product label matches it:
-    // block_tbpro.jpg = E-Z CONNECT hang-card block (TB-PRO-312),
+    // tapping_block_onetap.png = ONE TAP heavy-duty block w/ wood handle (TB-PRO-312),
     // block_561.jpg   = "561 TAPPING BLOCK" labeled block (561-TB).
-    tbPro:      blockTbPro,
+    tbPro:      blockOneTap.url,
     tb561:      block561,
     widePlank:  blockWidePlank,
 

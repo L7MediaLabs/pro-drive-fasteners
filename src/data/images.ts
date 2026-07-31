@@ -219,7 +219,7 @@ export const images = {
     // block_561.jpg   = "561 TAPPING BLOCK" labeled block (561-TB).
     tbPro:      blockOneTap.url,
     tb561:      block561,
-    widePlank:  blockWidePlank,
+    widePlank:  blockWidePlank.url,
 
     lifestyle:  u.blocksP28_03,
   },

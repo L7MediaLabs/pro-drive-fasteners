@@ -78,7 +78,10 @@ const blockData: Block[] = blockCopy.map(c => {
   // "5 per carton 15 lbs" → carton count + carton weight
   const cartonNote = notes.find(n => /per carton/i.test(n));
   const specs: { k: string; v: string }[] = [];
-  specs.push({ k: "Dimensions", v: row?.length_in || "—" });
+  const ozNote = notes.find(n => /oz$/i.test(n));
+  // TB-PRO-312 has no dimensions in the catalog — show its head weight instead.
+  if (row?.length_in) specs.push({ k: "Dimensions", v: row.length_in });
+  else specs.push({ k: "Head Weight", v: ozNote ? ozNote.replace(/oz/i, " oz") : "—" });
   specs.push({ k: "Weight", v: row?.weight_lbs ? `${row.weight_lbs} lbs` : "—" });
   specs.push({ k: "Carton", v: cartonNote ?? (row?.count || "—") });
   specs.push({ k: "Best For", v: c.bestFor });

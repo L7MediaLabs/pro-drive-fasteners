@@ -7,7 +7,6 @@ import {
   SpecCardGrid,
   SplitLayout,
   GalleryHero,
-  GalleryPair,
   LifestyleBanner,
   TechReference,
   RelatedProducts,

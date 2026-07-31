@@ -35,6 +35,8 @@ function MaybeLink({ href, className, style, children }: { href?: Product["href"
 export function ProductCard({ product, showPackTier = true }: { product: Product; showPackTier?: boolean }) {
   const ref = useRef<HTMLElement | null>(null);
   const seen = useRef(false);
+  const [zoom, setZoom] = useState(false);
+
   useEffect(() => {
     if (!ref.current || seen.current) return;
     const el = ref.current;

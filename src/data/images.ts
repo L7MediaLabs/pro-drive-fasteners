@@ -101,7 +101,6 @@ import famC16Straight     from "../assets/products/finishNails/families/c16_stra
 import famAfn16_20        from "../assets/products/finishNails/families/afn16_20.png.asset.json";
 import famBrad18Straight  from "../assets/products/finishNails/families/brad18_straight.png.asset.json";
 import famPin23Micro      from "../assets/products/finishNails/families/pin23_micro.png.asset.json";
-import lcleatVertical     from "../assets/products/lCleats/lcleat_vertical.jpg";
 import lcleatStanding     from "../assets/products/lCleats/lcleat_standing.jpg";
 import lcleatBanner       from "../assets/products/lCleats/lcleat_banner.jpg";
 import lcleatLifestyle    from "../assets/products/lCleats/lcleat_lifestyle.jpg";
@@ -204,7 +203,7 @@ export const images = {
   },
   lCleats: {
     hero:        lcleatStripHero.url,
-    vertical:    lcleatVertical,
+    vertical:    lcleatStripHero.url,
     standing:    lcleatStanding,
     banner:      lcleatBanner,
     lifestyle:   lcleatLifestyle,

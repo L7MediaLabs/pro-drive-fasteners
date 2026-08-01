@@ -203,7 +203,7 @@ export const images = {
   },
   lCleats: {
     hero:        lcleatStripHero.url,
-    vertical:    lcleatVertical,
+    vertical:    lcleatStripHero.url,
     standing:    lcleatStanding,
     banner:      lcleatBanner,
     lifestyle:   lcleatLifestyle,

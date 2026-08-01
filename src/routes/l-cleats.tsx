@@ -489,11 +489,12 @@ function LCleats() {
           </div>
           <div className="relative" style={{ aspectRatio: "4/5", maxHeight: 520 }}>
             <img
-              src={images.lCleats.vertical}
+              src={images.lCleats.hero}
               alt="Pro-Drive L-Cleat strip — vertical product detail"
               loading="eager"
               style={{
-                width: "100%", height: "100%", objectFit: "cover",
+                width: "100%", height: "100%", objectFit: "contain", objectPosition: "center",
+                background: "#fff",
                 borderRadius: 4, boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
               }}
             />

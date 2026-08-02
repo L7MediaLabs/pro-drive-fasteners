@@ -9,7 +9,8 @@ import {
   PageDisclaimers,
 } from "../components/editorial";
 import { FN15, DA15, C16, AFN, BRAD18, PINS23, pickRelated } from "../data/products";
-import gradeContractor from "../assets/badges/grade-contractor.svg";
+import gradeContractorAsset from "../assets/badge-contractor-grade.png.asset.json";
+const gradeContractor = gradeContractorAsset.url;
 import { images } from "../data/images";
 
 export const Route = createFileRoute("/brads-finish-nails")({

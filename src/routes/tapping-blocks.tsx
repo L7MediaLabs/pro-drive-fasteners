@@ -11,7 +11,8 @@ import {
   PageDisclaimers,
 } from "../components/editorial";
 import { TAPPING_BLOCKS, RAW_CATALOG, pickRelated } from "../data/products";
-import gradeContractor from "../assets/badges/grade-contractor.svg";
+import gradeContractorAsset from "../assets/badge-contractor-grade.png.asset.json";
+const gradeContractor = gradeContractorAsset.url;
 import { images } from "../data/images";
 
 export const Route = createFileRoute("/tapping-blocks")({

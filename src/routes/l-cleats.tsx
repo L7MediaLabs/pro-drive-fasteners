@@ -5,9 +5,9 @@ import { ProductGrid } from "../components/ProductCard";
 import { TechReference } from "../components/editorial";
 import { LCLEATS_16, LCLEATS_18 } from "../data/products";
 import { images } from "../data/images";
-import contractorBadge from "../assets/badges/grade-contractor.svg";
+import contractorBadge from "../assets/badge-contractor-grade.png.asset.json";
 
-const contractorBadgeUrl = contractorBadge;
+const contractorBadgeUrl = contractorBadge.url;
 
 // ─── L-Cleat depth diagram — shared pixels-per-inch across every card ──────
 type CleatSpec = { floor: string; floorMm: string; pen: string };

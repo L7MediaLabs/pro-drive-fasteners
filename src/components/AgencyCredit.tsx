@@ -7,7 +7,7 @@
 type Variant = "prominent" | "compact" | "minimal" | "footer";
 
 const HREF = "https://seventhstatecreative.com/";
-const LOCATION = "Dallas, GA";
+const LOCATION = "Dallas, GA \u00b7 Serving Clients Worldwide";
 
 import logoWhite from "@/assets/7sc-logo-white.svg";
 import logoColor from "@/assets/7sc-logo.svg";

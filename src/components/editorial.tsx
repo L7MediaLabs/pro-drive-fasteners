@@ -19,7 +19,7 @@ export function CinematicHero({
   title: ReactNode;
   description?: string;
   bgImage?: string;
-  badges?: { label: string; accent?: boolean }[];
+  badges?: { label: string; accent?: boolean; logo?: string }[];
   rightImage?: string;
   rightImageAlt?: string;
   rightImageFit?: "cover" | "contain";
@@ -57,21 +57,30 @@ export function CinematicHero({
           )}
           {badges && badges.length > 0 && (
             <div className="flex flex-wrap gap-2.5 mt-7">
-              {badges.map((b, i) => (
-                <div
-                  key={i}
-                  className="px-3.5 py-2"
-                  style={{
-                    background: "var(--pd-dark)",
-                    fontSize: 11,
-                    color: b.accent ?? i === 0 ? "var(--pd-yellow)" : "#fff",
-                    letterSpacing: "0.14em",
-                    fontWeight: 700,
-                  }}
-                >
-                  {b.label}
-                </div>
-              ))}
+              {badges.map((b, i) =>
+                b.logo ? (
+                  <img
+                    key={i}
+                    src={b.logo}
+                    alt={b.label}
+                    style={{ height: 52, width: "auto", display: "block", alignSelf: "center" }}
+                  />
+                ) : (
+                  <div
+                    key={i}
+                    className="px-3.5 py-2 self-center"
+                    style={{
+                      background: "var(--pd-dark)",
+                      fontSize: 11,
+                      color: b.accent ?? i === 0 ? "var(--pd-yellow)" : "#fff",
+                      letterSpacing: "0.14em",
+                      fontWeight: 700,
+                    }}
+                  >
+                    {b.label}
+                  </div>
+                )
+              )}
             </div>
           )}
         </div>

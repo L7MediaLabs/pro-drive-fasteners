@@ -176,9 +176,9 @@ function TappingRings() {
             </thead>
             <tbody>
               {[
-                { color: "#C83228", name: "Red",    scores: [3,3,3,2,2] },
-                { color: "#E07020", name: "Orange", scores: [2,2,2,3,3] },
-                { color: "#FFCD00", name: "Yellow", scores: [2,1,2,3,3] },
+                { color: "#C83228", name: "Red",    scores: [2,2,2,2,2] },
+                { color: "#E07020", name: "Orange", scores: [3,3,3,3,3] },
+                { color: "#FFCD00", name: "Yellow", scores: [2,2,2,2,2] },
               ].map(r => (
                 <tr key={r.name} style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}>
                   <td className="py-3">

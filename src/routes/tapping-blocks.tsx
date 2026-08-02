@@ -11,6 +11,7 @@ import {
   PageDisclaimers,
 } from "../components/editorial";
 import { TAPPING_BLOCKS, RAW_CATALOG, pickRelated } from "../data/products";
+import gradeContractor from "../assets/badges/grade-contractor.svg";
 import { images } from "../data/images";
 
 export const Route = createFileRoute("/tapping-blocks")({
@@ -102,7 +103,7 @@ function Blocks() {
         bgImage={images.tappingBlocks.lifestyle}
         badges={[
           { label: "MADE IN USA" },
-          { label: "CONTRACTOR GRADE" },
+          { label: "CONTRACTOR GRADE", logo: gradeContractor },
           { label: "3 SPECIALIZED MODELS" },
         ]}
         rightImage={images.tappingBlocks.tbPro}

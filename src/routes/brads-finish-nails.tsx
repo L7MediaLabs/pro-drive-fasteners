@@ -9,6 +9,7 @@ import {
   PageDisclaimers,
 } from "../components/editorial";
 import { FN15, DA15, C16, AFN, BRAD18, PINS23, pickRelated } from "../data/products";
+import gradeContractor from "../assets/badges/grade-contractor.svg";
 import { images } from "../data/images";
 
 export const Route = createFileRoute("/brads-finish-nails")({
@@ -114,14 +115,7 @@ function BradNailDiagram({ sizes }: { sizes: typeof brad18Sizes }) {
               .0468&quot;
             </text>
 
-            {/* Head — small horizontal cap */}
-            <rect
-              x={cx - 5.5}
-              y={shankTop - 3}
-              width={11}
-              height={4}
-              fill="#1a1a1a"
-            />
+            {/* Headless profile — AX-series 18 GA brads have no T-head */}
 
             {/* Shank — vertical nail body, true to scale */}
             <line
@@ -434,7 +428,7 @@ function Brads() {
       </section>
 
       <LifestyleBanner
-        image={images.finishNails.strip}
+        badge={{ src: gradeContractor, alt: "Contractor Grade" }}
         kicker="Contractor Grade"
         title="Professional grade. Contractor tested."
         body="Precise chisel points. Consistent collation. Guaranteed not to jam in any major brand of finish nailer. Order by the box or bulk contractor pack."

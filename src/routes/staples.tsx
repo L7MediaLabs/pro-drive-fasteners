@@ -17,6 +17,7 @@ import {
   STAPLES_15_5, STAPLES_15_Q, STAPLES_16_N, STAPLES_18_M, STAPLES_18_L,
   pickRelated,
 } from "../data/products";
+import gradeContractor from "../assets/badges/grade-contractor.svg";
 import { images } from "../data/images";
 
 export const Route = createFileRoute("/staples")({
@@ -623,7 +624,7 @@ function Staples() {
         description="Medium crown and specialty staples engineered for hardwood, laminate, and engineered flooring — plus framing, cabinetry, insulation, and upholstery."
         bgImage={images.staples.gauge15Banner}
         badges={[
-          { label: "CONTRACTOR GRADE" },
+          { label: "CONTRACTOR GRADE", logo: gradeContractor },
           { label: "MEETS ASTM F1667" },
           { label: "E-G GALVANIZED" },
         ]}

@@ -87,6 +87,12 @@ import fn1520_125         from "../assets/products/finishNails/fn1520_125.png.as
 import fn1524_150         from "../assets/products/finishNails/fn1524_150.png.asset.json";
 import da21_200           from "../assets/products/finishNails/da21_200.png.asset.json";
 import finishNailsStrip   from "../assets/products/finishNails/finish_nails_strip.png.asset.json";
+import c50200ss          from "../assets/products/finishNails/c50_200ss.jpg.asset.json";
+import da15Barb          from "../assets/products/finishNails/da15_barb.jpg.asset.json";
+import da15BarbStrip     from "../assets/products/finishNails/da15_barb_strip.jpg.asset.json";
+import fn1520125Photo    from "../assets/products/finishNails/fn1520_125_photo.jpg.asset.json";
+import brad18Galv200     from "../assets/products/brads/axx21_200_galv.jpg.asset.json";
+import brad18View2       from "../assets/products/brads/brad18_view2.jpg.asset.json";
 import finishNailsStripHD from "../assets/products/finishNails/finish_nails_strip_hd.png";
 import brad18_500         from "../assets/products/brads/axx08eaa-500.png.asset.json";
 import brad18_625         from "../assets/products/brads/axx10eaa-625.png.asset.json";
@@ -263,11 +269,15 @@ export const images = {
   },
   finishNails: {
     fn1532_200:  fn1532_200.url,
-    fn1520_125:  fn1520_125.url,
+    fn1520_125:  fn1520125Photo.url,
+    fn1520_125_box: fn1520_125.url,
     fn1524:      fn1524_150.url,
     da21_200:    da21_200.url,
     da21_200ss:  finishNailsStrip.url,
     c50_200:     c50200Box.url,
+    c50_200ss:   c50200ss.url,
+    da15_barb:   da15Barb.url,
+    da15_barb_strip: da15BarbStrip.url,
     strip:       finishNailsStripHD,
   },
   brads18: {
@@ -276,7 +286,9 @@ export const images = {
     axx13_100: brad18_100.url,
     axx15_125: brad18_125.url,
     axx17_150: brad18_150.url,
-    axx21_200: brad18_200.url,
+    axx21_200: brad18Galv200.url,
+    axx21_200_pack: brad18_200.url,
+    brad18_view2: brad18View2.url,
   },
   nailFamilies: {
     fn15_25:       famFn15_25.url,

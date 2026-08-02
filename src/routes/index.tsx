@@ -9,20 +9,20 @@ import instagramTools from "../assets/instagram-tools.png.asset.json";
 import illoStaples from "../assets/illustrations/staples_stack.png.asset.json";
 import illoCleats from "../assets/illustrations/cleats_stack.png.asset.json";
 import illoNails from "../assets/illustrations/nails_stack.png.asset.json";
-import badgeContractor from "../assets/badge-contractor-grade.png.asset.json";
-import badgeMulti from "../assets/badge-multi-grade.png.asset.json";
+import badgeContractor from "../assets/badges/grade-contractor.svg";
+import badgeMulti from "../assets/badges/grade-multigrade.svg";
 import badgeIndustrial from "../assets/badge-industrial-grade.png.asset.json";
 import { images } from "../data/images";
 
 const gradeStandards = [
   {
-    image: badgeContractor.url,
+    image: badgeContractor,
     tier: "Tier I",
     name: "Contractor Grade",
     body: "Jobsite-ready fasteners and tools built for the daily install. Every gauge, every angle — chisel-point precision, contractor-packed.",
   },
   {
-    image: badgeMulti.url,
+    image: badgeMulti,
     tier: "Tier II",
     name: "Multi Grade",
     body: "Hardwood, contractor, and industrial applications in one spec. Cross-compatible fasteners that clear every major nailer without sorting.",

@@ -211,6 +211,7 @@ export const images = {
     gauge15Banner:  u.staplesP07_02,
     gauge15Vertical: u.staplesP08_01,
     q15BulkPack:    u.staplesP05_02,
+    narrowCrown18:  narrowCrown18.url,
   },
   lCleats: {
     hero:        lcleatStripHero.url,

@@ -429,7 +429,9 @@ function Brads() {
       </section>
 
       <LifestyleBanner
+        image={images.finishNails.strips_lifestyle}
         badge={{ src: gradeContractor, alt: "Contractor Grade" }}
+
         kicker="Contractor Grade"
         title="Professional grade. Contractor tested."
         body="Precise chisel points. Consistent collation. Guaranteed not to jam in any major brand of finish nailer. Order by the box or bulk contractor pack."

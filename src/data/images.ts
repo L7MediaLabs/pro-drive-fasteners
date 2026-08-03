@@ -93,6 +93,8 @@ import c50200ss          from "../assets/products/finishNails/c50_200ss.jpg.asse
 import da15Barb          from "../assets/products/finishNails/da15_barb.jpg.asset.json";
 import da15BarbStrip     from "../assets/products/finishNails/da15_barb_strip.jpg.asset.json";
 import fn1520125Photo    from "../assets/products/finishNails/fn1520_125_photo.jpg.asset.json";
+import stripsLifestyle   from "../assets/products/finishNails/finish_nails_strips_lifestyle.png.asset.json";
+
 import brad18Galv200     from "../assets/products/brads/axx21_200_galv.jpg.asset.json";
 import brad18View2       from "../assets/products/brads/brad18_view2.jpg.asset.json";
 import finishNailsStripHD from "../assets/products/finishNails/finish_nails_strip_hd.png";
@@ -282,6 +284,8 @@ export const images = {
     da15_barb:   da15Barb.url,
     da15_barb_strip: da15BarbStrip.url,
     strip:       finishNailsStripHD,
+    strips_lifestyle: stripsLifestyle.url,
+
   },
   brads18: {
     axx08_500: brad18_500.url,

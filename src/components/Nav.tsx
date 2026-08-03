@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import logoAsset from "../assets/prodrive-logo-prev.svg.asset.json";
+import { ProductSearch } from "./ProductSearch";
+
 
 type NavLink = { label: string; to: string; search?: Record<string, string> };
 
@@ -118,8 +120,10 @@ export function Nav() {
             <Link to="/contact" style={navLink}>Contact</Link>
           </nav>
 
-          <div className="hidden lg:flex items-center gap-5 relative" style={{ zIndex: 2 }}>
+          <div className="hidden lg:flex items-center gap-4 relative" style={{ zIndex: 2 }}>
+            <ProductSearch variant="desktop" />
             <div className="flex items-center gap-2 text-[12px]" style={{ color: "rgba(14,12,0,0.55)" }}>
+
               <span style={{ color: "rgba(14,12,0,0.95)", fontWeight: 700 }}>EN</span>
               <button onClick={() => showLangToast("Versión en español próximamente")} className="hover:text-[color:var(--pd-black)] transition-colors">ES</button>
               <button onClick={() => showLangToast("Versão em Português em breve")} className="hover:text-[color:var(--pd-black)] transition-colors">PT</button>
@@ -150,6 +154,10 @@ export function Nav() {
             <button onClick={() => setOpen(false)} aria-label="Close" style={{ color: "var(--pd-yellow)", fontSize: 28, lineHeight: 1 }}>×</button>
           </div>
           <nav className="flex-1 overflow-y-auto px-[6%] py-8 space-y-1">
+            <div className="pb-5">
+              <ProductSearch variant="mobile" onNavigate={() => setOpen(false)} />
+            </div>
+
             <button
               onClick={() => setMobileProducts(v => !v)}
               className="w-full text-left py-3 flex justify-between items-center"

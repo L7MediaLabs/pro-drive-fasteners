@@ -77,13 +77,14 @@ export function Nav() {
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-8">
-            <div className="relative" onMouseEnter={() => setDrop(true)} onMouseLeave={() => setDrop(false)}>
+            <div className="relative h-full flex items-center" onMouseEnter={() => setDrop(true)} onMouseLeave={() => setDrop(false)}>
               <button className="pd-nav-link" style={navLink}>Products ▾</button>
               {drop && (
                 <div
                   className="absolute left-0 top-full grid grid-cols-3 gap-8 p-6"
                   style={{
                     minWidth: 720,
+                    maxWidth: "min(720px, calc(100vw - 14%))",
                     background: "rgba(14,12,0,0.97)",
                     backdropFilter: "blur(20px) saturate(160%)",
                     border: "1px solid rgba(255,205,0,0.18)",

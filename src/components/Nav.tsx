@@ -118,8 +118,10 @@ export function Nav() {
             <Link to="/contact" style={navLink}>Contact</Link>
           </nav>
 
-          <div className="hidden lg:flex items-center gap-5 relative" style={{ zIndex: 2 }}>
+          <div className="hidden lg:flex items-center gap-4 relative" style={{ zIndex: 2 }}>
+            <ProductSearch variant="desktop" />
             <div className="flex items-center gap-2 text-[12px]" style={{ color: "rgba(14,12,0,0.55)" }}>
+
               <span style={{ color: "rgba(14,12,0,0.95)", fontWeight: 700 }}>EN</span>
               <button onClick={() => showLangToast("Versión en español próximamente")} className="hover:text-[color:var(--pd-black)] transition-colors">ES</button>
               <button onClick={() => showLangToast("Versão em Português em breve")} className="hover:text-[color:var(--pd-black)] transition-colors">PT</button>

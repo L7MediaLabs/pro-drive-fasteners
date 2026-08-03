@@ -181,8 +181,7 @@ export const images = {
       hard:       polyfaceHard.url,
       tough:      polyfaceTough.url,
     },
-    // Fallback render — still used by 200L-OG and 200L-BR-BR (special order,
-    // no dedicated product photo yet).
+    // Generic poly dead blow render (fallback for variants without a photo).
     deadBlow: polyDeadblow.url,
     deadBlowOrangeGreen: deadblowOgNew.url,
     deadBlowBrownBrown:  deadblowBrBrNew.url,

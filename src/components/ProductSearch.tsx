@@ -59,6 +59,70 @@ export function ProductSearch({ variant = "desktop", onNavigate }: { variant?: "
     navigate({ to: p.href ?? "/products", hash: p.id });
   }
 
+  if (variant === "inline") {
+    return (
+      <div>
+        <div
+          className="flex items-center gap-2 px-3"
+          style={{
+            height: 40,
+            borderRadius: 4,
+            border: "1px solid rgba(255,205,0,0.28)",
+            background: "rgba(255,255,255,0.06)",
+          }}
+        >
+          <span style={{ color: "rgba(255,205,0,0.7)" }}><SearchIcon /></span>
+          <input
+            value={q}
+            onChange={e => setQ(e.target.value)}
+            onKeyDown={e => {
+              if (e.key === "ArrowDown") { e.preventDefault(); setActive(i => Math.min(i + 1, results.length - 1)); }
+              if (e.key === "ArrowUp") { e.preventDefault(); setActive(i => Math.max(i - 1, 0)); }
+              if (e.key === "Enter" && results[active]) { e.preventDefault(); go(results[active]); }
+            }}
+            placeholder="Search by SKU, name, or gauge…"
+            aria-label="Search products"
+            className="flex-1 outline-none"
+            style={{ fontSize: 13, color: "#fff", background: "transparent" }}
+          />
+          {q && (
+            <button onClick={() => setQ("")} aria-label="Clear search" style={{ color: "rgba(255,255,255,0.45)", fontSize: 18, lineHeight: 1 }}>×</button>
+          )}
+        </div>
+
+        {q.trim().length >= 2 && (
+          <div className="mt-3" style={{ maxHeight: 260, overflowY: "auto" }}>
+            {results.length === 0 && (
+              <div style={{ fontSize: 12, color: "rgba(255,255,255,0.5)" }}>No products match “{q.trim()}”.</div>
+            )}
+            {results.map((p, i) => (
+              <button
+                key={p.id}
+                onMouseEnter={() => setActive(i)}
+                onClick={() => go(p)}
+                className="w-full text-left flex items-center gap-3 px-2 py-2"
+                style={{
+                  background: i === active ? "rgba(255,205,0,0.14)" : "transparent",
+                  borderRadius: 3,
+                }}
+              >
+                <div style={{ width: 34, height: 34, flex: "0 0 auto", background: "rgba(255,255,255,0.06)", borderRadius: 3, overflow: "hidden" }}>
+                  {p.image && <img src={p.image} alt="" style={{ width: "100%", height: "100%", objectFit: "contain" }} />}
+                </div>
+                <div className="min-w-0">
+                  <div style={{ fontSize: 12.5, fontWeight: 700, color: "#fff" }} className="truncate">{p.name}</div>
+                  <div style={{ fontSize: 10.5, color: "rgba(255,255,255,0.5)", letterSpacing: "0.06em" }} className="truncate">
+                    {p.id}{p.specs?.length ? ` · ${p.specs.join(" · ")}` : ""}
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  }
+
   const trigger =
     variant === "desktop" ? (
       <button

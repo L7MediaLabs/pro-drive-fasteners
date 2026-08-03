@@ -184,6 +184,8 @@ export const images = {
     // Fallback render — still used by 200L-OG and 200L-BR-BR (special order,
     // no dedicated product photo yet).
     deadBlow: polyDeadblow.url,
+    deadBlowOrangeGreen: deadblowOgNew.url,
+    deadBlowBrownBrown:  deadblowBrBrNew.url,
     deadBlowOrangeBlack: deadblowOrangeBlack.url,
     deadBlowOrangeBrown: deadblowOrangeBrown.url,
     deadBlowInsert: deadblow200l2000.url,

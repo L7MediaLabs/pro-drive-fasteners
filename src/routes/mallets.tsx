@@ -304,6 +304,38 @@ function Mallets() {
             <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Poly Dead Blow Mallet</div>
             <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 34 }}>Steel-shot force. Zero rebound.</h2>
             <div className="mt-6"><ProductGrid products={DEAD_BLOW} /></div>
+
+            {/* Client-supplied key features (Hollis). Factual copy only. */}
+            <div className="bg-white p-6 mt-8" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
+              <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Key Features</div>
+              <ul className="mt-4 grid md:grid-cols-2 gap-x-8 gap-y-3">
+                {[
+                  "Head cavity partially filled with iron shot, to provide greater striking force",
+                  "Face absorbs a portion of blow energy",
+                  "Force of blow transmitted solidly to the striking surface — less shock to the installer",
+                ].map((f) => (
+                  <li key={f} className="flex gap-3" style={{ color: "var(--pd-dark)", fontSize: 15, lineHeight: 1.6 }}>
+                    <span aria-hidden style={{ color: "var(--pd-yellow)", fontWeight: 900 }}>—</span>
+                    <span>{f}</span>
+                  </li>
+                ))}
+                <li className="flex gap-3" style={{ color: "var(--pd-dark)", fontSize: 15, lineHeight: 1.6 }}>
+                  <span aria-hidden style={{ color: "var(--pd-yellow)", fontWeight: 900 }}>—</span>
+                  <span>
+                    3/8&quot; standard industry thread in head — fits all major POLY faces, including{" "}
+                    <Link
+                      to="/mallets"
+                      search={{ tab: "poly" }}
+                      style={{ color: "var(--pd-dark)", fontWeight: 700, textDecoration: "underline", textUnderlineOffset: 3 }}
+                    >
+                      Pro-Drive Poly Striking Faces
+                    </Link>{" "}
+                    (POLY01-ORG, POLY01-BRO, POLY01-GRE, POLY01-RED, POLY01-BLK).
+                  </span>
+                </li>
+              </ul>
+            </div>
+
             <Callout>Only 2.2 lbs. Head cavity partially filled with steel shot for greater striking force. Increases productivity, reduces installer fatigue.</Callout>
             <InfoPanel>
               <div>Head cavity partially filled with steel shot for greater striking force. Face absorbs a portion of blow energy, reducing rebound. 100% premium hickory handle. <strong>U.S. Patent No. 11,759,941.</strong></div>

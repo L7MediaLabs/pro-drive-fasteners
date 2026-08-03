@@ -302,6 +302,21 @@ function StapleDepthDiagram({
         fill="#6B4E35"
         opacity={0.5}
       />
+      {/* Groove notch on the open left edge of the first plank */}
+      <rect x={LEFT_PAD} y={floorTop + floorPx * 0.35} width="4" height={Math.max(4, floorPx * 0.55)} fill="#F5F4EE" />
+      {/* TONGUE & GROOVE callouts (client-requested labelling) */}
+      <g fill="#1a1a1a" fontFamily="Assistant, sans-serif" fontWeight="800" fontSize="6.5" letterSpacing="0.7">
+        <line x1={LEFT_PAD + 2} y1={-4} x2={LEFT_PAD + 2} y2={floorTop + floorPx * 0.35} stroke="#1a1a1a" strokeWidth="0.6" />
+        <text x={LEFT_PAD + 5} y={-5}>GROOVE</text>
+        <polyline
+          points={`${LEFT_PAD + WOOD_W + GAP_W / 2},${floorTop + floorPx * 0.45} ${LEFT_PAD + WOOD_W + GAP_W / 2},${-9} ${PLANK2_X + PLANK2_W - 2},${-9}`}
+          fill="none"
+          stroke="#1a1a1a"
+          strokeWidth="0.6"
+        />
+        <text x={PLANK2_X + PLANK2_W} y={-6.5} textAnchor="end">TONGUE</text>
+      </g>
+
       {/* Flooring size label (first plank) */}
       <text
         x={LEFT_PAD + 8}

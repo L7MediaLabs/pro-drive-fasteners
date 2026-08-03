@@ -150,6 +150,29 @@ function CleatDepthDiagram({
       <rect x={CLEFT_PAD} y={floorTop} width={CWOOD_W} height={floorPx} fill="#5C4128" />
       {/* Groove notch on the left */}
       <rect x={CLEFT_PAD} y={floorPx * 0.35} width="4" height={Math.max(4, floorPx * 0.55)} fill="#F5F4EE" />
+      {/* Tongue profile on the right edge */}
+      <rect
+        x={CLEFT_PAD + CWOOD_W}
+        y={floorPx * 0.35}
+        width="5"
+        height={Math.max(4, floorPx * 0.55)}
+        fill="#6B4E35"
+      />
+      {/* TONGUE & GROOVE callouts (client-requested labelling) */}
+      <g fill="#1a1a1a" fontFamily="Assistant, sans-serif" fontWeight="800" fontSize="6.5" letterSpacing="0.7">
+        <line x1={CLEFT_PAD + 2} y1={-3} x2={CLEFT_PAD + 2} y2={floorPx * 0.35} stroke="#1a1a1a" strokeWidth="0.6" />
+        <text x={CLEFT_PAD + 5} y={-3.5}>GROOVE</text>
+        <line
+          x1={CLEFT_PAD + CWOOD_W + 2.5}
+          y1={-3}
+          x2={CLEFT_PAD + CWOOD_W + 2.5}
+          y2={floorPx * 0.35}
+          stroke="#1a1a1a"
+          strokeWidth="0.6"
+        />
+        <text x={CLEFT_PAD + CWOOD_W} y={-3.5} textAnchor="end">TONGUE</text>
+      </g>
+
       {/* Flooring size label */}
       <text
         x={CLEFT_PAD + 8}

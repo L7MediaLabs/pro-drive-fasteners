@@ -83,7 +83,7 @@ export function Nav() {
               <button className="pd-nav-link" style={navLink}>Products ▾</button>
               {drop && (
                 <div
-                  className="absolute left-0 top-full grid grid-cols-3 gap-8 p-6"
+                  className="absolute left-0 top-full p-6"
                   style={{
                     minWidth: 720,
                     maxWidth: "min(720px, calc(100vw - 14%))",
@@ -94,6 +94,10 @@ export function Nav() {
                     boxShadow: "0 24px 60px -16px rgba(0,0,0,0.7)",
                   }}
                 >
+                  <div className="mb-5">
+                    <ProductSearch variant="inline" onNavigate={() => setDrop(false)} />
+                  </div>
+                  <div className="grid grid-cols-3 gap-8">
                   {[products, tools, equipment].map((col, i) => (
                     <div key={i}>
                       <div className="pd-label mb-3" style={{ color: "rgba(255,205,0,0.6)" }}>
@@ -110,6 +114,7 @@ export function Nav() {
                       </ul>
                     </div>
                   ))}
+                  </div>
                 </div>
               )}
             </div>
@@ -121,7 +126,7 @@ export function Nav() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-4 relative" style={{ zIndex: 2 }}>
-            <ProductSearch variant="desktop" />
+            
             <div className="flex items-center gap-2 text-[12px]" style={{ color: "rgba(14,12,0,0.55)" }}>
 
               <span style={{ color: "rgba(14,12,0,0.95)", fontWeight: 700 }}>EN</span>

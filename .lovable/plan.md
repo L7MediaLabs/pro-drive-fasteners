@@ -1,27 +1,43 @@
-## Goal
+# Verification Report — 100-V-CAP colour, Pro-Angle attribution, catalog counts
 
-The three grade badges already exist in the project as high-res PNG assets — `badge-contractor-grade.png`, `badge-multi-grade.png`, and `badge-industrial-grade.png` — and all three already render in the homepage "Grade Standards" section. The two SVGs I extracted from the client PDFs last round duplicate two of them. Make the PNG set the single source of truth sitewide and remove the duplicates.
+No code or data changes were made, and none are needed for item 1.
 
-## Changes
+## 1. 100-V-CAP colour — no contradiction found
 
-1. **Homepage (`src/routes/index.tsx`)** — swap the Contractor and Multi imports from the SVGs to `badge-contractor-grade.png.asset.json` and `badge-multi-grade.png.asset.json`, so the section pulls all three tiers from one consistent set (Industrial already does).
+Nothing on the site describes `100-V-CAP` as gray/grey or any colour other than white.
 
-2. **Flooring Staples hero (`src/routes/staples.tsx`)** — "CONTRACTOR GRADE" badge points at the Contractor PNG.
+- CSV row: `name` = `White V-Cap for 24oz Mallet 2"`, `notes` = `Pro-Angle™ Design; For engineered flooring`, `length_in` = `2"`, `image_key` = `mallets.caps.vcap100`
+- Rendered card: SKU label `100-V-CAP`, title "White V-Cap for 24oz Mallet 2"", alt text `White V-Cap for 24oz Mallet 2"` — photo is an off-white/cream cap
+- Image filename: `cap_100vcap.png` (no colour word)
+- The only "Gray" strings in the app are the legitimate `CAP602G` row ("Gray Mallet Cap 2-1/2"") and the `/mallets` copy line "Non-marring, premium rubber available in White, Gray, Black, or White Pro-Angle™" — a general colour-range statement, not tied to `100-V-CAP`. `CAP602G` untouched.
+- No structured data, meta, or sitemap copy references V-Cap colour.
 
-3. **Tapping Blocks hero (`src/routes/tapping-blocks.tsx`)** — same swap.
+Nothing changed.
 
-4. **Brads & Finish Nails banner (`src/routes/brads-finish-nails.tsx`)** — the "Professional grade. Contractor tested." band badge points at the Contractor PNG.
+## 2. Flag — duplicate Pro-Angle™ attribution (reported only, unchanged)
 
-5. **L-Cleats banner (`src/routes/l-cleats.tsx`)** — the badge in the dark "Pro installers trust Pro-Drive" band points at the Contractor PNG.
+| Field | `100-V-CAP` | `CAP600PA` |
+|---|---|---|
+| name | White V-Cap for 24oz Mallet 2" | Pro-Angle™ Mallet Cap — White 2-1/2" |
+| notes | Pro-Angle™ Design; For engineered flooring | Pro-Angle design; Improved edge clearance; faster installation; Patented E-Z 2CAP design |
+| length_in | 2" | 2-1/2" |
+| image_key | mallets.caps.vcap100 | mallets.caps.cap600pa |
 
-6. **Delete the duplicates** — remove `src/assets/badges/grade-contractor.svg` and `src/assets/badges/grade-multigrade.svg` once nothing imports them.
+Rendering (`/mallets` → Mallet Caps tab): both appear as cards in the same grid — `100-V-CAP` in row 1 (with `CAP601B`, `CAP602G`), `CAP600PA` in row 2 (with `CAP600W`). Both show the Pro-Angle wording in their spec/notes line, so the page currently reads as if there are two Pro-Angle caps.
 
-No layout, sizing, or copy changes: the badge render sizes I set last round (52px in hero badge rows, 96–104px in the banners) stay exactly as they are.
+Photos are clearly **two different physical products**:
+- `100-V-CAP` — a short, straight-sided cylindrical cap with a flat top and a centre bore; no visible steel retention ring.
+- `CAP600PA` — a taller cap with an obvious **angled/canted top face** and a chrome retention ring at the base. This is the one whose geometry visually matches the Pro-Angle™ ("improved edge clearance") description.
 
-## Technical notes
+Page copy attribution: `src/routes/mallets.tsx` line 272 states "**Pro-Angle™ cap:** Designed for engineered flooring with improved edge-clearance contact for faster installation." — generic, not bound to either part number. Line 136 lists "White Pro-Angle™" as a rubber colour/style option, also unattributed.
 
-The PNG assets are CDN pointer files, so each call site imports the `.asset.json` and uses `.url` instead of importing the SVG module directly. `CinematicHero`'s `badges[].logo` and `LifestyleBanner`'s `badge.src` both already take a plain URL string, so no component signature changes are needed.
+Assessment to take to the client: the angled geometry in the `CAP600PA` photo supports Pro-Angle™ belonging to `CAP600PA`, which would make the Pro-Angle wording in `100-V-CAP`'s notes the stray one. Not changed pending client confirmation.
 
-## Verification
+## 3. Counts and dead blow confirmation
 
-`bun run build` and `bunx tsgo --noEmit` clean, then Playwright screenshots of the homepage Grade Standards section, the staples and tapping-blocks heroes, and the brads and l-cleats banners to confirm every badge renders at the right size and reads legibly against both the cream and dark backgrounds.
+- Active SKU count: **120** (matches expected).
+- `200L-OG` and `200L-BR-BR` both render on the Dead Blow tab with their own distinct new-handle photos (orange/green and brown/brown respectively), the "(Special Order)" name suffix, the black/yellow **SPECIAL ORDER** badge, and "Special Order Only" text. No other product's photo changed.
+
+## Pending decision (no work queued)
+
+Once the client confirms which cap owns Pro-Angle™, the follow-up edit is a one-line `notes` change in `src/data/prodrive_master_catalog.csv` for the losing SKU.

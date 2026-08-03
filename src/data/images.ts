@@ -83,6 +83,7 @@ import s155_2in_5000      from "../assets/products/staples/staples_155_2in_5000.
 import s155_2in_7720      from "../assets/products/staples/staples_155_2in_7720.png.asset.json";
 import s155_175in_box     from "../assets/products/staples/staples_155_175in_box_v2.png.asset.json";
 import s155_175in_9000    from "../assets/fs_175_9000_box.png.asset.json";
+import narrowCrown18      from "../assets/products/staples/narrow_crown_18ga.png.asset.json";
 
 import fn1532_200         from "../assets/products/finishNails/fn1532_200.png.asset.json";
 import fn1520_125         from "../assets/products/finishNails/fn1520_125.png.asset.json";

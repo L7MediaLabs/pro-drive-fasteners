@@ -154,6 +154,10 @@ export function Nav() {
             <button onClick={() => setOpen(false)} aria-label="Close" style={{ color: "var(--pd-yellow)", fontSize: 28, lineHeight: 1 }}>×</button>
           </div>
           <nav className="flex-1 overflow-y-auto px-[6%] py-8 space-y-1">
+            <div className="pb-5">
+              <ProductSearch variant="mobile" onNavigate={() => setOpen(false)} />
+            </div>
+
             <button
               onClick={() => setMobileProducts(v => !v)}
               className="w-full text-left py-3 flex justify-between items-center"

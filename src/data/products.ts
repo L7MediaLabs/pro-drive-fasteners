@@ -131,11 +131,15 @@ function toProduct(row: Record<string, string>): Product {
     packTierRank: tier?.rank,
     // Distinguishing product attribute badge (e.g. BARBED on DA15-BARB).
     // Tapping blocks are domestically manufactured — client-requested callout.
+    // "Special Order Only" SKUs are flagged so distributors know they aren't stock.
     badge: row.notes && /^barbed$/i.test(row.notes.trim())
       ? "BARBED"
-      : row.subcategory?.trim() === "Tapping Blocks"
-        ? "MADE IN USA"
-        : undefined,
+      : row.notes && /special order/i.test(row.notes)
+        ? "SPECIAL ORDER"
+        : row.subcategory?.trim() === "Tapping Blocks"
+          ? "MADE IN USA"
+          : undefined,
+
 
     // Only the SKU's own photo. No fallback: imageless SKUs render the
     // neutral placeholder in ProductCard.

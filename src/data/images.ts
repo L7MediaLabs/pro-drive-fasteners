@@ -282,6 +282,8 @@ export const images = {
     da15_barb:   da15Barb.url,
     da15_barb_strip: da15BarbStrip.url,
     strip:       finishNailsStripHD,
+    strips_lifestyle: stripsLifestyle.url,
+
   },
   brads18: {
     axx08_500: brad18_500.url,

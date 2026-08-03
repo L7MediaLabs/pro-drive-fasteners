@@ -76,7 +76,7 @@ export function Nav() {
 
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-8 h-full">
             <div className="relative h-full flex items-center" onMouseEnter={() => setDrop(true)} onMouseLeave={() => setDrop(false)}>
               <button className="pd-nav-link" style={navLink}>Products ▾</button>
               {drop && (

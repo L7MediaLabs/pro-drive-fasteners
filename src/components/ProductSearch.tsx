@@ -16,7 +16,7 @@ function score(p: Product, q: string): number {
   return 99;
 }
 
-export function ProductSearch({ variant = "desktop", onNavigate }: { variant?: "desktop" | "mobile"; onNavigate?: () => void }) {
+export function ProductSearch({ variant = "desktop", onNavigate }: { variant?: "desktop" | "mobile" | "inline"; onNavigate?: () => void }) {
   const [open, setOpen] = useState(false);
   const [q, setQ] = useState("");
   const [active, setActive] = useState(0);

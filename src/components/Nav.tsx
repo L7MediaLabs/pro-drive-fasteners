@@ -76,14 +76,15 @@ export function Nav() {
 
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-8">
-            <div className="relative" onMouseEnter={() => setDrop(true)} onMouseLeave={() => setDrop(false)}>
+          <nav className="hidden lg:flex items-center gap-8 h-full">
+            <div className="relative h-full flex items-center" onMouseEnter={() => setDrop(true)} onMouseLeave={() => setDrop(false)}>
               <button className="pd-nav-link" style={navLink}>Products ▾</button>
               {drop && (
                 <div
                   className="absolute left-0 top-full grid grid-cols-3 gap-8 p-6"
                   style={{
                     minWidth: 720,
+                    maxWidth: "min(720px, calc(100vw - 14%))",
                     background: "rgba(14,12,0,0.97)",
                     backdropFilter: "blur(20px) saturate(160%)",
                     border: "1px solid rgba(255,205,0,0.18)",
@@ -117,7 +118,7 @@ export function Nav() {
             <Link to="/contact" style={navLink}>Contact</Link>
           </nav>
 
-          <div className="hidden lg:flex items-center gap-5">
+          <div className="hidden lg:flex items-center gap-5 relative" style={{ zIndex: 2 }}>
             <div className="flex items-center gap-2 text-[12px]" style={{ color: "rgba(14,12,0,0.55)" }}>
               <span style={{ color: "rgba(14,12,0,0.95)", fontWeight: 700 }}>EN</span>
               <button onClick={() => showLangToast("Versión en español próximamente")} className="hover:text-[color:var(--pd-black)] transition-colors">ES</button>

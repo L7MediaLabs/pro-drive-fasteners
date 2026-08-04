@@ -155,7 +155,9 @@ export function buildEntry(row: Record<string, string>, product: Product): Searc
 /** Lower score = better match. Returns null for no match. */
 export function scoreEntry(entry: SearchEntry, rawQuery: string): number | null {
   const qText = normalizeMeasure(rawQuery);
-  const qPart = normalizePart(rawQuery);
+  // Part form is derived from the measure-normalized query so decimal input
+  // ("1.5") collapses to the same token as "1-1/2" before punctuation stripping.
+  const qPart = normalizePart(qText);
   if (!qText && !qPart) return null;
 
   const id = normalizePart(entry.product.id);

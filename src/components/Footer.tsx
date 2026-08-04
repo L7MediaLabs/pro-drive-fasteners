@@ -44,13 +44,13 @@ export function Footer() {
               <div>Pro-DriveFasteners.com</div>
             </div>
             <a
-              href="https://instagram.com/prodrivestore"
+              href="https://www.instagram.com/pro_drive_fasteners/"
               target="_blank"
               rel="noreferrer"
               className="inline-block mt-4 text-sm"
               style={{ color: "var(--pd-yellow)" }}
             >
-              Follow @prodrivestore
+              Follow @pro_drive_fasteners
             </a>
           </div>
 

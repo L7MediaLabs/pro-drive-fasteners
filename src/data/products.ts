@@ -214,6 +214,10 @@ export const ACCESSORIES_LIST = byCat("Accessories");
 export const ALL_PRODUCTS  = active.map(toProduct);
 export const RAW_CATALOG   = active; // raw CSV rows — for InDesign data merge export
 
+// ─── Search index ─────────────────────────────────────────────────────────────
+// Built ONLY from `active` rows, so inactive SKUs can never surface in search.
+export const SEARCH_INDEX: SearchEntry[] = active.map((row) => buildEntry(row, toProduct(row)));
+
 // ─── Related products helper ─────────────────────────────────────────────────
 // Returns up to `count` products, excluding ones already shown on the page.
 // Deterministic: picks the first eligible product from each *other* category

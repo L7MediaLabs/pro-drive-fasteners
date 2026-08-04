@@ -10,6 +10,8 @@ import {
   PageDisclaimers,
   useTabs,
 } from "../components/editorial";
+import { VideoCard } from "../components/VideoCard";
+import { V_CAP_VIDEO } from "../data/videos";
 import { MALLETS, MALLET_CAPS, POLY_FACES, DEAD_BLOW, pickRelated } from "../data/products";
 import { images } from "../data/images";
 
@@ -264,6 +266,9 @@ function Mallets() {
                 />
                 <div className="pd-label mt-3" style={{ color: "var(--pd-gold)" }}>Cap Lineup</div>
               </div>
+            </div>
+            <div className="mt-6" style={{ maxWidth: 420 }}>
+              <VideoCard video={V_CAP_VIDEO} />
             </div>
             <EZ2CapBanner />
             <Callout><strong>E-Z 2CAP®</strong> — caps installed or removed in 30 seconds or less. PATENTED DESIGN.</Callout>

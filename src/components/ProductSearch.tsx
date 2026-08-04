@@ -1,20 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { ALL_PRODUCTS } from "@/data/products";
+import { SEARCH_INDEX } from "@/data/products";
+import { scoreEntry } from "@/lib/search";
 import type { Product } from "./ProductCard";
-
-function score(p: Product, q: string): number {
-  const id = p.id.toLowerCase();
-  const name = p.name.toLowerCase();
-  const specs = (p.specs ?? []).join(" ").toLowerCase();
-  if (id === q) return 0;
-  if (id.startsWith(q)) return 1;
-  if (name.startsWith(q)) return 2;
-  if (id.includes(q)) return 3;
-  if (name.includes(q)) return 4;
-  if (specs.includes(q)) return 5;
-  return 99;
-}
 
 export function ProductSearch({ variant = "desktop", onNavigate }: { variant?: "desktop" | "mobile" | "inline"; onNavigate?: () => void }) {
   const [open, setOpen] = useState(false);
@@ -24,15 +12,16 @@ export function ProductSearch({ variant = "desktop", onNavigate }: { variant?: "
   const navigate = useNavigate();
 
   const results = useMemo(() => {
-    const term = q.trim().toLowerCase();
+    const term = q.trim();
     if (term.length < 2) return [];
-    return ALL_PRODUCTS
-      .map(p => ({ p, s: score(p, term) }))
-      .filter(r => r.s < 99)
+    return SEARCH_INDEX
+      .map(e => ({ p: e.product, s: scoreEntry(e, term) }))
+      .filter((r): r is { p: Product; s: number } => r.s !== null)
       .sort((a, b) => a.s - b.s)
       .slice(0, 8)
       .map(r => r.p);
   }, [q]);
+
 
   useEffect(() => { setActive(0); }, [q]);
 

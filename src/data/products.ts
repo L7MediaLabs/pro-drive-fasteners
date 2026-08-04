@@ -3,6 +3,7 @@
 // To update products: edit the CSV, commit, Lovable/Netlify rebuilds automatically.
 
 import type { Product } from "@/components/ProductCard";
+import { buildEntry, type SearchEntry } from "@/lib/search";
 import { images } from "./images";
 
 // ─── image_key resolver ───────────────────────────────────────────────────────

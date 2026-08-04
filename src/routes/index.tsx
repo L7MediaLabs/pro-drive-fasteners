@@ -666,8 +666,8 @@ function Home() {
               Product drops, field installs, and close-up looks at the tools flooring crews actually use.
             </p>
           </div>
-          <a href="https://instagram.com/prodrivestore" target="_blank" rel="noreferrer" className="pd-btn-dark">
-            Follow @prodrivestore
+          <a href="https://www.instagram.com/pro_drive_fasteners/" target="_blank" rel="noreferrer" className="pd-btn-dark">
+            Follow @pro_drive_fasteners
           </a>
         </div>
 

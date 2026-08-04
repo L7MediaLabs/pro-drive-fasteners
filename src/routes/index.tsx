@@ -675,7 +675,7 @@ function Home() {
           {instagramPosts.map((post) => (
             <a
               key={post.alt}
-              href="https://instagram.com/prodrivestore"
+              href="https://www.instagram.com/pro_drive_fasteners/"
               target="_blank"
               rel="noreferrer"
               className="group block overflow-hidden"

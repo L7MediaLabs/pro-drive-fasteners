@@ -45,8 +45,11 @@ export function ProductSearch({ variant = "desktop", onNavigate }: { variant?: "
     setOpen(false);
     setQ("");
     onNavigate?.();
-    navigate({ to: p.href ?? "/products", hash: p.id });
+    // `sku-<ID>` anchors are rendered by ProductCard; the target page switches
+    // to the tab holding the SKU and scrolls/flashes the exact card.
+    navigate({ to: p.href ?? "/products", hash: `sku-${p.id}` });
   }
+
 
   if (variant === "inline") {
     return (

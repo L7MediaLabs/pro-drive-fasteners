@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { trackEvent } from "@/lib/analytics";
 import { ImageLightbox } from "./ImageLightbox";
@@ -38,6 +38,7 @@ export function ProductCard({ product, showPackTier = true }: { product: Product
   const ref = useRef<HTMLElement | null>(null);
   const seen = useRef(false);
   const [zoom, setZoom] = useState(false);
+  const [flash, setFlash] = useState(false);
 
   useEffect(() => {
     if (!ref.current || seen.current) return;
@@ -57,14 +58,41 @@ export function ProductCard({ product, showPackTier = true }: { product: Product
     io.observe(el);
     return () => io.disconnect();
   }, [product.id, product.name]);
+
+  // Deep-link target: product search navigates to `<page>#sku-<ID>`. Scroll the
+  // matching card into view and flash it so the user sees which one matched.
+  // Router state (not `hashchange`) because pushState navigation fires no event.
+  const routeHash = useRouterState({ select: s => s.location.hash });
+  useEffect(() => {
+    if (routeHash.replace(/^#/, "") !== `sku-${product.id}`) return;
+    // let the tab switch / layout settle first
+    const t = window.setTimeout(() => {
+      const el = ref.current;
+      if (!el) return;
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      setFlash(true);
+      window.setTimeout(() => setFlash(false), 2000);
+    }, 140);
+    return () => window.clearTimeout(t);
+  }, [routeHash, product.id]);
+
   return (
     <article
       ref={ref}
+      id={`sku-${product.id}`}
+      style={{
+        borderTop: "3px solid var(--pd-yellow)",
+        scrollMarginTop: 120,
+        outline: flash ? "3px solid var(--pd-gold)" : "none",
+        outlineOffset: flash ? 2 : 0,
+        boxShadow: flash ? "0 6px 26px rgba(255,205,0,0.35)" : undefined,
+        transition: "outline-color 200ms ease, box-shadow 200ms ease",
+      }}
       className="bg-white flex flex-col transition-shadow overflow-hidden"
-      style={{ borderTop: "3px solid var(--pd-yellow)" }}
-      onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 4px 20px rgba(255,205,0,0.18)")}
-      onMouseLeave={e => (e.currentTarget.style.boxShadow = "")}
+      onMouseEnter={e => { if (!flash) e.currentTarget.style.boxShadow = "0 4px 20px rgba(255,205,0,0.18)"; }}
+      onMouseLeave={e => { if (!flash) e.currentTarget.style.boxShadow = ""; }}
     >
+
       {product.image ? (
         // Click-to-enlarge: card thumbnails are ~213px wide, too small to read
         // printed item numbers / QTY on box art. Opens the full-res asset.

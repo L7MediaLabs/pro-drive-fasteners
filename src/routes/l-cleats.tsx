@@ -1,8 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { trackEvent } from "@/lib/analytics";
-import { useState } from "react";
 import { ProductGrid } from "../components/ProductCard";
-import { TechReference } from "../components/editorial";
+import { TechReference, useTabs } from "../components/editorial";
 import { LCLEATS_16, LCLEATS_18 } from "../data/products";
 import { images } from "../data/images";
 import contractorBadge from "../assets/badge-contractor-grade.png.asset.json";
@@ -464,7 +463,11 @@ const gaugeData: Record<Gauge, {
 };
 
 function LCleats() {
-  const [tab, setTab] = useState<Gauge>("16");
+  const [tab, setTab] = useTabs<Gauge>("16", sku => {
+    if (LCLEATS_16.some(p => p.id === sku)) return "16";
+    if (LCLEATS_18.some(p => p.id === sku)) return "18";
+    return undefined;
+  });
   const g = gaugeData[tab];
 
   return (

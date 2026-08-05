@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { trackEvent } from "@/lib/analytics";
 import { ImageLightbox } from "./ImageLightbox";
@@ -61,23 +61,20 @@ export function ProductCard({ product, showPackTier = true }: { product: Product
 
   // Deep-link target: product search navigates to `<page>#sku-<ID>`. Scroll the
   // matching card into view and flash it so the user sees which one matched.
+  // Router state (not `hashchange`) because pushState navigation fires no event.
+  const routeHash = useRouterState({ select: s => s.location.hash });
   useEffect(() => {
-    const anchor = `#sku-${product.id}`;
-    const check = () => {
-      if (window.location.hash !== anchor) return;
+    if (routeHash.replace(/^#/, "") !== `sku-${product.id}`) return;
+    // let the tab switch / layout settle first
+    const t = window.setTimeout(() => {
       const el = ref.current;
       if (!el) return;
-      // let the tab switch / layout settle first
-      requestAnimationFrame(() => {
-        el.scrollIntoView({ behavior: "smooth", block: "center" });
-        setFlash(true);
-        window.setTimeout(() => setFlash(false), 2000);
-      });
-    };
-    const t = window.setTimeout(check, 120);
-    window.addEventListener("hashchange", check);
-    return () => { window.clearTimeout(t); window.removeEventListener("hashchange", check); };
-  }, [product.id]);
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      setFlash(true);
+      window.setTimeout(() => setFlash(false), 2000);
+    }, 140);
+    return () => window.clearTimeout(t);
+  }, [routeHash, product.id]);
 
   return (
     <article

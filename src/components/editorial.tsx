@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { Product } from "./ProductCard";
 import { ProductCard } from "./ProductCard";
@@ -463,19 +463,15 @@ export function PageDisclaimers({
 export function useTabs<T extends string>(initial: T, tabForSku?: (sku: string) => T | undefined) {
   const [tab, setTab] = useState<T>(initial);
 
+  const routeHash = useRouterState({ select: s => s.location.hash });
   useEffect(() => {
     if (!tabForSku) return;
-    const sync = () => {
-      const hash = window.location.hash.replace(/^#/, "");
-      if (!hash.startsWith("sku-")) return;
-      const target = tabForSku(hash.slice(4));
-      if (target) setTab(target);
-    };
-    sync();
-    window.addEventListener("hashchange", sync);
-    return () => window.removeEventListener("hashchange", sync);
+    const hash = routeHash.replace(/^#/, "");
+    if (!hash.startsWith("sku-")) return;
+    const target = tabForSku(hash.slice(4));
+    if (target) setTab(target);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [routeHash]);
 
   return [tab, setTab] as const;
 }

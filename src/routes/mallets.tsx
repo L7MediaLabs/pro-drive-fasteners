@@ -412,6 +412,44 @@ function Mallets() {
         </div>
       </section>
 
+      {/* Custom-logo program callout (Hollis, Aug 4).
+          NOTE: awaiting the three supporting photos — "Otis Hammer with LOGO.jpg",
+          "logo on mallet.jpg" and "knight flooring.jpg". When they land under
+          src/assets/products/mallets/, add them to images.mallets.customLogo as an
+          array and render them in the grid below (knight flooring = example of a
+          customer's own branding, NOT a Pro-Drive SKU). Copy intentionally omits
+          minimum quantities, lead times and pricing — none were supplied. */}
+      <section className="px-[6%] py-16" style={{ background: "var(--pd-dark)" }}>
+        <div className="max-w-[1200px] mx-auto">
+          <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>Custom Branding</div>
+          <h2 className="pd-display mt-2 text-white" style={{ fontSize: "clamp(26px, 4vw, 38px)", lineHeight: 1.05, letterSpacing: "-0.01em" }}>
+            Put your logo on the mallet.
+          </h2>
+          <p className="mt-5 text-white/75" style={{ fontSize: 16, lineHeight: 1.7, maxWidth: 620 }}>
+            Pro-Drive<sup>®</sup> can add your company logo to our mallets — available with a
+            low minimum order. Same hickory handle, same head construction, branded for your
+            crew, your distributor program, or your customer giveaways.
+          </p>
+          <div className="flex flex-wrap gap-3 mt-7">
+            <div className="pd-glass-light px-4 py-2" style={{ fontSize: 12, color: "var(--pd-yellow)", letterSpacing: "0.12em", fontWeight: 700 }}>
+              LOW MINIMUM ORDER
+            </div>
+            <div className="pd-glass-light px-4 py-2" style={{ fontSize: 12, color: "#fff", letterSpacing: "0.12em", fontWeight: 700 }}>
+              YOUR LOGO · OUR MALLET
+            </div>
+          </div>
+          <Link
+            to="/contact"
+            className="inline-block mt-7 px-6 py-3"
+            style={{ background: "var(--pd-yellow)", color: "var(--pd-dark)", fontSize: 12, fontWeight: 800, letterSpacing: "0.14em", textTransform: "uppercase" }}
+          >
+            Ask About Custom Logos
+          </Link>
+        </div>
+      </section>
+
+
+
 
       <LifestyleBanner
         image={images.mallets.family}

@@ -505,8 +505,8 @@ function LCleats() {
                 PRECISION FORMED
 
               </div>
-              <div className="pd-glass-light px-4 py-2" style={{ fontSize: 12, color: "#fff", letterSpacing: "0.12em", fontWeight: 700 }}>
-                E-G GALVANIZED
+              <div className="pd-glass-light px-4 py-2" style={{ fontSize: 12, color: "#fff", letterSpacing: "0.12em", fontWeight: 700, maxWidth: "100%" }}>
+                PRECISE ANGLE ON BARBS FOR SUPERIOR HOLDING POWER
               </div>
             </div>
           </div>

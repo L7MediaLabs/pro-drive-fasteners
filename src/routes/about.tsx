@@ -56,9 +56,15 @@ function About() {
       </section>
 
       <section className="px-[6%] py-20 text-center" style={{ background: "var(--pd-dark)" }}>
-        <p className="pd-display text-white mx-auto max-w-4xl" style={{ fontSize: "clamp(28px, 4.5vw, 48px)", lineHeight: 1.15 }}>
+        <p className="pd-display text-white mx-auto max-w-4xl" style={{ fontSize: "clamp(24px, 4.5vw, 48px)", lineHeight: 1.15 }}>
           We don't follow the standards —<br />we set them.<br />
-          <span style={{ color: "var(--pd-yellow)" }}>Drive performance with Pro-Drive Fasteners®.</span>
+          {/* Brand name must never break across lines (client request, Aug 4):
+              non-breaking hyphen + nowrap keeps "Pro-Drive Fasteners®" intact;
+              the sentence breaks before it instead. */}
+          <span style={{ color: "var(--pd-yellow)" }}>
+            Drive performance with{" "}
+            <span style={{ whiteSpace: "nowrap" }}>Pro&#8209;Drive&nbsp;Fasteners&reg;.</span>
+          </span>
         </p>
       </section>
     </div>

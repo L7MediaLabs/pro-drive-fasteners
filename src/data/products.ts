@@ -173,6 +173,23 @@ function bySubcat(subcategory: string) {
   );
 }
 
+// Client-requested (Aug 4): the 15 GA DA family must list by length ascending,
+// with stainless variants trailing their galvanized counterpart, so DA25-250SS
+// lands last. Scoped to this one family only.
+function byLengthThenStainless(subcategory: string) {
+  return active
+    .filter((r) => r.subcategory === subcategory)
+    .sort((a, b) => {
+      const al = parseInt(a.length_mm || "0", 10);
+      const bl = parseInt(b.length_mm || "0", 10);
+      if (al !== bl) return al - bl;
+      const ass = /stainless/i.test(a.finish || "") ? 1 : 0;
+      const bss = /stainless/i.test(b.finish || "") ? 1 : 0;
+      return ass - bss;
+    })
+    .map(toProduct);
+}
+
 function byCat(category: string) {
   return sortByPackTier(
     active.filter((r) => r.category === category).map(toProduct)

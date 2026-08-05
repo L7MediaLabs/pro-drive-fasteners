@@ -412,13 +412,12 @@ function Mallets() {
         </div>
       </section>
 
-      {/* Custom-logo program callout (Hollis, Aug 4).
-          NOTE: awaiting the three supporting photos — "Otis Hammer with LOGO.jpg",
-          "logo on mallet.jpg" and "knight flooring.jpg". When they land under
-          src/assets/products/mallets/, add them to images.mallets.customLogo as an
-          array and render them in the grid below (knight flooring = example of a
-          customer's own branding, NOT a Pro-Drive SKU). Copy intentionally omits
-          minimum quantities, lead times and pricing — none were supplied. */}
+      {/* Custom-logo program callout (Hollis, Aug 4). Photos supplied Aug 5:
+          Otis Hammer Co. and Infinite Hardwood Distributors are laser-engraved
+          Pro-Drive mallets; Knight Hardwood Flooring is a customer's own branding
+          example, NOT a Pro-Drive SKU. Copy intentionally omits minimum
+          quantities, lead times and pricing — none were supplied. */}
+
       <section className="px-[6%] py-16" style={{ background: "var(--pd-dark)" }}>
         <div className="max-w-[1200px] mx-auto">
           <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>Custom Branding</div>

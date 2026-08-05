@@ -623,7 +623,12 @@ const LWIRE_18_LENGTHS: StapleLenTick[] = [
 
 
 function Staples() {
-  const [tab, setTab] = useTabs<TabKey>("155");
+  const [tab, setTab] = useTabs<TabKey>("155", sku => {
+    for (const k of Object.keys(tabData) as TabKey[]) {
+      if (tabData[k].products.some(p => p.id === sku)) return k;
+    }
+    return undefined;
+  });
 
   const g = tabData[tab];
 

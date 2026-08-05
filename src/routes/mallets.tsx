@@ -196,7 +196,13 @@ function EZ2CapBanner() {
 
 function Mallets() {
   const { tab: tabParam } = Route.useSearch();
-  const [tab, setTab] = useTabs<TabKey>(tabParam ?? "mallets");
+  const [tab, setTab] = useTabs<TabKey>(tabParam ?? "mallets", sku => {
+    if (MALLETS.some(p => p.id === sku)) return "mallets";
+    if (MALLET_CAPS.some(p => p.id === sku)) return "caps";
+    if (POLY_FACES.some(p => p.id === sku)) return "poly";
+    if (DEAD_BLOW.some(p => p.id === sku)) return "deadblow";
+    return undefined;
+  });
   const allIds = [...MALLETS, ...MALLET_CAPS, ...POLY_FACES, ...DEAD_BLOW].map(p => p.id);
   const related = pickRelated(allIds, 6);
 

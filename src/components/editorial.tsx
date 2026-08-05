@@ -456,8 +456,27 @@ export function PageDisclaimers({
   );
 }
 
-// ─── useTabState hook (thin wrapper for readability) ─────────────────────────
-export function useTabs<T extends string>(initial: T) {
+// ─── useTabState hook ────────────────────────────────────────────────────────
+// Optional `tabForSku` makes tabs deep-link aware: product search navigates to
+// `/staples#sku-FS-200-1000`, and the tab holding that SKU is auto-selected so
+// the anchor actually exists in the DOM before ProductCard scrolls to it.
+export function useTabs<T extends string>(initial: T, tabForSku?: (sku: string) => T | undefined) {
   const [tab, setTab] = useState<T>(initial);
+
+  useEffect(() => {
+    if (!tabForSku) return;
+    const sync = () => {
+      const hash = window.location.hash.replace(/^#/, "");
+      if (!hash.startsWith("sku-")) return;
+      const target = tabForSku(hash.slice(4));
+      if (target) setTab(target);
+    };
+    sync();
+    window.addEventListener("hashchange", sync);
+    return () => window.removeEventListener("hashchange", sync);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return [tab, setTab] as const;
 }
+

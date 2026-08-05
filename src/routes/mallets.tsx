@@ -416,11 +416,12 @@ function Mallets() {
           All three are examples of CUSTOMER-BRANDED work, not Pro-Drive SKUs:
           no part numbers, not in the CSV catalog, so they never appear in
           product grids or search results.
-          Copy claims audit (Aug 5): removed "low minimum order" (no minimum
-          was ever supplied) and "hickory" for the custom program (R22 says
-          only "ergonomic wooden handle"). Copy intentionally omits minimum
-          quantities, lead times, pricing, materials and certifications —
-          none were supplied by the client. */}
+          Copy claims audit (Aug 5, revised): "low minimum" IS client-supplied —
+          Hollis, EDIT 8-4-2-26.docx: "On mallets ADD we can add customers logo
+          on the mallet with low minimum." It must stay. What was never supplied
+          and must NOT be invented: specific minimum quantities, lead times,
+          pricing, and handle material ("hickory" — R22 says only "ergonomic
+          wooden handle", so the custom-program copy stays material-neutral). */}
 
       <section className="px-[6%] py-16" style={{ background: "var(--pd-dark)" }}>
         <div className="max-w-[1200px] mx-auto">

@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { trackEvent } from "@/lib/analytics";
-import { useState } from "react";
 import { ProductGrid } from "../components/ProductCard";
 import { TechReference, useTabs } from "../components/editorial";
 import { LCLEATS_16, LCLEATS_18 } from "../data/products";

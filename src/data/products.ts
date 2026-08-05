@@ -191,7 +191,7 @@ export const LCLEATS_16    = bySubcat("16 GA");
 export const LCLEATS_18    = bySubcat("18 GA");
 
 export const FN15          = bySubcat("15 GA Finish Nails (Bostitch 25°)");
-export const DA15          = bySubcat("15 GA DA Nails (Senco 34°)");
+export const DA15          = byLengthThenStainless("15 GA DA Nails (Senco 34°)");
 export const C16           = bySubcat("16 GA Finish Nails");
 export const AFN           = bySubcat("16 GA AFN Nails (Paslode 20°)");
 export const BRAD18        = bySubcat("18 GA Brad Nails");

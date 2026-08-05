@@ -430,13 +430,16 @@ function Mallets() {
             Put your logo on the mallet.
           </h2>
           <p className="mt-5 text-white/75" style={{ fontSize: 16, lineHeight: 1.7, maxWidth: 620 }}>
-            Pro-Drive<sup>®</sup> can add your company logo to our mallets. Same handle, same
-            head construction, branded for your crew, your distributor program, or your
-            customer giveaways.
+            Pro-Drive<sup>®</sup> can add your company logo to our mallets, available with a low
+            minimum order. Same handle, same head construction, branded for your crew, your
+            distributor program, or your customer giveaways.
           </p>
           <div className="flex flex-wrap gap-3 mt-7">
             <div className="pd-glass-light px-4 py-2" style={{ fontSize: 12, color: "#fff", letterSpacing: "0.12em", fontWeight: 700 }}>
               YOUR LOGO · OUR MALLET
+            </div>
+            <div className="pd-glass-light px-4 py-2" style={{ fontSize: 12, color: "#fff", letterSpacing: "0.12em", fontWeight: 700 }}>
+              LOW MINIMUM ORDER
             </div>
           </div>
 

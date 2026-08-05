@@ -437,6 +437,30 @@ function Mallets() {
               YOUR LOGO · OUR MALLET
             </div>
           </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-9">
+            {[
+              { src: images.mallets.customLogo[0], label: "Otis Hammer Co.", note: "Laser-engraved handle" },
+              { src: images.mallets.customLogo[1], label: "Infinite Hardwood Distributors", note: "Distributor program" },
+              { src: images.mallets.customLogo[2], label: "Knight Hardwood Flooring Inc.", note: "Installer's own branding" },
+            ].map((p) => (
+              <figure key={p.label} className="bg-white p-3" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
+                <div style={{ position: "relative", paddingTop: "56.25%", background: "#fff" }}>
+                  <img
+                    src={p.src}
+                    alt={`Pro-Drive mallet handle engraved with the ${p.label} logo`}
+                    loading="lazy"
+                    style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain" }}
+                  />
+                </div>
+                <figcaption className="mt-3">
+                  <div style={{ fontWeight: 700, fontSize: 14, color: "var(--pd-dark)" }}>{p.label}</div>
+                  <div className="pd-label mt-1" style={{ color: "var(--pd-muted)" }}>{p.note}</div>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+
           <Link
             to="/contact"
             className="inline-block mt-7 px-6 py-3"

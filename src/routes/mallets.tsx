@@ -412,11 +412,15 @@ function Mallets() {
         </div>
       </section>
 
-      {/* Custom-logo program callout (Hollis, Aug 4). Photos supplied Aug 5:
-          Otis Hammer Co. and Infinite Hardwood Distributors are laser-engraved
-          Pro-Drive mallets; Knight Hardwood Flooring is a customer's own branding
-          example, NOT a Pro-Drive SKU. Copy intentionally omits minimum
-          quantities, lead times and pricing — none were supplied. */}
+      {/* Custom-logo program callout (Hollis, Aug 4). Photos supplied Aug 5.
+          All three are examples of CUSTOMER-BRANDED work, not Pro-Drive SKUs:
+          no part numbers, not in the CSV catalog, so they never appear in
+          product grids or search results.
+          Copy claims audit (Aug 5): removed "low minimum order" (no minimum
+          was ever supplied) and "hickory" for the custom program (R22 says
+          only "ergonomic wooden handle"). Copy intentionally omits minimum
+          quantities, lead times, pricing, materials and certifications —
+          none were supplied by the client. */}
 
       <section className="px-[6%] py-16" style={{ background: "var(--pd-dark)" }}>
         <div className="max-w-[1200px] mx-auto">
@@ -425,14 +429,11 @@ function Mallets() {
             Put your logo on the mallet.
           </h2>
           <p className="mt-5 text-white/75" style={{ fontSize: 16, lineHeight: 1.7, maxWidth: 620 }}>
-            Pro-Drive<sup>®</sup> can add your company logo to our mallets — available with a
-            low minimum order. Same hickory handle, same head construction, branded for your
-            crew, your distributor program, or your customer giveaways.
+            Pro-Drive<sup>®</sup> can add your company logo to our mallets. Same handle, same
+            head construction, branded for your crew, your distributor program, or your
+            customer giveaways.
           </p>
           <div className="flex flex-wrap gap-3 mt-7">
-            <div className="pd-glass-light px-4 py-2" style={{ fontSize: 12, color: "var(--pd-yellow)", letterSpacing: "0.12em", fontWeight: 700 }}>
-              LOW MINIMUM ORDER
-            </div>
             <div className="pd-glass-light px-4 py-2" style={{ fontSize: 12, color: "#fff", letterSpacing: "0.12em", fontWeight: 700 }}>
               YOUR LOGO · OUR MALLET
             </div>
@@ -440,9 +441,10 @@ function Mallets() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-9">
             {[
-              { src: images.mallets.customLogo[0], label: "Otis Hammer Co.", note: "Laser-engraved handle" },
-              { src: images.mallets.customLogo[1], label: "Infinite Hardwood Distributors", note: "Distributor program" },
-              { src: images.mallets.customLogo[2], label: "Knight Hardwood Flooring Inc.", note: "Installer's own branding" },
+              { src: images.mallets.customLogo[0], label: "Otis Hammer Co.", note: "Customer-branded example" },
+              { src: images.mallets.customLogo[1], label: "Infinite Hardwood Distributors", note: "Customer-branded example" },
+              { src: images.mallets.customLogo[2], label: "Knight Hardwood Flooring Inc.", note: "Customer-branded example" },
+
             ].map((p) => (
               <figure key={p.label} className="bg-white p-3" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
                 <div style={{ position: "relative", paddingTop: "56.25%", background: "#fff" }}>

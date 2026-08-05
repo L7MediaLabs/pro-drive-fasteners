@@ -69,6 +69,9 @@ import deadblowOrangeBlack from "../assets/products/mallets/deadblow_200l_o_bl.j
 import deadblowOrangeBrown from "../assets/products/mallets/deadblow_200l_obr.jpg.asset.json";
 import deadblow200l2000   from "../assets/products/mallets/deadblow_200l_2000_photo.jpg.asset.json";
 import deadblow200l1000   from "../assets/products/mallets/deadblow_200l_1000_photo.jpg.asset.json";
+import malletLogoOtis     from "../assets/products/mallets/mallet_logo_otis.jpg.asset.json";
+import malletLogoInfinite from "../assets/products/mallets/mallet_logo_infinite.jpg.asset.json";
+import malletLogoKnight   from "../assets/products/mallets/mallet_logo_knight.jpg.asset.json";
 import malletHeritageLath from "../assets/products/mallets/mallet_heritage_lath.jpg.asset.json";
 import malletCapsOpenBox  from "../assets/products/mallets/mallet_caps_display_openbox.jpg.asset.json";
 import deadblowOgNew      from "../assets/products/mallets/deadblow_200l_og_new.jpg.asset.json";
@@ -84,6 +87,8 @@ import s155_2in_7720      from "../assets/products/staples/staples_155_2in_7720.
 import s155_175in_box     from "../assets/products/staples/staples_155_175in_box_v2.png.asset.json";
 import s155_175in_9000    from "../assets/fs_175_9000_box.png.asset.json";
 import narrowCrown18      from "../assets/products/staples/narrow_crown_18ga.png.asset.json";
+import s155Strip2inA      from "../assets/products/staples/staples_155_2in_strip_a.jpg.asset.json";
+import s155Strip2inB      from "../assets/products/staples/staples_155_2in_strip_b.jpg.asset.json";
 
 import fn1532_200         from "../assets/products/finishNails/fn1532_200.png.asset.json";
 import fn1520_125         from "../assets/products/finishNails/fn1520_125.png.asset.json";
@@ -106,6 +111,7 @@ import brad18_125         from "../assets/products/brads/axx15eaa-125.png.asset.
 import brad18_150         from "../assets/products/brads/axx17eaa-150.png.asset.json";
 import brad18_200         from "../assets/products/brads/axx21eaa-200.png.asset.json";
 import c50200Box          from "../assets/products/brads/c50_200_box.png.asset.json";
+import axx11750ssBox      from "../assets/products/brads/axx11eaa_750ss_box.jpg.asset.json";
 import famFn15_25         from "../assets/products/finishNails/families/fn15_25.png.asset.json";
 import famDa15_34         from "../assets/products/finishNails/families/da15_34.png.asset.json";
 import famC16Straight     from "../assets/products/finishNails/families/c16_straight.png.asset.json";
@@ -167,6 +173,7 @@ export const images = {
     polyColors:  u.malletsP24_02,
     polyDetail:  u.malletsP24_03,
     heritageLath: malletHeritageLath.url,
+    customLogo: [malletLogoOtis.url, malletLogoInfinite.url, malletLogoKnight.url],
     misc1:       u.malletsP21_01,
     misc2:       u.malletsP22_08,
     galleher:    [u.malletsP5_01, u.malletsP5_02, u.malletsP5_03, u.malletsP5_05],
@@ -213,6 +220,8 @@ export const images = {
     gauge15Vertical: u.staplesP08_01,
     q15BulkPack:    u.staplesP05_02,
     narrowCrown18:  narrowCrown18.url,
+    s155Strip2inA:  s155Strip2inA.url,
+    s155Strip2inB:  s155Strip2inB.url,
   },
   lCleats: {
     hero:        lcleatStripHero.url,
@@ -298,6 +307,7 @@ export const images = {
     axx21_200: brad18Galv200.url,
     axx21_200_pack: brad18_200.url,
     brad18_view2: brad18View2.url,
+    axx11_750ss: axx11750ssBox.url,
   },
   nailFamilies: {
     fn15_25:       famFn15_25.url,

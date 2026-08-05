@@ -52,9 +52,9 @@ const tabData = {
       { k: "Lengths", v: '1-1/2" · 1-3/4" · 2"' },
       { k: "Application", v: "Hardwood Flooring" },
     ],
-    galleryHero: { src: images.staples.gauge15Banner, caption: "Collated Strip" },
+    galleryHero: { src: images.staples.s155Strip2inA, caption: "2\" Collated Strip · 15.5 GA" },
     galleryPair: [
-      { src: images.staples.gauge155b, caption: "1-1/2\" Length" },
+      { src: images.staples.s155Strip2inB, caption: "2\" Strip · Second View" },
       { src: images.staples.hero, caption: "Bulk Pack" },
     ],
   },

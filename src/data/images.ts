@@ -149,10 +149,14 @@ import airtoolFittingFe14 from "../assets/products/airTools/airtool_fitting_fe14
 import airtoolFittingCh1414 from "../assets/products/airTools/airtool_fitting_ch1414.jpg";
 
 import divergent5010      from "../assets/products/divergent/divergent_5010.jpg";
-import divergent7512a     from "../assets/products/divergent/divergent_7512_a.jpg";
-import divergent7512b     from "../assets/products/divergent/divergent_7512_b.jpg";
-import divergent5418a     from "../assets/products/divergent/divergent_5418_a.jpg";
+// Client-supplied macro photography (Aug 7) — end-on views showing crown,
+// divergent/chisel points and legs. Replaces earlier flat side-on shots.
+import divergent7512New1  from "../assets/products/divergent/divergent_7512_new_a.jpg.asset.json";
+import divergent7512New2  from "../assets/products/divergent/divergent_7512_new_b.jpg.asset.json";
+import divergent5418New1  from "../assets/products/divergent/divergent_5418_new_a.jpg.asset.json";
+import divergentA11New    from "../assets/products/divergent/divergent_a11_10d.jpg.asset.json";
 import divergent5418b     from "../assets/products/divergent/divergent_5418_b.jpg";
+
 
 import accessoriesOrk6    from "../assets/products/accessories/accessories_ork6.jpg";
 
@@ -275,10 +279,12 @@ export const images = {
   },
   divergentStaples: {
     staple5010:  divergent5010,
-    staple7512a: divergent7512a,
-    staple7512b: divergent7512b,
-    staple5418a: divergent5418a,
+    staple7512a: divergent7512New1.url,
+    staple7512b: divergent7512New2.url,
+    staple5418a: divergent5418New1.url,
     staple5418b: divergent5418b,
+    stapleA11:   divergentA11New.url,
+
   },
   accessories: {
     ork6: accessoriesOrk6,

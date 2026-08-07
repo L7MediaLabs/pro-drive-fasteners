@@ -279,10 +279,12 @@ export const images = {
   },
   divergentStaples: {
     staple5010:  divergent5010,
-    staple7512a: divergent7512a,
-    staple7512b: divergent7512b,
-    staple5418a: divergent5418a,
+    staple7512a: divergent7512New1.url,
+    staple7512b: divergent7512New2.url,
+    staple5418a: divergent5418New1.url,
     staple5418b: divergent5418b,
+    stapleA11:   divergentA11New.url,
+
   },
   accessories: {
     ork6: accessoriesOrk6,

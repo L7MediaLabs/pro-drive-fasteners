@@ -228,7 +228,7 @@ function Home() {
         <div className="px-[6%] pt-20 pb-18 relative z-10" style={{ paddingBottom: 72 }}>
           <div className="flex items-center gap-4 mb-7">
             <span style={{ display: "inline-block", width: 40, height: 2, background: "var(--pd-dark)" }} />
-            <span className="pd-eyebrow" style={{ color: "var(--pd-gold)" }}>Pro-Driven Industrial Products and Solutions™</span>
+            <span className="pd-eyebrow" style={{ color: "var(--pd-gold)" }}>Pro-Driven Industrial Products <span style={{ whiteSpace: "nowrap" }}>and Solutions™</span></span>
           </div>
           <h1
             className="pd-display"

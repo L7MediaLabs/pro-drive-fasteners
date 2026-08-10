@@ -476,3 +476,61 @@ export function useTabs<T extends string>(initial: T, tabForSku?: (sku: string) 
   return [tab, setTab] as const;
 }
 
+// ─── BulletBlock ──────────────────────────────────────────────────────────────
+// Reusable client-copy block: kicker + optional title + dashed bullet list +
+// optional footnote. `tone="accent"` gives the block real visual weight (used
+// for the JAM-FREE GUARANTEE section, the client's strongest differentiator).
+export function BulletBlock({
+  kicker,
+  title,
+  bullets,
+  footnote,
+  tone = "light",
+  className = "",
+}: {
+  kicker: string;
+  title?: ReactNode;
+  bullets: ReactNode[];
+  footnote?: ReactNode;
+  tone?: "light" | "accent";
+  className?: string;
+}) {
+  const accent = tone === "accent";
+  return (
+    <div
+      className={`p-6 md:p-8 ${className}`}
+      style={{
+        background: accent ? "var(--pd-yellow)" : "#fff",
+        borderTop: accent ? "none" : "3px solid var(--pd-yellow)",
+        borderLeft: accent ? "6px solid var(--pd-dark)" : undefined,
+      }}
+    >
+      <div className="pd-label" style={{ color: accent ? "var(--pd-dark)" : "var(--pd-gold)" }}>{kicker}</div>
+      {title && (
+        <h3
+          className="pd-display mt-2"
+          style={{ color: "var(--pd-dark)", fontSize: accent ? 30 : 22, lineHeight: 1.12 }}
+        >
+          {title}
+        </h3>
+      )}
+      <ul className={`mt-5 grid ${bullets.length > 3 ? "md:grid-cols-2" : ""} gap-x-8 gap-y-3`}>
+        {bullets.map((b, i) => (
+          <li
+            key={i}
+            className="flex gap-3"
+            style={{ color: "var(--pd-dark)", fontSize: accent ? 16 : 15, lineHeight: 1.6, fontWeight: accent ? 600 : 400 }}
+          >
+            <span aria-hidden style={{ color: accent ? "var(--pd-dark)" : "var(--pd-yellow)", fontWeight: 900 }}>—</span>
+            <span>{b}</span>
+          </li>
+        ))}
+      </ul>
+      {footnote && (
+        <div className="mt-5 pt-4" style={{ borderTop: "1px solid rgba(0,0,0,0.12)", fontSize: 12.5, color: accent ? "rgba(25,20,0,0.8)" : "var(--pd-muted)", lineHeight: 1.6 }}>
+          {footnote}
+        </div>
+      )}
+    </div>
+  );
+}

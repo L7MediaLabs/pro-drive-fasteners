@@ -7,11 +7,28 @@ import {
   TechReference,
   RelatedProducts,
   PageDisclaimers,
+  BulletBlock,
 } from "../components/editorial";
 import { FN15, DA15, C16, AFN, BRAD18, PINS23, pickRelated } from "../data/products";
 import gradeContractorAsset from "../assets/badge-contractor-grade.png.asset.json";
 const gradeContractor = gradeContractorAsset.url;
 import { images } from "../data/images";
+
+// Client-supplied collation copy (Hollis, 8-8-2026) — repeated on every nail
+// family section verbatim.
+const COLLATION_BULLETS = [
+  "Made with premium steel, guaranteed not to bend or jam",
+  "We offer a free counter mat to show all the finish/brad nails in English, Spanish & Portuguese",
+  "Our Glue Collation is the best in the industry, reducing jamming from broken/loose tape",
+];
+
+function CollationBlock() {
+  return (
+    <div className="mt-6">
+      <BulletBlock kicker="Collation & Steel" bullets={COLLATION_BULLETS.map((b) => b)} />
+    </div>
+  );
+}
 
 export const Route = createFileRoute("/brads-finish-nails")({
   head: () => ({
@@ -391,6 +408,7 @@ function Brads() {
           <div className="pd-label" style={{ color: "var(--pd-gold)" }}>15 GA FN — 25° Angle</div>
           <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32 }}>Fits Bostitch® 25°</h2>
           <div className="mt-4"><ProductGrid products={FN15} /></div>
+          <CollationBlock />
           <InfoPanel
             applications="Interior finish, trim work, hardwood flooring, baseboards."
             materials="Electro-Galvanized Steel. Chisel Point, Smooth Shank."
@@ -404,6 +422,7 @@ function Brads() {
           <div className="pd-label" style={{ color: "var(--pd-gold)" }}>15 GA DA — 34° Angle</div>
           <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32 }}>Fits Senco® 34°</h2>
           <div className="mt-4"><ProductGrid products={DA15} /></div>
+          <CollationBlock />
           <InfoPanel
             applications="Interior finish, trim, and casing."
             materials="Chisel Point, Smooth Shank. Available in Stainless Steel."
@@ -418,6 +437,7 @@ function Brads() {
           <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32 }}>16 Straight Nail</h2>
           <p className="mt-2" style={{ color: "var(--pd-muted)", fontSize: 14 }}>16 gauge · 0° straight collation · universal fit</p>
           <div className="mt-4"><ProductGrid products={C16} /></div>
+          <CollationBlock />
           <InfoPanel
             materials="Blunt Chisel Point, Smooth Shank. Available in Stainless Steel."
             standards="Meets ASTM F1667. 2,500 per box · 12 boxes per carton."
@@ -442,6 +462,7 @@ function Brads() {
           <div className="pd-label" style={{ color: "var(--pd-gold)" }}>16 GA AFN — 20° Angle</div>
           <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32 }}>Fits Paslode® 20°</h2>
           <div className="mt-4"><ProductGrid products={AFN} /></div>
+          <CollationBlock />
           <Callout>Fits Paslode® 20° angle tools.</Callout>
         </div>
 
@@ -449,6 +470,7 @@ function Brads() {
           <div className="pd-label" style={{ color: "var(--pd-gold)" }}>18 GA — 0° Straight Brad</div>
           <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32 }}>Universal Brad Nails</h2>
           <div className="mt-4"><ProductGrid products={BRAD18} /></div>
+          <CollationBlock />
           <InfoPanel
             applications="Interior finish, trim work, hardwood flooring, baseboards."
             materials='Chisel Point, Smooth Shank (.0468").'
@@ -463,6 +485,7 @@ function Brads() {
           <div className="pd-label" style={{ color: "var(--pd-gold)" }}>23 GA Micro Pins</div>
           <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32 }}>The Invisible Fastener</h2>
           <div className="mt-4"><ProductGrid products={PINS23} /></div>
+          <CollationBlock />
           <Callout>Micro Pins fasten the smallest of trim securely, leaving a nearly invisible hole. Directional arrows painted on strips eliminate loading errors.</Callout>
           <InfoPanel
             applications="Interior finish and trim, carving and ornamentals, rattan furniture production, picture and mirror frames, window beading, molding, decorative trim, cabinets."

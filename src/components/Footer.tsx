@@ -85,6 +85,29 @@ export function Footer() {
           <AgencyCredit variant="footer" tone="dark" />
         </div>
 
+        {/* Site-wide legal notes (client-required, Hollis 8-8-2026). Part (b) must
+            appear on every page because product pages list interchange brands. */}
+        <div
+          className="mt-8 pt-6 space-y-3 max-w-5xl"
+          style={{ borderTop: "1px solid rgba(255,205,0,0.12)", fontSize: 11.5, lineHeight: 1.65, color: "rgba(255,255,255,0.45)" }}
+        >
+          <p>
+            Electro Galvanized steel provides a very thin layer of coating with a measure of protection against
+            the elements. Over time these nails may corrode. Not recommended for exterior application or ACQ
+            Treated Lumber. <strong style={{ color: "rgba(255,255,255,0.7)" }}>WARNING:</strong> This product can
+            expose you to chemicals including Nickel and Lead which are known to the State of California to cause
+            cancer. For more information visit{" "}
+            <a href="https://www.P65Warnings.ca.gov" target="_blank" rel="noreferrer" style={{ color: "rgba(255,205,0,0.7)" }}>
+              www.P65Warnings.ca.gov
+            </a>
+          </p>
+          <p style={{ fontStyle: "italic" }}>
+            This product is made and sold by Pro-Drive Fasteners® and has no relationship with any of the other
+            companies whose trademarks or item numbers are mentioned
+          </p>
+        </div>
+
+
         <div
           className="mt-8 pt-5 flex flex-col md:flex-row md:justify-between gap-3 text-[13px]"
           style={{ borderTop: "1px solid rgba(255,205,0,0.12)" }}

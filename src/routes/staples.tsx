@@ -11,6 +11,7 @@ import {
   TechReference,
   RelatedProducts,
   PageDisclaimers,
+  BulletBlock,
   useTabs,
 } from "../components/editorial";
 import {
@@ -642,7 +643,7 @@ function Staples() {
       <CinematicHero
         kicker="Flooring Fasteners"
         title={<>Flooring Staples.<br />Every Gauge. Every Job.</>}
-        description="Medium crown and specialty staples engineered for hardwood, laminate, and engineered flooring — plus framing, cabinetry, insulation, and upholstery."
+        description="We offer a wide range of staples for hardwood, laminate, engineered wood flooring, and carpet applications, as well as cabinetry, insulation, and upholstery applications."
         bgImage={images.staples.gauge15Banner}
         badges={[
           { label: "CONTRACTOR GRADE", logo: gradeContractor },
@@ -653,6 +654,21 @@ function Staples() {
         rightImageAlt='Pro-Drive FS-200-7720 15.5 GA 2" flooring staples box'
         rightImageFit="contain"
       />
+
+      {/* JAM-FREE GUARANTEE — client's single strongest differentiator
+          (Hollis, 8-8-2026). Copy supplied verbatim. */}
+      <section className="px-[6%] py-12" style={{ background: "var(--pd-cream, #F5F1E8)" }}>
+        <BulletBlock
+          tone="accent"
+          kicker="Jam-Free Guarantee"
+          title={<>The only JAM FREE guarantee in the industry.</>}
+          bullets={[
+            <>Pro-Drive Fasteners is the only manufacturer to offer a JAM FREE guarantee, and we print this on our cartons.</>,
+            <>Will work in all major domestic and most import brand flooring tools.</>,
+            <>Premium grade steel. Our staples will NOT bend. You will never have &ldquo;WALKING legs&rdquo; (BENDING/FOLDING) with our staples.</>,
+          ]}
+        />
+      </section>
 
       <TabNav
         tabs={(Object.keys(tabData) as TabKey[]).map(k => ({ key: k, label: tabData[k].label }))}

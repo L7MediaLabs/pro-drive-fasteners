@@ -372,15 +372,19 @@ function StapleDepthDiagram({
           strokeLinejoin="round"
         />
 
-        {/* Crown width dimension (1/2") above the crown */}
-        <line x1={-halfCrown} y1={-13} x2={halfCrown} y2={-13} stroke="#1a1a1a" strokeWidth="0.9" />
-        <line x1={-halfCrown} y1={-17} x2={-halfCrown} y2={-9} stroke="#1a1a1a" strokeWidth="0.9" />
-        <line x1={halfCrown} y1={-17} x2={halfCrown} y2={-9} stroke="#1a1a1a" strokeWidth="0.9" />
+        {/* Crown width dimension (1/2") — now sits inside the plank, so it is
+            drawn light with a dark halo to stay legible over the wood. */}
+        <line x1={-halfCrown} y1={-13} x2={halfCrown} y2={-13} stroke="#fff" strokeWidth="0.9" />
+        <line x1={-halfCrown} y1={-17} x2={-halfCrown} y2={-9} stroke="#fff" strokeWidth="0.9" />
+        <line x1={halfCrown} y1={-17} x2={halfCrown} y2={-9} stroke="#fff" strokeWidth="0.9" />
         <text
           x={0}
           y={-19}
           textAnchor="middle"
-          fill="#1a1a1a"
+          fill="#fff"
+          stroke="rgba(20,14,6,0.85)"
+          strokeWidth="2.2"
+          paintOrder="stroke"
           fontFamily="Assistant, sans-serif"
           fontWeight="800"
           fontSize="9"
@@ -389,19 +393,23 @@ function StapleDepthDiagram({
         </text>
 
         {/* Staple length dimension alongside the legs */}
-        <line x1={lenDimX} y1={0} x2={lenDimX} y2={stapleLenPx} stroke="#1a1a1a" strokeWidth="0.9" />
-        <line x1={lenDimX - 4} y1={0} x2={lenDimX + 4} y2={0} stroke="#1a1a1a" strokeWidth="0.9" />
-        <line x1={lenDimX - 4} y1={stapleLenPx} x2={lenDimX + 4} y2={stapleLenPx} stroke="#1a1a1a" strokeWidth="0.9" />
+        <line x1={lenDimX} y1={0} x2={lenDimX} y2={stapleLenPx} stroke="#fff" strokeWidth="0.9" />
+        <line x1={lenDimX - 4} y1={0} x2={lenDimX + 4} y2={0} stroke="#fff" strokeWidth="0.9" />
+        <line x1={lenDimX - 4} y1={stapleLenPx} x2={lenDimX + 4} y2={stapleLenPx} stroke="#fff" strokeWidth="0.9" />
         <text
           transform={`translate(${lenDimX - 5} ${stapleLenPx / 2}) rotate(-90)`}
           textAnchor="middle"
-          fill="#1a1a1a"
+          fill="#fff"
+          stroke="rgba(20,14,6,0.85)"
+          strokeWidth="2.2"
+          paintOrder="stroke"
           fontFamily="Assistant, sans-serif"
           fontWeight="800"
           fontSize="9"
         >
           {stapleLenLabel} long
         </text>
+
       </g>
 
 

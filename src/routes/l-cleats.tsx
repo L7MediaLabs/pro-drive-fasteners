@@ -583,9 +583,12 @@ function LCleats() {
           {/* Info + product grid */}
           <div>
             <div className="pd-label" style={{ color: "var(--pd-gold)" }}>{g.label} L-Cleats</div>
-            <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 38, lineHeight: 1.05 }}>
-              {g.tagline}
-            </h2>
+            <div className="flex flex-wrap items-center gap-4 mt-2">
+              <h2 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: 38, lineHeight: 1.05 }}>
+                {g.tagline}
+              </h2>
+              <UsaFlagBadge />
+            </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-px mt-6" style={{ background: "rgba(0,0,0,0.08)" }}>
               {g.spec.map(s => (
                 <div key={s.k} className="bg-white px-4 py-3">

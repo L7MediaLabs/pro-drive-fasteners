@@ -213,11 +213,13 @@ function CleatDepthDiagram({
         />
       ))}
 
-      {/* L-CLEAT — silhouette matching the carton artwork, driven at the
-          true install angle (flange bent to the right, tip down-left). */}
-      <g transform={`rotate(-${driveDeg} ${stapleX0} ${stapleY0}) translate(${stapleX0} ${stapleY0})`}>
+      {/* L-CLEAT — silhouette matching the carton artwork, driven THROUGH THE
+          TONGUE at the true install angle: head concealed inside the tongue
+          (flange bent left into the plank), tip travelling down-left into the
+          subfloor. Nothing breaks the visible top face. */}
+      <g transform={`rotate(${driveDeg} ${stapleX0} ${stapleY0}) translate(${stapleX0} ${stapleY0})`}>
         <path
-          d={lCleatPath(cleatLenPx, SHANK_W, HEAD_FLANGE, HEAD_T, 1)}
+          d={lCleatPath(cleatLenPx, SHANK_W, HEAD_FLANGE, HEAD_T, -1)}
           fill="#EDEDF1"
           stroke="#1a1a1a"
           strokeWidth="1.1"

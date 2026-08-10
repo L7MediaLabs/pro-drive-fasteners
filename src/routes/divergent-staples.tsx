@@ -52,7 +52,7 @@ function Div() {
           <div className="pd-label" style={{ color: "var(--pd-gold)" }}>01 — Pad Staples</div>
           <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32 }}>Bedding, carpet pad, insulation.</h2>
           <p className="mt-3 max-w-2xl" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1.65, fontWeight: 500 }}>
-            20 GA divergent-point staples with a 3/8" leg. Available in A11 (13/32" crown) and 5010 (1/2" crown) profiles to fit every major pad tool. 5,000 per box, 20 boxes per master.
+            20 GA divergent-point staples. Available in A11 (15/32" crown, 3/8" leg) and 5010 (1/2" crown, 5/16" leg) profiles to fit every major pad tool. 5,000 per box, 20 boxes per master.
           </p>
           <div className="mt-6"><ProductGrid products={padStaples} /></div>
           <InterchangeList
@@ -67,7 +67,7 @@ function Div() {
           <div className="pd-label" style={{ color: "var(--pd-gold)" }}>02 — Hammer Tacker</div>
           <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32 }}>7512 for the Duo-Fast® HT-755.</h2>
           <p className="mt-3 max-w-2xl" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1.65, fontWeight: 500 }}>
-            19 GA, 15/32" crown, 3/8" leg. Purpose-built for the industry-standard Duo-Fast® HT-755 hammer tacker. Ideal for roofing paper, house wrap, insulation, and vapor barrier.
+            19 GA, 13/32" crown, 3/8" leg. Purpose-built for the industry-standard Duo-Fast® HT-755 hammer tacker. Ideal for roofing paper, house wrap, insulation, and vapor barrier.
           </p>
           <div className="mt-6"><ProductGrid products={hammerTacker} /></div>
           <InterchangeList tools={["Duo-Fast HT-755", "Duo-Fast HT-755M"]} />
@@ -77,7 +77,7 @@ function Div() {
           <div className="pd-label" style={{ color: "var(--pd-gold)" }}>03 — Stair Tread & Carpet</div>
           <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32 }}>5418 with color-matched crown.</h2>
           <p className="mt-3 max-w-2xl" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1.65, fontWeight: 500 }}>
-            19 GA, 3/16" narrow crown, 9/16" leg. Available with tan or gray crown to disappear into carpet fibers. 5,000 per box, 20 boxes per master. Meets stair-tread and light-carpet application requirements.
+            19 GA, 3/16" narrow crown, 9/16" leg. <strong>Tan-Colored Crown / Sharp Divergent Point.</strong> Available with tan or gray crown to disappear into carpet fibers. 5,000 per box, 20 boxes per master. Meets stair-tread and light-carpet application requirements.
           </p>
           <div className="mt-6"><ProductGrid products={stairTread} /></div>
           <InterchangeList

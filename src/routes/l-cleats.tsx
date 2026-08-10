@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { trackEvent } from "@/lib/analytics";
 import { ProductGrid } from "../components/ProductCard";
-import { TechReference, useTabs } from "../components/editorial";
+import { TechReference, useTabs, UsaFlagBadge } from "../components/editorial";
 import { LCLEATS_16, LCLEATS_18 } from "../data/products";
 import { images } from "../data/images";
 import contractorBadge from "../assets/badge-contractor-grade.png.asset.json";

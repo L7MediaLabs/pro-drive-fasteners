@@ -113,25 +113,28 @@ function CleatDepthDiagram({
   const penPx = penIn * CPPI;
   const cleatLenPx = cleatLenIn * CPPI;
 
-  // Cleat travels diagonally covering (floor + pen) vertically.
-  const verticalSpan = floorPx + penPx;
+  const floorTop = 0;
+  const floorBottom = floorPx;
+  const subfloorTop = floorBottom;
+  const subfloorBottom = subfloorTop + CSUBFLOOR_H;
+
+  // Client correction: the cleat is driven THROUGH THE TONGUE — it enters at the
+  // tongue shoulder, the L-head stays concealed inside the tongue, and nothing
+  // breaks the visible top face of the plank.
+  const entryY = floorPx * 0.35;             // top of the tongue shoulder
+  const verticalSpan = floorPx - entryY + penPx;
   const horizRun = Math.sqrt(Math.max(0, cleatLenPx ** 2 - verticalSpan ** 2));
   // Drive angle measured off vertical — used to rotate the whole cleat body.
   const driveDeg = (Math.atan2(horizRun, verticalSpan) * 180) / Math.PI;
   const SHANK_W = 4.4;          // flat cleat shank thickness
   const HEAD_FLANGE = 9;        // horizontal foot of the "L" head
   const HEAD_T = 4.2;           // head thickness
-  
 
-  const floorTop = 0;
-  const floorBottom = floorPx;
-  const subfloorTop = floorBottom;
-  const subfloorBottom = subfloorTop + CSUBFLOOR_H;
+  const stapleX0 = CLEFT_PAD + CWOOD_W - 7;  // at the tongue root
+  const stapleX1 = stapleX0 - horizRun;      // tip extends down-left
+  const stapleY0 = entryY;
+  const stapleY1 = entryY + verticalSpan;    // = floorBottom + penPx
 
-  const stapleX0 = CLEFT_PAD + CWOOD_W - 50; // L-head seated more fully inside the plank
-  const stapleX1 = stapleX0 - horizRun; // tip extends left
-  const stapleY0 = floorTop;
-  const stapleY1 = floorTop + verticalSpan;
 
   const penArrowX = stapleX1 - 10;
   const tongueArrowX = CLEFT_PAD + CWOOD_W + 12;

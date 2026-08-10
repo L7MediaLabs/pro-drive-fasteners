@@ -511,6 +511,10 @@ function LCleats() {
               <div className="pd-glass-light px-4 py-2" style={{ fontSize: 12, color: "#fff", letterSpacing: "0.12em", fontWeight: 700, maxWidth: "100%" }}>
                 PRECISE ANGLE ON BARBS FOR SUPERIOR HOLDING POWER
               </div>
+              <div className="pd-glass-light px-4 py-2" style={{ fontSize: 12, color: "#fff", letterSpacing: "0.12em", fontWeight: 700, maxWidth: "100%" }}>
+                INDUSTRY-LEADING HEAVY DUTY PACKAGING WITH EASY-TO-RESEAL BOXES HELPS REDUCE WASTE FOR CONTRACTORS
+              </div>
+
             </div>
           </div>
           <div className="relative" style={{ aspectRatio: "4/5", maxHeight: 520 }}>

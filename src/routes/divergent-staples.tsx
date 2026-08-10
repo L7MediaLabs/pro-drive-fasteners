@@ -5,6 +5,7 @@ import {
   CinematicHero,
   RelatedProducts,
   PageDisclaimers,
+  BulletBlock,
 } from "../components/editorial";
 import { DIVERGENT, pickRelated } from "../data/products";
 import { images } from "../data/images";
@@ -50,7 +51,7 @@ function Div() {
         <div>
           <div className="pd-label" style={{ color: "var(--pd-gold)" }}>01 — Pad Staples</div>
           <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32 }}>Bedding, carpet pad, insulation.</h2>
-          <p className="mt-3 max-w-2xl" style={{ color: "var(--pd-muted)", fontSize: 15, lineHeight: 1.6 }}>
+          <p className="mt-3 max-w-2xl" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1.65, fontWeight: 500 }}>
             20 GA divergent-point staples with a 3/8" leg. Available in A11 (13/32" crown) and 5010 (1/2" crown) profiles to fit every major pad tool. 5,000 per box, 20 boxes per master.
           </p>
           <div className="mt-6"><ProductGrid products={padStaples} /></div>
@@ -65,7 +66,7 @@ function Div() {
         <div>
           <div className="pd-label" style={{ color: "var(--pd-gold)" }}>02 — Hammer Tacker</div>
           <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32 }}>7512 for the Duo-Fast® HT-755.</h2>
-          <p className="mt-3 max-w-2xl" style={{ color: "var(--pd-muted)", fontSize: 15, lineHeight: 1.6 }}>
+          <p className="mt-3 max-w-2xl" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1.65, fontWeight: 500 }}>
             19 GA, 15/32" crown, 3/8" leg. Purpose-built for the industry-standard Duo-Fast® HT-755 hammer tacker. Ideal for roofing paper, house wrap, insulation, and vapor barrier.
           </p>
           <div className="mt-6"><ProductGrid products={hammerTacker} /></div>
@@ -75,7 +76,7 @@ function Div() {
         <div>
           <div className="pd-label" style={{ color: "var(--pd-gold)" }}>03 — Stair Tread & Carpet</div>
           <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32 }}>5418 with color-matched crown.</h2>
-          <p className="mt-3 max-w-2xl" style={{ color: "var(--pd-muted)", fontSize: 15, lineHeight: 1.6 }}>
+          <p className="mt-3 max-w-2xl" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1.65, fontWeight: 500 }}>
             19 GA, 3/16" narrow crown, 9/16" leg. Available with tan or gray crown to disappear into carpet fibers. 5,000 per box, 20 boxes per master. Meets stair-tread and light-carpet application requirements.
           </p>
           <div className="mt-6"><ProductGrid products={stairTread} /></div>
@@ -85,6 +86,17 @@ function Div() {
             ]}
           />
         </div>
+      </section>
+
+      <section className="px-[6%] pb-14" style={{ background: "var(--pd-light-bg)" }}>
+        <BulletBlock
+          kicker="Description"
+          bullets={[
+            "Best packaging for the contractor, HEAVY Duty boxes that can be resealed",
+            "Made from Extra Hard Wire guaranteed not to bend",
+            "Resin Coated and Galvanized",
+          ]}
+        />
       </section>
 
       <RelatedProducts products={related} />

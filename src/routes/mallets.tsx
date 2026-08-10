@@ -8,6 +8,7 @@ import {
   TechReference,
   RelatedProducts,
   PageDisclaimers,
+  BulletBlock,
   useTabs,
 } from "../components/editorial";
 import { VideoCard } from "../components/VideoCard";
@@ -83,7 +84,8 @@ function EZ2CapBanner() {
           E-Z 2CAP<sup style={{ fontSize: 14, verticalAlign: "super" }}>®</sup> patented feature
         </h2>
         <p className="mt-2" style={{ color: "var(--pd-dark)", fontSize: 16, opacity: 0.9 }}>
-          Patented design makes our caps easier &amp; faster to install!
+          The E-Z 2CAP<sup style={{ fontSize: 10, verticalAlign: "super" }}>®</sup> patented design makes
+          replacement a breeze with bevel relief to allow BELL of mallet to start.
         </p>
 
         <div className="grid lg:grid-cols-[3fr_2fr] gap-10 mt-8 items-start">
@@ -236,7 +238,7 @@ function Mallets() {
       <section className="px-[6%] py-14" style={{ background: "var(--pd-light-bg)" }}>
         {tab === "mallets" && (
           <div>
-            <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Mallets</div>
+            <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Mallets &amp; Dead-blow installation tools</div>
             <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 34 }}>Premium American Hickory.</h2>
             <div className="grid lg:grid-cols-[1fr_320px] gap-6 mt-6 items-start">
               <ProductGrid products={MALLETS} />
@@ -251,6 +253,35 @@ function Mallets() {
               </div>
             </div>
             <Callout><strong>PATENTED SURE 2 LOCK™</strong> head design virtually eliminates loosening of handle — even after years of use. Epoxy-filled handle attached with steel safety wedge.</Callout>
+            {/* Client-supplied standard description for ALL mallets (Hollis, 8-8-2026). */}
+            <div className="mt-6">
+              <BulletBlock
+                kicker="Description"
+                bullets={[
+                  "Available with white or gray mallet caps*",
+                  "Made in the USA and crafted from 100% premium hickory",
+                  "Comfortable, easy-to-grip 6-ring wood handle*",
+                  "Made for use with pneumatic staplers or nailers*",
+                  "Contractor proven and tested",
+                  "RED Epoxy-filled head attached with steel safety wedge",
+                  <>PATENTED SURE 2 LOCK&trade; head design will virtually eliminate loosening of handle &mdash; even after years of use</>,
+                ]}
+                footnote="*RING PATTERN DOES apply to the V-Cap Mallet."
+              />
+            </div>
+            {/* V-Cap Mallet callout (Hollis, 8-8-2026) */}
+            <div className="mt-6">
+              <BulletBlock
+                kicker="V-Cap Mallet · 24 oz"
+                title="V-Cap Mallet"
+                bullets={[
+                  "24 oz head weight",
+                  "Best mallet for laminate and engineered flooring, will not mar or dent during installation",
+                  "Designed to reduce damage when installing click flooring, reduces over-driving normally associated with heavier weighted mallets",
+                  "Made for use with pneumatic staplers or nailers",
+                ]}
+              />
+            </div>
             <InfoPanel>
               <div>Made in the USA from 100% premium hickory. Six-ring easy-grip pattern with flared handle provides slip resistance. Epoxy-filled handle attached with steel safety wedge. <strong>U.S. Patent No. 11,759,941.</strong></div>
             </InfoPanel>
@@ -278,6 +309,18 @@ function Mallets() {
             </div>
             <EZ2CapBanner />
             <Callout><strong>E-Z 2CAP®</strong> — caps installed or removed in 30 seconds or less. PATENTED DESIGN.</Callout>
+            {/* Client-supplied cap copy (Hollis, 8-8-2026) */}
+            <div className="mt-6">
+              <BulletBlock
+                kicker="Mallet Caps"
+                bullets={[
+                  <>Pro-Angle cap designed for PRE-FINISH ENGINEERED flooring &mdash; the V-Design fits into the GROOVE, reducing any damage to the finished surface during install</>,
+                  <>We have &ldquo;POA&rdquo; COUNTER DISPLAY</>,
+                  "We blend our own rubber, no one else in the industry does this. This allows us to control quality and provide the most competitive price to our customers",
+                  <>Our PREMIUM Grey cap is softer than Bostitch<sup>®</sup> and reduces marring and transfers less shock to the installer during installation</>,
+                ]}
+              />
+            </div>
             <InfoPanel>
               <div>Heavy-duty chrome-plated steel retention ring. Guaranteed to fit all major brands of rubber flooring mallets — or your money back. <strong>U.S. Patent No. 11,370,097</strong>.</div>
               <div><strong style={{ color: "var(--pd-dark)" }}>Pro-Angle™ cap:</strong> Designed for engineered flooring with improved edge-clearance contact for faster installation.</div>
@@ -304,6 +347,17 @@ function Mallets() {
               </div>
             </div>
             <Callout>5 colors denoting hardness. Guaranteed to fit leading brands with 3/8" x 16 standard thread. Free counter display with purchase of 16 Poly Striking Faces.</Callout>
+            {/* Client-supplied poly cap copy (Hollis, 8-8-2026) */}
+            <div className="mt-6">
+              <BulletBlock
+                kicker="Poly Caps (Faces)"
+                bullets={[
+                  <>Poly Caps (FACES) all have industry standard 3/8&quot; threaded insert</>,
+                  "Our poly caps (faces) are interchangeable with all major brands",
+                  "Light weight but has 40% impact force of the heavier steel weighted mallets",
+                ]}
+              />
+            </div>
             <InfoPanel>
               <div>Ideal replacement for 2″ poly faces. Unaffected by liquids, solvents, and lubricants. Will not damage, mar, or dent. <strong>Made in the USA.</strong></div>
             </InfoPanel>
@@ -321,7 +375,7 @@ function Mallets() {
               <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Key Features</div>
               <ul className="mt-4 grid md:grid-cols-2 gap-x-8 gap-y-3">
                 {[
-                  "Head cavity partially filled with iron shot, to provide greater striking force",
+                  "Head cavity partially filled with steel shot, to provide greater striking force",
                   "Face absorbs a portion of blow energy",
                   "Force of blow transmitted solidly to the striking surface — less shock to the installer",
                 ].map((f) => (
@@ -367,7 +421,7 @@ function Mallets() {
               We turn our own handles.
             </h2>
             <p className="mt-5" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1.7, maxWidth: 560, opacity: 0.88 }}>
-              Every Pro-Drive<sup>®</sup> mallet handle is turned from <strong>112-year-old wood lath</strong> — premium hickory with a century of seasoning behind it. It's the kind of detail most manufacturers skip and most contractors feel the first time they swing one.
+              Every Pro-Drive<sup>®</sup> mallet handle is turned from <strong>seasoned hickory wood lath</strong>. It's the kind of detail most manufacturers skip and most contractors feel the first time they swing one.
             </p>
             <p className="mt-4" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1.7, maxWidth: 560, opacity: 0.75, fontStyle: "italic" }}>
               When you control the material from the raw stock up, you control the quality all the way down.
@@ -383,7 +437,7 @@ function Mallets() {
                 color: "var(--pd-dark)",
               }}
             >
-              112-Year Seasoned Hickory
+              Seasoned Hickory
             </div>
           </div>
           <div
@@ -397,7 +451,7 @@ function Mallets() {
           >
             <img
               src={images.mallets.heritageLath}
-              alt="Pro-Drive's in-house handle-turning shop — lathes and hickory handle blanks surrounded by wood shavings, where every mallet handle is turned on 112-year-old equipment"
+              alt="Pro-Drive's in-house handle-turning shop — lathes and hickory handle blanks surrounded by wood shavings, where every mallet handle is turned"
               loading="lazy"
               style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
             />

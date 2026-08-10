@@ -43,9 +43,10 @@ const CVB_W = CLEFT_PAD + CWOOD_W + CRIGHT_GUTTER;
 const CVB_H = CMAX_TOTAL * CPPI + 18;
 
 /**
- * Silhouette of a Pro-Drive L-cleat, drawn to match the icon printed on the
- * product carton: an L-head flange bent off the top of the shank, a smooth
- * upper shank, barbed (sawtooth) lower shank, and a long tapered point.
+ * Silhouette of a Pro-Drive L-cleat, corrected per client review (Hollis):
+ * a FLAT, CONSTANT-WIDTH shank — no needle or tapering point anywhere — with
+ * an L-head foot bent perpendicular off the top, barbed (spurred) lower shank,
+ * and a short chisel bevel at the tip.
  *
  * Local coordinates: shank centreline at x = 0, head top at y = 0, tip at y = L.
  * `dir` = -1 puts the flange on the left (box artwork), +1 on the right.
@@ -58,38 +59,36 @@ function lCleatPath(
   dir: -1 | 1 = -1,
 ): string {
   const hw = shankW / 2;
-  const barbTop = L * 0.34;            // smooth shank above this point
-  const tipTop = L * 0.9;              // final taper begins
-  const tipHw = hw * 0.28;
-  const amp = hw * 0.55;               // barb depth
-  const teeth = Math.max(6, Math.round((tipTop - barbTop) / (shankW * 1.5)));
-  const step = (tipTop - barbTop) / teeth;
-  const halfAt = (y: number) =>
-    y <= tipTop ? hw - (hw - tipHw) * ((y - barbTop) / (tipTop - barbTop)) * 0.35 : tipHw;
+  const barbTop = L * 0.3;                                      // smooth shank above this
+  const chiselTop = Math.max(barbTop + 4, L - shankW * 1.3);     // short chisel bevel only
+  const amp = hw * 0.85;                                         // barb spur projection
+  const teeth = Math.max(4, Math.round((chiselTop - barbTop) / (shankW * 1.7)));
+  const step = (chiselTop - barbTop) / teeth;
 
   const X = (v: number) => (dir === -1 ? v : -v);
   const p: string[] = [];
 
-  // Head: outer edge of the flange, across the top, down the far shank edge.
+  // Head: L-foot bent perpendicular off the top of the shank.
   p.push(`M ${X(-flangeW - hw)} ${0}`);
   p.push(`L ${X(hw)} 0`);
-  // Right-hand (outer) shank edge, top-down.
+  // Outer shank edge, top-down — constant width with barb spurs, no taper.
   p.push(`L ${X(hw)} ${barbTop}`);
   for (let i = 0; i < teeth; i++) {
     const y0 = barbTop + i * step;
-    const h = halfAt(y0);
-    p.push(`L ${X(h + amp)} ${y0 + step * 0.45}`);
-    p.push(`L ${X(halfAt(y0 + step) - amp * 0.15)} ${y0 + step}`);
+    p.push(`L ${X(hw + amp)} ${y0 + step * 0.62}`);
+    p.push(`L ${X(hw)} ${y0 + step * 0.62}`);
+    p.push(`L ${X(hw)} ${y0 + step}`);
   }
-  p.push(`L ${X(tipHw)} ${tipTop}`);
-  p.push(`L ${X(0)} ${L}`);            // point
-  p.push(`L ${X(-tipHw)} ${tipTop}`);
-  // Left-hand (inner) shank edge, bottom-up — staggered half a tooth.
+  p.push(`L ${X(hw)} ${chiselTop}`);
+  // Chisel point — one flat bevel across the full shank width (no needle).
+  p.push(`L ${X(-hw)} ${L}`);
+  p.push(`L ${X(-hw)} ${chiselTop}`);
+  // Inner shank edge, bottom-up — barbs mirrored, staggered half a tooth.
   for (let i = teeth - 1; i >= 0; i--) {
     const y0 = barbTop + i * step;
-    const h = halfAt(y0);
-    p.push(`L ${X(-(halfAt(y0 + step) - amp * 0.15))} ${y0 + step * 0.95}`);
-    p.push(`L ${X(-(h + amp))} ${y0 + step * 0.5}`);
+    p.push(`L ${X(-hw)} ${y0 + step * 0.5}`);
+    p.push(`L ${X(-hw - amp)} ${y0 + step * 0.5}`);
+    p.push(`L ${X(-hw)} ${y0 + step * 0.12}`);
   }
   p.push(`L ${X(-hw)} ${barbTop}`);
   p.push(`L ${X(-hw)} ${headT}`);

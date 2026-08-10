@@ -366,7 +366,10 @@ function Mallets() {
         {tab === "deadblow" && (
           <div>
             <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Poly Dead Blow Mallet</div>
-            <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 34 }}>Steel-shot force. Zero rebound.</h2>
+            <div className="flex flex-wrap items-center gap-4 mt-2">
+              <h2 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: 34 }}>Steel-shot force. Zero rebound.</h2>
+              <UsaFlagBadge />
+            </div>
             <div className="mt-6"><ProductGrid products={DEAD_BLOW} /></div>
 
             {/* Client-supplied key features (Hollis). Factual copy only. */}

@@ -230,6 +230,8 @@ function Mallets() {
           { key: "caps",     label: "Mallet Caps" },
           { key: "poly",     label: "Poly Striking Faces" },
           { key: "deadblow", label: "Dead Blow" },
+          // 5th entry links out to the split head hammer faces page (Hollis).
+          { key: "splithead" as TabKey, label: "Split Head", href: "/split-head-hammer-faces" },
         ]}
         value={tab}
         onChange={setTab}
@@ -239,7 +241,10 @@ function Mallets() {
         {tab === "mallets" && (
           <div>
             <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Mallets &amp; Dead-blow installation tools</div>
-            <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 34 }}>Premium American Hickory.</h2>
+            <div className="flex flex-wrap items-center gap-4 mt-2">
+              <h2 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: 34 }}>Premium American Hickory.</h2>
+              <UsaFlagBadge />
+            </div>
             <div className="grid lg:grid-cols-[1fr_320px] gap-6 mt-6 items-start">
               <ProductGrid products={MALLETS} />
               <div className="bg-white p-4" style={{ borderTop: "3px solid var(--pd-yellow)" }}>

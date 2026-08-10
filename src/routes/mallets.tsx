@@ -334,17 +334,10 @@ function Mallets() {
           <div>
             <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Urethane Striking Faces</div>
             <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 34 }}>Five hardness grades. One thread.</h2>
-            <div className="grid lg:grid-cols-[1fr_320px] gap-6 mt-6 items-start">
+            {/* Client review (Hollis): the tapping-ring graphic was removed from
+                this section. No substitute graphic — product cards only. */}
+            <div className="mt-6">
               <ProductGrid products={POLY_FACES} />
-              <div className="bg-white p-4" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
-                <img
-                  src={images.mallets.polyColors}
-                  alt="Pro-Drive Urethane Striking Faces — hardness colors"
-                  loading="lazy"
-                  style={{ width: "100%", height: "auto", objectFit: "contain" }}
-                />
-                <div className="pd-label mt-3" style={{ color: "var(--pd-gold)" }}>5 Hardness Colors</div>
-              </div>
             </div>
             <Callout>5 colors denoting hardness. Guaranteed to fit leading brands with 3/8" x 16 standard thread. Free counter display with purchase of 16 Poly Striking Faces.</Callout>
             {/* Client-supplied poly cap copy (Hollis, 8-8-2026) */}

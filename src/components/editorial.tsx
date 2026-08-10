@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { Product } from "./ProductCard";
 import { ProductCard } from "./ProductCard";
 import { trackEvent } from "@/lib/analytics";
+import { images } from "@/data/images";
 
 // ─── CinematicHero ────────────────────────────────────────────────────────────
 export function CinematicHero({
@@ -555,5 +556,51 @@ export function BulletBlock({
         </div>
       )}
     </div>
+  );
+}
+
+// ─── UsaFlagBadge ─────────────────────────────────────────────────────────────
+// Client-supplied "MADE IN USA" flag mark (Hollis, Build 3). Sized and treated
+// as a credential badge — consistent with the existing grade badges — not as
+// decorative imagery.
+export function UsaFlagBadge({
+  size = 30,
+  tone = "light",
+  className = "",
+}: {
+  size?: number;
+  tone?: "light" | "dark";
+  className?: string;
+}) {
+  const dark = tone === "dark";
+  return (
+    <span
+      className={`inline-flex items-center gap-2 align-middle ${className}`}
+      style={{
+        background: dark ? "rgba(255,255,255,0.08)" : "#fff",
+        border: dark ? "1px solid rgba(255,255,255,0.16)" : "1px solid rgba(0,0,0,0.1)",
+        borderLeft: "3px solid var(--pd-yellow)",
+        padding: "5px 10px",
+      }}
+    >
+      <img
+        src={images.flag}
+        alt="Made in USA"
+        loading="lazy"
+        style={{ width: size, height: "auto", display: "block", flexShrink: 0 }}
+      />
+      <span
+        className="pd-label"
+        style={{
+          fontSize: 10,
+          fontWeight: 800,
+          letterSpacing: "0.14em",
+          color: dark ? "#fff" : "var(--pd-dark)",
+          whiteSpace: "nowrap",
+        }}
+      >
+        MADE IN USA
+      </span>
+    </span>
   );
 }

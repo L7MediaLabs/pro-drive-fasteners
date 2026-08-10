@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { trackEvent } from "@/lib/analytics";
 import { ProductGrid } from "../components/ProductCard";
-import { TechReference, useTabs } from "../components/editorial";
+import { TechReference, useTabs, UsaFlagBadge } from "../components/editorial";
 import { LCLEATS_16, LCLEATS_18 } from "../data/products";
 import { images } from "../data/images";
 import contractorBadge from "../assets/badge-contractor-grade.png.asset.json";
@@ -43,9 +43,10 @@ const CVB_W = CLEFT_PAD + CWOOD_W + CRIGHT_GUTTER;
 const CVB_H = CMAX_TOTAL * CPPI + 18;
 
 /**
- * Silhouette of a Pro-Drive L-cleat, drawn to match the icon printed on the
- * product carton: an L-head flange bent off the top of the shank, a smooth
- * upper shank, barbed (sawtooth) lower shank, and a long tapered point.
+ * Silhouette of a Pro-Drive L-cleat, corrected per client review (Hollis):
+ * a FLAT, CONSTANT-WIDTH shank — no needle or tapering point anywhere — with
+ * an L-head foot bent perpendicular off the top, barbed (spurred) lower shank,
+ * and a short chisel bevel at the tip.
  *
  * Local coordinates: shank centreline at x = 0, head top at y = 0, tip at y = L.
  * `dir` = -1 puts the flange on the left (box artwork), +1 on the right.
@@ -58,38 +59,36 @@ function lCleatPath(
   dir: -1 | 1 = -1,
 ): string {
   const hw = shankW / 2;
-  const barbTop = L * 0.34;            // smooth shank above this point
-  const tipTop = L * 0.9;              // final taper begins
-  const tipHw = hw * 0.28;
-  const amp = hw * 0.55;               // barb depth
-  const teeth = Math.max(6, Math.round((tipTop - barbTop) / (shankW * 1.5)));
-  const step = (tipTop - barbTop) / teeth;
-  const halfAt = (y: number) =>
-    y <= tipTop ? hw - (hw - tipHw) * ((y - barbTop) / (tipTop - barbTop)) * 0.35 : tipHw;
+  const barbTop = L * 0.3;                                      // smooth shank above this
+  const chiselTop = Math.max(barbTop + 4, L - shankW * 1.3);     // short chisel bevel only
+  const amp = hw * 0.85;                                         // barb spur projection
+  const teeth = Math.max(4, Math.round((chiselTop - barbTop) / (shankW * 1.7)));
+  const step = (chiselTop - barbTop) / teeth;
 
   const X = (v: number) => (dir === -1 ? v : -v);
   const p: string[] = [];
 
-  // Head: outer edge of the flange, across the top, down the far shank edge.
+  // Head: L-foot bent perpendicular off the top of the shank.
   p.push(`M ${X(-flangeW - hw)} ${0}`);
   p.push(`L ${X(hw)} 0`);
-  // Right-hand (outer) shank edge, top-down.
+  // Outer shank edge, top-down — constant width with barb spurs, no taper.
   p.push(`L ${X(hw)} ${barbTop}`);
   for (let i = 0; i < teeth; i++) {
     const y0 = barbTop + i * step;
-    const h = halfAt(y0);
-    p.push(`L ${X(h + amp)} ${y0 + step * 0.45}`);
-    p.push(`L ${X(halfAt(y0 + step) - amp * 0.15)} ${y0 + step}`);
+    p.push(`L ${X(hw + amp)} ${y0 + step * 0.62}`);
+    p.push(`L ${X(hw)} ${y0 + step * 0.62}`);
+    p.push(`L ${X(hw)} ${y0 + step}`);
   }
-  p.push(`L ${X(tipHw)} ${tipTop}`);
-  p.push(`L ${X(0)} ${L}`);            // point
-  p.push(`L ${X(-tipHw)} ${tipTop}`);
-  // Left-hand (inner) shank edge, bottom-up — staggered half a tooth.
+  p.push(`L ${X(hw)} ${chiselTop}`);
+  // Chisel point — one flat bevel across the full shank width (no needle).
+  p.push(`L ${X(-hw)} ${L}`);
+  p.push(`L ${X(-hw)} ${chiselTop}`);
+  // Inner shank edge, bottom-up — barbs mirrored, staggered half a tooth.
   for (let i = teeth - 1; i >= 0; i--) {
     const y0 = barbTop + i * step;
-    const h = halfAt(y0);
-    p.push(`L ${X(-(halfAt(y0 + step) - amp * 0.15))} ${y0 + step * 0.95}`);
-    p.push(`L ${X(-(h + amp))} ${y0 + step * 0.5}`);
+    p.push(`L ${X(-hw)} ${y0 + step * 0.5}`);
+    p.push(`L ${X(-hw - amp)} ${y0 + step * 0.5}`);
+    p.push(`L ${X(-hw)} ${y0 + step * 0.12}`);
   }
   p.push(`L ${X(-hw)} ${barbTop}`);
   p.push(`L ${X(-hw)} ${headT}`);
@@ -114,25 +113,28 @@ function CleatDepthDiagram({
   const penPx = penIn * CPPI;
   const cleatLenPx = cleatLenIn * CPPI;
 
-  // Cleat travels diagonally covering (floor + pen) vertically.
-  const verticalSpan = floorPx + penPx;
+  const floorTop = 0;
+  const floorBottom = floorPx;
+  const subfloorTop = floorBottom;
+  const subfloorBottom = subfloorTop + CSUBFLOOR_H;
+
+  // Client correction: the cleat is driven THROUGH THE TONGUE — it enters at the
+  // tongue shoulder, the L-head stays concealed inside the tongue, and nothing
+  // breaks the visible top face of the plank.
+  const entryY = floorPx * 0.35;             // top of the tongue shoulder
+  const verticalSpan = floorPx - entryY + penPx;
   const horizRun = Math.sqrt(Math.max(0, cleatLenPx ** 2 - verticalSpan ** 2));
   // Drive angle measured off vertical — used to rotate the whole cleat body.
   const driveDeg = (Math.atan2(horizRun, verticalSpan) * 180) / Math.PI;
   const SHANK_W = 4.4;          // flat cleat shank thickness
   const HEAD_FLANGE = 9;        // horizontal foot of the "L" head
   const HEAD_T = 4.2;           // head thickness
-  
 
-  const floorTop = 0;
-  const floorBottom = floorPx;
-  const subfloorTop = floorBottom;
-  const subfloorBottom = subfloorTop + CSUBFLOOR_H;
+  const stapleX0 = CLEFT_PAD + CWOOD_W - 7;  // at the tongue root
+  const stapleX1 = stapleX0 - horizRun;      // tip extends down-left
+  const stapleY0 = entryY;
+  const stapleY1 = entryY + verticalSpan;    // = floorBottom + penPx
 
-  const stapleX0 = CLEFT_PAD + CWOOD_W - 50; // L-head seated more fully inside the plank
-  const stapleX1 = stapleX0 - horizRun; // tip extends left
-  const stapleY0 = floorTop;
-  const stapleY1 = floorTop + verticalSpan;
 
   const penArrowX = stapleX1 - 10;
   const tongueArrowX = CLEFT_PAD + CWOOD_W + 12;
@@ -211,11 +213,13 @@ function CleatDepthDiagram({
         />
       ))}
 
-      {/* L-CLEAT — silhouette matching the carton artwork, driven at the
-          true install angle (flange bent to the right, tip down-left). */}
-      <g transform={`rotate(-${driveDeg} ${stapleX0} ${stapleY0}) translate(${stapleX0} ${stapleY0})`}>
+      {/* L-CLEAT — silhouette matching the carton artwork, driven THROUGH THE
+          TONGUE at the true install angle: head concealed inside the tongue
+          (flange bent left into the plank), tip travelling down-left into the
+          subfloor. Nothing breaks the visible top face. */}
+      <g transform={`rotate(${driveDeg} ${stapleX0} ${stapleY0}) translate(${stapleX0} ${stapleY0})`}>
         <path
-          d={lCleatPath(cleatLenPx, SHANK_W, HEAD_FLANGE, HEAD_T, 1)}
+          d={lCleatPath(cleatLenPx, SHANK_W, HEAD_FLANGE, HEAD_T, -1)}
           fill="#EDEDF1"
           stroke="#1a1a1a"
           strokeWidth="1.1"
@@ -581,9 +585,12 @@ function LCleats() {
           {/* Info + product grid */}
           <div>
             <div className="pd-label" style={{ color: "var(--pd-gold)" }}>{g.label} L-Cleats</div>
-            <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 38, lineHeight: 1.05 }}>
-              {g.tagline}
-            </h2>
+            <div className="flex flex-wrap items-center gap-4 mt-2">
+              <h2 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: 38, lineHeight: 1.05 }}>
+                {g.tagline}
+              </h2>
+              <UsaFlagBadge />
+            </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-px mt-6" style={{ background: "rgba(0,0,0,0.08)" }}>
               {g.spec.map(s => (
                 <div key={s.k} className="bg-white px-4 py-3">

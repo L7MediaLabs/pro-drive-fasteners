@@ -10,6 +10,7 @@ import {
   PageDisclaimers,
   BulletBlock,
   useTabs,
+  UsaFlagBadge,
 } from "../components/editorial";
 import { VideoCard } from "../components/VideoCard";
 import { V_CAP_VIDEO } from "../data/videos";
@@ -230,6 +231,8 @@ function Mallets() {
           { key: "caps",     label: "Mallet Caps" },
           { key: "poly",     label: "Poly Striking Faces" },
           { key: "deadblow", label: "Dead Blow" },
+          // 5th entry links out to the split head hammer faces page (Hollis).
+          { key: "splithead" as TabKey, label: "Split Head", href: "/split-head-hammer-faces" },
         ]}
         value={tab}
         onChange={setTab}
@@ -239,7 +242,10 @@ function Mallets() {
         {tab === "mallets" && (
           <div>
             <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Mallets &amp; Dead-blow installation tools</div>
-            <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 34 }}>Premium American Hickory.</h2>
+            <div className="flex flex-wrap items-center gap-4 mt-2">
+              <h2 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: 34 }}>Premium American Hickory.</h2>
+              <UsaFlagBadge />
+            </div>
             <div className="grid lg:grid-cols-[1fr_320px] gap-6 mt-6 items-start">
               <ProductGrid products={MALLETS} />
               <div className="bg-white p-4" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
@@ -334,17 +340,10 @@ function Mallets() {
           <div>
             <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Urethane Striking Faces</div>
             <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 34 }}>Five hardness grades. One thread.</h2>
-            <div className="grid lg:grid-cols-[1fr_320px] gap-6 mt-6 items-start">
+            {/* Client review (Hollis): the tapping-ring graphic was removed from
+                this section. No substitute graphic — product cards only. */}
+            <div className="mt-6">
               <ProductGrid products={POLY_FACES} />
-              <div className="bg-white p-4" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
-                <img
-                  src={images.mallets.polyColors}
-                  alt="Pro-Drive Urethane Striking Faces — hardness colors"
-                  loading="lazy"
-                  style={{ width: "100%", height: "auto", objectFit: "contain" }}
-                />
-                <div className="pd-label mt-3" style={{ color: "var(--pd-gold)" }}>5 Hardness Colors</div>
-              </div>
             </div>
             <Callout>5 colors denoting hardness. Guaranteed to fit leading brands with 3/8" x 16 standard thread. Free counter display with purchase of 16 Poly Striking Faces.</Callout>
             {/* Client-supplied poly cap copy (Hollis, 8-8-2026) */}
@@ -367,7 +366,10 @@ function Mallets() {
         {tab === "deadblow" && (
           <div>
             <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Poly Dead Blow Mallet</div>
-            <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 34 }}>Steel-shot force. Zero rebound.</h2>
+            <div className="flex flex-wrap items-center gap-4 mt-2">
+              <h2 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: 34 }}>Steel-shot force. Zero rebound.</h2>
+              <UsaFlagBadge />
+            </div>
             <div className="mt-6"><ProductGrid products={DEAD_BLOW} /></div>
 
             {/* Client-supplied key features (Hollis). Factual copy only. */}

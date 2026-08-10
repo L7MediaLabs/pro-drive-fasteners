@@ -239,23 +239,28 @@ function StapleDepthDiagram({
   const penPx = penIn * PPI;
   const stapleLenPx = stapleLenIn * PPI;
 
-  // Right triangle: staple length² = horizontal run² + (floor + penetration)²
-  const verticalSpan = floorPx + penPx;
-  const horizRun = Math.sqrt(Math.max(0, stapleLenPx ** 2 - verticalSpan ** 2));
-  const driveDeg = (Math.atan2(horizRun, verticalSpan) * 180) / Math.PI;
-
   const floorTop = 0;
   const floorBottom = floorPx;
   const subfloorTop = floorBottom;
   const subfloorBottom = subfloorTop + SUBFLOOR_H;
 
-  // Seat the staple crown over the tongue-and-groove gap between planks so the
-  // legs drive through the joint and into the subfloor beneath the next board.
+  // Client correction: the fastener is driven THROUGH THE TONGUE — it enters at
+  // the tongue shoulder, the crown stays concealed inside the tongue, and
+  // nothing breaks the visible top face of the plank.
+  const entryY = floorPx * 0.45;              // top of the tongue shoulder
+  // Right triangle: staple length² = horizontal run² + vertical travel²
+  const verticalSpan = floorPx - entryY + penPx;
+  const horizRun = Math.sqrt(Math.max(0, stapleLenPx ** 2 - verticalSpan ** 2));
+  const driveDeg = (Math.atan2(horizRun, verticalSpan) * 180) / Math.PI;
+
+  // Seat the staple crown at the tongue of the left plank, so the legs drive
+  // through the joint and into the subfloor beneath the next board.
   const stapleX0 = LEFT_PAD + WOOD_W + GAP_W / 2;
 
   const stapleX1 = stapleX0 + horizRun;       // tips travel down-right into subfloor
-  const stapleY0 = floorTop;
-  const stapleY1 = floorTop + verticalSpan;
+  const stapleY0 = entryY;
+  const stapleY1 = entryY + verticalSpan;     // = floorBottom + penPx
+
 
   const penArrowX = Math.min(stapleX1 + 8, LEFT_PAD + SUBFLOOR_W - 6);
   const tongueArrowX = LEFT_PAD + SUBFLOOR_W + 10;
@@ -367,15 +372,19 @@ function StapleDepthDiagram({
           strokeLinejoin="round"
         />
 
-        {/* Crown width dimension (1/2") above the crown */}
-        <line x1={-halfCrown} y1={-13} x2={halfCrown} y2={-13} stroke="#1a1a1a" strokeWidth="0.9" />
-        <line x1={-halfCrown} y1={-17} x2={-halfCrown} y2={-9} stroke="#1a1a1a" strokeWidth="0.9" />
-        <line x1={halfCrown} y1={-17} x2={halfCrown} y2={-9} stroke="#1a1a1a" strokeWidth="0.9" />
+        {/* Crown width dimension (1/2") — now sits inside the plank, so it is
+            drawn light with a dark halo to stay legible over the wood. */}
+        <line x1={-halfCrown} y1={-13} x2={halfCrown} y2={-13} stroke="#fff" strokeWidth="0.9" />
+        <line x1={-halfCrown} y1={-17} x2={-halfCrown} y2={-9} stroke="#fff" strokeWidth="0.9" />
+        <line x1={halfCrown} y1={-17} x2={halfCrown} y2={-9} stroke="#fff" strokeWidth="0.9" />
         <text
           x={0}
           y={-19}
           textAnchor="middle"
-          fill="#1a1a1a"
+          fill="#fff"
+          stroke="rgba(20,14,6,0.85)"
+          strokeWidth="2.2"
+          paintOrder="stroke"
           fontFamily="Assistant, sans-serif"
           fontWeight="800"
           fontSize="9"
@@ -384,19 +393,23 @@ function StapleDepthDiagram({
         </text>
 
         {/* Staple length dimension alongside the legs */}
-        <line x1={lenDimX} y1={0} x2={lenDimX} y2={stapleLenPx} stroke="#1a1a1a" strokeWidth="0.9" />
-        <line x1={lenDimX - 4} y1={0} x2={lenDimX + 4} y2={0} stroke="#1a1a1a" strokeWidth="0.9" />
-        <line x1={lenDimX - 4} y1={stapleLenPx} x2={lenDimX + 4} y2={stapleLenPx} stroke="#1a1a1a" strokeWidth="0.9" />
+        <line x1={lenDimX} y1={0} x2={lenDimX} y2={stapleLenPx} stroke="#fff" strokeWidth="0.9" />
+        <line x1={lenDimX - 4} y1={0} x2={lenDimX + 4} y2={0} stroke="#fff" strokeWidth="0.9" />
+        <line x1={lenDimX - 4} y1={stapleLenPx} x2={lenDimX + 4} y2={stapleLenPx} stroke="#fff" strokeWidth="0.9" />
         <text
           transform={`translate(${lenDimX - 5} ${stapleLenPx / 2}) rotate(-90)`}
           textAnchor="middle"
-          fill="#1a1a1a"
+          fill="#fff"
+          stroke="rgba(20,14,6,0.85)"
+          strokeWidth="2.2"
+          paintOrder="stroke"
           fontFamily="Assistant, sans-serif"
           fontWeight="800"
           fontSize="9"
         >
           {stapleLenLabel} long
         </text>
+
       </g>
 
 

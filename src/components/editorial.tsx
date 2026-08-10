@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { Product } from "./ProductCard";
 import { ProductCard } from "./ProductCard";
 import { trackEvent } from "@/lib/analytics";
+import { images } from "@/data/images";
 
 // ─── CinematicHero ────────────────────────────────────────────────────────────
 export function CinematicHero({
@@ -116,34 +117,57 @@ export function CinematicHero({
 }
 
 // ─── TabNav ────────────────────────────────────────────────────────────────────
+// Client review (Hollis): the ribbon was too small/low-contrast to read as
+// interactive. Font 13 → 15px, inactive colour 45% → 78% white, active weight
+// 700 → 800, thicker underline. Entries may optionally link to another route.
 export function TabNav<T extends string>({
   tabs,
   value,
   onChange,
 }: {
-  tabs: { key: T; label: string }[];
+  tabs: { key: T; label: string; href?: string }[];
   value: T;
   onChange: (v: T) => void;
 }) {
+  const base = {
+    fontSize: 15,
+    letterSpacing: "0.16em",
+    fontWeight: 800,
+    background: "transparent",
+  } as const;
+
   return (
     <div style={{ background: "var(--pd-darker, #0a0a0a)" }} className="px-[6%] flex gap-6 md:gap-8 border-b border-white/5 overflow-x-auto">
-      {tabs.map(t => (
-        <button
-          key={t.key}
-          onClick={() => onChange(t.key)}
-          className="pd-label py-5 whitespace-nowrap"
-          style={{
-            color: value === t.key ? "var(--pd-yellow)" : "rgba(255,255,255,0.45)",
-            borderBottom: value === t.key ? "2px solid var(--pd-yellow)" : "2px solid transparent",
-            fontSize: 13,
-            letterSpacing: "0.18em",
-            fontWeight: 700,
-            background: "transparent",
-          }}
-        >
-          {t.label}
-        </button>
-      ))}
+      {tabs.map(t =>
+        t.href ? (
+          <Link
+            key={t.key}
+            to={t.href}
+            className="pd-label py-5 whitespace-nowrap"
+            style={{
+              ...base,
+              color: "rgba(255,255,255,0.78)",
+              borderBottom: "3px solid transparent",
+              textDecoration: "none",
+            }}
+          >
+            {t.label}
+          </Link>
+        ) : (
+          <button
+            key={t.key}
+            onClick={() => onChange(t.key)}
+            className="pd-label py-5 whitespace-nowrap"
+            style={{
+              ...base,
+              color: value === t.key ? "var(--pd-yellow)" : "rgba(255,255,255,0.78)",
+              borderBottom: value === t.key ? "3px solid var(--pd-yellow)" : "3px solid transparent",
+            }}
+          >
+            {t.label}
+          </button>
+        ),
+      )}
     </div>
   );
 }
@@ -532,5 +556,51 @@ export function BulletBlock({
         </div>
       )}
     </div>
+  );
+}
+
+// ─── UsaFlagBadge ─────────────────────────────────────────────────────────────
+// Client-supplied "MADE IN USA" flag mark (Hollis, Build 3). Sized and treated
+// as a credential badge — consistent with the existing grade badges — not as
+// decorative imagery.
+export function UsaFlagBadge({
+  size = 30,
+  tone = "light",
+  className = "",
+}: {
+  size?: number;
+  tone?: "light" | "dark";
+  className?: string;
+}) {
+  const dark = tone === "dark";
+  return (
+    <span
+      className={`inline-flex items-center gap-2 align-middle ${className}`}
+      style={{
+        background: dark ? "rgba(255,255,255,0.08)" : "#fff",
+        border: dark ? "1px solid rgba(255,255,255,0.16)" : "1px solid rgba(0,0,0,0.1)",
+        borderLeft: "3px solid var(--pd-yellow)",
+        padding: "5px 10px",
+      }}
+    >
+      <img
+        src={images.flag}
+        alt="Made in USA"
+        loading="lazy"
+        style={{ width: size, height: "auto", display: "block", flexShrink: 0 }}
+      />
+      <span
+        className="pd-label"
+        style={{
+          fontSize: 10,
+          fontWeight: 800,
+          letterSpacing: "0.14em",
+          color: dark ? "#fff" : "var(--pd-dark)",
+          whiteSpace: "nowrap",
+        }}
+      >
+        MADE IN USA
+      </span>
+    </span>
   );
 }

@@ -161,11 +161,18 @@ function TDT() {
         <div className="mt-14">
           <div className="pd-label mb-4" style={{ color: "var(--pd-yellow)" }}>Series 5 — In Action</div>
           <div className="grid md:grid-cols-3 gap-4">
+            <YouTubeVideoCard
+              id="QsrVfPwt4A4"
+              label="Commercial — 1:20 Cut"
+              title="NEW Pro-Drive Fasteners® Series 5 Tipper-De-Tipper™"
+              desc="The client's public commercial cut — 1 minute 20 seconds, landscape."
+            />
             {videos.map(v => (
               <VideoCard key={v.id} {...v} />
             ))}
           </div>
         </div>
+
 
         <div className="mt-12">
           <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>Installing a Cap — Tipping</div>

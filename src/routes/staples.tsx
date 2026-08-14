@@ -388,20 +388,9 @@ function StapleDepthDiagram({
         <line x1={-halfCrown} y1={-13} x2={halfCrown} y2={-13} stroke="#fff" strokeWidth="0.9" />
         <line x1={-halfCrown} y1={-17} x2={-halfCrown} y2={-9} stroke="#fff" strokeWidth="0.9" />
         <line x1={halfCrown} y1={-17} x2={halfCrown} y2={-9} stroke="#fff" strokeWidth="0.9" />
-        <text
-          x={-halfCrown - 5}
-          y={-11}
-          textAnchor="end"
-          fill="#fff"
-          stroke="rgba(20,14,6,0.85)"
-          strokeWidth="2.2"
-          paintOrder="stroke"
-          fontFamily="Assistant, sans-serif"
-          fontWeight="800"
-          fontSize="9"
-        >
-          {STAPLE_CROWN_LABEL} crown
-        </text>
+        {/* Crown label is drawn outside this rotated group (see below) so the
+            text stays horizontal and clear of the T&G callouts. */}
+
 
 
         {/* Staple length dimension alongside the legs */}

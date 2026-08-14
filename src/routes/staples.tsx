@@ -184,8 +184,10 @@ const MAX_PEN_IN = 1.0625;            // deepest penetration in the chart
 const LEFT_PAD = 14;
 const RIGHT_GUTTER = 40;              // reserves space for the tongue arrow + pen label
 const WOOD_W = 138;
-const GAP_W = 8;                      // tongue-and-groove joint gap between planks
-const PLANK2_W = 74;                  // partial second plank so the gap is visible
+const TONGUE_LEN = 11;                // protruding tongue lip length
+const GAP_W = 30;                     // clear gap: tongue lip + space before next board
+const PLANK2_W = 74;                  // partial second (next) plank, groove facing us
+
 const SUBFLOOR_W = WOOD_W + GAP_W + PLANK2_W;
 const PLANK2_X = LEFT_PAD + WOOD_W + GAP_W;
 const MAX_TOTAL = MAX_FLOOR_IN + MAX_PEN_IN;
@@ -244,26 +246,33 @@ function StapleDepthDiagram({
   const subfloorTop = floorBottom;
   const subfloorBottom = subfloorTop + SUBFLOOR_H;
 
-  // Client correction: the fastener is driven THROUGH THE TONGUE — it enters at
-  // the tongue shoulder, the crown stays concealed inside the tongue, and
-  // nothing breaks the visible top face of the plank.
-  const entryY = floorPx * 0.45;              // top of the tongue shoulder
+  // Tongue-and-groove profile: the TONGUE is the lip protruding off the right
+  // edge of the installed board; the GROOVE is the slot in the next board that
+  // slides over it, concealing the fastener.
+  const tongueTop = floorPx * 0.34;
+  const tongueBot = floorPx * 0.66;
+  const tongueRootX = LEFT_PAD + WOOD_W;
+  const tongueTipX = tongueRootX + TONGUE_LEN;
+
+  // The staple is driven THROUGH THE TONGUE: it enters on the top surface of the
+  // protruding tongue and angles down-left through the board body into the
+  // subfloor. It never enters the groove and never breaks the visible top face.
+  const entryY = tongueTop;
   // Right triangle: staple length² = horizontal run² + vertical travel²
   const verticalSpan = floorPx - entryY + penPx;
   const horizRun = Math.sqrt(Math.max(0, stapleLenPx ** 2 - verticalSpan ** 2));
   const driveDeg = (Math.atan2(horizRun, verticalSpan) * 180) / Math.PI;
 
-  // Seat the staple crown at the tongue of the left plank, so the legs drive
-  // through the joint and into the subfloor beneath the next board.
-  const stapleX0 = LEFT_PAD + WOOD_W + GAP_W / 2;
+  const stapleX0 = tongueRootX + TONGUE_LEN * 0.45; // on the tongue itself
 
-  const stapleX1 = stapleX0 + horizRun;       // tips travel down-right into subfloor
+  const stapleX1 = stapleX0 - horizRun;       // tips travel down-left into subfloor
   const stapleY0 = entryY;
   const stapleY1 = entryY + verticalSpan;     // = floorBottom + penPx
 
 
-  const penArrowX = Math.min(stapleX1 + 8, LEFT_PAD + SUBFLOOR_W - 6);
+  const penArrowX = Math.max(stapleX1 - 10, LEFT_PAD + 6);
   const tongueArrowX = LEFT_PAD + SUBFLOOR_W + 10;
+
 
   const crownPx = STAPLE_CROWN_IN * PPI;
   const halfCrown = crownPx / 2 + STAPLE_WIRE_PX / 2;
@@ -278,50 +287,52 @@ function StapleDepthDiagram({
         </pattern>
       </defs>
 
-      {/* First flooring plank (brown) — height scales with flooring thickness */}
+      {/* Installed flooring plank body (brown) */}
       <rect x={LEFT_PAD} y={floorTop} width={WOOD_W} height={floorPx} fill="#5C4128" />
-      {/* Second flooring plank to the right, separated by the T&G joint */}
-      <rect x={PLANK2_X} y={floorTop} width={PLANK2_W} height={floorPx} fill="#5C4128" />
-      {/* Fill the joint gap so no white/cream background shows through */}
-      <rect
-        x={LEFT_PAD + WOOD_W}
-        y={floorTop}
-        width={GAP_W}
-        height={floorPx}
-        fill="#5C4128"
+
+      {/* TONGUE — milled lip protruding off the right edge. The fastener is
+          driven through THIS feature. */}
+      <path
+        d={`M ${tongueRootX} ${tongueTop} L ${tongueTipX - 2} ${tongueTop} L ${tongueTipX} ${tongueTop + 2} L ${tongueTipX} ${tongueBot - 2} L ${tongueTipX - 2} ${tongueBot} L ${tongueRootX} ${tongueBot} Z`}
+        fill="#7A5A3C"
+        stroke="#2B1D11"
+        strokeWidth="0.9"
       />
-      {/* Tongue-and-groove joint seam line between the two planks */}
-      <line
-        x1={LEFT_PAD + WOOD_W + GAP_W / 2}
-        y1={floorTop}
-        x2={LEFT_PAD + WOOD_W + GAP_W / 2}
-        y2={floorBottom}
-        stroke="#3D2B1B"
-        strokeWidth="1.2"
+
+      {/* NEXT board, not yet slid home — its GROOVE will receive the tongue and
+          cover the fastener head. */}
+      <rect x={PLANK2_X} y={floorTop} width={PLANK2_W} height={floorPx} fill="#5C4128" opacity={0.55} />
+      <rect x={PLANK2_X} y={tongueTop} width={TONGUE_LEN} height={tongueBot - tongueTop} fill="#F5F4EE" />
+      <path
+        d={`M ${PLANK2_X + TONGUE_LEN} ${tongueTop} L ${PLANK2_X} ${tongueTop} M ${PLANK2_X} ${tongueBot} L ${PLANK2_X + TONGUE_LEN} ${tongueBot} L ${PLANK2_X + TONGUE_LEN} ${tongueTop}`}
+        fill="none"
+        stroke="#2B1D11"
+        strokeWidth="0.9"
       />
-      {/* Tongue of the left plank (subtle tone-on-tone detail) */}
-      <rect
-        x={LEFT_PAD + WOOD_W}
-        y={floorTop + floorPx * 0.45}
-        width={GAP_W - 0.5}
-        height={Math.max(3, floorPx * 0.55)}
-        fill="#6B4E35"
-        opacity={0.5}
-      />
-      {/* Groove notch on the open left edge of the first plank */}
-      <rect x={LEFT_PAD} y={floorTop + floorPx * 0.35} width="4" height={Math.max(4, floorPx * 0.55)} fill="#F5F4EE" />
-      {/* TONGUE & GROOVE callouts (client-requested labelling) */}
+      {/* Direction of assembly */}
+      <g stroke="#1a1a1a" strokeWidth="0.8" fill="#1a1a1a">
+        <line x1={PLANK2_X + 20} y1={floorPx * 0.18} x2={PLANK2_X + 6} y2={floorPx * 0.18} />
+        <polygon points={`${PLANK2_X + 4},${floorPx * 0.18} ${PLANK2_X + 10},${floorPx * 0.18 - 3} ${PLANK2_X + 10},${floorPx * 0.18 + 3}`} />
+      </g>
+
+      {/* TONGUE & GROOVE callouts — leaders land on the actual features */}
       <g fill="#1a1a1a" fontFamily="Assistant, sans-serif" fontWeight="800" fontSize="6.5" letterSpacing="0.7">
-        <line x1={LEFT_PAD + 2} y1={-4} x2={LEFT_PAD + 2} y2={floorTop + floorPx * 0.35} stroke="#1a1a1a" strokeWidth="0.6" />
-        <text x={LEFT_PAD + 5} y={-5}>GROOVE</text>
         <polyline
-          points={`${LEFT_PAD + WOOD_W + GAP_W / 2},${floorTop + floorPx * 0.45} ${LEFT_PAD + WOOD_W + GAP_W / 2},${-9} ${PLANK2_X + PLANK2_W - 2},${-9}`}
+          points={`${tongueRootX + TONGUE_LEN / 2},${(tongueTop + tongueBot) / 2} ${tongueRootX + TONGUE_LEN / 2},${-11} ${tongueRootX - 6},${-11}`}
           fill="none"
           stroke="#1a1a1a"
           strokeWidth="0.6"
         />
-        <text x={PLANK2_X + PLANK2_W} y={-6.5} textAnchor="end">TONGUE</text>
+        <text x={tongueRootX - 8} y={-9} textAnchor="end">TONGUE (fastener goes here)</text>
+        <polyline
+          points={`${PLANK2_X + TONGUE_LEN / 2},${(tongueTop + tongueBot) / 2} ${PLANK2_X + TONGUE_LEN / 2},${-4} ${PLANK2_X + 14},${-4}`}
+          fill="none"
+          stroke="#1a1a1a"
+          strokeWidth="0.6"
+        />
+        <text x={PLANK2_X + 16} y={-2}>GROOVE</text>
       </g>
+
 
       {/* Flooring size label (first plank) */}
       <text
@@ -377,20 +388,10 @@ function StapleDepthDiagram({
         <line x1={-halfCrown} y1={-13} x2={halfCrown} y2={-13} stroke="#fff" strokeWidth="0.9" />
         <line x1={-halfCrown} y1={-17} x2={-halfCrown} y2={-9} stroke="#fff" strokeWidth="0.9" />
         <line x1={halfCrown} y1={-17} x2={halfCrown} y2={-9} stroke="#fff" strokeWidth="0.9" />
-        <text
-          x={0}
-          y={-19}
-          textAnchor="middle"
-          fill="#fff"
-          stroke="rgba(20,14,6,0.85)"
-          strokeWidth="2.2"
-          paintOrder="stroke"
-          fontFamily="Assistant, sans-serif"
-          fontWeight="800"
-          fontSize="9"
-        >
-          {STAPLE_CROWN_LABEL} crown
-        </text>
+        {/* Crown label is drawn outside this rotated group (see below) so the
+            text stays horizontal and clear of the T&G callouts. */}
+
+
 
         {/* Staple length dimension alongside the legs */}
         <line x1={lenDimX} y1={0} x2={lenDimX} y2={stapleLenPx} stroke="#fff" strokeWidth="0.9" />
@@ -412,14 +413,34 @@ function StapleDepthDiagram({
 
       </g>
 
+      {/* Crown label — horizontal, sitting over the plank body left of the staple */}
+      <text
+        x={LEFT_PAD + 8}
+        y={floorPx * 0.92}
+        textAnchor="start"
+        fill="#fff"
+        stroke="rgba(20,14,6,0.85)"
+        strokeWidth="2.2"
+        paintOrder="stroke"
+        fontFamily="Assistant, sans-serif"
+        fontWeight="800"
+        fontSize="9"
+      >
+        {STAPLE_CROWN_LABEL} crown
+      </text>
+
+
+
 
       {/* Penetration arrow — from top of subfloor down to the staple tips */}
       <line x1={penArrowX} y1={subfloorTop + 1} x2={penArrowX} y2={stapleY1} stroke="#1a1a1a" strokeWidth="1" />
       <polygon points={`${penArrowX},${subfloorTop + 1} ${penArrowX - 3},${subfloorTop + 7} ${penArrowX + 3},${subfloorTop + 7}`} fill="#1a1a1a" />
       <polygon points={`${penArrowX},${stapleY1} ${penArrowX - 3},${stapleY1 - 6} ${penArrowX + 3},${stapleY1 - 6}`} fill="#1a1a1a" />
       <text
-        x={penArrowX + 5}
+        x={penArrowX - 5}
+        textAnchor="end"
         y={(subfloorTop + stapleY1) / 2 + 4}
+
         fill="#1a1a1a"
         fontFamily="Assistant, sans-serif"
         fontWeight="800"

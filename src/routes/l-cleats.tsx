@@ -37,9 +37,11 @@ const CMAX_FLOOR_IN = 0.75;                 // brown flooring strip max thicknes
 const CMAX_PEN_IN = 1.0625;                 // longest pen in the chart (1-1/16")
 const CLEFT_PAD = 14;
 const CRIGHT_GUTTER = 44;
-const CWOOD_W = 138;
+const CWOOD_W = 127;
+const CTONGUE_LEN = 11;   // how far the tongue lip protrudes past the board body
+
 const CMAX_TOTAL = CMAX_FLOOR_IN + CMAX_PEN_IN; // vertical extent of the deepest cleat
-const CVB_W = CLEFT_PAD + CWOOD_W + CRIGHT_GUTTER;
+const CVB_W = CLEFT_PAD + CWOOD_W + CTONGUE_LEN + CRIGHT_GUTTER;
 const CVB_H = CMAX_TOTAL * CPPI + 18;
 
 /**
@@ -97,6 +99,53 @@ function lCleatPath(
   return p.join(" ");
 }
 
+// Card media: the PRODUCT itself, drawn to scale from the SKU's own length, so
+// the grid leads with the fastener instead of repeating carton photography.
+const SKU_LEN_IN: Record<string, number> = {
+  "LC125-18": 1.25,
+  "LC150-18": 1.5,
+  "LC175-18": 1.75,
+  "LC150-16": 1.5,
+  "LC175-16": 1.75,
+  "LC200-16": 2,
+};
+
+const SKU_LEN_LABEL: Record<string, string> = {
+  "LC125-18": '1-1/4"',
+  "LC150-18": '1-1/2"',
+  "LC175-18": '1-3/4"',
+  "LC150-16": '1-1/2"',
+  "LC175-16": '1-3/4"',
+  "LC200-16": '2"',
+};
+
+function CleatSilhouette({ id, gauge }: { id: string; gauge: "16" | "18" }) {
+  const lenIn = SKU_LEN_IN[id] ?? 1.75;
+  const label = SKU_LEN_LABEL[id] ?? `${lenIn}"`;
+  const SIL_PPI = 62;
+  const L = lenIn * SIL_PPI;
+  const shankW = gauge === "16" ? 5 : 4.2;
+  const flange = 11;
+  const headT = 4.4;
+  const dimX = flange + shankW + 22;
+  const w = dimX + 42;
+  return (
+    <svg viewBox={`0 -6 ${w} ${L + 16}`} style={{ height: 148, width: "auto" }} role="img"
+      aria-label={`${label} ${gauge} GA L-cleat, shown to scale`}>
+      <g transform={`translate(${flange + shankW / 2 + 6} 4)`}>
+        <path d={lCleatPath(L, shankW, flange, headT, -1)} fill="#E7E7EC" stroke="#4A4A52" strokeWidth="0.9" />
+      </g>
+      <g fill="#6E6E76" fontFamily="Assistant, sans-serif" fontWeight="800" fontSize="9" letterSpacing="0.4">
+        <line x1={dimX} y1={4} x2={dimX} y2={L + 4} stroke="#B9B9C0" strokeWidth="0.8" />
+        <line x1={dimX - 3} y1={4} x2={dimX + 3} y2={4} stroke="#B9B9C0" strokeWidth="0.8" />
+        <line x1={dimX - 3} y1={L + 4} x2={dimX + 3} y2={L + 4} stroke="#B9B9C0" strokeWidth="0.8" />
+        <text x={dimX + 6} y={L / 2 + 7}>{label}</text>
+      </g>
+    </svg>
+  );
+}
+
+
 
 function CleatDepthDiagram({
   spec,
@@ -118,10 +167,20 @@ function CleatDepthDiagram({
   const subfloorTop = floorBottom;
   const subfloorBottom = subfloorTop + CSUBFLOOR_H;
 
-  // Client correction: the cleat is driven THROUGH THE TONGUE — it enters at the
-  // tongue shoulder, the L-head stays concealed inside the tongue, and nothing
-  // breaks the visible top face of the plank.
-  const entryY = floorPx * 0.35;             // top of the tongue shoulder
+  // Tongue-and-groove profile of this board:
+  //  - the TONGUE is the milled lip protruding off the RIGHT edge
+  //  - the GROOVE is the receiving slot cut into the LEFT edge
+  const tongueTop = floorPx * 0.34;
+  const tongueBot = floorPx * 0.66;
+  const tongueRootX = CLEFT_PAD + CWOOD_W;
+  const tongueTipX = tongueRootX + CTONGUE_LEN;
+
+  // The cleat is driven THROUGH THE TONGUE: it enters on the top surface of the
+  // protruding tongue lip and travels down-left through the board body into the
+  // subfloor. The head sits down on the tongue and is concealed when the next
+  // board's groove slides over it. The visible top face is never broken, and the
+  // fastener never enters the groove.
+  const entryY = tongueTop;
   const verticalSpan = floorPx - entryY + penPx;
   const horizRun = Math.sqrt(Math.max(0, cleatLenPx ** 2 - verticalSpan ** 2));
   // Drive angle measured off vertical — used to rotate the whole cleat body.
@@ -130,49 +189,64 @@ function CleatDepthDiagram({
   const HEAD_FLANGE = 9;        // horizontal foot of the "L" head
   const HEAD_T = 4.2;           // head thickness
 
-  const stapleX0 = CLEFT_PAD + CWOOD_W - 7;  // at the tongue root
+  const stapleX0 = tongueRootX + CTONGUE_LEN * 0.45; // on the tongue itself
   const stapleX1 = stapleX0 - horizRun;      // tip extends down-left
   const stapleY0 = entryY;
   const stapleY1 = entryY + verticalSpan;    // = floorBottom + penPx
 
 
   const penArrowX = stapleX1 - 10;
-  const tongueArrowX = CLEFT_PAD + CWOOD_W + 12;
+  const tongueArrowX = tongueTipX + 12;
+
 
   return (
-    <svg viewBox={`0 -12 ${CVB_W} ${CVB_H + 12}`} width="100%" style={{ display: "block" }} aria-hidden>
+    <svg viewBox={`0 -16 ${CVB_W + 20} ${CVB_H + 16}`} width="100%" style={{ display: "block" }} aria-hidden>
       <defs>
         <pattern id={`cleat-grain-${uid}`} width="60" height="14" patternUnits="userSpaceOnUse">
           <line x1="0" y1="7" x2="60" y2="7" stroke="rgba(0,0,0,0.18)" strokeWidth="0.6" strokeDasharray="10 4 4 4 6 6" />
         </pattern>
       </defs>
 
-      {/* Flooring plank (brown) — height scales with floor thickness */}
+      {/* Flooring plank body (brown) — height scales with floor thickness */}
       <rect x={CLEFT_PAD} y={floorTop} width={CWOOD_W} height={floorPx} fill="#5C4128" />
-      {/* Groove notch on the left */}
-      <rect x={CLEFT_PAD} y={floorPx * 0.35} width="4" height={Math.max(4, floorPx * 0.55)} fill="#F5F4EE" />
-      {/* Tongue profile on the right edge */}
-      <rect
-        x={CLEFT_PAD + CWOOD_W}
-        y={floorPx * 0.35}
-        width="5"
-        height={Math.max(4, floorPx * 0.55)}
-        fill="#6B4E35"
+
+      {/* GROOVE — receiving slot machined into the LEFT edge of the board.
+          Cut out of the body so it reads as an open slot, not a painted line. */}
+      <rect x={CLEFT_PAD} y={tongueTop} width={CTONGUE_LEN} height={tongueBot - tongueTop} fill="#F5F4EE" />
+      <path
+        d={`M ${CLEFT_PAD + CTONGUE_LEN} ${tongueTop} L ${CLEFT_PAD} ${tongueTop} M ${CLEFT_PAD} ${tongueBot} L ${CLEFT_PAD + CTONGUE_LEN} ${tongueBot} L ${CLEFT_PAD + CTONGUE_LEN} ${tongueTop}`}
+        fill="none"
+        stroke="#2B1D11"
+        strokeWidth="0.9"
       />
-      {/* TONGUE & GROOVE callouts (client-requested labelling) */}
+
+      {/* TONGUE — the milled lip protruding off the RIGHT edge. This is the
+          feature the fastener is driven through. */}
+      <path
+        d={`M ${tongueRootX} ${tongueTop} L ${tongueTipX - 2} ${tongueTop} L ${tongueTipX} ${tongueTop + 2} L ${tongueTipX} ${tongueBot - 2} L ${tongueTipX - 2} ${tongueBot} L ${tongueRootX} ${tongueBot} Z`}
+        fill="#7A5A3C"
+        stroke="#2B1D11"
+        strokeWidth="0.9"
+      />
+
+      {/* TONGUE & GROOVE callouts — leaders land on the actual features */}
       <g fill="#1a1a1a" fontFamily="Assistant, sans-serif" fontWeight="800" fontSize="6.5" letterSpacing="0.7">
-        <line x1={CLEFT_PAD + 2} y1={-3} x2={CLEFT_PAD + 2} y2={floorPx * 0.35} stroke="#1a1a1a" strokeWidth="0.6" />
-        <text x={CLEFT_PAD + 5} y={-3.5}>GROOVE</text>
-        <line
-          x1={CLEFT_PAD + CWOOD_W + 2.5}
-          y1={-3}
-          x2={CLEFT_PAD + CWOOD_W + 2.5}
-          y2={floorPx * 0.35}
+        <polyline
+          points={`${CLEFT_PAD + CTONGUE_LEN / 2},${(tongueTop + tongueBot) / 2} ${CLEFT_PAD + CTONGUE_LEN / 2},${-6} ${CLEFT_PAD + 8},${-6}`}
+          fill="none"
           stroke="#1a1a1a"
           strokeWidth="0.6"
         />
-        <text x={CLEFT_PAD + CWOOD_W} y={-3.5} textAnchor="end">TONGUE</text>
+        <text x={CLEFT_PAD + 10} y={-4}>GROOVE (receives next board)</text>
+        <polyline
+          points={`${tongueRootX + CTONGUE_LEN / 2},${(tongueTop + tongueBot) / 2} ${tongueRootX + CTONGUE_LEN / 2},${-6} ${tongueTipX + 18},${-6}`}
+          fill="none"
+          stroke="#1a1a1a"
+          strokeWidth="0.6"
+        />
+        <text x={tongueTipX + 20} y={-4}>TONGUE</text>
       </g>
+
 
       {/* Flooring size label */}
       <text
@@ -197,21 +271,22 @@ function CleatDepthDiagram({
         ({spec.floorMm})
       </text>
 
-      {/* Subfloor body — always 3/4" tall (shared scale) */}
-      <rect x={CLEFT_PAD} y={subfloorTop} width={CWOOD_W} height={CSUBFLOOR_H} fill="#D9C89F" />
-      <rect x={CLEFT_PAD} y={subfloorTop} width={CWOOD_W} height={CSUBFLOOR_H} fill={`url(#cleat-grain-${uid})`} />
+      {/* Subfloor body — always 3/4" tall (shared scale), runs under the tongue */}
+      <rect x={CLEFT_PAD} y={subfloorTop} width={CWOOD_W + CTONGUE_LEN} height={CSUBFLOOR_H} fill="#D9C89F" />
+      <rect x={CLEFT_PAD} y={subfloorTop} width={CWOOD_W + CTONGUE_LEN} height={CSUBFLOOR_H} fill={`url(#cleat-grain-${uid})`} />
       {[0.22, 0.48, 0.72].map(f => (
         <line
           key={f}
           x1={CLEFT_PAD}
           y1={subfloorTop + CSUBFLOOR_H * f}
-          x2={CLEFT_PAD + CWOOD_W}
+          x2={CLEFT_PAD + CWOOD_W + CTONGUE_LEN}
           y2={subfloorTop + CSUBFLOOR_H * f}
           stroke="rgba(0,0,0,0.14)"
           strokeWidth="0.5"
           strokeDasharray="12 5 4 6"
         />
       ))}
+
 
       {/* L-CLEAT — silhouette matching the carton artwork, driven THROUGH THE
           TONGUE at the true install angle: head concealed inside the tongue
@@ -559,28 +634,22 @@ function LCleats() {
       {/* GAUGE DETAIL */}
       <section className="px-[6%] py-16" style={{ background: "var(--pd-light-bg)" }}>
         <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 items-start">
-          {/* Imagery column */}
-          <div className="space-y-3">
+          {/* Imagery column — one box image per gauge section (client request:
+              stop repeating carton photography down the page) */}
+          <div>
             <div style={{ background: "#fff", padding: 16, borderTop: "3px solid var(--pd-yellow)" }}>
               <img
                 src={g.masterpack}
-                alt={`Pro-Drive ${g.label} L-Cleat masterpack`}
+                alt={`Pro-Drive ${g.label} L-Cleat packaging`}
                 loading="lazy"
                 style={{ width: "100%", height: "auto", display: "block" }}
               />
-              <div className="pd-label mt-3" style={{ color: "var(--pd-gold)", fontSize: 11 }}>Masterpack</div>
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              <div style={{ background: "#fff", padding: 12 }}>
-                <img src={g.innerpack} alt={`${g.label} inner pack`} loading="lazy" style={{ width: "100%", height: 180, objectFit: "cover" }} />
-                <div className="pd-label mt-2" style={{ color: "var(--pd-muted)", fontSize: 10 }}>Inner Pack</div>
-              </div>
-              <div style={{ background: "#fff", padding: 12 }}>
-                <img src={images.lCleats.standing} alt="L-Cleat standing detail" loading="lazy" style={{ width: "100%", height: 180, objectFit: "cover" }} />
-                <div className="pd-label mt-2" style={{ color: "var(--pd-muted)", fontSize: 10 }}>Cleat Detail</div>
+              <div className="pd-label mt-3" style={{ color: "var(--pd-gold)", fontSize: 11 }}>
+                {g.label} Packaging — 1,000ct box, 5 per master carton
               </div>
             </div>
           </div>
+
 
           {/* Info + product grid */}
           <div>
@@ -606,7 +675,7 @@ function LCleats() {
               <strong style={{ color: "var(--pd-dark)" }}>Packaging:</strong> All L-Cleats are shipped in 1,000ct boxes and packed in master cartons of 5 (1,000ct &times; 5 = 5,000ct per master carton).
             </div>
             <div className="mt-8">
-              <ProductGrid products={g.products} />
+              <ProductGrid products={g.products} media={p => <CleatSilhouette id={p.id} gauge={tab} />} />
             </div>
           </div>
         </div>

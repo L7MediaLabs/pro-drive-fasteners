@@ -34,7 +34,17 @@ function MaybeLink({ href, className, style, children }: { href?: Product["href"
   return <Link to={href} className={className} style={style}>{children}</Link>;
 }
 
-export function ProductCard({ product, showPackTier = true }: { product: Product; showPackTier?: boolean }) {
+export function ProductCard({
+  product,
+  showPackTier = true,
+  media,
+}: {
+  product: Product;
+  showPackTier?: boolean;
+  // Optional presentation override: lead the card with the product itself
+  // (e.g. a to-scale fastener silhouette) instead of carton photography.
+  media?: (p: Product) => React.ReactNode;
+}) {
   const ref = useRef<HTMLElement | null>(null);
   const seen = useRef(false);
   const [zoom, setZoom] = useState(false);
@@ -93,7 +103,14 @@ export function ProductCard({ product, showPackTier = true }: { product: Product
       onMouseLeave={e => { if (!flash) e.currentTarget.style.boxShadow = ""; }}
     >
 
-      {product.image ? (
+      {media ? (
+        <div
+          className="flex items-center justify-center w-full"
+          style={{ height: 170, background: "#fafaf8", borderBottom: "1px solid rgba(0,0,0,0.05)" }}
+        >
+          {media(product)}
+        </div>
+      ) : product.image ? (
         // Click-to-enlarge: card thumbnails are ~213px wide, too small to read
         // printed item numbers / QTY on box art. Opens the full-res asset.
         <button
@@ -204,15 +221,26 @@ export function ProductCard({ product, showPackTier = true }: { product: Product
 
 }
 
-export function ProductGrid({ products, cols = 3, showPackTier = true }: { products: Product[]; cols?: 3 | 4; showPackTier?: boolean }) {
+export function ProductGrid({
+  products,
+  cols = 3,
+  showPackTier = true,
+  media,
+}: {
+  products: Product[];
+  cols?: 3 | 4;
+  showPackTier?: boolean;
+  media?: (p: Product) => React.ReactNode;
+}) {
   const colsClass = cols === 4
     ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
     : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3";
   return (
     <div className={colsClass} style={{ gap: 2 }}>
-      {products.map(p => <ProductCard key={p.id} product={p} showPackTier={showPackTier} />)}
+      {products.map(p => <ProductCard key={p.id} product={p} showPackTier={showPackTier} media={media} />)}
     </div>
   );
+
 }
 
 const TIER_META: Record<string, { label: string; description: string }> = {

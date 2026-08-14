@@ -415,9 +415,9 @@ function StapleDepthDiagram({
 
       {/* Crown label — horizontal, sitting over the plank body left of the staple */}
       <text
-        x={stapleX0 - 36}
-        y={floorPx * 0.78}
-        textAnchor="end"
+        x={LEFT_PAD + 8}
+        y={floorPx * 0.92}
+        textAnchor="start"
         fill="#fff"
         stroke="rgba(20,14,6,0.85)"
         strokeWidth="2.2"

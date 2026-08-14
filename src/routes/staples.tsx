@@ -413,6 +413,24 @@ function StapleDepthDiagram({
 
       </g>
 
+      {/* Crown label — horizontal, sitting over the plank body left of the staple */}
+      <text
+        x={stapleX0 - 36}
+        y={floorPx * 0.78}
+        textAnchor="end"
+        fill="#fff"
+        stroke="rgba(20,14,6,0.85)"
+        strokeWidth="2.2"
+        paintOrder="stroke"
+        fontFamily="Assistant, sans-serif"
+        fontWeight="800"
+        fontSize="9"
+      >
+        {STAPLE_CROWN_LABEL} crown
+      </text>
+
+
+
 
       {/* Penetration arrow — from top of subfloor down to the staple tips */}
       <line x1={penArrowX} y1={subfloorTop + 1} x2={penArrowX} y2={stapleY1} stroke="#1a1a1a" strokeWidth="1" />

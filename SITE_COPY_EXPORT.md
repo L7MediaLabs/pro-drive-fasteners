@@ -1,5 +1,5 @@
 # Pro-Drive Fasteners — Site Copy Export
-Generated: 2026-08-15 · Word count: 7181
+Generated: 2026-08-15 · Word count: 7160
 
 > Source: Pro-Drive Fasteners marketing site. English source copy only — nothing here is translated.
 > Excluded by request: interchange / compatible-tool lists (third-party brands and model numbers), code, class names, variable names and file paths.
@@ -128,7 +128,6 @@ Generated: 2026-08-15 · Word count: 7181
 - Enter
 - Search by SKU, name, or gauge…
 - Search products
-- )} aria-label=
 - Close search
 
 ### Video cards
@@ -167,7 +166,6 @@ Generated: 2026-08-15 · Word count: 7181
 - Try again
 - re looking for doesn
 - SET_IN_PRODUCTION
-- ${id}
 - PageView
 
 ### Body copy, bullets, callouts & alt text
@@ -445,8 +443,6 @@ Generated: 2026-08-15 · Word count: 7181
 - Field Tested
 - Reference
 - Staple Subfloor Depth Chart
-- )} uid={`${group.len.replace(/\W+/g,
-- )}-${spec.floor.replace(/\W+/g,
 - "15.5 GA Hardwood Flooring Staples", tagline:
 
 ### Body copy, bullets, callouts & alt text
@@ -559,7 +555,6 @@ Generated: 2026-08-15 · Word count: 7181
 - Request Distributor Pricing
 - Reference
 - L-Cleat Subfloor Depth Chart
-- )}-${spec.floor.replace(/\W+/g,
 - Dimensions
 - 16 GA
 - 18 GA
@@ -1021,7 +1016,6 @@ Generated: 2026-08-15 · Word count: 7181
 - Red
 - Orange
 - Yellow
-- .repeat(s)}<span >{
 
 ### Body copy, bullets, callouts & alt text
 
@@ -2599,8 +2593,8 @@ Excluded entries: **409** tool/model references across the catalog data, plus th
 
 ## Report
 
-- **Total translatable word count: 7181**
-- Total translatable strings: 1271
+- **Total translatable word count: 7160**
+- Total translatable strings: 1266
 - Strings containing numbers / measurements / units: 562
 - Brand / trademark terms excluded from translation: 20 (plus 120 part numbers and 25 third-party brands)
 - Interchange entries excluded: 409
@@ -2609,16 +2603,16 @@ Excluded entries: **409** tool/model references across the catalog data, plus th
 
 | Section | Strings | Words |
 |---|---:|---:|
-| Global / Shared | 129 | 465 |
+| Global / Shared | 127 | 463 |
 | Route: / (Home) | 122 | 742 |
 | Route: /products | 28 | 125 |
-| Route: /staples | 131 | 607 |
-| Route: /l-cleats | 87 | 321 |
+| Route: /staples | 129 | 596 |
+| Route: /l-cleats | 86 | 316 |
 | Route: /brads-finish-nails | 119 | 717 |
 | Route: /divergent-staples | 55 | 230 |
 | Route: /mallets | 154 | 1027 |
 | Route: /split-head-hammer-faces | 17 | 108 |
-| Route: /tapping-rings | 46 | 206 |
+| Route: /tapping-rings | 45 | 203 |
 | Route: /tapping-blocks | 45 | 217 |
 | Route: /tipper-de-tipper | 53 | 291 |
 | Route: /air-tools | 100 | 434 |
@@ -2630,5 +2624,5 @@ Excluded entries: **409** tool/model references across the catalog data, plus th
 | Video library (titles & descriptions) | 10 | 63 |
 | Category & tier labels (product data layer) | 42 | 97 |
 | Product Data (CSV) | 196 | 710 |
-| **TOTAL** | **1491** | **7181** |
+| **TOTAL** | **1485** | **7160** |
 

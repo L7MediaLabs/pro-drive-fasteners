@@ -85,6 +85,13 @@ function EZ2CapBanner() {
           E-Z 2CAP<sup style={{ fontSize: 14, verticalAlign: "super" }}>®</sup> patented feature
         </h2>
         <p className="mt-2" style={{ color: "var(--pd-dark)", fontSize: 16, opacity: 0.9 }}>
+          Our mallet cap design enables quick replacement. When used with the{" "}
+          <Link to="/tipper-de-tipper" style={{ color: "var(--pd-dark)", fontWeight: 800, textDecoration: "underline" }}>
+            TIPPER de Tipper
+          </Link>
+          , makes the process E-Z.
+        </p>
+        <p className="mt-2" style={{ color: "var(--pd-dark)", fontSize: 16, opacity: 0.9 }}>
           The E-Z 2CAP<sup style={{ fontSize: 10, verticalAlign: "super" }}>®</sup> patented design makes
           replacement a breeze with bevel relief to allow BELL of mallet to start.
         </p>
@@ -505,12 +512,10 @@ function Mallets() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-9">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-9">
             {[
-              { src: images.mallets.customLogo[0], label: "Otis Hammer Co.", note: "Customer-branded example" },
-              { src: images.mallets.customLogo[1], label: "Infinite Hardwood Distributors", note: "Customer-branded example" },
-              { src: images.mallets.customLogo[2], label: "Knight Hardwood Flooring Inc.", note: "Customer-branded example" },
-
+              { src: images.mallets.customLogo[0], label: "Infinite Hardwood Distributors", note: "Customer-branded example" },
+              { src: images.mallets.customLogo[1], label: "Knight Hardwood Flooring Inc.", note: "Customer-branded example" },
             ].map((p) => (
               <figure key={p.label} className="bg-white p-3" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
                 <div style={{ position: "relative", paddingTop: "56.25%", background: "#fff" }}>

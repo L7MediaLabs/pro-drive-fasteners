@@ -1,5 +1,5 @@
 # Pro-Drive Fasteners — Site Copy Export (cleaned)
-Generated: 2026-08-15 · Unique translatable words: 7611 · Unique strings: 1176
+Generated: 2026-08-15 · Unique translatable words: 6779 · Unique strings: 1168
 
 > Source: Pro-Drive Fasteners marketing site. English source copy only — nothing here is translated.
 > **Cleanup pass applied:** SVG path data, CSS/style values, font stacks, Tailwind class strings,
@@ -1330,14 +1330,6 @@ Generated: 2026-08-15 · Unique translatable words: 7611 · Unique strings: 1176
 - • Heavy duty construction holds up to 8 mallets
 - • Displayable on any type of background
 - Pro-Drive branded mallet display holding 8 mallets and poly caps
-- M10430 11559 c-120 -14 -268 -46 -526 -114 -133 -36 -358 -94 -501 -129 -321 -79 -366 -101 -418 -205 -16 -32 -320 -952 -372 -1126 -63 -209 -91 -623 -55 -805 26 -129 65 -279 123 -467 32 -106 126 -432 208 -725 245 -872 258 -920 361 -1253 98 -316 187 -613 195 -648 23 -102 154 -536 175 -583 82 -181 250 -363 427 -462 227 -126 345 -158 563 -149 433 17 831 274 978 633 92 223 1094 3278 1151 3509 65 262 67 580 6 850 -75 330 -316 1177 -348 1222 -56 79 -61 81 -737 273 -450 127 -595 162 -752 179 -111 13 -368 12 -478 0z m455 -279 c612 -71 1158 -445 1423 -975 296 -594 248 -1299 -130 -1871 -148 -224 -369 -414 -694 -599 -180 -102 -268 -225 -284 -396 -7 -81 -27 -886 -24 -977 1 -19 16 -54 37 -85 161 -243 163 -562 6 -803 -178 -273 -499 -400 -817 -324 -308 74 -532 371 -534 710 -1 159 28 255 131 420 46 75 46 75 53 585 7 567 5 596 -53 706 -43 80 -121 149 -258 227 -145 83 -272 181 -401 311 -375 378 -569 981 -489 1516 83 551 422 1042 913 1322 61 35 113 63 118 63 4 0 36 13 70 29 272 124 621 176 933 141z m-1598 -161 c89 -43 123 -170 62 -235 -100 -108 -269 -47 -269 96 0 75 32 122 97 146 51 18 60 17 110 -7z m2961 -49 c126 -77 82 -266 -65 -278 -73 -6 -115 15 -143 73 -67 139 79 283 208 205z m-2501 -3869 c53 -28 72 -147 34 -205 -93 -141 -325 -40 -282 122 25 93 152 135 248 83z m1938 -20 c135 -76 73 -273 -86 -275 -139 -2 -200 184 -88 267 52 38 115 41 174 8z
-- M3165 10340 c-1189 -121 -1961 -1286 -1589 -2399 274 -820 1102 -1345 1972 -1250 1290 140 2042 1493 1467 2639 -338 674 -1093 1086 -1850 1010z m343 -280 c695 -73 1241 -560 1394 -1242 30 -136 33 -451 5 -591 -127 -626 -604 -1100 -1247 -1238 -152 -33 -477 -33 -627 -1 -723 157 -1231 737 -1270 1450 -50 942 790 1723 1745 1622z
-- M6542 8405 c-164 -36 -338 -170 -410 -315 -135 -276 -50 -599 202 -768 116 -78 184 -97 341 -97 157 0 225 19 341 97 316 211 358 643 89 914 -152 154 -354 214 -563 169z m300 -232 c246 -115 312 -418 133 -612 -168 -181 -431 -182 -597 -2 -238 257 -43 662 312 648 70 -2 97 -8 152 -34z
-- M13840 7743 c-967 -70 -1587 -1061 -1223 -1953 384 -937 1612 -1183 2328 -466 851 851 324 2303 -875 2415 -112 11 -136 11 -230 4z m176 -182 c118 -72 50 -256 -89 -238 -82 11 -132 99 -101 177 30 74 121 103 190 61z m44 -461 c517 -82 815 -632 594 -1099 -307 -652 -1241 -593 -1471 94 -38 113 -40 331 -5 445 122 388 490 622 882 560z m-1056 -1204 c94 -39 105 -185 16 -231 -136 -70 -267 98 -157 202 49 46 83 53 141 29z m1973 -31 c109 -72 59 -238 -71 -238 -77 0 -126 53 -126 136 0 100 112 158 197 102z
-- M6563 5800 c-362 -77 -556 -460 -397 -784 146 -298 536 -405 816 -224 458 296 265 991 -282 1013 -52 2 -114 0 -137 -5z m281 -188 c87 -41 155 -106 197 -189 48 -94 50 -234 4 -328 -149 -307 -591 -307 -740 0 -43 89 -44 232 -1 320 36 72 94 137 155 173 25 14 49 31 53 37 4 5 8 7 8 4 0 -3 21 0 48 8 78 22 199 11 276 -25z
-- M3063 5555 c-1138 -173 -1881 -1233 -1637 -2334 86 -384 309 -760 607 -1022 768 -674 1934 -654 2675 45 804 760 806 2027 5 2787 -272 257 -594 424 -975 505 -154 32 -519 43 -675 19z m547 -281 c860 -130 1482 -899 1419 -1752 -75 -1004 -1041 -1716 -2038 -1501 -51 12 -101 22 -110 24 -9 2 -61 20 -116 40 -556 208 -955 666 -1075 1232 -30 142 -37 392 -16 546 76 536 418 1007 911 1251 324 161 666 214 1025 160z
-- M10510 3793 c-640 -84 -912 -843 -465 -1297 417 -423 1146 -230 1301 344 25 90 25 291 0 380 -72 268 -288 483 -552 550 -76 20 -222 32 -284 23z m271 -235 c387 -142 507 -622 227 -907 -397 -405 -1079 -55 -963 494 69 325 427 526 736 413z
-- M13905 3624 c-224 -28 -403 -136 -509 -307 -157 -254 -121 -581 87 -789 299 -299 791 -255 1022 91 227 343 85 797 -300 958 -78 32 -227 56 -300 47z m195 -180 c309 -86 452 -456 279 -725 -264 -412 -919 -231 -919 254 0 333 311 562 640 471z
 - ORK-6 Maintenance Kit — parts diagram shown to scale
 - Maintenance kits engineered for the most common flooring tools, plus merchandising hardware that puts the Pro-Drive line front and center in your store.
 - MADE IN THE USA ORK6-KIT ORK-6 Maintenance Kit Complete O-ring and gasket kit for MIII staplers, nailers, and cleat tools.
@@ -2241,7 +2233,7 @@ Active SKUs with translatable fields: 120. Part numbers (SKU ids) are **not** tr
 > They are indexed here only so the translator knows which strings carry numbers, fractions,
 > gauges or units that must not be converted, localised or re-rounded.
 
-Distinct number-bearing strings: **546**
+Distinct number-bearing strings: **538**
 
 - © 2026 Pro-Drive Fasteners®. All rights reserved.
 - ⚠️ CA Prop 65:
@@ -2623,14 +2615,6 @@ Distinct number-bearing strings: **546**
 - O-RING (LOWER) × 2
 - • Heavy duty construction holds up to 8 mallets
 - Pro-Drive branded mallet display holding 8 mallets and poly caps
-- M10430 11559 c-120 -14 -268 -46 -526 -114 -133 -36 -358 -94 -501 -129 -321 -79 -366 -101 -418 -205 -16 -32 -320 -952 -372 -1126 -63 -209 -91 -623 -55 -805 26 -129 65 -279 123 -467 32 -106 126 -432 208 -725 245 -872 258 -920 361 -1253 98 -316 187 -613 195 -648 23 -102 154 -536 175 -583 82 -181 250 -363 427 -462 227 -126 345 -158 563 -149 433 17 831 274 978 633 92 223 1094 3278 1151 3509 65 262 67 580 6 850 -75 330 -316 1177 -348 1222 -56 79 -61 81 -737 273 -450 127 -595 162 -752 179 -111 13 -368 12 -478 0z m455 -279 c612 -71 1158 -445 1423 -975 296 -594 248 -1299 -130 -1871 -148 -224 -369 -414 -694 -599 -180 -102 -268 -225 -284 -396 -7 -81 -27 -886 -24 -977 1 -19 16 -54 37 -85 161 -243 163 -562 6 -803 -178 -273 -499 -400 -817 -324 -308 74 -532 371 -534 710 -1 159 28 255 131 420 46 75 46 75 53 585 7 567 5 596 -53 706 -43 80 -121 149 -258 227 -145 83 -272 181 -401 311 -375 378 -569 981 -489 1516 83 551 422 1042 913 1322 61 35 113 63 118 63 4 0 36 13 70 29 272 124 621 176 933 141z m-1598 -161 c89 -43 123 -170 62 -235 -100 -108 -269 -47 -269 96 0 75 32 122 97 146 51 18 60 17 110 -7z m2961 -49 c126 -77 82 -266 -65 -278 -73 -6 -115 15 -143 73 -67 139 79 283 208 205z m-2501 -3869 c53 -28 72 -147 34 -205 -93 -141 -325 -40 -282 122 25 93 152 135 248 83z m1938 -20 c135 -76 73 -273 -86 -275 -139 -2 -200 184 -88 267 52 38 115 41 174 8z
-- M3165 10340 c-1189 -121 -1961 -1286 -1589 -2399 274 -820 1102 -1345 1972 -1250 1290 140 2042 1493 1467 2639 -338 674 -1093 1086 -1850 1010z m343 -280 c695 -73 1241 -560 1394 -1242 30 -136 33 -451 5 -591 -127 -626 -604 -1100 -1247 -1238 -152 -33 -477 -33 -627 -1 -723 157 -1231 737 -1270 1450 -50 942 790 1723 1745 1622z
-- M6542 8405 c-164 -36 -338 -170 -410 -315 -135 -276 -50 -599 202 -768 116 -78 184 -97 341 -97 157 0 225 19 341 97 316 211 358 643 89 914 -152 154 -354 214 -563 169z m300 -232 c246 -115 312 -418 133 -612 -168 -181 -431 -182 -597 -2 -238 257 -43 662 312 648 70 -2 97 -8 152 -34z
-- M13840 7743 c-967 -70 -1587 -1061 -1223 -1953 384 -937 1612 -1183 2328 -466 851 851 324 2303 -875 2415 -112 11 -136 11 -230 4z m176 -182 c118 -72 50 -256 -89 -238 -82 11 -132 99 -101 177 30 74 121 103 190 61z m44 -461 c517 -82 815 -632 594 -1099 -307 -652 -1241 -593 -1471 94 -38 113 -40 331 -5 445 122 388 490 622 882 560z m-1056 -1204 c94 -39 105 -185 16 -231 -136 -70 -267 98 -157 202 49 46 83 53 141 29z m1973 -31 c109 -72 59 -238 -71 -238 -77 0 -126 53 -126 136 0 100 112 158 197 102z
-- M6563 5800 c-362 -77 -556 -460 -397 -784 146 -298 536 -405 816 -224 458 296 265 991 -282 1013 -52 2 -114 0 -137 -5z m281 -188 c87 -41 155 -106 197 -189 48 -94 50 -234 4 -328 -149 -307 -591 -307 -740 0 -43 89 -44 232 -1 320 36 72 94 137 155 173 25 14 49 31 53 37 4 5 8 7 8 4 0 -3 21 0 48 8 78 22 199 11 276 -25z
-- M3063 5555 c-1138 -173 -1881 -1233 -1637 -2334 86 -384 309 -760 607 -1022 768 -674 1934 -654 2675 45 804 760 806 2027 5 2787 -272 257 -594 424 -975 505 -154 32 -519 43 -675 19z m547 -281 c860 -130 1482 -899 1419 -1752 -75 -1004 -1041 -1716 -2038 -1501 -51 12 -101 22 -110 24 -9 2 -61 20 -116 40 -556 208 -955 666 -1075 1232 -30 142 -37 392 -16 546 76 536 418 1007 911 1251 324 161 666 214 1025 160z
-- M10510 3793 c-640 -84 -912 -843 -465 -1297 417 -423 1146 -230 1301 344 25 90 25 291 0 380 -72 268 -288 483 -552 550 -76 20 -222 32 -284 23z m271 -235 c387 -142 507 -622 227 -907 -397 -405 -1079 -55 -963 494 69 325 427 526 736 413z
-- M13905 3624 c-224 -28 -403 -136 -509 -307 -157 -254 -121 -581 87 -789 299 -299 791 -255 1022 91 227 343 85 797 -300 958 -78 32 -227 56 -300 47z m195 -180 c309 -86 452 -456 279 -725 -264 -412 -919 -231 -919 254 0 333 311 562 640 471z
 - ORK-6 Maintenance Kit — parts diagram shown to scale
 - Maintenance kits engineered for the most common flooring tools, plus merchandising hardware that puts the Pro-Drive line front and center in your store.
 - MADE IN THE USA ORK6-KIT ORK-6 Maintenance Kit Complete O-ring and gasket kit for MIII staplers, nailers, and cleat tools.
@@ -2848,10 +2832,12 @@ Excluded entries: **409** tool/model references across the catalog data, plus th
 
 ## Report
 
-- **True unique translatable words:** 7611
-- **True unique strings:** 1176
-- **Previous reported figure:** 7160 words — the difference (-451 words) is non-copy content stripped in this cleanup (SVG path data, CSS/font/Tailwind values, keyboard identifiers, code fragments, meta values, Drive file IDs, interchange strings) plus duplicate strings that were previously counted more than once.
-- **Distinct strings containing numbers, measurements or units:** 546 (indexed above, already included in the totals — not extra volume)
+- **True unique translatable words:** 6779
+- **True unique strings:** 1168
+- **Non-copy content stripped in this cleanup:** 109 strings / 1212 words (SVG path data, CSS & font values, Tailwind classes, keyboard identifiers, code fragments, meta/technical values, Google Drive file IDs, interchange strings)
+- **Duplicate strings no longer double-counted:** 210 repeat listings
+- **Previous reported figure:** 7160 words — the difference (381 words) is non-copy content stripped in this cleanup (SVG path data, CSS/font/Tailwind values, keyboard identifiers, code fragments, meta values, Drive file IDs, interchange strings) plus duplicate strings that were previously counted more than once.
+- **Distinct strings containing numbers, measurements or units:** 538 (indexed above, already included in the totals — not extra volume)
 
 ### Word count per route / section
 
@@ -2870,7 +2856,7 @@ Excluded entries: **409** tool/model references across the catalog data, plus th
 | Route: /tapping-blocks | 33 | 190 | 44 |
 | Route: /tipper-de-tipper | 45 | 280 | 50 |
 | Route: /air-tools | 95 | 497 | 99 |
-| Route: /accessories | 60 | 1124 | 64 |
+| Route: /accessories | 52 | 292 | 56 |
 | Route: /videos | 5 | 42 | 6 |
 | Route: /about | 19 | 209 | 22 |
 | Route: /contact | 23 | 98 | 24 |
@@ -2878,4 +2864,4 @@ Excluded entries: **409** tool/model references across the catalog data, plus th
 | Video library (titles & descriptions) | 7 | 55 | 10 |
 | Category & tier labels (product data layer) | 14 | 57 | 39 |
 | Product Data (CSV) | 147 | 721 | 193 |
-| **Total** | **1176** | **7611** | **1386** |
+| **Total** | **1168** | **6779** | **1378** |

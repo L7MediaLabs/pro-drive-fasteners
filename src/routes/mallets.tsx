@@ -264,7 +264,7 @@ function Mallets() {
               <BulletBlock
                 kicker="Description"
                 bullets={[
-                  "Available with white or gray mallet caps*",
+                  "Available with White, Black or Gray mallet caps*",
                   "Made in the USA and crafted from 100% premium hickory",
                   "Comfortable, easy-to-grip 6-ring wood handle*",
                   "Made for use with pneumatic staplers or nailers*",

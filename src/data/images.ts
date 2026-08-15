@@ -177,7 +177,7 @@ export const images = {
     polyColors:  u.malletsP24_02,
     polyDetail:  u.malletsP24_03,
     heritageLath: malletHeritageLath.url,
-    customLogo: [malletLogoOtis.url, malletLogoInfinite.url, malletLogoKnight.url],
+    customLogo: [malletLogoInfinite.url, malletLogoKnight.url],
     misc1:       u.malletsP21_01,
     misc2:       u.malletsP22_08,
     galleher:    [u.malletsP5_01, u.malletsP5_02, u.malletsP5_03, u.malletsP5_05],

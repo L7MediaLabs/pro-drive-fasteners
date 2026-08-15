@@ -126,7 +126,7 @@ function HeroSlider() {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Pro-Drive Fasteners® | Pro-Driven Industrial Products and Solutions™" },
+      { title: "Pro-Drive Fasteners® | Pro-Driven Flooring Products and Solutions™" },
       { name: "description", content: "Premium fastening solutions for flooring professionals. 50+ years. Guaranteed to fit every major brand tool. Made in the USA." },
       { property: "og:title", content: "Pro-Drive Fasteners®" },
       { property: "og:description", content: "Premium fastening solutions for flooring professionals." },
@@ -228,7 +228,7 @@ function Home() {
         <div className="px-[6%] pt-20 pb-18 relative z-10" style={{ paddingBottom: 72 }}>
           <div className="flex items-center gap-4 mb-7">
             <span style={{ display: "inline-block", width: 40, height: 2, background: "var(--pd-dark)" }} />
-            <span className="pd-eyebrow" style={{ color: "var(--pd-gold)" }}>Pro-Driven Industrial Products <span style={{ whiteSpace: "nowrap" }}>and Solutions™</span></span>
+            <span className="pd-eyebrow" style={{ color: "var(--pd-gold)" }}>Pro-Driven Flooring Products <span style={{ whiteSpace: "nowrap" }}>and Solutions™</span></span>
           </div>
           <h1
             className="pd-display"

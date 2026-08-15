@@ -69,7 +69,6 @@ import deadblowOrangeBlack from "../assets/products/mallets/deadblow_200l_o_bl.j
 import deadblowOrangeBrown from "../assets/products/mallets/deadblow_200l_obr.jpg.asset.json";
 import deadblow200l2000   from "../assets/products/mallets/deadblow_200l_2000_photo.jpg.asset.json";
 import deadblow200l1000   from "../assets/products/mallets/deadblow_200l_1000_photo.jpg.asset.json";
-import malletLogoOtis     from "../assets/products/mallets/mallet_logo_otis.jpg.asset.json";
 import malletLogoInfinite from "../assets/products/mallets/mallet_logo_infinite.jpg.asset.json";
 import malletLogoKnight   from "../assets/products/mallets/mallet_logo_knight.jpg.asset.json";
 import malletHeritageLath from "../assets/products/mallets/mallet_heritage_lath.jpg.asset.json";
@@ -177,7 +176,7 @@ export const images = {
     polyColors:  u.malletsP24_02,
     polyDetail:  u.malletsP24_03,
     heritageLath: malletHeritageLath.url,
-    customLogo: [malletLogoOtis.url, malletLogoInfinite.url, malletLogoKnight.url],
+    customLogo: [malletLogoInfinite.url, malletLogoKnight.url],
     misc1:       u.malletsP21_01,
     misc2:       u.malletsP22_08,
     galleher:    [u.malletsP5_01, u.malletsP5_02, u.malletsP5_03, u.malletsP5_05],

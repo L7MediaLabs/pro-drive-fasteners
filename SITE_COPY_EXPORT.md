@@ -2836,7 +2836,7 @@ Excluded entries: **409** tool/model references across the catalog data, plus th
 - **True unique strings:** 1168
 - **Non-copy content stripped in this cleanup:** 109 strings / 1212 words (SVG path data, CSS & font values, Tailwind classes, keyboard identifiers, code fragments, meta/technical values, Google Drive file IDs, interchange strings)
 - **Duplicate strings no longer double-counted:** 210 repeat listings
-- **Previous reported figure:** 7160 words — the difference (381 words) is non-copy content stripped in this cleanup (SVG path data, CSS/font/Tailwind values, keyboard identifiers, code fragments, meta values, Drive file IDs, interchange strings) plus duplicate strings that were previously counted more than once.
+- **Versus the previous export:** the earlier pass reported 7160 words. Measured with this pass’ tokenizer the same pre-cleanup body was 8518 words across 1487 listings; removing non-copy content (1212 words) and collapsing duplicate listings brings the true figure to 6779 words across 1168 unique strings.
 - **Distinct strings containing numbers, measurements or units:** 538 (indexed above, already included in the totals — not extra volume)
 
 ### Word count per route / section

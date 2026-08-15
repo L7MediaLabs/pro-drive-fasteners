@@ -69,7 +69,6 @@ import deadblowOrangeBlack from "../assets/products/mallets/deadblow_200l_o_bl.j
 import deadblowOrangeBrown from "../assets/products/mallets/deadblow_200l_obr.jpg.asset.json";
 import deadblow200l2000   from "../assets/products/mallets/deadblow_200l_2000_photo.jpg.asset.json";
 import deadblow200l1000   from "../assets/products/mallets/deadblow_200l_1000_photo.jpg.asset.json";
-import malletLogoOtis     from "../assets/products/mallets/mallet_logo_otis.jpg.asset.json";
 import malletLogoInfinite from "../assets/products/mallets/mallet_logo_infinite.jpg.asset.json";
 import malletLogoKnight   from "../assets/products/mallets/mallet_logo_knight.jpg.asset.json";
 import malletHeritageLath from "../assets/products/mallets/mallet_heritage_lath.jpg.asset.json";

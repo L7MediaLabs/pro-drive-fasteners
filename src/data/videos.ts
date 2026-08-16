@@ -59,8 +59,8 @@ export const VIDEOS: SiteVideo[] = [
     desc: "A shorter cut of the glue-down tapping ring demonstration, covering the same install steps in about 30 seconds less. English only \u2014 the translated versions are made from the full demo below.",
     portrait: true,
     product: {
-      sku: "100-TAP-RING",
-      name: "Pro-Drive Tapping Rings",
+      sku: "V-6RING-Y",
+      name: "Yellow Tapping Ring",
       href: "/tapping-rings",
     },
   },

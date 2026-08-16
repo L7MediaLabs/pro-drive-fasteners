@@ -160,6 +160,10 @@ import divergent5418b     from "../assets/products/divergent/divergent_5418_b.jp
 
 import accessoriesOrk6    from "../assets/products/accessories/accessories_ork6.jpg";
 
+// Client-supplied annotated feature graphics (edits 8-12-2026 document).
+import malletEz2capFeature  from "../assets/products/mallets/ez2cap-patented-feature.png.asset.json";
+import malletSure2lockDetail from "../assets/products/mallets/sure2lock-detail.png.asset.json";
+
 // ─── Image manifest ───────────────────────────────────────────────────────────
 export const images = {
   mallets: {

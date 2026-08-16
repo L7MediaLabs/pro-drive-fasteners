@@ -29,7 +29,18 @@ const cols = [
   },
 ];
 
+/* Routes where the Electro Galvanized corrosion note must NOT render.
+   L-Cleats are not described as E-G Galvanized anywhere in Pro-Drive's catalog
+   (distributor lists them as bright basic steel with an antirust treatment), and
+   we removed the E-G claim from the L-Cleat spec charts. Showing a warning about
+   a galvanized coating on that page would imply a finish the product may not have.
+   Do not restore it here without a written finish spec from the client. */
+const HIDE_EG_NOTE_ROUTES = ["/l-cleats"];
+
 export function Footer() {
+  const pathname = useRouterState({ select: s => s.location.pathname });
+  const showEgNote = !HIDE_EG_NOTE_ROUTES.includes(pathname.replace(/\/+$/, "") || "/");
+
   return (
     <footer style={{ background: "var(--pd-dark)" }} className="text-white/70">
       <div className="px-[6%] pt-14 pb-8">

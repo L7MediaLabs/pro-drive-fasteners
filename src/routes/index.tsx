@@ -425,7 +425,9 @@ function Home() {
                 className="mt-2"
                 style={{ color: "#fff", fontWeight: 800, fontSize: 22, letterSpacing: "0.02em" }}
               >
-                {g.name}<sup className="pd-tm">™</sup>
+                {/* No ™ on Pro-Drive's own grade names: protection is on the
+                    badge artwork, not the name text (Carlton, Aug 13). */}
+                {g.name}
               </div>
               <p
                 className="mt-3"

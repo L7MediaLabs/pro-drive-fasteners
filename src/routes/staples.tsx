@@ -18,6 +18,7 @@ import {
   STAPLES_15_5, STAPLES_15_Q, STAPLES_16_N, STAPLES_18_M, STAPLES_18_L,
   pickRelated,
 } from "../data/products";
+import { StapleMedia, ShelfPhoto, maxLenIn } from "../components/productMedia";
 import gradeContractorAsset from "../assets/badge-contractor-grade.png.asset.json";
 const gradeContractor = gradeContractorAsset.url;
 import { images } from "../data/images";
@@ -41,6 +42,11 @@ type TabKey = "155" | "15q" | "16n" | "18m" | "18l";
 const MWIRE_TOOLS = "Duo-Fast W-1800;Josef Kihlberg G4450;Prebena G;Senco M;Spotnails 6800".split(";");
 const LWIRE_TOOLS = "ATRO 90;BeA 90;Duo-Fast 1800;Prebena EB;Haubold KL 6000;Hitachi N3804;Porter Cable NS100;Porter Cable NS150A;Senco L;Spotnails 4800;JK 781".split(";");
 
+// One carton photo per gauge section — the "see it on the shelf" reference the
+// client asked for. Gauges with no carton photography on file get `null` and
+// simply show no shelf block (never another gauge's box).
+type ShelfRef = { src: string; label: string; caption: string } | null;
+
 const tabData = {
   "155": {
     label: "15.5 GA Hardwood",
@@ -58,6 +64,11 @@ const tabData = {
       { src: images.staples.s155Strip2inB, caption: "2\" Strip · Second View" },
       { src: images.staples.hero, caption: "Bulk Pack" },
     ],
+    shelf: {
+      src: images.staples.s155_masterpack,
+      label: "15.5 GA Packaging — Master Carton",
+      caption: "Every 15.5 GA length ships in this carton family. Item number and count are printed on the end panel.",
+    } as ShelfRef,
   },
   "15q": {
     label: "15 GA Q-Wire",
@@ -75,6 +86,11 @@ const tabData = {
       { src: images.staples.q15BulkPack, caption: "2-1/2\" Bulk Pack" },
       { src: images.staples.gauge15Banner, caption: "Collated" },
     ],
+    shelf: {
+      src: images.staples.q15BulkPack,
+      label: "15 GA Q-Wire — Bulk Carton",
+      caption: "Bulk pack carton as it ships and stocks.",
+    } as ShelfRef,
   },
   "16n": {
     label: "16 GA N-Wire",
@@ -89,6 +105,8 @@ const tabData = {
     ],
     galleryHero: { src: images.staples.gauge15Banner, caption: "N-Wire Strip" },
     galleryPair: [],
+    // No 16 GA N-Wire carton photography on file yet.
+    shelf: null as ShelfRef,
   },
   "18m": {
     label: "18 GA M-Wire",
@@ -103,6 +121,8 @@ const tabData = {
     ],
     galleryHero: { src: images.staples.narrowCrown18, caption: "18 GA Narrow Crown Strip" },
     galleryPair: [],
+    // No 18 GA M-Wire carton photography on file yet.
+    shelf: null as ShelfRef,
   },
   "18l": {
     label: "18 GA L-Wire",
@@ -117,6 +137,8 @@ const tabData = {
     ],
     galleryHero: { src: images.staples.narrowCrown18, caption: "18 GA Narrow Crown Strip" },
     galleryPair: [],
+    // No 18 GA L-Wire carton photography on file yet.
+    shelf: null as ShelfRef,
   },
 } as const;
 
@@ -666,6 +688,9 @@ function Staples() {
   });
 
   const g = tabData[tab];
+  // Shared pixels-per-inch basis for this gauge: every card in the tab is drawn
+  // against the longest staple in the family, so lengths compare directly.
+  const familyMax = maxLenIn([...g.products]);
 
   const allShownIds = [
     ...STAPLES_15_5, ...STAPLES_15_Q, ...STAPLES_16_N, ...STAPLES_18_M, ...STAPLES_18_L,
@@ -736,7 +761,10 @@ function Staples() {
           )}
         </SplitLayout>
 
-        {/* Full-width product grid grouped by pack tier */}
+        {/* Full-width product grid grouped by pack tier.
+            Editorial pattern (approved on /l-cleats): the carton photo appears
+            ONCE per gauge as shelf reference, and each card leads with the
+            staple itself drawn from its own crown and leg dimensions. */}
         <div className="mt-12">
           <div className="flex items-baseline gap-3 mb-8">
             <div className="pd-label" style={{ color: "var(--pd-gold)", fontSize: 11 }}>Product Line</div>
@@ -749,9 +777,20 @@ function Staples() {
               style={{ borderBottom: "1px solid rgba(0,0,0,0.1)", transform: "translateY(-4px)" }}
             />
           </div>
+          {g.shelf && (
+            <div className="mb-8" style={{ maxWidth: 340 }}>
+              <ShelfPhoto
+                src={g.shelf.src}
+                alt={`${g.label} flooring staple packaging`}
+                label={g.shelf.label}
+                caption={g.shelf.caption}
+              />
+            </div>
+          )}
           <ProductTierSections
             products={g.products}
             cols={4}
+            media={p => <StapleMedia sku={p.id} familyMax={familyMax} />}
             descriptions={{
               "CONTRACTOR BULK CARTONS": "Full-scale cartons for high-volume professional crews and large flooring jobs.",
               "JOB PACKS": "Mid-size packs built for production job sites and repeat installs.",

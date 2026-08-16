@@ -49,6 +49,7 @@ export function ProductCard({
   const seen = useRef(false);
   const [zoom, setZoom] = useState(false);
   const [flash, setFlash] = useState(false);
+  const mediaNode = media?.(product) ?? null;
 
   useEffect(() => {
     if (!ref.current || seen.current) return;
@@ -103,12 +104,14 @@ export function ProductCard({
       onMouseLeave={e => { if (!flash) e.currentTarget.style.boxShadow = ""; }}
     >
 
-      {media ? (
+      {/* A `media` override may opt out per SKU by returning null — that SKU then
+          falls back to its own photograph, or to the neutral placeholder. */}
+      {mediaNode ? (
         <div
           className="flex items-center justify-center w-full"
           style={{ height: 170, background: "#fafaf8", borderBottom: "1px solid rgba(0,0,0,0.05)" }}
         >
-          {media(product)}
+          {mediaNode}
         </div>
       ) : product.image ? (
         // Click-to-enlarge: card thumbnails are ~213px wide, too small to read
@@ -264,10 +267,12 @@ export function ProductTierSections({
   products,
   cols = 4,
   descriptions,
+  media,
 }: {
   products: Product[];
   cols?: 3 | 4;
   descriptions?: Record<string, string>;
+  media?: (p: Product) => React.ReactNode;
 }) {
   const grouped = new Map<string, Product[]>();
   const untiered: Product[] = [];
@@ -312,7 +317,7 @@ export function ProductTierSections({
                 </span>
               </div>
             </div>
-            <ProductGrid products={items} cols={cols} showPackTier={false} />
+            <ProductGrid products={items} cols={cols} showPackTier={false} media={media} />
           </section>
         );
       })}
@@ -325,7 +330,7 @@ export function ProductTierSections({
               Standard packaging options for general use.
             </p>
           </div>
-          <ProductGrid products={untiered} cols={cols} showPackTier={false} />
+          <ProductGrid products={untiered} cols={cols} showPackTier={false} media={media} />
         </section>
       )}
     </div>

@@ -758,7 +758,10 @@ function Staples() {
           )}
         </SplitLayout>
 
-        {/* Full-width product grid grouped by pack tier */}
+        {/* Full-width product grid grouped by pack tier.
+            Editorial pattern (approved on /l-cleats): the carton photo appears
+            ONCE per gauge as shelf reference, and each card leads with the
+            staple itself drawn from its own crown and leg dimensions. */}
         <div className="mt-12">
           <div className="flex items-baseline gap-3 mb-8">
             <div className="pd-label" style={{ color: "var(--pd-gold)", fontSize: 11 }}>Product Line</div>
@@ -771,9 +774,20 @@ function Staples() {
               style={{ borderBottom: "1px solid rgba(0,0,0,0.1)", transform: "translateY(-4px)" }}
             />
           </div>
+          {g.shelf && (
+            <div className="mb-8" style={{ maxWidth: 340 }}>
+              <ShelfPhoto
+                src={g.shelf.src}
+                alt={`${g.label} flooring staple packaging`}
+                label={g.shelf.label}
+                caption={g.shelf.caption}
+              />
+            </div>
+          )}
           <ProductTierSections
             products={g.products}
             cols={4}
+            media={p => <StapleMedia sku={p.id} familyMax={familyMax} />}
             descriptions={{
               "CONTRACTOR BULK CARTONS": "Full-scale cartons for high-volume professional crews and large flooring jobs.",
               "JOB PACKS": "Mid-size packs built for production job sites and repeat installs.",

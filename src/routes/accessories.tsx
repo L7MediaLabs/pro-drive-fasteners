@@ -9,9 +9,9 @@ import { ACCESSORIES_LIST, pickRelated } from "../data/products";
 export const Route = createFileRoute("/accessories")({
   head: () => ({
     meta: [
-      { title: "Accessories | Pro-Drive Fasteners®" },
+      { title: "Accessories | Pro-Drive Fasteners" },
       { name: "description", content: "ORK-6 Maintenance Kit for MIII staplers, nailers & cleat tools. Mallet displays and Pro-Drive merchandising solutions." },
-      { property: "og:title", content: "Accessories — Pro-Drive Fasteners®" },
+      { property: "og:title", content: "Accessories — Pro-Drive Fasteners" },
       { property: "og:description", content: "ORK-6 Maintenance Kit and retail display solutions." },
       { property: "og:image", content: ork6Pkg.url },
       { property: "twitter:image", content: ork6Pkg.url },
@@ -150,7 +150,7 @@ function Acc() {
               Items shown to scale · Screws and washers not pictured
             </div>
             <div className="pd-label" style={{ color: "var(--pd-dark)", fontSize: 10 }}>
-              ORK6-KIT · Pro-Drive Fasteners®
+              ORK6-KIT · Pro-Drive Fasteners
             </div>
           </div>
         </div>

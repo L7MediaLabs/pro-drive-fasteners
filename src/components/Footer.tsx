@@ -13,7 +13,7 @@ const cols = [
       { label: "Mallets & Caps", to: "/mallets" },
       { label: "Tapping Rings", to: "/tapping-rings" },
       { label: "Tapping Blocks", to: "/tapping-blocks" },
-      { label: "Tipper-De-Tipper™", to: "/tipper-de-tipper" },
+      { label: "Tipper-De-Tipper", to: "/tipper-de-tipper" },
       { label: "Air Tools & Hoses", to: "/air-tools" },
       { label: "Accessories", to: "/accessories" },
     ],
@@ -37,7 +37,7 @@ export function Footer() {
           <div>
             <img src={logoAsset.url} alt="Pro-Drive Fasteners" style={{ height: 56, width: "auto", filter: "drop-shadow(0 4px 16px rgba(255,205,0,0.18))" }} />
             <div className="pd-label mt-4" style={{ color: "rgba(255,205,0,0.4)" }}>
-              Pro-Driven Flooring Products and Solutions™
+              Pro-Driven Flooring Products and Solutions
             </div>
             <div className="mt-5 text-sm space-y-1 text-white/60">
               <div>Sales: sales@pro-drivefasteners.com</div>
@@ -102,7 +102,7 @@ export function Footer() {
             </a>
           </p>
           <p style={{ fontStyle: "italic" }}>
-            This product is made and sold by Pro-Drive Fasteners® and has no relationship with any of the other
+            This product is made and sold by Pro-Drive Fasteners and has no relationship with any of the other
             companies whose trademarks or item numbers are mentioned
           </p>
         </div>
@@ -113,7 +113,7 @@ export function Footer() {
           style={{ borderTop: "1px solid rgba(255,205,0,0.12)" }}
         >
           <div className="text-white/50 flex items-center gap-4 flex-wrap">
-            <span>© 2026 Pro-Drive Fasteners®. All rights reserved.</span>
+            <span>© 2026 Pro-Drive Fasteners. All rights reserved.</span>
             <span style={{ color: "rgba(255,255,255,0.2)" }}>·</span>
             <Link to="/auth" style={{ color: "rgba(255,205,0,0.6)" }} className="hover:!text-[color:var(--pd-yellow)]">Client Login</Link>
           </div>

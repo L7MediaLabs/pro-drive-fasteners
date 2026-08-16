@@ -8,9 +8,9 @@ import { NAILERS, HOSES, FITTINGS, pickRelated } from "../data/products";
 export const Route = createFileRoute("/air-tools")({
   head: () => ({
     meta: [
-      { title: "Air Tools & Hoses | Pro-Drive Fasteners®" },
-      { name: "description", content: "Professional-grade 16 GA and 18 GA brad nailers, E-Z Connect® braided air hoses, and industrial brass fittings." },
-      { property: "og:title", content: "Air Tools & Hoses — Pro-Drive Fasteners®" },
+      { title: "Air Tools & Hoses | Pro-Drive Fasteners" },
+      { name: "description", content: "Professional-grade 16 GA and 18 GA brad nailers, E-Z Connect braided air hoses, and industrial brass fittings." },
+      { property: "og:title", content: "Air Tools & Hoses — Pro-Drive Fasteners" },
       { property: "og:description", content: "Contractor-grade nailers, hoses, and fittings engineered for daily jobsite use." },
       { property: "og:image", content: images.airTools.hoseGroup },
       { property: "twitter:image", content: images.airTools.hoseGroup },
@@ -54,7 +54,7 @@ const hoses = [
   },
   {
     id: "BLUE-AIR250-50",
-    name: "E-Z Connect® Hose",
+    name: "E-Z Connect Hose",
     color: "Blue · 50 ft",
     swatch: "#2D8AC8",
     bg: "linear-gradient(135deg, rgba(45,138,200,0.10), rgba(45,138,200,0.02))",
@@ -67,7 +67,7 @@ const hoses = [
   },
   {
     id: "RED-AIR250-50R",
-    name: "E-Z Connect® Hose",
+    name: "E-Z Connect Hose",
     color: "Red · 50 ft",
     swatch: "#D43D2E",
     bg: "linear-gradient(135deg, rgba(212,61,46,0.10), rgba(212,61,46,0.02))",
@@ -80,7 +80,7 @@ const hoses = [
   },
   {
     id: "BLUE-AIR250-100",
-    name: "E-Z Connect® Hose",
+    name: "E-Z Connect Hose",
     color: "Blue · 100 ft",
     swatch: "#2D8AC8",
     bg: "linear-gradient(135deg, rgba(45,138,200,0.10), rgba(45,138,200,0.02))",
@@ -247,7 +247,7 @@ function AirTools() {
       <section className="px-[6%] py-16 relative overflow-hidden" style={{ background: "var(--pd-darker)" }}>
         <div className="flex items-end justify-between flex-wrap gap-4">
           <div>
-            <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>02 — E-Z Connect® Air Hoses</div>
+            <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>02 — E-Z Connect Air Hoses</div>
             <h2 className="pd-display text-white mt-2" style={{ fontSize: 38 }}>Color-Coded for Every Crew.</h2>
             <p className="mt-3 text-white/60 max-w-2xl" style={{ fontSize: 15, lineHeight: 1.7 }}>
               50% lighter than rubber. Kink-resistant. Oil and heat resistant. Field-repairable with reusable fittings — pick a color for each operator and stop the tangle.
@@ -289,7 +289,7 @@ function AirTools() {
         </div>
         <div className="mt-6 grid md:grid-cols-2 gap-4 text-white/80" style={{ fontSize: 13 }}>
           <div className="p-5" style={{ background: "rgba(255,255,255,0.04)", borderLeft: "3px solid var(--pd-yellow)" }}>
-            <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>E-Z Connect® Braided</div>
+            <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>E-Z Connect Braided</div>
             <p className="mt-2" style={{ lineHeight: 1.65 }}>Max 200 psi · 1/4″ ID · 3/8″ OD. Field repairable with reusable fittings. Industrial-grade 6-ball couplers. Cold-weather flexibility −40°F to 140°F. High abrasion resistance. 40–50% lighter than traditional air hoses — eliminates the need for whip hoses.</p>
           </div>
           <div className="p-5" style={{ background: "rgba(255,255,255,0.04)", borderLeft: "3px solid var(--pd-yellow)" }}>

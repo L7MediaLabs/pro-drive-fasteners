@@ -7,9 +7,9 @@ import { pickRelated } from "../data/products";
 export const Route = createFileRoute("/tipper-de-tipper")({
   head: () => ({
     meta: [
-      { title: "Tipper-De-Tipper™ | Pro-Drive Fasteners®" },
+      { title: "Tipper-De-Tipper | Pro-Drive Fasteners" },
       { name: "description", content: "The safest and fastest method to replace mallet caps. 5-station design. Fits all major brands. Under 30 seconds." },
-      { property: "og:title", content: "Tipper-De-Tipper™ Series 5" },
+      { property: "og:title", content: "Tipper-De-Tipper Series 5" },
       { property: "og:description", content: "Replace mallet caps in under 30 seconds. 5-station design. Fits all major brands." },
       { property: "og:image", content: images.tipper.product },
       { property: "twitter:image", content: images.tipper.product },
@@ -42,19 +42,19 @@ const videos = [
   {
     id: "1FUMcvs0KySqo0STEFD4a3hxujEZ1-64f",
     label: "Commercial — Horizon Cut",
-    title: "Tipper-De-Tipper™ Series 5 — Commercial",
+    title: "Tipper-De-Tipper Series 5 — Commercial",
     desc: "See the Series 5 in action across professional flooring environments.",
   },
   {
     id: "14NTGUSJRl2mKSUi1GzEV3YyVKGGFzfBv",
     label: "Commercial",
-    title: "Tipper-De-Tipper™ Series 5 — Full Commercial",
+    title: "Tipper-De-Tipper Series 5 — Full Commercial",
     desc: "The complete commercial spot for the Series 5.",
   },
   {
     id: "18ZAbX4q2OA2QsEN6D_grDtrpMDy786M5",
     label: "Operation Guide",
-    title: "How to Use the Tipper-De-Tipper™",
+    title: "How to Use the Tipper-De-Tipper",
     desc: "Step-by-step operation guide — tipping and de-tipping demonstrated.",
   },
 ];
@@ -144,7 +144,7 @@ function TDT() {
     <div>
       <CinematicHero
         kicker="Patent #20220388265A1"
-        title={<>Tipper-De-Tipper™<br />Series 5</>}
+        title={<>Tipper-De-Tipper<br />Series 5</>}
         description="The safest and fastest method to replace mallet caps. 5-station design fits all major brands of round or angle rubber caps. Under 30 seconds. Virtually no maintenance."
         bgImage={images.tipper.extra}
         badges={[
@@ -188,7 +188,7 @@ function TDT() {
             <YouTubeVideoCard
               id="QsrVfPwt4A4"
               label="Commercial — 1:20 Cut"
-              title="NEW Pro-Drive Fasteners® Series 5 Tipper-De-Tipper™"
+              title="NEW Pro-Drive Fasteners Series 5 Tipper-De-Tipper"
               desc="The client's public commercial cut — 1 minute 20 seconds, landscape."
             />
             {videos.map(v => (

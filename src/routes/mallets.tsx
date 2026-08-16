@@ -27,10 +27,10 @@ export const Route = createFileRoute("/mallets")({
   },
   head: () => ({
     meta: [
-      { title: "Mallets & Caps | Pro-Drive Fasteners®" },
+      { title: "Mallets & Caps | Pro-Drive Fasteners" },
       { name: "description", content: "Mallets made in the USA from 100% premium hickory. Urethane striking faces, poly caps, and dead-blow options." },
-      { property: "og:title", content: "Mallets & Caps — Pro-Drive Fasteners®" },
-      { property: "og:description", content: "Built to last. Built in the USA. Patented SURE 2 LOCK™ and E-Z 2CAP® designs." },
+      { property: "og:title", content: "Mallets & Caps — Pro-Drive Fasteners" },
+      { property: "og:description", content: "Built to last. Built in the USA. Patented SURE 2 LOCK and E-Z 2CAP designs." },
       { property: "og:image", content: images.mallets.hero },
       { property: "twitter:image", content: images.mallets.hero },
     ],
@@ -82,7 +82,7 @@ function EZ2CapBanner() {
       <div className="px-[6%] py-12">
         {/* Headline */}
         <h2 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: 32 }}>
-          E-Z 2CAP<sup style={{ fontSize: 14, verticalAlign: "super" }}>®</sup> patented feature
+          E-Z 2CAP patented feature
         </h2>
         <p className="mt-2" style={{ color: "var(--pd-dark)", fontSize: 16, opacity: 0.9 }}>
           Our mallet cap design enables quick replacement. When used with the{" "}
@@ -92,7 +92,7 @@ function EZ2CapBanner() {
           , makes the process E-Z.
         </p>
         <p className="mt-2" style={{ color: "var(--pd-dark)", fontSize: 16, opacity: 0.9 }}>
-          The E-Z 2CAP<sup style={{ fontSize: 10, verticalAlign: "super" }}>®</sup> patented design makes
+          The E-Z 2CAP patented design makes
           replacement a breeze with bevel relief to allow BELL of mallet to start.
         </p>
 
@@ -145,7 +145,7 @@ function EZ2CapBanner() {
             {/* Selling points */}
             <div className="space-y-3">
               <Check>Universal application for Unfinished and Pre-Finished flooring installations</Check>
-              <Check>Non-marring, premium rubber available in White, Gray, Black, or White Pro-Angle™</Check>
+              <Check>Non-marring, premium rubber available in White, Gray, Black, or White Pro-Angle</Check>
             </div>
 
             {/* Patent badge */}
@@ -194,7 +194,7 @@ function EZ2CapBanner() {
               }}
             >
               <p style={{ fontSize: 13, lineHeight: 1.6, color: "var(--pd-dark)", fontWeight: 600 }}>
-                Pro-Drive Fasteners<sup>®</sup> E-Z 2CAP<sup>®</sup> mallet caps will fit all major brands of rubber flooring mallets. <span style={{ textDecoration: "underline", fontWeight: 700 }}>GUARANTEED.</span>
+                Pro-Drive Fasteners E-Z 2CAP mallet caps will fit all major brands of rubber flooring mallets. <span style={{ textDecoration: "underline", fontWeight: 700 }}>GUARANTEED.</span>
               </p>
             </div>
           </div>
@@ -221,11 +221,11 @@ function Mallets() {
       <CinematicHero
         kicker="Mallets & Striking Tools"
         title={<>Built to Last.<br />Built in the USA.</>}
-        description="100% premium American hickory. Patented SURE 2 LOCK™ head design virtually eliminates handle loosening. Trusted by professionals who can't afford to stop."
+        description="100% premium American hickory. Patented SURE 2 LOCK head design virtually eliminates handle loosening. Trusted by professionals who can't afford to stop."
         bgImage={images.mallets.hero}
         badges={[
           { label: "MADE IN USA" },
-          { label: "PATENTED SURE 2 LOCK™" },
+          { label: "PATENTED SURE 2 LOCK" },
           { label: "PREMIUM HICKORY" },
         ]}
         rightImage={images.mallets.lineup}
@@ -265,7 +265,7 @@ function Mallets() {
                 <div className="pd-label mt-3" style={{ color: "var(--pd-gold)" }}>Mallet Family</div>
               </div>
             </div>
-            <Callout><strong>PATENTED SURE 2 LOCK™</strong> head design virtually eliminates loosening of handle — even after years of use. Epoxy-filled handle attached with steel safety wedge.</Callout>
+            <Callout><strong>PATENTED SURE 2 LOCK</strong> head design virtually eliminates loosening of handle — even after years of use. Epoxy-filled handle attached with steel safety wedge.</Callout>
             {/* Client-supplied standard description for ALL mallets (Hollis, 8-8-2026). */}
             <div className="mt-6">
               <BulletBlock
@@ -321,7 +321,7 @@ function Mallets() {
               <VideoCard video={V_CAP_VIDEO} />
             </div>
             <EZ2CapBanner />
-            <Callout><strong>E-Z 2CAP®</strong> — caps installed or removed in 30 seconds or less. PATENTED DESIGN.</Callout>
+            <Callout><strong>E-Z 2CAP</strong> — caps installed or removed in 30 seconds or less. PATENTED DESIGN.</Callout>
             {/* Client-supplied cap copy (Hollis, 8-8-2026) */}
             <div className="mt-6">
               <BulletBlock
@@ -336,7 +336,7 @@ function Mallets() {
             </div>
             <InfoPanel>
               <div>Heavy-duty chrome-plated steel retention ring. Guaranteed to fit all major brands of rubber flooring mallets — or your money back. <strong>U.S. Patent No. 11,370,097</strong>.</div>
-              <div><strong style={{ color: "var(--pd-dark)" }}>Pro-Angle™ cap:</strong> Designed for engineered flooring with improved edge-clearance contact for faster installation.</div>
+              <div><strong style={{ color: "var(--pd-dark)" }}>Pro-Angle cap:</strong> Designed for engineered flooring with improved edge-clearance contact for faster installation.</div>
               <div>Plus fits all major brands.</div>
               <div>We are the only manufacturer who blends our own rubber compound, allowing us to provide the highest quality at the most affordable price.</div>
             </InfoPanel>
@@ -389,12 +389,12 @@ function Mallets() {
                   "Force of blow transmitted solidly to the striking surface — less shock to the installer",
                 ].map((f) => (
                   <li key={f} className="flex gap-3" style={{ color: "var(--pd-dark)", fontSize: 15, lineHeight: 1.6 }}>
-                    <span aria-hidden style={{ color: "var(--pd-yellow)", fontWeight: 900 }}>—</span>
+                    <span aria-hidden style={{ color: "var(--pd-amber-ink)", fontWeight: 900 }}>—</span>
                     <span>{f}</span>
                   </li>
                 ))}
                 <li className="flex gap-3" style={{ color: "var(--pd-dark)", fontSize: 15, lineHeight: 1.6 }}>
-                  <span aria-hidden style={{ color: "var(--pd-yellow)", fontWeight: 900 }}>—</span>
+                  <span aria-hidden style={{ color: "var(--pd-amber-ink)", fontWeight: 900 }}>—</span>
                   <span>
                     3/8&quot; standard industry thread in head — fits all major POLY faces, including{" "}
                     <Link
@@ -430,7 +430,7 @@ function Mallets() {
               We turn our own handles.
             </h2>
             <p className="mt-5" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1.7, maxWidth: 560, opacity: 0.88 }}>
-              Every Pro-Drive<sup>®</sup> mallet handle is turned from <strong>seasoned hickory wood lath</strong>. It's the kind of detail most manufacturers skip and most contractors feel the first time they swing one.
+              Every Pro-Drive mallet handle is turned from <strong>seasoned hickory wood lath</strong>. It's the kind of detail most manufacturers skip and most contractors feel the first time they swing one.
             </p>
             <p className="mt-4" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1.7, maxWidth: 560, opacity: 0.75, fontStyle: "italic" }}>
               When you control the material from the raw stock up, you control the quality all the way down.
@@ -499,7 +499,7 @@ function Mallets() {
             Put your logo on the mallet.
           </h2>
           <p className="mt-5 text-white/75" style={{ fontSize: 16, lineHeight: 1.7, maxWidth: 620 }}>
-            Pro-Drive<sup>®</sup> can add your company logo to our mallets, available with a low
+            Pro-Drive can add your company logo to our mallets, available with a low
             minimum order. Same handle, same head construction, branded for your crew, your
             distributor program, or your customer giveaways.
           </p>
@@ -551,7 +551,7 @@ function Mallets() {
         image={images.mallets.family}
         kicker="Patented Design"
         title="Replace caps in 30 seconds."
-        body="The E-Z 2CAP® patented design uses a chrome-plated steel retention ring — no glue, no wrenches. Swap between rubber cap and poly striking face on the same handle in seconds."
+        body="The E-Z 2CAP patented design uses a chrome-plated steel retention ring — no glue, no wrenches. Swap between rubber cap and poly striking face on the same handle in seconds."
       />
 
       <TechReference

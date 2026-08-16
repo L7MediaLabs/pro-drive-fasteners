@@ -13,9 +13,9 @@ import { images } from "../data/images";
 export const Route = createFileRoute("/divergent-staples")({
   head: () => ({
     meta: [
-      { title: "Divergent Staples | Pro-Drive Fasteners®" },
+      { title: "Divergent Staples | Pro-Drive Fasteners" },
       { name: "description", content: "Pad, carpet, stair tread, and specialty staples for bedding, insulation, roofing, upholstery, and more." },
-      { property: "og:title", content: "Divergent Staples — Pro-Drive Fasteners®" },
+      { property: "og:title", content: "Divergent Staples — Pro-Drive Fasteners" },
       { property: "og:description", content: "Pad & carpet staples built tough. Extra hard wire, resin coated. Meets the demands of the trade." },
       { property: "og:image", content: images.divergentStaples.staple5010 },
       { property: "twitter:image", content: images.divergentStaples.staple5010 },

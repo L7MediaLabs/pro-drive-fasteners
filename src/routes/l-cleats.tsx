@@ -492,9 +492,9 @@ function LCleatProfileDiagram({
 export const Route = createFileRoute("/l-cleats")({
   head: () => ({
     meta: [
-      { title: "L-Cleats | Pro-Drive Fasteners®" },
+      { title: "L-Cleats | Pro-Drive Fasteners" },
       { name: "description", content: "16 GA and 18 GA L-Cleats for hardwood and maple flooring. Guaranteed not to jam in any major brand of tool." },
-      { property: "og:title", content: "L-Cleats — Pro-Drive Fasteners®" },
+      { property: "og:title", content: "L-Cleats — Pro-Drive Fasteners" },
       { property: "og:description", content: "Precision-formed 16 GA and 18 GA L-Cleats. Guaranteed not to jam." },
       { property: "og:image", content: images.lCleats.banner },
       { property: "twitter:image", content: images.lCleats.banner },

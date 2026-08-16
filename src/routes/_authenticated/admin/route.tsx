@@ -22,7 +22,7 @@ import { ThemeToggle, usePdTheme } from "@/components/admin/ui";
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({
     meta: [
-      { title: "Intelligence | Pro-Drive Fasteners®" },
+      { title: "Intelligence | Pro-Drive Fasteners" },
       { name: "robots", content: "noindex, nofollow" },
     ],
   }),

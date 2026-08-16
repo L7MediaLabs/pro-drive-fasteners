@@ -5,9 +5,9 @@ import { images } from "../data/images";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About | Pro-Drive Fasteners®" },
-      { name: "description", content: "Pro-Drive Fasteners® is a premier provider of top-quality products for the flooring industry — 50+ years of expertise." },
-      { property: "og:title", content: "About | Pro-Drive Fasteners®" },
+      { title: "About | Pro-Drive Fasteners" },
+      { name: "description", content: "Pro-Drive Fasteners is a premier provider of top-quality products for the flooring industry — 50+ years of expertise." },
+      { property: "og:title", content: "About | Pro-Drive Fasteners" },
       { property: "og:description", content: "50+ years supplying the flooring industry with pro-grade fasteners and installation tools." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -27,13 +27,13 @@ function About() {
           A premier provider of top-quality products for the flooring industry.
         </p>
         <p className="mt-10 text-lg" style={{ color: "var(--pd-text)", lineHeight: 1.8 }}>
-          Pro-Drive Fasteners® is a family business. Founded by Hollis Henderson with his son Carlton, the company is built on more than 50 combined years of flooring industry expertise — selecting every material, setting every specification, and staying involved in every step of manufacturing. That's not a marketing line. It's how Pro-Drive has operated since day one.
+          Pro-Drive Fasteners is a family business. Founded by Hollis Henderson with his son Carlton, the company is built on more than 50 combined years of flooring industry expertise — selecting every material, setting every specification, and staying involved in every step of manufacturing. That's not a marketing line. It's how Pro-Drive has operated since day one.
         </p>
         <p className="mt-6 text-lg" style={{ color: "var(--pd-text)", lineHeight: 1.8 }}>
-          Pro-Drive Fasteners® is a premier provider of top-quality products for the flooring industry. We deliver a complete line of installation solutions you can rely on — from staples, nails, and L-cleats to an ever-growing selection of sundry items.
+          Pro-Drive Fasteners is a premier provider of top-quality products for the flooring industry. We deliver a complete line of installation solutions you can rely on — from staples, nails, and L-cleats to an ever-growing selection of sundry items.
         </p>
         <p className="mt-6 text-lg" style={{ color: "var(--pd-text)", lineHeight: 1.8 }}>
-          Product development and exceptional quality are at the core of everything we do. The Pro-Drive Fasteners® team selects every material, sets all specifications, and is involved in every step of the manufacturing process to ensure our products not only meet standards but consistently exceed the demands of evolving industries.
+          Product development and exceptional quality are at the core of everything we do. The Pro-Drive Fasteners team selects every material, sets all specifications, and is involved in every step of the manufacturing process to ensure our products not only meet standards but consistently exceed the demands of evolving industries.
         </p>
       </section>
 
@@ -59,7 +59,7 @@ function About() {
         <p className="pd-display text-white mx-auto max-w-4xl" style={{ fontSize: "clamp(24px, 4.5vw, 48px)", lineHeight: 1.15 }}>
           We don't follow the standards —<br />we set them.<br />
           {/* Brand name must never break across lines (client request, Aug 4):
-              non-breaking hyphen + nowrap keeps "Pro-Drive Fasteners®" intact;
+              non-breaking hyphen + nowrap keeps "Pro-Drive Fasteners" intact;
               the sentence breaks before it instead. */}
           <span style={{ color: "var(--pd-yellow)" }}>
             Drive performance with{" "}

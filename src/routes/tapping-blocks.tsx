@@ -18,9 +18,9 @@ import { images } from "../data/images";
 export const Route = createFileRoute("/tapping-blocks")({
   head: () => ({
     meta: [
-      { title: "Tapping Blocks | Pro-Drive Fasteners®" },
-      { name: "description", content: "Heavy-duty tapping blocks for every flooring requirement. ONE TAP™, 561 Tapping Block, Wide Plank Wood Driving Tool." },
-      { property: "og:title", content: "Tapping Blocks — Pro-Drive Fasteners®" },
+      { title: "Tapping Blocks | Pro-Drive Fasteners" },
+      { name: "description", content: "Heavy-duty tapping blocks for every flooring requirement. ONE TAP, 561 Tapping Block, Wide Plank Wood Driving Tool." },
+      { property: "og:title", content: "Tapping Blocks — Pro-Drive Fasteners" },
       { property: "og:description", content: "Every plank. Perfectly placed. Made in the USA." },
       { property: "og:image", content: images.tappingBlocks.tbPro },
       { property: "twitter:image", content: images.tappingBlocks.tbPro },
@@ -46,7 +46,7 @@ type Block = {
 const blockCopy: { id: string; title: string; image: string; alt: string; tagline: string; bestFor: string }[] = [
   {
     id: "TB-PRO-312",
-    title: "ONE TAP™ Tapping Block",
+    title: "ONE TAP Tapping Block",
     image: images.tappingBlocks.tbPro,
     alt: "Pro-Drive One Tap Tapping Block TB-PRO-312",
     tagline: "The everyday installer's block. Ergonomic wooden handle for rapid one-hand placement.",
@@ -147,7 +147,7 @@ function Blocks() {
               <ul className="mt-5 space-y-2" style={{ color: "var(--pd-text)", fontSize: 13, lineHeight: 1.7 }}>
                 {b.bullets.map(x => (
                   <li key={x} className="flex gap-3">
-                    <span style={{ color: "var(--pd-yellow)", fontWeight: 900 }}>—</span>
+                    <span style={{ color: "var(--pd-amber-ink)", fontWeight: 900 }}>—</span>
                     <span>{x}</span>
                   </li>
                 ))}

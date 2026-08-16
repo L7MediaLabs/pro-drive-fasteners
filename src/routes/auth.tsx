@@ -13,7 +13,7 @@ export const Route = createFileRoute("/auth")({
       : {},
   head: () => ({
     meta: [
-      { title: "Client Portal | Pro-Drive Fasteners®" },
+      { title: "Client Portal | Pro-Drive Fasteners" },
       { name: "robots", content: "noindex, nofollow" },
     ],
   }),

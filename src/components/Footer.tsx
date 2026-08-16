@@ -40,7 +40,13 @@ export function Footer() {
               Pro-Driven Flooring Products and Solutions
             </div>
             <div className="mt-5 text-sm space-y-1 text-white/60">
-              <div>Sales: sales@pro-drivefasteners.com</div>
+              {/* Email intentionally not published (Carlton, ops): a public address
+                  attracts spam and malware. All inquiries route through /contact. */}
+              <div>
+                <Link to="/contact" className="hover:text-[color:var(--pd-yellow)]" style={{ color: "var(--pd-yellow)" }}>
+                  Contact Sales →
+                </Link>
+              </div>
               <div>Pro-DriveFasteners.com</div>
             </div>
             <a

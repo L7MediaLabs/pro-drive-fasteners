@@ -86,6 +86,11 @@ const tabData = {
       { src: images.staples.q15BulkPack, caption: "2-1/2\" Bulk Pack" },
       { src: images.staples.gauge15Banner, caption: "Collated" },
     ],
+    shelf: {
+      src: images.staples.q15BulkPack,
+      label: "15 GA Q-Wire — Bulk Carton",
+      caption: "Bulk pack carton as it ships and stocks.",
+    } as ShelfRef,
   },
   "16n": {
     label: "16 GA N-Wire",

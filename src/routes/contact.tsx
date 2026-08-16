@@ -138,6 +138,8 @@ function Contact() {
           </div>
           <button
             type="submit"
+            disabled={pending}
+            aria-busy={pending}
             className="w-full py-4 transition-colors"
             style={{
               background: "var(--pd-dark)",
@@ -147,9 +149,11 @@ function Contact() {
               letterSpacing: "0.1em",
               textTransform: "uppercase",
               border: 0,
+              opacity: pending ? 0.6 : 1,
+              cursor: pending ? "not-allowed" : "pointer",
             }}
           >
-            Send Message
+            {pending ? "Sending…" : "Send Message"}
           </button>
         </form>
 

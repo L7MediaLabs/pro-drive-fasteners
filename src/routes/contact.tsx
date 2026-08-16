@@ -18,13 +18,28 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 
+const SALES_PHONE = "(770) 778-0760";
+
 function Contact() {
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [pending, setPending] = useState(false);
 
   async function handle(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (pending) return;
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries());
+
+    // Honeypot: bots fill hidden fields. Show success, insert nothing.
+    if (String(data.website_url ?? "").trim() !== "") {
+      setError(null);
+      setSent(true);
+      form.reset();
+      setTimeout(() => setSent(false), 5000);
+      return;
+    }
+
     const payload = {
       name: String(data.name),
       company: String(data.company),
@@ -34,7 +49,21 @@ function Contact() {
       message: String(data.message ?? ""),
       session_id: getSessionId(),
     };
-    await supabase.from("contact_submissions").insert(payload);
+
+    setPending(true);
+    setError(null);
+    const { error: insertError } = await supabase.from("contact_submissions").insert(payload);
+    setPending(false);
+
+    if (insertError) {
+      // Keep every field intact — nobody should retype a paragraph.
+      setSent(false);
+      setError(
+        `We couldn't send your message. Nothing was submitted — your details are still here, so please try again. If it keeps failing, call us at ${SALES_PHONE}.`,
+      );
+      return;
+    }
+
     trackEvent("contact_submit", {
       ctaLabel: "Send Message",
       formFields: {
@@ -56,8 +85,17 @@ function Contact() {
       <section className="px-[6%] py-12 grid lg:grid-cols-[1.4fr_1fr] gap-10" style={{ background: "var(--pd-light-bg)" }}>
         <form onSubmit={handle} className="bg-white p-8 space-y-5" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
           {sent && (
-            <div className="px-4 py-3 mb-2" style={{ background: "var(--pd-yellow)", color: "var(--pd-dark)", fontWeight: 700 }}>
+            <div role="status" className="px-4 py-3 mb-2" style={{ background: "var(--pd-yellow)", color: "var(--pd-dark)", fontWeight: 700 }}>
               Message sent. We'll be in touch shortly.
+            </div>
+          )}
+          {error && (
+            <div
+              role="alert"
+              className="px-4 py-3 mb-2 text-sm"
+              style={{ background: "#FDECEC", color: "#8A1C1C", borderLeft: "4px solid #C62828", fontWeight: 600, lineHeight: 1.55 }}
+            >
+              {error}
             </div>
           )}
           {[
@@ -68,6 +106,12 @@ function Contact() {
           ].map(f => (
             <Field key={f.name} {...f} />
           ))}
+
+          {/* Honeypot — off-screen (not display:none), skipped by keyboard and password managers. */}
+          <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}>
+            <label htmlFor="website_url">Website</label>
+            <input id="website_url" name="website_url" type="text" tabIndex={-1} autoComplete="off" defaultValue="" />
+          </div>
           <div>
             <label className="pd-label block mb-2" style={{ color: "var(--pd-dark)" }}>I'm interested in</label>
             <select
@@ -94,6 +138,8 @@ function Contact() {
           </div>
           <button
             type="submit"
+            disabled={pending}
+            aria-busy={pending}
             className="w-full py-4 transition-colors"
             style={{
               background: "var(--pd-dark)",
@@ -103,9 +149,11 @@ function Contact() {
               letterSpacing: "0.1em",
               textTransform: "uppercase",
               border: 0,
+              opacity: pending ? 0.6 : 1,
+              cursor: pending ? "not-allowed" : "pointer",
             }}
           >
-            Send Message
+            {pending ? "Sending…" : "Send Message"}
           </button>
         </form>
 

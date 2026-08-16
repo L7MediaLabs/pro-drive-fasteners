@@ -65,7 +65,7 @@ import polyfaceHard       from "../assets/products/mallets/polyface_hard.png.ass
 import polyfaceTough      from "../assets/products/mallets/polyface_tough.png.asset.json";
 // Generic poly dead blow render — fallback for variants without a dedicated photo
 import polyDeadblow       from "../assets/products/mallets/poly_deadblow.png.asset.json";
-import deadblowOrangeBlack from "../assets/products/mallets/deadblow_200l_o_bl.jpg.asset.json";
+
 import deadblowOrangeBrown from "../assets/products/mallets/deadblow_200l_obr.jpg.asset.json";
 import deadblow200l2000   from "../assets/products/mallets/deadblow_200l_2000_photo.jpg.asset.json";
 import deadblow200l1000   from "../assets/products/mallets/deadblow_200l_1000_photo.jpg.asset.json";
@@ -73,8 +73,9 @@ import malletLogoInfinite from "../assets/products/mallets/mallet_logo_infinite.
 import malletLogoKnight   from "../assets/products/mallets/mallet_logo_knight.jpg.asset.json";
 import malletHeritageLath from "../assets/products/mallets/mallet_heritage_lath.jpg.asset.json";
 import malletCapsOpenBox  from "../assets/products/mallets/mallet_caps_display_openbox.jpg.asset.json";
-import deadblowOgNew      from "../assets/products/mallets/deadblow_200l_og_new.jpg.asset.json";
+import deadblowOgNew      from "../assets/products/mallets/deadblow_200l_og_etched.jpg.asset.json";
 import deadblowBrBrNew    from "../assets/products/mallets/deadblow_200l_brbr_new.jpg.asset.json";
+import deadblowOblEtched  from "../assets/products/mallets/deadblow_200l_obl_etched.jpg.asset.json";
 import splitheadHero      from "../assets/products/splithead/splithead_hero.png.asset.json";
 import splithead23004     from "../assets/products/splithead/splithead_23004_200_face.jpg.asset.json";
 import splithead23002     from "../assets/products/splithead/splithead_23002_150_face.jpg.asset.json";
@@ -198,7 +199,7 @@ export const images = {
     deadBlow: polyDeadblow.url,
     deadBlowOrangeGreen: deadblowOgNew.url,
     deadBlowBrownBrown:  deadblowBrBrNew.url,
-    deadBlowOrangeBlack: deadblowOrangeBlack.url,
+    deadBlowOrangeBlack: deadblowOblEtched.url,
     deadBlowOrangeBrown: deadblowOrangeBrown.url,
     deadBlowInsert: deadblow200l2000.url,
     deadBlowShot:   deadblow200l1000.url,

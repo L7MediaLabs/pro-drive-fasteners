@@ -64,6 +64,11 @@ const tabData = {
       { src: images.staples.s155Strip2inB, caption: "2\" Strip · Second View" },
       { src: images.staples.hero, caption: "Bulk Pack" },
     ],
+    shelf: {
+      src: images.staples.s155_masterpack,
+      label: "15.5 GA Packaging — Master Carton",
+      caption: "Every 15.5 GA length ships in this carton family. Item number and count are printed on the end panel.",
+    } as ShelfRef,
   },
   "15q": {
     label: "15 GA Q-Wire",

@@ -181,6 +181,8 @@ export const images = {
     polyColors:  u.malletsP24_02,
     polyDetail:  u.malletsP24_03,
     heritageLath: malletHeritageLath.url,
+    ez2capFeature:  malletEz2capFeature.url,
+    sure2lockDetail: malletSure2lockDetail.url,
     customLogo: [malletLogoInfinite.url, malletLogoKnight.url],
     misc1:       u.malletsP21_01,
     misc2:       u.malletsP22_08,

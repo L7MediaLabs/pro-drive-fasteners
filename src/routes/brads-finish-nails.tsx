@@ -15,6 +15,7 @@ import type { Product } from "../components/ProductCard";
 import gradeContractorAsset from "../assets/badge-contractor-grade.png.asset.json";
 const gradeContractor = gradeContractorAsset.url;
 import { images } from "../data/images";
+import { CounterMatSection } from "../components/CounterMat";
 
 /**
  * SKUs whose catalog photo is a genuine PRODUCT-level shot (a collated strip or
@@ -583,6 +584,8 @@ function Brads() {
         </div>
       </TechReference>
 
+
+      <CounterMatSection />
 
       <RelatedProducts products={related} />
       <PageDisclaimers galvanized trademarks />

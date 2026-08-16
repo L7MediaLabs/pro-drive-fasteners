@@ -7,6 +7,8 @@ export type SiteVideo = {
   desc: string;
   /** true = vertical 9:16 Short, false/undefined = landscape 16:9 */
   portrait?: boolean;
+  /** true = only shown on its product page, not in the /videos index */
+  productPageOnly?: boolean;
   /** Cross-link to the product this video demonstrates */
   product?: { sku: string; name: string; href: string };
   /** Language variants of the SAME video. English is variants[0] and default. */
@@ -55,6 +57,7 @@ export const VIDEOS: SiteVideo[] = [
     tag: "Mallet Caps",
     desc: "The V-Cap mallet cap being clicked down and installed. Final cut with voiceover.",
     portrait: true,
+    productPageOnly: true,
     product: {
       sku: "100-V-CAP",
       name: 'White V-Cap for 24oz Mallet 2"',

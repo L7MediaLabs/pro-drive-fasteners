@@ -23,7 +23,7 @@ function Videos() {
       <PageHeader title="Videos" description="Pro-Drive in action. Installation demos, product features, and field techniques." />
       <section className="px-[6%] py-12" style={{ background: "var(--pd-light-bg)" }}>
         <div className="grid lg:grid-cols-2 gap-8 items-start">
-          {VIDEOS.map(v => (
+          {VIDEOS.filter(v => !v.productPageOnly).map(v => (
             <VideoCard key={v.title} video={v} />
           ))}
         </div>

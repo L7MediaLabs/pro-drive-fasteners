@@ -3,9 +3,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 export const Route = createFileRoute("/products")({
   head: () => ({
     meta: [
-      { title: "All Products | Pro-Drive Fasteners®" },
+      { title: "All Products | Pro-Drive Fasteners" },
       { name: "description", content: "Complete Pro-Drive product line — staples, L-Cleats, brads, mallets, tapping tools, air tools, and accessories." },
-      { property: "og:title", content: "All Products | Pro-Drive Fasteners®" },
+      { property: "og:title", content: "All Products | Pro-Drive Fasteners" },
       { property: "og:description", content: "Browse the full Pro-Drive catalog: flooring staples, L-Cleats, brads, mallets, tapping tools, and air tools." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -22,8 +22,8 @@ const cats = [
   { code: "CAT-05", name: "Mallets & Caps", desc: "Mallets, urethane striking faces, dead blow options.", to: "/mallets" },
   { code: "CAT-06", name: "Split Head Hammer Faces", desc: "Non-marring replacement faces for Garland® mallets.", to: "/split-head-hammer-faces" },
   { code: "CAT-07", name: "Tapping Rings", desc: "Red, Orange, Yellow tapping rings.", to: "/tapping-rings" },
-  { code: "CAT-08", name: "Tapping Blocks", desc: "Heavy-duty blocks including ONE TAP™.", to: "/tapping-blocks" },
-  { code: "CAT-09", name: "Tipper-De-Tipper™", desc: "Safe cap replacement system.", to: "/tipper-de-tipper" },
+  { code: "CAT-08", name: "Tapping Blocks", desc: "Heavy-duty blocks including ONE TAP.", to: "/tapping-blocks" },
+  { code: "CAT-09", name: "Tipper-De-Tipper", desc: "Safe cap replacement system.", to: "/tipper-de-tipper" },
   { code: "CAT-10", name: "Air Tools & Hoses", desc: "Brad nailers, braided hoses, and fittings.", to: "/air-tools" },
   { code: "CAT-11", name: "Accessories", desc: "Maintenance kits and retail displays.", to: "/accessories" },
 ];

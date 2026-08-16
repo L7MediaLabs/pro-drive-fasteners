@@ -26,9 +26,9 @@ import { images } from "../data/images";
 export const Route = createFileRoute("/staples")({
   head: () => ({
     meta: [
-      { title: "Flooring Staples | Pro-Drive Fasteners®" },
+      { title: "Flooring Staples | Pro-Drive Fasteners" },
       { name: "description", content: "15.5 GA, 15 GA, 16 GA, and 18 GA flooring staples for hardwood, laminate, and engineered installations." },
-      { property: "og:title", content: "Flooring Staples — Pro-Drive Fasteners®" },
+      { property: "og:title", content: "Flooring Staples — Pro-Drive Fasteners" },
       { property: "og:description", content: "Contractor-grade flooring staples in every gauge. Meets ASTM F1667." },
       { property: "og:image", content: images.staples.hero },
       { property: "twitter:image", content: images.staples.hero },

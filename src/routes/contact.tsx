@@ -7,9 +7,9 @@ import { getSessionId, trackEvent } from "@/lib/analytics";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact | Pro-Drive Fasteners®" },
+      { title: "Contact | Pro-Drive Fasteners" },
       { name: "description", content: "Get in touch for distributor pricing, product questions, or order inquiries." },
-      { property: "og:title", content: "Contact | Pro-Drive Fasteners®" },
+      { property: "og:title", content: "Contact | Pro-Drive Fasteners" },
       { property: "og:description", content: "Reach the Pro-Drive team for distributor pricing, product questions, or order inquiries." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -110,12 +110,9 @@ function Contact() {
         </form>
 
         <aside className="p-8 space-y-6" style={{ background: "white", borderLeft: "3px solid var(--pd-yellow)" }}>
-          <div>
-            <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Email</div>
-            <a href="mailto:sales@pro-drivefasteners.com" className="block mt-1 font-bold" style={{ color: "var(--pd-dark)" }}>
-              sales@pro-drivefasteners.com
-            </a>
-          </div>
+          {/* Email address intentionally NOT published (Carlton, Aug 13): a
+              plain-text or mailto address on a public page attracts spam and
+              malware. The form above is the only capture route. */}
           <div>
             <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Website</div>
             <div className="mt-1 font-bold" style={{ color: "var(--pd-dark)" }}>Pro-DriveFasteners.com</div>

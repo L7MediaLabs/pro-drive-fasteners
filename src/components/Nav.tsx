@@ -19,7 +19,7 @@ const tools: NavLink[] = [
   { label: "Split Head Hammer Faces", to: "/split-head-hammer-faces" },
   { label: "Tapping Rings", to: "/tapping-rings" },
   { label: "Tapping Blocks", to: "/tapping-blocks" },
-  { label: "Tipper-De-Tipper™", to: "/tipper-de-tipper" },
+  { label: "Tipper-De-Tipper", to: "/tipper-de-tipper" },
 ];
 const equipment: NavLink[] = [
   { label: "Air Tools & Hoses", to: "/air-tools" },

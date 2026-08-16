@@ -45,6 +45,10 @@
   --pd-darker: #0E0C00;
   --pd-text: #121212;
   --pd-gold: #4D410E;
+  /* Accessible amber for yellow-toned TEXT on white/cream grounds.
+     6.25:1 on #FFFFFF, 5.55:1 on cream — WCAG AA for body copy.
+     Use --pd-yellow only for text on dark grounds or as a fill. */
+  --pd-amber-ink: #7A5C00;
   --pd-muted: #666660;
   --pd-light-bg: #F5F4F0;
   --pd-cream: #F5F1E8;
@@ -77,6 +81,7 @@
   --color-pd-darker: var(--pd-darker);
   --color-pd-text: var(--pd-text);
   --color-pd-gold: var(--pd-gold);
+  --color-pd-amber-ink: var(--pd-amber-ink);
   --color-pd-muted: var(--pd-muted);
   --color-pd-light-bg: var(--pd-light-bg);
   --color-pd-border: var(--pd-border);

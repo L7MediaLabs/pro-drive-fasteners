@@ -49,9 +49,9 @@ function CollationBlock() {
 export const Route = createFileRoute("/brads-finish-nails")({
   head: () => ({
     meta: [
-      { title: "Brads & Finish Nails | Pro-Drive Fasteners®" },
+      { title: "Brads & Finish Nails | Pro-Drive Fasteners" },
       { name: "description", content: "Professional grade finish nails in every angle and gauge. 15 GA, 16 GA, 18 GA, and 23 GA micro pins." },
-      { property: "og:title", content: "Brads & Finish Nails — Pro-Drive Fasteners®" },
+      { property: "og:title", content: "Brads & Finish Nails — Pro-Drive Fasteners" },
       { property: "og:description", content: "Every angle, every gauge. Contractor tested. Guaranteed not to jam." },
       { property: "og:image", content: images.finishNails.strip },
       { property: "twitter:image", content: images.finishNails.strip },

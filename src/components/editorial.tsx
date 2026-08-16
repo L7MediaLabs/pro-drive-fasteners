@@ -470,7 +470,7 @@ export function PageDisclaimers({
         )}
         {trademarks && (
           <p style={{ fontStyle: "italic" }}>
-            This product is made and sold by Pro-Drive Fasteners® and has no relationship with any of the
+            This product is made and sold by Pro-Drive Fasteners and has no relationship with any of the
             other companies whose trademarks or item numbers are mentioned on this page. All brand names
             and trademarks are the property of their respective owners.
           </p>
@@ -545,7 +545,7 @@ export function BulletBlock({
             className="flex gap-3"
             style={{ color: "var(--pd-dark)", fontSize: accent ? 16 : 15, lineHeight: 1.6, fontWeight: accent ? 600 : 400 }}
           >
-            <span aria-hidden style={{ color: accent ? "var(--pd-dark)" : "var(--pd-yellow)", fontWeight: 900 }}>—</span>
+            <span aria-hidden style={{ color: accent ? "var(--pd-dark)" : "var(--pd-amber-ink)", fontWeight: 900 }}>—</span>
             <span>{b}</span>
           </li>
         ))}

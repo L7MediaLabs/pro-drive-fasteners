@@ -126,9 +126,9 @@ function HeroSlider() {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Pro-Drive Fasteners® | Pro-Driven Flooring Products and Solutions™" },
+      { title: "Pro-Drive Fasteners | Pro-Driven Flooring Products and Solutions" },
       { name: "description", content: "Premium fastening solutions for flooring professionals. 50+ years. Guaranteed to fit every major brand tool. Made in the USA." },
-      { property: "og:title", content: "Pro-Drive Fasteners®" },
+      { property: "og:title", content: "Pro-Drive Fasteners" },
       { property: "og:description", content: "Premium fastening solutions for flooring professionals." },
       { property: "og:image", content: images.mallets.hero },
     ],
@@ -137,8 +137,8 @@ export const Route = createFileRoute("/")({
 });
 
 const newProducts = [
-  { name: "Tipper-De-Tipper™ Series 5", category: "Installation Tools", description: "The safest, fastest method to replace mallet caps. 5-station design. Fits all major brands. Available now.", link: "/tipper-de-tipper", image: images.tipper.product, alt: "Pro-Drive Tipper-De-Tipper Series 5" },
-  { name: "One Tap™ Tapping Block", category: "Tapping Blocks", description: "Heavy-duty 48oz tapping block with ergonomic wooden handle. Beveled edges prevent cracking.", link: "/tapping-blocks", image: images.tappingBlocks.tbPro, alt: "Pro-Drive One Tap Tapping Block TB-PRO-312" },
+  { name: "Tipper-De-Tipper Series 5", category: "Installation Tools", description: "The safest, fastest method to replace mallet caps. 5-station design. Fits all major brands. Available now.", link: "/tipper-de-tipper", image: images.tipper.product, alt: "Pro-Drive Tipper-De-Tipper Series 5" },
+  { name: "One Tap Tapping Block", category: "Tapping Blocks", description: "Heavy-duty 48oz tapping block with ergonomic wooden handle. Beveled edges prevent cracking.", link: "/tapping-blocks", image: images.tappingBlocks.tbPro, alt: "Pro-Drive One Tap Tapping Block TB-PRO-312" },
   { name: "Split Head Hammer Faces", category: "Mallets & Caps", description: 'Non-marring replacement rubber faces for Garland® split-head mallets. 1-1/2" and 2" sizes.', link: "/split-head-hammer-faces", image: images.mallets.splitHead.hero, alt: "Pro-Drive Split Head Hammer Faces" },
   { name: "L-Cleats — 16 GA & 18 GA", category: "L-Cleats", description: "Complete L-Cleat line with depth guide. Guaranteed not to jam in any major brand of tool.", link: "/l-cleats", image: images.lCleats.banner, alt: "Pro-Drive L-Cleats 16 and 18 gauge" },
   { name: "Wide Plank Wood Driving Tool", category: "Tapping Blocks", description: '11.5" x 4.5" x 4" designed for wide plank and glue-down flooring. Works with dead-blow mallets.', link: "/tapping-blocks", image: images.tappingBlocks.widePlank, alt: "Pro-Drive Wide Plank Wood Driving Tool" },
@@ -149,7 +149,7 @@ const categories = [
   { code: "CAT-02", name: "L-Cleats", desc: "16 GA and 18 GA L-Cleats with depth guide. Guaranteed not to jam in any major brand tool.", count: "2 gauge options + depth guide →", to: "/l-cleats" },
   { code: "CAT-03", name: "Brads & Finish Nails", desc: "15 GA, 16 GA, 18 GA finish nails and 23 GA micro pins. Multiple angles and stainless options.", count: "6 nail families →", to: "/brads-finish-nails" },
   { code: "CAT-04", name: "Mallets & Caps", desc: "Mallets, urethane striking faces, poly caps, and dead blow options. Made in the USA.", count: "5 mallet styles + caps →", to: "/mallets" },
-  { code: "CAT-05", name: "Tapping Tools", desc: "Tapping Rings (Red, Orange, Yellow), Tapping Blocks, and the Tipper-De-Tipper™.", count: "3 ring variants + 3 block styles →", to: "/tapping-rings" },
+  { code: "CAT-05", name: "Tapping Tools", desc: "Tapping Rings (Red, Orange, Yellow), Tapping Blocks, and the Tipper-De-Tipper.", count: "3 ring variants + 3 block styles →", to: "/tapping-rings" },
   { code: "CAT-06", name: "Air Tools & Equipment", desc: "18 GA and 16 GA brad nailers. E-Z Connect braided air hoses. Industrial fittings and couplers.", count: "Nailers + hose systems →", to: "/air-tools" },
 ];
 
@@ -228,13 +228,13 @@ function Home() {
         <div className="px-[6%] pt-20 pb-18 relative z-10" style={{ paddingBottom: 72 }}>
           <div className="flex items-center gap-4 mb-7">
             <span style={{ display: "inline-block", width: 40, height: 2, background: "var(--pd-dark)" }} />
-            <span className="pd-eyebrow" style={{ color: "var(--pd-gold)" }}>Pro-Driven Flooring Products <span style={{ whiteSpace: "nowrap" }}>and Solutions™</span></span>
+            <span className="pd-eyebrow" style={{ color: "var(--pd-gold)" }}>Pro-Driven Flooring Products <span style={{ whiteSpace: "nowrap" }}>and Solutions</span></span>
           </div>
           <h1
             className="pd-display"
             style={{ color: "var(--pd-dark)", fontSize: "clamp(42px, 9vw, 112px)", lineHeight: 0.93, margin: 0, overflowWrap: "break-word" }}
           >
-            PRO-DRIVE<br />FASTENERS<span style={{ fontSize: "0.5em", verticalAlign: "top" }}>®</span>
+            PRO-DRIVE<br />FASTENERS
           </h1>
           <p style={{ color: "rgba(25,20,0,0.68)", maxWidth: 880, lineHeight: 1.7, fontWeight: 400, fontSize: 18 }} className="mt-7 mb-12">
             We don't follow the standards — we set them. Premium fastening solutions<br />for flooring professionals, guaranteed to fit every major brand tool.
@@ -425,7 +425,9 @@ function Home() {
                 className="mt-2"
                 style={{ color: "#fff", fontWeight: 800, fontSize: 22, letterSpacing: "0.02em" }}
               >
-                {g.name}<sup className="pd-tm">™</sup>
+                {/* No ™ on Pro-Drive's own grade names: protection is on the
+                    badge artwork, not the name text (Carlton, Aug 13). */}
+                {g.name}
               </div>
               <p
                 className="mt-3"
@@ -607,11 +609,11 @@ function Home() {
           {[
             { n: "50+", h: "Years of Industry Expertise", b: "Hollis and Carlton Henderson have spent 50+ combined years selecting every material, setting every spec, and staying involved in every step. That's the Pro-Drive difference." },
             { n: "100%", h: "Guaranteed to Fit", b: "Every product is guaranteed to work in all major brand tools — or your money back." },
-            { n: "Made", h: "in the USA®", b: "Our mallets are crafted from 100% premium American hickory. Our products are built to professional standards — not adapted from general-purpose fasteners." },
+            { n: "Made", h: "in the USA", b: "Our mallets are crafted from 100% premium American hickory. Our products are built to professional standards — not adapted from general-purpose fasteners." },
             { n: "One", h: "Source. Everything.", b: "From staples and L-Cleats to tapping tools and air hoses — complete installation solutions." },
           ].map(x => (
             <div key={x.h}>
-              <div className="pd-display" style={{ color: "var(--pd-yellow)", fontSize: 48 }}>{x.n}</div>
+              <div className="pd-display" style={{ color: "var(--pd-amber-ink)", fontSize: 48 }}>{x.n}</div>
               <div className="mt-3" style={{ fontWeight: 700, fontSize: 17, color: "var(--pd-dark)" }}>{x.h}</div>
               <p className="mt-2" style={{ fontSize: 13, color: "var(--pd-muted)", lineHeight: 1.75 }}>{x.b}</p>
             </div>

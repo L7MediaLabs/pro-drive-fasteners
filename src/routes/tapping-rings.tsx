@@ -7,9 +7,9 @@ import { pickRelated } from "../data/products";
 export const Route = createFileRoute("/tapping-rings")({
   head: () => ({
     meta: [
-      { title: "Tapping Rings | Pro-Drive Fasteners®" },
+      { title: "Tapping Rings | Pro-Drive Fasteners" },
       { name: "description", content: "Three rings, every flooring type. Red, Orange, and Yellow tapping rings — 2.1 lbs, non-marring, guaranteed." },
-      { property: "og:title", content: "Tapping Rings — Pro-Drive Fasteners®" },
+      { property: "og:title", content: "Tapping Rings — Pro-Drive Fasteners" },
       { property: "og:description", content: "Red, Orange, and Yellow tapping rings engineered for every flooring application." },
       { property: "og:image", content: images.tappingRings.lifestyle },
       { property: "twitter:image", content: images.tappingRings.lifestyle },
@@ -176,20 +176,22 @@ function TappingRings() {
             </thead>
             <tbody>
               {[
-                { color: "#C83228", name: "Red",    scores: [2,2,2,2,2] },
-                { color: "#E07020", name: "Orange", scores: [3,3,3,3,3] },
-                { color: "#FFCD00", name: "Yellow", scores: [2,2,2,2,2] },
+                // `color` is the physical ring colour (used for the swatch dot).
+                // `ink` is the accessible text colour for the star ratings on cream.
+                { color: "#C83228", ink: "#B02A20", name: "Red",    scores: [2,2,2,2,2] },
+                { color: "#E07020", ink: "#8A4208", name: "Orange", scores: [3,3,3,3,3] },
+                { color: "#FFCD00", ink: "var(--pd-amber-ink)", name: "Yellow", scores: [2,2,2,2,2] },
               ].map(r => (
                 <tr key={r.name} style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}>
                   <td className="py-3">
                     <span className="inline-flex items-center gap-2">
-                      <span style={{ width: 18, height: 18, borderRadius: "50%", background: r.color, display: "inline-block" }} />
+                      <span style={{ width: 18, height: 18, borderRadius: "50%", background: r.color, display: "inline-block", boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.25)" }} />
                       <strong style={{ color: "var(--pd-dark)" }}>{r.name}</strong>
                     </span>
                   </td>
                   {r.scores.map((s, i) => (
-                    <td key={i} className="text-center py-3 px-3" style={{ color: r.color, fontSize: 18, letterSpacing: 2 }}>
-                      {"★".repeat(s)}<span style={{ color: "#e6e5df" }}>{"★".repeat(3 - s)}</span>
+                    <td key={i} className="text-center py-3 px-3" style={{ color: r.ink, fontSize: 18, letterSpacing: 2 }}>
+                      {"★".repeat(s)}<span style={{ color: "#c9c7bf" }}>{"★".repeat(3 - s)}</span>
                     </td>
                   ))}
                 </tr>

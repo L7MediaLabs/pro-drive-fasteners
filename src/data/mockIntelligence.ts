@@ -60,9 +60,9 @@ const HOT_LEADS: Lead[] = [
     lastSeen: "1d ago",
     instagramSessions: 2,
     aiContext:
-      "Galleher engaged with the Tipper-De-Tipper™ launch reel on Instagram and bounced to the product page same session.",
+      "Galleher engaged with the Tipper-De-Tipper launch reel on Instagram and bounced to the product page same session.",
     aiRecommendation:
-      "Call Wednesday — propose a Tipper-De-Tipper™ demo at their next branch meeting.",
+      "Call Wednesday — propose a Tipper-De-Tipper demo at their next branch meeting.",
   },
   {
     company: "Bond Products",
@@ -230,7 +230,7 @@ export const mockIntelligence: WeeklyIntelligenceData = {
     meta: {
       instagramSessions: 386,
       instagramPercent: 0.31,
-      topDrivingPost: "Tipper-De-Tipper™ Demo Reel",
+      topDrivingPost: "Tipper-De-Tipper Demo Reel",
       instagramLandingPage: "/tipper-de-tipper",
     },
   },
@@ -238,7 +238,7 @@ export const mockIntelligence: WeeklyIntelligenceData = {
   productStats: [
     { product: "Tapping Rings", views: 312, uniqueCompanies: 18, trend: "up", trendPercent: 24 },
     { product: "Mallets", views: 248, uniqueCompanies: 22, trend: "up", trendPercent: 12 },
-    { product: "Tipper-De-Tipper™", views: 198, uniqueCompanies: 14, trend: "up", trendPercent: 41 },
+    { product: "Tipper-De-Tipper", views: 198, uniqueCompanies: 14, trend: "up", trendPercent: 41 },
     { product: "Tapping Blocks", views: 167, uniqueCompanies: 12, trend: "flat", trendPercent: 2 },
     { product: "Staples", views: 142, uniqueCompanies: 16, trend: "up", trendPercent: 8 },
     { product: "Brads", views: 96, uniqueCompanies: 9, trend: "down", trendPercent: 6 },

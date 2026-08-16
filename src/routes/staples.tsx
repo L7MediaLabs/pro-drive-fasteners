@@ -137,6 +137,8 @@ const tabData = {
     ],
     galleryHero: { src: images.staples.narrowCrown18, caption: "18 GA Narrow Crown Strip" },
     galleryPair: [],
+    // No 18 GA L-Wire carton photography on file yet.
+    shelf: null as ShelfRef,
   },
 } as const;
 

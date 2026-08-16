@@ -423,7 +423,15 @@ function Brads() {
         <div id="fn15">
           <div className="pd-label" style={{ color: "var(--pd-gold)" }}>15 GA FN — 25° Angle</div>
           <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32 }}>Fits Bostitch® 25°</h2>
-          <div className="mt-4"><ProductGrid products={FN15} /></div>
+          <div className="grid lg:grid-cols-[1fr_300px] gap-6 mt-4 items-start">
+            <ProductGrid products={FN15} media={nailMedia("fn", FN15)} />
+            <ShelfPhoto
+              src={images.finishNails.fn1520_125_box}
+              alt="Pro-Drive 15 GA FN 25° finish nail box"
+              label="15 GA FN Packaging"
+              caption="How the FN 25° boxes stock on the shelf."
+            />
+          </div>
           <CollationBlock />
           <InfoPanel
             applications="Interior finish, trim work, hardwood flooring, baseboards."
@@ -437,7 +445,15 @@ function Brads() {
         <div id="da15">
           <div className="pd-label" style={{ color: "var(--pd-gold)" }}>15 GA DA — 34° Angle</div>
           <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32 }}>Fits Senco® 34°</h2>
-          <div className="mt-4"><ProductGrid products={DA15} /></div>
+          <div className="grid lg:grid-cols-[1fr_300px] gap-6 mt-4 items-start">
+            <ProductGrid products={DA15} media={nailMedia("fn", DA15)} />
+            <ShelfPhoto
+              src={images.finishNails.da21_200}
+              alt="Pro-Drive 15 GA DA 34° finish nail box"
+              label="15 GA DA Packaging"
+              caption="How the DA 34° boxes stock on the shelf."
+            />
+          </div>
           <CollationBlock />
           <InfoPanel
             applications="Interior finish, trim, and casing."
@@ -452,7 +468,15 @@ function Brads() {
           <div className="pd-label" style={{ color: "var(--pd-gold)" }}>16 GA — 0° Straight</div>
           <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32 }}>16 Straight Nail</h2>
           <p className="mt-2" style={{ color: "var(--pd-muted)", fontSize: 14 }}>16 gauge · 0° straight collation · universal fit</p>
-          <div className="mt-4"><ProductGrid products={C16} /></div>
+          <div className="grid lg:grid-cols-[1fr_300px] gap-6 mt-4 items-start">
+            <ProductGrid products={C16} media={nailMedia("thead", C16)} />
+            <ShelfPhoto
+              src={images.finishNails.c50_200}
+              alt="Pro-Drive 16 GA finish nail carton"
+              label="16 GA Straight Packaging"
+              caption="2,500 per box · 12 boxes per carton."
+            />
+          </div>
           <CollationBlock />
           <InfoPanel
             materials="Blunt Chisel Point, Smooth Shank. Available in Stainless Steel."

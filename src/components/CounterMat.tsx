@@ -105,8 +105,8 @@ export function CounterMatSection() {
               key={mat.src}
               src={mat.src}
               alt={mat.alt}
-              width={3000}
-              height={2400}
+              width={2589}
+              height={1709}
               loading="lazy"
               decoding="async"
               style={{ display: "block", width: "100%", height: "auto" }}

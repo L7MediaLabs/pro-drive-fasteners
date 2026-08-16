@@ -142,10 +142,17 @@ function extractFromSource(src: string): CopyBlock[] {
       continue;
     }
 
-    // Bare prose lines inside JSX
-    if (!/["'`;=<>{}()[\]]/.test(line) && /[A-Za-z]/.test(line) && line.includes(" ")) {
+    // Bare prose lines inside JSX (never style props / array items)
+    if (
+      !/["'`;=<>{}()[\]]/.test(line) &&
+      /[A-Za-z]/.test(line) &&
+      line.includes(" ") &&
+      !line.endsWith(",") &&
+      !/^[A-Za-z-]+:/.test(line)
+    ) {
       push(line);
     }
+
 
     // {"literal"} JSX expressions
     for (const m of line.matchAll(/\{\s*(["'])(.{2,}?)\1\s*\}/g)) push(m[2]);

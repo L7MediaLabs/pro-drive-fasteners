@@ -35,6 +35,14 @@ export const SHOW_TRANSLATED_VIDEOS = true;
 const vimeo = (id: string) =>
   `https://player.vimeo.com/video/${id}?color=FFCD00&title=0&byline=0&portrait=0&dnt=1`;
 
+/**
+ * OPEN CLIENT REQUEST (flagged Aug 16, 2026):
+ * Hollis asked for the SHORTER tapping ring cut (1:20) instead of the 2:13
+ * version. Pro-Drive has only supplied the 2:13 masters, in all five
+ * languages, so every ID below is still the long cut. Replace these IDs once
+ * the 1:20 re-cuts are delivered (English + Spanish, Portuguese, Ukrainian,
+ * Vietnamese). Do not trim client-side; the shorter cut must come from them.
+ */
 export const TAPPING_RING_LANGUAGES: VideoLanguage[] = [
   { code: "en", label: "English", englishName: "English", src: vimeo("1201923351") },
   { code: "es", label: "Espa\u00f1ol", englishName: "Spanish", src: vimeo("1218136467") },

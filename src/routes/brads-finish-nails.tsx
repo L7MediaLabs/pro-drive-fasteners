@@ -501,7 +501,8 @@ function Brads() {
         <div id="afn16">
           <div className="pd-label" style={{ color: "var(--pd-gold)" }}>16 GA AFN — 20° Angle</div>
           <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32 }}>Fits Paslode® 20°</h2>
-          <div className="mt-4"><ProductGrid products={AFN} /></div>
+          {/* No AFN 20° carton photography on file — product drawings only. */}
+          <div className="mt-4"><ProductGrid products={AFN} media={nailMedia("fn", AFN)} /></div>
           <CollationBlock />
           <Callout>Fits Paslode® 20° angle tools.</Callout>
         </div>
@@ -509,7 +510,15 @@ function Brads() {
         <div id="brad18">
           <div className="pd-label" style={{ color: "var(--pd-gold)" }}>18 GA — 0° Straight Brad</div>
           <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32 }}>Universal Brad Nails</h2>
-          <div className="mt-4"><ProductGrid products={BRAD18} /></div>
+          <div className="grid lg:grid-cols-[1fr_300px] gap-6 mt-4 items-start">
+            <ProductGrid products={BRAD18} media={nailMedia("brad", BRAD18)} />
+            <ShelfPhoto
+              src={images.brads18.axx21_200}
+              alt="Pro-Drive 18 GA brad nail box"
+              label="18 GA Brad Packaging"
+              caption="5,000 per box — how the brad boxes stock on the shelf."
+            />
+          </div>
           <CollationBlock />
           <InfoPanel
             applications="Interior finish, trim work, hardwood flooring, baseboards."
@@ -524,7 +533,8 @@ function Brads() {
         <div id="pin23">
           <div className="pd-label" style={{ color: "var(--pd-gold)" }}>23 GA Micro Pins</div>
           <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32 }}>The Invisible Fastener</h2>
-          <div className="mt-4"><ProductGrid products={PINS23} /></div>
+          {/* No 23 GA pin carton photography on file — product drawings only. */}
+          <div className="mt-4"><ProductGrid products={PINS23} media={nailMedia("pin", PINS23)} /></div>
           <CollationBlock />
           <Callout>Micro Pins fasten the smallest of trim securely, leaving a nearly invisible hole. Directional arrows painted on strips eliminate loading errors.</Callout>
           <InfoPanel

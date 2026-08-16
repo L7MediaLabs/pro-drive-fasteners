@@ -28,7 +28,7 @@ export type VideoLanguage = {
  * false = only the English cut renders; no language selector is shown.
  * Flip to true once the client approves the re-recorded translations.
  */
-export const SHOW_TRANSLATED_VIDEOS = false;
+export const SHOW_TRANSLATED_VIDEOS = true;
 
 const vimeo = (id: string) =>
   `https://player.vimeo.com/video/${id}?color=FFCD00&title=0&byline=0&portrait=0&dnt=1`;

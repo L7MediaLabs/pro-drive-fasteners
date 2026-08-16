@@ -122,13 +122,19 @@ function extractFromSource(src: string): CopyBlock[] {
     if (line.startsWith("//") || line.startsWith("/*") || line.startsWith("*")) continue;
 
     // JSX text nodes: >text<
-    for (const m of line.matchAll(/>([^<>{}]{2,})</g)) push(m[1]);
+    if (!line.includes("=>")) {
+      for (const m of line.matchAll(/>([^<>{}]{2,})</g)) push(m[1]);
 
-    // Trailing / leading JSX text on wrapped lines
-    const openTail = line.match(/>([^<>{}]{2,})$/);
-    if (openTail) push(openTail[1]);
-    const closeHead = line.match(/^([^<>{}"'`]{2,})</);
-    if (closeHead) push(closeHead[1]);
+      // Trailing JSX text after a tag close, e.g. `<span>Get Pricing`
+      if (line.startsWith("<")) {
+        const openTail = line.match(/>([^<>{}]{2,})$/);
+        if (openTail) push(openTail[1]);
+      }
+      // Leading JSX text before a closing tag, e.g. `Get Pricing</span>`
+      const closeHead = line.match(/^([^<>{}"'`]{2,})<\//);
+      if (closeHead) push(closeHead[1]);
+    }
+
 
     // Attribute text
     for (const m of line.matchAll(ATTR_TEXT)) push(m[1] ?? m[2]);

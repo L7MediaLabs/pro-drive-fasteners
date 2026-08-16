@@ -49,6 +49,7 @@ export function ProductCard({
   const seen = useRef(false);
   const [zoom, setZoom] = useState(false);
   const [flash, setFlash] = useState(false);
+  const mediaNode = media?.(product) ?? null;
 
   useEffect(() => {
     if (!ref.current || seen.current) return;

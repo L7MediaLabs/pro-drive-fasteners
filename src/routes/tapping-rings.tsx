@@ -135,7 +135,7 @@ function TappingRings() {
 
       <section className="px-[6%] py-16" style={{ background: "var(--pd-darker)" }}>
         <div className="max-w-5xl mx-auto">
-          <div className="pd-label text-center" style={{ color: "var(--pd-yellow)" }}>Quick View \u2014 Short Cut</div>
+          <div className="pd-label text-center" style={{ color: "var(--pd-yellow)" }}>Quick View — Short Cut</div>
           <div
             style={{
               position: "relative",
@@ -153,11 +153,11 @@ function TappingRings() {
               style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
               allow="fullscreen; picture-in-picture"
               allowFullScreen
-              title="Tapping Ring \u2014 Quick View (Short)"
+              title="Tapping Ring — Quick View (Short)"
             />
           </div>
           <p className="text-center mx-auto mt-5 max-w-2xl" style={{ color: "rgba(255,255,255,0.6)", fontWeight: 300, fontSize: 15, lineHeight: 1.8 }}>
-            The shorter cut of the glue-down demonstration \u2014 same install steps, about 30 seconds shorter.
+            The shorter cut of the glue-down demonstration — same install steps, about 30 seconds shorter.
           </p>
 
           <div className="pd-label mt-14 text-center" style={{ color: "var(--pd-yellow)" }}>Full Demonstration</div>

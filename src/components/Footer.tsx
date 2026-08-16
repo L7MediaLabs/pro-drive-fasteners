@@ -108,10 +108,17 @@ export function Footer() {
           className="mt-8 pt-6 space-y-3 max-w-5xl"
           style={{ borderTop: "1px solid rgba(255,205,0,0.12)", fontSize: 11.5, lineHeight: 1.65, color: "rgba(255,255,255,0.45)" }}
         >
+          {/* Electro Galvanized corrosion note — suppressed on routes in
+              HIDE_EG_NOTE_ROUTES (see top of file). Prop 65 stays on every page. */}
+          {showEgNote && (
+            <p>
+              Electro Galvanized steel provides a very thin layer of coating with a measure of protection against
+              the elements. Over time these nails may corrode. Not recommended for exterior application or ACQ
+              Treated Lumber.
+            </p>
+          )}
           <p>
-            Electro Galvanized steel provides a very thin layer of coating with a measure of protection against
-            the elements. Over time these nails may corrode. Not recommended for exterior application or ACQ
-            Treated Lumber. <strong style={{ color: "rgba(255,255,255,0.7)" }}>WARNING:</strong> This product can
+            <strong style={{ color: "rgba(255,255,255,0.7)" }}>WARNING:</strong> This product can
             expose you to chemicals including Nickel and Lead which are known to the State of California to cause
             cancer. For more information visit{" "}
             <a href="https://www.P65Warnings.ca.gov" target="_blank" rel="noreferrer" style={{ color: "rgba(255,205,0,0.7)" }}>

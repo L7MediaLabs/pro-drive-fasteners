@@ -165,8 +165,17 @@ function EZ2CapBanner() {
             </div>
           </div>
 
-          {/* Right column — stat + guarantee */}
+          {/* Right column — client feature graphic + stat + guarantee */}
           <div className="flex flex-col gap-6">
+            {/* Client-supplied E-Z 2CAP feature graphic (edits 8-12-2026: "ADD PICTURE ABOVE"). */}
+            <div className="bg-white p-3" style={{ borderRadius: 6 }}>
+              <img
+                src={images.mallets.ez2capFeature}
+                alt="E-Z 2CAP patented feature — patented design is easier and faster to install; caps fit all major brands of mallets, guaranteed. U.S. Patent No. 11,370,097."
+                loading="lazy"
+                style={{ width: "100%", height: "auto", display: "block" }}
+              />
+            </div>
             {/* 30 seconds stat */}
             <div
               className="p-6 text-center"
@@ -266,6 +275,18 @@ function Mallets() {
               </div>
             </div>
             <Callout><strong>PATENTED SURE 2 LOCK</strong> head design virtually eliminates loosening of handle — even after years of use. Epoxy-filled handle attached with steel safety wedge.</Callout>
+            {/* Client-supplied SURE 2 LOCK detail graphic (edits 8-12-2026). */}
+            <div className="mt-6 bg-white p-4" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
+              <img
+                src={images.mallets.sure2lockDetail}
+                alt="E-Z identification with our mallet model cast into the head; SURE 2 LOCK design with red epoxy, a sign of premium Made in USA quality."
+                loading="lazy"
+                style={{ width: "100%", height: "auto", display: "block" }}
+              />
+              <div className="pd-label mt-3" style={{ color: "var(--pd-gold)" }}>
+                Model cast into the head · RED EPOXY = premium Made in USA quality
+              </div>
+            </div>
             {/* Client-supplied standard description for ALL mallets (Hollis, 8-8-2026). */}
             <div className="mt-6">
               <BulletBlock
@@ -277,7 +298,7 @@ function Mallets() {
                   "Made for use with pneumatic staplers or nailers*",
                   "Contractor proven and tested",
                   "RED Epoxy-filled head attached with steel safety wedge",
-                  <>PATENTED SURE 2 LOCK&trade; head design will virtually eliminate loosening of handle &mdash; even after years of use</>,
+                  <>PATENTED SURE 2 LOCK head design will virtually eliminate loosening of handle &mdash; even after years of use</>,
                 ]}
                 footnote="*RING PATTERN DOES apply to the V-Cap Mallet."
               />

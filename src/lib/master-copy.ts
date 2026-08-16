@@ -107,9 +107,21 @@ function extractFromSource(src: string): CopyBlock[] {
     if (!current.lines.includes(text)) current.lines.push(text);
   };
 
+  let inComment = false;
+
   for (const raw of src.split("\n")) {
     const line = raw.trim();
     if (!line) continue;
+
+    // Multi-line comments (including JSX `{/* ... */}` spanning lines)
+    if (inComment) {
+      if (/\*+\/\}?/.test(line)) inComment = false;
+      continue;
+    }
+    if (/^\{?\/\*/.test(line) && !/\*+\/\}?$/.test(line)) {
+      inComment = true;
+      continue;
+    }
 
     // Section markers: JSX comments and banner comments
     const jsxComment = line.match(/^\{\/\*+\s*(.+?)\s*\*+\/\}$/);
@@ -120,6 +132,7 @@ function extractFromSource(src: string): CopyBlock[] {
       continue;
     }
     if (line.startsWith("//") || line.startsWith("/*") || line.startsWith("*")) continue;
+
 
     // JSX text nodes: >text<
     if (!line.includes("=>")) {

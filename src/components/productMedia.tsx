@@ -245,7 +245,7 @@ export function ShelfPhoto({
       {caption && (
         <div className="mt-1" style={{ color: "var(--pd-muted)", fontSize: 11.5, lineHeight: 1.5 }}>{caption}</div>
       )}
-      {zoom && <ImageLightbox src={src} alt={alt} name={label} onClose={() => setZoom(false)} />}
+      {zoom && <ImageLightbox src={src} alt={alt} sku="" name={label} onClose={() => setZoom(false)} />}
     </div>
   );
 }

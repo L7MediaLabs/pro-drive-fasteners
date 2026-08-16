@@ -18,6 +18,7 @@ import {
   STAPLES_15_5, STAPLES_15_Q, STAPLES_16_N, STAPLES_18_M, STAPLES_18_L,
   pickRelated,
 } from "../data/products";
+import { StapleMedia, ShelfPhoto, maxLenIn } from "../components/productMedia";
 import gradeContractorAsset from "../assets/badge-contractor-grade.png.asset.json";
 const gradeContractor = gradeContractorAsset.url;
 import { images } from "../data/images";

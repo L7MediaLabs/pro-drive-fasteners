@@ -53,10 +53,10 @@ export function CounterMatSection() {
   const mat = MATS[index];
 
   return (
-    <section className="pd-section">
-      <div className="pd-container">
+    <section className="px-[6%] py-16" style={{ background: "var(--pd-light-bg)" }}>
+      <div>
         <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Sales Aid</div>
-        <h2 className="pd-h2 mt-2">COUNTER POP E-Z sales aid</h2>
+        <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 36 }}>COUNTER POP E-Z sales aid</h2>
         <p className="mt-3 max-w-2xl text-[14px]" style={{ color: "var(--pd-muted)" }}>
           Free counter display showing every finish and brad nail we make, matched to the tool it
           fits. Available in English, Spanish and Portuguese — the same counter mat noted in the

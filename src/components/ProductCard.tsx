@@ -267,10 +267,12 @@ export function ProductTierSections({
   products,
   cols = 4,
   descriptions,
+  media,
 }: {
   products: Product[];
   cols?: 3 | 4;
   descriptions?: Record<string, string>;
+  media?: (p: Product) => React.ReactNode;
 }) {
   const grouped = new Map<string, Product[]>();
   const untiered: Product[] = [];

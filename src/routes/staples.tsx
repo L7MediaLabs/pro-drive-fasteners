@@ -42,6 +42,11 @@ type TabKey = "155" | "15q" | "16n" | "18m" | "18l";
 const MWIRE_TOOLS = "Duo-Fast W-1800;Josef Kihlberg G4450;Prebena G;Senco M;Spotnails 6800".split(";");
 const LWIRE_TOOLS = "ATRO 90;BeA 90;Duo-Fast 1800;Prebena EB;Haubold KL 6000;Hitachi N3804;Porter Cable NS100;Porter Cable NS150A;Senco L;Spotnails 4800;JK 781".split(";");
 
+// One carton photo per gauge section — the "see it on the shelf" reference the
+// client asked for. Gauges with no carton photography on file get `null` and
+// simply show no shelf block (never another gauge's box).
+type ShelfRef = { src: string; label: string; caption: string } | null;
+
 const tabData = {
   "155": {
     label: "15.5 GA Hardwood",

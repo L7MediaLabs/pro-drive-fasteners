@@ -35,6 +35,7 @@ const NAV = [
   { to: "/admin/inbox", label: "Inbox", icon: "▢" },
   { to: "/admin/products", label: "Products", icon: "▢" },
   { to: "/admin/reports", label: "Reports", icon: "▢" },
+  { to: "/admin/master-copy", label: "Master Copy", icon: "▢" },
   { to: "/admin/settings", label: "Settings", icon: "▢" },
 ] as const;
 

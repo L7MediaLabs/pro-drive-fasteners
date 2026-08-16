@@ -165,8 +165,17 @@ function EZ2CapBanner() {
             </div>
           </div>
 
-          {/* Right column — stat + guarantee */}
+          {/* Right column — client feature graphic + stat + guarantee */}
           <div className="flex flex-col gap-6">
+            {/* Client-supplied E-Z 2CAP feature graphic (edits 8-12-2026: "ADD PICTURE ABOVE"). */}
+            <div className="bg-white p-3" style={{ borderRadius: 6 }}>
+              <img
+                src={images.mallets.ez2capFeature}
+                alt="E-Z 2CAP patented feature — patented design is easier and faster to install; caps fit all major brands of mallets, guaranteed. U.S. Patent No. 11,370,097."
+                loading="lazy"
+                style={{ width: "100%", height: "auto", display: "block" }}
+              />
+            </div>
             {/* 30 seconds stat */}
             <div
               className="p-6 text-center"

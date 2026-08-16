@@ -105,6 +105,8 @@ const tabData = {
     ],
     galleryHero: { src: images.staples.gauge15Banner, caption: "N-Wire Strip" },
     galleryPair: [],
+    // No 16 GA N-Wire carton photography on file yet.
+    shelf: null as ShelfRef,
   },
   "18m": {
     label: "18 GA M-Wire",

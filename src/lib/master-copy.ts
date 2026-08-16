@@ -73,9 +73,16 @@ function isProse(s: string): boolean {
   if (/^https?:\/\//.test(t)) return false;
   if (/^[/.@]/.test(t)) return false;
   if (/[{}<>=]/.test(t)) return false;
+  // code fragments
+  if (/[;]|=>|\?\.|&&|\|\||!!|\bvoid\b|\breturn\b|\bconst\b/.test(t)) return false;
+  if (/\w\(|\)\s*$|^\(/.test(t) && !/^\(?[A-Z0-9]/.test(t)) return false;
+  if (/(window|document|React|Math|Object|Array)\./.test(t)) return false;
+  if (/\.(current|length|map|filter|push|forEach|focus|disconnect)\b/.test(t)) return false;
+  if ((t.match(/\(/g)?.length ?? 0) !== (t.match(/\)/g)?.length ?? 0)) return false;
   if (/\b(flex|inherit|pointer|monospace|uppercase|nowrap|hidden|absolute|relative|sticky|center|contain|cover|solid|transparent|border-box|ease|linear)\b/.test(t) && t.length < 24)
     return false;
   return true;
+
 }
 
 export type CopyBlock = { section: string; lines: string[] };

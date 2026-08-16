@@ -65,7 +65,7 @@ import polyfaceHard       from "../assets/products/mallets/polyface_hard.png.ass
 import polyfaceTough      from "../assets/products/mallets/polyface_tough.png.asset.json";
 // Generic poly dead blow render — fallback for variants without a dedicated photo
 import polyDeadblow       from "../assets/products/mallets/poly_deadblow.png.asset.json";
-import deadblowOrangeBlack from "../assets/products/mallets/deadblow_200l_o_bl.jpg.asset.json";
+
 import deadblowOrangeBrown from "../assets/products/mallets/deadblow_200l_obr.jpg.asset.json";
 import deadblow200l2000   from "../assets/products/mallets/deadblow_200l_2000_photo.jpg.asset.json";
 import deadblow200l1000   from "../assets/products/mallets/deadblow_200l_1000_photo.jpg.asset.json";

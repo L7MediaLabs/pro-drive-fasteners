@@ -298,7 +298,7 @@ function Mallets() {
                   "Made for use with pneumatic staplers or nailers*",
                   "Contractor proven and tested",
                   "RED Epoxy-filled head attached with steel safety wedge",
-                  <>PATENTED SURE 2 LOCK&trade; head design will virtually eliminate loosening of handle &mdash; even after years of use</>,
+                  <>PATENTED SURE 2 LOCK head design will virtually eliminate loosening of handle &mdash; even after years of use</>,
                 ]}
                 footnote="*RING PATTERN DOES apply to the V-Cap Mallet."
               />

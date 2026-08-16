@@ -103,12 +103,14 @@ export function ProductCard({
       onMouseLeave={e => { if (!flash) e.currentTarget.style.boxShadow = ""; }}
     >
 
-      {media ? (
+      {/* A `media` override may opt out per SKU by returning null — that SKU then
+          falls back to its own photograph, or to the neutral placeholder. */}
+      {mediaNode ? (
         <div
           className="flex items-center justify-center w-full"
           style={{ height: 170, background: "#fafaf8", borderBottom: "1px solid rgba(0,0,0,0.05)" }}
         >
-          {media(product)}
+          {mediaNode}
         </div>
       ) : product.image ? (
         // Click-to-enlarge: card thumbnails are ~213px wide, too small to read

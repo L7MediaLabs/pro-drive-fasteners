@@ -103,7 +103,7 @@ export function Footer() {
           </p>
           <p style={{ fontStyle: "italic" }}>
             This product is made and sold by Pro-Drive Fasteners and has no relationship with any of the other
-            companies whose trademarks or item numbers are mentioned
+            companies whose trademarks or item numbers are mentioned.
           </p>
         </div>
 

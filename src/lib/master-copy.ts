@@ -73,9 +73,16 @@ function isProse(s: string): boolean {
   if (/^https?:\/\//.test(t)) return false;
   if (/^[/.@]/.test(t)) return false;
   if (/[{}<>=]/.test(t)) return false;
+  // code fragments
+  if (/[;]|=>|\?\.|&&|\|\||!!|\bvoid\b|\breturn\b|\bconst\b/.test(t)) return false;
+  if (/\w\(|\)\s*$|^\(/.test(t) && !/^\(?[A-Z0-9]/.test(t)) return false;
+  if (/(window|document|React|Math|Object|Array)\./.test(t)) return false;
+  if (/\.(current|length|map|filter|push|forEach|focus|disconnect)\b/.test(t)) return false;
+  if ((t.match(/\(/g)?.length ?? 0) !== (t.match(/\)/g)?.length ?? 0)) return false;
   if (/\b(flex|inherit|pointer|monospace|uppercase|nowrap|hidden|absolute|relative|sticky|center|contain|cover|solid|transparent|border-box|ease|linear)\b/.test(t) && t.length < 24)
     return false;
   return true;
+
 }
 
 export type CopyBlock = { section: string; lines: string[] };
@@ -100,9 +107,21 @@ function extractFromSource(src: string): CopyBlock[] {
     if (!current.lines.includes(text)) current.lines.push(text);
   };
 
+  let inComment = false;
+
   for (const raw of src.split("\n")) {
     const line = raw.trim();
     if (!line) continue;
+
+    // Multi-line comments (including JSX `{/* ... */}` spanning lines)
+    if (inComment) {
+      if (/\*+\/\}?/.test(line)) inComment = false;
+      continue;
+    }
+    if (/^\{?\/\*/.test(line) && !/\*+\/\}?$/.test(line)) {
+      inComment = true;
+      continue;
+    }
 
     // Section markers: JSX comments and banner comments
     const jsxComment = line.match(/^\{\/\*+\s*(.+?)\s*\*+\/\}$/);
@@ -114,14 +133,21 @@ function extractFromSource(src: string): CopyBlock[] {
     }
     if (line.startsWith("//") || line.startsWith("/*") || line.startsWith("*")) continue;
 
-    // JSX text nodes: >text<
-    for (const m of line.matchAll(/>([^<>{}]{2,})</g)) push(m[1]);
 
-    // Trailing / leading JSX text on wrapped lines
-    const openTail = line.match(/>([^<>{}]{2,})$/);
-    if (openTail) push(openTail[1]);
-    const closeHead = line.match(/^([^<>{}"'`]{2,})</);
-    if (closeHead) push(closeHead[1]);
+    // JSX text nodes: >text<
+    if (!line.includes("=>")) {
+      for (const m of line.matchAll(/>([^<>{}]{2,})</g)) push(m[1]);
+
+      // Trailing JSX text after a tag close, e.g. `<span>Get Pricing`
+      if (line.startsWith("<")) {
+        const openTail = line.match(/>([^<>{}]{2,})$/);
+        if (openTail) push(openTail[1]);
+      }
+      // Leading JSX text before a closing tag, e.g. `Get Pricing</span>`
+      const closeHead = line.match(/^([^<>{}"'`]{2,})<\//);
+      if (closeHead) push(closeHead[1]);
+    }
+
 
     // Attribute text
     for (const m of line.matchAll(ATTR_TEXT)) push(m[1] ?? m[2]);

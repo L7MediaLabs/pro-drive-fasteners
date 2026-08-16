@@ -73,8 +73,9 @@ import malletLogoInfinite from "../assets/products/mallets/mallet_logo_infinite.
 import malletLogoKnight   from "../assets/products/mallets/mallet_logo_knight.jpg.asset.json";
 import malletHeritageLath from "../assets/products/mallets/mallet_heritage_lath.jpg.asset.json";
 import malletCapsOpenBox  from "../assets/products/mallets/mallet_caps_display_openbox.jpg.asset.json";
-import deadblowOgNew      from "../assets/products/mallets/deadblow_200l_og_new.jpg.asset.json";
+import deadblowOgNew      from "../assets/products/mallets/deadblow_200l_og_etched.jpg.asset.json";
 import deadblowBrBrNew    from "../assets/products/mallets/deadblow_200l_brbr_new.jpg.asset.json";
+import deadblowOblEtched  from "../assets/products/mallets/deadblow_200l_obl_etched.jpg.asset.json";
 import splitheadHero      from "../assets/products/splithead/splithead_hero.png.asset.json";
 import splithead23004     from "../assets/products/splithead/splithead_23004_200_face.jpg.asset.json";
 import splithead23002     from "../assets/products/splithead/splithead_23002_150_face.jpg.asset.json";

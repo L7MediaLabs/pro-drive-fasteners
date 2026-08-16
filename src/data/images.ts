@@ -76,6 +76,7 @@ import malletCapsOpenBox  from "../assets/products/mallets/mallet_caps_display_o
 import deadblowOgNew      from "../assets/products/mallets/deadblow_200l_og_etched.jpg.asset.json";
 import deadblowBrBrNew    from "../assets/products/mallets/deadblow_200l_brbr_new.jpg.asset.json";
 import deadblowOblEtched  from "../assets/products/mallets/deadblow_200l_obl_etched.jpg.asset.json";
+import deadblowObrEtched  from "../assets/products/mallets/deadblow_200l_obr_etched.jpg.asset.json";
 import splitheadHero      from "../assets/products/splithead/splithead_hero.png.asset.json";
 import splithead23004     from "../assets/products/splithead/splithead_23004_200_face.jpg.asset.json";
 import splithead23002     from "../assets/products/splithead/splithead_23002_150_face.jpg.asset.json";
@@ -206,7 +207,7 @@ export const images = {
     deadBlowOrangeGreen: deadblowOgNew.url,
     deadBlowBrownBrown:  deadblowBrBrNew.url,
     deadBlowOrangeBlack: deadblowOblEtched.url,
-    deadBlowOrangeBrown: deadblowOrangeBrown.url,
+    deadBlowOrangeBrown: deadblowObrEtched.url,
     deadBlowInsert: deadblow200l2000.url,
     deadBlowShot:   deadblow200l1000.url,
     splitHead: {

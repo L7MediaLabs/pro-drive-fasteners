@@ -10,9 +10,25 @@ import {
   BulletBlock,
 } from "../components/editorial";
 import { FN15, DA15, C16, AFN, BRAD18, PINS23, pickRelated } from "../data/products";
+import { NailMedia, ShelfPhoto, maxLenIn, type NailHead } from "../components/productMedia";
+import type { Product } from "../components/ProductCard";
 import gradeContractorAsset from "../assets/badge-contractor-grade.png.asset.json";
 const gradeContractor = gradeContractorAsset.url;
 import { images } from "../data/images";
+
+/**
+ * SKUs whose catalog photo is a genuine PRODUCT-level shot (a collated strip or
+ * a macro of the nail itself) rather than carton artwork. Those photos keep the
+ * lead on their card; every other SKU leads with a to-scale drawing of itself,
+ * and the carton artwork moves to the section shelf reference.
+ */
+const PRODUCT_PHOTO_SKUS = new Set(["FN1524-150", "C50-200SS", "DA21-200SS", "DA15-BARB"]);
+
+function nailMedia(head: NailHead, products: Product[]) {
+  const familyMax = maxLenIn(products);
+  return (p: Product) =>
+    PRODUCT_PHOTO_SKUS.has(p.id) ? null : <NailMedia sku={p.id} familyMax={familyMax} head={head} />;
+}
 
 // Client-supplied collation copy (Hollis, 8-8-2026) — repeated on every nail
 // family section verbatim.

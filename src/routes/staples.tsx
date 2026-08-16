@@ -688,6 +688,9 @@ function Staples() {
   });
 
   const g = tabData[tab];
+  // Shared pixels-per-inch basis for this gauge: every card in the tab is drawn
+  // against the longest staple in the family, so lengths compare directly.
+  const familyMax = maxLenIn([...g.products]);
 
   const allShownIds = [
     ...STAPLES_15_5, ...STAPLES_15_Q, ...STAPLES_16_N, ...STAPLES_18_M, ...STAPLES_18_L,

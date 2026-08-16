@@ -275,6 +275,18 @@ function Mallets() {
               </div>
             </div>
             <Callout><strong>PATENTED SURE 2 LOCK</strong> head design virtually eliminates loosening of handle — even after years of use. Epoxy-filled handle attached with steel safety wedge.</Callout>
+            {/* Client-supplied SURE 2 LOCK detail graphic (edits 8-12-2026). */}
+            <div className="mt-6 bg-white p-4" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
+              <img
+                src={images.mallets.sure2lockDetail}
+                alt="E-Z identification with our mallet model cast into the head; SURE 2 LOCK design with red epoxy, a sign of premium Made in USA quality."
+                loading="lazy"
+                style={{ width: "100%", height: "auto", display: "block" }}
+              />
+              <div className="pd-label mt-3" style={{ color: "var(--pd-gold)" }}>
+                Model cast into the head · RED EPOXY = premium Made in USA quality
+              </div>
+            </div>
             {/* Client-supplied standard description for ALL mallets (Hollis, 8-8-2026). */}
             <div className="mt-6">
               <BulletBlock

@@ -199,7 +199,7 @@ export const images = {
     deadBlow: polyDeadblow.url,
     deadBlowOrangeGreen: deadblowOgNew.url,
     deadBlowBrownBrown:  deadblowBrBrNew.url,
-    deadBlowOrangeBlack: deadblowOrangeBlack.url,
+    deadBlowOrangeBlack: deadblowOblEtched.url,
     deadBlowOrangeBrown: deadblowOrangeBrown.url,
     deadBlowInsert: deadblow200l2000.url,
     deadBlowShot:   deadblow200l1000.url,

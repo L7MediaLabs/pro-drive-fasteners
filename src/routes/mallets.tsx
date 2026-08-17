@@ -228,7 +228,7 @@ function Mallets() {
   return (
     <div>
       <CinematicHero
-        kicker="Mallets & Striking Tools"
+        kicker="Mallets and Dead Blows"
         title={<>Built to Last.<br />Built in the USA.</>}
         description="100% premium American hickory. Patented SURE 2 LOCK head design virtually eliminates handle loosening. Trusted by professionals who can't afford to stop."
         bgImage={images.mallets.hero}
@@ -257,7 +257,7 @@ function Mallets() {
       <section className="px-[6%] py-14" style={{ background: "var(--pd-light-bg)" }}>
         {tab === "mallets" && (
           <div>
-            <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Mallets &amp; Dead-blow installation tools</div>
+            <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Mallets and Dead Blows</div>
             <div className="flex flex-wrap items-center gap-4 mt-2">
               <h2 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: 34 }}>Premium American Hickory.</h2>
               <UsaFlagBadge />

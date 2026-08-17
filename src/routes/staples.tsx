@@ -997,7 +997,7 @@ function Staples() {
         footnote="Actual fastener depth can vary based on wood milling or tongue profile. This chart is for reference purposes only. Consult wood manufacturers for correct fastener length before installation."
       >
         <div className="space-y-8">
-          {depthChart.map(group => (
+          {[...depthChart].sort((a, b) => a.lenIn - b.lenIn).map(group => (
             <div key={group.len}>
               <div className="flex items-baseline gap-3 mb-4">
                 <h3 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: 22, lineHeight: 1 }}>

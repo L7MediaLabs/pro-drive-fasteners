@@ -145,7 +145,7 @@ export function StapleMedia({ sku, familyMax }: { sku: string; familyMax: number
 }
 
 // ─── Nail / brad / pin ───────────────────────────────────────────────────────
-export type NailHead = "brad" | "thead" | "fn" | "pin";
+export type NailHead = "brad" | "thead" | "oval" | "fn" | "pin";
 
 /**
  * Single fastener in elevation: shank to scale from the SKU's length, with the
@@ -167,8 +167,17 @@ export function NailMedia({
   const shank = wirePx(d.gauge);
   const lenPx = d.lenIn * ppi;
 
-  const headW = head === "thead" ? shank * 3.4 : head === "fn" ? shank * 2.6 : head === "brad" ? shank * 2.2 : shank;
-  const headH = head === "pin" ? 0 : head === "thead" ? shank * 1.5 : shank * 1.2;
+  const headW =
+    head === "thead" ? shank * 3.4
+    : head === "oval" ? shank * 2.3
+    : head === "fn" ? shank * 2.6
+    : head === "brad" ? shank * 2.2
+    : shank;
+  const headH =
+    head === "pin" ? 0
+    : head === "thead" ? shank * 1.5
+    : head === "oval" ? shank * 1.1
+    : shank * 1.2;
 
   const cx = Math.max(headW, 12);
   const top = 16;
@@ -187,7 +196,10 @@ export function NailMedia({
       {headH > 0 && (
         head === "thead"
           ? <rect x={cx - shank / 2} y={top} width={headW} height={headH} {...STEEL} />
-          : <rect x={cx - headW / 2} y={top} width={headW} height={headH} {...STEEL} />
+          : head === "oval"
+            /* small oval head, centered on the shank (16 GA straight C-series) */
+            ? <ellipse cx={cx} cy={top + headH / 2} rx={headW / 2} ry={headH / 2} {...STEEL} />
+            : <rect x={cx - headW / 2} y={top} width={headW} height={headH} {...STEEL} />
       )}
       {/* shank */}
       <rect x={cx - shank / 2} y={top + headH} width={shank} height={lenPx} {...STEEL} />

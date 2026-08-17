@@ -487,7 +487,7 @@ function Brads() {
           <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32 }}>16 Straight Nail</h2>
           <p className="mt-2" style={{ color: "var(--pd-muted)", fontSize: 14 }}>16 gauge · 0° straight collation · universal fit</p>
           <div className="grid lg:grid-cols-[1fr_300px] gap-6 mt-4 items-start">
-            <ProductGrid products={C16} media={nailMedia("thead", C16)} />
+            <ProductGrid products={C16} media={nailMedia("oval", C16)} />
             <ShelfPhoto
               src={images.finishNails.c50_200}
               alt="Pro-Drive Fasteners® 16 GA finish nail carton"

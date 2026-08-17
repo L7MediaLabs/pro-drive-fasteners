@@ -577,13 +577,13 @@ function Brads() {
 
       <TechReference
         kicker="Reference"
-        title="16 GA T-Head Profile — Straight (C-Series)"
-        intro='Pro-Drive Fasteners® 16 GA straight finish nails use a T-head: a tall, offset rectangular bar head set to one side of the .0625" shank — noticeably more pronounced than the small cap head on an 18 GA brad. Drawn to the same scale as the brad chart.'
+        title="16 GA Oval Head Profile — Straight (C-Series)"
+        intro='Pro-Drive Fasteners® 16 GA straight finish nails use a small oval head — a compact, low-profile crown centered on the .0625" shank, not an offset L or T bar. Drawn to the same scale as the brad chart.'
       >
         <div className="bg-white p-6" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
-          <THeadNailDiagram sizes={c16Sizes} />
+          <THeadNailDiagram sizes={c16Sizes} head="oval" />
           <div className="mt-5 pt-4 text-xs" style={{ color: "var(--pd-muted)", borderTop: "1px solid rgba(0,0,0,0.06)", fontFamily: "ui-monospace, monospace" }}>
-            Shank Ø .0625" · T-Head · Blunt Chisel Point · Smooth Shank · Meets ASTM F1667 · Drawn to scale
+            Shank Ø .0625" · Small Oval Head · Blunt Chisel Point · Smooth Shank · Meets ASTM F1667 · Drawn to scale
           </div>
         </div>
       </TechReference>

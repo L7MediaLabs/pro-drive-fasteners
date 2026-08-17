@@ -18,9 +18,9 @@ import { images } from "../data/images";
 export const Route = createFileRoute("/tapping-blocks")({
   head: () => ({
     meta: [
-      { title: "Tapping Blocks | Pro-Drive Fasteners" },
+      { title: "Tapping Blocks | Pro-Drive Fasteners®" },
       { name: "description", content: "Heavy-duty tapping blocks for every flooring requirement. ONE TAP, 561 Tapping Block, Wide Plank Wood Driving Tool." },
-      { property: "og:title", content: "Tapping Blocks — Pro-Drive Fasteners" },
+      { property: "og:title", content: "Tapping Blocks — Pro-Drive Fasteners®" },
       { property: "og:description", content: "Every plank. Perfectly placed. Made in the USA." },
       { property: "og:image", content: images.tappingBlocks.tbPro },
       { property: "twitter:image", content: images.tappingBlocks.tbPro },
@@ -48,7 +48,7 @@ const blockCopy: { id: string; title: string; image: string; alt: string; taglin
     id: "TB-PRO-312",
     title: "ONE TAP Tapping Block",
     image: images.tappingBlocks.tbPro,
-    alt: "Pro-Drive One Tap Tapping Block TB-PRO-312",
+    alt: "Pro-Drive Fasteners® One Tap Tapping Block TB-PRO-312",
     tagline: "The everyday installer's block. Ergonomic wooden handle for rapid one-hand placement.",
     bestFor: "Everyday flooring installation",
   },
@@ -56,7 +56,7 @@ const blockCopy: { id: string; title: string; image: string; alt: string; taglin
     id: "561-TB",
     title: "561 Tapping Block",
     image: images.tappingBlocks.tb561,
-    alt: "Pro-Drive 561 Tapping Block",
+    alt: "Pro-Drive Fasteners® 561 Tapping Block",
     tagline: "Compact alignment block with recessed channels and plank-safe beveled edges.",
     bestFor: "Standard plank alignment",
   },
@@ -64,7 +64,7 @@ const blockCopy: { id: string; title: string; image: string; alt: string; taglin
     id: "392-TB",
     title: "Wide Plank Wood Driving Tool",
     image: images.tappingBlocks.widePlank,
-    alt: "Pro-Drive Wide Plank Wood Driving Tool",
+    alt: "Pro-Drive Fasteners® Wide Plank Wood Driving Tool",
     tagline: "Heavy hardwood driving tool for the toughest wide-plank jobs.",
     bestFor: "Heavy wide plank driving",
   },
@@ -108,7 +108,7 @@ function Blocks() {
           { label: "3 SPECIALIZED MODELS" },
         ]}
         rightImage={images.tappingBlocks.tbPro}
-        rightImageAlt="Pro-Drive ONE TAP tapping block"
+        rightImageAlt="Pro-Drive Fasteners® ONE TAP tapping block"
       />
 
       <section className="px-[6%] py-14 space-y-14" style={{ background: "var(--pd-light-bg)" }}>
@@ -167,7 +167,7 @@ function Blocks() {
         image={images.tappingBlocks.lifestyle}
         kicker="On the Job"
         title="Tight seams. Zero surface damage."
-        body="Every Pro-Drive block is engineered to protect the plank while transferring every ounce of mallet force to the joint. Built for the way pros actually install flooring."
+        body="Every Pro-Drive Fasteners® block is engineered to protect the plank while transferring every ounce of mallet force to the joint. Built for the way pros actually install flooring."
       />
 
       <TechReference

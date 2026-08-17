@@ -8,9 +8,9 @@ import { NAILERS, HOSES, FITTINGS, pickRelated } from "../data/products";
 export const Route = createFileRoute("/air-tools")({
   head: () => ({
     meta: [
-      { title: "Air Tools & Hoses | Pro-Drive Fasteners" },
+      { title: "Air Tools & Hoses | Pro-Drive Fasteners®" },
       { name: "description", content: "Professional-grade 16 GA and 18 GA brad nailers, E-Z Connect braided air hoses, and industrial brass fittings." },
-      { property: "og:title", content: "Air Tools & Hoses — Pro-Drive Fasteners" },
+      { property: "og:title", content: "Air Tools & Hoses — Pro-Drive Fasteners®" },
       { property: "og:description", content: "Contractor-grade nailers, hoses, and fittings engineered for daily jobsite use." },
       { property: "og:image", content: images.airTools.hoseGroup },
       { property: "twitter:image", content: images.airTools.hoseGroup },
@@ -207,7 +207,7 @@ function AirTools() {
         <div className="flex items-end justify-between flex-wrap gap-4">
           <div>
             <div className="pd-label" style={{ color: "var(--pd-gold)" }}>01 — Brad Nailers</div>
-            <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 38 }}>Pro-Drive Brad Nailers</h2>
+            <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 38 }}>Pro-Drive Fasteners® Brad Nailers</h2>
           </div>
           <p style={{ color: "var(--pd-muted)", maxWidth: 420, fontSize: 14, lineHeight: 1.6 }}>
             Two gauges, every finish job. Tool-free depth adjust, sequential or bump fire, and a no-mar nose.
@@ -217,7 +217,7 @@ function AirTools() {
           {nailers.map(n => (
             <article key={n.id} className="bg-white overflow-hidden" style={{ borderTop: `3px solid ${n.accent}`, boxShadow: "0 1px 3px rgba(0,0,0,0.05)" }}>
               <div className="relative" style={{ background: "#f8f8f6", padding: 32, height: 320, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <img src={n.image} alt={`Pro-Drive ${n.name}`} loading="lazy" style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
+                <img src={n.image} alt={`Pro-Drive Fasteners® ${n.name}`} loading="lazy" style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
                 <span className="pd-label absolute top-4 left-4" style={{ background: n.accent, color: "#fff", padding: "4px 10px", fontSize: 10, letterSpacing: "0.15em" }}>{n.id}</span>
               </div>
               <div className="p-6">
@@ -262,7 +262,7 @@ function AirTools() {
               style={{ background: h.bg, border: `1px solid ${h.border}`, borderTop: `3px solid ${h.swatch}` }}
             >
               <div style={{ background: "#fff", padding: 16, height: 240, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <img src={h.image} alt={`Pro-Drive ${h.name} ${h.color}`} loading="lazy" style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
+                <img src={h.image} alt={`Pro-Drive Fasteners® ${h.name} ${h.color}`} loading="lazy" style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
               </div>
               <div className="p-5">
                 <div className="flex items-center gap-2">
@@ -309,14 +309,14 @@ function AirTools() {
             <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 38 }}>Solid Brass. Sold By the Bag.</h2>
           </div>
           <p style={{ color: "var(--pd-muted)", maxWidth: 420, fontSize: 14, lineHeight: 1.6 }}>
-            Industrial-grade brass fittings packaged in contractor-friendly 10-counts. Mix and match across the Pro-Drive line.
+            Industrial-grade brass fittings packaged in contractor-friendly 10-counts. Mix and match across the Pro-Drive Fasteners® line.
           </p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
           {fittings.map(f => (
             <article key={f.id} className="bg-white flex flex-col" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
               <div style={{ background: "#fafaf7", padding: 24, height: 200, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <img src={f.image} alt={`Pro-Drive ${f.name}`} loading="lazy" style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
+                <img src={f.image} alt={`Pro-Drive Fasteners® ${f.name}`} loading="lazy" style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
               </div>
               <div className="p-5 flex flex-col flex-1">
                 <div className="pd-label" style={{ color: "var(--pd-gold)", fontSize: 10 }}>{f.id}</div>

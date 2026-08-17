@@ -13,7 +13,7 @@ export const Route = createFileRoute("/auth")({
       : {},
   head: () => ({
     meta: [
-      { title: "Client Portal | Pro-Drive Fasteners" },
+      { title: "Client Portal | Pro-Drive Fasteners®" },
       { name: "robots", content: "noindex, nofollow" },
     ],
   }),
@@ -106,7 +106,7 @@ function AuthPage() {
           }}
         />
         <div className="relative z-10 flex items-center gap-3">
-          <img src={logo} alt="Pro-Drive Fasteners" style={{ height: 56, width: "auto" }} />
+          <img src={logo} alt="Pro-Drive Fasteners®" style={{ height: 56, width: "auto" }} />
         </div>
 
         <div className="relative z-10">
@@ -125,7 +125,7 @@ function AuthPage() {
           </h2>
           <p className="mt-6 max-w-md" style={{ color: "rgba(255,255,255,0.65)", fontSize: 15, lineHeight: 1.55 }}>
             Real-time intelligence reports, shipment analytics, and product
-            performance — built exclusively for Pro-Drive partners.
+            performance — built exclusively for Pro-Drive Fasteners® partners.
           </p>
         </div>
 
@@ -141,7 +141,7 @@ function AuthPage() {
       <div className="relative flex items-center justify-center px-6 py-16 lg:py-12">
         {/* Mobile logo */}
         <div className="absolute top-6 left-6 lg:hidden">
-          <img src={logo} alt="Pro-Drive Fasteners" style={{ height: 44, width: "auto" }} />
+          <img src={logo} alt="Pro-Drive Fasteners®" style={{ height: 44, width: "auto" }} />
         </div>
 
         {/* Ambient glow */}
@@ -177,8 +177,8 @@ function AuthPage() {
           </h1>
           <p className="mt-3 mb-7" style={{ color: "rgba(255,255,255,0.55)", fontSize: 14, lineHeight: 1.5 }}>
             {mode === "signin"
-              ? "Access your Pro-Drive intelligence dashboard."
-              : "Set up your Pro-Drive client account."}
+              ? "Access your Pro-Drive Fasteners® intelligence dashboard."
+              : "Set up your Pro-Drive Fasteners® client account."}
           </p>
 
           <button

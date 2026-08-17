@@ -9,9 +9,9 @@ import { ACCESSORIES_LIST, pickRelated } from "../data/products";
 export const Route = createFileRoute("/accessories")({
   head: () => ({
     meta: [
-      { title: "Accessories | Pro-Drive Fasteners" },
-      { name: "description", content: "ORK-6 Maintenance Kit for MIII staplers, nailers & cleat tools. Mallet displays and Pro-Drive merchandising solutions." },
-      { property: "og:title", content: "Accessories — Pro-Drive Fasteners" },
+      { title: "Accessories | Pro-Drive Fasteners®" },
+      { name: "description", content: "ORK-6 Maintenance Kit for MIII staplers, nailers & cleat tools. Mallet displays and Pro-Drive Fasteners® merchandising solutions." },
+      { property: "og:title", content: "Accessories — Pro-Drive Fasteners®" },
       { property: "og:description", content: "ORK-6 Maintenance Kit and retail display solutions." },
       { property: "og:image", content: ork6Pkg.url },
       { property: "twitter:image", content: ork6Pkg.url },
@@ -45,7 +45,7 @@ function Acc() {
           </h1>
           <p className="mt-5 text-white/65 max-w-2xl" style={{ fontSize: 17, lineHeight: 1.6 }}>
             Maintenance kits engineered for the most common flooring tools, plus merchandising hardware
-            that puts the Pro-Drive line front and center in your store.
+            that puts the Pro-Drive Fasteners® line front and center in your store.
           </p>
 
           {/* ORK-6 hero card */}
@@ -53,7 +53,7 @@ function Acc() {
             <div className="relative" style={{ background: "#fff", padding: 32, borderTop: "3px solid var(--pd-yellow)" }}>
               <img
                 src={ork6Pkg.url}
-                alt="Pro-Drive ORK-6 Maintenance Kit retail package"
+                alt="Pro-Drive Fasteners® ORK-6 Maintenance Kit retail package"
                 loading="eager"
                 style={{ width: "100%", height: "auto", display: "block", maxHeight: 560, objectFit: "contain", margin: "0 auto" }}
               />
@@ -150,7 +150,7 @@ function Acc() {
               Items shown to scale · Screws and washers not pictured
             </div>
             <div className="pd-label" style={{ color: "var(--pd-dark)", fontSize: 10 }}>
-              ORK6-KIT · Pro-Drive Fasteners
+              ORK6-KIT · Pro-Drive Fasteners®
             </div>
           </div>
         </div>
@@ -164,7 +164,7 @@ function Acc() {
             <h2 className="pd-display text-white mt-2" style={{ fontSize: 36 }}>Display Solutions</h2>
           </div>
           <p style={{ color: "rgba(255,255,255,0.55)", maxWidth: 460, fontSize: 14, lineHeight: 1.7 }}>
-            Purpose-built fixtures for showcasing the Pro-Drive line at retail. Contact sales for availability and lead times.
+            Purpose-built fixtures for showcasing the Pro-Drive Fasteners® line at retail. Contact sales for availability and lead times.
           </p>
         </div>
         <div className="grid md:grid-cols-2 gap-4 mt-8">
@@ -173,7 +173,7 @@ function Acc() {
               <div className="relative flex items-center justify-center p-6" style={{ background: "#F5F4F0" }}>
                 <img
                   src={malletDisplay.url}
-                  alt="Pro-Drive branded mallet display holding 8 mallets and poly caps"
+                  alt="Pro-Drive Fasteners® branded mallet display holding 8 mallets and poly caps"
                   loading="lazy"
                   style={{ width: "100%", height: "auto", maxHeight: 380, objectFit: "contain", display: "block" }}
                 />

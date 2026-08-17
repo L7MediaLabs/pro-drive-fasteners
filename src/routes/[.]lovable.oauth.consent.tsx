@@ -79,7 +79,7 @@ function Consent() {
           CONNECT {String(clientName).toUpperCase()}
         </h1>
         <p className="mt-4" style={{ color: "rgba(255,255,255,0.6)", fontSize: 14 }}>
-          This lets {clientName} use Pro-Drive Fasteners tools as you.
+          This lets {clientName} use Pro-Drive Fasteners® tools as you.
         </p>
         {error && (
           <p role="alert" style={{ color: "#ff8b8b", fontSize: 12, marginTop: 12 }}>

@@ -22,7 +22,7 @@ import { ThemeToggle, usePdTheme } from "@/components/admin/ui";
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({
     meta: [
-      { title: "Intelligence | Pro-Drive Fasteners" },
+      { title: "Intelligence | Pro-Drive Fasteners®" },
       { name: "robots", content: "noindex, nofollow" },
     ],
   }),
@@ -138,7 +138,7 @@ function AdminLayout() {
             Access Pending
           </div>
           <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 14, lineHeight: 1.6 }}>
-            {email} is signed in but not yet authorized for the Pro-Drive
+            {email} is signed in but not yet authorized for the Pro-Drive Fasteners®
             intelligence dashboard. Contact your admin to request access.
           </p>
           <button
@@ -195,7 +195,7 @@ function AdminLayout() {
         <div style={{ padding: "0 20px", marginBottom: 36 }}>
           <img
             src={logoAsset.url}
-            alt="Pro-Drive Fasteners"
+            alt="Pro-Drive Fasteners®"
             style={{
               display: "block",
               width: "70%",

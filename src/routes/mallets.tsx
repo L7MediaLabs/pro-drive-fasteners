@@ -27,9 +27,9 @@ export const Route = createFileRoute("/mallets")({
   },
   head: () => ({
     meta: [
-      { title: "Mallets & Caps | Pro-Drive Fasteners" },
+      { title: "Mallets & Caps | Pro-Drive Fasteners®" },
       { name: "description", content: "Mallets made in the USA from 100% premium hickory. Urethane striking faces, poly caps, and dead-blow options." },
-      { property: "og:title", content: "Mallets & Caps — Pro-Drive Fasteners" },
+      { property: "og:title", content: "Mallets & Caps — Pro-Drive Fasteners®" },
       { property: "og:description", content: "Built to last. Built in the USA. Patented SURE 2 LOCK and E-Z 2CAP designs." },
       { property: "og:image", content: images.mallets.hero },
       { property: "twitter:image", content: images.mallets.hero },
@@ -203,7 +203,7 @@ function EZ2CapBanner() {
               }}
             >
               <p style={{ fontSize: 13, lineHeight: 1.6, color: "var(--pd-dark)", fontWeight: 600 }}>
-                Pro-Drive Fasteners E-Z 2CAP mallet caps will fit all major brands of rubber flooring mallets. <span style={{ textDecoration: "underline", fontWeight: 700 }}>GUARANTEED.</span>
+                Pro-Drive Fasteners® E-Z 2CAP mallet caps will fit all major brands of rubber flooring mallets. <span style={{ textDecoration: "underline", fontWeight: 700 }}>GUARANTEED.</span>
               </p>
             </div>
           </div>
@@ -228,7 +228,7 @@ function Mallets() {
   return (
     <div>
       <CinematicHero
-        kicker="Mallets & Striking Tools"
+        kicker="Mallets and Dead Blows"
         title={<>Built to Last.<br />Built in the USA.</>}
         description="100% premium American hickory. Patented SURE 2 LOCK head design virtually eliminates handle loosening. Trusted by professionals who can't afford to stop."
         bgImage={images.mallets.hero}
@@ -238,7 +238,7 @@ function Mallets() {
           { label: "PREMIUM HICKORY" },
         ]}
         rightImage={images.mallets.lineup}
-        rightImageAlt="Pro-Drive mallet family"
+        rightImageAlt="Pro-Drive Fasteners® mallet family"
       />
 
       <TabNav
@@ -257,7 +257,7 @@ function Mallets() {
       <section className="px-[6%] py-14" style={{ background: "var(--pd-light-bg)" }}>
         {tab === "mallets" && (
           <div>
-            <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Mallets &amp; Dead-blow installation tools</div>
+            <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Mallets and Dead Blows</div>
             <div className="flex flex-wrap items-center gap-4 mt-2">
               <h2 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: 34 }}>Premium American Hickory.</h2>
               <UsaFlagBadge />
@@ -267,7 +267,7 @@ function Mallets() {
               <div className="bg-white p-4" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
                 <img
                   src={images.mallets.lineup}
-                  alt="Pro-Drive mallet lineup"
+                  alt="Pro-Drive Fasteners® mallet lineup"
                   loading="lazy"
                   style={{ width: "100%", height: "auto", objectFit: "contain" }}
                 />
@@ -331,7 +331,7 @@ function Mallets() {
               <div className="bg-white p-4" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
                 <img
                   src={images.mallets.capsLineup}
-                  alt="Pro-Drive Mallet Caps lineup"
+                  alt="Pro-Drive Fasteners® Mallet Caps lineup"
                   loading="lazy"
                   style={{ width: "100%", height: "auto", objectFit: "contain" }}
                 />
@@ -423,7 +423,7 @@ function Mallets() {
                       search={{ tab: "poly" }}
                       style={{ color: "var(--pd-dark)", fontWeight: 700, textDecoration: "underline", textUnderlineOffset: 3 }}
                     >
-                      Pro-Drive Poly Striking Faces
+                      Pro-Drive Fasteners® Poly Striking Faces
                     </Link>{" "}
                     (POLY01-ORG, POLY01-BRO, POLY01-GRE, POLY01-RED, POLY01-BLK).
                   </span>
@@ -451,7 +451,7 @@ function Mallets() {
               We turn our own handles.
             </h2>
             <p className="mt-5" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1.7, maxWidth: 560, opacity: 0.88 }}>
-              Every Pro-Drive mallet handle is turned from <strong>seasoned hickory wood lath</strong>. It's the kind of detail most manufacturers skip and most contractors feel the first time they swing one.
+              Every Pro-Drive Fasteners® mallet handle is turned from <strong>seasoned hickory wood lath</strong>. It's the kind of detail most manufacturers skip and most contractors feel the first time they swing one.
             </p>
             <p className="mt-4" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1.7, maxWidth: 560, opacity: 0.75, fontStyle: "italic" }}>
               When you control the material from the raw stock up, you control the quality all the way down.
@@ -481,7 +481,7 @@ function Mallets() {
           >
             <img
               src={images.mallets.heritageLath}
-              alt="Pro-Drive's in-house handle-turning shop — lathes and hickory handle blanks surrounded by wood shavings, where every mallet handle is turned"
+              alt="Pro-Drive Fasteners®'s in-house handle-turning shop — lathes and hickory handle blanks surrounded by wood shavings, where every mallet handle is turned"
               loading="lazy"
               style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
             />
@@ -503,7 +503,7 @@ function Mallets() {
       </section>
 
       {/* Custom-logo program callout (Hollis, Aug 4). Photos supplied Aug 5.
-          All three are examples of CUSTOMER-BRANDED work, not Pro-Drive SKUs:
+          All three are examples of CUSTOMER-BRANDED work, not Pro-Drive Fasteners® SKUs:
           no part numbers, not in the CSV catalog, so they never appear in
           product grids or search results.
           Copy claims audit (Aug 5, revised): "low minimum" IS client-supplied —
@@ -520,7 +520,7 @@ function Mallets() {
             Put your logo on the mallet.
           </h2>
           <p className="mt-5 text-white/75" style={{ fontSize: 16, lineHeight: 1.7, maxWidth: 620 }}>
-            Pro-Drive can add your company logo to our mallets, available with a low
+            Pro-Drive Fasteners® can add your company logo to our mallets, available with a low
             minimum order. Same handle, same head construction, branded for your crew, your
             distributor program, or your customer giveaways.
           </p>
@@ -542,7 +542,7 @@ function Mallets() {
                 <div style={{ position: "relative", paddingTop: "56.25%", background: "#fff" }}>
                   <img
                     src={p.src}
-                    alt={`Pro-Drive mallet handle engraved with the ${p.label} logo`}
+                    alt={`Pro-Drive Fasteners® mallet handle engraved with the ${p.label} logo`}
                     loading="lazy"
                     style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain" }}
                   />
@@ -578,7 +578,7 @@ function Mallets() {
       <TechReference
         kicker="Reference"
         title="Mallet Comparison"
-        intro="All Pro-Drive mallets share a 15-inch premium hickory handle. Head weight and carton counts vary by model."
+        intro="All Pro-Drive Fasteners® mallets share a 15-inch premium hickory handle. Head weight and carton counts vary by model."
       >
         <div className="bg-white p-6" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
           <div className="grid grid-cols-[80px_1fr_80px_80px] gap-4 pb-3 mb-3 pd-label" style={{ color: "var(--pd-muted)", fontSize: 10, borderBottom: "1px solid rgba(0,0,0,0.08)" }}>

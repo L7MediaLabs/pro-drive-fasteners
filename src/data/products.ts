@@ -150,14 +150,23 @@ function toProduct(row: Record<string, string>): Product {
   };
 }
 
-// Group matching pack-count tiers together within each family; keep original
-// CSV order for products with no tier (e.g. accessories, tools) by using a
-// stable sort keyed only on packTierRank.
-function sortByPackTier(products: Product[]): Product[] {
-  return [...products].sort((a, b) => {
-    const ar = a.packTierRank ?? 99;
-    const br = b.packTierRank ?? 99;
-    return ar - br;
+// Group matching pack-count tiers together within each family, then run each
+// tier smallest size → largest size (client lock, Aug 17). Rows with no length
+// (tools, accessories) keep their original CSV order via the stable sort.
+function rowLen(r: Record<string, string>): number {
+  return parseInt(r.length_mm || "0", 10) || 0;
+}
+
+function tierRank(r: Record<string, string>): number {
+  const countNum = r.count ? parseInt(r.count, 10) : null;
+  return packTierFor(countNum)?.rank ?? 99;
+}
+
+function sortRows(rows: Record<string, string>[]): Record<string, string>[] {
+  return [...rows].sort((a, b) => {
+    const t = tierRank(a) - tierRank(b);
+    if (t !== 0) return t;
+    return rowLen(a) - rowLen(b);
   });
 }
 
@@ -168,9 +177,7 @@ const allRows = parseCSV(rawCSV);
 const active  = allRows.filter((r) => r.active === "TRUE");
 
 function bySubcat(subcategory: string) {
-  return sortByPackTier(
-    active.filter((r) => r.subcategory === subcategory).map(toProduct)
-  );
+  return sortRows(active.filter((r) => r.subcategory === subcategory)).map(toProduct);
 }
 
 // Client-requested (Aug 4): the 15 GA DA family must list by length ascending,
@@ -191,9 +198,7 @@ function byLengthThenStainless(subcategory: string) {
 }
 
 function byCat(category: string) {
-  return sortByPackTier(
-    active.filter((r) => r.category === category).map(toProduct)
-  );
+  return sortRows(active.filter((r) => r.category === category)).map(toProduct);
 }
 
 // ─── Named exports (drop-in replacements for previous hardcoded arrays) ───────

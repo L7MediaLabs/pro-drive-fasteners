@@ -3,10 +3,10 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 export const Route = createFileRoute("/products")({
   head: () => ({
     meta: [
-      { title: "All Products | Pro-Drive Fasteners" },
-      { name: "description", content: "Complete Pro-Drive product line — staples, L-Cleats, brads, mallets, tapping tools, air tools, and accessories." },
-      { property: "og:title", content: "All Products | Pro-Drive Fasteners" },
-      { property: "og:description", content: "Browse the full Pro-Drive catalog: flooring staples, L-Cleats, brads, mallets, tapping tools, and air tools." },
+      { title: "All Products | Pro-Drive Fasteners®" },
+      { name: "description", content: "Complete Pro-Drive Fasteners® product line — staples, L-Cleats, brads, mallets, tapping tools, air tools, and accessories." },
+      { property: "og:title", content: "All Products | Pro-Drive Fasteners®" },
+      { property: "og:description", content: "Browse the full Pro-Drive Fasteners® catalog: flooring staples, L-Cleats, brads, mallets, tapping tools, and air tools." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -35,7 +35,7 @@ function AllProducts() {
         <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Catalog</div>
         <h1 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: "clamp(38px, 7vw, 64px)" }}>All Products</h1>
         <p className="mt-3 max-w-[560px]" style={{ color: "rgba(25,20,0,0.65)", fontSize: 15 }}>
-          Browse the complete Pro-Drive line of fasteners, installation tools, and equipment.
+          Browse the complete Pro-Drive Fasteners® line of fasteners, installation tools, and equipment.
         </p>
       </header>
       <section className="px-[6%] py-12" style={{ background: "var(--pd-light-bg)" }}>

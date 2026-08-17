@@ -7,7 +7,7 @@ import { pickRelated } from "../data/products";
 export const Route = createFileRoute("/tipper-de-tipper")({
   head: () => ({
     meta: [
-      { title: "Tipper-De-Tipper | Pro-Drive Fasteners" },
+      { title: "Tipper-De-Tipper | Pro-Drive Fasteners®" },
       { name: "description", content: "The safest and fastest method to replace mallet caps. 5-station design. Fits all major brands. Under 30 seconds." },
       { property: "og:title", content: "Tipper-De-Tipper Series 5" },
       { property: "og:description", content: "Replace mallet caps in under 30 seconds. 5-station design. Fits all major brands." },
@@ -125,7 +125,7 @@ function StepCard({ index, image, caption, total }: { index: number; image: stri
       >
         <img
           src={image}
-          alt={`Pro-Drive Tipper-De-Tipper step ${index} of ${total}: ${caption}`}
+          alt={`Pro-Drive Fasteners® Tipper-De-Tipper step ${index} of ${total}: ${caption}`}
           loading="lazy"
           style={{ width: "100%", height: "100%", objectFit: "contain" }}
         />
@@ -153,7 +153,7 @@ function TDT() {
           { label: "UNDER 30 SECONDS" },
         ]}
         rightImage={images.tipper.product}
-        rightImageAlt="Pro-Drive Tipper-De-Tipper Series 5"
+        rightImageAlt="Pro-Drive Fasteners® Tipper-De-Tipper Series 5"
       />
 
       <section className="px-[6%] py-16" style={{ background: "var(--pd-dark)" }}>
@@ -188,7 +188,7 @@ function TDT() {
             <YouTubeVideoCard
               id="QsrVfPwt4A4"
               label="Commercial — 1:20 Cut"
-              title="NEW Pro-Drive Fasteners Series 5 Tipper-De-Tipper"
+              title="NEW Pro-Drive Fasteners® Series 5 Tipper-De-Tipper"
               desc="The client's public commercial cut — 1 minute 20 seconds, landscape."
             />
             {videos.map(v => (

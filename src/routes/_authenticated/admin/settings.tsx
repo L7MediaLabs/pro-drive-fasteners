@@ -256,7 +256,7 @@ function RecipientsPanel() {
     if (active.length === 0 || !latest?.data) return;
     const d: WeeklyIntelligenceData = latest.data;
     const hot = d.leads.filter((l) => l.status === "HOT" || l.status === "WARM").slice(0, 5);
-    const subject = `Pro-Drive Intelligence Digest — Week of ${d.weekOf}`;
+    const subject = `Pro-Drive Fasteners® Intelligence Digest — Week of ${d.weekOf}`;
     const body = [
       `WEEKLY INSIGHT:`,
       d.summary.weeklyInsight,

@@ -58,8 +58,8 @@ export const VIDEOS: SiteVideo[] = [
     tag: "Tipper-De-Tipper",
     desc: "The Series 5 Tipper-De-Tipper commercial cut \u2014 one minute twenty seconds. Replaces and removes mallet caps in under 30 seconds with no risk of injury.",
     product: {
-      sku: "TDT-5",
-      name: "Series 5 Tipper-De-Tipper",
+      sku: "TDT-S5",
+      name: "Tipper-De-Tipper Series 5",
       href: "/tipper-de-tipper",
     },
   },

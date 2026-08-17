@@ -29,21 +29,21 @@ const MATS: MatLang[] = [
     label: "English",
     englishName: "English",
     src: enAsset.url,
-    alt: "English-language Pro-Drive counter mat chart showing 15 GA 25° FN and 34° DA finish nails, 16 GA straight and 20° angle finish nails, 18 GA brads and 23 GA micro pins, each matched to the tool brand it fits.",
+    alt: "English-language Pro-Drive Fasteners® counter mat chart showing 15 GA 25° FN and 34° DA finish nails, 16 GA straight and 20° angle finish nails, 18 GA brads and 23 GA micro pins, each matched to the tool brand it fits.",
   },
   {
     code: "es",
     label: "Español",
     englishName: "Spanish",
     src: esAsset.url,
-    alt: "Spanish-language Pro-Drive counter mat chart (Clavos de Acabado) showing 15 GA 25° FN and 34° DA finish nails, 16 GA straight and 20° angle finish nails, 18 GA brads and 23 GA micro pins, each matched to the tool brand it fits.",
+    alt: "Spanish-language Pro-Drive Fasteners® counter mat chart (Clavos de Acabado) showing 15 GA 25° FN and 34° DA finish nails, 16 GA straight and 20° angle finish nails, 18 GA brads and 23 GA micro pins, each matched to the tool brand it fits.",
   },
   {
     code: "pt",
     label: "Português",
     englishName: "Portuguese",
     src: ptAsset.url,
-    alt: "Portuguese-language Pro-Drive counter mat chart (Pregos de Acabamento) showing 15 GA 25° FN and 34° DA finish nails, 16 GA straight and 20° angle finish nails, 18 GA brads and 23 GA micro pins, each matched to the tool brand it fits.",
+    alt: "Portuguese-language Pro-Drive Fasteners® counter mat chart (Pregos de Acabamento) showing 15 GA 25° FN and 34° DA finish nails, 16 GA straight and 20° angle finish nails, 18 GA brads and 23 GA micro pins, each matched to the tool brand it fits.",
   },
 ];
 

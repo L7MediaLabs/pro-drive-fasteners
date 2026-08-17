@@ -387,7 +387,7 @@ function HotLeadsTable({
                 const body =
                   l.company === topCompany ? craigCallScript : l.aiRecommendation;
                 const href = `mailto:?subject=${encodeURIComponent(
-                  `Pro-Drive Follow-Up: ${l.company}`,
+                  `Pro-Drive Fasteners® Follow-Up: ${l.company}`,
                 )}&body=${encodeURIComponent(body)}`;
                 return (
                   <Fragment key={l.company}>

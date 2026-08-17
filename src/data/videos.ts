@@ -80,7 +80,7 @@ export const VIDEOS: SiteVideo[] = [
     title: "Glue-Down Tapping Ring Installation Demo (Full Demo)",
     src: "https://player.vimeo.com/video/1201923351?color=FFCD00&title=0&byline=0&portrait=0",
     tag: "Tapping Rings",
-    desc: "See the Pro-Drive Tapping Ring in action on glue-down vinyl and laminate flooring. Demonstrates proper technique and force distribution.",
+    desc: "See the Pro-Drive Fasteners® Tapping Ring in action on glue-down vinyl and laminate flooring. Demonstrates proper technique and force distribution.",
     languages: TAPPING_RING_LANGUAGES,
   },
   {

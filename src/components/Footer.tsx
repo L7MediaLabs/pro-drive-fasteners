@@ -30,7 +30,7 @@ const cols = [
 ];
 
 /* Routes where the Electro Galvanized corrosion note must NOT render.
-   L-Cleats are not described as E-G Galvanized anywhere in Pro-Drive's catalog
+   L-Cleats are not described as E-G Galvanized anywhere in Pro-Drive Fasteners®'s catalog
    (distributor lists them as bright basic steel with an antirust treatment), and
    we removed the E-G claim from the L-Cleat spec charts. Showing a warning about
    a galvanized coating on that page would imply a finish the product may not have.
@@ -46,7 +46,7 @@ export function Footer() {
       <div className="px-[6%] pt-14 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
-            <img src={logoAsset.url} alt="Pro-Drive Fasteners" style={{ height: 56, width: "auto", filter: "drop-shadow(0 4px 16px rgba(255,205,0,0.18))" }} />
+            <img src={logoAsset.url} alt="Pro-Drive Fasteners®" style={{ height: 56, width: "auto", filter: "drop-shadow(0 4px 16px rgba(255,205,0,0.18))" }} />
             <div className="pd-label mt-4" style={{ color: "rgba(255,205,0,0.4)" }}>
               Pro-Driven Flooring Products and Solutions
             </div>
@@ -126,7 +126,7 @@ export function Footer() {
             </a>
           </p>
           <p style={{ fontStyle: "italic" }}>
-            This product is made and sold by Pro-Drive Fasteners and has no relationship with any of the other
+            This product is made and sold by Pro-Drive Fasteners® and has no relationship with any of the other
             companies whose trademarks or item numbers are mentioned.
           </p>
         </div>
@@ -137,7 +137,7 @@ export function Footer() {
           style={{ borderTop: "1px solid rgba(255,205,0,0.12)" }}
         >
           <div className="text-white/50 flex items-center gap-4 flex-wrap">
-            <span>© 2026 Pro-Drive Fasteners. All rights reserved.</span>
+            <span>© 2026 Pro-Drive Fasteners®. All rights reserved.</span>
             <span style={{ color: "rgba(255,255,255,0.2)" }}>·</span>
             <Link to="/auth" style={{ color: "rgba(255,205,0,0.6)" }} className="hover:!text-[color:var(--pd-yellow)]">Client Login</Link>
           </div>

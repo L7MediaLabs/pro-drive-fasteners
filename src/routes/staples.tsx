@@ -26,9 +26,9 @@ import { images } from "../data/images";
 export const Route = createFileRoute("/staples")({
   head: () => ({
     meta: [
-      { title: "Flooring Staples | Pro-Drive Fasteners" },
+      { title: "Flooring Staples | Pro-Drive Fasteners®" },
       { name: "description", content: "15.5 GA, 15 GA, 16 GA, and 18 GA flooring staples for hardwood, laminate, and engineered installations." },
-      { property: "og:title", content: "Flooring Staples — Pro-Drive Fasteners" },
+      { property: "og:title", content: "Flooring Staples — Pro-Drive Fasteners®" },
       { property: "og:description", content: "Contractor-grade flooring staples in every gauge. Meets ASTM F1667." },
       { property: "og:image", content: images.staples.hero },
       { property: "twitter:image", content: images.staples.hero },
@@ -710,7 +710,7 @@ function Staples() {
           { label: "E-G GALVANIZED" },
         ]}
         rightImage={images.staples.s155_2in_7720}
-        rightImageAlt='Pro-Drive FS-200-7720 15.5 GA 2" flooring staples box'
+        rightImageAlt='Pro-Drive Fasteners® FS-200-7720 15.5 GA 2" flooring staples box'
         rightImageFit="contain"
       />
 
@@ -722,7 +722,7 @@ function Staples() {
           kicker="Jam-Free Guarantee"
           title={<>The only JAM FREE guarantee in the industry.</>}
           bullets={[
-            <>Pro-Drive Fasteners is the only manufacturer to offer a JAM FREE guarantee, and we print this on our cartons.</>,
+            <>Pro-Drive Fasteners® is the only manufacturer to offer a JAM FREE guarantee, and we print this on our cartons.</>,
             <>Will work in all major domestic and most import brand flooring tools.</>,
             <>Premium grade steel. Our staples will NOT bend. You will never have &ldquo;WALKING legs&rdquo; (BENDING/FOLDING) with our staples.</>,
           ]}
@@ -993,7 +993,7 @@ function Staples() {
       <TechReference
         kicker="Reference"
         title="Staple Subfloor Depth Chart"
-        intro='Match 15.5 GA staple length to your flooring thickness. Every card is drawn to one shared scale — flooring, 3/4" subfloor, and penetration depth are all proportional. Figures from the Pro-Drive R22 spec sheet.'
+        intro='Match 15.5 GA staple length to your flooring thickness. Every card is drawn to one shared scale — flooring, 3/4" subfloor, and penetration depth are all proportional. Figures from the Pro-Drive Fasteners® R22 spec sheet.'
         footnote="Actual fastener depth can vary based on wood milling or tongue profile. This chart is for reference purposes only. Consult wood manufacturers for correct fastener length before installation."
       >
         <div className="space-y-8">

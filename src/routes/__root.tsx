@@ -58,10 +58,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Pro-Drive Fasteners | Pro-Driven Flooring Products and Solutions" },
+      { title: "Pro-Drive Fasteners® | Pro-Driven Flooring Products and Solutions" },
       { name: "description", content: "Premium fastening solutions for flooring professionals. 50+ years. Guaranteed to fit every major brand tool." },
-      { name: "author", content: "Pro-Drive Fasteners" },
-      { property: "og:title", content: "Pro-Drive Fasteners" },
+      { name: "author", content: "Pro-Drive Fasteners®" },
+      { property: "og:title", content: "Pro-Drive Fasteners®" },
       { property: "og:description", content: "Premium fastening solutions for flooring professionals." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -86,7 +86,7 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
-        {/* Pro-Drive Intelligence Layer — Installed by Seventh State Creative */}
+        {/* Pro-Drive Fasteners® Intelligence Layer — Installed by Seventh State Creative */}
         {/* Apollo.io Visitor Identification */}
         <ApolloScript />
         {/* Meta Pixel — Instagram and Facebook Traffic Tracking */}

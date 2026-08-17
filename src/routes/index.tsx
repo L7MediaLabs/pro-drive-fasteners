@@ -126,9 +126,9 @@ function HeroSlider() {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Pro-Drive Fasteners | Pro-Driven Flooring Products and Solutions" },
+      { title: "Pro-Drive Fasteners® | Pro-Driven Flooring Products and Solutions" },
       { name: "description", content: "Premium fastening solutions for flooring professionals. 50+ years. Guaranteed to fit every major brand tool. Made in the USA." },
-      { property: "og:title", content: "Pro-Drive Fasteners" },
+      { property: "og:title", content: "Pro-Drive Fasteners®" },
       { property: "og:description", content: "Premium fastening solutions for flooring professionals." },
       { property: "og:image", content: images.mallets.hero },
     ],
@@ -137,11 +137,11 @@ export const Route = createFileRoute("/")({
 });
 
 const newProducts = [
-  { name: "Tipper-De-Tipper Series 5", category: "Installation Tools", description: "The safest, fastest method to replace mallet caps. 5-station design. Fits all major brands. Available now.", link: "/tipper-de-tipper", image: images.tipper.product, alt: "Pro-Drive Tipper-De-Tipper Series 5" },
-  { name: "One Tap Tapping Block", category: "Tapping Blocks", description: "Heavy-duty 48oz tapping block with ergonomic wooden handle. Beveled edges prevent cracking.", link: "/tapping-blocks", image: images.tappingBlocks.tbPro, alt: "Pro-Drive One Tap Tapping Block TB-PRO-312" },
-  { name: "Split Head Hammer Faces", category: "Mallets & Caps", description: 'Non-marring replacement rubber faces for Garland® split-head mallets. 1-1/2" and 2" sizes.', link: "/split-head-hammer-faces", image: images.mallets.splitHead.hero, alt: "Pro-Drive Split Head Hammer Faces" },
-  { name: "L-Cleats — 16 GA & 18 GA", category: "L-Cleats", description: "Complete L-Cleat line with depth guide. Guaranteed not to jam in any major brand of tool.", link: "/l-cleats", image: images.lCleats.banner, alt: "Pro-Drive L-Cleats 16 and 18 gauge" },
-  { name: "Wide Plank Wood Driving Tool", category: "Tapping Blocks", description: '11.5" x 4.5" x 4" designed for wide plank and glue-down flooring. Works with dead-blow mallets.', link: "/tapping-blocks", image: images.tappingBlocks.widePlank, alt: "Pro-Drive Wide Plank Wood Driving Tool" },
+  { name: "Tipper-De-Tipper Series 5", category: "Installation Tools", description: "The safest, fastest method to replace mallet caps. 5-station design. Fits all major brands. Available now.", link: "/tipper-de-tipper", image: images.tipper.product, alt: "Pro-Drive Fasteners® Tipper-De-Tipper Series 5" },
+  { name: "One Tap Tapping Block", category: "Tapping Blocks", description: "Heavy-duty 48oz tapping block with ergonomic wooden handle. Beveled edges prevent cracking.", link: "/tapping-blocks", image: images.tappingBlocks.tbPro, alt: "Pro-Drive Fasteners® One Tap Tapping Block TB-PRO-312" },
+  { name: "Split Head Hammer Faces", category: "Mallets & Caps", description: 'Non-marring replacement rubber faces for Garland® split-head mallets. 1-1/2" and 2" sizes.', link: "/split-head-hammer-faces", image: images.mallets.splitHead.hero, alt: "Pro-Drive Fasteners® Split Head Hammer Faces" },
+  { name: "L-Cleats — 16 GA & 18 GA", category: "L-Cleats", description: "Complete L-Cleat line with depth guide. Guaranteed not to jam in any major brand of tool.", link: "/l-cleats", image: images.lCleats.banner, alt: "Pro-Drive Fasteners® L-Cleats 16 and 18 gauge" },
+  { name: "Wide Plank Wood Driving Tool", category: "Tapping Blocks", description: '11.5" x 4.5" x 4" designed for wide plank and glue-down flooring. Works with dead-blow mallets.', link: "/tapping-blocks", image: images.tappingBlocks.widePlank, alt: "Pro-Drive Fasteners® Wide Plank Wood Driving Tool" },
 ] as const;
 
 const categories = [
@@ -156,31 +156,31 @@ const categories = [
 const instagramPosts = [
   {
     image: instagramInstall1.url,
-    alt: "Installer using a Pro-Drive mallet while laying flooring around a floor vent",
+    alt: "Installer using a Pro-Drive Fasteners® mallet while laying flooring around a floor vent",
     label: "Field install",
     objectPosition: "center center",
   },
   {
     image: instagramInstall2.url,
-    alt: "Installer using a Pro-Drive tapping ring during a flooring installation",
+    alt: "Installer using a Pro-Drive Fasteners® tapping ring during a flooring installation",
     label: "Tapping ring at work",
     objectPosition: "center center",
   },
   {
     image: instagramTools.url,
-    alt: "A Pro-Drive tapping ring sitting in a tool bag with flooring tools",
+    alt: "A Pro-Drive Fasteners® tapping ring sitting in a tool bag with flooring tools",
     label: "Jobsite tools",
     objectPosition: "center center",
   },
   {
     image: instagramDisplay.url,
-    alt: "Pro-Drive mallets and replacement caps displayed on a yellow product board",
+    alt: "Pro-Drive Fasteners® mallets and replacement caps displayed on a yellow product board",
     label: "Product lineup",
     objectPosition: "center center",
   },
   {
     image: instagramRingCloseup.url,
-    alt: "Close-up of an orange Pro-Drive tapping ring showing the printed branding",
+    alt: "Close-up of an orange Pro-Drive Fasteners® tapping ring showing the printed branding",
     label: "Ring detail",
     objectPosition: "center center",
   },
@@ -304,7 +304,7 @@ function Home() {
         <div className="flex justify-between items-end mb-8 flex-wrap gap-4">
           <div>
             <div className="pd-label" style={{ color: "rgba(25,20,0,0.5)" }}>What's New</div>
-            <h2 className="pd-display mt-1" style={{ color: "var(--pd-dark)", fontSize: 38 }}>Latest From Pro-Drive</h2>
+            <h2 className="pd-display mt-1" style={{ color: "var(--pd-dark)", fontSize: 38 }}>Latest From Pro-Drive Fasteners®</h2>
             <p className="mt-2" style={{ color: "rgba(25,20,0,0.72)", fontSize: 15 }}>
               We are Pro-Drive Fasteners
               <sup style={{ fontSize: "0.55em", marginLeft: "0.06em", verticalAlign: "super", lineHeight: 0 }}>®</sup>
@@ -403,7 +403,7 @@ function Home() {
             className="max-w-md"
             style={{ color: "rgba(255,255,255,0.55)", fontSize: 14, lineHeight: 1.7, fontWeight: 300 }}
           >
-            Every Pro-Drive product is stamped to a specification tier. Match the badge to the job — from daily contractor installs to industrial production lines.
+            Every Pro-Drive Fasteners® product is stamped to a specification tier. Match the badge to the job — from daily contractor installs to industrial production lines.
           </p>
         </div>
         <div className="relative grid grid-cols-1 md:grid-cols-3" style={{ gap: 1, background: "rgba(255,205,0,0.15)" }}>
@@ -429,7 +429,7 @@ function Home() {
                 className="mt-2"
                 style={{ color: "#fff", fontWeight: 800, fontSize: 22, letterSpacing: "0.02em" }}
               >
-                {/* No ™ on Pro-Drive's own grade names: protection is on the
+                {/* No ™ on Pro-Drive Fasteners®'s own grade names: protection is on the
                     badge artwork, not the name text (Carlton, Aug 13). */}
                 {g.name}
               </div>
@@ -470,7 +470,7 @@ function Home() {
             className="max-w-md"
             style={{ color: "var(--pd-muted)", fontSize: 14, lineHeight: 1.7, fontWeight: 300 }}
           >
-            Three families. One standard. Illustrations from the Pro-Drive R22 reference catalog — the same drawings our engineers work from on the line.
+            Three families. One standard. Illustrations from the Pro-Drive Fasteners® R22 reference catalog — the same drawings our engineers work from on the line.
           </p>
         </div>
 
@@ -611,7 +611,7 @@ function Home() {
       <section className="px-[6%] py-20 bg-white">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {[
-            { n: "50+", h: "Years of Industry Expertise", b: "Hollis and Carlton Henderson have spent 50+ combined years selecting every material, setting every spec, and staying involved in every step. That's the Pro-Drive difference." },
+            { n: "50+", h: "Years of Industry Expertise", b: "Hollis and Carlton Henderson have spent 50+ combined years selecting every material, setting every spec, and staying involved in every step. That's the Pro-Drive Fasteners® difference." },
             { n: "100%", h: "Guaranteed to Fit", b: "Every product is guaranteed to work in all major brand tools — or your money back." },
             { n: "Made", h: "in the USA", b: "Our mallets are crafted from 100% premium American hickory. Our products are built to professional standards — not adapted from general-purpose fasteners." },
             { n: "One", h: "Source. Everything.", b: "From staples and L-Cleats to tapping tools and air hoses — complete installation solutions." },
@@ -630,7 +630,7 @@ function Home() {
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
           <div className="max-w-2xl">
             <h2 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: "clamp(28px, 4vw, 44px)" }}>
-              Stock Pro-Drive. Full Line Offering.
+              Stock Pro-Drive Fasteners®. Full Line Offering.
             </h2>
             <div className="mt-4 flex flex-wrap gap-2">
               {["Made in the USA"].map(b => (
@@ -667,7 +667,7 @@ function Home() {
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Follow Along</div>
-            <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 38 }}>Pro-Drive on Instagram</h2>
+            <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 38 }}>Pro-Drive Fasteners® on Instagram</h2>
             <p className="mt-3" style={{ color: "var(--pd-muted)", fontWeight: 300, fontSize: 16, maxWidth: 520, lineHeight: 1.8 }}>
               Product drops, field installs, and close-up looks at the tools flooring crews actually use.
             </p>

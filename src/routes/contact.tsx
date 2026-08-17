@@ -7,10 +7,10 @@ import { getSessionId, trackEvent } from "@/lib/analytics";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact | Pro-Drive Fasteners" },
+      { title: "Contact | Pro-Drive Fasteners®" },
       { name: "description", content: "Get in touch for distributor pricing, product questions, or order inquiries." },
-      { property: "og:title", content: "Contact | Pro-Drive Fasteners" },
-      { property: "og:description", content: "Reach the Pro-Drive team for distributor pricing, product questions, or order inquiries." },
+      { property: "og:title", content: "Contact | Pro-Drive Fasteners®" },
+      { property: "og:description", content: "Reach the Pro-Drive Fasteners® team for distributor pricing, product questions, or order inquiries." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

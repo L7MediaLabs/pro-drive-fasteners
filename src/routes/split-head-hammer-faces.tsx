@@ -12,9 +12,9 @@ import { images } from "../data/images";
 export const Route = createFileRoute("/split-head-hammer-faces")({
   head: () => ({
     meta: [
-      { title: "Split Head Hammer Faces | Pro-Drive Fasteners" },
+      { title: "Split Head Hammer Faces | Pro-Drive Fasteners®" },
       { name: "description", content: "Non-marring rubber replacement faces for Garland® split-head mallets. 1-1/2\" and 2\" sizes." },
-      { property: "og:title", content: "Split Head Hammer Faces — Pro-Drive Fasteners" },
+      { property: "og:title", content: "Split Head Hammer Faces — Pro-Drive Fasteners®" },
       { property: "og:description", content: "Non-marring replacement faces for Garland® split-head mallets." },
     ],
   }),

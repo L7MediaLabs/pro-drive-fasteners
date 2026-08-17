@@ -21,7 +21,7 @@ function ReportsPage() {
     .slice(0, 5);
 
   const emailBody = [
-    `Pro-Drive Weekly Intelligence — Week of ${data.weekOf}`,
+    `Pro-Drive Fasteners® Weekly Intelligence — Week of ${data.weekOf}`,
     ``,
     data.summary.weeklyInsight,
     ``,

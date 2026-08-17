@@ -492,9 +492,9 @@ function LCleatProfileDiagram({
 export const Route = createFileRoute("/l-cleats")({
   head: () => ({
     meta: [
-      { title: "L-Cleats | Pro-Drive Fasteners" },
+      { title: "L-Cleats | Pro-Drive Fasteners®" },
       { name: "description", content: "16 GA and 18 GA L-Cleats for hardwood and maple flooring. Guaranteed not to jam in any major brand of tool." },
-      { property: "og:title", content: "L-Cleats — Pro-Drive Fasteners" },
+      { property: "og:title", content: "L-Cleats — Pro-Drive Fasteners®" },
       { property: "og:description", content: "Precision-formed 16 GA and 18 GA L-Cleats. Guaranteed not to jam." },
       { property: "og:image", content: images.lCleats.banner },
       { property: "twitter:image", content: images.lCleats.banner },
@@ -599,7 +599,7 @@ function LCleats() {
           <div className="relative" style={{ aspectRatio: "4/5", maxHeight: 520 }}>
             <img
               src={images.lCleats.hero}
-              alt="Pro-Drive L-Cleat strip — vertical product detail"
+              alt="Pro-Drive Fasteners® L-Cleat strip — vertical product detail"
               loading="eager"
               style={{
                 width: "100%", height: "100%", objectFit: "contain", objectPosition: "center",
@@ -640,7 +640,7 @@ function LCleats() {
             <div style={{ background: "#fff", padding: 16, borderTop: "3px solid var(--pd-yellow)" }}>
               <img
                 src={g.masterpack}
-                alt={`Pro-Drive ${g.label} L-Cleat packaging`}
+                alt={`Pro-Drive Fasteners® ${g.label} L-Cleat packaging`}
                 loading="lazy"
                 style={{ width: "100%", height: "auto", display: "block" }}
               />
@@ -707,7 +707,7 @@ function LCleats() {
             <div>
               <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>Built for the Job</div>
               <h3 className="pd-display text-white mt-3" style={{ fontSize: 36, lineHeight: 1.1 }}>
-                Pro installers trust Pro-Drive.
+                Pro installers trust Pro-Drive Fasteners®.
               </h3>
               <p className="mt-4 text-white/80" style={{ fontSize: 15, lineHeight: 1.7 }}>
                 Collated flexible strips. Engineered to feed and drive without any issues through any major brand of nailer &mdash; Bostitch&reg;, Powernail&reg;, Primatech&reg;, and more.
@@ -802,7 +802,7 @@ function LCleats() {
       <TechReference
         kicker="Dimensions"
         title="L-Cleat Profile — 16 GA & 18 GA"
-        intro='Elevation view of the Pro-Drive L-cleat: a flat barbed shank with a perpendicular L-head flange bent off the top. Both gauges are drawn at the same scale — 16 GA runs a heavier shank and wider head flange than 18 GA.'
+        intro='Elevation view of the Pro-Drive Fasteners® L-cleat: a flat barbed shank with a perpendicular L-head flange bent off the top. Both gauges are drawn at the same scale — 16 GA runs a heavier shank and wider head flange than 18 GA.'
       >
         <div className="grid md:grid-cols-2 gap-6">
           <div className="bg-white p-6" style={{ borderTop: "3px solid var(--pd-yellow)" }}>

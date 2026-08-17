@@ -50,9 +50,9 @@ function CollationBlock() {
 export const Route = createFileRoute("/brads-finish-nails")({
   head: () => ({
     meta: [
-      { title: "Brads & Finish Nails | Pro-Drive Fasteners" },
+      { title: "Brads & Finish Nails | Pro-Drive Fasteners®" },
       { name: "description", content: "Professional grade finish nails in every angle and gauge. 15 GA, 16 GA, 18 GA, and 23 GA micro pins." },
-      { property: "og:title", content: "Brads & Finish Nails — Pro-Drive Fasteners" },
+      { property: "og:title", content: "Brads & Finish Nails — Pro-Drive Fasteners®" },
       { property: "og:description", content: "Every angle, every gauge. Contractor tested. Guaranteed not to jam." },
       { property: "og:image", content: images.finishNails.strip },
       { property: "twitter:image", content: images.finishNails.strip },
@@ -373,7 +373,7 @@ function Brads() {
           { label: "MEETS ASTM F1667" },
         ]}
         rightImage={images.finishNails.c50_200}
-        rightImageAlt="Pro-Drive 16 GA Finish Nails, Item C50-200"
+        rightImageAlt="Pro-Drive Fasteners® 16 GA Finish Nails, Item C50-200"
         rightImageFit="contain"
       />
 
@@ -428,7 +428,7 @@ function Brads() {
             <ProductGrid products={FN15} media={nailMedia("fn", FN15)} />
             <ShelfPhoto
               src={images.finishNails.fn1520_125_box}
-              alt="Pro-Drive 15 GA FN 25° finish nail box"
+              alt="Pro-Drive Fasteners® 15 GA FN 25° finish nail box"
               label="15 GA FN Packaging"
               caption="How the FN 25° boxes stock on the shelf."
             />
@@ -450,7 +450,7 @@ function Brads() {
             <ProductGrid products={DA15} media={nailMedia("fn", DA15)} />
             <ShelfPhoto
               src={images.finishNails.da21_200}
-              alt="Pro-Drive 15 GA DA 34° finish nail box"
+              alt="Pro-Drive Fasteners® 15 GA DA 34° finish nail box"
               label="15 GA DA Packaging"
               caption="How the DA 34° boxes stock on the shelf."
             />
@@ -473,7 +473,7 @@ function Brads() {
             <ProductGrid products={C16} media={nailMedia("thead", C16)} />
             <ShelfPhoto
               src={images.finishNails.c50_200}
-              alt="Pro-Drive 16 GA finish nail carton"
+              alt="Pro-Drive Fasteners® 16 GA finish nail carton"
               label="16 GA Straight Packaging"
               caption="2,500 per box · 12 boxes per carton."
             />
@@ -515,7 +515,7 @@ function Brads() {
             <ProductGrid products={BRAD18} media={nailMedia("brad", BRAD18)} />
             <ShelfPhoto
               src={images.brads18.axx21_200}
-              alt="Pro-Drive 18 GA brad nail box"
+              alt="Pro-Drive Fasteners® 18 GA brad nail box"
               label="18 GA Brad Packaging"
               caption="5,000 per box — how the brad boxes stock on the shelf."
             />
@@ -548,7 +548,7 @@ function Brads() {
       <TechReference
         kicker="Reference"
         title="18 GA Brad Size Comparison"
-        intro='All Pro-Drive 18 GA brads share a .0468" chisel-point shank. Every nail is drawn to the same scale — compare relative lengths at a glance from 1/2" through 2-1/8".'
+        intro='All Pro-Drive Fasteners® 18 GA brads share a .0468" chisel-point shank. Every nail is drawn to the same scale — compare relative lengths at a glance from 1/2" through 2-1/8".'
       >
         <div className="bg-white p-6" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
           <BradNailDiagram sizes={brad18Sizes} />
@@ -561,7 +561,7 @@ function Brads() {
       <TechReference
         kicker="Reference"
         title="16 GA T-Head Profile — Straight (C-Series)"
-        intro='Pro-Drive 16 GA straight finish nails use a T-head: a tall, offset rectangular bar head set to one side of the .0625" shank — noticeably more pronounced than the small cap head on an 18 GA brad. Drawn to the same scale as the brad chart.'
+        intro='Pro-Drive Fasteners® 16 GA straight finish nails use a T-head: a tall, offset rectangular bar head set to one side of the .0625" shank — noticeably more pronounced than the small cap head on an 18 GA brad. Drawn to the same scale as the brad chart.'
       >
         <div className="bg-white p-6" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
           <THeadNailDiagram sizes={c16Sizes} />

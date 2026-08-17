@@ -7,9 +7,9 @@ import { pickRelated } from "../data/products";
 export const Route = createFileRoute("/tapping-rings")({
   head: () => ({
     meta: [
-      { title: "Tapping Rings | Pro-Drive Fasteners" },
+      { title: "Tapping Rings | Pro-Drive Fasteners®" },
       { name: "description", content: "Three rings, every flooring type. Red, Orange, and Yellow tapping rings — 2.1 lbs, non-marring, guaranteed." },
-      { property: "og:title", content: "Tapping Rings — Pro-Drive Fasteners" },
+      { property: "og:title", content: "Tapping Rings — Pro-Drive Fasteners®" },
       { property: "og:description", content: "Red, Orange, and Yellow tapping rings engineered for every flooring application." },
       { property: "og:image", content: images.tappingRings.lifestyle },
       { property: "twitter:image", content: images.tappingRings.lifestyle },
@@ -76,7 +76,7 @@ function TappingRings() {
           }}
         />
         <div className="relative z-10">
-          <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Pro-Drive Exclusive</div>
+          <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Pro-Drive Fasteners® Exclusive</div>
           <h1 className="pd-display mt-3" style={{ color: "var(--pd-dark)", fontSize: "clamp(40px, 8vw, 72px)" }}>
             Three Rings.<br />Every Flooring Type.
           </h1>
@@ -93,7 +93,7 @@ function TappingRings() {
                 <div style={{ background: "#fff", padding: 24, display: "flex", justifyContent: "center", alignItems: "center", height: 260, overflow: "hidden" }}>
                   <img
                     src={r.image}
-                    alt={`Pro-Drive ${r.name} ${r.id}`}
+                    alt={`Pro-Drive Fasteners® ${r.name} ${r.id}`}
                     loading="lazy"
                     style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain", transform: `scale(${r.scale})` }}
                   />

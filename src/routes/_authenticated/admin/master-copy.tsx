@@ -5,7 +5,7 @@ import { buildMasterCopy } from "@/lib/master-copy";
 export const Route = createFileRoute("/_authenticated/admin/master-copy")({
   head: () => ({
     meta: [
-      { title: "Master Copy Export | Pro-Drive Fasteners" },
+      { title: "Master Copy Export | Pro-Drive Fasteners®" },
       { name: "robots", content: "noindex, nofollow" },
     ],
   }),

@@ -738,7 +738,27 @@ function Staples() {
       <section className="px-[6%] py-16" style={{ background: "var(--pd-light-bg)" }}>
         <SplitLayout
           gallery={
-            <GalleryHero src={g.galleryHero.src} alt={g.kicker} caption={g.galleryHero.caption} />
+            <>
+              <GalleryHero src={g.galleryHero.src} alt={g.kicker} caption={g.galleryHero.caption} />
+              {/* Hollis (Aug 17): the TONGUE & GROOVE labels must appear on the
+                  staple product/depth picture, not only in the reference chart. */}
+              {tab === "155" && (
+                <div className="mt-4 bg-white" style={{ border: "1px solid rgba(0,0,0,0.08)", borderTop: "2px solid var(--pd-yellow)", padding: "12px 12px 10px" }}>
+                  <div className="pd-label mb-2" style={{ color: "var(--pd-gold)", fontSize: 11 }}>
+                    Tongue &amp; Groove — staple enters through the TONGUE
+                  </div>
+                  <StapleDepthDiagram
+                    spec={{ floor: '3/4"', floorMm: "19mm", pen: '1"' }}
+                    stapleLenIn={2.0}
+                    stapleLenLabel={'2"'}
+                    uid="tab155-tongue-groove"
+                  />
+                  <div className="mt-2 pt-2" style={{ borderTop: "1px solid rgba(0,0,0,0.06)", fontFamily: "ui-monospace, monospace", fontSize: 10, color: "var(--pd-muted)", letterSpacing: "0.05em" }}>
+                    3/4&quot; flooring · 3/4&quot; subfloor · TONGUE &amp; GROOVE joint
+                  </div>
+                </div>
+              )}
+            </>
           }
 
         >

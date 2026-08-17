@@ -40,6 +40,8 @@ Logged only. Nothing here has been applied; run the changes from Claude.
 - Remove the CC (closed-caption) from the end of that video.
 
 ## Assets needed from the client
-- Correct L-Cleat head-orientation image.
 - Split Head Garland-type mallet image.
 - Confirmation of which Tipper-De-Tipper video is the single surviving "Commercial" cut.
+
+Note: the L-Cleat head-orientation reference is now supplied (client screenshot). The chart itself is drawn in code, so it is a diagram edit, not an image swap.
+

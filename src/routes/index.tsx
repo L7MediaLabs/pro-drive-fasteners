@@ -305,7 +305,10 @@ function Home() {
           <div>
             <div className="pd-label" style={{ color: "rgba(25,20,0,0.5)" }}>What's New</div>
             <h2 className="pd-display mt-1" style={{ color: "var(--pd-dark)", fontSize: 38 }}>Latest From Pro-Drive</h2>
-            <p className="mt-2" style={{ color: "rgba(25,20,0,0.72)", fontSize: 15 }}>We are Pro-Drive Fasteners ®</p>
+            <p className="mt-2" style={{ color: "rgba(25,20,0,0.72)", fontSize: 15 }}>
+              We are Pro-Drive Fasteners
+              <sup style={{ fontSize: "0.55em", marginLeft: "0.06em", verticalAlign: "super", lineHeight: 0 }}>®</sup>
+            </p>
           </div>
           <Link to="/products" className="pd-label hover:underline" style={{ color: "var(--pd-dark)", fontSize: 12 }}>View All →</Link>
         </div>

@@ -86,7 +86,7 @@ function AuthPage() {
 
 
   return (
-    <div className="min-h-screen grid lg:grid-cols-2" style={{ background: "#0a0900" }}>
+    <div className="min-h-dvh grid lg:grid-cols-2" style={{ background: "#0a0900" }}>
       {/* LEFT: Brand panel */}
       <div
         className="relative hidden lg:flex flex-col justify-between p-12 overflow-hidden"
@@ -272,6 +272,7 @@ function FieldInput(props: {
   return (
     <input
       type={props.type ?? "text"}
+      aria-label={props.placeholder}
       value={props.value}
       onChange={(e) => props.onChange(e.target.value)}
       placeholder={props.placeholder}

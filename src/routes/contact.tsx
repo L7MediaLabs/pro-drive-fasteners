@@ -113,8 +113,9 @@ function Contact() {
             <input id="website_url" name="website_url" type="text" tabIndex={-1} autoComplete="off" defaultValue="" />
           </div>
           <div>
-            <label className="pd-label block mb-2" style={{ color: "var(--pd-dark)" }}>I'm interested in</label>
+            <label htmlFor="contact-interest" className="pd-label block mb-2" style={{ color: "var(--pd-dark)" }}>I'm interested in</label>
             <select
+              id="contact-interest"
               name="interest"
               required
               className="w-full px-3 py-3 bg-white"
@@ -128,8 +129,9 @@ function Contact() {
             </select>
           </div>
           <div>
-            <label className="pd-label block mb-2" style={{ color: "var(--pd-dark)" }}>Message</label>
+            <label htmlFor="contact-message" className="pd-label block mb-2" style={{ color: "var(--pd-dark)" }}>Message</label>
             <textarea
+              id="contact-message"
               name="message"
               rows={4}
               className="w-full px-3 py-3"
@@ -183,10 +185,11 @@ function Contact() {
 function Field({ name, label, type, required }: { name: string; label: string; type: string; required?: boolean }) {
   return (
     <div>
-      <label className="pd-label block mb-2" style={{ color: "var(--pd-dark)" }}>
+      <label htmlFor={`contact-${name}`} className="pd-label block mb-2" style={{ color: "var(--pd-dark)" }}>
         {label}{required && " *"}
       </label>
       <input
+        id={`contact-${name}`}
         name={name}
         type={type}
         required={required}

@@ -310,3 +310,11 @@
   --pdx-value-grad: linear-gradient(180deg, #0E0C00 0%, rgba(14,12,0,0.65) 100%);
   --pdx-fade: #FFFFFF;
 }
+
+/* Accessibility: visible keyboard focus on every interactive element.
+   Many buttons/links in this site set border: 0 and custom backgrounds, which
+   made the default focus ring hard or impossible to see. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--pd-yellow);
+  outline-offset: 2px;
+}

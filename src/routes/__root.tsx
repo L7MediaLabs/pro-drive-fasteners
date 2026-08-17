@@ -22,7 +22,7 @@ import { useShrinkRegistered } from "../lib/useShrinkRegistered";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center px-4" style={{ background: "var(--pd-light-bg)" }}>
+    <div className="flex min-h-dvh items-center justify-center px-4" style={{ background: "var(--pd-light-bg)" }}>
       <div className="max-w-md text-center">
         <h1 className="pd-display" style={{ fontSize: 96, color: "var(--pd-dark)" }}>404</h1>
         <p className="mt-2 text-sm" style={{ color: "var(--pd-muted)" }}>
@@ -40,7 +40,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   const router = useRouter();
   useEffect(() => { reportLovableError(error, { boundary: "tanstack_root_error_component" }); }, [error]);
   return (
-    <div className="flex min-h-screen items-center justify-center px-4 bg-white">
+    <div className="flex min-h-dvh items-center justify-center px-4 bg-white">
       <div className="max-w-md text-center">
         <h1 className="pd-display" style={{ fontSize: 32, color: "var(--pd-dark)" }}>This page didn't load</h1>
         <p className="mt-2 text-sm" style={{ color: "var(--pd-muted)" }}>Something went wrong. Try again or head home.</p>

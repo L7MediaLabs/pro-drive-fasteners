@@ -80,6 +80,7 @@ function UploadPanel() {
         value={json}
         onChange={(e) => setJson(e.target.value)}
         placeholder='{ "weekOf": "2025-01-15", "processedAt": "...", ... }'
+        aria-label="Weekly intelligence JSON"
         spellCheck={false}
         style={{
           ...mono,
@@ -310,12 +311,14 @@ function RecipientsPanel() {
               value={r.name}
               onChange={(e) => setRow(i, { name: e.target.value })}
               placeholder="name"
+              aria-label={`Recipient ${i + 1} name`}
               style={input}
             />
             <input
               value={r.email}
               onChange={(e) => setRow(i, { email: e.target.value })}
               placeholder="email"
+              aria-label={`Recipient ${i + 1} email`}
               style={{ ...input, flex: 2 }}
             />
             <button

@@ -220,10 +220,13 @@ function THeadNailDiagram({
   sizes,
   gaugeLabel = '.0625"',
   collationDeg = 0,
+  head = "t",
 }: {
   sizes: { sku: string; label: string; lenIn: number }[];
   gaugeLabel?: string;
   collationDeg?: number;
+  /** "t" = offset T-head bar; "oval" = small oval head (16 GA straight, client ref Aug 17) */
+  head?: "t" | "oval";
 }) {
   const maxLen = Math.max(...sizes.map(s => s.lenIn));
   const rad = (collationDeg * Math.PI) / 180;
@@ -255,16 +258,30 @@ function THeadNailDiagram({
 
             {/* Nail body — rotated to the collation angle (0° for straight strips) */}
             <g transform={`rotate(${collationDeg} ${cx} ${shankTop})`}>
-              {/* T-HEAD — tall offset rectangular bar to one side of the shank */}
-              <rect
-                x={cx - TH_SHANK_W / 2 - TH_HEAD_W}
-                y={shankTop - 2}
-                width={TH_HEAD_W + TH_SHANK_W}
-                height={TH_HEAD_H}
-                fill="#1a1a1a"
-              />
-              {/* top cap across shank + head for the flat T crown */}
-              <rect x={cx - TH_SHANK_W / 2 - TH_HEAD_W} y={shankTop - 5} width={TH_HEAD_W + TH_SHANK_W} height={4} fill="#1a1a1a" />
+              {head === "oval" ? (
+                /* OVAL HEAD — small slightly-crowned oval cap centered on the shank
+                   (client reference, Aug 17: 16 GA straight is NOT an L/T head) */
+                <ellipse
+                  cx={cx}
+                  cy={shankTop + 1.6}
+                  rx={TH_SHANK_W * 1.15}
+                  ry={3.1}
+                  fill="#1a1a1a"
+                />
+              ) : (
+                <>
+                  {/* T-HEAD — tall offset rectangular bar to one side of the shank */}
+                  <rect
+                    x={cx - TH_SHANK_W / 2 - TH_HEAD_W}
+                    y={shankTop - 2}
+                    width={TH_HEAD_W + TH_SHANK_W}
+                    height={TH_HEAD_H}
+                    fill="#1a1a1a"
+                  />
+                  {/* top cap across shank + head for the flat T crown */}
+                  <rect x={cx - TH_SHANK_W / 2 - TH_HEAD_W} y={shankTop - 5} width={TH_HEAD_W + TH_SHANK_W} height={4} fill="#1a1a1a" />
+                </>
+              )}
 
               {/* Shank */}
               <line
@@ -560,13 +577,13 @@ function Brads() {
 
       <TechReference
         kicker="Reference"
-        title="16 GA T-Head Profile — Straight (C-Series)"
-        intro='Pro-Drive Fasteners® 16 GA straight finish nails use a T-head: a tall, offset rectangular bar head set to one side of the .0625" shank — noticeably more pronounced than the small cap head on an 18 GA brad. Drawn to the same scale as the brad chart.'
+        title="16 GA Oval Head Profile — Straight (C-Series)"
+        intro='Pro-Drive Fasteners® 16 GA straight finish nails use a small oval head — a compact, low-profile crown centered on the .0625" shank, not an offset L or T bar. Drawn to the same scale as the brad chart.'
       >
         <div className="bg-white p-6" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
-          <THeadNailDiagram sizes={c16Sizes} />
+          <THeadNailDiagram sizes={c16Sizes} head="oval" />
           <div className="mt-5 pt-4 text-xs" style={{ color: "var(--pd-muted)", borderTop: "1px solid rgba(0,0,0,0.06)", fontFamily: "ui-monospace, monospace" }}>
-            Shank Ø .0625" · T-Head · Blunt Chisel Point · Smooth Shank · Meets ASTM F1667 · Drawn to scale
+            Shank Ø .0625" · Small Oval Head · Blunt Chisel Point · Smooth Shank · Meets ASTM F1667 · Drawn to scale
           </div>
         </div>
       </TechReference>

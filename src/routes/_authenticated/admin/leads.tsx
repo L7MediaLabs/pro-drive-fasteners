@@ -51,6 +51,7 @@ function LeadsPage() {
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="search company…"
+            aria-label="Search leads by company"
             style={{
               ...mono,
               background: "var(--pdx-panel)",

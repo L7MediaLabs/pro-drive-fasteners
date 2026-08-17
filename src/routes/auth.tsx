@@ -272,6 +272,7 @@ function FieldInput(props: {
   return (
     <input
       type={props.type ?? "text"}
+      aria-label={props.placeholder}
       value={props.value}
       onChange={(e) => props.onChange(e.target.value)}
       placeholder={props.placeholder}

@@ -86,7 +86,7 @@ function AuthPage() {
 
 
   return (
-    <div className="min-h-screen grid lg:grid-cols-2" style={{ background: "#0a0900" }}>
+    <div className="min-h-dvh grid lg:grid-cols-2" style={{ background: "#0a0900" }}>
       {/* LEFT: Brand panel */}
       <div
         className="relative hidden lg:flex flex-col justify-between p-12 overflow-hidden"

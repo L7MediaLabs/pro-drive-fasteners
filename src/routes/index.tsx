@@ -234,7 +234,7 @@ function Home() {
             className="pd-display"
             style={{ color: "var(--pd-dark)", fontSize: "clamp(42px, 9vw, 112px)", lineHeight: 0.93, margin: 0, overflowWrap: "break-word" }}
           >
-            PRO-DRIVE<br />FASTENERS
+            PRO-DRIVE<br />FASTENERS<sup style={{ fontSize: "0.3em", verticalAlign: "super", marginLeft: "0.04em", lineHeight: 1 }}>&reg;</sup>
           </h1>
           <p style={{ color: "rgba(25,20,0,0.68)", maxWidth: 880, lineHeight: 1.7, fontWeight: 400, fontSize: 18 }} className="mt-7 mb-12">
             We don't follow the standards — we set them. Premium fastening solutions<br />for flooring professionals, guaranteed to fit every major brand tool.

@@ -220,10 +220,13 @@ function THeadNailDiagram({
   sizes,
   gaugeLabel = '.0625"',
   collationDeg = 0,
+  head = "t",
 }: {
   sizes: { sku: string; label: string; lenIn: number }[];
   gaugeLabel?: string;
   collationDeg?: number;
+  /** "t" = offset T-head bar; "oval" = small oval head (16 GA straight, client ref Aug 17) */
+  head?: "t" | "oval";
 }) {
   const maxLen = Math.max(...sizes.map(s => s.lenIn));
   const rad = (collationDeg * Math.PI) / 180;

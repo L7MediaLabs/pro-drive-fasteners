@@ -53,6 +53,18 @@ export const TAPPING_RING_LANGUAGES: VideoLanguage[] = [
 
 export const VIDEOS: SiteVideo[] = [
   {
+    title: "Series 5 Tipper-De-Tipper \u2014 Commercial (1:20)",
+    src: "https://www.youtube-nocookie.com/embed/QsrVfPwt4A4",
+    tag: "Tipper-De-Tipper",
+    desc: "The Series 5 Tipper-De-Tipper commercial cut \u2014 one minute twenty seconds. Replaces and removes mallet caps in under 30 seconds with no risk of injury.",
+    product: {
+      sku: "TDT-5",
+      name: "Series 5 Tipper-De-Tipper",
+      href: "/tipper-de-tipper",
+    },
+  },
+  {
+
     title: "Tapping Ring \u2014 Quick View (Short)",
     src: "https://www.youtube-nocookie.com/embed/DDbBkiX1iEM",
     tag: "Tapping Rings",

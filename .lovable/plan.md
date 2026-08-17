@@ -14,12 +14,16 @@ Logged only. Nothing here has been applied; run the changes from Claude.
 - Contractor Bulk Cartons block is out of order (shows 1-3/4", 2", 1-1/2"). Must read 1-1/2" → 1-3/4" → 2" (FS-150-10300, FS-175-9000, FS-200-7200).
 
 ## 4. L-Cleats page
-- Reorder the depth chart smallest first → largest last, matching chart order of appearance.
-- Replace all "Powercleats®" references in the reference chart with Pro-Drive Fasteners branded L-Cleats. All L-Cleats share the same head orientation.
-- Head orientation: head is not visible — it sits parallel to the tongue, fully surface-mounted, so the tongue nests into the next board's groove. Client supplied a "correct head orientation" reference image.
+- Reorder the depth chart smallest first → largest last (1-1/4" → 1-1/2" → 1-3/4" → 2"), and smallest-to-largest flooring thickness within each group.
+- Correct head orientation (reference: right side of the client screenshot, the Powercleats-style diagrams):
+  - No visible head bump on the top surface. Our current diagrams draw a small L/T head protruding at the entry point — that is wrong.
+  - The head lies parallel to the tongue and sits fully flush/surface-mounted in the tongue shoulder, so the groove of the next board can nest over it without interference.
+  - Fastener still enters through the tongue at the same drive angle; only the head rendering and flush seating change.
+- Replace all "Powercleats®" naming in that reference chart with Pro-Drive Fasteners branded L-Cleats. All L-Cleats share the same head orientation.
 - Add copy:
   - "Patent Pending Head Design on 16GA L-Cleats GUARANTEED NOT TO JAM."
   - "Engineered to produce Flexible Collated Nail Strips, using Worthen Industries USA Made Collation Tape that Provides greater Strip Flexibility — to increase Installers efficiency in Using full strips. ALLOWS for Jam free performance on any major Brands' Tools in the market."
+
 
 ## 5. 16 GA Straight Nail
 - Head close-up must be a small oval head — no "L" or "T" shape.
@@ -36,6 +40,8 @@ Logged only. Nothing here has been applied; run the changes from Claude.
 - Remove the CC (closed-caption) from the end of that video.
 
 ## Assets needed from the client
-- Correct L-Cleat head-orientation image.
 - Split Head Garland-type mallet image.
 - Confirmation of which Tipper-De-Tipper video is the single surviving "Commercial" cut.
+
+Note: the L-Cleat head-orientation reference is now supplied (client screenshot). The chart itself is drawn in code, so it is a diagram edit, not an image swap.
+

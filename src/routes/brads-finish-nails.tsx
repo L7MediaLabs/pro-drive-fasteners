@@ -258,16 +258,30 @@ function THeadNailDiagram({
 
             {/* Nail body — rotated to the collation angle (0° for straight strips) */}
             <g transform={`rotate(${collationDeg} ${cx} ${shankTop})`}>
-              {/* T-HEAD — tall offset rectangular bar to one side of the shank */}
-              <rect
-                x={cx - TH_SHANK_W / 2 - TH_HEAD_W}
-                y={shankTop - 2}
-                width={TH_HEAD_W + TH_SHANK_W}
-                height={TH_HEAD_H}
-                fill="#1a1a1a"
-              />
-              {/* top cap across shank + head for the flat T crown */}
-              <rect x={cx - TH_SHANK_W / 2 - TH_HEAD_W} y={shankTop - 5} width={TH_HEAD_W + TH_SHANK_W} height={4} fill="#1a1a1a" />
+              {head === "oval" ? (
+                /* OVAL HEAD — small slightly-crowned oval cap centered on the shank
+                   (client reference, Aug 17: 16 GA straight is NOT an L/T head) */
+                <ellipse
+                  cx={cx}
+                  cy={shankTop + 1.6}
+                  rx={TH_SHANK_W * 1.15}
+                  ry={3.1}
+                  fill="#1a1a1a"
+                />
+              ) : (
+                <>
+                  {/* T-HEAD — tall offset rectangular bar to one side of the shank */}
+                  <rect
+                    x={cx - TH_SHANK_W / 2 - TH_HEAD_W}
+                    y={shankTop - 2}
+                    width={TH_HEAD_W + TH_SHANK_W}
+                    height={TH_HEAD_H}
+                    fill="#1a1a1a"
+                  />
+                  {/* top cap across shank + head for the flat T crown */}
+                  <rect x={cx - TH_SHANK_W / 2 - TH_HEAD_W} y={shankTop - 5} width={TH_HEAD_W + TH_SHANK_W} height={4} fill="#1a1a1a" />
+                </>
+              )}
 
               {/* Shank */}
               <line

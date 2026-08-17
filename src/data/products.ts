@@ -198,9 +198,7 @@ function byLengthThenStainless(subcategory: string) {
 }
 
 function byCat(category: string) {
-  return sortByPackTier(
-    active.filter((r) => r.category === category).map(toProduct)
-  );
+  return sortRows(active.filter((r) => r.category === category)).map(toProduct);
 }
 
 // ─── Named exports (drop-in replacements for previous hardcoded arrays) ───────

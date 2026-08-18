@@ -237,8 +237,8 @@ function Mallets() {
           { label: "PATENTED SURE 2 LOCK" },
           { label: "PREMIUM HICKORY" },
         ]}
-        rightImage={images.mallets.lineup}
-        rightImageAlt="Pro-Drive Fasteners® mallet family"
+        rightImage="/__l5e/assets-v1/27df7105-ba78-4a16-bb10-b1d5f479e2f7/tipper_de_tipper_with_hammer.png"
+        rightImageAlt="Pro-Drive Fasteners® Tipper-De-Tipper™ with mallet"
       />
 
       <TabNav

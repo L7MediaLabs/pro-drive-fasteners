@@ -53,7 +53,6 @@ import malletR5w          from "../assets/products/mallets/mallet_r5w.png.asset.
 import malletDhw          from "../assets/products/mallets/mallet_dhw.png.asset.json";
 import malletVcap         from "../assets/products/mallets/mallet_vcap.png.asset.json";
 import malletDisplay       from "../assets/mallet_display.png.asset.json";
-import malletCounterDisplay from "../assets/mallet_counter_display.png.asset.json";
 import malletCapsDisplay  from "../assets/products/mallets/mallet_caps_display.png.asset.json";
 import capCap600W         from "../assets/products/mallets/cap600w.png.asset.json";
 import capCap601B         from "../assets/products/mallets/cap601b.png.asset.json";
@@ -180,7 +179,6 @@ export const images = {
     capsLineup:  malletCapsOpenBox.url,
     capsDisplayRender: malletCapsDisplay.url,
     display:     malletDisplay.url,
-    counterDisplay: malletCounterDisplay.url,
     vCapBanner:  malletVcap.url,
     polyColors:  u.malletsP24_02,
     polyDetail:  u.malletsP24_03,

@@ -99,6 +99,47 @@ function lCleatPath(
   return p.join(" ");
 }
 
+/**
+ * In-floor (installed) cleat silhouette for the subfloor depth chart.
+ *
+ * Per the client's reference diagram: at the drive angle the L-head is NOT
+ * visible — only the shank entering the tongue shoulder — and the barbs read as
+ * a fine texture, not sharp saw teeth. So this profile drops the head flange
+ * entirely and uses a very shallow barb amplitude.
+ */
+function lCleatDrivenPath(L: number, shankW: number): string {
+  const hw = shankW / 2;
+  const barbTop = L * 0.22;
+  const chiselTop = Math.max(barbTop + 4, L - shankW * 1.2);
+  const amp = hw * 0.28;                                    // subtle barb texture
+  const teeth = Math.max(6, Math.round((chiselTop - barbTop) / (shankW * 0.9)));
+  const step = (chiselTop - barbTop) / teeth;
+  const p: string[] = [];
+
+  // Blunt, slightly rounded top end (the cut end of the shank at the tongue).
+  p.push(`M ${-hw} ${0}`);
+  p.push(`L ${hw} 0`);
+  p.push(`L ${hw} ${barbTop}`);
+  for (let i = 0; i < teeth; i++) {
+    const y0 = barbTop + i * step;
+    p.push(`L ${hw + amp} ${y0 + step * 0.6}`);
+    p.push(`L ${hw} ${y0 + step * 0.6}`);
+    p.push(`L ${hw} ${y0 + step}`);
+  }
+  p.push(`L ${hw} ${chiselTop}`);
+  p.push(`L ${-hw} ${L}`);
+  p.push(`L ${-hw} ${chiselTop}`);
+  for (let i = teeth - 1; i >= 0; i--) {
+    const y0 = barbTop + i * step;
+    p.push(`L ${-hw} ${y0 + step * 0.5}`);
+    p.push(`L ${-hw - amp} ${y0 + step * 0.5}`);
+    p.push(`L ${-hw} ${y0 + step * 0.1}`);
+  }
+  p.push(`L ${-hw} ${barbTop}`);
+  p.push("Z");
+  return p.join(" ");
+}
+
 // Card media: the PRODUCT itself, drawn to scale from the SKU's own length, so
 // the grid leads with the fastener instead of repeating carton photography.
 const SKU_LEN_IN: Record<string, number> = {

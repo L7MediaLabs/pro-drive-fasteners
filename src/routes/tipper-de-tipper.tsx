@@ -40,12 +40,6 @@ const deTippingSteps = [
 
 const videos = [
   {
-    id: "1FUMcvs0KySqo0STEFD4a3hxujEZ1-64f",
-    label: "Commercial — Horizon Cut",
-    title: "Tipper-De-Tipper Series 5 — Commercial",
-    desc: "See the Series 5 in action across professional flooring environments.",
-  },
-  {
     id: "14NTGUSJRl2mKSUi1GzEV3YyVKGGFzfBv",
     label: "Commercial",
     title: "Tipper-De-Tipper Series 5 — Full Commercial",
@@ -86,28 +80,6 @@ function VideoCard({ id, label, title, desc }: { id: string; label: string; titl
   );
 }
 
-/** Landscape 16:9 YouTube embed on the privacy-enhanced nocookie domain. */
-function YouTubeVideoCard({ id, label, title, desc }: { id: string; label: string; title: string; desc: string }) {
-  return (
-    <div className="flex flex-col" style={{ borderTop: "3px solid var(--pd-yellow)", background: "rgba(255,255,255,0.04)" }}>
-      <div style={{ position: "relative", paddingTop: "56.25%", background: "#000" }}>
-        <iframe
-          src={`https://www.youtube-nocookie.com/embed/${id}`}
-          title={title}
-          loading="lazy"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowFullScreen
-          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
-        />
-      </div>
-      <div className="p-4">
-        <div className="pd-label" style={{ color: "var(--pd-yellow)" }}>{label}</div>
-        <div className="mt-1 text-white" style={{ fontWeight: 700, fontSize: 14 }}>{title}</div>
-        <p className="mt-1 text-white/60" style={{ fontSize: 13 }}>{desc}</p>
-      </div>
-    </div>
-  );
-}
 
 
 function StepCard({ index, image, caption, total }: { index: number; image: string; caption: string; total: number }) {
@@ -184,13 +156,7 @@ function TDT() {
 
         <div className="mt-14">
           <div className="pd-label mb-4" style={{ color: "var(--pd-yellow)" }}>Series 5 — In Action</div>
-          <div className="grid md:grid-cols-3 gap-4">
-            <YouTubeVideoCard
-              id="QsrVfPwt4A4"
-              label="Commercial — 1:20 Cut"
-              title="NEW Pro-Drive Fasteners® Series 5 Tipper-De-Tipper"
-              desc="The client's public commercial cut — 1 minute 20 seconds, landscape."
-            />
+          <div className="grid md:grid-cols-2 gap-4">
             {videos.map(v => (
               <VideoCard key={v.id} {...v} />
             ))}

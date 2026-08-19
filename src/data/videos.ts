@@ -63,6 +63,7 @@ export const VIDEOS: SiteVideo[] = [
       name: "Yellow Tapping Ring",
       href: "/tapping-rings",
     },
+  },
   {
     title: "Glue-Down Tapping Ring Installation Demo (Full Demo)",
     src: "https://player.vimeo.com/video/1201923351?color=FFCD00&title=0&byline=0&portrait=0",

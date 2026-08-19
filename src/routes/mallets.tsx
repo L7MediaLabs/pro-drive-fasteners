@@ -237,8 +237,8 @@ function Mallets() {
           { label: "PATENTED SURE 2 LOCK" },
           { label: "PREMIUM HICKORY" },
         ]}
-        rightImage={images.mallets.display}
-        rightImageAlt="Pro-Drive Fasteners® mallet display"
+        rightImage={images.mallets.counterDisplay}
+        rightImageAlt="Pro-Drive Fasteners® premium mallet caps counter display"
       />
 
       <TabNav

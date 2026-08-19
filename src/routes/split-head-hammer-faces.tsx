@@ -26,25 +26,40 @@ function SplitHead() {
   return (
     <div>
       <CinematicHero
-        kicker="Split Head Replacement"
-        title={<>Non-Marring Faces.<br />Made to Fit.</>}
-        description="Replacement rubber faces for Garland® split-head mallets. Available in 1-1/2 inch and 2 inch sizes. Durable for pre-finished and unfinished wood."
-        bgImage={images.mallets.splitHead.hero}
+        kicker="Replacement Hammer Faces"
+        title={<>We Sell the Faces.<br />Not the Mallet.</>}
+        description="Non-marring rubber replacement faces for Garland® split-head mallets. Available in 1-1/2 inch and 2 inch sizes. Durable for pre-finished and unfinished wood."
         badges={[
+          { label: "REPLACEMENT FACES ONLY" },
           { label: "NON-MARRING" },
           { label: "FITS GARLAND®" },
-          { label: "EASY INSTALL" },
         ]}
+        rightImage={images.mallets.splitHead.face200}
+        rightImageAlt="2 inch white replacement hammer face for Garland® split-head mallet"
+        rightImageFit="contain"
       />
 
-      {/* Context only: the Garland® split-head mallet the faces fit.
+      <section className="px-[6%] py-14" style={{ background: "var(--pd-light-bg)" }}>
+        <div className="pd-label" style={{ color: "var(--pd-gold)" }}>What We Sell</div>
+        <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32 }}>Two replacement-face sizes.</h2>
+        <div className="mt-6"><ProductGrid products={SPLIT_HEAD} /></div>
+        <Callout>
+          <strong>Replacement faces only.</strong> These white non-marring faces fit Garland® split-head mallets. The mallet itself is not offered.
+        </Callout>
+        <InfoPanel
+          applications="Wood assembly, cabinetry, pre-finished flooring seating, upholstery frames."
+          materials="Non-marring rubber compound. Retains original Garland® mallet fit."
+        />
+      </section>
+
+      {/* Reference only: the Garland® split-head mallet the faces fit.
           Client lock (Aug 17): the mallet itself is NOT sold. */}
       <section className="px-[6%] py-14" style={{ background: "var(--pd-cream, #F5F1E8)" }}>
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
           <div style={{ background: "#fff", padding: 20, borderTop: "3px solid var(--pd-yellow)", position: "relative" }}>
             <img
               src={images.mallets.splitHead.hero}
-              alt="Garland® split-head mallet shown for fit reference only — the mallet is not offered by Pro-Drive Fasteners®"
+              alt="Garland® split-head mallet shown for fit reference only — the mallet is not sold by Pro-Drive Fasteners®"
               loading="lazy"
               style={{ width: "100%", height: "auto", display: "block" }}
             />
@@ -62,32 +77,19 @@ function SplitHead() {
                 fontWeight: 800,
               }}
             >
-              MALLET NOT OFFERED
+              MALLET NOT SOLD
             </div>
           </div>
           <div>
             <div className="pd-label" style={{ color: "var(--pd-gold)" }}>For Reference Only</div>
             <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 30, lineHeight: 1.1 }}>
-              MALLET NOT OFFERED.
+              The mallet is shown for fit context.
             </h2>
             <p className="mt-4" style={{ color: "var(--pd-muted)", fontSize: 15, lineHeight: 1.65 }}>
-              The Garland® split-head mallet above is shown for fit context only. We sell the
-              replacement rubber faces — the mallet itself is not offered.
+              The Garland® split-head mallet above is shown only so you can see which tool our replacement faces fit. We do not sell the mallet.
             </p>
-            <Callout>Replacement faces only. MALLET NOT OFFERED.</Callout>
           </div>
         </div>
-      </section>
-
-      <section className="px-[6%] py-14" style={{ background: "var(--pd-light-bg)" }}>
-        <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Replacement Faces</div>
-        <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32 }}>Two sizes. Zero marring.</h2>
-        <div className="mt-6"><ProductGrid products={SPLIT_HEAD} /></div>
-        <Callout>Replacement faces only — MALLET NOT OFFERED. Designed for Garland® split-head mallets. Easy to install. Durable for pre-finished and unfinished wood. NON-MARRING.</Callout>
-        <InfoPanel
-          applications="Wood assembly, cabinetry, pre-finished flooring seating, upholstery frames."
-          materials="Non-marring rubber compound. Retains original Garland® mallet fit."
-        />
       </section>
 
       <RelatedProducts products={related} />

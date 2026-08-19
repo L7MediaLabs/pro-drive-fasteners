@@ -63,17 +63,6 @@ export const VIDEOS: SiteVideo[] = [
       name: "Yellow Tapping Ring",
       href: "/tapping-rings",
     },
-  },
-    src: "https://www.youtube-nocookie.com/embed/DDbBkiX1iEM",
-    tag: "Tapping Rings",
-    desc: "A shorter cut of the glue-down tapping ring demonstration, covering the same install steps in about 30 seconds less. English only \u2014 the translated versions are made from the full demo below.",
-    portrait: true,
-    product: {
-      sku: "V-6RING-Y",
-      name: "Yellow Tapping Ring",
-      href: "/tapping-rings",
-    },
-  },
   {
     title: "Glue-Down Tapping Ring Installation Demo (Full Demo)",
     src: "https://player.vimeo.com/video/1201923351?color=FFCD00&title=0&byline=0&portrait=0",

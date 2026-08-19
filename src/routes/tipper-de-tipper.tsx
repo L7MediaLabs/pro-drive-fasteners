@@ -40,12 +40,6 @@ const deTippingSteps = [
 
 const videos = [
   {
-    id: "1FUMcvs0KySqo0STEFD4a3hxujEZ1-64f",
-    label: "Commercial — Horizon Cut",
-    title: "Tipper-De-Tipper Series 5 — Commercial",
-    desc: "See the Series 5 in action across professional flooring environments.",
-  },
-  {
     id: "14NTGUSJRl2mKSUi1GzEV3YyVKGGFzfBv",
     label: "Commercial",
     title: "Tipper-De-Tipper Series 5 — Full Commercial",

@@ -237,8 +237,8 @@ function Mallets() {
           { label: "PATENTED SURE 2 LOCK" },
           { label: "PREMIUM HICKORY" },
         ]}
-        rightImage="/__l5e/assets-v1/27df7105-ba78-4a16-bb10-b1d5f479e2f7/tipper_de_tipper_with_hammer.png"
-        rightImageAlt="Pro-Drive Fasteners® Tipper-De-Tipper™ with mallet"
+        rightImage={images.mallets.display}
+        rightImageAlt="Pro-Drive Fasteners® mallet display"
       />
 
       <TabNav
@@ -330,12 +330,12 @@ function Mallets() {
               <ProductGrid products={MALLET_CAPS} />
               <div className="bg-white p-4" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
                 <img
-                  src="/__l5e/assets-v1/27df7105-ba78-4a16-bb10-b1d5f479e2f7/tipper_de_tipper_with_hammer.png"
-                  alt="Pro-Drive Fasteners® Tipper-De-Tipper™ with mallet"
+                  src={images.mallets.capsLineup}
+                  alt="Pro-Drive Fasteners® mallet cap lineup"
                   loading="lazy"
                   style={{ width: "100%", height: "auto", objectFit: "contain" }}
                 />
-                <div className="pd-label mt-3" style={{ color: "var(--pd-gold)" }}>Tipper-De-Tipper™</div>
+                <div className="pd-label mt-3" style={{ color: "var(--pd-gold)" }}>Cap Lineup</div>
 
               </div>
             </div>

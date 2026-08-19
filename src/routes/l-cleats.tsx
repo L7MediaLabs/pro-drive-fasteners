@@ -863,7 +863,25 @@ function LCleats() {
         </div>
       </TechReference>
 
-
+      {/* 16 GA PATENT & COLlation COPY */}
+      <section className="px-[6%] py-10" style={{ background: "var(--pd-cream)" }}>
+        <div className="max-w-4xl mx-auto">
+          <div
+            className="bg-white px-6 py-5"
+            style={{ borderLeft: "4px solid var(--pd-yellow)", color: "var(--pd-text)", lineHeight: 1.65 }}
+          >
+            <div className="pd-label mb-2" style={{ color: "var(--pd-gold)", fontSize: 11 }}>16 GA Performance</div>
+            <p className="text-base font-semibold" style={{ color: "var(--pd-dark)" }}>
+              Patent Pending Head Design on 16GA L-Cleats GUARANTEED NOT TO JAM.
+            </p>
+            <p className="mt-3 text-sm" style={{ color: "var(--pd-text)" }}>
+              Engineered to produce Flexible Collated Nail Strips, using Worthen Industries USA Made Collation Tape
+              that Provides greater Strip Flexibility — to increase Installers efficiency in Using full strips. ALLOWS
+              for Jam free performance on any major Brands&apos; Tools in the market.
+            </p>
+          </div>
+        </div>
+      </section>
 
     </div>
   );

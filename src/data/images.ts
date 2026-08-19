@@ -178,6 +178,7 @@ export const images = {
     vCap:        malletVcap.url,
     capsLineup:  malletCapsOpenBox.url,
     capsDisplayRender: malletCapsDisplay.url,
+    display:     malletDisplay.url,
     vCapBanner:  malletVcap.url,
     polyColors:  u.malletsP24_02,
     polyDetail:  u.malletsP24_03,

@@ -227,8 +227,7 @@ function CleatDepthDiagram({
   // Drive angle measured off vertical — used to rotate the whole cleat body.
   const driveDeg = (Math.atan2(horizRun, verticalSpan) * 180) / Math.PI;
   const SHANK_W = 4.4;          // flat cleat shank thickness
-  const HEAD_FLANGE = 9;        // horizontal foot of the "L" head
-  const HEAD_T = 4.2;           // head thickness
+
 
   const stapleX0 = tongueRootX + CTONGUE_LEN * 0.45; // on the tongue itself
   const stapleX1 = stapleX0 - horizRun;      // tip extends down-left

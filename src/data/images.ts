@@ -51,6 +51,7 @@ import malletM1w          from "../assets/products/mallets/mallet_m1w.png.asset.
 import malletM5w          from "../assets/products/mallets/mallet_m5w.png.asset.json";
 import malletR5w          from "../assets/products/mallets/mallet_r5w.png.asset.json";
 import malletDhw          from "../assets/products/mallets/mallet_dhw.png.asset.json";
+import malletVcap         from "../assets/products/mallets/mallet_vcap.png.asset.json";
 import malletDisplay       from "../assets/mallet_display.png.asset.json";
 import malletCapsDisplay  from "../assets/products/mallets/mallet_caps_display.png.asset.json";
 import capCap600W         from "../assets/products/mallets/cap600w.png.asset.json";

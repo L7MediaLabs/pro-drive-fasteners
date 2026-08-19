@@ -226,10 +226,10 @@ function Mallets() {
   const related = pickRelated(allIds, 6);
 
   const heroConfig: Record<TabKey, { src: string; alt: string }> = {
-    mallets:  { src: images.mallets.display,         alt: "Pro-Drive Fasteners® mallet display" },
-    caps:     { src: images.mallets.capsDisplayRender, alt: "Pro-Drive Fasteners® mallet cap display" },
-    poly:     { src: images.mallets.polyColors,        alt: "Pro-Drive Fasteners® poly striking face color grades" },
-    deadblow: { src: images.mallets.deadBlow,          alt: "Pro-Drive Fasteners® poly dead blow mallet" },
+    mallets:  { src: images.mallets.display,      alt: "Pro-Drive Fasteners® mallet display" },
+    caps:     { src: images.mallets.capsLineup,   alt: "Pro-Drive Fasteners® mallet cap lineup" },
+    poly:     { src: images.mallets.polyColors,   alt: "Pro-Drive Fasteners® poly striking face color grades" },
+    deadblow: { src: images.mallets.deadBlow,     alt: "Pro-Drive Fasteners® poly dead blow mallet" },
   };
   const hero = heroConfig[tab];
 

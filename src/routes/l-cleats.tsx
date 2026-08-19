@@ -751,14 +751,12 @@ function LCleats() {
                 Pro installers trust Pro-Drive Fasteners®.
               </h3>
               <p className="mt-4 text-white/80" style={{ fontSize: 15, lineHeight: 1.7 }}>
-                Collated flexible strips. Engineered to feed and drive without any issues through any major brand of nailer &mdash; Bostitch&reg;, Powernail&reg;, Primatech&reg;, and more.
+                Patent Pending Head Design on 16GA L-Cleats GUARANTEED NOT TO JAM.
               </p>
               <p className="mt-3 text-white/80" style={{ fontSize: 15, lineHeight: 1.7 }}>
-                Heavy-duty hold for solid hardwood — 1-1/2&quot;, 1-3/4&quot;, and 2&quot; lengths.
+                Engineered to produce Flexible Collated Nail Strips, using Worthen Industries USA Made Collation Tape that Provides greater Strip Flexibility – to increase Installers efficiency in Using full strips.  ALLOWS for Jam free performance on any major Brands&rsquo; Tools in the market.
               </p>
-              <p className="mt-3 text-white/80" style={{ fontSize: 15, lineHeight: 1.7 }}>
-                Made with premium grade recycled US steel.
-              </p>
+
               <Link to="/contact" onClick={() => trackEvent("cta_click", { ctaLabel: "Request Distributor Pricing" })} className="pd-btn-primary mt-6 inline-block" style={{ padding: "12px 24px", fontSize: 12 }}>
                 Request Pricing →
               </Link>

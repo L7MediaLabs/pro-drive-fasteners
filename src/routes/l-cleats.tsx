@@ -876,8 +876,8 @@ function LCleats() {
             </p>
             <p className="mt-3 text-sm" style={{ color: "var(--pd-text)" }}>
               Engineered to produce Flexible Collated Nail Strips, using Worthen Industries USA Made Collation Tape
-              that Provides greater Strip Flexibility — to increase Installers efficiency in Using full strips. ALLOWS
-              for Jam free performance on any major Brands&apos; Tools in the market.
+              that Provides greater Strip Flexibility – to increase Installers efficiency in Using full strips. ALLOWS
+              for Jam free performance on any major Brands’ Tools in the market.
             </p>
           </div>
         </div>

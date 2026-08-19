@@ -723,7 +723,7 @@ function LCleats() {
       </section>
 
       {/* LIFESTYLE BANNER */}
-      <section className="relative overflow-hidden" style={{ height: 420 }}>
+      <section className="relative overflow-hidden" style={{ minHeight: 420 }}>
         <img
           src={images.lCleats.lifestyle}
           alt="L-Cleats installed in hardwood flooring"
@@ -737,7 +737,7 @@ function LCleats() {
             background: "linear-gradient(90deg, rgba(15,15,15,0.88) 0%, rgba(15,15,15,0.55) 60%, rgba(15,15,15,0.2) 100%)",
           }}
         />
-        <div className="relative z-10 h-full flex items-center px-[6%]">
+        <div className="relative z-10 flex items-center px-[6%] py-14">
           <div className="max-w-2xl flex gap-6 items-start">
             <img
               src={contractorBadgeUrl}

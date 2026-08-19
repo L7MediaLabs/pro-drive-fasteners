@@ -225,6 +225,14 @@ function Mallets() {
   const allIds = [...MALLETS, ...MALLET_CAPS, ...POLY_FACES, ...DEAD_BLOW].map(p => p.id);
   const related = pickRelated(allIds, 6);
 
+  const heroConfig: Record<TabKey, { src: string; alt: string }> = {
+    mallets:  { src: images.mallets.display,         alt: "Pro-Drive Fasteners® mallet display" },
+    caps:     { src: images.mallets.capsDisplayRender, alt: "Pro-Drive Fasteners® mallet cap display" },
+    poly:     { src: images.mallets.polyColors,        alt: "Pro-Drive Fasteners® poly striking face color grades" },
+    deadblow: { src: images.mallets.deadBlow,          alt: "Pro-Drive Fasteners® poly dead blow mallet" },
+  };
+  const hero = heroConfig[tab];
+
   return (
     <div>
       <CinematicHero
@@ -237,8 +245,9 @@ function Mallets() {
           { label: "PATENTED SURE 2 LOCK" },
           { label: "PREMIUM HICKORY" },
         ]}
-        rightImage={images.mallets.display}
-        rightImageAlt="Pro-Drive Fasteners® mallet display"
+        rightImage={hero.src}
+        rightImageAlt={hero.alt}
+        rightImageFit="contain"
       />
 
       <TabNav

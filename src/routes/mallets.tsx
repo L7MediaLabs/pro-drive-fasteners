@@ -16,6 +16,7 @@ import { VideoCard } from "../components/VideoCard";
 import { V_CAP_VIDEO } from "../data/videos";
 import { MALLETS, MALLET_CAPS, POLY_FACES, DEAD_BLOW, pickRelated } from "../data/products";
 import { images } from "../data/images";
+import { UsaFlag } from "../components/UsaFlag";
 
 const TAB_KEYS = ["mallets", "caps", "poly", "deadblow"] as const;
 
@@ -488,7 +489,7 @@ function Mallets() {
               We turn our own handles.
             </h2>
             <p className="mt-5" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1.7, maxWidth: 560, opacity: 0.88 }}>
-              Every Pro-Drive Fasteners® mallet handle is turned from <strong>seasoned hickory wood lath</strong>. It's the kind of detail most manufacturers skip and most contractors feel the first time they swing one.
+              Every Pro-Drive Fasteners® mallet handle is turned from <strong>100% hickory wood lath</strong>. It's the kind of detail most manufacturers skip and most contractors feel the first time they swing one.
             </p>
             <p className="mt-4" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1.7, maxWidth: 560, opacity: 0.75, fontStyle: "italic" }}>
               When you control the material from the raw stock up, you control the quality all the way down.
@@ -532,7 +533,9 @@ function Mallets() {
                 textTransform: "uppercase",
                 fontWeight: 700,
               }}
+              className="inline-flex items-center gap-2"
             >
+              <UsaFlag height={13} />
               Turned In-House · Made in USA
             </div>
           </div>

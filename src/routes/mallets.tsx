@@ -265,7 +265,7 @@ function Mallets() {
     <div>
       <CinematicHero
         kicker="Mallets and Dead Blows"
-        title={<>Built to Last.<br />Built in the USA.</>}
+        title={<>Built to Last.<br />Built in the <span style={{ whiteSpace: "nowrap" }}>USA. <UsaFlag height="0.72em" title="Made in USA" /></span></>}
         description="100% premium American hickory. Patented SURE 2 LOCK head design virtually eliminates handle loosening. Trusted by professionals who can't afford to stop."
         bgImage={images.mallets.hero}
         badges={[

@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { UsaFlag } from "../components/UsaFlag";
 import { trackEvent } from "@/lib/analytics";
 import ork6Pkg from "../assets/ork6_package.jpg.asset.json";
 import ork6Pdf from "../assets/ork6_parts_diagram.pdf.asset.json";
@@ -58,7 +59,7 @@ function Acc() {
                 style={{ width: "100%", height: "auto", display: "block", maxHeight: 560, objectFit: "contain", margin: "0 auto" }}
               />
               <div className="pd-label absolute top-4 left-4" style={{ background: "var(--pd-yellow)", color: "var(--pd-dark)", padding: "6px 12px", fontSize: 11, letterSpacing: "0.15em", fontWeight: 800 }}>
-                MADE IN THE USA
+                <span className="inline-flex items-center gap-2">MADE IN THE USA <UsaFlag height={12} /></span>
               </div>
             </div>
             <div>

@@ -69,7 +69,7 @@ export function CinematicHero({
                 ) : (
                   <div
                     key={i}
-                    className="px-3.5 py-2 self-center"
+                    className="px-3.5 py-2 self-center inline-flex items-center gap-2"
                     style={{
                       background: "var(--pd-dark)",
                       fontSize: 11,
@@ -78,6 +78,7 @@ export function CinematicHero({
                       fontWeight: 700,
                     }}
                   >
+                    {/^(made|built) in (the )?usa$/i.test(b.label.trim()) && <UsaFlag height={14} />}
                     {b.label}
                   </div>
                 )

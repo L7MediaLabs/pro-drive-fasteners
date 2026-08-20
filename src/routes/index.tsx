@@ -638,6 +638,7 @@ function Home() {
               {["Made in the USA"].map(b => (
                 <span
                   key={b}
+                  className="inline-flex items-center gap-2"
                   style={{
                     background: "rgba(25,20,0,0.1)",
                     padding: "4px 10px",
@@ -649,6 +650,7 @@ function Home() {
                     color: "rgba(25,20,0,0.6)",
                   }}
                 >
+                  <UsaFlag height={12} />
                   {b}
                 </span>
               ))}

@@ -117,7 +117,7 @@ function TDT() {
     <div>
       <CinematicHero
         kicker="Patent #20220388265A1"
-        title={<>Tipper-De-Tipper<br />Series 5</>}
+        title={<>Tipper-De-Tipper<br />Series 5 <UsaFlag height="0.65em" className="ml-1 align-middle" title="Made in USA" /></>}
         description="The safest and fastest method to replace mallet caps. 5-station design fits all major brands of round or angle rubber caps. Under 30 seconds. Virtually no maintenance."
         bgImage={images.tipper.extra}
         badges={[

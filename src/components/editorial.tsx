@@ -3,7 +3,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { Product } from "./ProductCard";
 import { ProductCard } from "./ProductCard";
 import { trackEvent } from "@/lib/analytics";
-import { images } from "@/data/images";
+import { UsaFlag } from "./UsaFlag";
 
 // ─── CinematicHero ────────────────────────────────────────────────────────────
 export function CinematicHero({

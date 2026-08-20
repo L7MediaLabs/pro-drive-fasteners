@@ -186,6 +186,7 @@ export const images = {
     heritageLath: malletHeritageLath.url,
     ez2capFeature:  malletEz2capFeature.url,
     sure2lockDetail: malletSure2lockDetail.url,
+    tipperWithHammer: malletTipperWithHammer.url,
     customLogo: [malletLogoInfinite.url, malletLogoKnight.url],
     misc1:       u.malletsP21_01,
     misc2:       u.malletsP22_08,

@@ -37,7 +37,8 @@ export function UsaFlag({
   title = "Made in USA",
   className = "",
 }: {
-  height?: number;
+  /** px number, or any CSS length such as "0.75em" so it scales with the heading. */
+  height?: number | string;
   title?: string;
   className?: string;
 }) {

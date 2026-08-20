@@ -620,7 +620,7 @@ function Home() {
           ].map(x => (
             <div key={x.h}>
               <div className="pd-display" style={{ color: "var(--pd-amber-ink)", fontSize: 48 }}>{x.n}</div>
-              <div className="mt-3" style={{ fontWeight: 700, fontSize: 17, color: "var(--pd-dark)" }}>{x.h}</div>
+              <div className="mt-3 flex items-center gap-2" style={{ fontWeight: 700, fontSize: 17, color: "var(--pd-dark)" }}>{x.h}{x.h.includes("USA") && <UsaFlag height={15} />}</div>
               <p className="mt-2" style={{ fontSize: 13, color: "var(--pd-muted)", lineHeight: 1.75 }}>{x.b}</p>
             </div>
           ))}

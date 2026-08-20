@@ -76,22 +76,23 @@ function lCleatPath(
   p.push(`L ${X(hw)} 0`);
   // Outer shank edge, top-down — constant width with barb spurs, no taper.
   p.push(`L ${X(hw)} ${barbTop}`);
+  // Barb spurs lean toward the HEAD (up), not the tip (client, Aug 20).
   for (let i = 0; i < teeth; i++) {
     const y0 = barbTop + i * step;
-    p.push(`L ${X(hw + amp)} ${y0 + step * 0.62}`);
-    p.push(`L ${X(hw)} ${y0 + step * 0.62}`);
+    p.push(`L ${X(hw)} ${y0 + step * 0.38}`);
+    p.push(`L ${X(hw + amp)} ${y0 + step * 0.38}`);
     p.push(`L ${X(hw)} ${y0 + step}`);
   }
   p.push(`L ${X(hw)} ${chiselTop}`);
   // Chisel point — one flat bevel across the full shank width (no needle).
   p.push(`L ${X(-hw)} ${L}`);
   p.push(`L ${X(-hw)} ${chiselTop}`);
-  // Inner shank edge, bottom-up — barbs mirrored, staggered half a tooth.
+  // Inner shank edge, bottom-up — barbs mirrored, also leaning toward the head.
   for (let i = teeth - 1; i >= 0; i--) {
     const y0 = barbTop + i * step;
-    p.push(`L ${X(-hw)} ${y0 + step * 0.5}`);
+    p.push(`L ${X(-hw)} ${y0 + step * 0.88}`);
     p.push(`L ${X(-hw - amp)} ${y0 + step * 0.5}`);
-    p.push(`L ${X(-hw)} ${y0 + step * 0.12}`);
+    p.push(`L ${X(-hw)} ${y0 + step * 0.5}`);
   }
   p.push(`L ${X(-hw)} ${barbTop}`);
   p.push(`L ${X(-hw)} ${headT}`);

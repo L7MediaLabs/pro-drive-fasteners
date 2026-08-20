@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { trackEvent } from "@/lib/analytics";
 import { ProductGrid } from "../components/ProductCard";
 import { TechReference, useTabs, UsaFlagBadge } from "../components/editorial";
+import { UsaFlag } from "../components/UsaFlag";
 import { LCLEATS_16, LCLEATS_18 } from "../data/products";
 import { images } from "../data/images";
 import contractorBadge from "../assets/badge-contractor-grade.png.asset.json";
@@ -75,22 +76,23 @@ function lCleatPath(
   p.push(`L ${X(hw)} 0`);
   // Outer shank edge, top-down — constant width with barb spurs, no taper.
   p.push(`L ${X(hw)} ${barbTop}`);
+  // Barb spurs lean toward the HEAD (up), not the tip (client, Aug 20).
   for (let i = 0; i < teeth; i++) {
     const y0 = barbTop + i * step;
-    p.push(`L ${X(hw + amp)} ${y0 + step * 0.62}`);
-    p.push(`L ${X(hw)} ${y0 + step * 0.62}`);
+    p.push(`L ${X(hw)} ${y0 + step * 0.38}`);
+    p.push(`L ${X(hw + amp)} ${y0 + step * 0.38}`);
     p.push(`L ${X(hw)} ${y0 + step}`);
   }
   p.push(`L ${X(hw)} ${chiselTop}`);
   // Chisel point — one flat bevel across the full shank width (no needle).
   p.push(`L ${X(-hw)} ${L}`);
   p.push(`L ${X(-hw)} ${chiselTop}`);
-  // Inner shank edge, bottom-up — barbs mirrored, staggered half a tooth.
+  // Inner shank edge, bottom-up — barbs mirrored, also leaning toward the head.
   for (let i = teeth - 1; i >= 0; i--) {
     const y0 = barbTop + i * step;
-    p.push(`L ${X(-hw)} ${y0 + step * 0.5}`);
+    p.push(`L ${X(-hw)} ${y0 + step * 0.88}`);
     p.push(`L ${X(-hw - amp)} ${y0 + step * 0.5}`);
-    p.push(`L ${X(-hw)} ${y0 + step * 0.12}`);
+    p.push(`L ${X(-hw)} ${y0 + step * 0.5}`);
   }
   p.push(`L ${X(-hw)} ${barbTop}`);
   p.push(`L ${X(-hw)} ${headT}`);
@@ -120,10 +122,11 @@ function lCleatDrivenPath(L: number, shankW: number): string {
   p.push(`M ${-hw} ${0}`);
   p.push(`L ${hw} 0`);
   p.push(`L ${hw} ${barbTop}`);
+  // Barb spurs lean toward the HEAD (up), matching the elevation profile.
   for (let i = 0; i < teeth; i++) {
     const y0 = barbTop + i * step;
-    p.push(`L ${hw + amp} ${y0 + step * 0.6}`);
-    p.push(`L ${hw} ${y0 + step * 0.6}`);
+    p.push(`L ${hw} ${y0 + step * 0.4}`);
+    p.push(`L ${hw + amp} ${y0 + step * 0.4}`);
     p.push(`L ${hw} ${y0 + step}`);
   }
   p.push(`L ${hw} ${chiselTop}`);
@@ -131,9 +134,9 @@ function lCleatDrivenPath(L: number, shankW: number): string {
   p.push(`L ${-hw} ${chiselTop}`);
   for (let i = teeth - 1; i >= 0; i--) {
     const y0 = barbTop + i * step;
-    p.push(`L ${-hw} ${y0 + step * 0.5}`);
+    p.push(`L ${-hw} ${y0 + step * 0.9}`);
     p.push(`L ${-hw - amp} ${y0 + step * 0.5}`);
-    p.push(`L ${-hw} ${y0 + step * 0.1}`);
+    p.push(`L ${-hw} ${y0 + step * 0.5}`);
   }
   p.push(`L ${-hw} ${barbTop}`);
   p.push("Z");
@@ -621,6 +624,10 @@ function LCleats() {
               Guaranteed compatibility with every major brand of cleat nailer.
             </p>
             <div className="flex flex-wrap gap-3 mt-7">
+              <div className="pd-glass-light px-4 py-2 inline-flex items-center gap-2" style={{ fontSize: 12, color: "#fff", letterSpacing: "0.12em", fontWeight: 700 }}>
+                <UsaFlag height={15} />
+                MADE IN USA · PREMIUM GRADE RECYCLED US STEEL
+              </div>
               <div className="pd-glass-light px-4 py-2" style={{ fontSize: 12, color: "var(--pd-yellow)", letterSpacing: "0.12em", fontWeight: 700 }}>
                 JAM-FREE GUARANTEE
               </div>

@@ -16,6 +16,7 @@ import { VideoCard } from "../components/VideoCard";
 import { V_CAP_VIDEO } from "../data/videos";
 import { MALLETS, MALLET_CAPS, POLY_FACES, DEAD_BLOW, pickRelated } from "../data/products";
 import { images } from "../data/images";
+import { UsaFlag } from "../components/UsaFlag";
 
 const TAB_KEYS = ["mallets", "caps", "poly", "deadblow"] as const;
 
@@ -175,6 +176,33 @@ function EZ2CapBanner() {
                 loading="lazy"
                 style={{ width: "100%", height: "auto", display: "block" }}
               />
+              <div className="pd-label mt-2" style={{ color: "var(--pd-amber-ink)", fontSize: 10 }}>
+                Patented E-Z 2CAP design
+              </div>
+            </div>
+            {/* Tipper de Tipper pairing (client note: show the Tipper here). */}
+            <div className="bg-white p-3" style={{ borderRadius: 6 }}>
+              <img
+                src={images.mallets.tipperWithHammer}
+                alt="TIPPER de Tipper Series 5 tool shown with a flooring mallet — used to change E-Z 2CAP mallet caps in 30 seconds or less."
+                loading="lazy"
+                style={{ width: "100%", height: "auto", display: "block" }}
+              />
+              <div className="pd-label mt-2" style={{ color: "var(--pd-amber-ink)", fontSize: 10 }}>
+                Pairs with the TIPPER de Tipper
+              </div>
+            </div>
+            {/* SURE 2 LOCK detail — closer look at the patented head design. */}
+            <div className="bg-white p-3" style={{ borderRadius: 6 }}>
+              <img
+                src={images.mallets.sure2lockDetail}
+                alt="SURE 2 LOCK patented head design detail showing the bevel relief that lets the bell of the mallet start the cap."
+                loading="lazy"
+                style={{ width: "100%", height: "auto", display: "block" }}
+              />
+              <div className="pd-label mt-2" style={{ color: "var(--pd-amber-ink)", fontSize: 10 }}>
+                Bevel relief detail
+              </div>
             </div>
             {/* 30 seconds stat */}
             <div
@@ -461,7 +489,7 @@ function Mallets() {
               We turn our own handles.
             </h2>
             <p className="mt-5" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1.7, maxWidth: 560, opacity: 0.88 }}>
-              Every Pro-Drive Fasteners® mallet handle is turned from <strong>seasoned hickory wood lath</strong>. It's the kind of detail most manufacturers skip and most contractors feel the first time they swing one.
+              Every Pro-Drive Fasteners® mallet handle is turned from <strong>100% hickory wood lath</strong>. It's the kind of detail most manufacturers skip and most contractors feel the first time they swing one.
             </p>
             <p className="mt-4" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1.7, maxWidth: 560, opacity: 0.75, fontStyle: "italic" }}>
               When you control the material from the raw stock up, you control the quality all the way down.
@@ -496,7 +524,7 @@ function Mallets() {
               style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
             />
             <div
-              className="absolute bottom-0 left-0 right-0 px-4 py-3"
+              className="absolute bottom-0 left-0 right-0 px-4 py-3 flex items-center gap-2"
               style={{
                 background: "linear-gradient(0deg, rgba(0,0,0,0.55), transparent)",
                 color: "#fff",
@@ -506,6 +534,7 @@ function Mallets() {
                 fontWeight: 700,
               }}
             >
+              <UsaFlag height={13} />
               Turned In-House · Made in USA
             </div>
           </div>

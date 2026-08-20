@@ -108,7 +108,7 @@
     text-rendering: optimizeLegibility;
   }
   body {
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.75;
   }
   /* Shrunk ® mark, applied globally via useShrinkRegistered().
@@ -139,7 +139,8 @@
   @media (max-width: 640px) {
     .pd-label,
     .pd-eyebrow {
-      font-size: 14px;
+      font-size: 16px;
+      letter-spacing: 0.06em;
     }
   }
   .pd-display {
@@ -167,7 +168,7 @@
     color: var(--pd-dark);
     padding: 14px 32px;
     font-weight: 800;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
@@ -185,7 +186,7 @@
     color: var(--pd-yellow);
     padding: 14px 32px;
     font-weight: 700;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -202,7 +203,7 @@
     color: var(--pd-dark);
     padding: 14px 32px;
     font-weight: 700;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     border: 1px solid var(--pd-dark);
@@ -219,7 +220,7 @@
     color: rgba(255,255,255,0.85);
     padding: 14px 32px;
     font-weight: 700;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     border: 1px solid rgba(255,255,255,0.18);

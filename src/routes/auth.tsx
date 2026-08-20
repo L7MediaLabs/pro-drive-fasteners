@@ -4,6 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
 import { images } from "@/data/images";
 import logo from "@/assets/prodrive-logo-yellow.png";
+import { UsaFlag } from "../components/UsaFlag";
 
 export const Route = createFileRoute("/auth")({
   // `next` is optional — linking to /auth without it must stay valid.
@@ -133,7 +134,7 @@ function AuthPage() {
           <span>50+ Years Expertise</span>
 
           <span style={{ width: 4, height: 4, background: "rgba(255,205,0,0.5)", borderRadius: "50%" }} />
-          <span>Made in USA</span>
+          <span className="inline-flex items-center gap-2"><UsaFlag height={12} />Made in USA</span>
         </div>
       </div>
 

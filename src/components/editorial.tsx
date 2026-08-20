@@ -3,7 +3,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { Product } from "./ProductCard";
 import { ProductCard } from "./ProductCard";
 import { trackEvent } from "@/lib/analytics";
-import { images } from "@/data/images";
+import { UsaFlag } from "./UsaFlag";
 
 // ─── CinematicHero ────────────────────────────────────────────────────────────
 export function CinematicHero({
@@ -69,7 +69,7 @@ export function CinematicHero({
                 ) : (
                   <div
                     key={i}
-                    className="px-3.5 py-2 self-center"
+                    className="px-3.5 py-2 self-center inline-flex items-center gap-2"
                     style={{
                       background: "var(--pd-dark)",
                       fontSize: 11,
@@ -78,6 +78,7 @@ export function CinematicHero({
                       fontWeight: 700,
                     }}
                   >
+                    {/^(made|built) in (the )?usa$/i.test(b.label.trim()) && <UsaFlag height={14} />}
                     {b.label}
                   </div>
                 )
@@ -583,12 +584,8 @@ export function UsaFlagBadge({
         padding: "5px 10px",
       }}
     >
-      <img
-        src={images.flag}
-        alt="Made in USA"
-        loading="lazy"
-        style={{ width: size, height: "auto", display: "block", flexShrink: 0 }}
-      />
+      <UsaFlag height={Math.round(size * 0.55)} />
+
       <span
         className="pd-label"
         style={{

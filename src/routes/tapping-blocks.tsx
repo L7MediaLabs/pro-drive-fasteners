@@ -14,6 +14,7 @@ import { TAPPING_BLOCKS, RAW_CATALOG, pickRelated } from "../data/products";
 import gradeContractorAsset from "../assets/badge-contractor-grade.png.asset.json";
 const gradeContractor = gradeContractorAsset.url;
 import { images } from "../data/images";
+import { UsaFlag } from "../components/UsaFlag";
 
 export const Route = createFileRoute("/tapping-blocks")({
   head: () => ({
@@ -122,7 +123,7 @@ function Blocks() {
               <div className="pd-label" style={{ color: "var(--pd-gold)" }}>{`0${i + 1} — ${b.id}`}</div>
               <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32, lineHeight: 1.1 }}>{b.title}</h2>
               <div
-                className="mt-3 inline-block px-2 py-0.5"
+                className="mt-3 inline-flex items-center gap-2 px-2 py-0.5"
                 style={{
                   background: "var(--pd-dark)",
                   color: "var(--pd-yellow)",
@@ -132,6 +133,7 @@ function Blocks() {
                   textTransform: "uppercase",
                 }}
               >
+                <UsaFlag height={12} />
                 Made in USA
               </div>
               <p className="mt-3" style={{ color: "var(--pd-muted)", fontSize: 15, lineHeight: 1.6 }}>{b.tagline}</p>

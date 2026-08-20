@@ -122,10 +122,11 @@ function lCleatDrivenPath(L: number, shankW: number): string {
   p.push(`M ${-hw} ${0}`);
   p.push(`L ${hw} 0`);
   p.push(`L ${hw} ${barbTop}`);
+  // Barb spurs lean toward the HEAD (up), matching the elevation profile.
   for (let i = 0; i < teeth; i++) {
     const y0 = barbTop + i * step;
-    p.push(`L ${hw + amp} ${y0 + step * 0.6}`);
-    p.push(`L ${hw} ${y0 + step * 0.6}`);
+    p.push(`L ${hw} ${y0 + step * 0.4}`);
+    p.push(`L ${hw + amp} ${y0 + step * 0.4}`);
     p.push(`L ${hw} ${y0 + step}`);
   }
   p.push(`L ${hw} ${chiselTop}`);
@@ -133,9 +134,9 @@ function lCleatDrivenPath(L: number, shankW: number): string {
   p.push(`L ${-hw} ${chiselTop}`);
   for (let i = teeth - 1; i >= 0; i--) {
     const y0 = barbTop + i * step;
-    p.push(`L ${-hw} ${y0 + step * 0.5}`);
+    p.push(`L ${-hw} ${y0 + step * 0.9}`);
     p.push(`L ${-hw - amp} ${y0 + step * 0.5}`);
-    p.push(`L ${-hw} ${y0 + step * 0.1}`);
+    p.push(`L ${-hw} ${y0 + step * 0.5}`);
   }
   p.push(`L ${-hw} ${barbTop}`);
   p.push("Z");

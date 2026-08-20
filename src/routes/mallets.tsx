@@ -524,7 +524,7 @@ function Mallets() {
               style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
             />
             <div
-              className="absolute bottom-0 left-0 right-0 px-4 py-3"
+              className="absolute bottom-0 left-0 right-0 px-4 py-3 flex items-center gap-2"
               style={{
                 background: "linear-gradient(0deg, rgba(0,0,0,0.55), transparent)",
                 color: "#fff",
@@ -533,7 +533,6 @@ function Mallets() {
                 textTransform: "uppercase",
                 fontWeight: 700,
               }}
-              className="inline-flex items-center gap-2"
             >
               <UsaFlag height={13} />
               Turned In-House · Made in USA

@@ -123,7 +123,7 @@ function Blocks() {
               <div className="pd-label" style={{ color: "var(--pd-gold)" }}>{`0${i + 1} — ${b.id}`}</div>
               <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32, lineHeight: 1.1 }}>{b.title}</h2>
               <div
-                className="mt-3 inline-block px-2 py-0.5"
+                className="mt-3 inline-flex items-center gap-2 px-2 py-0.5"
                 style={{
                   background: "var(--pd-dark)",
                   color: "var(--pd-yellow)",
@@ -132,7 +132,6 @@ function Blocks() {
                   letterSpacing: "0.14em",
                   textTransform: "uppercase",
                 }}
-                className="inline-flex items-center gap-2"
               >
                 <UsaFlag height={12} />
                 Made in USA

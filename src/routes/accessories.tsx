@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { UsaFlag } from "../components/UsaFlag";
 import { trackEvent } from "@/lib/analytics";
 import ork6Pkg from "../assets/ork6_package.jpg.asset.json";
 import ork6Pdf from "../assets/ork6_parts_diagram.pdf.asset.json";

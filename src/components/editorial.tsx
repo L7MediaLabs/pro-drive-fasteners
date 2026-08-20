@@ -583,12 +583,8 @@ export function UsaFlagBadge({
         padding: "5px 10px",
       }}
     >
-      <img
-        src={images.flag}
-        alt="Made in USA"
-        loading="lazy"
-        style={{ width: size, height: "auto", display: "block", flexShrink: 0 }}
-      />
+      <UsaFlag height={Math.round(size * 0.55)} />
+
       <span
         className="pd-label"
         style={{

@@ -175,6 +175,33 @@ function EZ2CapBanner() {
                 loading="lazy"
                 style={{ width: "100%", height: "auto", display: "block" }}
               />
+              <div className="pd-label mt-2" style={{ color: "var(--pd-amber-ink)", fontSize: 10 }}>
+                Patented E-Z 2CAP design
+              </div>
+            </div>
+            {/* Tipper de Tipper pairing (client note: show the Tipper here). */}
+            <div className="bg-white p-3" style={{ borderRadius: 6 }}>
+              <img
+                src={images.mallets.tipperWithHammer}
+                alt="TIPPER de Tipper Series 5 tool shown with a flooring mallet — used to change E-Z 2CAP mallet caps in 30 seconds or less."
+                loading="lazy"
+                style={{ width: "100%", height: "auto", display: "block" }}
+              />
+              <div className="pd-label mt-2" style={{ color: "var(--pd-amber-ink)", fontSize: 10 }}>
+                Pairs with the TIPPER de Tipper
+              </div>
+            </div>
+            {/* SURE 2 LOCK detail — closer look at the patented head design. */}
+            <div className="bg-white p-3" style={{ borderRadius: 6 }}>
+              <img
+                src={images.mallets.sure2lockDetail}
+                alt="SURE 2 LOCK patented head design detail showing the bevel relief that lets the bell of the mallet start the cap."
+                loading="lazy"
+                style={{ width: "100%", height: "auto", display: "block" }}
+              />
+              <div className="pd-label mt-2" style={{ color: "var(--pd-amber-ink)", fontSize: 10 }}>
+                Bevel relief detail
+              </div>
             </div>
             {/* 30 seconds stat */}
             <div

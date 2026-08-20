@@ -621,6 +621,10 @@ function LCleats() {
               Guaranteed compatibility with every major brand of cleat nailer.
             </p>
             <div className="flex flex-wrap gap-3 mt-7">
+              <div className="pd-glass-light px-4 py-2 inline-flex items-center gap-2" style={{ fontSize: 12, color: "#fff", letterSpacing: "0.12em", fontWeight: 700 }}>
+                <UsaFlag height={15} />
+                MADE IN USA · PREMIUM GRADE RECYCLED US STEEL
+              </div>
               <div className="pd-glass-light px-4 py-2" style={{ fontSize: 12, color: "var(--pd-yellow)", letterSpacing: "0.12em", fontWeight: 700 }}>
                 JAM-FREE GUARANTEE
               </div>

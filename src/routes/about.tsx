@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { images } from "../data/images";
+import { UsaFlag } from "../components/UsaFlag";
 
 
 export const Route = createFileRoute("/about")({
@@ -42,11 +43,12 @@ function About() {
           {[
             { v: "50+ Years", l: "In the Industry" },
             { v: "12+", l: "Product Lines" },
-            { v: "Made in USA", l: "Mallets & Tools" },
+            { v: "Made in USA", l: "Mallets & Tools", flag: true },
             { v: "Guaranteed", l: "To Fit Major Brands" },
           ].map(s => (
             <div key={s.l}>
-              <div className="pd-display" style={{ fontSize: "clamp(20px, 4.5vw, 32px)", color: "var(--pd-dark)", lineHeight: 1.05, overflowWrap: "break-word" }}>
+              <div className="pd-display flex items-center gap-2" style={{ fontSize: "clamp(20px, 4.5vw, 32px)", color: "var(--pd-dark)", lineHeight: 1.05, overflowWrap: "break-word" }}>
+                {"flag" in s && s.flag ? <UsaFlag height={22} /> : null}
                 {s.v}
               </div>
               <div className="pd-label mt-1" style={{ color: "rgba(25,20,0,0.6)" }}>{s.l}</div>

@@ -13,6 +13,7 @@ import badgeContractorAsset from "../assets/badge-contractor-grade.png.asset.jso
 import badgeMultiAsset from "../assets/badge-multi-grade.png.asset.json";
 import badgeIndustrial from "../assets/badge-industrial-grade.png.asset.json";
 import { images } from "../data/images";
+import { UsaFlag } from "../components/UsaFlag";
 
 const gradeStandards = [
   {
@@ -254,6 +255,7 @@ function Home() {
             ].map(s => (
               <div key={s.label}>
                 <div className="pd-eyebrow flex items-center gap-2" style={{ color: "var(--pd-gold)", letterSpacing: "0.15em" }}>
+                  {s.label.includes("USA") && <UsaFlag height={14} />}
                   {s.label}
                 </div>
                 <div className="mt-1" style={{ color: "var(--pd-dark)", fontWeight: 800, fontSize: 22 }}>{s.value}</div>

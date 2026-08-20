@@ -3,6 +3,7 @@ import { trackEvent } from "@/lib/analytics";
 import { images } from "../data/images";
 import { CinematicHero, RelatedProducts, PageDisclaimers } from "../components/editorial";
 import { pickRelated } from "../data/products";
+import UsaFlag from "../components/UsaFlag";
 
 export const Route = createFileRoute("/tipper-de-tipper")({
   head: () => ({

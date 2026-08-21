@@ -486,6 +486,10 @@ function Brads() {
           <div className="pd-label" style={{ color: "var(--pd-gold)" }}>16 GA — 0° Straight</div>
           <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 32 }}>16 Straight Nail</h2>
           <p className="mt-2" style={{ color: "var(--pd-muted)", fontSize: 14 }}>16 gauge · 0° straight collation · universal fit</p>
+          {/* Client correction 8-17-2026: small oval head (not L/T); keep the scale note. */}
+          <p className="mt-1" style={{ color: "var(--pd-muted)", fontSize: 11, fontFamily: "ui-monospace, monospace", letterSpacing: "0.05em", textTransform: "uppercase" }}>
+            0° Angle Finish Nail — head detail not to scale
+          </p>
           <div className="grid lg:grid-cols-[1fr_300px] gap-6 mt-4 items-start">
             <ProductGrid products={C16} media={nailMedia("oval", C16)} />
             <ShelfPhoto

@@ -368,12 +368,12 @@ function Mallets() {
               <div className="flex flex-col gap-4">
                 <div className="bg-white p-4" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
                   <img
-                    src={images.mallets.capsLineup}
-                    alt="Pro-Drive Fasteners® mallet cap lineup"
+                    src={images.tipper.product}
+                    alt="Pro-Drive Fasteners® Tipper-De-Tipper™ — black 5-station cap press"
                     loading="lazy"
                     style={{ width: "100%", height: "auto", objectFit: "contain" }}
                   />
-                  <div className="pd-label mt-3" style={{ color: "var(--pd-gold)" }}>Cap Lineup</div>
+                  <div className="pd-label mt-3" style={{ color: "var(--pd-gold)" }}>Tipper-De-Tipper</div>
                 </div>
                 {/* Split-head Garland-type mallet shown for fit reference only —
                     client correction 8-17-2026: we sell replacement caps, NOT the mallet. */}

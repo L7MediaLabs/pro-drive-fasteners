@@ -232,7 +232,9 @@ function CleatDepthDiagram({
   const SHANK_W = 4.4;          // flat cleat shank thickness
 
 
-  const stapleX0 = tongueRootX + CTONGUE_LEN * 0.45; // on the tongue itself
+  // Entry point sits at the tongue-root corner (where the tongue meets the
+  // board body) — per client markup, the fastener line meets that inside corner.
+  const stapleX0 = tongueRootX;
   const stapleX1 = stapleX0 - horizRun;      // tip extends down-left
   const stapleY0 = entryY;
   const stapleY1 = entryY + verticalSpan;    // = floorBottom + penPx

@@ -281,7 +281,9 @@ function StapleDepthDiagram({
   const horizRun = Math.sqrt(Math.max(0, stapleLenPx ** 2 - verticalSpan ** 2));
   const driveDeg = (Math.atan2(horizRun, verticalSpan) * 180) / Math.PI;
 
-  const stapleX0 = tongueRootX + TONGUE_LEN * 0.45; // on the tongue itself
+  // Crown seats EXACTLY in the corner of the tongue (same convention as the
+  // L-cleat depth chart) — client correction 8-20-2026.
+  const stapleX0 = tongueRootX;
 
   const stapleX1 = stapleX0 - horizRun;       // tips travel down-left into subfloor
   const stapleY0 = entryY;
@@ -292,9 +294,7 @@ function StapleDepthDiagram({
   const tongueArrowX = LEFT_PAD + SUBFLOOR_W + 10;
 
 
-  const crownPx = STAPLE_CROWN_IN * PPI;
-  const halfCrown = crownPx / 2 + STAPLE_WIRE_PX / 2;
-  const lenDimX = -halfCrown - 13;
+  const lenDimX = -STAPLE_WIRE_PX / 2 - 13;
 
   return (
     <svg viewBox={`-22 -30 ${VB_W + 22} ${VB_H + 30}`} width="100%" style={{ display: "block" }} aria-hidden>
@@ -391,23 +391,21 @@ function StapleDepthDiagram({
         />
       ))}
 
-      {/* STAPLE — true 1/2" crown, two legs, driven at the real install angle */}
+      {/* STAPLE — installed view: legs line up behind the crown, so it reads
+          as a single straight shank entering the tongue corner at the real
+          drive angle. */}
       <g transform={`rotate(${driveDeg} ${stapleX0} ${stapleY0}) translate(${stapleX0} ${stapleY0})`}>
         <path
-          d={staplePath(stapleLenPx, crownPx, STAPLE_WIRE_PX)}
+          d={stapleDrivenPath(stapleLenPx, STAPLE_WIRE_PX)}
           fill="#EDEDF1"
           stroke="#1a1a1a"
           strokeWidth="1.1"
           strokeLinejoin="round"
         />
 
-        {/* Crown width dimension (1/2") — now sits inside the plank, so it is
-            drawn light with a dark halo to stay legible over the wood. */}
-        <line x1={-halfCrown} y1={-13} x2={halfCrown} y2={-13} stroke="#fff" strokeWidth="0.9" />
-        <line x1={-halfCrown} y1={-17} x2={-halfCrown} y2={-9} stroke="#fff" strokeWidth="0.9" />
-        <line x1={halfCrown} y1={-17} x2={halfCrown} y2={-9} stroke="#fff" strokeWidth="0.9" />
-        {/* Crown label is drawn outside this rotated group (see below) so the
-            text stays horizontal and clear of the T&G callouts. */}
+        {/* Crown width is not dimensioned in this view — the crown runs
+            parallel to the tongue edge (into the page), so no width bracket
+            is drawn. Crown label below keeps the spec visible. */}
 
 
 

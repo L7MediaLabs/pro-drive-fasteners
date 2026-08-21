@@ -489,7 +489,7 @@ function Mallets() {
               We turn our own handles.
             </h2>
             <p className="mt-5" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1.7, maxWidth: 560, opacity: 0.88 }}>
-              Every Pro-Drive Fasteners® mallet handle is turned from <strong>100% hickory wood lath</strong>. It's the kind of detail most manufacturers skip and most contractors feel the first time they swing one.
+              Every Pro-Drive Fasteners® mallet handle is turned from <strong>100% hickory</strong> on a wood lathe. It's the kind of detail most manufacturers skip and most contractors feel the first time they swing one.
             </p>
             <p className="mt-4" style={{ color: "var(--pd-dark)", fontSize: 16, lineHeight: 1.7, maxWidth: 560, opacity: 0.75, fontStyle: "italic" }}>
               When you control the material from the raw stock up, you control the quality all the way down.

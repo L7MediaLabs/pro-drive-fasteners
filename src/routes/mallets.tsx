@@ -505,7 +505,7 @@ function Mallets() {
                 color: "var(--pd-dark)",
               }}
             >
-              Seasoned Hickory
+              100% Hickory
             </div>
           </div>
           <div

@@ -217,29 +217,25 @@ const VB_W = LEFT_PAD + SUBFLOOR_W + RIGHT_GUTTER;
 const VB_H = MAX_TOTAL * PPI + 18;
 
 // 15.5 GA flooring staple: 1/2" crown, .072" wire.
-const STAPLE_CROWN_IN = 0.5;
 const STAPLE_CROWN_LABEL = '1/2"';
 const STAPLE_WIRE_PX = 4.2;
 
 /**
- * Silhouette of a 15.5 GA flooring staple — crown bar across the top with two
- * parallel legs and chisel points, drawn in local coordinates: crown centred on
- * x = 0, crown top at y = 0, leg tips at y = L.
+ * Installed view of a flooring staple in the T&G cross-section. From this
+ * angle the two legs line up directly behind the crown (which seats parallel
+ * to the back edge of the tongue top), so the U-shape reads as a single
+ * straight shank — the same convention as the L-cleat depth chart. Local
+ * coords: crown end centred on x = 0 at y = 0, chisel tips at y = L.
  */
-function staplePath(L: number, crownPx: number, wire: number): string {
-  const half = crownPx / 2;
+function stapleDrivenPath(L: number, wire: number): string {
+  const hw = wire / 2;
   const tip = wire * 1.4;
   return [
-    `M ${-half - wire / 2} 0`,
-    `L ${half + wire / 2} 0`,
-    `L ${half + wire / 2} ${L - tip}`,
-    `L ${half} ${L}`,                       // chisel point, right leg
-    `L ${half - wire / 2} ${L - tip}`,
-    `L ${half - wire / 2} ${wire}`,
-    `L ${-half + wire / 2} ${wire}`,
-    `L ${-half + wire / 2} ${L - tip}`,
-    `L ${-half} ${L}`,                      // chisel point, left leg
-    `L ${-half - wire / 2} ${L - tip}`,
+    `M ${-hw} 0`,
+    `L ${hw} 0`,
+    `L ${hw} ${L - tip}`,
+    `L 0 ${L}`,                            // chisel point
+    `L ${-hw} ${L - tip}`,
     "Z",
   ].join(" ");
 }

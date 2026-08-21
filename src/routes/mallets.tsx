@@ -365,15 +365,30 @@ function Mallets() {
             <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 34 }}>Change caps in 30 seconds.</h2>
             <div className="grid lg:grid-cols-[1fr_320px] gap-6 mt-6 items-start">
               <ProductGrid products={MALLET_CAPS} />
-              <div className="bg-white p-4" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
-                <img
-                  src={images.mallets.capsLineup}
-                  alt="Pro-Drive Fasteners® mallet cap lineup"
-                  loading="lazy"
-                  style={{ width: "100%", height: "auto", objectFit: "contain" }}
-                />
-                <div className="pd-label mt-3" style={{ color: "var(--pd-gold)" }}>Cap Lineup</div>
-
+              <div className="flex flex-col gap-4">
+                <div className="bg-white p-4" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
+                  <img
+                    src={images.mallets.capsLineup}
+                    alt="Pro-Drive Fasteners® mallet cap lineup"
+                    loading="lazy"
+                    style={{ width: "100%", height: "auto", objectFit: "contain" }}
+                  />
+                  <div className="pd-label mt-3" style={{ color: "var(--pd-gold)" }}>Cap Lineup</div>
+                </div>
+                {/* Split-head Garland-type mallet shown for fit reference only —
+                    client correction 8-17-2026: we sell replacement caps, NOT the mallet. */}
+                <div className="bg-white p-4" style={{ borderTop: "3px solid var(--pd-yellow)" }}>
+                  <img
+                    src={images.mallets.splitHead.hero}
+                    alt="Split-head Garland-type flooring mallet — shown for cap fit reference only"
+                    loading="lazy"
+                    style={{ width: "100%", height: "auto", objectFit: "contain" }}
+                  />
+                  <div className="pd-label mt-3" style={{ color: "var(--pd-gold)" }}>Fits Split-Head Mallets</div>
+                  <p className="mt-2" style={{ fontSize: 12, lineHeight: 1.5, color: "var(--pd-dark)", fontWeight: 700 }}>
+                    Replacement caps only — we do not sell the mallet.
+                  </p>
+                </div>
               </div>
             </div>
             <div className="mt-6" style={{ maxWidth: 420 }}>

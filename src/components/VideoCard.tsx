@@ -89,7 +89,7 @@ export function VideoCard({ video, className }: { video: SiteVideo; className?: 
           className="mt-3 inline-block text-[13px]"
           style={{ color: "var(--pd-dark)", fontWeight: 700, textDecoration: "underline" }}
         >
-          {video.product.sku} — {video.product.name}
+          {video.product.name}
         </Link>
       )}
     </article>

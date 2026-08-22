@@ -549,8 +549,7 @@ function Mallets() {
                 fontWeight: 700,
               }}
             >
-              <UsaFlag height={13} />
-              Turned In-House · Made in USA
+              Turned In-House · <UsaFlag height={13} /> Made in USA
             </div>
           </div>
         </div>

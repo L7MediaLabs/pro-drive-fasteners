@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import logoAsset from "../assets/prodrive-logo.svg.asset.json";
+import logoAsset from "../assets/prodrive-logo-flooring-yellow.svg.asset.json";
 import { AgencyCredit } from "./AgencyCredit";
 
 const cols = [

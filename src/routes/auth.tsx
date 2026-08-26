@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
 import { images } from "@/data/images";
-import logo from "@/assets/prodrive-logo-yellow.png";
+import logoAsset from "@/assets/prodrive-logo-flooring-yellow.svg.asset.json";
+const logo = logoAsset.url;
 import { UsaFlag } from "../components/UsaFlag";
 
 export const Route = createFileRoute("/auth")({

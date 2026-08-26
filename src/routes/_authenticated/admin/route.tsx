@@ -8,7 +8,7 @@ import {
 } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
-import logoAsset from "@/assets/prodrive-logo.svg.asset.json";
+import logoAsset from "@/assets/prodrive-logo-flooring-yellow.svg.asset.json";
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";

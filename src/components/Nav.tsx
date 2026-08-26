@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import logoAsset from "../assets/prodrive-logo-prev.svg.asset.json";
-import logoYellowAsset from "../assets/prodrive-logo.svg.asset.json";
+import logoAsset from "../assets/prodrive-logo-flooring.svg.asset.json";
+import logoYellowAsset from "../assets/prodrive-logo-flooring-yellow.svg.asset.json";
 import { ProductSearch } from "./ProductSearch";
 
 

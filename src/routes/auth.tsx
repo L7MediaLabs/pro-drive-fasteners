@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
 import { images } from "@/data/images";
 import logoAsset from "@/assets/prodrive-logo-flooring-yellow.svg.asset.json";
-const logo = logoAsset.url;
+
 import { UsaFlag } from "../components/UsaFlag";
 
 export const Route = createFileRoute("/auth")({
@@ -108,7 +108,7 @@ function AuthPage() {
           }}
         />
         <div className="relative z-10 flex items-center gap-3">
-          <img src={logo} alt="Pro-Drive Fasteners®" style={{ height: 56, width: "auto" }} />
+          <img src={logoAsset.url} alt="Pro-Drive Fasteners®" style={{ height: 56, width: "auto" }} />
         </div>
 
         <div className="relative z-10">
@@ -143,7 +143,7 @@ function AuthPage() {
       <div className="relative flex items-center justify-center px-6 py-16 lg:py-12">
         {/* Mobile logo */}
         <div className="absolute top-6 left-6 lg:hidden">
-          <img src={logo} alt="Pro-Drive Fasteners®" style={{ height: 44, width: "auto" }} />
+          <img src={logoAsset.url} alt="Pro-Drive Fasteners®" style={{ height: 44, width: "auto" }} />
         </div>
 
         {/* Ambient glow */}

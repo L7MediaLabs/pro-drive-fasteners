@@ -101,8 +101,7 @@ function TappingRings() {
                 </div>
                 <div className="p-6">
                   <span style={{ display: "inline-block", width: 32, height: 32, borderRadius: "50%", background: r.color }} />
-                  <div className="pd-label mt-4" style={{ color: "var(--pd-muted)" }}>{r.id}</div>
-                  <div className="flex items-center gap-2 mt-1 flex-wrap">
+                  <div className="flex items-center gap-2 mt-4 flex-wrap">
                     <h3 style={{ fontWeight: 800, fontSize: 20, color: "var(--pd-dark)" }}>{r.name.toUpperCase()}</h3>
                     {r.id === "V-6RING-O" && (
                       <span

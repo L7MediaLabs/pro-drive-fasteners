@@ -20,6 +20,7 @@ import { Route as McpRouteImport } from './routes/mcp'
 import { Route as MalletsRouteImport } from './routes/mallets'
 import { Route as LCleatsRouteImport } from './routes/l-cleats'
 import { Route as DivergentStaplesRouteImport } from './routes/divergent-staples'
+import { Route as DiagramReviewRouteImport } from './routes/diagram-review'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BradsFinishNailsRouteImport } from './routes/brads-finish-nails'
 import { Route as AuthRouteImport } from './routes/auth'
@@ -95,6 +96,11 @@ const LCleatsRoute = LCleatsRouteImport.update({
 const DivergentStaplesRoute = DivergentStaplesRouteImport.update({
   id: '/divergent-staples',
   path: '/divergent-staples',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiagramReviewRoute = DiagramReviewRouteImport.update({
+  id: '/diagram-review',
+  path: '/diagram-review',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -218,6 +224,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/brads-finish-nails': typeof BradsFinishNailsRoute
   '/contact': typeof ContactRoute
+  '/diagram-review': typeof DiagramReviewRoute
   '/divergent-staples': typeof DivergentStaplesRoute
   '/l-cleats': typeof LCleatsRoute
   '/mallets': typeof MalletsRoute
@@ -251,6 +258,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/brads-finish-nails': typeof BradsFinishNailsRoute
   '/contact': typeof ContactRoute
+  '/diagram-review': typeof DiagramReviewRoute
   '/divergent-staples': typeof DivergentStaplesRoute
   '/l-cleats': typeof LCleatsRoute
   '/mallets': typeof MalletsRoute
@@ -285,6 +293,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/brads-finish-nails': typeof BradsFinishNailsRoute
   '/contact': typeof ContactRoute
+  '/diagram-review': typeof DiagramReviewRoute
   '/divergent-staples': typeof DivergentStaplesRoute
   '/l-cleats': typeof LCleatsRoute
   '/mallets': typeof MalletsRoute
@@ -320,6 +329,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/brads-finish-nails'
     | '/contact'
+    | '/diagram-review'
     | '/divergent-staples'
     | '/l-cleats'
     | '/mallets'
@@ -353,6 +363,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/brads-finish-nails'
     | '/contact'
+    | '/diagram-review'
     | '/divergent-staples'
     | '/l-cleats'
     | '/mallets'
@@ -386,6 +397,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/brads-finish-nails'
     | '/contact'
+    | '/diagram-review'
     | '/divergent-staples'
     | '/l-cleats'
     | '/mallets'
@@ -421,6 +433,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   BradsFinishNailsRoute: typeof BradsFinishNailsRoute
   ContactRoute: typeof ContactRoute
+  DiagramReviewRoute: typeof DiagramReviewRoute
   DivergentStaplesRoute: typeof DivergentStaplesRoute
   LCleatsRoute: typeof LCleatsRoute
   MalletsRoute: typeof MalletsRoute
@@ -515,6 +528,13 @@ declare module '@tanstack/react-router' {
       path: '/divergent-staples'
       fullPath: '/divergent-staples'
       preLoaderRoute: typeof DivergentStaplesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diagram-review': {
+      id: '/diagram-review'
+      path: '/diagram-review'
+      fullPath: '/diagram-review'
+      preLoaderRoute: typeof DiagramReviewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -715,6 +735,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   BradsFinishNailsRoute: BradsFinishNailsRoute,
   ContactRoute: ContactRoute,
+  DiagramReviewRoute: DiagramReviewRoute,
   DivergentStaplesRoute: DivergentStaplesRoute,
   LCleatsRoute: LCleatsRoute,
   MalletsRoute: MalletsRoute,

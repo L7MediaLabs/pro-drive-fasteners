@@ -16,6 +16,7 @@ import { initAnalytics, trackEvent } from "../lib/analytics";
 import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 import { LangToast } from "../components/LangToast";
+import { TextSizeToggle } from "../components/TextSizeToggle";
 
 import { useShrinkRegistered } from "../lib/useShrinkRegistered";
 

@@ -143,6 +143,52 @@
       letter-spacing: 0.06em;
     }
   }
+
+  /* ---- Text size / high-visibility mode ----
+     The site sets many font sizes inline in px, so scaling the root font
+     size alone cannot reach them. Zooming the document scales all type
+     (and spacing) proportionally while still reflowing the layout. */
+  .pd-text-toggle {
+    position: fixed;
+    right: 14px;
+    bottom: 14px;
+    z-index: 60;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 10px 14px;
+    background: var(--gradient-dark);
+    color: var(--pd-yellow);
+    border: 1px solid rgba(255, 205, 0, 0.35);
+    box-shadow: var(--shadow-md);
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .pd-text-toggle:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+  }
+  .pd-text-toggle-word {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  @media (max-width: 640px) {
+    .pd-text-toggle-word {
+      display: none;
+    }
+  }
+  @media print {
+    .pd-text-toggle {
+      display: none;
+    }
+  }
+
   .pd-display {
     font-family: var(--font-display);
     font-weight: 800;
@@ -318,4 +364,17 @@
 :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
   outline: 3px solid var(--pd-yellow);
   outline-offset: 2px;
+}
+
+/* ============================================================
+   Text scale (high-visibility mode)
+   Baseline mobile bump + user-selectable larger steps.
+   ============================================================ */
+html[data-pd-text="lg"] { zoom: 1.15; }
+html[data-pd-text="xl"] { zoom: 1.32; }
+
+@media (max-width: 640px) {
+  html { zoom: 1.06; }
+  html[data-pd-text="lg"] { zoom: 1.22; }
+  html[data-pd-text="xl"] { zoom: 1.4; }
 }

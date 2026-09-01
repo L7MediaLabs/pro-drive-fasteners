@@ -16,6 +16,7 @@ import { initAnalytics, trackEvent } from "../lib/analytics";
 import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 import { LangToast } from "../components/LangToast";
+import { TextSizeToggle } from "../components/TextSizeToggle";
 
 import { useShrinkRegistered } from "../lib/useShrinkRegistered";
 
@@ -86,6 +87,12 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              'try{var s=localStorage.getItem("pd-text-scale");if(s==="lg"||s==="xl")document.documentElement.setAttribute("data-pd-text",s)}catch(e){}',
+          }}
+        />
         {/* Pro-Drive Fasteners® Intelligence Layer — Installed by Seventh State Creative */}
         {/* Apollo.io Visitor Identification */}
         <ApolloScript />
@@ -127,6 +134,7 @@ function RootComponent() {
             <Outlet />
           </main>
           <Footer />
+          <TextSizeToggle />
         </>
       )}
       

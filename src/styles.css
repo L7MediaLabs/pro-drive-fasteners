@@ -152,7 +152,9 @@
     position: fixed;
     right: 14px;
     bottom: 14px;
-    z-index: 60;
+    /* Must stay BELOW the mobile menu overlay (z-60) so it can't cover
+       the bottom-of-menu CTA or be tapped by mistake. */
+    z-index: 45;
     display: inline-flex;
     align-items: center;
     gap: 8px;

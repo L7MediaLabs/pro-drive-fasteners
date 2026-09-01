@@ -365,3 +365,16 @@
   outline: 3px solid var(--pd-yellow);
   outline-offset: 2px;
 }
+
+/* ============================================================
+   Text scale (high-visibility mode)
+   Baseline mobile bump + user-selectable larger steps.
+   ============================================================ */
+html[data-pd-text="lg"] { zoom: 1.15; }
+html[data-pd-text="xl"] { zoom: 1.32; }
+
+@media (max-width: 640px) {
+  html { zoom: 1.06; }
+  html[data-pd-text="lg"] { zoom: 1.22; }
+  html[data-pd-text="xl"] { zoom: 1.4; }
+}

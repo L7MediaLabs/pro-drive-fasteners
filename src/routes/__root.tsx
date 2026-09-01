@@ -87,6 +87,12 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              'try{var s=localStorage.getItem("pd-text-scale");if(s==="lg"||s==="xl")document.documentElement.setAttribute("data-pd-text",s)}catch(e){}',
+          }}
+        />
         {/* Pro-Drive Fasteners® Intelligence Layer — Installed by Seventh State Creative */}
         {/* Apollo.io Visitor Identification */}
         <ApolloScript />

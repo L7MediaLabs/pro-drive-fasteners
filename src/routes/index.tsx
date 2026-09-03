@@ -632,7 +632,9 @@ function Home() {
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
           <div className="max-w-2xl">
             <h2 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: "clamp(28px, 4vw, 44px)" }}>
-              Stock Pro-Drive Fasteners®. Full Line Offering.
+              <span style={{ display: "block" }}>Stock</span>
+              <span style={{ display: "block" }}>Pro-Drive Fasteners®.</span>
+              <span style={{ display: "block" }}>Full Line Offering.</span>
             </h2>
             <div className="mt-4 flex flex-wrap gap-2">
               {["Made in the USA"].map(b => (

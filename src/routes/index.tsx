@@ -675,7 +675,7 @@ function Home() {
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <div className="pd-label" style={{ color: "var(--pd-gold)" }}>Follow Along</div>
-            <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 38 }}>Pro-Drive Fasteners® on Instagram</h2>
+            <h2 className="pd-display mt-2" style={{ color: "var(--pd-dark)", fontSize: 38 }}>Pro-Drive Fasteners®{" "}<span style={{ whiteSpace: "nowrap" }}>on Instagram</span></h2>
             <p className="mt-3" style={{ color: "var(--pd-muted)", fontWeight: 300, fontSize: 16, maxWidth: 520, lineHeight: 1.8 }}>
               Product drops, field installs, and close-up looks at the tools flooring crews actually use.
             </p>

@@ -633,7 +633,9 @@ function Home() {
           <div className="max-w-2xl">
             <h2 className="pd-display" style={{ color: "var(--pd-dark)", fontSize: "clamp(28px, 4vw, 44px)" }}>
               <span style={{ display: "block" }}>Stock</span>
-              <span style={{ display: "block" }}>Pro-Drive Fasteners®.</span>
+              <span style={{ display: "block" }}>
+                Pro-Drive Fasteners<span style={{ fontSize: "0.55em", verticalAlign: "super", lineHeight: 0 }}>&reg;</span>.
+              </span>
               <span style={{ display: "block" }}>Full Line Offering.</span>
             </h2>
             <div className="mt-4 flex flex-wrap gap-2">

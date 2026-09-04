@@ -19,6 +19,13 @@ import { trackEvent } from "@/lib/analytics";
 const SESSION_KEY = "pd-promo-popup-dismissed";
 const ROTATE_MS = 6000;
 
+/**
+ * Master switch. Set to true once the real videos are wired up.
+ * Deactivated for launch (client request, Sept 3) — the feature stays
+ * baked in, it just doesn't render.
+ */
+const SHOW_PROMO_POPUP = false;
+
 export function VideoPopupCarousel() {
   const [open, setOpen] = useState(false);
   const [i, setI] = useState(0);
@@ -28,6 +35,7 @@ export function VideoPopupCarousel() {
   const slides = PROMO_SLIDES;
 
   useEffect(() => {
+    if (!SHOW_PROMO_POPUP) return;
     if (slides.length === 0) return;
     try {
       if (sessionStorage.getItem(SESSION_KEY)) return;
@@ -67,7 +75,7 @@ export function VideoPopupCarousel() {
     return () => window.clearInterval(id);
   }, [open, manual, slides.length]);
 
-  if (!open || slides.length === 0) return null;
+  if (!SHOW_PROMO_POPUP || !open || slides.length === 0) return null;
   const s = slides[i];
 
   const go = (dir: 1 | -1) => {

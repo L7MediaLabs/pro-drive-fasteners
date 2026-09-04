@@ -29,27 +29,40 @@ export function WatermarkedImage({
   /** Relative size of the mark, for larger presentations like shelf photos. */
   scale?: number;
 }) {
+  // Size the mark relative to the image's own width (container query units) so
+  // it always spans a meaningful portion of the photo — small thumbnails and
+  // large shelf photos both get proportional coverage instead of a fixed 9px.
+  const fontSize = `clamp(8px, ${(3.9 * scale).toFixed(2)}cqw, 34px)`;
   return (
-    <span className={className} style={{ position: "relative", display: "inline-block", lineHeight: 0, maxWidth: "100%" }}>
+    <span
+      className={className}
+      style={{
+        position: "relative",
+        display: "inline-block",
+        lineHeight: 0,
+        maxWidth: "100%",
+        containerType: "inline-size",
+      }}
+    >
       <img src={src} alt={alt} loading={loading} style={imgStyle} />
       <span
         aria-hidden="true"
         style={{
           position: "absolute",
           left: "50%",
-          top: "68%",
-          transform: "translate(-50%, -50%)",
+          top: "58%",
+          transform: "translate(-50%, -50%) rotate(-14deg)",
           pointerEvents: "none",
           userSelect: "none",
           fontFamily: "Assistant, sans-serif",
           fontWeight: 800,
-          fontSize: 9 * scale,
-          letterSpacing: "0.16em",
+          fontSize,
+          letterSpacing: "0.14em",
           textTransform: "uppercase",
           whiteSpace: "nowrap",
           color: "var(--pd-dark)",
           opacity,
-          textShadow: "0 1px 0 rgba(255,255,255,0.45)",
+          textShadow: "0 1px 0 rgba(255,255,255,0.4)",
         }}
       >
         Pro-Drive Fasteners

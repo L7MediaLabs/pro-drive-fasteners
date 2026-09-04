@@ -38,13 +38,20 @@ export function WatermarkedImage({
       className={className}
       style={{
         position: "relative",
-        display: "inline-block",
+        // NOTE: `container-type: inline-size` applies inline-axis size
+        // containment, so the box can NOT size to its contents. As an
+        // inline-block that collapsed the wrapper to zero width and the photo
+        // disappeared. Sizing from the parent (block, width:100%) keeps the
+        // container query working without collapsing.
+        display: "block",
+        width: "100%",
+        textAlign: "center",
         lineHeight: 0,
-        maxWidth: "100%",
         containerType: "inline-size",
       }}
     >
       <img src={src} alt={alt} loading={loading} style={imgStyle} />
+
       <span
         aria-hidden="true"
         style={{

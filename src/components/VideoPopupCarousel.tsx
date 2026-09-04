@@ -53,7 +53,7 @@ export function VideoPopupCarousel() {
       if (e.key === "ArrowLeft") { setManual(true); setI(v => (v - 1 + slides.length) % slides.length); }
     };
     window.addEventListener("keydown", onKey);
-    trackEvent("promo_popup_open", { slideCount: slides.length });
+    trackEvent("promo_popup_open");
     return () => {
       document.body.style.overflow = prev;
       window.removeEventListener("keydown", onKey);
@@ -142,7 +142,7 @@ export function VideoPopupCarousel() {
             {s.to ? (
               <Link
                 to={s.to}
-                onClick={() => { trackEvent("promo_popup_cta", { slide: s.id, ctaLabel: s.ctaLabel }); dismiss(); }}
+                onClick={() => { trackEvent("promo_popup_cta", { productSlug: s.id, ctaLabel: s.ctaLabel }); dismiss(); }}
                 className="pd-btn-primary"
                 style={{ padding: "10px 18px", fontSize: 11 }}
               >

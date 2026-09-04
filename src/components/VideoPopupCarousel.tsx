@@ -75,7 +75,7 @@ export function VideoPopupCarousel() {
     return () => window.clearInterval(id);
   }, [open, manual, slides.length]);
 
-  if (!open || slides.length === 0) return null;
+  if (!SHOW_PROMO_POPUP || !open || slides.length === 0) return null;
   const s = slides[i];
 
   const go = (dir: 1 | -1) => {

@@ -17,6 +17,7 @@ import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 import { LangToast } from "../components/LangToast";
 import { TextSizeToggle } from "../components/TextSizeToggle";
+import { BrandWatermark } from "../components/BrandWatermark";
 
 import { useShrinkRegistered } from "../lib/useShrinkRegistered";
 
@@ -135,6 +136,7 @@ function RootComponent() {
           </main>
           <Footer />
           <TextSizeToggle />
+          <BrandWatermark />
         </>
       )}
       

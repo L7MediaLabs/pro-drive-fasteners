@@ -47,7 +47,10 @@ export function WatermarkedImage({
   return (
     <span
       className={className}
-      style={{ position: "relative", display: "inline-block", lineHeight: 0, maxWidth: "100%" }}
+      // overflow:hidden clips the rotated mark so it can never widen the page
+      // (a long diagonal wordmark on a narrow phone photo caused ~19px of
+      // horizontal document overflow before this).
+      style={{ position: "relative", display: "inline-block", lineHeight: 0, maxWidth: "100%", overflow: "hidden" }}
     >
       <img ref={imgRef} src={src} alt={alt} loading={loading} style={imgStyle} />
       <span

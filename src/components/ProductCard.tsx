@@ -127,8 +127,9 @@ export function ProductCard({
           <WatermarkedImage
             src={product.image}
             alt={product.name}
-            imgStyle={{ maxWidth: "88%", maxHeight: "88%", objectFit: "contain" }}
+            imgStyle={{ maxWidth: "88%", maxHeight: 150, objectFit: "contain" }}
           />
+
         </button>
       ) : (
 

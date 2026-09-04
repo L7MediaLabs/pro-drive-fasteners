@@ -190,6 +190,8 @@ const instagramPosts = [
 function Home() {
   return (
     <div>
+      {/* Homepage featured-video popup carousel (dismiss persists for the session) */}
+      <VideoPopupCarousel />
       {/* 7A Hero */}
       <section
         style={{

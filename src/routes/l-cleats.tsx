@@ -3,6 +3,7 @@ import { trackEvent } from "@/lib/analytics";
 import { ProductGrid } from "../components/ProductCard";
 import { TechReference, useTabs, UsaFlagBadge } from "../components/editorial";
 import { UsaFlag } from "../components/UsaFlag";
+import { WatermarkedImage } from "../components/WatermarkedImage";
 import { LCLEATS_16, LCLEATS_18 } from "../data/products";
 import { images } from "../data/images";
 import contractorBadge from "../assets/badge-contractor-grade.png.asset.json";
@@ -647,16 +648,20 @@ function LCleats() {
             </div>
           </div>
           <div className="relative" style={{ aspectRatio: "4/5", maxHeight: 520 }}>
-            <img
+            <WatermarkedImage
               src={images.lCleats.hero}
               alt="Pro-Drive Fasteners® L-Cleat strip — vertical product detail"
               loading="eager"
-              style={{
+              opacity={0.11}
+              scale={1.2}
+              className="w-full h-full"
+              imgStyle={{
                 width: "100%", height: "100%", objectFit: "contain", objectPosition: "center",
                 background: "#fff",
                 borderRadius: 4, boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
               }}
             />
+
           </div>
         </div>
       </section>
@@ -688,11 +693,14 @@ function LCleats() {
               stop repeating carton photography down the page) */}
           <div>
             <div style={{ background: "#fff", padding: 16, borderTop: "3px solid var(--pd-yellow)" }}>
-              <img
+              <WatermarkedImage
                 src={g.masterpack}
                 alt={`Pro-Drive Fasteners® ${g.label} L-Cleat packaging`}
                 loading="lazy"
-                style={{ width: "100%", height: "auto", display: "block" }}
+                opacity={0.12}
+                scale={1.25}
+                className="block w-full"
+                imgStyle={{ width: "100%", height: "auto", display: "block" }}
               />
               <div className="pd-label mt-3" style={{ color: "var(--pd-gold)", fontSize: 11 }}>
                 {g.label} Packaging — 1,000ct box, 5 per master carton

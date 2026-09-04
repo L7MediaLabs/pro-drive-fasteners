@@ -1,14 +1,13 @@
+import { useEffect, useRef, useState } from "react";
+
 /**
  * FEATURE 1b — reusable product-image watermark wrapper.
  *
- * Wraps a single product photograph and overlays a small, low-opacity
- * "Pro-Drive Fasteners" mark. Placement notes:
- *  - the mark sits in the LOWER THIRD, inset from the edges and horizontally
- *    centered, so a naive edge crop cannot remove it
- *  - opacity stays low (first pass for client review) so it never competes
- *    with the product itself
- *  - the overlay is aria-hidden and pointer-events:none, so existing
- *    click-to-enlarge behaviour on the underlying image is untouched
+ * Layout rule: this wrapper must be COMPLETELY invisible to layout. It is an
+ * inline-block that shrink-wraps the image exactly as a bare <img> would, so
+ * placement/cropping of every existing photo is unchanged. (An earlier version
+ * used `container-type: inline-size`, which applies inline-axis containment and
+ * broke sizing/centering — the mark is now sized from a measured width instead.)
  */
 export function WatermarkedImage({
   src,
@@ -29,29 +28,28 @@ export function WatermarkedImage({
   /** Relative size of the mark, for larger presentations like shelf photos. */
   scale?: number;
 }) {
-  // Size the mark relative to the image's own width (container query units) so
-  // it always spans a meaningful portion of the photo — small thumbnails and
-  // large shelf photos both get proportional coverage instead of a fixed 9px.
-  const fontSize = `clamp(8px, ${(3.9 * scale).toFixed(2)}cqw, 34px)`;
+  const imgRef = useRef<HTMLImageElement | null>(null);
+  const [w, setW] = useState(0);
+
+  // Measure the rendered image so the mark spans a proportional share of the
+  // photo on both small thumbnails and large shelf photos.
+  useEffect(() => {
+    const el = imgRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(() => setW(el.clientWidth));
+    ro.observe(el);
+    setW(el.clientWidth);
+    return () => ro.disconnect();
+  }, []);
+
+  const fontSize = Math.max(8, Math.min(34, w * 0.082 * scale));
+
   return (
     <span
       className={className}
-      style={{
-        position: "relative",
-        // NOTE: `container-type: inline-size` applies inline-axis size
-        // containment, so the box can NOT size to its contents. As an
-        // inline-block that collapsed the wrapper to zero width and the photo
-        // disappeared. Sizing from the parent (block, width:100%) keeps the
-        // container query working without collapsing.
-        display: "block",
-        width: "100%",
-        textAlign: "center",
-        lineHeight: 0,
-        containerType: "inline-size",
-      }}
+      style={{ position: "relative", display: "inline-block", lineHeight: 0, maxWidth: "100%" }}
     >
-      <img src={src} alt={alt} loading={loading} style={imgStyle} />
-
+      <img ref={imgRef} src={src} alt={alt} loading={loading} style={imgStyle} />
       <span
         aria-hidden="true"
         style={{

@@ -647,16 +647,20 @@ function LCleats() {
             </div>
           </div>
           <div className="relative" style={{ aspectRatio: "4/5", maxHeight: 520 }}>
-            <img
+            <WatermarkedImage
               src={images.lCleats.hero}
               alt="Pro-Drive Fasteners® L-Cleat strip — vertical product detail"
               loading="eager"
-              style={{
+              opacity={0.11}
+              scale={1.2}
+              className="w-full h-full"
+              imgStyle={{
                 width: "100%", height: "100%", objectFit: "contain", objectPosition: "center",
                 background: "#fff",
                 borderRadius: 4, boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
               }}
             />
+
           </div>
         </div>
       </section>

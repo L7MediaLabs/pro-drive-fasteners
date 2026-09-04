@@ -14,6 +14,7 @@
 import { useState } from "react";
 import { RAW_CATALOG } from "@/data/products";
 import { ImageLightbox } from "./ImageLightbox";
+import { WatermarkedImage } from "./WatermarkedImage";
 
 // ─── Dimensions, straight from the catalog row for that SKU ──────────────────
 export type SkuDims = {
@@ -246,11 +247,12 @@ export function ShelfPhoto({
         aria-label={`Enlarge packaging photo — ${label}`}
         className="w-full cursor-zoom-in"
       >
-        <img
+        <WatermarkedImage
           src={src}
           alt={alt}
-          loading="lazy"
-          style={{ width: "100%", height: "auto", display: "block", objectFit: "contain" }}
+          scale={1.3}
+          className="block w-full"
+          imgStyle={{ width: "100%", height: "auto", display: "block", objectFit: "contain" }}
         />
       </button>
       <div className="pd-label mt-3" style={{ color: "var(--pd-gold)", fontSize: 11 }}>{label}</div>

@@ -2,6 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { trackEvent } from "@/lib/analytics";
 import { ImageLightbox } from "./ImageLightbox";
+import { WatermarkedImage } from "./WatermarkedImage";
 
 
 export type Product = {
@@ -123,11 +124,10 @@ export function ProductCard({
           className="flex items-center justify-center w-full cursor-zoom-in"
           style={{ height: 170, background: "#fafaf8", borderBottom: "1px solid rgba(0,0,0,0.05)" }}
         >
-          <img
+          <WatermarkedImage
             src={product.image}
             alt={product.name}
-            loading="lazy"
-            style={{ maxWidth: "88%", maxHeight: "88%", objectFit: "contain" }}
+            imgStyle={{ maxWidth: "88%", maxHeight: "88%", objectFit: "contain" }}
           />
         </button>
       ) : (

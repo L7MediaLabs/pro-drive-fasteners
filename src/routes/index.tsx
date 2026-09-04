@@ -14,6 +14,7 @@ import badgeMultiAsset from "../assets/badge-multi-grade.png.asset.json";
 import badgeIndustrial from "../assets/badge-industrial-grade.png.asset.json";
 import { images } from "../data/images";
 import { UsaFlag } from "../components/UsaFlag";
+import { VideoPopupCarousel } from "../components/VideoPopupCarousel";
 
 const gradeStandards = [
   {
@@ -190,6 +191,8 @@ const instagramPosts = [
 function Home() {
   return (
     <div>
+      {/* Homepage featured-video popup carousel (dismiss persists for the session) */}
+      <VideoPopupCarousel />
       {/* 7A Hero */}
       <section
         style={{

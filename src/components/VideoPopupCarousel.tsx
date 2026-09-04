@@ -35,6 +35,7 @@ export function VideoPopupCarousel() {
   const slides = PROMO_SLIDES;
 
   useEffect(() => {
+    if (!SHOW_PROMO_POPUP) return;
     if (slides.length === 0) return;
     try {
       if (sessionStorage.getItem(SESSION_KEY)) return;

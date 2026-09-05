@@ -132,7 +132,10 @@ async def main():
             )
             page = await ctx.new_page()
             page.set_default_timeout(120000)
+            only = os.environ.get("ONLY", "").split(",") if os.environ.get("ONLY") else None
             for name, path in ROUTES:
+                if only and name not in only:
+                    continue
                 await capture_route(page, out_dir, name, path)
                 print("done", key, name, flush=True)
             await ctx.close()
